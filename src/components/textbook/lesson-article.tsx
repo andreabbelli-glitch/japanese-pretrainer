@@ -102,6 +102,7 @@ type LessonArticleProps = {
   document: MarkdownDocument | null;
   furiganaMode: FuriganaMode;
   isTouchLayout: boolean;
+  lessonTitle?: string;
   mediaSlug: string;
   onReferenceBlur: () => void;
   onReferenceClick: (
@@ -120,7 +121,7 @@ type LessonArticleProps = {
     intent: "hover" | "focus" | "click"
   ) => void;
   onReferenceLeave: () => void;
-  onImageExpand: (image: ExpandedImageState) => void;
+  onImageExpand: (image: ExpandedImageState, opener: HTMLButtonElement) => void;
 };
 
 export function LessonArticle({
@@ -128,6 +129,7 @@ export function LessonArticle({
   document,
   furiganaMode,
   isTouchLayout,
+  lessonTitle,
   mediaSlug,
   onReferenceBlur,
   onReferenceClick,
@@ -145,6 +147,18 @@ export function LessonArticle({
       />
     );
   }
+
+  const firstDepthOneHeadingIndex = document.blocks.findIndex(
+    (block) => block.type === "heading" && block.depth === 1
+  );
+  const firstDepthOneHeading = document.blocks[firstDepthOneHeadingIndex];
+  const duplicateTitleHeadingIndex =
+    lessonTitle &&
+    firstDepthOneHeading?.type === "heading" &&
+    normalizeHeadingText(extractInlineText(firstDepthOneHeading.children)) ===
+      normalizeHeadingText(lessonTitle)
+      ? firstDepthOneHeadingIndex
+      : -1;
 
   const renderInlineNodes = (nodes: InlineNode[]): ReactNode =>
     nodes.map((node, index) => {
@@ -278,7 +292,9 @@ export function LessonArticle({
             <button
               aria-label={`Apri immagine ingrandita: ${block.alt}`}
               className="reader-image__button reader-image__button--zoom"
-              onClick={() => onImageExpand(expandedImage)}
+              onClick={(event) =>
+                onImageExpand(expandedImage, event.currentTarget)
+              }
               type="button"
             >
               <Image
@@ -309,7 +325,10 @@ export function LessonArticle({
             >
               <details className="reader-example-sentence__translation reader-example-sentence__translation--sentence">
                 <summary className="reader-example-sentence__summary">
-                  <span className="reader-example-sentence__summary-text jp-inline">
+                  <span
+                    className="reader-example-sentence__summary-text jp-inline"
+                    lang="ja"
+                  >
                     {renderInlineNodes(block.sentence.nodes)}
                   </span>
                 </summary>
@@ -323,7 +342,7 @@ export function LessonArticle({
 
         return (
           <section className="reader-example-sentence" key={index}>
-            <p className="reader-example-sentence__jp jp-inline">
+            <p className="reader-example-sentence__jp jp-inline" lang="ja">
               {renderInlineNodes(block.sentence.nodes)}
             </p>
             <details className="reader-example-sentence__translation">
@@ -343,11 +362,12 @@ export function LessonArticle({
                 <span className="meta-pill">{block.entry.levelHint}</span>
               ) : null}
             </div>
-            <h3 className="reader-definition-card__jp jp-inline">
+            <h3 className="reader-definition-card__jp jp-inline" lang="ja">
               {block.entry.lemma}
             </h3>
             <p className="reader-definition-card__reading jp-inline">
-              {block.entry.reading} · {block.entry.romaji}
+              <span lang="ja">{block.entry.reading}</span> ·{" "}
+              {block.entry.romaji}
             </p>
             <p className="reader-definition-card__meaning">
               {block.entry.meaningIt}
@@ -371,7 +391,7 @@ export function LessonArticle({
                 <span className="meta-pill">{block.entry.levelHint}</span>
               ) : null}
             </div>
-            <h3 className="reader-definition-card__jp jp-inline">
+            <h3 className="reader-definition-card__jp jp-inline" lang="ja">
               {block.entry.pattern}
             </h3>
             <p className="reader-definition-card__meaning">
@@ -389,7 +409,7 @@ export function LessonArticle({
           <section className="reader-card-inline" key={index}>
             <div className="reader-card-inline__face">
               <span className="eyebrow">Fronte</span>
-              <div>{renderInlineNodes(block.card.front.nodes)}</div>
+              <div lang="ja">{renderInlineNodes(block.card.front.nodes)}</div>
             </div>
             <div className="reader-card-inline__face reader-card-inline__face--back">
               <span className="eyebrow">Retro</span>
@@ -402,9 +422,15 @@ export function LessonArticle({
 
   return (
     <article className="reader-article" data-testid="reader-article">
-      {renderBlocks(document.blocks)}
+      {document.blocks.map((block, index) =>
+        index === duplicateTitleHeadingIndex ? null : renderBlock(block, index)
+      )}
     </article>
   );
+}
+
+function normalizeHeadingText(value: string) {
+  return value.normalize("NFKC").replace(/\s+/gu, " ").trim().toLowerCase();
 }
 
 export function formatCrossMediaHintLabel(otherMediaCount: number) {
@@ -567,7 +593,7 @@ function FuriganaRuby({
 
   if (segments.length === 1) {
     return (
-      <ruby className="app-ruby reader-ruby" {...sharedProps}>
+      <ruby className="app-ruby reader-ruby" lang="ja" {...sharedProps}>
         <rb>{base}</rb>
         <rt>{reading}</rt>
       </ruby>
@@ -575,9 +601,9 @@ function FuriganaRuby({
   }
 
   return (
-    <span {...sharedProps}>
+    <span lang="ja" {...sharedProps}>
       {segments.map(([segBase, segReading], i) => (
-        <ruby className="app-ruby reader-ruby" key={i}>
+        <ruby className="app-ruby reader-ruby" key={i} lang="ja">
           <rb>{segBase}</rb>
           <rt>{segReading}</rt>
         </ruby>
@@ -643,7 +669,7 @@ export function EntryTooltipCard({
         </span>
         <span className="meta-pill">{entry.statusLabel}</span>
       </div>
-      <h2 className="entry-tooltip-card__title jp-inline">
+      <h2 className="entry-tooltip-card__title jp-inline" lang="ja">
         {renderFurigana(entry.label)}
       </h2>
       {"title" in entry && entry.title && entry.title !== entry.label ? (
@@ -651,9 +677,9 @@ export function EntryTooltipCard({
       ) : null}
       {entry.reading || ("romaji" in entry && entry.romaji) ? (
         <p className="entry-tooltip-card__reading jp-inline">
-          {[entry.reading, "romaji" in entry ? entry.romaji : undefined]
-            .filter(Boolean)
-            .join(" · ")}
+          {entry.reading ? <span lang="ja">{entry.reading}</span> : null}
+          {entry.reading && "romaji" in entry && entry.romaji ? " · " : null}
+          {"romaji" in entry ? entry.romaji : null}
         </p>
       ) : null}
       {entry.pronunciation ? (

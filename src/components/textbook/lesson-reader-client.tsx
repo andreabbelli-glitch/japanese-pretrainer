@@ -132,9 +132,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const [tooltipLoadState, setTooltipLoadState] = useState<TooltipLoadState>(
     data.entries.length > 0 ? "loaded" : "idle"
   );
-  const [audioPreloadEntryKey, setAudioPreloadEntryKey] = useState<string | null>(
-    null
-  );
+  const [audioPreloadEntryKey, setAudioPreloadEntryKey] = useState<
+    string | null
+  >(null);
   const [isSavingFurigana, setIsSavingFurigana] = useState(false);
   const [lessonOpenRetryToken, setLessonOpenRetryToken] = useState(0);
   const [isSavingLesson, startSavingLesson] = useTransition();
@@ -145,8 +145,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const tooltipAbortRef = useRef<AbortController | null>(null);
   const currentLessonIdRef = useRef(data.lesson.id);
   const isMountedRef = useRef(false);
+  const imageLightboxOpenerRef = useRef<HTMLButtonElement | null>(null);
   const lessonOpenAttemptByIdRef = useRef(new Map<string, LessonOpenAttempt>());
   const lessonOpenRetryTimerRef = useRef<number | null>(null);
+  const mobileSheetOpenerRef = useRef<HTMLElement | null>(null);
   const persistedFuriganaModeRef = useRef(data.furiganaMode);
   const serverFuriganaModeRef = useRef(data.furiganaMode);
   const queuedFuriganaModeRef = useRef<FuriganaMode | null>(null);
@@ -171,6 +173,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setTooltipLoadState(data.entries.length > 0 ? "loaded" : "idle");
     setTooltip(null);
     setMobileSheet(null);
+    mobileSheetOpenerRef.current = null;
     anchorRef.current = null;
   }, [data]);
 
@@ -274,7 +277,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     };
 
     if (isWithinThrottle && existingAttempt.promise) {
-      attachOpenStateHandlers(existingAttempt.promise, existingAttempt.attemptedAt);
+      attachOpenStateHandlers(
+        existingAttempt.promise,
+        existingAttempt.attemptedAt
+      );
 
       return () => {
         isCancelled = true;
@@ -583,24 +589,6 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     };
   }, [expandedImage, mobileSheet]);
 
-  useEffect(() => {
-    if (!expandedImage) {
-      return;
-    }
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setExpandedImage(null);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [expandedImage]);
-
   const closeTooltipSoon = () => {
     if (tooltip?.locked) {
       return;
@@ -623,6 +611,14 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     void ensureTooltipEntries();
 
     if (isTouchLayout) {
+      // Restoring focus after closing the sheet must not immediately reopen it.
+      // Keyboard activation still emits a click, so focus alone is not the
+      // activation gesture on touch layouts.
+      if (intent === "focus") {
+        return;
+      }
+
+      mobileSheetOpenerRef.current = element;
       setMobileSheet({
         type: "entry",
         entryKey
@@ -717,6 +713,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const handleCloseLessonSheet = useCallback(() => {
     setMobileSheet(null);
   }, []);
+  const handleCloseExpandedImage = useCallback(() => {
+    setExpandedImage(null);
+  }, []);
 
   const toggleLessonCompletion = () => {
     const wasCompleted = lessonStatus === "completed";
@@ -748,9 +747,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     });
   };
 
-  const openImage = (image: ExpandedImageState) => {
+  const openImage = (image: ExpandedImageState, opener: HTMLButtonElement) => {
     clearCloseTimer();
     setTooltip(null);
+    imageLightboxOpenerRef.current = opener;
     setExpandedImage(image);
   };
   const tooltipEntry = tooltip
@@ -786,7 +786,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       <LessonReaderMobileStrip
         completedLessons={readerData.completedLessons}
         furiganaMode={furiganaMode}
-        onOpenLessons={() => setMobileSheet({ type: "lessons" })}
+        onOpenLessons={(opener) => {
+          mobileSheetOpenerRef.current = opener;
+          setMobileSheet({ type: "lessons" });
+        }}
         totalLessons={readerData.totalLessons}
       />
 
@@ -799,7 +802,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           />
         </aside>
 
-        <main className="reader-main">
+        <div className="reader-main">
           <section className="reader-article-card">
             <div className="reader-article-intro">
               <p className="reader-article-intro__summary">
@@ -814,6 +817,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               document={readerData.lesson.ast}
               furiganaMode={furiganaMode}
               isTouchLayout={isTouchLayout}
+              lessonTitle={readerData.lesson.title}
               mediaSlug={readerData.media.slug}
               onReferenceBlur={closeTooltipSoon}
               onReferenceClick={openReference}
@@ -836,11 +840,10 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               segmentId:
                 readerData.lessons.find(
                   (lesson) => lesson.id === readerData.lesson.id
-                )
-                  ?.segmentId ?? null
+                )?.segmentId ?? null
             })}
           />
-        </main>
+        </div>
       </div>
 
       {tooltip ? (
@@ -872,7 +875,15 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       ) : null}
 
       {mobileSheet ? (
-        <MobileSheet onClose={() => setMobileSheet(null)}>
+        <MobileSheet
+          ariaLabel={
+            mobileSheet.type === "lessons"
+              ? "Percorso delle lesson"
+              : "Dettagli del riferimento"
+          }
+          onClose={handleCloseLessonSheet}
+          returnFocusTo={mobileSheetOpenerRef.current}
+        >
           {mobileSheet.type === "lessons" ? (
             <div className="reader-sheet__panel">
               <div className="reader-sheet__header">
@@ -910,7 +921,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       {expandedImage ? (
         <ReaderImageLightbox
           image={expandedImage}
-          onClose={() => setExpandedImage(null)}
+          onClose={handleCloseExpandedImage}
+          returnFocusTo={imageLightboxOpenerRef.current}
         />
       ) : null}
     </div>

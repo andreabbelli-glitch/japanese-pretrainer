@@ -29,10 +29,15 @@ export function GlobalGlossaryResultCard({
   const overflowMediaCount = entry.mediaHits.length - visibleMediaHits.length;
 
   return (
-    <SurfaceCard className="glossary-result-card glossary-result-card--portal">
+    <SurfaceCard
+      className="glossary-result-card glossary-result-card--portal"
+      variant="flat"
+    >
       <div className="glossary-result-card__top">
         <div className="glossary-result-card__chips">
-          <span className={`chip${entry.kind === "grammar" ? " chip--grammar" : ""}`}>
+          <span
+            className={`chip${entry.kind === "grammar" ? " chip--grammar" : ""}`}
+          >
             {entry.kind === "term" ? "Termine" : "Grammatica"}
           </span>
           {!entry.hasCards ? (
@@ -46,7 +51,7 @@ export function GlobalGlossaryResultCard({
       </div>
 
       <div className="glossary-global-result__copy">
-        <h3 className="glossary-result-card__title jp-inline">
+        <h3 className="glossary-result-card__title jp-inline" lang="ja">
           <HighlightText
             mode={entry.matchedFields.label}
             query={query}
@@ -65,11 +70,13 @@ export function GlobalGlossaryResultCard({
         {entry.reading || entry.romaji ? (
           <p className="glossary-result-card__reading jp-inline">
             {entry.reading ? (
-              <HighlightText
-                mode={entry.matchedFields.reading}
-                query={query}
-                text={entry.reading}
-              />
+              <span lang="ja">
+                <HighlightText
+                  mode={entry.matchedFields.reading}
+                  query={query}
+                  text={entry.reading}
+                />
+              </span>
             ) : null}
             {entry.reading && entry.romaji ? " / " : null}
             {entry.romaji ? (
@@ -120,8 +127,16 @@ export function GlobalGlossaryResultCard({
 
       <div className="glossary-result-card__footer">
         <div className="glossary-result-card__meta">
-          <span>{entry.cardCount === 1 ? "1 flashcard" : `${entry.cardCount} flashcard`}</span>
-          <span>{entry.mediaCount === 1 ? "1 media collegato" : `${entry.mediaCount} media collegati`}</span>
+          <span>
+            {entry.cardCount === 1
+              ? "1 flashcard"
+              : `${entry.cardCount} flashcard`}
+          </span>
+          <span>
+            {entry.mediaCount === 1
+              ? "1 media collegato"
+              : `${entry.mediaCount} media collegati`}
+          </span>
           <span>
             {entry.mediaHits.length === 1
               ? "1 variante locale"
@@ -130,9 +145,7 @@ export function GlobalGlossaryResultCard({
         </div>
 
         <div className="glossary-global-result__media">
-          <p className="glossary-global-result__media-label">
-            Aprila in
-          </p>
+          <p className="glossary-global-result__media-label">Aprila in</p>
           <div className="glossary-global-result__media-hits">
             {visibleMediaHits.map((hit) => (
               <Link
@@ -151,11 +164,12 @@ export function GlobalGlossaryResultCard({
               </Link>
             ))}
             {overflowMediaCount > 0 ? (
-              <span className="meta-pill">+{overflowMediaCount} altri media</span>
+              <span className="meta-pill">
+                +{overflowMediaCount} altri media
+              </span>
             ) : null}
           </div>
         </div>
-
       </div>
     </SurfaceCard>
   );

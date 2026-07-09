@@ -7,7 +7,7 @@ test("shows autocomplete suggestions and navigates when a suggestion is selected
 }) => {
   await page.goto("/glossary");
 
-  const searchbox = page.getByRole("searchbox", { name: "Cerca" });
+  const searchbox = page.getByRole("combobox", { name: "Cerca" });
 
   await enterSearchQuery(searchbox, "kosu");
 
@@ -42,7 +42,13 @@ test("hides stale autocomplete suggestions while a new query or filter set is pe
 
   await page.goto("/glossary");
 
-  const searchbox = page.getByRole("searchbox", { name: "Cerca" });
+  const searchbox = page.getByRole("combobox", { name: "Cerca" });
+  const filterDisclosure = page.locator(
+    "details.glossary-search-form__filter-disclosure"
+  );
+
+  await filterDisclosure.locator("summary").click();
+
   const flashcardFilter = page.getByRole("combobox", { name: "Flashcard" });
   const suggestion = page.getByRole("option", { name: /コスト/i }).first();
 
@@ -68,7 +74,7 @@ test("keeps the glossary portal state while moving from global search to local d
 
   await expect(page).toHaveURL(/\/glossary\?q=kosuto&cards=with_cards$/);
   await expect(glossaryNav).toHaveAttribute("aria-current", "page");
-  await expect(page.getByRole("searchbox", { name: "Cerca" })).toHaveValue(
+  await expect(page.getByRole("combobox", { name: "Cerca" })).toHaveValue(
     "kosuto"
   );
   await expect(page.getByRole("combobox", { name: "Flashcard" })).toHaveValue(
@@ -107,7 +113,13 @@ test("keeps the glossary portal state while moving from global search to local d
   await page.getByRole("button", { name: "Azzera i filtri" }).click();
 
   await expect(page).toHaveURL("/glossary");
-  await expect(page.getByRole("searchbox", { name: "Cerca" })).toHaveValue("");
+  await expect(page.getByRole("combobox", { name: "Cerca" })).toHaveValue("");
+  const filterDisclosure = page.locator(
+    "details.glossary-search-form__filter-disclosure"
+  );
+
+  await expect(filterDisclosure).not.toHaveAttribute("open", "");
+  await filterDisclosure.locator("summary").click();
   await expect(page.getByRole("combobox", { name: "Flashcard" })).toHaveValue(
     "all"
   );

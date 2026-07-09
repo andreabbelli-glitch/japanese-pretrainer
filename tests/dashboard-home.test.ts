@@ -29,6 +29,32 @@ describe("dashboard home", () => {
     expect(markup).toContain('href="/media/media-fixture/textbook/seconda"');
   });
 
+  it("keeps resume and global review as single primary decisions", () => {
+    const markup = renderToStaticMarkup(
+      DashboardHome({
+        data: buildDashboardData({
+          focusMedia: buildMediaSnapshot({
+            lessonsCompleted: 1,
+            lessonsTotal: 2,
+            resumeLesson: {
+              slug: "seconda",
+              title: "Seconda Lesson",
+              summary: "Seconda",
+              excerpt: "Seconda",
+              status: "not_started" as const,
+              statusLabel: "Da iniziare",
+              segmentTitle: "Percorso principale"
+            }
+          })
+        })
+      })
+    );
+
+    expect(markup).not.toContain("Prossimi passi");
+    expect(markup.match(/Continua il percorso/g)).toHaveLength(1);
+    expect(markup.match(/Apri review globale/g)).toHaveLength(1);
+  });
+
   it("opens the textbook index without continue copy when completed media has no resume lesson", () => {
     const markup = renderToStaticMarkup(
       DashboardHome({ data: buildDashboardData() })
@@ -81,7 +107,9 @@ describe("dashboard home", () => {
 });
 
 function buildDashboardData(
-  overrides: Partial<Pick<DashboardData, "focusMedia" | "reviewMedia" | "media">> = {}
+  overrides: Partial<
+    Pick<DashboardData, "focusMedia" | "reviewMedia" | "media">
+  > = {}
 ): DashboardData {
   const focusMedia = overrides.focusMedia ?? buildMediaSnapshot();
   const reviewMedia = overrides.reviewMedia ?? buildMediaSnapshot();

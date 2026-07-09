@@ -46,7 +46,10 @@ export async function MediaLibraryPage() {
 
       <div className="media-library-grid">
         {media.map((item) => (
-          <SurfaceCard key={item.id} className="library-card library-card--navigable">
+          <SurfaceCard
+            key={item.id}
+            className="library-card library-card--navigable"
+          >
             <div className="library-card__top">
               <div className="library-card__labels">
                 <span className="chip">{item.mediaTypeLabel}</span>
@@ -70,6 +73,7 @@ export async function MediaLibraryPage() {
                 href={mediaStudyHref(item.slug, "textbook")}
               >
                 <StatBlock
+                  className="library-card__metric library-card__metric--flat"
                   detail={
                     item.resumeLesson
                       ? `Prossimo: ${item.resumeLesson.title}`
@@ -88,6 +92,7 @@ export async function MediaLibraryPage() {
                 href={mediaGlossaryHref(item.slug)}
               >
                 <StatBlock
+                  className="library-card__metric library-card__metric--flat"
                   detail={`${item.entriesTotal} voci nel Glossary`}
                   label="Glossary"
                   value={
@@ -102,6 +107,7 @@ export async function MediaLibraryPage() {
                 href={mediaReviewHref(item.slug)}
               >
                 <StatBlock
+                  className="library-card__metric library-card__metric--flat"
                   detail={item.reviewStatDetail}
                   label="Review"
                   tone={item.cardsDue > 0 ? "warning" : "default"}
@@ -116,7 +122,10 @@ export async function MediaLibraryPage() {
                   ? `${item.resumeLesson.statusLabel} · ${item.resumeLesson.title}`
                   : "Apri il media per scegliere il primo step"}
               </p>
-              <Link className="library-card__overlay-link text-link" href={mediaHref(item.slug)}>
+              <Link
+                className="library-card__overlay-link text-link"
+                href={mediaHref(item.slug)}
+              >
                 Apri media
               </Link>
             </div>

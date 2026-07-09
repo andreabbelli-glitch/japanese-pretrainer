@@ -6,7 +6,10 @@ import { usePathname } from "next/navigation";
 import { Suspense, type ReactNode } from "react";
 
 import { SiteShellPrimaryNav } from "@/components/site-shell-primary-nav";
-import { primaryNav, shouldPrefetchPrimaryNavHref } from "@/features/navigation";
+import {
+  primaryNav,
+  shouldPrefetchPrimaryNavHref
+} from "@/features/navigation";
 
 type SiteShellProps = {
   children: ReactNode;
@@ -16,7 +19,14 @@ export function SiteShell({ children }: SiteShellProps) {
   const pathname = usePathname();
 
   if (pathname === "/login") {
-    return <div className="app-shell">{children}</div>;
+    return (
+      <div className="app-shell">
+        <SkipLink />
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
+      </div>
+    );
   }
 
   if (
@@ -25,13 +35,21 @@ export function SiteShell({ children }: SiteShellProps) {
   ) {
     return (
       <div className="app-shell app-shell--focus">
-        <main className="page-shell page-shell--focus">{children}</main>
+        <SkipLink />
+        <main
+          className="page-shell page-shell--focus"
+          id="main-content"
+          tabIndex={-1}
+        >
+          {children}
+        </main>
       </div>
     );
   }
 
   return (
     <div className="app-shell">
+      <SkipLink />
       <header className="site-header">
         <div className="site-header__inner">
           <Link className="brand" href="/" prefetch={false}>
@@ -44,8 +62,18 @@ export function SiteShell({ children }: SiteShellProps) {
         </div>
       </header>
 
-      <main className="page-shell">{children}</main>
+      <main className="page-shell" id="main-content" tabIndex={-1}>
+        {children}
+      </main>
     </div>
+  );
+}
+
+function SkipLink() {
+  return (
+    <a className="skip-link" href="#main-content">
+      Salta al contenuto principale
+    </a>
   );
 }
 

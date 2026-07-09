@@ -46,18 +46,6 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
     data.settings.glossaryDefaultSort === "lesson_order"
       ? "ordine percorso"
       : "alfabetico";
-  const overviewEyebrow =
-    data.resume.recommendedArea === "review"
-      ? "Priorità di oggi"
-      : "Riprendi da qui";
-  const overviewNote =
-    data.resume.recommendedArea === "review"
-      ? data.resume.resumeLesson
-        ? `Dopo la review globale puoi tornare a ${data.resume.resumeLesson.title}.`
-        : "Dopo la review globale puoi tornare subito al Textbook."
-      : data.globalReview.dueCount > 0
-        ? `${data.globalReview.dueCount} card aspettano ancora nella review globale.`
-        : null;
 
   const studyAreas: StudyAreaCard[] = [
     {
@@ -88,7 +76,7 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
     {
       key: "review",
       title: "Review del media",
-      body: "Gestisci la coda collegata alle card importate in questo media.",
+      body: "Filtra la Review globale alle sole card di questo media.",
       detail: data.review.nextCardFront
         ? `Prossima card: ${data.review.nextCardFront}`
         : data.review.dueCount > 0
@@ -189,18 +177,26 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
         </div>
       </Section>
 
-      <section className="hero-grid hero-grid--detail" id="overview">
-        <SurfaceCard className="media-detail-hero" variant="hero">
-          <p className="eyebrow">{overviewEyebrow}</p>
-          <h2 className="media-detail-hero__title">
-            {data.resume.recommendedTitle}
-          </h2>
-          <p className="media-detail-hero__summary">
-            {data.resume.recommendedBody}
-          </p>
-          {overviewNote ? <p className="hero-resume">{overviewNote}</p> : null}
-          <div className="stats-grid stats-grid--compact">
+      <section id="overview" aria-labelledby="media-summary-title">
+        <SurfaceCard className="media-detail-summary-band" variant="flat">
+          <header className="media-detail-summary-band__header">
+            <div>
+              <p className="eyebrow">Panoramica</p>
+              <h2
+                className="media-detail-summary-band__title"
+                id="media-summary-title"
+              >
+                Stato del media
+              </h2>
+            </div>
+            <Link className="text-link" href={data.media.settingsHref}>
+              Apri settings
+            </Link>
+          </header>
+
+          <div className="media-detail-summary-band__metrics">
             <StatBlock
+              className="media-detail-summary-band__metric"
               detail={`${data.textbook.completedLessons} di ${data.textbook.totalLessons} lesson`}
               label="Textbook"
               value={
@@ -210,11 +206,13 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
               }
             />
             <StatBlock
+              className="media-detail-summary-band__metric"
               detail={`${data.glossary.entriesTotal} voci nel Glossary`}
               label="Glossary"
               value={`${data.glossary.entriesCovered}/${data.glossary.entriesTotal}`}
             />
             <StatBlock
+              className="media-detail-summary-band__metric"
               detail={
                 data.globalReview.dueCount > 0
                   ? `${data.globalReview.dueCount} richiedono attenzione adesso`
@@ -233,30 +231,22 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
               }
             />
           </div>
-        </SurfaceCard>
 
-        <SurfaceCard className="media-detail-side">
-          <p className="eyebrow">Preferenze attive</p>
-          <div className="stack-list stack-list--tight">
-            <div className="summary-row">
-              <span>Furigana</span>
-              <strong>{furiganaLabel}</strong>
-            </div>
-            <div className="summary-row">
-              <span>Review nuove</span>
+          <div
+            aria-label="Preferenze attive"
+            className="media-detail-summary-band__preferences"
+          >
+            <span>
+              Furigana <strong>{furiganaLabel}</strong>
+            </span>
+            <span>
+              Review nuove{" "}
               <strong>{data.settings.reviewDailyLimit}/giorno</strong>
-            </div>
-            <div className="summary-row">
-              <span>Glossary</span>
-              <strong>{glossarySortLabel}</strong>
-            </div>
+            </span>
+            <span>
+              Glossary <strong>{glossarySortLabel}</strong>
+            </span>
           </div>
-          <p className="panel-note">
-            Valgono subito per reader, glossary e review.
-          </p>
-          <Link className="text-link" href={data.media.settingsHref}>
-            Apri settings
-          </Link>
         </SurfaceCard>
       </section>
 
@@ -310,12 +300,12 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
           id="review-overview"
           actions={
             <Link className="text-link" href={data.media.reviewHref}>
-              Apri la review del media
+              Apri il filtro media
             </Link>
           }
-          description="Numeri locali del media, separati dalla queue globale reale."
+          description="È un filtro locale della stessa Review globale: mostra soltanto numeri e card di questo media."
           eyebrow="Review del media"
-          title="Coda locale e carico quotidiano"
+          title="Filtro locale della Review globale"
         >
           <div className="stats-grid">
             <StatBlock
@@ -400,11 +390,14 @@ export function MediaDetailPage({ data }: MediaDetailPageProps) {
                     </span>
                     <span className="meta-pill">{entry.statusLabel}</span>
                   </div>
-                  <h3 className="entry-preview-card__title jp-inline">
+                  <h3 className="entry-preview-card__title jp-inline" lang="ja">
                     {entry.label}
                   </h3>
                   {entry.reading ? (
-                    <p className="entry-preview-card__reading jp-inline">
+                    <p
+                      className="entry-preview-card__reading jp-inline"
+                      lang="ja"
+                    >
                       {entry.reading}
                     </p>
                   ) : null}

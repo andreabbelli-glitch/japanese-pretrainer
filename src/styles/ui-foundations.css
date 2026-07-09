@@ -1,0 +1,126 @@
+.surface-card--flat {
+  border-color: var(--color-border-subtle);
+  background: var(--surface-page);
+  box-shadow: none;
+}
+
+.surface-card--flat::after {
+  display: none;
+}
+
+.skip-link {
+  position: fixed;
+  inset-block-start: var(--space-2);
+  inset-inline-start: var(--space-2);
+  z-index: calc(var(--z-modal) + 1);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-strong) solid var(--color-accent-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-card);
+  box-shadow: var(--shadow-float);
+  color: var(--color-ink-strong);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-ui);
+  transform: translateY(calc(-100% - var(--space-4)));
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-strong);
+  outline-offset: 3px;
+}
+
+#main-content {
+  scroll-margin-block-start: calc(
+    var(--app-header-height-desktop) + var(--space-4)
+  );
+}
+
+html,
+.glossary-workspace__results,
+.glossary-preview-panel,
+.reader-rail .reader-rail__card {
+  scrollbar-color: var(--color-border-strong) transparent;
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
+}
+
+html::-webkit-scrollbar,
+.glossary-workspace__results::-webkit-scrollbar,
+.glossary-preview-panel::-webkit-scrollbar,
+.reader-rail .reader-rail__card::-webkit-scrollbar {
+  display: block;
+  width: 0.625rem;
+  height: 0.625rem;
+}
+
+html::-webkit-scrollbar-track,
+.glossary-workspace__results::-webkit-scrollbar-track,
+.glossary-preview-panel::-webkit-scrollbar-track,
+.reader-rail .reader-rail__card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb,
+.glossary-workspace__results::-webkit-scrollbar-thumb,
+.glossary-preview-panel::-webkit-scrollbar-thumb,
+.reader-rail .reader-rail__card::-webkit-scrollbar-thumb {
+  min-height: 2rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-strong);
+  background-clip: content-box;
+}
+
+@media (pointer: coarse), (any-pointer: coarse) {
+  .app-shell
+    :is(
+      a[href],
+      button,
+      input:not([type="hidden"]),
+      select,
+      textarea,
+      summary,
+      [role="button"],
+      [role="link"],
+      [role="option"],
+      [role="tab"]
+    ) {
+    min-block-size: var(--touch-target-min);
+  }
+}
+
+@media (forced-colors: active) {
+  .surface-card {
+    border-color: CanvasText;
+    background: Canvas;
+    box-shadow: none;
+    forced-color-adjust: auto;
+  }
+
+  .surface-card::after {
+    display: none;
+  }
+
+  .skip-link {
+    border-color: ButtonText;
+    background: ButtonFace;
+    box-shadow: none;
+    color: ButtonText;
+  }
+
+  :focus-visible {
+    outline: 3px solid Highlight !important;
+    box-shadow: none !important;
+  }
+
+  html,
+  .glossary-workspace__results,
+  .glossary-preview-panel,
+  .reader-rail .reader-rail__card {
+    scrollbar-color: ButtonText Canvas;
+  }
+}

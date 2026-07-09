@@ -16,6 +16,12 @@ type GlossaryPortalPageProps = {
 
 export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
   const hasCorpus = data.stats.entryCount > 0;
+  const activeMediaTitle =
+    data.filters.media === "all"
+      ? "Tutti i media"
+      : (data.mediaOptions.find(
+          (mediaOption) => mediaOption.slug === data.filters.media
+        )?.title ?? "Media selezionato");
   const searchFormKey = [
     data.filters.query,
     data.filters.entryType,
@@ -46,6 +52,14 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
   if (data.mediaOptions.length === 0) {
     return (
       <div className="glossary-portal-page">
+        <section className="content-section">
+          <SurfaceCard
+            className="glossary-hero glossary-portal-search"
+            variant="hero"
+          >
+            <GlossaryPortalIntro />
+          </SurfaceCard>
+        </section>
         <EmptyState
           eyebrow="Nessun media attivo"
           title="Il portale comparirà qui dopo il primo import."
@@ -67,26 +81,7 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
           className="glossary-hero glossary-portal-search"
           variant="hero"
         >
-          <div className="glossary-portal-search__intro">
-            <div className="glossary-portal-search__copy">
-              <p className="eyebrow">Ricerca globale</p>
-              <h2 className="glossary-hero__title">
-                Cerca nel corpus completo e apri subito il punto di studio
-                migliore.
-              </h2>
-              <p className="glossary-hero__summary">
-                Il portale aggrega i match cross-media, rende esplicito il
-                segnale flashcard e usa il dettaglio locale migliore come
-                destinazione primaria.
-              </p>
-            </div>
-
-            <div className="glossary-portal-search__signals">
-              <span className="chip">Kanji, kana, romaji, italiano</span>
-              <span className="chip">Cross-media</span>
-              <span className="chip">Filtro flashcard e stato</span>
-            </div>
-          </div>
+          <GlossaryPortalIntro activeMediaTitle={activeMediaTitle} />
 
           <GlossaryPortalSearchForm
             key={searchFormKey}
@@ -99,8 +94,8 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
 
       <Section
         eyebrow="Risultati"
-        title="Workspace di studio"
-        description="Ogni card chiarisce forma, significato, stato di studio, copertura card e miglior destinazione locale."
+        title="Voci trovate"
+        description="Apri la voce nel media più utile e torna al tuo punto di studio."
       >
         {!hasCorpus ? (
           <EmptyState
@@ -193,6 +188,30 @@ export function GlossaryPortalPage({ data }: GlossaryPortalPageProps) {
           </>
         )}
       </Section>
+    </div>
+  );
+}
+
+function GlossaryPortalIntro({
+  activeMediaTitle
+}: {
+  activeMediaTitle?: string;
+}) {
+  return (
+    <div className="glossary-portal-search__intro">
+      <div className="glossary-portal-search__copy">
+        <p className="eyebrow">Ricerca globale</p>
+        <h1 className="glossary-hero__title">Glossary</h1>
+        <p className="glossary-hero__summary">
+          Cerca una parola e torna al contesto in cui l&apos;hai incontrata.
+        </p>
+      </div>
+
+      {activeMediaTitle ? (
+        <div className="glossary-portal-search__signals">
+          <span className="chip">Scope: {activeMediaTitle}</span>
+        </div>
+      ) : null}
     </div>
   );
 }

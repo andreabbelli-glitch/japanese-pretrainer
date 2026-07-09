@@ -4,6 +4,10 @@ import type { ReactNode } from "react";
 import { SiteShell } from "@/components/site-shell";
 
 import "./globals.css";
+import "../styles/ui-foundations.css";
+import "../styles/ui-dashboard-media.css";
+import "../styles/ui-reader-consolidation.css";
+import "../styles/ui-review-glossary.css";
 
 export const metadata: Metadata = {
   title: "Japanese Custom Study",

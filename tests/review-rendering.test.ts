@@ -390,7 +390,7 @@ describe("review rendering", () => {
     );
 
     expect(reviewMarkup).toContain(
-      'review-stage__front jp-inline"><ruby class="app-ruby">'
+      'review-stage__front jp-inline" lang="ja"><ruby class="app-ruby">'
     );
     expect(reviewMarkup).not.toContain("{{語彙|ごい}}");
     expect(reviewMarkup).toContain(
@@ -498,14 +498,14 @@ describe("review rendering", () => {
     );
 
     expect(frontHiddenMarkup).toContain(
-      'review-stage__front jp-inline">語彙</h2>'
+      'review-stage__front jp-inline" lang="ja">語彙</h2>'
     );
     expect(frontHiddenMarkup).not.toContain(
-      'review-stage__front jp-inline"><ruby class="app-ruby">'
+      'review-stage__front jp-inline" lang="ja"><ruby class="app-ruby">'
     );
     expect(frontHiddenMarkup).not.toContain("{{語彙|ごい}}");
     expect(revealedMarkup).toContain(
-      'review-stage__front jp-inline"><ruby class="app-ruby">'
+      'review-stage__front jp-inline" lang="ja"><ruby class="app-ruby">'
     );
   });
 

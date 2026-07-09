@@ -1,0 +1,201 @@
+.reader-completion-control {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 21rem;
+}
+
+.reader-completion-control > .button {
+  justify-self: stretch;
+}
+
+.reader-completion-control__hint {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: var(--text-micro);
+  line-height: var(--line-height-ui);
+}
+
+.reader-completion-control--footer {
+  justify-self: start;
+}
+
+.reader-sheet__close {
+  min-width: var(--touch-target-min);
+  min-height: var(--touch-target-min);
+  padding: var(--space-2) var(--space-3);
+}
+
+.consolidation-hero {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 54rem;
+}
+
+.consolidation-hero h1,
+.consolidation-section__heading h2,
+.consolidation-card h3 {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-family: var(--font-family-display);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-display);
+}
+
+.consolidation-hero h1 {
+  font-size: var(--text-hero);
+  line-height: 1;
+}
+
+.consolidation-hero__description,
+.consolidation-section__heading p {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--color-ink-muted);
+}
+
+.consolidation-path {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: fit-content;
+  max-width: 100%;
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 250, 242, 0.7);
+  color: var(--color-ink-muted);
+  font-size: var(--text-small);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.consolidation-path [role="listitem"] {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+.consolidation-path [role="listitem"]:nth-child(3) {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-ink);
+  font-weight: var(--font-weight-semibold);
+}
+
+.consolidation-path__arrow {
+  color: var(--color-ink-soft);
+}
+
+.consolidation-sections,
+.consolidation-section {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.consolidation-sections {
+  gap: var(--space-9);
+}
+
+.consolidation-section__heading {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.consolidation-section__heading h2 {
+  font-size: var(--text-display);
+  line-height: 1.05;
+}
+
+.consolidation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: var(--space-4);
+}
+
+.consolidation-card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background: rgba(255, 250, 242, 0.68);
+}
+
+.consolidation-card--retraining {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  max-width: 46rem;
+  border-color: rgba(169, 128, 58, 0.34);
+  background: rgba(239, 227, 203, 0.44);
+}
+
+.consolidation-card__heading,
+.consolidation-card__actions {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.consolidation-card h3 {
+  font-size: var(--text-title);
+  line-height: 1.12;
+}
+
+.consolidation-lesson-link {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-1);
+  min-height: var(--touch-target-min);
+  padding: var(--space-3) var(--space-4);
+  border-color: var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-panel);
+  color: var(--color-ink-muted);
+  text-align: left;
+}
+
+.consolidation-lesson-link strong {
+  color: var(--color-accent-strong);
+  font-size: var(--text-small);
+}
+
+.consolidation-empty > .surface-card {
+  max-width: 48rem;
+  border: 1px solid var(--color-border-subtle);
+  background: rgba(255, 250, 242, 0.58);
+  box-shadow: none;
+}
+
+.consolidation-empty > .surface-card::after {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .reader-completion-control,
+  .reader-completion-control--footer {
+    width: 100%;
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .consolidation-card--retraining {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .consolidation-card--retraining > .button {
+    width: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  .consolidation-card,
+  .consolidation-empty > .surface-card,
+  .consolidation-path,
+  .consolidation-lesson-link {
+    border-color: CanvasText;
+  }
+
+  .consolidation-path [role="listitem"]:nth-child(3) {
+    outline: 1px solid Highlight;
+  }
+}

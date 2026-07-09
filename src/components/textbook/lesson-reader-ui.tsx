@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Route } from "next";
-import { memo, type ReactNode } from "react";
+import { memo, type ReactNode, useEffect, useRef } from "react";
 
 import { cx } from "@/features/shared/ui/classnames";
 import type {
@@ -68,17 +68,22 @@ export function LessonReaderHeader({
           disabled={isSavingFurigana}
           onChange={onFuriganaModeChange}
         />
-        <button
-          className={cx(
-            "button",
-            lessonStatus === "completed" ? "button--ghost" : "button--primary"
-          )}
-          disabled={isSavingLesson}
-          onClick={onToggleLessonCompletion}
-          type="button"
-        >
-          {lessonStatus === "completed" ? "Segna in corso" : "Segna completata"}
-        </button>
+        <div className="reader-completion-control">
+          <button
+            className={cx(
+              "button",
+              lessonStatus === "completed" ? "button--ghost" : "button--primary"
+            )}
+            disabled={isSavingLesson}
+            onClick={onToggleLessonCompletion}
+            type="button"
+          >
+            {lessonStatus === "completed"
+              ? "Segna in corso"
+              : "Completa lesson"}
+          </button>
+          {lessonStatus !== "completed" ? <CompletionHelper /> : null}
+        </div>
       </div>
     </header>
   );
@@ -87,7 +92,7 @@ export function LessonReaderHeader({
 type LessonReaderMobileStripProps = {
   completedLessons: number;
   furiganaMode: FuriganaMode;
-  onOpenLessons: () => void;
+  onOpenLessons: (opener: HTMLButtonElement) => void;
   totalLessons: number;
 };
 
@@ -101,7 +106,7 @@ export function LessonReaderMobileStrip({
     <div className="reader-mobile-strip">
       <button
         className="button button--ghost reader-mobile-strip__button"
-        onClick={onOpenLessons}
+        onClick={(event) => onOpenLessons(event.currentTarget)}
         type="button"
       >
         Lezioni
@@ -164,18 +169,29 @@ export function LessonReaderFooter({
         </Link>
       ) : null}
 
-      <button
-        className={cx(
-          "button",
-          lessonStatus === "completed" ? "button--ghost" : "button--primary"
-        )}
-        disabled={isSavingLesson}
-        onClick={onToggleLessonCompletion}
-        type="button"
-      >
-        {lessonStatus === "completed" ? "Riapri lesson" : "Chiudi lesson"}
-      </button>
+      <div className="reader-completion-control reader-completion-control--footer">
+        <button
+          className={cx(
+            "button",
+            lessonStatus === "completed" ? "button--ghost" : "button--primary"
+          )}
+          disabled={isSavingLesson}
+          onClick={onToggleLessonCompletion}
+          type="button"
+        >
+          {lessonStatus === "completed" ? "Riapri lesson" : "Completa lesson"}
+        </button>
+        {lessonStatus !== "completed" ? <CompletionHelper /> : null}
+      </div>
     </footer>
+  );
+}
+
+function CompletionHelper() {
+  return (
+    <p className="reader-completion-control__hint">
+      Se ci sono nuove card, passerai al Consolidamento.
+    </p>
   );
 }
 
@@ -321,22 +337,108 @@ function LessonNavLink({ direction, lesson, mediaSlug }: LessonNavLinkProps) {
 }
 
 type MobileSheetProps = {
-  children: ReactNode;
+  ariaLabel: string;
+  children?: ReactNode;
   onClose: () => void;
+  returnFocusTo: HTMLElement | null;
 };
 
-export function MobileSheet({ children, onClose }: MobileSheetProps) {
+const SHEET_FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])'
+].join(",");
+
+export function MobileSheet({
+  ariaLabel,
+  children,
+  onClose,
+  returnFocusTo
+}: MobileSheetProps) {
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const surfaceRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const returnFocusElement = returnFocusTo;
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !surfaceRef.current) {
+        return;
+      }
+
+      const surface = surfaceRef.current;
+      const focusableElements = Array.from(
+        surface.querySelectorAll<HTMLElement>(SHEET_FOCUSABLE_SELECTOR)
+      ).filter((element) => element.getAttribute("aria-hidden") !== "true");
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+      const activeElement = document.activeElement;
+
+      if (!firstElement || !lastElement) {
+        event.preventDefault();
+        surface.focus();
+        return;
+      }
+
+      if (
+        event.shiftKey &&
+        (activeElement === firstElement || !surface.contains(activeElement))
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        (activeElement === lastElement || !surface.contains(activeElement))
+      ) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+
+      if (returnFocusElement?.isConnected) {
+        returnFocusElement.focus();
+      }
+    };
+  }, [onClose, returnFocusTo]);
+
   return (
-    <div className="reader-sheet" role="dialog" aria-modal="true">
+    <div
+      aria-label={ariaLabel}
+      aria-modal="true"
+      className="reader-sheet"
+      role="dialog"
+    >
       <button
         aria-label="Chiudi pannello"
         className="reader-sheet__backdrop"
         onClick={onClose}
+        tabIndex={-1}
         type="button"
       />
-      <div className="reader-sheet__surface">
+      <div className="reader-sheet__surface" ref={surfaceRef} tabIndex={-1}>
         <div className="reader-sheet__handle" />
-        <button className="reader-sheet__close" onClick={onClose} type="button">
+        <button
+          autoFocus
+          className="reader-sheet__close"
+          onClick={onClose}
+          ref={closeButtonRef}
+          type="button"
+        >
           Chiudi
         </button>
         {children}
@@ -348,13 +450,72 @@ export function MobileSheet({ children, onClose }: MobileSheetProps) {
 type ReaderImageLightboxProps = {
   image: ExpandedImageState;
   onClose: () => void;
+  returnFocusTo: HTMLButtonElement | null;
 };
 
 export function ReaderImageLightbox({
   image,
-  onClose
+  onClose,
+  returnFocusTo
 }: ReaderImageLightboxProps) {
   const caption = image.captionText ?? image.alt;
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+  const surfaceRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const returnFocusElement = returnFocusTo;
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !surfaceRef.current) {
+        return;
+      }
+
+      const surface = surfaceRef.current;
+      const focusableElements = Array.from(
+        surface.querySelectorAll<HTMLElement>(SHEET_FOCUSABLE_SELECTOR)
+      ).filter((element) => element.getAttribute("aria-hidden") !== "true");
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+      const activeElement = document.activeElement;
+
+      if (!firstElement || !lastElement) {
+        event.preventDefault();
+        surface.focus();
+        return;
+      }
+
+      if (
+        event.shiftKey &&
+        (activeElement === firstElement || !surface.contains(activeElement))
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        (activeElement === lastElement || !surface.contains(activeElement))
+      ) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+
+      if (returnFocusElement?.isConnected) {
+        returnFocusElement.focus();
+      }
+    };
+  }, [onClose, returnFocusTo]);
 
   return (
     <div
@@ -367,15 +528,21 @@ export function ReaderImageLightbox({
         aria-label="Chiudi immagine"
         className="reader-image-lightbox__backdrop"
         onClick={onClose}
+        tabIndex={-1}
         type="button"
       />
-      <div className="reader-image-lightbox__surface">
+      <div
+        className="reader-image-lightbox__surface"
+        ref={surfaceRef}
+        tabIndex={-1}
+      >
         <div className="reader-image-lightbox__top">
           <p className="eyebrow">Immagine</p>
           <button
             autoFocus
             className="button button--ghost button--small"
             onClick={onClose}
+            ref={closeButtonRef}
             type="button"
           >
             Chiudi

@@ -7,7 +7,7 @@ type SurfaceCardProps<T extends ElementType> = {
   children: ReactNode;
   className?: string;
   testId?: string;
-  variant?: "default" | "hero" | "quiet" | "accent";
+  variant?: "default" | "hero" | "quiet" | "accent" | "flat";
 };
 
 export function SurfaceCard<T extends ElementType = "article">({

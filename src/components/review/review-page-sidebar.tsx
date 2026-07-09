@@ -40,7 +40,7 @@ export function ReviewPageSidebar({
   );
 
   return (
-    <SurfaceCard className="review-sidebar">
+    <SurfaceCard className="review-sidebar" variant="flat">
       <p className="eyebrow">Sessione</p>
 
       {!isGlobalReview ? (

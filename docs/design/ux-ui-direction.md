@@ -192,12 +192,13 @@ Far capire in 5 secondi cosa riprendere, evitando una parete di statistiche.
 - hero di ripresa studio con ultimo media aperto e CTA primaria;
 - modulo review di oggi con numero di card dovute e tempo stimato;
 - griglia leggera dei media attivi;
-- piccolo riepilogo progressi, separato per textbook, glossary coverage e
-  review, senza grafici complessi.
+- metriche sintetiche di textbook, glossary e review dentro le superfici che
+  guidano gia la decisione, senza una seconda sezione di CTA duplicate.
 
 #### Scelte UX
 
 - Una sola CTA primaria sopra la piega: `Riprendi studio`.
+- Resume e Review globale compaiono una sola volta come azioni principali.
 - Le metriche sono secondarie e sintetiche.
 - Lo stato vuoto deve spiegare come iniziare un nuovo media senza sembrare una
   configurazione tecnica.
@@ -211,14 +212,18 @@ Essere la base operativa del singolo media, non una pagina vetrina.
 #### Struttura consigliata
 
 - header con titolo, tipo media, descrizione breve e stato corrente;
-- quattro entry point evidenti: textbook, glossary, review, progress;
-- sezione "Continua da qui" con lesson corrente o prossima review;
+- quattro entry point evidenti: textbook, glossary, review e Kanji Clash;
+- una fascia piatta `Stato del media` con metriche e preferenze correnti;
 - snapshot dei segmenti o delle lesson recenti;
 - elenco breve delle entry introdotte di recente.
 
 #### Scelte UX
 
 - Gli entry point sono card larghe, non tab minuscoli.
+- La CTA raccomandata compare una sola volta nell'header; la fascia di stato
+  non ripete la stessa raccomandazione.
+- La `Review del media` e sempre descritta come filtro locale della Review
+  globale, non come una coda separata.
 - Le metriche vengono spiegate in linguaggio naturale, per esempio
   "12 card dovute oggi", non solo "12 due".
 
@@ -251,6 +256,8 @@ orientamento.
 - `annotated token`: termine o pattern con sottolineatura morbida e stato attivo;
 - `callout`: note grammaticali e blocchi esplicativi ben separati dal testo;
 - `lesson footer`: prev / next / mark complete.
+- `lesson completion`: usa sempre `Completa lesson` e anticipa che, quando ci
+  sono nuove card, il passo successivo e il Consolidamento.
 
 #### Scelte UX vincolanti
 
@@ -262,6 +269,10 @@ orientamento.
 - Su mobile il tap apre una bottom sheet alta circa il 70% viewport, non un
   tooltip flottante minuscolo.
 - Il testo giapponese ha contrasto e dimensione superiori al testo di contorno.
+- Il primo heading Markdown viene omesso solo quando duplica esattamente il
+  titolo gia presente nello study header.
+- Le sheet mobile e il lightbox immagini gestiscono focus iniziale, `Escape`,
+  ciclo `Tab` e ripristino del focus al controllo che li ha aperti.
 
 ### Glossary
 
@@ -271,10 +282,11 @@ Essere uno strumento di lookup e consolidamento, non un semplice indice.
 
 #### Layout base desktop
 
-- barra ricerca sticky in alto;
+- H1 `Glossary`, scope corrente e ricerca in evidenza;
 - pannello risultati a sinistra;
 - preview detail a destra;
-- filtri come chips compatte, non sidebar filtri da e-commerce.
+- filtri avanzati dentro una disclosure compatta, aperta automaticamente quando
+  almeno un filtro e attivo.
 
 #### Layout base mobile
 
@@ -289,6 +301,8 @@ Essere uno strumento di lookup e consolidamento, non un semplice indice.
   introduzione e stato personale.
 - L'highlight della query deve essere preciso e sobrio.
 - I filtri attivi devono essere visibili con un solo colpo d'occhio.
+- L'autocomplete supporta `ArrowUp`, `ArrowDown`, `Enter` ed `Escape` con stato
+  attivo annunciato tramite `aria-activedescendant`.
 
 ### Review Session
 
@@ -299,6 +313,7 @@ Ridurre l'attrito decisionale e mantenere un ritmo calmo ma veloce.
 #### Layout base desktop
 
 - header di sessione minimale con avanzamento;
+- H1 che distingue `Review globale` da `Review · Nome media`;
 - card stage centrale;
 - area azioni fissa in basso o subito sotto la card;
 - secondarie in menu contestuale, non accanto ai voti.
@@ -316,8 +331,24 @@ Ridurre l'attrito decisionale e mantenere un ritmo calmo ma veloce.
 - Dopo il reveal i quattro voti appaiono insieme con etichette e intervallo
   previsto.
 - `Segna come gia noto`, `Reset` e `Sospendi` stanno in menu secondario.
+- Il link al Glossary resta visibile fuori dal menu `Altre azioni`.
 - Il cambio card usa transizione breve di dissolvenza/slittamento, non flip 3D.
 - Il focus resta sulla card; il resto dell'app si ritira visivamente.
+
+### Consolidamento
+
+#### Obiettivo
+
+Rendere esplicito il passaggio tra completamento della lesson e ingresso nella
+Review senza esporre termini interni del sistema.
+
+#### Scelte UX
+
+- Il percorso visibile e `Lesson completata -> Rinforzo -> Review`.
+- Le card nuove dalla lesson e quelle da rinforzare dopo la Review restano
+  distinte.
+- Le CTA usano copy didattico (`Rinforza N card`), non `pending`, `pre-review`
+  o `queue unica`.
 
 ## Pattern responsive
 
@@ -353,6 +384,14 @@ Ridurre l'attrito decisionale e mantenere un ritmo calmo ma veloce.
 - desktop: inline nelle header band o dock sotto contenuto
 - mobile: sticky bottom bar per review e azioni contestuali del reader
 - evitare CTA flottanti circolari: non coerenti con il tono editoriale
+
+### Accessibilita operativa
+
+- Lo shell espone uno skip link verso il contenuto principale.
+- Il focus visibile usa un outline ad alto contrasto anche in forced colors.
+- Le superfici giapponesi dichiarano `lang="ja"` quando il contenuto e noto.
+- Su dispositivi coarse-pointer i controlli interattivi mantengono almeno 44px
+  di altezza e le aree scrollabili mostrano una scrollbar sottile.
 
 ## Componenti chiave
 

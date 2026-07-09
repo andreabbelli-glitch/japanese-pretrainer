@@ -27,14 +27,19 @@
 
 ## Flussi principali
 
-- Dashboard: compare `Duel Masters`, con CTA per riprendere studio e review.
+- Dashboard: compare `Duel Masters`, con una sola CTA per riprendere studio e
+  una sola CTA per la Review globale; non compare una seconda sezione
+  `Prossimi passi` con le stesse azioni.
 - Libreria media: `Duel Masters` e `Mobile Suit Gundam Arsenal Base` sono entrambi visibili con metriche sintetiche coerenti.
 - Ogni media attivo in `content/media` apre senza errori almeno `detail`,
   `textbook`, `review` e `progress`; la CTA `Glossary` porta al
   glossary globale filtrato per media.
 - Glossary globale `/glossary`: ricerca cross-media navigabile e coerente con
   il filtro `media=<slug>`.
-- Media detail: le entry point `Textbook`, `Glossary`, `Review`, `Progress` sono tutte operative.
+- Media detail: le entry point `Textbook`, `Glossary`, `Review del media` e
+  `Kanji Clash` sono tutte operative; `Review del media` e descritta come
+  filtro della Review globale e la fascia `Stato del media` non ripete la CTA
+  raccomandata dell'header.
 - Workflow pronunce: `./scripts/with-node.sh pnpm pronunciations:resolve -- --mode review --dry-run`
   produce un batch coerente con la review reale e non ripropone entry gia
   coperte localmente.
@@ -177,10 +182,22 @@
 - Reader lesson desktop: clic su un'immagine del textbook apre sempre il
   lightbox, anche se il contenuto legacy aveva `card_id`.
 - Reader lesson mobile: tap su un termine apre sheet; `Lezioni` apre la rail mobile.
-- Reader lesson mobile: tap su un'immagine del textbook apre il lightbox.
+- Reader lesson: la CTA incompleta usa `Completa lesson` e anticipa che le
+  nuove card passeranno al Consolidamento; il primo H1 Markdown identico al
+  titolo della lesson non viene mostrato due volte.
+- Reader lesson mobile: la sheet riceve il focus, si chiude con `Escape`,
+  trattiene `Tab` al suo interno e restituisce il focus al controllo di apertura.
+- Reader lesson mobile: tap su un'immagine del textbook apre il lightbox; il
+  dialog trattiene il focus, si chiude con `Escape` e restituisce il focus al
+  trigger.
 - Glossary: ricerca per kanji, kana e romaji (`bochi`, `yamafuda`, `侵略`)
   restituisce risultati sensati e link detail globali `/glossary/term/...` o
   `/glossary/grammar/...`.
+- Glossary globale: mostra l'H1 `Glossary`, lo scope corrente e i filtri
+  avanzati chiusi quando inattivi; un filtro media/stato/tipo/flashcard attivo
+  riapre la disclosure e resta nella query string.
+- Glossary autocomplete: `ArrowUp`/`ArrowDown` spostano l'opzione attiva,
+  `Enter` la seleziona ed `Escape` chiude i suggerimenti senza perdere il testo.
 - Glossary detail: lesson e card collegate sono navigabili; se la stessa
   superficie compare in piu media, la pagina mostra le sfaccettature
   cross-media in un unico posto.
@@ -193,6 +210,10 @@
   `Cache-Control: public, max-age=31536000, immutable`, e non da
   `/media/[mediaSlug]/assets/audio/...`.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
+- Review: l'H1 mostra `Review globale` sulla root e `Review · Nome media` nel
+  filtro locale, con link per tornare alla globale; dopo il reveal il link al
+  Glossary resta visibile mentre `Segna già nota`, `Reset card` e `Sospendi`
+  sono raccolti sotto `Altre azioni`.
 - Review: dopo `Mostra risposta` compare il controllo compatto `+ Contrasto`;
   `C` apre/chiude il picker e `Esc` lo chiude senza rompere il flusso.
 - Review: il picker `+ Contrasto` usa una search globale stile glossary e
@@ -241,6 +262,9 @@
   a una sibling `suspended` o `known_manual` di mascherare una sibling attiva.
 - Progress e media detail: i numeri marcati come review globale coincidono con
   `/review`; i numeri del media restano chiaramente etichettati come locali.
+- Consolidamento: l'hub mostra il percorso `Lesson completata -> Rinforzo ->
+  Review`, distingue `Nuove dalla lesson` da `Da rinforzare dalla Review` e non
+  mostra copy tecnico come `pending`, `pre-review` o `queue unica`.
 - Progress: mostra textbook, coverage, review e setting persistiti.
 - Settings: salvare furigana reader, furigana review, autoplay audio review e ordine glossary aggiorna le viste collegate.
 - Settings: la sezione `FSRS optimizer` mostra stato read-only coerente con i
@@ -263,5 +287,7 @@
 
 - Desktop: reader con rail sticky e tooltip leggibile.
 - Mobile: reader e glossary restano leggibili senza zoom orizzontale.
+- Navigazione desktop e mobile: etichette, ordine e griglia restano invariati;
+  lo skip link compare al focus e porta al contenuto principale.
 - La nav mobile compatta sotto il brand non copre CTA o contenuto critico.
 - I messaggi principali sono coerenti con il tono editoriale del prodotto.

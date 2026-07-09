@@ -2,7 +2,10 @@ import type { Route } from "next";
 import Link from "next/link";
 import { useEffect, useState, type RefObject } from "react";
 
-import { GlossaryAutocompleteDropdown } from "@/features/glossary/ui/client/glossary-autocomplete-dropdown";
+import {
+  getNextGlossaryAutocompleteIndex,
+  GlossaryAutocompleteDropdown
+} from "@/features/glossary/ui/client/glossary-autocomplete-dropdown";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
 import type { ReviewQueueCard } from "@/features/review/client";
 import {
@@ -163,7 +166,7 @@ export function ReviewPageStage({
 
           <div className="review-stage__card">
             <p className="eyebrow">Fronte</p>
-            <h2 className="review-stage__front jp-inline">
+            <h2 className="review-stage__front jp-inline" lang="ja">
               {showFrontFurigana
                 ? renderFurigana(selectedCard.front)
                 : stripInlineMarkdown(selectedCard.front)}
@@ -182,7 +185,7 @@ export function ReviewPageStage({
               <div className="review-stage__answer" data-testid="review-answer">
                 <p className="eyebrow">Retro</p>
                 {selectedCard.reading ? (
-                  <p className="review-stage__reading jp-inline">
+                  <p className="review-stage__reading jp-inline" lang="ja">
                     {selectedCard.reading}
                   </p>
                 ) : null}
@@ -208,7 +211,10 @@ export function ReviewPageStage({
                 ) : null}
                 {selectedCard.exampleJp && selectedCard.exampleIt ? (
                   <section className="reader-example-sentence">
-                    <p className="reader-example-sentence__jp jp-inline">
+                    <p
+                      className="reader-example-sentence__jp jp-inline"
+                      lang="ja"
+                    >
                       {renderFurigana(selectedCard.exampleJp)}
                     </p>
                     {selectedCard.exampleAudio ? (
@@ -300,12 +306,12 @@ export function ReviewPageStage({
                   <div className="review-stage__contrast-selection">
                     <span className="chip">
                       Contrasto con:{" "}
-                      <span className="jp-inline">
+                      <span className="jp-inline" lang="ja">
                         {forcedContrastSelection.label}
                       </span>
                     </span>
                     {forcedContrastSelection.reading ? (
-                      <span className="meta-pill jp-inline">
+                      <span className="meta-pill jp-inline" lang="ja">
                         {forcedContrastSelection.reading}
                       </span>
                     ) : null}
@@ -330,46 +336,16 @@ export function ReviewPageStage({
                     </button>
                   </div>
                 ) : isForcedContrastOpen ? (
-                  <div className="glossary-autocomplete">
-                    <input
-                      ref={forcedContrastInputRef}
-                      aria-autocomplete="list"
-                      aria-controls={
-                        forcedContrastShouldShowSuggestions
-                          ? forcedContrastListboxId
-                          : undefined
-                      }
-                      autoCapitalize="none"
-                      autoComplete="off"
-                      autoCorrect="off"
-                      className="glossary-search-form__input"
-                      enterKeyHint="search"
-                      inputMode="search"
-                      onBlur={handleCloseForcedContrast}
-                      onChange={(event) => {
-                        handleForcedContrastQueryChange(
-                          event.currentTarget.value
-                        );
-                      }}
-                      onKeyDown={(event) => {
-                        if (event.key === "Escape") {
-                          handleCloseForcedContrast();
-                        }
-                      }}
-                      placeholder="待つ, まつ, matsu, aspettare"
-                      spellCheck={false}
-                      type="search"
-                      value={forcedContrastQuery}
-                    />
-                    <GlossaryAutocompleteDropdown
-                      listboxId={forcedContrastListboxId}
-                      onSelect={handleForcedContrastSelect}
-                      shouldShowSuggestions={
-                        forcedContrastShouldShowSuggestions
-                      }
-                      suggestions={forcedContrastSuggestions}
-                    />
-                  </div>
+                  <ReviewForcedContrastAutocomplete
+                    inputRef={forcedContrastInputRef}
+                    listboxId={forcedContrastListboxId}
+                    onClose={handleCloseForcedContrast}
+                    onQueryChange={handleForcedContrastQueryChange}
+                    onSelect={handleForcedContrastSelect}
+                    query={forcedContrastQuery}
+                    shouldShowSuggestions={forcedContrastShouldShowSuggestions}
+                    suggestions={forcedContrastSuggestions}
+                  />
                 ) : (
                   <button
                     className="button button--ghost button--small"
@@ -409,72 +385,77 @@ export function ReviewPageStage({
 
           {isFullReviewPageData && !isPrestudy ? (
             <>
-              <div className="review-stage__actions">
-                {selectedCard.bucket === "manual" ? (
-                  <button
-                    className="button button--primary"
-                    disabled={isPending}
-                    type="button"
-                    onClick={handleSetLearning}
-                  >
-                    Rimetti in studio
-                  </button>
-                ) : (
+              {fullSelectedCard && fullSelectedCard.entries.length > 0 ? (
+                <div className="review-stage__reference-actions">
+                  {fullSelectedCard.entries.map((entry) => (
+                    <Link
+                      key={entry.id}
+                      className="button button--ghost button--small"
+                      href={appendReturnToParam(entry.href, sessionHref)}
+                    >
+                      Apri la voce nel Glossary
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+
+              <details className="review-stage__more-actions">
+                <summary className="button button--ghost">Altre azioni</summary>
+                <div className="review-stage__actions">
+                  {selectedCard.bucket === "manual" ? (
+                    <button
+                      className="button button--primary"
+                      disabled={isPending}
+                      type="button"
+                      onClick={handleSetLearning}
+                    >
+                      Rimetti in studio
+                    </button>
+                  ) : (
+                    <button
+                      className="button button--ghost"
+                      disabled={isPending}
+                      type="button"
+                      onClick={handleMarkKnown}
+                    >
+                      Segna già nota
+                    </button>
+                  )}
+
                   <button
                     className="button button--ghost"
                     disabled={isPending}
                     type="button"
-                    onClick={handleMarkKnown}
+                    onClick={handleResetCard}
                   >
-                    Segna già nota
+                    Reset card
                   </button>
-                )}
 
-                <button
-                  className="button button--ghost"
-                  disabled={isPending}
-                  type="button"
-                  onClick={handleResetCard}
-                >
-                  Reset card
-                </button>
+                  <button
+                    className="button button--ghost"
+                    disabled={isPending}
+                    type="button"
+                    onClick={handleToggleSuspended}
+                  >
+                    {selectedCard.bucket === "suspended"
+                      ? "Riprendi"
+                      : "Sospendi"}
+                  </button>
+                </div>
 
-                <button
-                  className="button button--ghost"
-                  disabled={isPending}
-                  type="button"
-                  onClick={handleToggleSuspended}
-                >
-                  {selectedCard.bucket === "suspended"
-                    ? "Riprendi"
-                    : "Sospendi"}
-                </button>
-
-                {fullSelectedCard
-                  ? fullSelectedCard.entries.map((entry) => (
-                      <Link
-                        key={entry.id}
-                        className="button button--ghost button--small"
-                        href={appendReturnToParam(entry.href, sessionHref)}
-                      >
-                        Apri la voce nel Glossary
-                      </Link>
-                    ))
-                  : null}
-              </div>
-
-              {selectedCard.bucket === "manual" ? (
-                <p className="review-stage__hint">
-                  Lo stato manuale si applica alle voci collegate: la card resta
-                  intatta e riprende il suo scheduling appena la rimetti in
-                  studio.
-                </p>
-              ) : selectedCard.bucket === "suspended" ? (
-                <p className="review-stage__hint">
-                  La sospensione usa lo stato della card, non cancella
-                  intervalli o log già presenti.
-                </p>
-              ) : null}
+                {selectedCard.bucket === "manual" ? (
+                  <p className="review-stage__hint">
+                    Lo stato manuale si applica alle voci collegate: la card
+                    resta intatta e riprende il suo scheduling appena la rimetti
+                    in studio.
+                  </p>
+                ) : selectedCard.bucket === "suspended" ? (
+                  <p className="review-stage__hint">
+                    La sospensione usa lo stato della card, non cancella
+                    intervalli o log già presenti.
+                  </p>
+                ) : null}
+              </details>
             </>
           ) : null}
         </>
@@ -564,6 +545,120 @@ export function ReviewPageStage({
         />
       )}
     </SurfaceCard>
+  );
+}
+
+export function ReviewForcedContrastAutocomplete({
+  inputRef,
+  listboxId,
+  onClose,
+  onQueryChange,
+  onSelect,
+  query,
+  shouldShowSuggestions,
+  suggestions
+}: {
+  inputRef: RefObject<HTMLInputElement | null>;
+  listboxId: string;
+  onClose: () => void;
+  onQueryChange: (value: string) => void;
+  onSelect: (suggestion: GlobalGlossaryAutocompleteSuggestion) => void;
+  query: string;
+  shouldShowSuggestions: boolean;
+  suggestions: GlobalGlossaryAutocompleteSuggestion[];
+}) {
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const resolvedActiveIndex =
+    shouldShowSuggestions &&
+    activeIndex >= 0 &&
+    activeIndex < suggestions.length
+      ? activeIndex
+      : -1;
+  const activeDescendant =
+    resolvedActiveIndex >= 0
+      ? `${listboxId}-option-${resolvedActiveIndex}`
+      : undefined;
+
+  const close = () => {
+    setActiveIndex(-1);
+    onClose();
+  };
+
+  const select = (suggestion: GlobalGlossaryAutocompleteSuggestion) => {
+    setActiveIndex(-1);
+    onSelect(suggestion);
+  };
+
+  return (
+    <div className="glossary-autocomplete">
+      <label className="sr-only" htmlFor="review-forced-contrast-query">
+        Cerca una card di contrasto
+      </label>
+      <input
+        ref={inputRef}
+        aria-activedescendant={activeDescendant}
+        aria-autocomplete="list"
+        aria-controls={shouldShowSuggestions ? listboxId : undefined}
+        aria-expanded={shouldShowSuggestions}
+        autoCapitalize="none"
+        autoComplete="off"
+        autoCorrect="off"
+        className="glossary-search-form__input"
+        enterKeyHint="search"
+        id="review-forced-contrast-query"
+        inputMode="search"
+        onBlur={close}
+        onChange={(event) => {
+          setActiveIndex(-1);
+          onQueryChange(event.currentTarget.value);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            if (!shouldShowSuggestions) {
+              return;
+            }
+
+            event.preventDefault();
+            setActiveIndex((currentIndex) =>
+              getNextGlossaryAutocompleteIndex({
+                currentIndex,
+                direction: event.key === "ArrowDown" ? "next" : "previous",
+                suggestionCount: suggestions.length
+              })
+            );
+            return;
+          }
+
+          if (event.key === "Enter" && resolvedActiveIndex >= 0) {
+            const activeSuggestion = suggestions[resolvedActiveIndex];
+
+            if (activeSuggestion) {
+              event.preventDefault();
+              select(activeSuggestion);
+            }
+            return;
+          }
+
+          if (event.key === "Escape") {
+            event.preventDefault();
+            close();
+          }
+        }}
+        placeholder="待つ, まつ, matsu, aspettare"
+        role="combobox"
+        spellCheck={false}
+        type="search"
+        value={query}
+      />
+      <GlossaryAutocompleteDropdown
+        activeIndex={resolvedActiveIndex}
+        listboxId={listboxId}
+        onActiveIndexChange={setActiveIndex}
+        onSelect={select}
+        shouldShowSuggestions={shouldShowSuggestions}
+        suggestions={suggestions}
+      />
+    </div>
   );
 }
 

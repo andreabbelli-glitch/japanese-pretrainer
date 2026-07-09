@@ -346,7 +346,12 @@ describe("progress, settings, and study controls", () => {
     expect(markup).toContain(
       `href="${mediaKanjiClashHref(developmentFixture.mediaSlug)}"`
     );
-    expect(markup).toContain("Coda locale e carico quotidiano");
+    expect(markup).toContain("surface-card--flat media-detail-summary-band");
+    expect(markup).toContain("Stato del media");
+    expect(markup).toContain("Filtro locale della Review globale");
+    expect(markup).toContain("Apri il filtro media");
+    expect(markup).not.toContain("media-detail-hero");
+    expect(markup).not.toContain("Coda locale e carico quotidiano");
   });
 
   it("keeps the local next review card front aligned with the visible media in cross-media groups", async () => {

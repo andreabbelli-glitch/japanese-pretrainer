@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { DashboardData } from "@/features/dashboard/server";
 import { renderFurigana } from "@/features/study/ui/furigana";
 import {
-  mediaGlossaryHref,
   mediaHref,
   reviewHref,
   mediaStudyHref,
@@ -20,7 +19,7 @@ type DashboardHomeProps = {
 };
 
 export function DashboardHome({ data }: DashboardHomeProps) {
-  const { focusMedia, media, recentLessons, review, reviewMedia } = data;
+  const { focusMedia, media, recentLessons, review } = data;
 
   if (!focusMedia) {
     return (
@@ -45,16 +44,14 @@ export function DashboardHome({ data }: DashboardHomeProps) {
   const focusResumeLabel = focusMedia.resumeLesson
     ? "Continua il percorso"
     : "Apri Textbook";
-  const reviewPriorityNote = reviewMedia
-    ? `Piu urgente: ${reviewMedia.title}.`
-    : "La queue globale si popolera con le prime card.";
-
   return (
     <div className="dashboard-page">
       <section className="hero-grid">
         <SurfaceCard className="dashboard-hero" variant="hero">
           <p className="eyebrow">Da riprendere</p>
-          <p className="dashboard-hero__jp jp-inline">読む・拾う・定着させる</p>
+          <p className="dashboard-hero__jp jp-inline" lang="ja">
+            読む・拾う・定着させる
+          </p>
           <h1 className="dashboard-hero__title">{focusMedia.title}</h1>
           <p className="dashboard-hero__summary">
             {renderFurigana(focusMedia.description, {
@@ -222,73 +219,6 @@ export function DashboardHome({ data }: DashboardHomeProps) {
           ))}
         </div>
       </Section>
-
-      <Section
-        className="dashboard-cues-section"
-        description="Ogni card mostra il prossimo passo utile e solo il progresso che serve per decidere subito."
-        eyebrow="Continua da qui"
-        title="Prossimi passi"
-      >
-        <div className="entry-point-grid dashboard-next-steps">
-          <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
-            <div className="cue-card__content">
-              <h3 className="cue-card__title">Textbook</h3>
-              <p className="cue-card__meta">
-                {buildTextbookProgressLabel(focusMedia)}
-              </p>
-              <p className="cue-card__body">
-                {focusMedia.resumeLesson
-                  ? `${focusMedia.resumeLesson.title} · ${focusMedia.resumeLesson.statusLabel}`
-                  : "Apri il media e scegli la prima lesson disponibile."}
-              </p>
-            </div>
-            <Link className="text-link" href={focusResumeHref}>
-              {focusMedia.resumeLesson
-                ? "Continua il percorso"
-                : "Apri Textbook"}
-            </Link>
-          </SurfaceCard>
-
-          <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
-            <div className="cue-card__content">
-              <h3 className="cue-card__title">Review globale</h3>
-              <p className="cue-card__meta">
-                {buildAggregateQueueDetail(
-                  review.cardsDue,
-                  review.newQueuedCount
-                )}
-              </p>
-              <p className="cue-card__body">{reviewPriorityNote}</p>
-            </div>
-            <Link className="text-link" href={reviewHref()}>
-              Apri review globale
-            </Link>
-          </SurfaceCard>
-
-          <SurfaceCard className="cue-card cue-card--next-step" variant="quiet">
-            <div className="cue-card__content">
-              <h3 className="cue-card__title">Glossary</h3>
-              <p className="cue-card__meta">
-                {buildGlossaryProgressLabel(focusMedia)}
-              </p>
-              <p className="cue-card__body">
-                {focusMedia.previewEntries[0]
-                  ? `${focusMedia.previewEntries[0].label} e altre ${Math.max(
-                      focusMedia.entriesTotal - 1,
-                      0
-                    )} voci già disponibili.`
-                  : "Qui troverai il Glossary appena importerai termini e pattern."}
-              </p>
-            </div>
-            <Link
-              className="text-link"
-              href={mediaGlossaryHref(focusMedia.slug)}
-            >
-              Apri Glossary
-            </Link>
-          </SurfaceCard>
-        </div>
-      </Section>
     </div>
   );
 }
@@ -317,32 +247,4 @@ function buildAggregateActiveDetail(activeReviewCards: number) {
   return activeReviewCards === 1
     ? "1 card attiva"
     : `${activeReviewCards} card attive`;
-}
-
-function buildTextbookProgressLabel(media: {
-  lessonsCompleted: number;
-  lessonsTotal: number;
-  textbookProgressPercent: number | null;
-}) {
-  if (media.lessonsTotal === 0) {
-    return "Percorso pronto";
-  }
-
-  const progress =
-    media.textbookProgressPercent !== null
-      ? ` · ${media.textbookProgressPercent}%`
-      : "";
-
-  return `${media.lessonsCompleted} di ${media.lessonsTotal} lezioni${progress}`;
-}
-
-function buildGlossaryProgressLabel(media: {
-  entriesKnown: number;
-  entriesTotal: number;
-}) {
-  if (media.entriesTotal === 0) {
-    return "Glossary in arrivo";
-  }
-
-  return `${media.entriesKnown}/${media.entriesTotal} voci`;
 }
