@@ -114,7 +114,7 @@ entry_id: term-anki-l08-eeai
 card_type: recognition
 front: '{{Ａ|エー}}{{Ｉ|アイ}}'
 back: >-
-  エーアイ — IA; intelligenza artificiale. Sigla inglese (AI) resa foneticamente in katakana.
+  エーアイ — IA; intelligenza artificiale.
 example_jp: >-
   {{Ａ|エー}}{{Ｉ|アイ}}が エリアゼロを {{管理|かんり}}している。
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l08-okane
 card_type: recognition
 front: 'お{{金|かね}}'
 back: >-
-  おかね — denaro; soldi. Indica i soldi disponibili del giocatore, spesso contrapposti ad altre valute come i LP.
+  おかね — denaro; soldi.
 example_jp: >-
   お{{金|かね}}で モンスターボールを {{買|か}}う。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l08-konomae
 card_type: recognition
 front: 'この{{前|まえ}}'
 back: >-
-  このまえ — l’altro giorno; recentemente. Espressione temporale per indicare un momento nel passato recente.
+  このまえ — l’altro giorno; recentemente.
 example_jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l08-ossu
 card_type: recognition
 front: '{{押|おっ}}{{忍|す}}'
 back: >-
-  おっす — ossu / ehi (saluto energico). Saluto informale e vigoroso, tipico degli ambienti marziali o degli allenatori carichi di energia.
+  おっす — ossu / ehi (saluto energico).
 example_jp: >-
   「{{押|おっ}}{{忍|す}}！ バトルしようぜ！」
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l08-tanoshimu
 card_type: recognition
 front: '{{楽|たの}}しむ'
 back: >-
-  たのしむ — divertirsi; godersi. Verbo transitivo che esprime l'atto di trarre piacere o gioia da un'esperienza.
+  たのしむ — divertirsi; godersi.
 example_jp: >-
   アカデミーの {{生活|せいかつ}}を {{楽|たの}}しむ。
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l08-seri
 card_type: recognition
 front: '{{競|せ}}り'
 back: >-
-  せり — asta; competizione. Indica una modalità di vendita basata su rilanci competitivi.
+  せり — asta; competizione.
 example_jp: >-
   マリナードタウンの {{競|せ}}りに {{参加|さんか}}する。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l08-geijutsu
 card_type: recognition
 front: '{{芸|げい}}{{術|じゅつ}}'
 back: >-
-  げいじゅつ — arte. Sostantivo che raggruppa le forme espressive umane, includendo la materia scolastica.
+  げいじゅつ — arte.
 example_jp: >-
   ハッサク{{先生|せんせい}}の {{芸|げい}}{{術|じゅつ}}の {{授業|じゅぎょう}}を {{受|う}}ける。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l08-imamade
 card_type: recognition
 front: '{{今|いま}}まで'
 back: >-
-  いままで — fino ad ora; finora. Espressione temporale che copre il lasso di tempo dal passato al momento presente.
+  いままで — fino ad ora; finora.
 example_jp: >-
   {{今|いま}}まで たくさんの ポケモンを つかまえた。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l08-neru
 card_type: recognition
 front: '{{寝|ね}}る'
 back: >-
-  ねる — dormire. Verbo intransitivo che indica l'azione di addormentarsi o riposare a letto.
+  ねる — dormire.
 example_jp: >-
   じぶんの {{部屋|へや}}の ベッドで {{寝|ね}}る。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l08-kaeru
 card_type: recognition
 front: '{{変|か}}える'
 back: >-
-  かえる — cambiare; trasformare. Verbo transitivo usato per alterare intenzionalmente uno stato, un'impostazione o l'aspetto.
+  かえる — cambiare; trasformare.
 example_jp: >-
   スマホロトムの カバーを {{変|か}}える。
 example_it: >-

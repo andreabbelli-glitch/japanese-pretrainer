@@ -26,7 +26,7 @@ back: confermare / controllare
 example_jp: >-
   もう{{一度|いちど}} {{確認|かくにん}}する。
 example_it: >-
-  Controllare di nuovo.
+  Controllo di nuovo.
 :::
 :::term
 id: term-e051-modoru
@@ -70,7 +70,7 @@ back: completare / superare
 example_jp: >-
   ジムテストを クリアする。
 example_it: >-
-  Supera il test della palestra.
+  Supero la prova della palestra.
 :::
 :::term
 id: term-e069-ha-douda

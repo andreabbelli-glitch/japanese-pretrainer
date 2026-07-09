@@ -104,7 +104,7 @@ entry_id: term-anki-l04-bijutsu
 card_type: recognition
 front: '{{美|び}}{{術|じゅつ}}'
 back: >-
-  びじゅつ — arte; belle arti. La materia scolastica di Arte ({{美|び}}{{術|じゅつ}}) e le opere artistiche in generale.
+  びじゅつ — arte; belle arti.
 example_jp: >-
   アカデミーの {{美|び}}{{術|じゅつ}}の じゅぎょうを うけよう。
 example_it: >-
@@ -121,7 +121,7 @@ entry_id: term-anki-l04-yasumu
 card_type: recognition
 front: '{{休|やす}}む'
 back: >-
-  やすむ — riposare; assentarsi. Verbo intransitivo usato per fermarsi e recuperare le energie (come al Centro Pokémon) o mancare a un impegno.
+  やすむ — riposare; assentarsi.
 example_jp: >-
   ポケモンセンターで ポケモンも トレーナーも {{少|すこ}}し {{休|やす}}む。
 example_it: >-
@@ -138,7 +138,7 @@ entry_id: term-anki-l04-miseru
 card_type: recognition
 front: '{{見|み}}せる'
 back: >-
-  みせる — mostrare. Verbo transitivo usato per far vedere qualcosa (come uno strumento, un Pokémon o la mappa) a qualcuno.
+  みせる — mostrare.
 example_jp: >-
   ネモに {{新|あたら}}しい ポケモンを {{見|み}}せる。
 example_it: >-
@@ -155,7 +155,7 @@ entry_id: term-v279-hiden
 card_type: recognition
 front: '{{秘|ひ}}{{伝|でん}}'
 back: >-
-  ひでん — segreto; ricetta segreta. Qualcosa tramandato di nascosto o una conoscenza speciale e riservata.
+  ひでん — segreto; ricetta segreta.
 example_jp: >-
   ペパーと いっしょに {{秘|ひ}}{{伝|でん}}スパイスを さがしに いこう。
 example_it: >-
@@ -172,11 +172,11 @@ entry_id: term-anki-l04-ookina
 card_type: recognition
 front: '{{大|おお}}きな'
 back: >-
-  おおきな — grande. Aggettivo prenominale che descrive dimensioni fisiche imponenti o l'impatto di un evento.
+  おおきな — grande.
 example_jp: >-
   テーブルシティの {{大|おお}}きな ゲートを くぐった。
 example_it: >-
-  Ha varcato il grande cancello di Mesapoli.
+  Ho varcato il grande cancello di Mesapoli.
 notes_it: >-
   {{大|おお}}きな è una forma speciale che può essere usata solo direttamente prima di un sostantivo (forma prenominale). A differenza di {{大|おお}}きい (che è un aggettivo in -i regolare), {{大|おお}}きな trasmette spesso una sfumatura leggermente più soggettiva, ma si usa comunemente anche per oggetti fisici imponenti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
@@ -189,7 +189,7 @@ entry_id: term-anki-l04-heya
 card_type: recognition
 front: '{{部屋|へや}}'
 back: >-
-  へや — stanza. Un ambiente chiuso, come la camera da letto o una stanza del dormitorio dell'Accademia.
+  へや — stanza.
 example_jp: >-
   アカデミーの じぶんの {{部屋|へや}}に もどって やすもう。
 example_it: >-
@@ -206,7 +206,7 @@ entry_id: term-anki-l04-dono
 card_type: recognition
 front: '{{殿|どの}}'
 back: >-
-  どの — signore; onorifico -dono. Suffisso onorifico dal sapore arcaico e formale, che segue direttamente un nome.
+  どの — signore; onorifico -dono.
 example_jp: >-
   シュウメイ{{殿|どの}}の どくポケモンは とても てごわい。
 example_it: >-
@@ -223,7 +223,7 @@ entry_id: term-anki-l04-subarashii
 card_type: recognition
 front: '{{素|す}}{{晴|ば}}らしい'
 back: >-
-  すばらしい — splendido; magnifico. Aggettivo in -i usato per lodare grandemente un'azione, una qualità o un risultato.
+  すばらしい — splendido; magnifico.
 example_jp: >-
   あなたと ポケモンの きずなは ほんとうに {{素|す}}{{晴|ば}}らしいですね。
 example_it: >-
@@ -240,11 +240,11 @@ entry_id: term-anki-l04-honjitsu
 card_type: recognition
 front: '{{本|ほん}}{{日|じつ}}'
 back: >-
-  ほんじつ — oggi, formale. Variante formale di {{今日|きょう}}, usata in annunci o comunicazioni ufficiali.
+  ほんじつ — oggi, formale.
 example_jp: >-
-  {{本|ほん}}{{日|じつ}}の じゅぎょうは これで おわります。
+  {{本|ほん}}{{日|じつ}}の バトルは これで おわります。
 example_it: >-
-  La lezione di oggi finisce qui.
+  La lotta di oggi finisce qui.
 notes_it: >-
   {{本日|ほんじつ}} è la lettura formale di “oggi”. Lo sentirai usato dai professori dell'Accademia negli annunci formali, dagli impiegati della Lega Pokémon o dagli speaker nei negozi. Indica un distacco professionale e un grado di cortesia superiore rispetto al più quotidiano {{今日|きょう}}.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
@@ -257,7 +257,7 @@ entry_id: term-anki-l04-tatakai
 card_type: recognition
 front: '{{戦|たたか}}い'
 back: >-
-  たたかい — battaglia; lotta. Sostantivo che indica lo scontro in sé, sia fisico che sportivo.
+  たたかい — battaglia; lotta.
 example_jp: >-
   ネモとの さいごの {{戦|たたか}}いに むけて じゅんびを しよう。
 example_it: >-

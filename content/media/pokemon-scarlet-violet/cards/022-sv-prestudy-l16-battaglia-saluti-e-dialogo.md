@@ -212,9 +212,9 @@ entry_type: term
 entry_id: term-v156-jugyou
 card_type: recognition
 front: '{{授業|じゅぎょう}}'
-back: lezione
+back: corso / insegnamento
 example_jp: >-
-  {{授業|じゅぎょう}}を {{受|う}}けます。
+  {{今日|きょう}}は {{数学|すうがく}}の {{授業|じゅぎょう}}を {{受|う}}けます。
 example_it: >-
-  Frequento la lezione.
+  Oggi seguo il corso di matematica.
 :::

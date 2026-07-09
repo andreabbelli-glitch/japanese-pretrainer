@@ -31,7 +31,7 @@ example_jp: >-
   ポケモンセンターが {{見|み}}えたら いったん {{手|て}}{{持|も}}ちを
   {{整|ととの}}えよう。
 example_it: >-
-  Quando vedi un Centro Pokémon, puoi sistemare la squadra.
+  Quando vediamo un Centro Pokémon, fermiamoci a sistemare la squadra.
 :::
 :::term
 id: term-friendly-shop

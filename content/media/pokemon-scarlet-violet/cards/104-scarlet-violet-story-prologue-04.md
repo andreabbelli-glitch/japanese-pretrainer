@@ -26,10 +26,9 @@ card_type: recognition
 front: '{{学生食堂|がく.せい.しょく.どう}}'
 back: mensa studentesca
 example_jp: >-
-  {{学生食堂|がく.せい.しょく.どう}}に {{行|い}}くと ペパーの {{話|はなし}}が
-  {{進|すす}}みはじめる。
+  {{学生食堂|がく.せい.しょく.どう}}で ペパーと サンドウィッチを {{食|た}}べる。
 example_it: >-
-  Andando alla mensa studentesca, comincia ad avanzare il filone di Pepper.
+  Mangio un sandwich con Pepe alla mensa studentesca.
 :::
 :::term
 id: term-shokuinshitsu
@@ -74,11 +73,9 @@ card_type: recognition
 front: '{{校長室|こう.ちょう.しつ}}'
 back: ufficio del preside
 example_jp: >-
-  {{校長室|こう.ちょう.しつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
-  {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
+  {{校長|こうちょう}}と {{話|はな}}すために {{校長室|こう.ちょう.しつ}}へ {{行|い}}く。
 example_it: >-
-  Quando una scena ti convoca nell'ufficio del preside, di solito parte un
-  briefing ufficiale o una decisione della storia.
+  Vado nell'ufficio del preside per parlare con lui.
 :::
 :::term
 id: term-gakusei-ryou
@@ -100,10 +97,9 @@ card_type: recognition
 front: '{{学生寮|がく.せい.りょう}}'
 back: dormitorio studentesco
 example_jp: >-
-  {{学生寮|がく.せい.りょう}}の {{部屋|へや}}で {{休|やす}}むと {{翌日|よくじつ}}に
-  {{進|すす}}める。
+  {{学生寮|がく.せい.りょう}}の {{部屋|へや}}で {{休|やす}}む。
 example_it: >-
-  Se riposi nella stanza del dormitorio, puoi passare al giorno successivo.
+  Riposo nella stanza del dormitorio studentesco.
 :::
 :::term
 id: term-shisetsu

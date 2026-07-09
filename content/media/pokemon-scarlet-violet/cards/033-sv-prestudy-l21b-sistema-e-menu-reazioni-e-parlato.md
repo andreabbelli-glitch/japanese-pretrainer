@@ -137,9 +137,9 @@ card_type: concept
 front: "～ていく"
 back: continuare a... / andare avanti
 example_jp: >-
-  これから {{学校|がっこう}}へ {{行|い}}っていく。
+  これから もっと {{強|つよ}}くなっていく。
 example_it: >-
-  Da qui in poi vado verso la scuola.
+  D'ora in poi diventerò sempre più forte.
 :::
 :::grammar
 id: grammar-g070-qualcosa-e-stato-fatto-intenzionalmente
@@ -160,7 +160,7 @@ back: qualcosa è stato fatto intenzionalmente
 example_jp: >-
   ここに {{名前|なまえ}}が {{書|か}}いてある。
 example_it: >-
-  Qui c’è scritto il nome
+  Qui c'è scritto il nome.
 :::
 :::term
 id: term-v333-muri
@@ -377,7 +377,7 @@ back: solo per sé
 example_jp: >-
   {{自分|じぶん}}だけ {{先|さき}}に {{行|い}}く。
 example_it: >-
-  Solo io vado avanti per primo.
+  Solo io vado avanti.
 :::
 :::term
 id: term-v345-kyouryoku
@@ -398,9 +398,9 @@ card_type: recognition
 front: "{{協力|きょうりょく}}"
 back: cooperazione
 example_jp: >-
-  {{協力|きょうりょく}}します。
+  ネモと {{協力|きょうりょく}}します。
 example_it: >-
-  Collaboro.
+  Collaboro con Nemi.
 :::
 :::term
 id: term-v346-koukabatsugun

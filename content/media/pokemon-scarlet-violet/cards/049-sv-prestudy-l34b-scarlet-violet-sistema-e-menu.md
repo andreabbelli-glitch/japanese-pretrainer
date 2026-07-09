@@ -135,7 +135,7 @@ back: numero prestabilito
 example_jp: >-
   {{決|き}}められた{{数|かず}}の ポケモンを {{選|えら}}ぶ。
 example_it: >-
-  Seleziona il numero prestabilito di Pokémon.
+  Scelgo il numero prestabilito di Pokémon.
 :::
 :::term
 id: term-v717-tani

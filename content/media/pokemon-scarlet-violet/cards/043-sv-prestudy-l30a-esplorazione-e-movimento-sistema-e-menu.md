@@ -258,7 +258,7 @@ back: pagamento
 example_jp: >-
   お{{店|みせ}}で {{支払|しはら}}いを すませます。
 example_it: >-
-  Completo il pagamento al negozio.
+  Effettuo il pagamento al negozio.
 :::
 :::term
 id: term-v572-kumi
@@ -277,7 +277,7 @@ entry_type: term
 entry_id: term-v572-kumi
 card_type: recognition
 front: "{{組|くみ}}"
-back: squadra / gruppo
+back: classe / gruppo
 example_jp: >-
   {{1組|いちくみ}}は グラウンドに {{集|あつ}}まってください。
 example_it: >-
@@ -379,7 +379,7 @@ entry_type: term
 entry_id: term-v577-taiou
 card_type: recognition
 front: "{{対応|たいおう}}"
-back: equivalenza / matching
+back: supporto / compatibilità
 example_jp: >-
   この コントローラーは {{対応|たいおう}}しています。
 example_it: >-
@@ -475,7 +475,7 @@ back: arrivo
 example_jp: >-
   まもなく {{到着|とうちゃく}} します。
 example_it: >-
-  L'arrivo è previsto a breve.
+  Arriviamo a breve.
 :::
 :::term
 id: term-v582-tokubetsukoushi

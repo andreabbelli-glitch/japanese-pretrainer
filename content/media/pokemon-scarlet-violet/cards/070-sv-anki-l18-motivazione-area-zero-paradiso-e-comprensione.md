@@ -125,7 +125,7 @@ entry_id: term-anki-l18-gozonji
 card_type: recognition
 front: 'ご{{存|ぞん}}{{知|じ}}'
 back: >-
-  ごぞんじ — sapere; conoscere, onorifico. È la forma di rispetto ({{尊|そん}}{{敬|けい}}{{語|ご}}) di {{知|し}}る; si usa esclusivamente per riferirsi alla conoscenza dell'interlocutore o di una terza persona di riguardo.
+  ごぞんじ — sapere; conoscere, onorifico.
 example_jp: >-
   エリアゼロの ことを ご{{存|ぞん}}{{知|じ}}ですか。
 example_it: >-
@@ -142,7 +142,7 @@ entry_id: term-anki-l18-yaruki
 card_type: recognition
 front: 'やる{{気|き}}'
 back: >-
-  やるき — motivazione; voglia di fare. Unisce やる (fare) e {{気|き}} (spirito/mente) e descrive la spinta interiore; prende が per la sua presenza (やる{{気|き}}がある) e を per manifestarla (やる{{気|き}}を{{出|で}}す).
+  やるき — motivazione; voglia di fare.
 example_jp: >-
   ジムテストに {{向|む}}けて、やる{{気|き}}が {{出|で}}てきた！
 example_it: >-
@@ -159,7 +159,7 @@ entry_id: term-anki-l18-kowareru
 card_type: recognition
 front: '{{壊|こわ}}れる'
 back: >-
-  こわれる — rompersi. Verbo intransitivo che indica un oggetto, un macchinario o una struttura che subisce un guasto o un danno fisico, prendendo が come soggetto.
+  こわれる — rompersi.
 example_jp: >-
   この フェンスは すぐに {{壊|こわ}}れるかも しれない。
 example_it: >-
@@ -176,7 +176,7 @@ entry_id: term-anki-l18-rakuen
 card_type: recognition
 front: '{{楽|らく}}{{園|えん}}'
 back: >-
-  らくえん — paradiso. Si scrive con 楽 (らく: agio, piacere) e 園 (えん: giardino/parco), e indica un luogo utopico e idilliaco.
+  らくえん — paradiso.
 example_jp: >-
   ここは ポケモンたちの {{楽|らく}}{{園|えん}} なのよ。
 example_it: >-
@@ -193,7 +193,7 @@ entry_id: term-anki-l18-katsuyaku
 card_type: recognition
 front: '{{活|かつ}}{{躍|やく}}'
 back: >-
-  かつやく — distinguersi; avere un ruolo attivo. Si usa spesso come verbo する per indicare qualcuno che si distingue grazie al suo contributo o al suo ruolo sul campo; il soggetto prende が.
+  かつやく — distinguersi; avere un ruolo attivo.
 example_jp: >-
   チャンピオンランクでの {{活|かつ}}{{躍|やく}}を {{期|き}}{{待|たい}}して いるよ。
 example_it: >-
@@ -210,7 +210,7 @@ entry_id: term-anki-l18-kyoumibukai
 card_type: recognition
 front: '{{興|きょう}}{{味|み}}{{深|ぶか}}い'
 back: >-
-  きょうみぶかい — molto interessante. Aggettivo in -i che combina {{興|きょう}}{{味|み}} (interesse) e {{深|ふか}}い (profondo), descrivendo una curiosità intellettuale forte per un fenomeno.
+  きょうみぶかい — molto interessante.
 example_jp: >-
   パルデアの {{伝|でん}}{{承|しょう}}は とても {{興|きょう}}{{味|み}}{{深|ぶか}}い ね。
 example_it: >-
@@ -227,7 +227,7 @@ entry_id: term-anki-l18-arawareru
 card_type: recognition
 front: '{{現|あらわ}}れる'
 back: >-
-  あらわれる — apparire. Verbo intransitivo che segna l'emersione alla vista di qualcosa di atteso o inaspettato; l'entità che si palesa prende が.
+  あらわれる — apparire.
 example_jp: >-
   この くさむらには、めずらしい ポケモンが {{現|あらわ}}れる。
 example_it: >-
@@ -244,7 +244,7 @@ entry_id: term-anki-l18-hikaru
 card_type: recognition
 front: '{{光|ひか}}る'
 back: >-
-  ひかる — brillare. Verbo intransitivo usato per descrivere un oggetto che emette o riflette direttamente luce visibile, prendendo が come soggetto dell'azione.
+  ひかる — brillare.
 example_jp: >-
   テラスタルの {{時|とき}}、ボールが {{光|ひか}}る。
 example_it: >-
@@ -261,7 +261,7 @@ entry_id: term-anki-l18-goukakusha
 card_type: recognition
 front: '{{合|ごう}}{{格|かく}}{{者|しゃ}}'
 back: >-
-  ごうかくしゃ — persona promossa/ammessa. Combina 'superare un esame' ({{合|ごう}}{{格|かく}}) e il suffisso 'persona' ({{者|もの}}) per definire chi ha ottenuto formalmente un riconoscimento ufficiale.
+  ごうかくしゃ — persona promossa/ammessa.
 example_jp: >-
   ジムテストの {{合|ごう}}{{格|かく}}{{者|しゃ}}は {{中|なか}}に {{入|はい}}れるよ。
 example_it: >-
@@ -278,7 +278,7 @@ entry_id: term-anki-l18-zaihou
 card_type: recognition
 front: '{{財|ざい}}{{宝|ほう}}'
 back: >-
-  ざいほう — tesoro. Composto da “ricchezza” e “gioiello/tesoro”, indica beni antichi, leggendari e preziosi rispetto al normale denaro contante.
+  ざいほう — tesoro.
 example_jp: >-
   {{4|よっ}}つの {{災|さい}}{{厄|やく}}の ポケモンと {{王|おう}}の {{財|ざい}}{{宝|ほう}}の {{話|はなし}}だ。
 example_it: >-
@@ -295,7 +295,7 @@ entry_id: term-anki-l18-rikai
 card_type: recognition
 front: '{{理|り}}{{解|かい}}'
 back: >-
-  りかい — comprensione; capire. Come verbo suru ({{理|り}}{{解|かい}}する) identifica il processo intellettuale e razionale di afferrare un meccanismo, una regola o la prospettiva altrui (usando を).
+  りかい — comprensione; capire.
 example_jp: >-
   {{先|せん}}{{生|せい}}の {{言|い}}う ことを {{理|り}}{{解|かい}} できた かな？
 example_it: >-

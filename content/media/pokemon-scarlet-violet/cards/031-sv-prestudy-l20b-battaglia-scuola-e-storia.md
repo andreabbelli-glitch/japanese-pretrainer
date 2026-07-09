@@ -514,7 +514,7 @@ back: attesa / aspettativa
 example_jp: >-
   {{期待|きたい}}しているよ。
 example_it: >-
-  Ho delle aspettative.
+  Conto su di te.
 :::
 :::term
 id: term-v311-meichuuritsu

@@ -92,9 +92,9 @@ card_type: recognition
 front: '{{研究|けんきゅう}}'
 back: ricerca
 example_jp: >-
-  {{研究|けんきゅう}}を します。
+  {{博士|はかせ}}は ポケモンを {{研究|けんきゅう}}しています。
 example_it: >-
-  Faccio ricerca.
+  Il professore studia i Pokémon.
 :::
 :::term
 id: term-v178-doragon
@@ -162,9 +162,9 @@ card_type: recognition
 front: '{{結晶|けっしょう}}'
 back: cristallo
 example_jp: >-
-  {{結晶|けっしょう}}を {{見|み}}ます。
+  この {{結晶|けっしょう}}は {{光|ひか}}っています。
 example_it: >-
-  Guardo il cristallo.
+  Questo cristallo brilla.
 :::
 :::term
 id: term-v182-doku
@@ -208,11 +208,11 @@ entry_type: term
 entry_id: term-v183-daiji
 card_type: recognition
 front: '{{大事|だいじ}}'
-back: importante / prezioso
+back: da trattare con cura / di grande valore
 example_jp: >-
-  {{大事|だいじ}}な {{道具|どうぐ}}を {{持|も}}っています。
+  {{大事|だいじ}}な {{道具|どうぐ}}を なくさないで。
 example_it: >-
-  Ho con me uno strumento importante.
+  Non perdere questo strumento prezioso.
 :::
 :::term
 id: term-v184-nouryoku
@@ -279,9 +279,9 @@ card_type: recognition
 front: '{{歴史|れきし}}'
 back: storia
 example_jp: >-
-  {{歴史|れきし}}の {{授業|じゅぎょう}}を {{受|う}}けます。
+  {{学校|がっこう}}で {{歴史|れきし}}を {{学|まな}}びます。
 example_it: >-
-  Seguo la lezione di storia.
+  A scuola studio storia.
 :::
 :::term
 id: term-v187-pokemonriigu
@@ -335,9 +335,9 @@ card_type: recognition
 front: '{{調査|ちょうさ}}'
 back: indagine / ricerca sul campo
 example_jp: >-
-  {{調査|ちょうさ}}を します。
+  ポケモンの {{生息地|せいそくち}}を {{調査|ちょうさ}}します。
 example_it: >-
-  Faccio un'indagine.
+  Indago sull'habitat dei Pokémon.
 :::
 :::term
 id: term-v191-moshikashite

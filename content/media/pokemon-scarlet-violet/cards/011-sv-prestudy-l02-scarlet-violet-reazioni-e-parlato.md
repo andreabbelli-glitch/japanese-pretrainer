@@ -143,7 +143,7 @@ back: già / ormai
 example_jp: >-
   もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 example_it: >-
-  Andiamo, Nemi sta aspettando.
+  Andiamo: Nemi sta già aspettando.
 :::
 :::term
 id: term-v014-raido
@@ -187,9 +187,9 @@ card_type: recognition
 front: '{{自分|じぶん}}'
 back: sé stesso
 example_jp: >-
-  {{自分|じぶん}}で やります。
+  この ジムテストは {{自分|じぶん}}で やります。
 example_it: >-
-  Lo faccio da solo.
+  Affronto da solo questa prova della palestra.
 :::
 :::term
 id: term-v016-sugoi

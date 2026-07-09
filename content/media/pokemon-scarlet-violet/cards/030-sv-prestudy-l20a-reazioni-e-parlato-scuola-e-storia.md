@@ -330,7 +330,7 @@ entry_type: term
 entry_id: term-v281-taisetsu
 card_type: recognition
 front: "{{大切|たいせつ}}"
-back: importante / caro
+back: da trattare con cura / prezioso
 example_jp: >-
   ポケモンを {{大切|たいせつ}}に {{育|そだ}}てる。
 example_it: >-
@@ -472,7 +472,7 @@ back: vera capacità / livello reale
 example_jp: >-
   {{実力|じつりょく}}を {{見|み}}せる。
 example_it: >-
-  Mostra la sua vera capacità.
+  Mostro di che cosa sono capace.
 :::
 :::term
 id: term-v288-mappuapuri
@@ -516,9 +516,9 @@ card_type: recognition
 front: "{{持|も}}つ"
 back: avere / tenere
 example_jp: >-
-  これを {{持|も}}つ。
+  この {{道具|どうぐ}}を {{持|も}}つ。
 example_it: >-
-  Tengo questo.
+  Tengo con me questo strumento.
 :::
 :::term
 id: term-v290-renraku
@@ -539,9 +539,9 @@ card_type: recognition
 front: "{{連絡|れんらく}}"
 back: contatto / chiamata / messaggio
 example_jp: >-
-  {{連絡|れんらく}}を します。
+  ネモに {{連絡|れんらく}}を します。
 example_it: >-
-  Mando un messaggio.
+  Contatto Nemi.
 :::
 :::term
 id: term-v291-nigate

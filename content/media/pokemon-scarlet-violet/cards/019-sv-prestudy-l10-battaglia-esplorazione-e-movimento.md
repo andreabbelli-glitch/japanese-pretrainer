@@ -211,7 +211,7 @@ back: lotta automatica
 example_jp: >-
   おまかせバトルを します。
 example_it: >-
-  Faccio la lotta automatica.
+  Avvio una lotta automatica.
 :::
 :::term
 id: term-v119-katsu
@@ -234,7 +234,7 @@ back: vincere
 example_jp: >-
   この バトルに {{勝|か}}つ。
 example_it: >-
-  Vincere questa battaglia.
+  Vincerò questa battaglia.
 :::
 :::term
 id: term-v120-yowai

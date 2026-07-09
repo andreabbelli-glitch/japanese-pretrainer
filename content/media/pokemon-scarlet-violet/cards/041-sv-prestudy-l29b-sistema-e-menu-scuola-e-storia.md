@@ -157,9 +157,9 @@ card_type: recognition
 front: "{{集中|しゅうちゅう}}"
 back: concentrazione
 example_jp: >-
-  {{授業中|じゅぎょう.ちゅう}}は {{先生|せんせい}}の {{説明|せつめい}}に {{集中|しゅうちゅう}}します。
+  {{強|つよ}}い {{相手|あいて}}との バトルに {{集中|しゅうちゅう}}します。
 example_it: >-
-  Durante la lezione mi concentro sulla spiegazione del professore.
+  Mi concentro sulla lotta contro un avversario forte.
 :::
 :::term
 id: term-v517-tsuika
@@ -271,9 +271,9 @@ card_type: recognition
 front: "{{教室|きょうしつ}}"
 back: aula
 example_jp: >-
-  {{次|つぎ}}の {{授業|じゅぎょう}}のために {{教室|きょうしつ}}へ {{向|む}}かいます。
+  ネモは {{教室|きょうしつ}}で {{待|ま}}っています。
 example_it: >-
-  Per la prossima lezione mi dirigo verso l'aula.
+  Nemi mi aspetta in aula.
 :::
 :::term
 id: term-v522-suteki
@@ -383,7 +383,7 @@ entry_type: term
 entry_id: term-v526-benri
 card_type: recognition
 front: "{{便利|べんり}}"
-back: comodo / utile
+back: pratico / funzionale
 example_jp: >-
   マップの {{検索|けんさく}}{{機能|きのう}}は とても {{便利|べんり}}です。
 example_it: >-

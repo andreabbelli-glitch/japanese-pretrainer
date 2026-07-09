@@ -48,9 +48,9 @@ card_type: recognition
 front: '{{待|ま}}って'
 back: aspetta
 example_jp: >-
-  {{待|ま}}って、 まだです。
+  {{待|ま}}って、 まだ {{準備|じゅんび}}が できてない。
 example_it: >-
-  Aspetta, non ancora.
+  Aspetta, non sono ancora pronto.
 :::
 :::grammar
 id: grammar-g009-contrazione-di-dovere

@@ -201,7 +201,7 @@ back: memorizzare / imparare
 example_jp: >-
   {{新|あたら}}しい わざを {{覚|おぼ}}える。
 example_it: >-
-  Impara una nuova mossa.
+  Il Pokémon impara una nuova mossa.
 :::
 :::term
 id: term-v433-kitae-ru
@@ -220,11 +220,11 @@ entry_type: term
 entry_id: term-v433-kitae-ru
 card_type: recognition
 front: "{{鍛|きた}}える"
-back: forgiare / temprare
+back: allenare / temprare
 example_jp: >-
   ポケモンを {{鍛|きた}}える。
 example_it: >-
-  Tempro il Pokémon.
+  Alleno il Pokémon.
 :::
 :::term
 id: term-v434-ori-ru
@@ -408,7 +408,7 @@ back: insegnare una mossa
 example_jp: >-
   この {{ポケモン|ぽけもん}}に {{覚|おぼ}}えさせる。
 example_it: >-
-  Faccio imparare una mossa a questo Pokémon.
+  Insegno una mossa a questo Pokémon.
 :::
 :::term
 id: term-v442-shujinkou
@@ -452,9 +452,9 @@ card_type: recognition
 front: "{{検索|けんさく}}"
 back: ricerca
 example_jp: >-
-  {{検索|けんさく}}を します。
+  ポケモン{{図鑑|ずかん}}で {{名前|なまえ}}を {{検索|けんさく}}します。
 example_it: >-
-  Faccio la ricerca.
+  Cerco il nome nel Pokédex.
 :::
 :::term
 id: term-v444-gake
@@ -500,7 +500,7 @@ back: chiudere
 example_jp: >-
   {{門|もん}}を {{閉|と}}じる。
 example_it: >-
-  Chiudere il cancello.
+  Chiudo il cancello.
 :::
 :::term
 id: term-v446-narau

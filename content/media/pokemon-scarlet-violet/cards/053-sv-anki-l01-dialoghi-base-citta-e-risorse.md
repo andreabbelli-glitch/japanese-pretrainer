@@ -94,7 +94,7 @@ entry_id: term-anki-l01-kiku
 card_type: recognition
 front: '{{聞|き}}く'
 back: >-
-  きく — ascoltare; sentire; chiedere. Il verbo racchiude sia la ricezione di un suono ("sentire/ascoltare") sia la ricerca attiva di informazioni ("chiedere"). La persona a cui si chiede prende に ({{人|ひと}}に{{聞|き}}く), mentre il contenuto prende を ({{話|はなし}}を{{聞|き}}く).
+  きく — ascoltare; sentire; chiedere.
 example_jp: >-
   チャンピオンの ネモに {{話|はなし}}を {{聞|き}}く。
 example_it: >-
@@ -111,7 +111,7 @@ entry_id: term-anki-l01-matsu
 card_type: recognition
 front: '{{待|ま}}つ'
 back: >-
-  まつ — aspettare. Spesso usato in forma progressiva {{待|ま}}っている (stare aspettando) o in forma sospensiva ({{待|ま}}って！) per intimare a qualcuno di fermarsi. Il luogo in cui si aspetta prende で.
+  まつ — aspettare.
 example_jp: >-
   テーブルシティで ネモを {{待|ま}}つ あいだ、ポケモンセンターに よろう。
 example_it: >-
@@ -128,7 +128,7 @@ entry_id: term-anki-l01-chigau
 card_type: recognition
 front: '{{違|ちが}}う'
 back: >-
-  ちがう — essere diverso; essere sbagliato. Un verbo che si traduce spesso con un aggettivo in italiano ("diverso") o per negare un'affermazione ("no, ti sbagli"). L'elemento di confronto si esprime con と.
+  ちがう — essere diverso; essere sbagliato.
 example_jp: >-
   {{野生|やせい}}の ポケモンとは {{少|すこ}}し {{違|ちが}}う みたいね。
 example_it: >-
@@ -145,7 +145,7 @@ entry_id: term-anki-l01-taberu
 card_type: recognition
 front: '{{食|た}}べる'
 back: >-
-  たべる — mangiare. Verbo Ichidan diretto. Il cibo mangiato è marcato con を. Nei giochi Pokémon, spesso appare in relazione a ingredienti per i panini o alle Bacche consumate in lotta.
+  たべる — mangiare.
 example_jp: >-
   オボンのみを {{食|た}}べると ＨＰが {{回復|かいふく}}する。
 example_it: >-
@@ -162,7 +162,7 @@ entry_id: term-anki-l01-machi
 card_type: recognition
 front: '{{町|まち}}'
 back: >-
-  まち — città; paese. Si riferisce tipicamente a un centro abitato di dimensioni modeste o a una cittadina, al contrario di un centro maggiore ({{市|し}}, し) o della metropoli.
+  まち — città; paese.
 example_jp: >-
   この {{町|まち}}には ポケモンジムが ありません。
 example_it: >-
@@ -179,7 +179,7 @@ entry_id: term-anki-l01-en
 card_type: recognition
 front: '{{円|えん}}'
 back: >-
-  えん — yen; moneta. È l'unità monetaria standard. Usata per i prezzi nei negozi o per indicare la ricompensa ricevuta dopo aver vinto una lotta. Si legge "en".
+  えん — yen; moneta.
 example_jp: >-
   モンスターボールは {{200|にひゃく}}{{円|えん}} です。
 example_it: >-
@@ -196,7 +196,7 @@ entry_id: term-v300-iru
 card_type: recognition
 front: '{{入|はい}}る'
 back: >-
-  はいる — entrare. Verbo Godan intransitivo. Si usa per l'ingresso in un luogo o uno spazio delimitato, indicato dalla particella に (es. {{部屋|へや}}に{{入|はい}}る). Diverso da {{入|い}}れる (inserire/mettere dentro).
+  はいる — entrare.
 example_jp: >-
   ポケモンセンターに {{入|はい}}ると、すぐ カウンターが ある。
 example_it: >-
@@ -213,7 +213,7 @@ entry_id: term-lp
 card_type: recognition
 front: '{{Ｌ|エル}}{{Ｐ|ピー}}'
 back: >-
-  エルピー — LP, Punti Lega. Acronimo scritto con lettere latine e letto con pronuncia katakana. Si usa come valuta alternativa agli yen per acquisti o per fabbricare MT.
+  エルピー — LP, Punti Lega.
 example_jp: >-
   わざマシンを {{作|つく}}るには {{Ｌ|エル}}{{Ｐ|ピー}}が {{必要|ひつよう}}なんだ。
 example_it: >-
@@ -230,7 +230,7 @@ entry_id: term-anki-l01-watashi
 card_type: recognition
 front: '{{私|わたし}}'
 back: >-
-  わたし — io; me. Pronome di prima persona neutro ed educato. Usato abitualmente dai personaggi femminili e, in contesti formali, da tutti (come presidi, professori, negozianti).
+  わたし — io; me.
 example_jp: >-
   {{私|わたし}}の {{名前|なまえ}}は クラベル。アカデミーの {{校長|こうちょう}}です。
 example_it: >-
@@ -247,7 +247,7 @@ entry_id: term-anki-l01-kyou
 card_type: recognition
 front: '{{今日|きょう}}'
 back: >-
-  きょう — oggi. Indicatore temporale. `きょう` puo' restare senza particella; con `は` diventa tema temporale enfatizzato.
+  きょう — oggi.
 example_jp: >-
   {{今日|きょう}}から あなたも アカデミーの {{生徒|せいと}}ですね！
 example_it: >-

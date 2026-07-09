@@ -114,7 +114,7 @@ entry_id: term-anki-l14-inai
 card_type: recognition
 front: '{{以|い}}{{内|ない}}'
 back: >-
-  いない — entro; non oltre; dentro un limite. Si attacca a quantità, tempi o distanze per indicare un massimo incluso.
+  いない — entro; non oltre; dentro un limite.
 example_jp: >-
   {{10分以内|じゅっぷんいない}}に ポケモンを たくさん {{倒|たお}}すんだ！
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l14-hana
 card_type: recognition
 front: '{{花|はな}}'
 back: >-
-  はな — fiore. Parola comune per fiori e piante fiorite, utile in descrizioni di luoghi, oggetti e mosse.
+  はな — fiore.
 example_jp: >-
   めずらしい {{花|はな}}を {{見|み}}つけたら、{{教|おし}}えてね。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l14-keisan
 card_type: recognition
 front: '{{計|けい}}{{算|さん}}'
 back: >-
-  けいさん — calcolo. Sostantivo suru ({{計|けい}}{{算|さん}}する) che indica l'azione di calcolare danni, punti o traiettorie.
+  けいさん — calcolo.
 example_jp: >-
   ダメージの {{計|けい}}{{算|さん}}は、すこし {{複|ふく}}{{雑|ざつ}}なんだ。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l14-kuni
 card_type: recognition
 front: '{{国|くに}}'
 back: >-
-  くに — paese; nazione; regione d'origine. Spesso usato per riferirsi a terre lontane da cui provengono personaggi o Pokémon.
+  くに — paese; nazione; regione d'origine.
 example_jp: >-
   この ポケモンは、{{遠|とお}}い {{国|くに}}から {{来|き}}たらしい。
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l14-kodomotachi
 card_type: recognition
 front: '{{子|こ}}{{供|ども}}たち'
 back: >-
-  こどもたち — bambini; ragazzini. Il suffisso たち rende plurale il sostantivo base {{子|こ}}{{供|ども}}.
+  こどもたち — bambini; ragazzini.
 example_jp: >-
   アカデミーには、たくさんの {{子|こ}}{{供|ども}}たちが いるよ。
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l14-shisatsu
 card_type: recognition
 front: '{{視|し}}{{察|さつ}}'
 back: >-
-  しさつ — ispezione; sopralluogo. Sostantivo suru usato per visite ufficiali per controllare una struttura o un'attività.
+  しさつ — ispezione; sopralluogo.
 example_jp: >-
   オモダカさんは、ジムの {{視|し}}{{察|さつ}}で {{忙|いそが}}しいみたい。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l14-shiken
 card_type: recognition
 front: '{{試|し}}{{験|けん}}'
 back: >-
-  しけん — esame; test; prova. Spesso accompagnato dal verbo {{受|う}}ける (sostenere un esame) o {{合|ごう}}{{格|かく}}する (superare un esame).
+  しけん — esame; test; prova.
 example_jp: >-
   チャンピオンになるための {{試|し}}{{験|けん}}を はじめます。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l14-atsumaru
 card_type: recognition
 front: '{{集|あつ}}まる'
 back: >-
-  あつまる — radunarsi; riunirsi; raggrupparsi. Verbo intransitivo (qualcosa/qualcuno si raduna, prende が). Il luogo in cui ci si raduna prende に.
+  あつまる — radunarsi; riunirsi; raggrupparsi.
 example_jp: >-
   {{広|ひろ}}{{場|ば}}に たくさんの {{人|ひと}}が {{集|あつ}}まるよ。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l14-okuru
 card_type: recognition
 front: '{{送|おく}}る'
 back: >-
-  おくる — inviare; mandare; spedire. Verbo transitivo (prende を per l'oggetto inviato e に per la destinazione).
+  おくる — inviare; mandare; spedire.
 example_jp: >-
   {{捕|つか}}まえた ポケモンを ボックスに {{送|おく}}るね。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l14-daremo
 card_type: recognition
 front: '{{誰|だれ}}も'
 back: >-
-  だれも — nessuno con verbo negativo; chiunque/tutti in alcuni usi positivi. Unisce {{誰|だれ}} (chi) e も (anche).
+  だれも — nessuno con verbo negativo; chiunque/tutti in alcuni usi positivi.
 example_jp: >-
   この {{部|へ}}{{屋|や}}には、{{誰|だれ}}も いないようだ。
 example_it: >-

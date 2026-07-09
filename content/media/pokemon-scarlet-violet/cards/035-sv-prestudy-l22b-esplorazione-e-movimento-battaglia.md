@@ -361,9 +361,9 @@ card_type: recognition
 front: "{{水上|すいじょう}}"
 back: sull'acqua
 example_jp: >-
-  {{水上|すいじょう}}に います。
+  ポケモンが {{水上|すいじょう}}に います。
 example_it: >-
-  Si trova sull'acqua.
+  Il Pokémon si trova sull'acqua.
 :::
 :::term
 id: term-v385-ikki-ni

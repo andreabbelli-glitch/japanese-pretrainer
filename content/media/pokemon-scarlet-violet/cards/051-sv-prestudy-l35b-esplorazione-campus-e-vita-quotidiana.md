@@ -285,7 +285,7 @@ back: essere intricato / pieno di svolte
 example_jp: >-
   この{{先|さき}}は {{岩山|いわやま}}が {{入|い}}り{{組|く}}んでいる！
 example_it: >-
-  Più avanti il terreno roccioso e pieno di passaggi intricati.
+  Più avanti il terreno roccioso è pieno di passaggi intricati.
 :::
 :::term
 id: term-v751-mayou
@@ -520,7 +520,7 @@ example_jp: >-
   {{前世|ぜんせ}}の {{記憶|きおく}}を スマホで {{占|うらな}}う
   {{自称|じしょう}} スマホ{{占|うらな}}いは いかがですか？
 example_it: >-
-  Che ne dici di una lettura via smartphone, sedicente divinazione dei ricordi delle vite precedenti?
+  Che ne dici della sedicente divinazione via smartphone dei ricordi delle vite precedenti?
 :::
 :::term
 id: term-v761-ayashii

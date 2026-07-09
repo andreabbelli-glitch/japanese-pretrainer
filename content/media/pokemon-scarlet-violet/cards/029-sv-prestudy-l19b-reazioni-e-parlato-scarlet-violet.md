@@ -285,7 +285,7 @@ back: ricevere / sostenere
 example_jp: >-
   はがねタイプの わざを {{受|う}}ける。
 example_it: >-
-  Subire una mossa di tipo Acciaio.
+  Subisco una mossa di tipo Acciaio.
 :::
 :::term
 id: term-v263-kateika
@@ -306,9 +306,9 @@ card_type: recognition
 front: '{{家庭科|かていか}}'
 back: economia domestica
 example_jp: >-
-  {{家庭科|かていか}}を {{受|う}}けます。
+  {{家庭科|かていか}}で {{料理|りょうり}}を {{学|まな}}びます。
 example_it: >-
-  Seguo economia domestica.
+  Nel corso di economia domestica imparo a cucinare.
 :::
 :::term
 id: term-v264-reshipi

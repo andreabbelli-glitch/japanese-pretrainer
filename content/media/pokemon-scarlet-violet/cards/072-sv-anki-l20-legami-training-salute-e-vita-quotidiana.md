@@ -114,7 +114,7 @@ entry_id: term-anki-l20-douhou
 card_type: recognition
 front: '{{同|どう}}{{胞|ほう}}'
 back: >-
-  どうほう — compagno; fratello. Indica chi condivide la stessa origine o gruppo; ha un sapore solenne ed epico.
+  どうほう — compagno; fratello.
 example_jp: >-
   スター{{団|だん}}の {{同|どう}}{{胞|ほう}}たちを {{見|み}}{{捨|す}}てる わけには いかない！
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l20-tokkun
 card_type: recognition
 front: '{{特|とっ}}{{訓|くん}}'
 back: >-
-  とっくん — allenamento speciale. Indica un addestramento intensivo per un obiettivo specifico; in forma verbale si usa con を する ({{特|とっ}}{{訓|くん}}をする).
+  とっくん — allenamento speciale.
 example_jp: >-
   ジムテストに {{向|む}}けて、ポケモンたちと {{特|とっ}}{{訓|くん}}を しているんだ。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l20-totsuzen
 card_type: recognition
 front: '{{突|とつ}}{{然|ぜん}}'
 back: >-
-  とつぜん — improvviso; all'improvviso. Agisce tipicamente come avverbio all'inizio di frase per descrivere eventi subitanei che interrompono l'azione.
+  とつぜん — improvviso; all'improvviso.
 example_jp: >-
   {{草|くさ}}むらから {{突|とつ}}{{然|ぜん}}、{{野|や}}{{生|せい}}の ポケモンが とびだしてきた！
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l20-nayamu
 card_type: recognition
 front: '{{悩|なや}}む'
 back: >-
-  なやむ — preoccuparsi; essere indecisi. Esprime un dubbio che pesa o blocca, non un semplice ragionamento strategico.
+  なやむ — preoccuparsi; essere indecisi.
 example_jp: >-
   どの ポケモンを パーティに {{入|い}}れるか {{悩|なや}}む トレーナーは {{多|おお}}い。
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l20-hanbun
 card_type: recognition
 front: '{{半|はん}}{{分|ぶん}}'
 back: >-
-  はんぶん — metà. Indica la frazione esatta di quantità, statistiche o risorse fisiche come i PS; si accompagna spesso a limiti come {{以|い}}{{下|か}} (pari o inferiore a).
+  はんぶん — metà.
 example_jp: >-
   ボスの ポケモンの ＨＰを {{半|はん}}{{分|ぶん}} {{以|い}}{{下|か}}まで {{削|けず}}ったぞ！
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l20-karera
 card_type: recognition
 front: '{{彼|かれ}}ら'
 back: >-
-  かれら — loro. Pronome di terza persona plurale che crea una distanza oggettiva e formale tra il parlante e il gruppo di cui si parla.
+  かれら — loro.
 example_jp: >-
   {{彼|かれ}}らは スター{{団|だん}}と して、アカデミーの ルールに {{反|はん}}している。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l20-kanashii
 card_type: recognition
 front: '{{悲|かな}}しい'
 back: >-
-  かなしい — triste; doloroso. Aggettivo in い per una tristezza sentita o valutata dal parlante.
+  かなしい — triste; doloroso.
 example_jp: >-
   いっしょに {{冒|ぼう}}{{険|けん}}した ポケモンと {{別|わか}}れるのは、やっぱり {{悲|かな}}しいよ。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l20-funbyou
 card_type: recognition
 front: '{{分|ふん}}{{秒|びょう}}'
 back: >-
-  ふんびょう — minuti e secondi; ogni istante. Si usa per parlare del tempo misurato in modo preciso o, in espressioni come {{分|ふん}}{{秒|びょう}}を{{争|あらそ}}う, di urgenza.
+  ふんびょう — minuti e secondi; ogni istante.
 example_jp: >-
   ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l20-hoken
 card_type: recognition
 front: '{{保|ほ}}{{健|けん}}'
 back: >-
-  ほけん — salute; igiene; educazione sanitaria. In ambiente scolastico indica sia la materia sia, in {{保|ほ}}{{健|けん}}{{室|しつ}}, l'infermeria.
+  ほけん — salute; igiene; educazione sanitaria.
 example_jp: >-
   アカデミーの {{保|ほ}}{{健|けん}}の {{授|じゅ}}{{業|ぎょう}}では、ポケモンと {{人|ひと}}の {{体|からだ}}の ことを {{学|まな}}ぶ。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l20-kurasu
 card_type: recognition
 front: '{{暮|く}}らす'
 back: >-
-  くらす — vivere; abitare; trascorrere la vita. `くらす` descrive il vivere quotidiano in un luogo, con abitudini e contesto.
+  くらす — vivere; abitare; trascorrere la vita.
 example_jp: >-
   パルデア{{地|ち}}{{方|ほう}}で ポケモンと {{暮|く}}らす まいにちは、{{新|あたら}}しい {{発|はっ}}{{見|けん}}で いっぱいだ。
 example_it: >-

@@ -30,7 +30,7 @@ back: che faccio? / come faccio? / e adesso?
 example_jp: >-
   どうしよう、 もう {{時間|じかん}}が ない。
 example_it: >-
-  Oddio, e adesso? Non c'e piu tempo.
+  Oddio, e adesso? Non c'è più tempo.
 :::
 :::term
 id: term-e018-doushitano
@@ -52,11 +52,11 @@ entry_type: term
 entry_id: term-e018-doushitano
 card_type: recognition
 front: 'どうしたの？'
-back: che c'e? / che hai? / cos'e successo?
+back: che c'è? / che hai? / cos'è successo?
 example_jp: >-
   どうしたの？ {{何|なに}}か あった？
 example_it: >-
-  Che c'e? E successo qualcosa?
+  Che c'è? È successo qualcosa?
 :::
 :::grammar
 id: grammar-g022-collega-azioni-crea-richieste-e-molte-co
@@ -124,9 +124,10 @@ card_type: concept
 front: 'ます / {{辞書形|じ.しょ.けい}}'
 back: forma cortese in ～ます vs forma piana del dizionario
 example_jp: >-
-  {{店|みせ}}へ {{行|い}}きます。 / {{店|みせ}}へ {{行|い}}く。
+  {{先生|せんせい}}は {{店|みせ}}へ {{行|い}}きます。 {{友達|ともだち}}は
+  {{店|みせ}}へ {{行|い}}く。
 example_it: >-
-  Forma cortese: "vado al negozio". / Forma piana: "vado al negozio".
+  L'insegnante va al negozio. Un amico va al negozio.
 :::
 :::term
 id: term-v088-tokubou

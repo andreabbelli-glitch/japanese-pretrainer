@@ -114,7 +114,7 @@ entry_id: term-anki-l07-tomeru
 card_type: recognition
 front: '{{止|と}}める'
 back: >-
-  とめる — fermare; smettere; spegnere. Verbo transitivo che indica l'azione attiva di bloccare qualcosa in corso (es. un'evoluzione), prendendo il suo oggetto con la particella を.
+  とめる — fermare; smettere; spegnere.
 example_jp: >-
   Bボタンで {{進|しん}}{{化|か}}を {{止|と}}める ことが できる。
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l07-yukiyama
 card_type: recognition
 front: '{{雪|ゆき}}{{山|やま}}'
 back: >-
-  ゆきやま — montagna innevata. Sostantivo che indica aree montuose fredde; come luogo dell'azione o destinazione prende le particelle に o で.
+  ゆきやま — montagna innevata.
 example_jp: >-
   この {{雪|ゆき}}{{山|やま}}には こおりタイプの ポケモンが たくさん いる。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l07-mise
 card_type: recognition
 front: '{{店|みせ}}'
 back: >-
-  みせ — negozio. Sostantivo che indica qualsiasi attività commerciale, si usa comunemente con で per marcare il luogo in cui avviene un acquisto.
+  みせ — negozio.
 example_jp: >-
   テーブルシティの {{店|みせ}}で サンドウィッチの {{材|ざい}}{{料|りょう}}を {{買|か}}った。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l07-bai
 card_type: recognition
 front: '{{倍|ばい}}'
 back: >-
-  ばい — doppio; volte. Suffisso che funge da moltiplicatore nei calcoli, essenziale nel gioco per esprimere le dinamiche di debolezza, resistenza o aumento di statistiche.
+  ばい — doppio; volte.
 example_jp: >-
   {{弱|じゃく}}{{点|てん}}を {{突|つ}}くと ダメージが {{倍|ばい}}に なる。
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l07-yasashii
 card_type: recognition
 front: '{{優|やさ}}しい'
 back: >-
-  やさしい — gentile. Aggettivo in -i che descrive una natura premurosa e affettuosa. Da non confondere con l'omofono {{易|やさ}}しい (facile).
+  やさしい — gentile.
 example_jp: >-
   ペパーは ぶっきらぼうに {{見|み}}えるけど、 {{本|ほん}}{{当|とう}}は とても {{優|やさ}}しい。
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l07-nibai
 card_type: recognition
 front: '{{2倍|にばい}}'
 back: >-
-  にばい — due volte; doppio. Composto da numero + contatore moltiplicatore, si lega al sostantivo seguente con の per indicare una quantità o un effetto raddoppiato.
+  にばい — due volte; doppio.
 example_jp: >-
   くさタイプの わざは みずタイプの ポケモンに {{2倍|にばい}}の ダメージを {{与|あた}}える。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l07-kyoushi
 card_type: recognition
 front: '{{教|きょう}}{{師|し}}'
 back: >-
-  きょうし — insegnante. Termine formale e oggettivo per la professione dell'insegnante, usato in contesti istituzionali o per descrivere il ruolo.
+  きょうし — insegnante.
 example_jp: >-
   アカデミーの {{教|きょう}}{{師|し}}たちは みんな {{個|こ}}{{性|せい}}が {{強|つよ}}い。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l07-hiroba
 card_type: recognition
 front: '{{広|ひろ}}{{場|ば}}'
 back: >-
-  ひろば — piazza. Composto da "ampio" e "luogo", indica uno spiazzo pubblico cittadino usato come snodo o punto d'incontro.
+  ひろば — piazza.
 example_jp: >-
   テーブルシティの {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}で {{友|とも}}だちと {{待|ま}}ち{{合|あ}}わせを した。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l07-okite
 card_type: recognition
 front: '{{掟|おきて}}'
 back: >-
-  おきて — regola; codice. Termine solenne che indica leggi non scritte o codici di condotta interni a un gruppo, più rigido e tribale rispetto a ルール.
+  おきて — regola; codice.
 example_jp: >-
   スター{{団|だん}}には、 {{誰|だれ}}もが {{守|まも}}らなければならない {{掟|おきて}}が ある。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l07-yottsu
 card_type: recognition
 front: '{{4|よっ}}つ'
 back: >-
-  よっつ — quattro (cose). Utilizza il contatore universale (-つ) per enumerare entità astratte, oggetti privi di contatori specifici o elementi di gioco come le mosse.
+  よっつ — quattro (cose).
 example_jp: >-
   ポケモンは わざを {{4|よっ}}つまで {{覚|おぼ}}える ことが できる。
 example_it: >-

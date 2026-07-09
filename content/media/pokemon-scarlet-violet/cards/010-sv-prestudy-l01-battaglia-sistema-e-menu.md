@@ -49,9 +49,9 @@ card_type: recognition
 front: 'できません'
 back: non si può / impossibile
 example_jp: >-
-  ここでは できません。
+  お{{金|かね}}が {{足|た}}りないので {{買|か}}うことが できません。
 example_it: >-
-  Qui non si può fare.
+  Non posso comprarlo perché non ho abbastanza soldi.
 :::
 :::grammar
 id: grammar-g001-spiegazione-enfasi
@@ -187,9 +187,9 @@ card_type: recognition
 front: 'どう'
 back: come
 example_jp: >-
-  どう しますか。
+  {{次|つぎ}}は どう しますか。
 example_it: >-
-  Che cosa vuoi fare?
+  Che cosa vuoi fare adesso?
 :::
 :::term
 id: term-v006-taipu

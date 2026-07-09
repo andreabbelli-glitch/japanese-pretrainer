@@ -335,9 +335,9 @@ card_type: recognition
 front: "{{空中|くうちゅう}}"
 back: aria / in aria
 example_jp: >-
-  {{空中|くうちゅう}}に います。
+  ポケモンが {{空中|くうちゅう}}に います。
 example_it: >-
-  È in aria.
+  Il Pokémon è in aria.
 :::
 :::term
 id: term-v623-rentaruchiimu
@@ -369,9 +369,9 @@ card_type: recognition
 front: "{{不在|ふざい}}"
 back: assenza / non presente
 example_jp: >-
-  {{今|いま}}は {{不在|ふざい}} です。
+  {{校長|こうちょう}}は {{今|いま}} {{不在|ふざい}}です。
 example_it: >-
-  Ora è assente.
+  Il preside al momento è assente.
 :::
 :::term
 id: term-v625-mensetsukan
@@ -392,9 +392,9 @@ card_type: recognition
 front: "{{面接官|めん.せつ.かん}}"
 back: intervistatore
 example_jp: >-
-  {{面接官|めん.せつ.かん}}が います。
+  {{面接官|めん.せつ.かん}}が {{次|つぎ}}の {{質問|しつもん}}を します。
 example_it: >-
-  C'è un intervistatore.
+  L'intervistatore pone la domanda successiva.
 :::
 :::term
 id: term-v626-haigo
@@ -415,9 +415,9 @@ card_type: recognition
 front: "{{背後|はいご}}"
 back: retro / alle spalle
 example_jp: >-
-  {{背後|はいご}}に います。
+  {{相手|あいて}}は {{背後|はいご}}に います。
 example_it: >-
-  È alle spalle.
+  L'avversario è alle mie spalle.
 :::
 :::term
 id: term-v627-rankingu
@@ -438,9 +438,9 @@ card_type: recognition
 front: "ランキング"
 back: classifica
 example_jp: >-
-  ランキングが あります。
+  ランキングで {{順位|じゅんい}}を {{確認|かくにん}}します。
 example_it: >-
-  C'è una classifica.
+  Controllo la mia posizione in classifica.
 :::
 :::term
 id: term-v628-yuuri
@@ -576,9 +576,9 @@ card_type: recognition
 front: "{{固定|こてい}}"
 back: fissaggio / lock
 example_jp: >-
-  {{固定|こてい}}します。
+  カメラの {{位置|いち}}を {{固定|こてい}}します。
 example_it: >-
-  Fisso.
+  Fisso la posizione della fotocamera.
 :::
 :::term
 id: term-v634-herupu
@@ -668,7 +668,7 @@ card_type: recognition
 front: "{{待機中|たい.き.ちゅう}}"
 back: in attesa
 example_jp: >-
-  {{今|いま}}は {{待機中|たい.き.ちゅう}}です。
+  ほかの トレーナーは {{待機中|たい.き.ちゅう}}です。
 example_it: >-
-  Ora è in attesa.
+  Gli altri Allenatori sono in attesa.
 :::

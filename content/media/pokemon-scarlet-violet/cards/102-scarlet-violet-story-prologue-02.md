@@ -54,7 +54,7 @@ example_jp: >-
   {{弱|よわ}}った タイミングで モンスターボールを {{投|な}}げると
   {{捕|つか}}まえやすい。
 example_it: >-
-  Se lanci la Pokeball quando il Pokémon è indebolito, è più facile catturarlo.
+  Se lanci la Poké Ball quando il Pokémon è indebolito, è più facile catturarlo.
 :::
 :::term
 id: term-yowaraseru
@@ -274,9 +274,9 @@ card_type: recognition
 front: "{{制御|せいぎょ}}する"
 back: controllare / tenere sotto controllo
 example_jp: >-
-  その ボールは あの ポケモンを {{制御|せいぎょ}}するための ものなんだ。
+  その ボールで あの ポケモンを {{制御|せいぎょ}}する。
 example_it: >-
-  Quella Ball serve a tenere sotto controllo quel Pokémon.
+  Con quella Ball tieni sotto controllo quel Pokémon.
 :::
 :::term
 id: term-sainan

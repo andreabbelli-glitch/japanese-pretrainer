@@ -114,7 +114,7 @@ entry_id: term-anki-l03-tariru
 card_type: recognition
 front: '{{足|た}}りる'
 back: >-
-  たりる — bastare; essere sufficiente. Indica che una quantità, una risorsa o una condizione copre il bisogno. La cosa che basta si marca di solito con が; il bisogno o lo scopo può comparire con に/には.
+  たりる — bastare; essere sufficiente.
 example_jp: >-
   モンスターボールの {{数|かず}}は これで {{足|た}}りるかな？
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l03-ooi
 card_type: recognition
 front: '{{多|おお}}い'
 back: >-
-  おおい — molti; numeroso. Aggettivo in い che descrive un'alta quantità. Al contrario dell'italiano, non si usa quasi mai per modificare direttamente un nome, ma funge da predicato.
+  おおい — molti; numeroso.
 example_jp: >-
   パルデア{{地方|ちほう}}は めずらしい ポケモンが {{多|おお}}いですね。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l03-hajimete
 card_type: recognition
 front: '{{初|はじ}}めて'
 back: >-
-  はじめて — per la prima volta. Indica la prima esperienza o il primo verificarsi di un'azione; può funzionare da avverbio o entrare in costruzioni nominali.
+  はじめて — per la prima volta.
 example_jp: >-
   ジムリーダーと たたかうのは これが {{初|はじ}}めて なの？
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l03-kangaeru
 card_type: recognition
 front: '{{考|かんが}}える'
 back: >-
-  かんがえる — pensare; riflettere. Esprime un ragionamento attivo o una valutazione. L'oggetto della riflessione si marca con を; l'argomento può essere introdotto da について.
+  かんがえる — pensare; riflettere.
 example_jp: >-
   つぎの ターン、どの わざを だすか よく {{考|かんが}}えるんだ！
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l03-touchan
 card_type: recognition
 front: '{{父|とう}}ちゃん'
 back: >-
-  とうちゃん — papà. Modo informale e affettuoso per chiamare o nominare il proprio padre in famiglia.
+  とうちゃん — papà.
 example_jp: >-
   {{父|とう}}ちゃんは {{昔|むかし}}、ポケモン{{勝負|しょうぶ}}が {{強|つよ}}かったんだ！
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l03-mukashi
 card_type: recognition
 front: '{{昔|むかし}}'
 back: >-
-  むかし — tempo fa; il passato. Sostantivo che indica un tempo remoto o leggendario. Spesso contrapposto al presente ({{今|いま}}).
+  むかし — tempo fa; il passato.
 example_jp: >-
   この エリアゼロには {{昔|むかし}}から ふしぎな ポケモンが いるらしい。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l03-kaachan
 card_type: recognition
 front: '{{母|かあ}}ちゃん'
 back: >-
-  かあちゃん — mamma. Modo informale e affettuoso per chiamare o nominare la propria madre in famiglia.
+  かあちゃん — mamma.
 example_jp: >-
   {{母|かあ}}ちゃんが サンドウィッチを つくってくれたよ。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l03-ippiki
 card_type: recognition
 front: '{{1匹|いっぴき}}'
 back: >-
-  いっぴき — una creatura/animale. Contatore universale per piccoli animali, insetti, pesci e per tutti i Pokémon, indipendentemente dalle loro dimensioni.
+  いっぴき — una creatura/animale.
 example_jp: >-
   あそこを {{歩|ある}}いている ポケモン、{{1匹|いっぴき}} つかまえてみよう！
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l03-warui
 card_type: recognition
 front: '{{悪|わる}}い'
 back: >-
-  わるい — cattivo; negativo; sbagliato; mi dispiace. Aggettivo in い molto comune: può descrivere una qualità negativa o funzionare da scusa informale.
+  わるい — cattivo; negativo; sbagliato; mi dispiace.
 example_jp: >-
   {{悪|わる}}いけど、この ポケモンは ゆずれないんだ。
 example_it: >-
@@ -267,11 +267,11 @@ entry_id: term-anki-l03-kaku
 card_type: recognition
 front: '{{書|か}}く'
 back: >-
-  かく — scrivere. Verbo del primo gruppo (godan) che indica l'azione di tracciare lettere o fissare dati su un supporto testuale o digitale.
+  かく — scrivere.
 example_jp: >-
   ポケモン{{図鑑|ずかん}}に {{新|あたら}}しい データを {{書|か}}くんだ。
 example_it: >-
-  Scrivi i nuovi dati nel Pokédex.
+  Scrivo i nuovi dati nel Pokédex.
 notes_it: >-
   Il verbo {{書|か}}く usa la particella を per indicare il testo prodotto o i dati trascritti, mentre si appoggia a に per indicare la superficie, il libro o il mezzo su cui l'informazione viene fissata (ノートに{{書|か}}く). Negli RPG è storicamente associato al salvataggio della partita (レポートを{{書|か}}く = scrivere il rapporto).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]

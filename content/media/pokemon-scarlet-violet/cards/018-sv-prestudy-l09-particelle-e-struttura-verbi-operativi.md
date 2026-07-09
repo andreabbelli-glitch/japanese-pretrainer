@@ -28,7 +28,7 @@ back: benvenuto / benvenuta
 example_jp: >-
   いらっしゃいませ。
 example_it: >-
-  Benvenuto / benvenuta.
+  Benvenuti.
 :::
 :::term
 id: term-e020-daijoubu
@@ -244,7 +244,7 @@ back: perdere
 example_jp: >-
   この バトルに {{負|ま}}ける。
 example_it: >-
-  Perdere questa battaglia.
+  Perderò questa battaglia.
 :::
 :::term
 id: term-v109-yama

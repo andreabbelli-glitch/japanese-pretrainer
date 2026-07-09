@@ -114,7 +114,7 @@ entry_id: term-anki-l06-uwasa
 card_type: recognition
 front: '{{噂|うわさ}}'
 back: >-
-  うわさ — voce; diceria. Si usa con particelle come が per indicare l'esistenza della voce ({{噂|うわさ}}がある) o を per riceverla/sentirla ({{噂|うわさ}}を{{聞|き}}く).
+  うわさ — voce; diceria.
 example_jp: >-
   あの ポケモンの {{噂|うわさ}}、 {{本|ほん}}{{当|とう}} だったんだ！
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l06-gengogaku
 card_type: recognition
 front: '{{言|げん}}{{語|ご}}{{学|がく}}'
 back: >-
-  げんごがく — linguistica. È una materia di studio e si abbina a verbi come “studiare/imparare”; con la particella の modifica un nome, come in un “corso di linguistica”.
+  げんごがく — linguistica.
 example_jp: >-
   セイジ{{先|せん}}{{生|せい}}の {{言|げん}}{{語|ご}}{{学|がく}}の {{授|じゅ}}{{業|ぎょう}}は おもしろい ですよ。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l06-shi
 card_type: recognition
 front: '{{氏|し}}'
 back: >-
-  し — signor; sig. È un suffisso onorifico formale, spesso usato nei notiziari, nei documenti ufficiali o per indicare figure professionali autorevoli.
+  し — signor; sig.
 example_jp: >-
   クラベル{{氏|し}}から {{連|れん}}{{絡|らく}}が ありました。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l06-agaru
 card_type: recognition
 front: '{{上|あ}}がる'
 back: >-
-  あがる — salire; aumentare. Verbo intransitivo (prende が); indica un innalzamento di livello, posizione o stat. Contrasta con l'azione transitiva {{上|あ}}げる (alzare qualcosa).
+  あがる — salire; aumentare.
 example_jp: >-
   これを {{使|つか}}うと、 ポケモンの こうげきが {{上|あ}}がる。
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l06-kuu
 card_type: recognition
 front: '{{食|く}}う'
 back: >-
-  くう — mangiare. È una variante colloquiale e ruvida di {{食|た}}べる; si usa con を per l'oggetto consumato, come in サンドウィッチを{{食|く}}う.
+  くう — mangiare.
 example_jp: >-
   おれも その サンドウィッチ、 {{食|く}}う ぞ！
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l06-shinjiru
 card_type: recognition
 front: '{{信|しん}}じる'
 back: >-
-  しんじる — credere; fidarsi. Si usa con を per indicare la persona o la cosa in cui si ripone fiducia (ポケモンを{{信|しん}}じる).
+  しんじる — credere; fidarsi.
 example_jp: >-
   おれは {{自|じ}}{{分|ぶん}}の ポケモンを {{信|しん}}じる！
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l06-ningen
 card_type: recognition
 front: '{{人|にん}}{{間|げん}}'
 back: >-
-  にんげん — essere umano. Spesso usato in contrapposizione ad altre specie, come i Pokémon ({{人|にん}}{{間|げん}}とポケモン).
+  にんげん — essere umano.
 example_jp: >-
   ポケモンと {{人|にん}}{{間|げん}}は ずっと {{助|たす}}け{{合|あ}}って きました。
 example_it: >-
@@ -233,11 +233,11 @@ entry_id: term-anki-l06-kaisan
 card_type: recognition
 front: '{{解|かい}}{{散|さん}}'
 back: >-
-  かいさん — scioglimento; congedo. Usato per indicare la fine di una riunione o di un raggruppamento temporaneo (es. una classe o un team). Si usa spesso come esclamazione o col verbo する.
+  かいさん — scioglimento; congedo.
 example_jp: >-
-  {{今日|きょう}}の {{授|じゅ}}{{業|ぎょう}}は これで {{終|お}}わりです。 {{解|かい}}{{散|さん}}！
+  {{今日|きょう}}の {{集|あつ}}まりは これで {{終|お}}わりです。 {{解|かい}}{{散|さん}}！
 example_it: >-
-  L'incontro di oggi finisce qui. Siete liberi di andare!
+  La riunione di oggi finisce qui. Potete andare!
 notes_it: >-
   Un termine che sentirai spesso da direttori o insegnanti. Ordina a un gruppo radunato di disperdersi o dichiara la fine di un'attività. Da non confondere con la distruzione fisica di qualcosa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
@@ -250,7 +250,7 @@ entry_id: term-anki-l06-tanoshimi
 card_type: recognition
 front: '{{楽|たの}}しみ'
 back: >-
-  たのしみ — piacere; attesa gioiosa. Spesso si usa per esprimere entusiasmo per un evento futuro (バトルが{{楽|たの}}しみだ).
+  たのしみ — piacere; attesa gioiosa.
 example_jp: >-
   {{次|つぎ}}の ジム{{戦|せん}}、 とても {{楽|たの}}しみに しています。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l06-kikai
 card_type: recognition
 front: '{{機|き}}{{械|かい}}'
 back: >-
-  きかい — macchina; apparecchiatura meccanica. Si differenzia da {{道|どう}}{{具|ぐ}} (strumento/utensile) perché rimanda a una macchina o apparecchiatura con meccanismi interni.
+  きかい — macchina; apparecchiatura meccanica.
 example_jp: >-
   タイムマシンは とても {{複|ふく}}{{雑|ざつ}}な {{機|き}}{{械|かい}} です。
 example_it: >-

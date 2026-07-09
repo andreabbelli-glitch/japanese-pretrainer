@@ -26,7 +26,7 @@ back: lascia che ti aiuti / farò io per te
 example_jp: >-
   こちらで {{回復|かいふく}}してあげましょう。
 example_it: >-
-  Te lo curiamo qui noi.
+  Ci pensiamo noi a curarlo qui.
 :::
 :::term
 id: term-e095-o-kakuninshitemimashou
@@ -439,9 +439,9 @@ card_type: recognition
 front: "{{不意|ふい}}"
 back: sorpresa / impreparazione
 example_jp: >-
-  {{不意|ふい}}に びっくりする。
+  {{不意|ふい}}に ポケモンが {{現|あらわ}}れて びっくりした。
 example_it: >-
-  Mi sorprendo all'improvviso.
+  Un Pokémon è apparso all'improvviso e mi ha spaventato.
 :::
 :::term
 id: term-v605-dokujoutai

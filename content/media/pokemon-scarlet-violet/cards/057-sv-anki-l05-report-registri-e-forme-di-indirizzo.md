@@ -118,7 +118,7 @@ entry_id: term-anki-l05-tsukareru
 card_type: recognition
 front: '{{疲|つか}}れる'
 back: >-
-  つかれる — stancarsi; verbo intransitivo, il soggetto che si stanca prende が. Si usa spesso al passato per indicare uno stato di stanchezza acquisito.
+  つかれる — stancarsi; verbo intransitivo, il soggetto che si stanca prende が.
 example_jp: >-
   ポケモンがバトルで{{疲|つか}}れると、センターで{{休|やす}}ませたくなる。
 example_it: >-
@@ -135,10 +135,7 @@ entry_id: term-anki-l05-houkoku
 card_type: recognition
 front: '{{報|ほう}}{{告|こく}}'
 back: >-
-  ほうこく — report; rapporto informativo. È una comunicazione attiva rivolta a
-  qualcuno per informarlo su una situazione, un avanzamento o un risultato;
-  come sostantivo verbale forma {{報|ほう}}{{告|こく}}する. Il destinatario del
-  rapporto prende に.
+  ほうこく — report; rapporto informativo.
 example_jp: >-
   クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}は{{済|す}}んだか？
 example_it: >-
@@ -176,11 +173,11 @@ entry_id: term-anki-l05-manabu
 card_type: recognition
 front: '{{学|まな}}ぶ'
 back: >-
-  まなぶ — imparare; studiare; verbo transitivo che sottolinea l'assimilazione di conoscenze. La materia di studio prende を.
+  まなぶ — imparare; studiare; verbo transitivo che sottolinea l'assimilazione di conoscenze.
 example_jp: >-
-  この{{授業|じゅぎょう}}ではポケモンの{{生態|せいたい}}について{{学|まな}}ぶ。
+  {{学校|がっこう}}でポケモンの{{生態|せいたい}}について{{学|まな}}ぶ。
 example_it: >-
-  In questa lezione impareremo a conoscere l'ecologia dei Pokémon.
+  A scuola studio l'ecologia dei Pokémon.
 notes_it: >-
   {{学|まな}}ぶ indica l'apprendimento, spesso sotto la guida di un insegnante o tratto dall'esperienza diretta. A differenza di {{勉|べん}}{{強|きょう}}する (studiare, applicarsi con sforzo), pone più enfasi sull'atto di assimilare una nuova conoscenza. Il contenuto appreso prende を.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
@@ -193,7 +190,7 @@ entry_id: term-anki-l05-kininaru
 card_type: recognition
 front: '{{気|き}}になる'
 back: >-
-  きになる — incuriosire; preoccupare; espressione idiomatica per un pensiero che si fissa in testa. La cosa che attira l'attenzione prende が.
+  きになる — incuriosire; preoccupare; espressione idiomatica per un pensiero che si fissa in testa.
 example_jp: >-
   エリアゼロの{{底|そこ}}にあるものが、どうしても{{気|き}}になる。
 example_it: >-
@@ -227,7 +224,7 @@ entry_id: term-anki-l05-kisama
 card_type: recognition
 front: '{{貴|き}}{{様|さま}}'
 back: >-
-  きさま — tu (forma rude/offensiva); pronome estremamente ostile e dispregiativo. Si usa per esprimere rabbia e aggressività.
+  きさま — tu (forma rude/offensiva); pronome estremamente ostile e dispregiativo.
 example_jp: >-
   {{貴|き}}{{様|さま}}、スター{{団|だん}}のジャマをする{{気|き}}か！
 example_it: >-

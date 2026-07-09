@@ -159,9 +159,9 @@ card_type: recognition
 front: '{{決|き}}める'
 back: decidere
 example_jp: >-
-  ここで {{決|き}}める。
+  {{最初|さいしょ}}の ポケモンは ここで {{決|き}}める。
 example_it: >-
-  Decido qui.
+  Scelgo qui il mio primo Pokémon.
 :::
 :::term
 id: term-v128-muzukashii
@@ -263,7 +263,7 @@ back: sfidare / affrontare
 example_jp: >-
   ジムに {{挑|いど}}む。
 example_it: >-
-  Sfido la palestra Pokémon.
+  Affronto la sfida della palestra.
 :::
 :::term
 id: term-v133-douyatte

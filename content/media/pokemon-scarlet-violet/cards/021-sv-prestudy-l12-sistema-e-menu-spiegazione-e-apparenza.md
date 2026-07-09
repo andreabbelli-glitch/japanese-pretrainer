@@ -180,9 +180,9 @@ card_type: recognition
 front: '{{売|う}}る'
 back: vendere
 example_jp: >-
-  {{店|みせ}}で {{売|う}}る。
+  {{店|みせ}}で {{道具|どうぐ}}を {{売|う}}る。
 example_it: >-
-  Vendo in negozio.
+  Vendo uno strumento al negozio.
 :::
 :::term
 id: term-v141-ikkai
@@ -202,9 +202,9 @@ card_type: recognition
 front: '{{一回|いっかい}}'
 back: una volta
 example_jp: >-
-  {{一回|いっかい}} やります。
+  この {{技|わざ}}を {{一回|いっかい}}だけ {{使|つか}}います。
 example_it: >-
-  Lo faccio una volta.
+  Uso questa mossa una volta sola.
 :::
 :::term
 id: term-v142-kawa
@@ -225,9 +225,9 @@ card_type: recognition
 front: '{{川|かわ}}'
 back: fiume
 example_jp: >-
-  {{川|かわ}}が あります。
+  この {{街|まち}}の {{近|ちか}}くに {{川|かわ}}が あります。
 example_it: >-
-  C'è un fiume.
+  C'è un fiume vicino a questa città.
 :::
 :::term
 id: term-v143-machi
@@ -317,9 +317,9 @@ card_type: recognition
 front: '{{行先|いきさき}}'
 back: destinazione / dove andare
 example_jp: >-
-  {{行先|いきさき}}を {{見|み}}ます。
+  {{次|つぎ}}の {{行先|いきさき}}を {{地図|ちず}}で {{確認|かくにん}}します。
 example_it: >-
-  Guardo la destinazione.
+  Controllo sulla mappa la prossima destinazione.
 :::
 :::term
 id: term-v147-sutaadasutosutoriito

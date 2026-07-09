@@ -96,7 +96,7 @@ back: che diavolo... / ma cosa...
 example_jp: >-
   いったい{{何|なに}}？
 example_it: >-
-  Ma cosa diavolo è? / Che diavolo succede?
+  Che diavolo succede?
 :::
 :::grammar
 id: grammar-g041-probabilmente-suppongo
@@ -234,7 +234,7 @@ back: assolutamente
 example_jp: >-
   {{絶対|ぜったい}} {{行|い}}きます。
 example_it: >-
-  Ci vado assolutamente.
+  Ci andrò a tutti i costi.
 :::
 :::term
 id: term-v214-seibutsu
@@ -255,9 +255,9 @@ card_type: recognition
 front: '{{生物|せいぶつ}}'
 back: biologia / esseri viventi
 example_jp: >-
-  {{生物|せいぶつ}}の {{授業|じゅぎょう}}を {{受|う}}けます。
+  {{学校|がっこう}}で {{生物|せいぶつ}}を {{学|まな}}びます。
 example_it: >-
-  Seguo la lezione di biologia.
+  A scuola studio biologia.
 :::
 :::term
 id: term-v215-setsumei

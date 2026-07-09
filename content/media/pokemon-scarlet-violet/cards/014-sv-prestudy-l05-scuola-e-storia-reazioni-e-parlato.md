@@ -342,10 +342,7 @@ entry_type: term
 entry_id: term-v061-kitto
 card_type: recognition
 front: 'きっと'
-back: >-
-  sicuramente. Esprime certezza soggettiva o una forte aspettativa: "sono quasi
-  sicuro", circa 80-90% di certezza, guidata da convinzioni, speranze o
-  intuizione del parlante.
+back: sicuramente / di certo
 example_jp: >-
   きっと ネモも {{来|く}}ると {{思|おも}}う。
 example_it: >-

@@ -247,7 +247,7 @@ card_type: recognition
 front: "{{特殊|とくしゅ}}"
 back: speciale / categoria Special
 example_jp: >-
-  {{特殊|とくしゅ}}の {{技|わざ}}は ポケモンの {{特攻|とくこう}}で
+  {{特殊|とくしゅ}}{{技|わざ}}は ポケモンの {{特攻|とくこう}}で
   ダメージが {{変|か}}わる。
 example_it: >-
   Il danno di una mossa speciale cambia in base all'Attacco Speciale del
@@ -343,7 +343,7 @@ entry_type: term
 entry_id: term-v554-tansaku
 card_type: recognition
 front: "{{探索|たんさく}}"
-back: probe / enquiry / investigation
+back: esplorazione / ricerca sul campo
 example_jp: >-
   エリアゼロを {{探索|たんさく}}して、{{強|つよ}}い ポケモンの
   {{様子|ようす}}を {{調|しら}}べる。
@@ -501,7 +501,7 @@ example_jp: >-
   {{購買部|こう.ばい.ぶ}}で キズぐすりを {{買|か}}ってから
   バトルに {{行|い}}く。
 example_it: >-
-  Compri una Pozione allo negozio della scuola e poi vai alla battaglia.
+  Compri una Pozione al negozio della scuola e poi vai alla battaglia.
 :::
 :::term
 id: term-v562-kanari

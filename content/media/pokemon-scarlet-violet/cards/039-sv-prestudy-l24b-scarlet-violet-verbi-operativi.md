@@ -200,7 +200,7 @@ back: serio
 example_jp: >-
   {{真剣|しんけん}}に {{戦|たたか}}う。
 example_it: >-
-  Combatte seriamente.
+  Combatto seriamente.
 :::
 :::term
 id: term-v456-mejirushi
@@ -551,7 +551,7 @@ back: girare / visitare
 example_jp: >-
   この{{町|まち}}を {{巡|めぐ}}る。
 example_it: >-
-  Visitare la città.
+  Visito la città.
 :::
 :::term
 id: term-v473-narabekae

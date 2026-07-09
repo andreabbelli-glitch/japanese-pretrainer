@@ -331,7 +331,7 @@ back: match di debutto / prima sfida ufficiale
 example_jp: >-
   さっきの {{子|こ}}の デビュー{{戦|せん}}だから {{見守|みまも}}ってあげよう。
 example_it: >-
-  È la partita di debutto di quel Pokémon, quindi guardiamola con attenzione.
+  È il match di debutto di quel giovane, quindi restiamo a guardare.
 :::
 :::term
 id: term-soshitsu-ari

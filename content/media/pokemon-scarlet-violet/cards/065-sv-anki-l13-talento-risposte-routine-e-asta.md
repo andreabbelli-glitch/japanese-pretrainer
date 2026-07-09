@@ -114,7 +114,7 @@ entry_id: term-anki-l13-sainou
 card_type: recognition
 front: '{{才|さい}}{{能|のう}}'
 back: >-
-  さいのう — talento; capacità innata. Si usa tipicamente con ある o ない per indicarne la presenza.
+  さいのう — talento; capacità innata.
 example_jp: >-
   バトルには {{才|さい}}{{能|のう}}が {{必|ひつ}}{{要|よう}}ですか？
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l13-tsukaeru
 card_type: recognition
 front: '{{使|つか}}える'
 back: >-
-  つかえる — essere usabile; essere utile. Forma potenziale di {{使|つか}}う (usare), si usa spesso per dire che un oggetto "torna utile".
+  つかえる — essere usabile; essere utile.
 example_jp: >-
   このどうぐは いろんなポケモンに {{使|つか}}えるね。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l13-niru
 card_type: recognition
 front: '{{似|に}}る'
 back: >-
-  にる — assomigliare. Prende に per indicare a chi o cosa si somiglia, spesso usato nello stato progressivo ({{似|に}}ている).
+  にる — assomigliare.
 example_jp: >-
   このポケモンは トレーナーに {{似|に}}るって よく {{言|い}}われるよ。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l13-dankai
 card_type: recognition
 front: '{{段|だん}}{{階|かい}}'
 back: >-
-  だんかい — fase; stadio; livello. Si usa per descrivere un grado o lo step di un processo in evoluzione.
+  だんかい — fase; stadio; livello.
 example_jp: >-
   ポケモンの こうげきが {{2|ふた}}{{段|だん}}{{階|かい}} {{上|あ}}がった！
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l13-kotaeru
 card_type: recognition
 front: '{{答|こた}}える'
 back: >-
-  こたえる — rispondere. L'elemento a cui si risponde (un test, una persona) è marcato dalla particella に.
+  こたえる — rispondere.
 example_jp: >-
   アカデミーの クイズに {{答|こた}}えると、{{先|せん}}{{生|せい}}が ほめてくれるよ。
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l13-kare
 card_type: recognition
 front: '{{彼|かれ}}'
 back: >-
-  かれ — lui; fidanzato in certi contesti. Pronome maschile di terza persona; {{彼|かれ}}の significa 'suo/di lui'.
+  かれ — lui; fidanzato in certi contesti.
 example_jp: >-
   {{彼|かれ}}は アカデミーの {{先|せん}}{{生|せい}}だ。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l13-mainichi
 card_type: recognition
 front: '{{毎|まい}}{{日|にち}}'
 back: >-
-  まいにち — ogni giorno. Avverbio temporale che si posiziona liberamente senza richiedere particelle per agganciarsi al verbo.
+  まいにち — ogni giorno.
 example_jp: >-
   ぼくは {{毎|まい}}{{日|にち}} ポケモンと あそんでいるよ。
 example_it: >-
@@ -233,11 +233,11 @@ entry_id: term-anki-l13-rakusatsu
 card_type: recognition
 front: '{{落|らく}}{{札|さつ}}'
 back: >-
-  らくさつ — aggiudicazione; asta vinta. Verbo suru o sostantivo che indica l'atto di essersi aggiudicati un oggetto all'asta.
+  らくさつ — aggiudicazione; asta vinta.
 example_jp: >-
   みごと アイテムを {{落|らく}}{{札|さつ}}した！
 example_it: >-
-  Ti sei brillantemente aggiudicato lo strumento!
+  Mi sono aggiudicato lo strumento!
 notes_it: >-
   {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Porto Marinada è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
@@ -250,7 +250,7 @@ entry_id: term-anki-l13-hokora
 card_type: recognition
 front: '{{祠|ほこら}}'
 back: >-
-  ほこら — piccolo santuario; tempietto. Struttura in legno o pietra, usata a Paldea per i santuari dei Pokémon leggendari.
+  ほこら — piccolo santuario; tempietto.
 example_jp: >-
   パルデアの どこかに あやしい {{祠|ほこら}}が あるらしい。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l13-piipii
 card_type: recognition
 front: '{{Ｐ|ピー}}{{Ｐ|ピー}}'
 back: >-
-  ピーピー — PP, Punti Potenza. Sigla dell'interfaccia usata per gestire gli utilizzi rimanenti delle mosse.
+  ピーピー — PP, Punti Potenza.
 example_jp: >-
   わざの {{Ｐ|ピー}}{{Ｐ|ピー}}が たりなくて {{使|つか}}えない！
 example_it: >-

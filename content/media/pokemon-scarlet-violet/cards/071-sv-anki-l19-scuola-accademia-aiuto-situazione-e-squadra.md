@@ -124,7 +124,7 @@ entry_id: term-anki-l19-wakai
 card_type: recognition
 front: '{{若|わか}}い'
 back: >-
-  わかい — giovane; descrive persone o animali. Spesso usato in contrasto con {{年|ねん}}をとった o per indicare inesperienza.
+  わかい — giovane; descrive persone o animali.
 example_jp: >-
   アカデミーには {{若|わか}}い {{先生|せんせい}}も {{多|おお}}い。
 example_it: >-
@@ -141,7 +141,7 @@ entry_id: term-anki-l19-jugyou-o-ukeru
 card_type: recognition
 front: '{{授|じゅ}}{{業|ぎょう}}を{{受|う}}ける'
 back: >-
-  じゅぎょうをうける — seguire un corso / partecipare a un'attività in aula. {{授|じゅ}}{{業|ぎょう}} è l'oggetto diretto (を) e il verbo ricevere ({{受|う}}ける) indica la partecipazione come studente.
+  じゅぎょうをうける — seguire un corso / partecipare a un'attività in aula.
 example_jp: >-
   アカデミーで {{歴|れき}}{{史|し}}の {{授|じゅ}}{{業|ぎょう}}を{{受|う}}けると、パルデアの ことが よく わかる。
 example_it: >-
@@ -158,7 +158,7 @@ entry_id: term-anki-l19-tasukaru
 card_type: recognition
 front: '{{助|たす}}かる'
 back: >-
-  たすかる — salvarsi, essere d'aiuto; verbo intransitivo (che prende が). Spesso usato per ringraziare quando un'azione esterna ci tira fuori dai guai.
+  たすかる — salvarsi, essere d'aiuto; verbo intransitivo (che prende が).
 example_jp: >-
   ピンチの ときに ポケモンセンターが あると {{助|たす}}かる。
 example_it: >-
@@ -277,7 +277,7 @@ entry_id: term-anki-l19-danin
 card_type: recognition
 front: '{{団|だん}}{{員|いん}}'
 back: >-
-  だんいん — membro del gruppo/team (es. del Team Star). Indica l'affiliazione a un'organizzazione.
+  だんいん — membro del gruppo/team (es.
 example_jp: >-
   あの テントの {{前|まえ}}に スター{{団|だん}}の {{団|だん}}{{員|いん}}が いる。
 example_it: >-

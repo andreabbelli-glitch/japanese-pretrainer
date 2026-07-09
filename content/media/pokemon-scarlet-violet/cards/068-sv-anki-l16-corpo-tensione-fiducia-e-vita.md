@@ -114,7 +114,7 @@ entry_id: term-anki-l16-kinniku
 card_type: recognition
 front: '{{筋|きん}}{{肉|にく}}'
 back: >-
-  きんにく — muscoli; forza fisica. Spesso usato in contesti di allenamento fisico per descrivere la preparazione atletica degli Allenatori o la possenza dei Pokémon.
+  きんにく — muscoli; forza fisica.
 example_jp: >-
   {{筋|きん}}{{肉|にく}}を きたえれば、どんな ポケモンにも かてる！
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l16-kinchou
 card_type: recognition
 front: '{{緊|きん}}{{張|ちょう}}'
 back: >-
-  きんちょう — tensione; nervosismo. È un sostantivo suru ({{緊|きん}}{{張|ちょう}}する) che descrive lo stato di chi è ansioso o in apprensione prima di un evento importante, come una sfida decisiva.
+  きんちょう — tensione; nervosismo.
 example_jp: >-
   はじめての ジムバトルで、すこし {{緊|きん}}{{張|ちょう}} している。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l16-imakara
 card_type: recognition
 front: '{{今|いま}}から'
 back: >-
-  いまから — da ora; d'ora in poi; adesso. Segnala che un'azione o un evento inizierà esattamente nel momento in cui si parla, marcando un chiaro punto di partenza.
+  いまから — da ora; d'ora in poi; adesso.
 example_jp: >-
   {{今|いま}}から ジムテストを はじめます。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l16-shokun
 card_type: recognition
 front: '{{諸|しょ}}{{君|くん}}'
 back: >-
-  しょくん — voi tutti; signori. Termine formale e leggermente autorevole usato da chi è in posizione di guida per rivolgersi direttamente a un gruppo o a una platea (es. gli studenti).
+  しょくん — voi tutti; signori.
 example_jp: >-
   {{生|せい}}{{徒|と}}{{諸|しょ}}{{君|くん}}、{{自|じ}}{{分|ぶん}}だけの {{宝|たから}}を {{見|み}}つけて ください。
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l16-shinrai
 card_type: recognition
 front: '{{信|しん}}{{頼|らい}}'
 back: >-
-  しんらい — fiducia; affidamento. Si usa per descrivere il legame di profonda fiducia emotiva e reciproca che si instaura tra individui o tra un Allenatore e i suoi Pokémon.
+  しんらい — fiducia; affidamento.
 example_jp: >-
   ポケモンを {{信|しん}}{{頼|らい}}していれば、きっと かてるよ。
 example_it: >-
@@ -199,7 +199,7 @@ entry_id: term-anki-l16-fukai
 card_type: recognition
 front: '{{深|ふか}}い'
 back: >-
-  ふかい — profondo. Aggettivo in -i molto versatile: si applica sia per la profondità fisica (es. boschi o crateri) sia per quella figurata (un legame intenso, un pensiero complesso).
+  ふかい — profondo.
 example_jp: >-
   パルデアの {{深|ふか}}い {{森|もり}}には、めずらしい ポケモンが すんでいる。
 example_it: >-
@@ -216,7 +216,7 @@ entry_id: term-anki-l16-jinsei
 card_type: recognition
 front: '{{人|じん}}{{生|せい}}'
 back: >-
-  じんせい — vita (umana); il corso della vita. Riferito all'esistenza come narrazione personale, alle esperienze e alle scelte che definiscono il percorso di una persona.
+  じんせい — vita (umana); il corso della vita.
 example_jp: >-
   アカデミーでの {{経|けい}}{{験|けん}}は、{{人|じん}}{{生|せい}}の {{宝|たから}}に なりますよ。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l16-ooku
 card_type: recognition
 front: '{{多|おお}}く'
 back: >-
-  おおく — molti; gran parte. Viene regolarmente utilizzato come sostantivo modificatore assieme a の ({{多|おお}}くの) per descrivere una vasta quantità di entità collettive o elementi.
+  おおく — molti; gran parte.
 example_jp: >-
   パルデア{{地|ち}}{{方|ほう}}には、{{多|おお}}くの ポケモンが いるんだ。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l16-taiken
 card_type: recognition
 front: '{{体|たい}}{{験|けん}}'
 back: >-
-  たいけん — esperienza (vissuta in prima persona). Enfatizza la partecipazione fisica o il vivere sul campo un evento, come succede durante un'escursione o una prova sul territorio.
+  たいけん — esperienza (vissuta in prima persona).
 example_jp: >-
   {{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}での {{体|たい}}{{験|けん}}は、きっと {{役|やく}}に {{立|た}}つよ。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l16-doushi
 card_type: recognition
 front: '{{同|どう}}{{士|し}}'
 back: >-
-  どうし — compagni; persone dello stesso gruppo o che condividono uno status. Si aggancia come suffisso a un sostantivo per marcare reciprocità e identità di ruoli (es. tra rivali o tra amici).
+  どうし — compagni; persone dello stesso gruppo o che condividono uno status.
 example_jp: >-
   ライバル{{同|どう}}{{士|し}}、{{全|ぜん}}{{力|りょく}}で バトルしようぜ！
 example_it: >-

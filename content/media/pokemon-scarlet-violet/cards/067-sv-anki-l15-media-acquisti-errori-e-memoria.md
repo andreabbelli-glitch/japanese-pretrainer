@@ -114,7 +114,7 @@ entry_id: term-anki-l15-douga
 card_type: recognition
 front: '{{動|どう}}{{画|が}}'
 back: >-
-  どうが — video. Indica video o filmati visualizzati su dispositivi come lo Smart Rotom, distinguendosi da immagini statiche.
+  どうが — video.
 example_jp: >-
   スマホロトムで {{動|どう}}{{画|が}}を {{見|み}}る。
 example_it: >-
@@ -131,7 +131,7 @@ entry_id: term-anki-l15-eru
 card_type: recognition
 front: '{{得|え}}る'
 back: >-
-  える — ottenere. Verbo usato per il conseguimento di elementi intangibili (conoscenza, esperienza), prendendo la particella を.
+  える — ottenere.
 example_jp: >-
   ポケモンとの バトルで {{経|けい}}{{験|けん}}を {{得|え}}る。
 example_it: >-
@@ -148,7 +148,7 @@ entry_id: term-anki-l15-kaimono
 card_type: recognition
 front: '{{買|か}}いもの'
 back: >-
-  かいもの — shopping; acquisti. Sostantivo derivato dal verbo {{買|か}}う, si combina con する per indicare l'azione di fare compere.
+  かいもの — shopping; acquisti.
 example_jp: >-
   テーブルシティで {{買|か}}いものを する。
 example_it: >-
@@ -165,7 +165,7 @@ entry_id: term-anki-l15-fuseikai
 card_type: recognition
 front: '{{不|ふ}}{{正|せい}}{{解|かい}}'
 back: >-
-  ふせいかい — risposta sbagliata. Parola composta con il prefisso negativo {{不|ふ}}, comune in contesti di test e verifiche.
+  ふせいかい — risposta sbagliata.
 example_jp: >-
   テストの {{答|こた}}えが {{不|ふ}}{{正|せい}}{{解|かい}}だった。
 example_it: >-
@@ -182,7 +182,7 @@ entry_id: term-anki-l15-yattsu
 card_type: recognition
 front: '{{8|やっ}}つ'
 back: >-
-  やっつ — otto (cose). Contatore generico della serie nativa giapponese usato per quantificare oggetti senza un contatore specifico.
+  やっつ — otto (cose).
 example_jp: >-
   ジムバッジを {{8|やっ}}つ {{集|あつ}}めた。
 example_it: >-
@@ -199,11 +199,11 @@ entry_id: term-anki-l15-intai
 card_type: recognition
 front: '{{引|いん}}{{退|たい}}'
 back: >-
-  いんたい — ritiro. Indica il ritirarsi da un ruolo attivo (es. allenatore); il ruolo abbandonato prende la particella を.
+  いんたい — ritiro.
 example_jp: >-
   ポケモントレーナーを {{引|いん}}{{退|たい}}する。
 example_it: >-
-  Ritirarsi dal ruolo di Allenatore di Pokémon.
+  Mi ritiro dal ruolo di Allenatore di Pokémon.
 notes_it: >-
   {{引|いん}}{{退|たい}} (いんたい) descrive il momento in cui qualcuno si ritira dalla propria professione o dal proprio ruolo agonistico (come un Allenatore o un Capopalestra). L'azione richiede il verbo する e la particella を per indicare il ruolo lasciato: トレーナーを{{引|いん}}{{退|たい}}する.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
@@ -216,7 +216,7 @@ entry_id: term-anki-l15-akeru
 card_type: recognition
 front: '{{開|あ}}ける'
 back: >-
-  あける — aprire. Verbo transitivo per aprire fisicamente qualcosa, come una porta, un coperchio o una borsa; l'oggetto prende を.
+  あける — aprire.
 example_jp: >-
   {{教|きょう}}{{室|しつ}}の ドアを {{開|あ}}ける。
 example_it: >-
@@ -233,7 +233,7 @@ entry_id: term-anki-l15-kanji
 card_type: recognition
 front: '{{感|かん}}じ'
 back: >-
-  かんじ — sensazione; impressione. Sostantivo spesso abbinato al verbo する ({{感|かん}}じがする) per esprimere una percezione personale.
+  かんじ — sensazione; impressione.
 example_jp: >-
   この ポケモンは ふしぎな {{感|かん}}じが する。
 example_it: >-
@@ -250,7 +250,7 @@ entry_id: term-anki-l15-kizuku
 card_type: recognition
 front: '{{気|き}}づく'
 back: >-
-  きづく — accorgersi; notare. Verbo che prende la particella に per l'oggetto notato; frequente nella forma passiva per i Pokémon.
+  きづく — accorgersi; notare.
 example_jp: >-
   {{野|や}}{{生|せい}}の ポケモンに {{気|き}}づく。
 example_it: >-
@@ -267,7 +267,7 @@ entry_id: term-anki-l15-kioku
 card_type: recognition
 front: '{{記|き}}{{憶|おく}}'
 back: >-
-  きおく — memoria; ricordo. Sostantivo che indica il bagaglio dei ricordi, usato con する per l'atto di memorizzare.
+  きおく — memoria; ricordo.
 example_jp: >-
   ペパーには むかしの {{記|き}}{{憶|おく}}が ある。
 example_it: >-

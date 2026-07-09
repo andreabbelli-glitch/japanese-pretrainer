@@ -95,7 +95,7 @@ back: modo di parlare teatrale, samurai o comico
 example_jp: >-
   {{拙者|せっしゃ}}は {{元気|げんき}}でござる。
 example_it: >-
-  Io sto bene, in stile formale/samurai.
+  Il sottoscritto sta bene.
 :::
 :::grammar
 id: grammar-g107-riguardo-a-su
@@ -301,9 +301,9 @@ card_type: recognition
 front: "{{開催中|かい.さい.ちゅう}}"
 back: in corso
 example_jp: >-
-  {{今|いま}}は {{開催中|かい.さい.ちゅう}} です。
+  {{大会|たいかい}}は {{今|いま}} {{開催中|かい.さい.ちゅう}}です。
 example_it: >-
-  Adesso è in corso.
+  Il torneo è in corso.
 :::
 :::term
 id: term-v645-chuushi
@@ -324,9 +324,9 @@ card_type: recognition
 front: "{{中止|ちゅうし}}"
 back: interruzione / annullamento
 example_jp: >-
-  {{中止|ちゅうし}}です。
+  {{大会|たいかい}}は あめで {{中止|ちゅうし}}です。
 example_it: >-
-  È annullato.
+  Il torneo è annullato per la pioggia.
 :::
 :::term
 id: term-v646-kanyuu
@@ -393,9 +393,9 @@ card_type: recognition
 front: "{{通知|つうち}}"
 back: notifica
 example_jp: >-
-  {{通知|つうち}}が あります。
+  {{新|あたら}}しい {{通知|つうち}}が あります。
 example_it: >-
-  C'è una notifica.
+  Ho ricevuto una nuova notifica.
 :::
 :::term
 id: term-v649-koukanaite
@@ -416,9 +416,9 @@ card_type: recognition
 front: "{{交換相手|こう.かん.あい.て}}"
 back: partner di scambio
 example_jp: >-
-  {{交換相手|こう.かん.あい.て}}です。
+  ネモが {{交換相手|こう.かん.あい.て}}です。
 example_it: >-
-  È il partner di scambio.
+  Nemi è il partner di scambio.
 :::
 :::term
 id: term-v650-kakou
@@ -485,9 +485,9 @@ card_type: recognition
 front: "{{非表示|ひ.ひょう.じ}}"
 back: nascondi / non visualizzare
 example_jp: >-
-  {{非表示|ひ.ひょう.じ}}です。
+  この アイコンは {{非表示|ひ.ひょう.じ}}です。
 example_it: >-
-  È nascosto.
+  Questa icona è nascosta.
 :::
 :::term
 id: term-v653-ichiran
@@ -508,9 +508,9 @@ card_type: recognition
 front: "{{一覧|いちらん}}"
 back: elenco
 example_jp: >-
-  {{一覧|いちらん}}です。
+  {{参加者|さんかしゃ}}の {{一覧|いちらん}}を {{確認|かくにん}}します。
 example_it: >-
-  È l'elenco.
+  Controllo l'elenco dei partecipanti.
 :::
 :::term
 id: term-v654-kachimake
@@ -531,9 +531,9 @@ card_type: recognition
 front: "{{勝|か}}ち{{負|ま}}け"
 back: esito vittoria / sconfitta
 example_jp: >-
-  {{勝|か}}ち{{負|ま}}けです。
+  バトルの {{勝|か}}ち{{負|ま}}けは まだ {{分|わ}}かりません。
 example_it: >-
-  È vittoria o sconfitta.
+  Non sappiamo ancora chi vincerà la lotta.
 :::
 :::term
 id: term-v655-matomekai
@@ -554,9 +554,9 @@ card_type: recognition
 front: "まとめ{{買|が}}い"
 back: acquisto in blocco
 example_jp: >-
-  まとめ{{買|が}}いです。
+  ボールを まとめ{{買|が}}いします。
 example_it: >-
-  È un acquisto in blocco.
+  Compro le Ball in blocco.
 :::
 :::term
 id: term-v656-rainnappu
@@ -577,9 +577,9 @@ card_type: recognition
 front: "ラインナップ"
 back: lista disponibile
 example_jp: >-
-  {{ラインナップ|らいんなっぷ}}です。
+  {{商品|しょうひん}}の {{ラインナップ|らいんなっぷ}}を {{確認|かくにん}}します。
 example_it: >-
-  È la lista disponibile.
+  Controllo la gamma di prodotti.
 :::
 :::term
 id: term-v657-zensokuryoku
@@ -646,9 +646,9 @@ card_type: recognition
 front: "{{退場|たいじょう}}"
 back: uscita di scena
 example_jp: >-
-  {{退場|たいじょう}}します。
+  {{負|ま}}けた トレーナーが {{退場|たいじょう}}します。
 example_it: >-
-  Esco di scena.
+  L'Allenatore sconfitto lascia il campo.
 :::
 :::term
 id: term-v660-akogare

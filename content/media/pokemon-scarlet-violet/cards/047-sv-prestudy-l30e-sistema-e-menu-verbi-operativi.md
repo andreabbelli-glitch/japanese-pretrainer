@@ -410,11 +410,11 @@ entry_type: term
 entry_id: term-v672-konnan
 card_type: recognition
 front: "{{困難|こんなん}}"
-back: difficile / complesso
+back: difficoltà / ostacolo
 example_jp: >-
-  この{{先|さき}}に {{困難|こんなん}}が あります。
+  この{{先|さき}}には {{多|おお}}くの {{困難|こんなん}}が あります。
 example_it: >-
-  Più avanti c'è qualcosa di difficile.
+  Più avanti ci attendono molte difficoltà.
 :::
 :::term
 id: term-v673-kakkuu-suru

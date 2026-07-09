@@ -250,7 +250,7 @@ entry_id: term-anki-l10-shijou
 card_type: recognition
 front: '{{市|し}}{{場|じょう}}'
 back: >-
-  しじょう — mercato; usato in senso economico generale. Il mercato fisico (come Marinada) spesso si legge いちば.
+  しじょう — mercato; usato in senso economico generale.
 example_jp: >-
   この {{地|ち}}{{方|ほう}}の {{市|し}}{{場|じょう}}には たくさんの アイテムが {{出|で}}{{回|まわ}}っている。
 example_it: >-

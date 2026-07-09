@@ -94,7 +94,7 @@ entry_id: term-anki-l02-nen
 card_type: recognition
 front: '{{年|ねん}}'
 back: >-
-  ねん — anno. Spesso usato come suffisso o contatore per gli anni solari e scolastici, a differenza di {{歳|さい}} (さい) che conta l'età delle persone.
+  ねん — anno.
 example_jp: >-
   アカデミーの {{1年|いちねん}}は {{長|なが}}いですか？
 example_it: >-
@@ -111,7 +111,7 @@ entry_id: term-anki-l02-sukoshi
 card_type: recognition
 front: '{{少|すこ}}し'
 back: >-
-  すこし — un po'; poco. Avverbio per piccole quantità o brevi lassi di tempo; spesso usato per ammorbidire il tono di una richiesta.
+  すこし — un po'; poco.
 example_jp: >-
   {{少|すこ}}し {{休|やす}}んでから、また ポケモンと {{遊|あそ}}びましょう！
 example_it: >-
@@ -128,7 +128,7 @@ entry_id: term-v068-ooana
 card_type: recognition
 front: '{{大|おお}}{{穴|あな}}'
 back: >-
-  おおあな — grande voragine. Termine geografico composto da {{大|おお}} (grande) e {{穴|あな}} (buco), usato specificamente per indicare il cratere al centro di Paldea.
+  おおあな — grande voragine.
 example_jp: >-
   パルデアの {{大|おお}}{{穴|あな}}の {{中|なか}}には {{何|なに}}が あるのかな？
 example_it: >-
@@ -145,7 +145,7 @@ entry_id: term-anki-l02-kanjiru
 card_type: recognition
 front: '{{感|かん}}じる'
 back: >-
-  かんじる — sentire; percepire. Descrive la percezione sensoriale non uditiva/visiva, come le emozioni o l'aura ({{気|け}}{{配|はい}}) di un Pokémon. Prende を.
+  かんじる — sentire; percepire.
 example_jp: >-
   この {{奥|おく}}から、ものすごい ポケモンの {{気|け}}{{配|はい}}を {{感|かん}}じる……！
 example_it: >-
@@ -162,7 +162,7 @@ entry_id: term-anki-l02-yobu
 card_type: recognition
 front: '{{呼|よ}}ぶ'
 back: >-
-  よぶ — chiamare; invitare. Prende を per la persona o cosa chiamata. È comunissimo nella struttura AをBと{{呼|よ}}ぶ (chiamare A col nome B).
+  よぶ — chiamare; invitare.
 example_jp: >-
   みんなは わたしの ことを ネモと {{呼|よ}}ぶの！
 example_it: >-
@@ -179,7 +179,7 @@ entry_id: term-anki-l02-yomu
 card_type: recognition
 front: '{{読|よ}}む'
 back: >-
-  よむ — leggere. Azione rivolta a testi scritti (libri, cartelli). Prende を per il testo letto.
+  よむ — leggere.
 example_jp: >-
   エントランスの {{本|ほん}}{{棚|だな}}で、パルデアの {{歴|れき}}{{史|し}}についての {{本|ほん}}を {{読|よ}}む。
 example_it: >-
@@ -196,7 +196,7 @@ entry_id: term-takara-sagashi
 card_type: recognition
 front: '{{宝|たから}}{{探|さが}}し'
 back: >-
-  たからさがし — caccia al tesoro. Sostantivo composto da {{宝|たから}} (tesoro) e {{探|さが}}し (ricerca). Appare spesso con il verbo {{開|かい}}{{始|し}}する (iniziare) o {{出|で}}かける (partire).
+  たからさがし — caccia al tesoro.
 example_jp: >-
   これより {{課|か}}{{外|がい}}{{授|じゅ}}{{業|ぎょう}}の {{宝|たから}}{{探|さが}}しを {{開|かい}}{{始|し}}します！
 example_it: >-
@@ -213,7 +213,7 @@ entry_id: term-anki-l02-hanashi
 card_type: recognition
 front: '{{話|はなし}}'
 back: >-
-  はなし — discorso; conversazione; storia. Sostantivo che indica il contenuto comunicato. Si usa in frasi fisse come {{話|はなし}}がある (ho qualcosa da dirti).
+  はなし — discorso; conversazione; storia.
 example_jp: >-
   {{校|こう}}{{長|ちょう}}{{先|せん}}{{生|せい}}の {{話|はなし}}は いつも {{少|すこ}}し {{長|なが}}いですね。
 example_it: >-
@@ -230,7 +230,7 @@ entry_id: term-anki-l02-hanasu
 card_type: recognition
 front: '{{話|はな}}す'
 back: >-
-  はなす — parlare. Azione di comunicazione. Il partner di conversazione prende と (parlare con) o に (parlare a).
+  はなす — parlare.
 example_jp: >-
   ネモは ポケモンの ことを {{話|はな}}すのが {{大好|だいす}}きです。
 example_it: >-
@@ -247,7 +247,7 @@ entry_id: term-anki-l02-nanika
 card_type: recognition
 front: '{{何|なに}}か'
 back: >-
-  なにか — qualcosa. Pronome per un oggetto non specificato. Può essere seguito da particelle come が e を ({{何|なに}}かが), ma spesso vengono omesse.
+  なにか — qualcosa.
 example_jp: >-
   {{草|くさ}}むらで {{何|なに}}かが {{動|うご}}いた {{気|き}}が する……。
 example_it: >-
