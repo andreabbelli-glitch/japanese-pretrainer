@@ -90,8 +90,14 @@ type LessonOpenAttempt = {
   state: LessonOpenState | null;
 };
 
+type LessonOpenRetryTimer = {
+  lessonId: string;
+  timeoutId: number;
+};
+
 const TOOLTIP_AUDIO_PRELOAD_DELAY_MS = 200;
 const LESSON_OPEN_RETRY_DELAY_MS = 30_000;
+const LESSON_OPEN_MAX_CALLS_PER_FAILURE_CYCLE = 2;
 
 function buildTooltipEntryMap(entries: TextbookTooltipEntry[]) {
   return new Map(
@@ -147,7 +153,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const isMountedRef = useRef(false);
   const imageLightboxOpenerRef = useRef<HTMLButtonElement | null>(null);
   const lessonOpenAttemptByIdRef = useRef(new Map<string, LessonOpenAttempt>());
-  const lessonOpenRetryTimerRef = useRef<number | null>(null);
+  const lessonOpenAttemptCountByIdRef = useRef(new Map<string, number>());
+  const lessonOpenRetryTimerRef = useRef<LessonOpenRetryTimer | null>(null);
   const mobileSheetOpenerRef = useRef<HTMLElement | null>(null);
   const persistedFuriganaModeRef = useRef(data.furiganaMode);
   const serverFuriganaModeRef = useRef(data.furiganaMode);
@@ -155,11 +162,26 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const lessonStatus = readerData.lesson.status;
   const hasTooltipTargets = hasLessonTooltipTargets(readerData.lesson.ast);
 
+  const cancelLessonOpenRetry = useCallback((lessonId?: string) => {
+    const retryTimer = lessonOpenRetryTimerRef.current;
+
+    if (!retryTimer || (lessonId && retryTimer.lessonId !== lessonId)) {
+      return;
+    }
+
+    window.clearTimeout(retryTimer.timeoutId);
+    lessonOpenRetryTimerRef.current = null;
+  }, []);
+
   useEffect(() => {
     if (currentLessonIdRef.current === data.lesson.id) {
       return;
     }
 
+    const previousLessonId = currentLessonIdRef.current;
+
+    cancelLessonOpenRetry(previousLessonId);
+    lessonOpenAttemptCountByIdRef.current.delete(previousLessonId);
     currentLessonIdRef.current = data.lesson.id;
     setReaderData(data);
     persistedFuriganaModeRef.current = data.furiganaMode;
@@ -175,7 +197,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     setMobileSheet(null);
     mobileSheetOpenerRef.current = null;
     anchorRef.current = null;
-  }, [data]);
+  }, [cancelLessonOpenRetry, data]);
 
   const applyOpenedStateIfCurrent = useCallback(
     (
@@ -204,14 +226,38 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
       return;
     }
 
-    if (lessonOpenRetryTimerRef.current !== null) {
-      window.clearTimeout(lessonOpenRetryTimerRef.current);
+    const actionCallCount =
+      lessonOpenAttemptCountByIdRef.current.get(lessonId) ?? 0;
+
+    if (actionCallCount >= LESSON_OPEN_MAX_CALLS_PER_FAILURE_CYCLE) {
+      return;
     }
 
-    lessonOpenRetryTimerRef.current = window.setTimeout(() => {
+    const currentRetryTimer = lessonOpenRetryTimerRef.current;
+
+    if (currentRetryTimer?.lessonId === lessonId) {
+      return;
+    }
+
+    if (currentRetryTimer) {
+      window.clearTimeout(currentRetryTimer.timeoutId);
+    }
+
+    const timeoutId = window.setTimeout(() => {
+      if (lessonOpenRetryTimerRef.current?.timeoutId !== timeoutId) {
+        return;
+      }
+
       lessonOpenRetryTimerRef.current = null;
+
+      if (!isMountedRef.current || currentLessonIdRef.current !== lessonId) {
+        return;
+      }
+
       setLessonOpenRetryToken((current) => current + 1);
     }, LESSON_OPEN_RETRY_DELAY_MS);
+
+    lessonOpenRetryTimerRef.current = { lessonId, timeoutId };
   }, []);
 
   useEffect(() => {
@@ -255,6 +301,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
               promise: null,
               state: openedState
             });
+            lessonOpenAttemptCountByIdRef.current.delete(lessonId);
+            cancelLessonOpenRetry(lessonId);
           }
 
           if (!isCancelled) {
@@ -268,15 +316,20 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
         .catch(() => {
           const currentAttempt = lessonOpenAttemptByIdRef.current.get(lessonId);
 
-          if (currentAttempt?.promise === promise) {
-            lessonOpenAttemptByIdRef.current.delete(lessonId);
+          if (currentAttempt?.promise !== promise) {
+            return;
           }
 
+          lessonOpenAttemptByIdRef.current.delete(lessonId);
           scheduleLessonOpenRetry(lessonId);
         });
     };
 
     if (isWithinThrottle && existingAttempt.promise) {
+      if (!lessonOpenAttemptCountByIdRef.current.has(lessonId)) {
+        lessonOpenAttemptCountByIdRef.current.set(lessonId, 1);
+      }
+
       attachOpenStateHandlers(
         existingAttempt.promise,
         existingAttempt.attemptedAt
@@ -286,6 +339,19 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
         isCancelled = true;
       };
     }
+
+    const actionCallCount =
+      lessonOpenAttemptCountByIdRef.current.get(lessonId) ?? 0;
+    const pendingRetry = lessonOpenRetryTimerRef.current;
+
+    if (
+      pendingRetry?.lessonId === lessonId ||
+      actionCallCount >= LESSON_OPEN_MAX_CALLS_PER_FAILURE_CYCLE
+    ) {
+      return;
+    }
+
+    lessonOpenAttemptCountByIdRef.current.set(lessonId, actionCallCount + 1);
 
     const promise = recordLessonOpenedAction({ lessonId });
 
@@ -301,6 +367,7 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     };
   }, [
     applyOpenedStateIfCurrent,
+    cancelLessonOpenRetry,
     data,
     data.lesson.id,
     data.lesson.status,
@@ -331,13 +398,9 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
     return () => {
       isMountedRef.current = false;
       tooltipAbortRef.current?.abort();
-
-      if (lessonOpenRetryTimerRef.current !== null) {
-        window.clearTimeout(lessonOpenRetryTimerRef.current);
-        lessonOpenRetryTimerRef.current = null;
-      }
+      cancelLessonOpenRetry();
     };
-  }, []);
+  }, [cancelLessonOpenRetry]);
 
   const activeTooltipEntryKey =
     tooltip?.entryKey ??
@@ -720,8 +783,11 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
   const toggleLessonCompletion = () => {
     const wasCompleted = lessonStatus === "completed";
     const markAsCompleted = !wasCompleted;
+    const lessonId = readerData.lesson.id;
 
-    lessonOpenAttemptByIdRef.current.delete(readerData.lesson.id);
+    cancelLessonOpenRetry(lessonId);
+    lessonOpenAttemptByIdRef.current.delete(lessonId);
+    lessonOpenAttemptCountByIdRef.current.delete(lessonId);
     setReaderData((current) =>
       applyLessonCompletionState(current, markAsCompleted)
     );
@@ -739,7 +805,8 @@ export function LessonReaderClient({ data }: LessonReaderClientProps) {
           router.push(result.consolidationHref);
         }
       } catch {
-        lessonOpenAttemptByIdRef.current.delete(readerData.lesson.id);
+        lessonOpenAttemptByIdRef.current.delete(lessonId);
+        lessonOpenAttemptCountByIdRef.current.delete(lessonId);
         setReaderData((current) =>
           applyLessonCompletionState(current, wasCompleted)
         );

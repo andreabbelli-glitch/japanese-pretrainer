@@ -775,6 +775,227 @@ describe("LessonReaderClient prop sync", () => {
     }
   });
 
+  it("bounds calls during a consecutive lesson-open failure cycle", async () => {
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    vi.useFakeTimers();
+
+    try {
+      mocks.recordLessonOpenedAction.mockRejectedValue(
+        new Error("persistent write failure")
+      );
+      const lessonData = buildLessonData({
+        furiganaMode: "hover",
+        status: "not_started",
+        statusLabel: "Da iniziare",
+        summary: "Summary before bounded retry"
+      });
+
+      await act(async () => {
+        root!.render(createElement(LessonReaderClient, { data: lessonData }));
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(1);
+
+      await act(async () => {
+        root!.render(
+          createElement(LessonReaderClient, {
+            data: {
+              ...lessonData,
+              lesson: {
+                ...lessonData.lesson,
+                summary: "Same lesson rerender before retry"
+              }
+            }
+          })
+        );
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(1);
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(30_000);
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(2);
+      expect(vi.getTimerCount()).toBe(0);
+
+      await act(async () => {
+        root!.render(
+          createElement(LessonReaderClient, {
+            data: {
+              ...lessonData,
+              lesson: {
+                ...lessonData.lesson,
+                summary: "Same lesson rerender after retry cap"
+              }
+            }
+          })
+        );
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(2);
+      expect(vi.getTimerCount()).toBe(0);
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(30 * 60_000);
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(2);
+
+      mocks.recordLessonOpenedAction.mockResolvedValueOnce({
+        lastOpenedAt: "2026-04-25T10:31:00.000Z",
+        ok: true,
+        startedAt: "2026-04-25T10:31:00.000Z",
+        status: "in_progress"
+      });
+
+      await act(async () => {
+        root!.render(
+          createElement(LessonReaderClient, {
+            data: buildLessonData({
+              furiganaMode: "hover",
+              lessonId: "lesson-002",
+              lessonSlug: "second",
+              status: "not_started",
+              statusLabel: "Da iniziare",
+              summary: "Independent lesson budget",
+              title: "Second"
+            })
+          })
+        );
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(3);
+      expect(container.textContent).toContain("Second In corso");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("cancels a pending lesson-open retry when completion takes over", async () => {
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    vi.useFakeTimers();
+
+    try {
+      mocks.recordLessonOpenedAction.mockRejectedValueOnce(
+        new Error("temporary write failure")
+      );
+
+      await act(async () => {
+        root!.render(
+          createElement(LessonReaderClient, {
+            data: buildLessonData({
+              furiganaMode: "hover",
+              status: "not_started",
+              statusLabel: "Da iniziare",
+              summary: "Summary before completion"
+            })
+          })
+        );
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(1);
+
+      await act(async () => {
+        mocks.latestToggleLessonCompletion?.();
+        await flushMicrotasks();
+      });
+
+      expect(vi.getTimerCount()).toBe(0);
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(30 * 60_000);
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(1);
+      expect(container.textContent).toContain("Completata");
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it("replaces a previous-lesson retry and clears the current one on unmount", async () => {
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    vi.useFakeTimers();
+
+    try {
+      mocks.recordLessonOpenedAction.mockRejectedValue(
+        new Error("persistent write failure")
+      );
+
+      await act(async () => {
+        root!.render(
+          createElement(LessonReaderClient, {
+            data: buildLessonData({
+              furiganaMode: "hover",
+              status: "not_started",
+              statusLabel: "Da iniziare",
+              summary: "First lesson failure"
+            })
+          })
+        );
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(1);
+      expect(vi.getTimerCount()).toBe(1);
+
+      await act(async () => {
+        root!.render(
+          createElement(LessonReaderClient, {
+            data: buildLessonData({
+              furiganaMode: "hover",
+              lessonId: "lesson-002",
+              lessonSlug: "second",
+              status: "not_started",
+              statusLabel: "Da iniziare",
+              summary: "Second lesson failure",
+              title: "Second"
+            })
+          })
+        );
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(2);
+      expect(vi.getTimerCount()).toBe(1);
+
+      await act(async () => {
+        root!.unmount();
+        await flushMicrotasks();
+      });
+      root = null;
+
+      expect(vi.getTimerCount()).toBe(0);
+
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(30 * 60_000);
+        await flushMicrotasks();
+      });
+
+      expect(mocks.recordLessonOpenedAction).toHaveBeenCalledTimes(2);
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it("navigates to consolidation after a newly completed lesson creates pending subjects", async () => {
     container = document.createElement("div");
     root = createRoot(container);
