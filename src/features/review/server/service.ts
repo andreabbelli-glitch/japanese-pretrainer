@@ -22,7 +22,7 @@ import type {
   ReviewForcedContrastResolution,
   ReviewScope
 } from "@/features/review/types";
-import { enqueueReviewMistakeConsolidation } from "@/features/consolidation/server";
+import { syncReviewGradeConsolidation } from "@/features/consolidation/server";
 import {
   assertCardBelongsToExpectedMedia,
   isActiveReviewableMutationCard,
@@ -47,6 +47,7 @@ export type { ReviewMutationTransaction } from "@/features/review/server/mutatio
 
 export type ReviewGradeResult = {
   cardId: string;
+  consolidationChanged: boolean;
   consolidationQueued: boolean;
   dueAt: string;
   forcedContrast?: ReviewForcedContrastResolution;
@@ -217,7 +218,7 @@ export async function gradeReviewCardInTransaction(input: {
     schedulerVersion: scheduled.schedulerVersion
   });
 
-  const consolidationResult = await enqueueReviewMistakeConsolidation({
+  const consolidationResult = await syncReviewGradeConsolidation({
     database: input.transaction,
     identity: subjectContext.identity,
     lessonId: loadedCard.lessonId!,
@@ -241,6 +242,7 @@ export async function gradeReviewCardInTransaction(input: {
 
   return {
     cardId: loadedCard.id,
+    consolidationChanged: consolidationResult.changed,
     consolidationQueued: consolidationResult.queued,
     dueAt: scheduled.dueAt,
     forcedContrast,

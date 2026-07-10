@@ -1,7 +1,7 @@
 export type * from "./contracts";
 export {
   enqueueLessonConsolidation,
-  enqueueReviewMistakeConsolidation
+  syncReviewGradeConsolidation
 } from "./enqueue";
 export { setLessonCompletionWithConsolidation } from "./lesson-completion";
 export { markConsolidationKnown, submitConsolidationAnswer } from "./mutations";

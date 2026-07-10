@@ -70,7 +70,7 @@ export async function gradeReviewCardFormWorkflow(
   });
 
   applyReviewActionCachePolicy({
-    includeConsolidation: gradeResult.consolidationQueued,
+    includeConsolidation: gradeResult.consolidationChanged,
     mediaId,
     policy: "review"
   });
@@ -127,7 +127,7 @@ export async function gradeReviewCardSessionWorkflow(
   });
 
   applyReviewActionCachePolicy({
-    includeConsolidation: gradeResult.consolidationQueued,
+    includeConsolidation: gradeResult.consolidationChanged,
     mediaId: gradeResult.mediaId,
     policy: "review"
   });

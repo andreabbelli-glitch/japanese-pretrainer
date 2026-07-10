@@ -112,7 +112,7 @@ export async function enqueueLessonConsolidation(
   };
 }
 
-export async function enqueueReviewMistakeConsolidation(input: {
+export async function syncReviewGradeConsolidation(input: {
   database?: ConsolidationMutationClient;
   identity: ReviewSubjectIdentity;
   lessonId: string;
@@ -121,13 +121,6 @@ export async function enqueueReviewMistakeConsolidation(input: {
   rating: ReviewRating;
   representativeCardId: string;
 }) {
-  if (input.rating !== "again" && input.rating !== "hard") {
-    return {
-      queued: false as const,
-      subjectKey: input.identity.subjectKey
-    };
-  }
-
   const database = input.database ?? db;
   const nowIso = (input.now ?? new Date()).toISOString();
   const existingRow =
@@ -138,12 +131,43 @@ export async function enqueueReviewMistakeConsolidation(input: {
       )
     });
 
+  if (existingRow?.status === "retraining" && input.rating !== "again") {
+    await database
+      .update(preReviewConsolidationState)
+      .set({
+        completedAt: nowIso,
+        status: "passed",
+        updatedAt: nowIso
+      })
+      .where(
+        eq(preReviewConsolidationState.subjectKey, input.identity.subjectKey)
+      );
+
+    return {
+      changed: true as const,
+      queued: false as const,
+      resolved: true as const,
+      subjectKey: input.identity.subjectKey
+    };
+  }
+
+  if (input.rating !== "again" && input.rating !== "hard") {
+    return {
+      changed: false as const,
+      queued: false as const,
+      resolved: false as const,
+      subjectKey: input.identity.subjectKey
+    };
+  }
+
   if (
     existingRow?.status === "pending" ||
     existingRow?.status === "retraining"
   ) {
     return {
+      changed: false as const,
       queued: false as const,
+      resolved: false as const,
       subjectKey: input.identity.subjectKey
     };
   }
@@ -180,7 +204,9 @@ export async function enqueueReviewMistakeConsolidation(input: {
   }
 
   return {
+    changed: true as const,
     queued: true as const,
+    resolved: false as const,
     subjectKey: input.identity.subjectKey
   };
 }

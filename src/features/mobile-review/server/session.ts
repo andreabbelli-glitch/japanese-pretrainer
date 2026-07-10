@@ -117,7 +117,7 @@ export async function gradeMobileReviewCard(input: {
 
   revalidateReviewSummaryCache(gradeResult.mediaId);
 
-  if (gradeResult.consolidationQueued) {
+  if (gradeResult.consolidationChanged) {
     revalidateConsolidationSummaryCache(gradeResult.mediaId);
   }
 
