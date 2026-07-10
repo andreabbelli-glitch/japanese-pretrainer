@@ -418,6 +418,81 @@ describe("review page client hydration", () => {
     expect(markup).not.toContain("flashcard dopo questa");
   });
 
+  it("keeps the final queue refresh CTA visible when no card is selected", () => {
+    const baseData = buildFullReviewPageData({
+      cardId: "card-a"
+    });
+    const completionData = {
+      ...baseData,
+      queue: {
+        ...baseData.queue,
+        dueCount: 0,
+        nextDueAt: "2099-04-02T12:05:01.000Z",
+        queueCount: 0,
+        queueLabel: "Nessuna card pronta.",
+        upcomingCount: 1
+      },
+      queueCardIds: [],
+      selectedCard: null,
+      selectedCardContext: {
+        ...baseData.selectedCardContext,
+        bucket: null,
+        isQueueCard: false,
+        position: null,
+        remainingCount: 0,
+        showAnswer: false
+      },
+      session: {
+        ...baseData.session,
+        answeredCount: 1
+      }
+    } as ReviewPageData;
+
+    const markup = renderToStaticMarkup(
+      ReviewPageStage({
+        additionalNewCount: 0,
+        contextualGlossaryHref: "/glossary",
+        forcedContrastInputRef: { current: null },
+        forcedContrastListboxId: "review-contrast-listbox",
+        forcedContrastQuery: "",
+        forcedContrastSelection: null,
+        forcedContrastShouldShowSuggestions: false,
+        forcedContrastSuggestions: [],
+        fullSelectedCard: null,
+        gradePreviewLookup: new Map(),
+        handleGradeCard: () => {},
+        handleCloseForcedContrast: () => {},
+        handleForcedContrastQueryChange: () => {},
+        handleForcedContrastSelect: () => {},
+        handleMarkKnown: () => {},
+        handleOpenForcedContrast: () => {},
+        handleResetCard: () => {},
+        handleRevealAnswer: () => {},
+        handleRemoveForcedContrast: () => {},
+        handleRefreshQueue: () => {},
+        handleSetLearning: () => {},
+        handleToggleSuspended: () => {},
+        hasSupportCards: true,
+        isAnswerRevealed: false,
+        isForcedContrastOpen: false,
+        isFullReviewPageData: true,
+        isGlobalReview: true,
+        isGradeControlsDisabled: false,
+        isHydratingFullData: false,
+        isPending: false,
+        remainingCount: 0,
+        sessionHref: "/review?answered=1" as Route,
+        showCompletionState: true,
+        showFrontFurigana: true,
+        viewData: completionData
+      })
+    );
+
+    expect(markup).toContain("Sessione chiusa");
+    expect(markup).toContain("Controlla card pronte");
+    expect(markup).toContain("Prossime card");
+  });
+
   it("renders the selected forced contrast chip before grading", () => {
     const data = buildFirstCandidateReviewPageData({
       cardId: "card-a",

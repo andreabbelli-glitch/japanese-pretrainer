@@ -126,12 +126,19 @@ export function scheduleReview(
 
   clampInternalCardDueDate(result.card, input.now);
 
+  const elapsedDays = calculateElapsedDays(
+    input.current.lastReviewedAt,
+    input.now
+  );
+
   return {
     difficulty: roundTo(result.card.difficulty, 3),
     dueAt: result.card.due.toISOString(),
-    elapsedDays: Number.isFinite(result.log.elapsed_days)
-      ? result.log.elapsed_days
-      : calculateElapsedDays(input.current.lastReviewedAt, input.now),
+    elapsedDays:
+      elapsedDays ??
+      (Number.isFinite(result.log.elapsed_days)
+        ? result.log.elapsed_days
+        : null),
     lapses: result.card.lapses,
     learningSteps: result.card.learning_steps,
     reps: result.card.reps,
@@ -176,6 +183,7 @@ function buildFsrsCard(
   }
 
   const elapsedDays = calculateElapsedDays(current.lastReviewedAt, now);
+  const elapsedDayCount = Math.max(0, Math.round(elapsedDays ?? 0));
   const scheduledDays = normalizeCount(current.scheduledDays);
   const learningSteps = normalizeCount(current.learningSteps);
 
@@ -184,7 +192,7 @@ function buildFsrsCard(
       current.difficulty ?? reviewSchedulerConfig.difficulty.default
     ),
     due: current.dueAt ? new Date(current.dueAt) : now,
-    elapsed_days: Math.max(0, Math.round(elapsedDays ?? 0)),
+    elapsed_days: elapsedDayCount,
     lapses: normalizeCount(current.lapses),
     learning_steps: learningSteps,
     reps: normalizeCount(current.reps),
@@ -192,9 +200,13 @@ function buildFsrsCard(
     stability: normalizeStability(current.stability, scheduledDays),
     state: mapReviewStateToFsrs(normalizedState),
     last_review: current.lastReviewedAt
-      ? new Date(current.lastReviewedAt)
+      ? buildFsrsElapsedDayAnchor(now, elapsedDayCount)
       : undefined
   };
+}
+
+function buildFsrsElapsedDayAnchor(now: Date, elapsedDayCount: number) {
+  return new Date(now.getTime() - elapsedDayCount * DAY);
 }
 
 function normalizeCount(value: number | null | undefined, fallback = 0) {
@@ -296,10 +308,16 @@ export function replayReviewHistory(
       card = createEmptyCard(reviewAt);
     }
 
+    const lastReviewBeforeScheduling = card.last_review ?? null;
+    const elapsedDays = calculateElapsedDays(
+      lastReviewBeforeScheduling,
+      reviewAt
+    );
+    const cardForScheduling = buildFsrsReplayCard(card, reviewAt, elapsedDays);
     const result = getReviewScheduler(
       resolveReplayReviewSchedulerConfig(options, log, index)
     ).next(
-      card,
+      cardForScheduling,
       reviewAt,
       mapReviewRating(log.rating)
     );
@@ -308,9 +326,11 @@ export function replayReviewHistory(
 
     replayedLogs.push({
       answeredAt: log.answeredAt,
-      elapsedDays: Number.isFinite(result.log.elapsed_days)
-        ? result.log.elapsed_days
-        : (calculateElapsedDays(card.last_review ?? null, reviewAt) ?? 0),
+      elapsedDays:
+        elapsedDays ??
+        (Number.isFinite(result.log.elapsed_days)
+          ? result.log.elapsed_days
+          : 0),
       id: log.id,
       newState: mapFsrsState(result.card.state),
       previousState: mapFsrsState(result.log.state),
@@ -339,6 +359,24 @@ export function replayReviewHistory(
       stability: roundTo(card.stability, 3),
       state: mapFsrsState(card.state)
     }
+  };
+}
+
+function buildFsrsReplayCard(
+  card: Card,
+  reviewAt: Date,
+  elapsedDays: number | null
+): Card {
+  if (card.state === State.New || !card.last_review) {
+    return card;
+  }
+
+  const elapsedDayCount = Math.max(0, Math.round(elapsedDays ?? 0));
+
+  return {
+    ...card,
+    elapsed_days: elapsedDayCount,
+    last_review: buildFsrsElapsedDayAnchor(reviewAt, elapsedDayCount)
   };
 }
 

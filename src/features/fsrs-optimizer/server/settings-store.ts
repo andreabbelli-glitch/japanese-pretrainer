@@ -184,8 +184,14 @@ export async function writeFsrsOptimizedParameters(
   database: FsrsSettingsWriter = db,
   nowIso = new Date().toISOString()
 ) {
+  const normalizedParameters = normalizeFsrsOptimizedParameters(parameters);
+
+  if (!normalizedParameters) {
+    throw new Error("Invalid FSRS optimized parameters.");
+  }
+
   const key =
-    parameters.presetKey === "concept"
+    normalizedParameters.presetKey === "concept"
       ? FSRS_PARAMS_CONCEPT_KEY
       : FSRS_PARAMS_RECOGNITION_KEY;
 
@@ -193,7 +199,7 @@ export async function writeFsrsOptimizedParameters(
     database,
     key,
     nowIso,
-    valueJson: JSON.stringify(normalizeFsrsOptimizedParameters(parameters))
+    valueJson: JSON.stringify(normalizedParameters)
   });
   invalidateFsrsOptimizerRuntimeContextCache();
   await revalidateReviewFirstCandidateCacheIfSupported();

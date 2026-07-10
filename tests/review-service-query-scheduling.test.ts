@@ -76,10 +76,14 @@ describe("review service query scheduling", () => {
         await memberCardLookupGate.loader()();
         return originalListReviewCardIdsByEntryRefs(...args);
       });
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     const gradePromise = applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       now: new Date("2026-03-09T12:00:00.000Z"),
       rating: "good"
     });
@@ -120,10 +124,14 @@ describe("review service query scheduling", () => {
         await fsrsSnapshotGate.loader()();
         return originalGetFsrsOptimizerSnapshot(...args);
       });
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     const gradePromise = applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       now: new Date("2026-03-09T12:00:00.000Z"),
       rating: "good"
     });

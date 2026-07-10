@@ -479,10 +479,14 @@ describe("review queue", () => {
     expect(initialPage?.queue.newQueuedCount).toBe(0);
     expect(initialPage?.queue.queueCount).toBe(0);
     expect(initialPage?.selectedCard).toBeNull();
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     await applyReviewGrade({
       cardId: "card_fixture_new_limit_a",
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       rating: "good"
     });
 
@@ -600,10 +604,14 @@ describe("review queue", () => {
         dueAt: "2000-01-01T00:00:00.000Z"
       })
       .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     await applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       now: new Date("2026-03-11T12:00:00.000Z"),
       rating: "good"
     });

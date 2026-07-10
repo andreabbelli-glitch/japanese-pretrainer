@@ -427,15 +427,17 @@ export function resolveReviewQueueRefreshState(input: {
 }) {
   if (input.isPending) {
     return {
+      buttonLabel: "Aggiorno queue...",
       canRefresh: false,
-      label: "Aggiorno queue..."
+      statusLabel: "Controllo se ci sono card pronte."
     };
   }
 
   if (!input.nextDueAt) {
     return {
+      buttonLabel: "Controlla card pronte",
       canRefresh: false,
-      label: "Nessuna card pronta"
+      statusLabel: "Nessuna card pronta da controllare."
     };
   }
 
@@ -444,14 +446,16 @@ export function resolveReviewQueueRefreshState(input: {
 
   if (!Number.isFinite(dueTime) || dueTime <= nowTime) {
     return {
+      buttonLabel: "Controlla card pronte",
       canRefresh: true,
-      label: "Controlla card pronte"
+      statusLabel: "Ci sono card che potrebbero essere pronte."
     };
   }
 
   return {
+    buttonLabel: "Controlla card pronte",
     canRefresh: false,
-    label: `Prossime card ${formatReviewQueueRefreshWait(dueTime - nowTime)}`
+    statusLabel: `Prossime card ${formatReviewQueueRefreshWait(dueTime - nowTime)}.`
   };
 }
 

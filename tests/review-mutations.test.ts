@@ -84,10 +84,14 @@ describe("review mutations", () => {
         dueAt: "2000-01-01T00:00:00.000Z"
       })
       .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     await applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       now: new Date("2026-03-09T12:00:00.000Z"),
       rating: "good"
     });
@@ -111,6 +115,49 @@ describe("review mutations", () => {
     expect(logs.at(-1)?.newState).toBe("review");
     expect(logs.at(-1)?.rating).toBe("good");
     expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v1");
+  });
+
+  it("rejects grading an existing review subject without a freshness token", async () => {
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2000-01-01T00:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+
+    await expect(
+      applyReviewGrade({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        now: new Date("2026-03-09T12:15:00.000Z"),
+        rating: "good"
+      })
+    ).rejects.toThrow("Review card is out of date.");
+  });
+
+  it("rejects invalid review ratings before scheduling", async () => {
+    const beforeLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
+    });
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
+
+    await expect(
+      applyReviewGrade({
+        cardId: developmentFixture.primaryCardId,
+        database,
+        expectedUpdatedAt: beforeState?.updatedAt ?? null,
+        now: new Date("2026-03-09T12:20:00.000Z"),
+        rating: "bogus" as never
+      })
+    ).rejects.toThrow("Invalid review rating.");
+
+    const afterLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
+    });
+
+    expect(afterLogs).toHaveLength(beforeLogs.length);
   });
 
   it("rejects a stale second grade for the same review card", async () => {
@@ -219,6 +266,7 @@ describe("review mutations", () => {
     await applyReviewGrade({
       cardId: crossMediaFixture.alpha.termCardId,
       database,
+      expectedUpdatedAt: existingSubjectState?.updatedAt ?? null,
       now,
       rating: "good"
     });
@@ -238,10 +286,14 @@ describe("review mutations", () => {
         dueAt: "2000-01-01T00:00:00.000Z"
       })
       .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     const result = await database.transaction((tx) =>
       gradeReviewCardInTransaction({
         cardId: developmentFixture.primaryCardId,
+        expectedUpdatedAt: beforeState?.updatedAt ?? null,
         forcedContrast: {
           source: "review-grading",
           targetResultKey: `grammar:entry:${developmentFixture.grammarDbId}`
@@ -316,10 +368,14 @@ describe("review mutations", () => {
 
     const { alphaTermEntry, crossMediaGroupId, subjectKey } =
       await loadCrossMediaTermSubjectContext(database);
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, subjectKey)
+    });
 
     const result = await database.transaction((tx) =>
       gradeReviewCardInTransaction({
         cardId: crossMediaFixture.alpha.termCardId,
+        expectedUpdatedAt: beforeState?.updatedAt ?? null,
         forcedContrast: {
           source: "review-grading",
           targetResultKey: "grammar:group:〜共有"
@@ -341,9 +397,13 @@ describe("review mutations", () => {
   });
 
   it("marks forced contrast validation failures as safe client-facing review errors", async () => {
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
     const thrownError = await applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       forcedContrast: {
         source: "review-grading",
         targetResultKey: `term:entry:${developmentFixture.termDbId}`

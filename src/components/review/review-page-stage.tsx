@@ -681,14 +681,17 @@ function ReviewQueueRefreshButton({
   });
 
   return (
-    <button
-      className="button button--primary"
-      disabled={!queueRefreshState.canRefresh}
-      type="button"
-      onClick={onRefresh}
-    >
-      {queueRefreshState.label}
-    </button>
+    <>
+      <button
+        className="button button--primary"
+        disabled={!queueRefreshState.canRefresh}
+        type="button"
+        onClick={onRefresh}
+      >
+        {queueRefreshState.buttonLabel}
+      </button>
+      <p className="review-stage__hint">{queueRefreshState.statusLabel}</p>
+    </>
   );
 }
 

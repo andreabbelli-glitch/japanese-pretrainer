@@ -421,6 +421,8 @@ gate. Il comando fa no-op finche non sono passati almeno `30` giorni
 dall'ultimo training riuscito oppure non ci sono abbastanza review nuove
 eleggibili. La soglia review e dinamica:
 `min(3000, max(500, 25% delle review usate nell'ultimo training riuscito))`.
+Il gate temporale include `60` minuti di tolleranza per la finestra di consegna
+del cron Vercel.
 Questa policy mantiene un floor minimo nelle prime fasi, cresce con il dataset
 quando il segnale storico e ancora piccolo, e applica un cap per non rendere il
 retrain troppo raro quando la cronologia diventa grande.

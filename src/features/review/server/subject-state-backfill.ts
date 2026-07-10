@@ -1,9 +1,10 @@
-import { inArray, sql } from "drizzle-orm";
+import { eq, inArray, sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../../../db/client.ts";
 import { listReviewCardsByMediaIds } from "../../../db/queries/review.ts";
 import { listReviewSubjectStatesByKeys } from "../../../db/queries/review-subject.ts";
 import {
+  preReviewConsolidationState,
   reviewSubjectLog,
   reviewSubjectState
 } from "../../../db/schema/review.ts";
@@ -28,6 +29,8 @@ type ReviewSubjectStateDatabase = Pick<
 >;
 type ReviewSubjectStateRootDatabase = ReviewSubjectStateDatabase &
   Pick<DatabaseClient, "transaction">;
+type PreReviewConsolidationStateRecord =
+  typeof preReviewConsolidationState.$inferSelect;
 
 type ReviewSubjectCoverageSnapshot = {
   cardCount: number;
@@ -105,6 +108,8 @@ export async function syncReviewSubjectState(
         subjectKey: entry.state.subjectKey
       })
       .where(inArray(reviewSubjectLog.subjectKey, entry.legacySubjectKeys));
+
+    await migrateLegacyPreReviewConsolidationState(database, entry);
 
     await database
       .delete(reviewSubjectState)
@@ -238,10 +243,6 @@ async function buildSynchronizedReviewSubjectStates(
   const candidateStatesBySubject = new Map<string, ReviewSubjectStateSnapshot[]>();
 
   for (const state of currentStates) {
-    if (state.subjectType === "card") {
-      continue;
-    }
-
     const subjectKeys = findCandidateCanonicalSubjectKeys(state, subjectGroups);
 
     for (const subjectKey of subjectKeys) {
@@ -272,7 +273,6 @@ function buildSynchronizedReviewSubjectState(
   group: ReviewSubjectCoverageSnapshot["subjectGroups"][number],
   currentState: ReviewSubjectStateSnapshot
 ) {
-
   return {
     cardId: group.representativeCard.id,
     createdAt: currentState.createdAt,
@@ -320,17 +320,142 @@ function isLegacyStateForSubjectGroup(
   state: ReviewSubjectStateSnapshot,
   group: ReviewSubjectCoverageSnapshot["subjectGroups"][number]
 ) {
-  if (
-    !group.identity.entryType ||
-    state.entryType !== group.identity.entryType ||
-    state.subjectType === "card"
-  ) {
+  if (state.subjectType === "card") {
+    return group.cards.some((card) => {
+      return state.subjectKey === `card:${card.id}` || state.cardId === card.id;
+    });
+  }
+
+  if (!group.identity.entryType || state.entryType !== group.identity.entryType) {
     return false;
   }
 
   const entryIds = collectSubjectGroupEntryIds(group);
 
   return Boolean(state.entryId && entryIds.has(state.entryId));
+}
+
+async function migrateLegacyPreReviewConsolidationState(
+  database: ReviewSubjectStateDatabase,
+  entry: {
+    legacySubjectKeys: string[];
+    state: ReviewSubjectStateSnapshot;
+  }
+) {
+  const legacyRows = await database.query.preReviewConsolidationState.findMany({
+    where: inArray(
+      preReviewConsolidationState.subjectKey,
+      entry.legacySubjectKeys
+    )
+  });
+
+  if (legacyRows.length === 0) {
+    return;
+  }
+
+  const canonicalRow =
+    await database.query.preReviewConsolidationState.findFirst({
+      where: eq(
+        preReviewConsolidationState.subjectKey,
+        entry.state.subjectKey
+      )
+    });
+
+  const rowToKeep = selectBestPreReviewConsolidationState(
+    canonicalRow ? [canonicalRow, ...legacyRows] : legacyRows
+  );
+
+  if (rowToKeep) {
+    const canonicalUpdate = buildCanonicalPreReviewConsolidationStateUpdate(
+      entry.state,
+      rowToKeep
+    );
+
+    if (canonicalRow) {
+      await database
+        .update(preReviewConsolidationState)
+        .set(canonicalUpdate)
+        .where(
+          eq(preReviewConsolidationState.subjectKey, entry.state.subjectKey)
+        );
+    } else {
+      await database
+        .update(preReviewConsolidationState)
+        .set(canonicalUpdate)
+        .where(
+          eq(preReviewConsolidationState.subjectKey, rowToKeep.subjectKey)
+        );
+    }
+  }
+
+  await database
+    .delete(preReviewConsolidationState)
+    .where(
+      inArray(preReviewConsolidationState.subjectKey, entry.legacySubjectKeys)
+    );
+}
+
+function buildCanonicalPreReviewConsolidationStateUpdate(
+  state: ReviewSubjectStateSnapshot,
+  row: PreReviewConsolidationStateRecord
+): Partial<typeof preReviewConsolidationState.$inferInsert> {
+  return {
+    attemptCount: row.attemptCount,
+    completedAt: row.completedAt,
+    createdAt: row.createdAt,
+    crossMediaGroupId: state.crossMediaGroupId,
+    entryId: state.entryId,
+    entryType: state.entryType,
+    lastAttemptAt: row.lastAttemptAt,
+    lessonId: row.lessonId,
+    mediaId: row.mediaId,
+    readingPassedAt: row.readingPassedAt,
+    representativeCardId: state.cardId ?? row.representativeCardId,
+    status: row.status,
+    subjectKey: state.subjectKey,
+    subjectType: state.subjectType,
+    updatedAt: row.updatedAt
+  };
+}
+
+function selectBestPreReviewConsolidationState(
+  states: PreReviewConsolidationStateRecord[]
+) {
+  return pickBestBy(states, comparePreReviewConsolidationStatesForMerge);
+}
+
+function comparePreReviewConsolidationStatesForMerge(
+  left: PreReviewConsolidationStateRecord,
+  right: PreReviewConsolidationStateRecord
+) {
+  const leftRank = getPreReviewConsolidationStateMergeRank(left.status);
+  const rightRank = getPreReviewConsolidationStateMergeRank(right.status);
+
+  if (leftRank !== rightRank) {
+    return leftRank - rightRank;
+  }
+
+  if (left.updatedAt !== right.updatedAt) {
+    return right.updatedAt.localeCompare(left.updatedAt);
+  }
+
+  if (left.createdAt !== right.createdAt) {
+    return right.createdAt.localeCompare(left.createdAt);
+  }
+
+  return left.subjectKey.localeCompare(right.subjectKey);
+}
+
+function getPreReviewConsolidationStateMergeRank(status: string) {
+  if (status === "pending") {
+    return 0;
+  }
+
+  if (status === "retraining") {
+    return 1;
+  }
+
+  return 2;
 }
 
 function collectSubjectGroupEntryIds(

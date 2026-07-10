@@ -30,8 +30,9 @@ describe("resolveReviewQueueRefreshState", () => {
         now: new Date("2026-04-02T12:00:01.000Z")
       })
     ).toEqual({
+      buttonLabel: "Controlla card pronte",
       canRefresh: true,
-      label: "Controlla card pronte"
+      statusLabel: "Ci sono card che potrebbero essere pronte."
     });
   });
 
@@ -43,8 +44,9 @@ describe("resolveReviewQueueRefreshState", () => {
         now: new Date("2026-04-02T12:00:00.000Z")
       })
     ).toEqual({
+      buttonLabel: "Controlla card pronte",
       canRefresh: false,
-      label: "Prossime card tra 6 min"
+      statusLabel: "Prossime card tra 6 min."
     });
   });
 
@@ -56,8 +58,23 @@ describe("resolveReviewQueueRefreshState", () => {
         now: new Date("2026-04-02T12:00:01.000Z")
       })
     ).toEqual({
+      buttonLabel: "Aggiorno queue...",
       canRefresh: false,
-      label: "Aggiorno queue..."
+      statusLabel: "Controllo se ci sono card pronte."
+    });
+  });
+
+  it("keeps the completion refresh button visible even with no known next due time", () => {
+    expect(
+      resolveReviewQueueRefreshState({
+        isPending: false,
+        nextDueAt: null,
+        now: new Date("2026-04-02T12:00:00.000Z")
+      })
+    ).toEqual({
+      buttonLabel: "Controlla card pronte",
+      canRefresh: false,
+      statusLabel: "Nessuna card pronta da controllare."
     });
   });
 });

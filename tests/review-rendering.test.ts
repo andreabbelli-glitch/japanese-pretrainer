@@ -37,6 +37,8 @@ import {
   reviewValidContentRoot as validContentRoot
 } from "./helpers/review-shared";
 
+const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
+
 describe("review rendering", () => {
   let tempDir = "";
   let database: DatabaseClient;
@@ -157,9 +159,9 @@ describe("review rendering", () => {
     await writeFile(
       cardsPath,
       cardsSource.replace(
-        "example_it: \"Mangio il pane.\"",
+        'example_it: "Mangio il pane."',
         [
-          "example_it: \"Mangio il pane.\"",
+          'example_it: "Mangio il pane."',
           "example_audio_src: assets/audio/term/term-taberu/term-taberu.ogg",
           "example_audio_source: kaishi",
           "example_audio_attribution: Kaishi 1.5k sample sentence audio"
@@ -265,10 +267,14 @@ describe("review rendering", () => {
     ).toContain(developmentFixture.termId);
     expect(detailPage?.card.reading).toBeUndefined();
     expect(detailPage?.pronunciations).toHaveLength(0);
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     await applyReviewGrade({
       cardId: developmentFixture.primaryCardId,
       database,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       now: new Date("2026-03-11T12:00:00.000Z"),
       rating: "good"
     });

@@ -15,14 +15,10 @@ import { buildKanjiClashContrastKey } from "@/features/kanji-clash";
 import {
   getGlobalReviewPageData,
   getReviewPageData,
-  hydrateReviewCard,
-  type ReviewPageData
+  hydrateReviewCard
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
-import type {
-  ReviewForcedContrastResolution,
-  ReviewQueueCard
-} from "@/features/review/types";
+import type { ReviewForcedContrastResolution } from "@/features/review/types";
 import {
   buildCanonicalReviewSessionHref,
   mediaReviewCardHref
@@ -36,6 +32,10 @@ import {
   cleanupReviewDatabase,
   setupReviewDatabase
 } from "./helpers/review-db-fixture";
+import {
+  loadReviewActionsForDatabase as loadReviewActionsForDatabaseHarness,
+  type LoadReviewActionsOptions
+} from "./helpers/review-action-test-harness";
 import { flushMicrotasks, waitForTruthy } from "./helpers/async";
 
 const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
@@ -213,154 +213,14 @@ async function prepareChainedBufferedAdvanceFixture(database: DatabaseClient) {
   };
 }
 
-type ReviewPageLoadCall = {
-  mediaSlug?: string;
-  resolvedMediaRowsLength?: number;
-  scope: "global" | "media";
-  searchParams: Record<string, string>;
-};
-
-type LoadReviewActionsOptions = {
-  hydrateReviewCard?: (input: {
-    cardId: string;
-  }) =>
-    | Promise<ReviewQueueCard | null | undefined>
-    | ReviewQueueCard
-    | null
-    | undefined;
-};
-
-async function loadReviewActionsForDatabase(
+function loadReviewActionsForDatabase(
   database: DatabaseClient,
   options: LoadReviewActionsOptions = {}
 ) {
-  const globalDatabase = globalThis as {
-    __japaneseCustomStudyDb__?: DatabaseClient;
-  };
-  const previousDatabase = globalDatabase.__japaneseCustomStudyDb__;
-  const reviewPageCalls: ReviewPageLoadCall[] = [];
-
-  try {
-    vi.resetModules();
-    vi.doMock("@/features/cache/server/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
-          "@/features/cache/server/data-cache"
-        );
-
-      return {
-        ...actual,
-        updateGlossarySummaryCache: updateGlossarySummaryCacheMock,
-        updateReviewSummaryCache: updateReviewSummaryCacheMock
-      };
-    });
-    const hydrateReviewCardMock = vi.fn(async (input: { cardId: string }) => {
-      if (options.hydrateReviewCard) {
-        const hydratedCard = await options.hydrateReviewCard(input);
-
-        if (hydratedCard !== undefined) {
-          return hydratedCard;
-        }
-      }
-
-      const actual =
-        await vi.importActual<
-          typeof import("@/features/review/server/card-hydration")
-        >("@/features/review/server/card-hydration");
-
-      return actual.hydrateReviewCard(input);
-    });
-    const getGlobalReviewPageDataMock = vi.fn(
-      async (
-        searchParams: Record<string, string>,
-        _database?: unknown,
-        reviewOptions?: {
-          resolvedMediaRows?: unknown[];
-        }
-      ) => {
-        reviewPageCalls.push({
-          scope: "global",
-          searchParams,
-          ...(reviewOptions?.resolvedMediaRows
-            ? {
-                resolvedMediaRowsLength: reviewOptions.resolvedMediaRows.length
-              }
-            : {})
-        });
-
-        return {} as ReviewPageData;
-      }
-    );
-    const getReviewPageDataMock = vi.fn(
-      async (
-        mediaSlug: string,
-        searchParams: Record<string, string>,
-        _database?: unknown,
-        reviewOptions?: {
-          resolvedMediaRows?: unknown[];
-        }
-      ) => {
-        reviewPageCalls.push({
-          mediaSlug,
-          scope: "media",
-          searchParams,
-          ...(reviewOptions?.resolvedMediaRows
-            ? {
-                resolvedMediaRowsLength: reviewOptions.resolvedMediaRows.length
-              }
-            : {})
-        });
-
-        return {} as ReviewPageData;
-      }
-    );
-    vi.doMock("@/features/review/server/card-hydration", async () => {
-      const actual =
-        await vi.importActual<
-          typeof import("@/features/review/server/card-hydration")
-        >("@/features/review/server/card-hydration");
-
-      return {
-        ...actual,
-        hydrateReviewCard: hydrateReviewCardMock
-      };
-    });
-    vi.doMock("@/features/review/server/page-data", async () => {
-      const actual =
-        await vi.importActual<
-          typeof import("@/features/review/server/page-data")
-        >("@/features/review/server/page-data");
-
-      return {
-        ...actual,
-        getGlobalReviewPageData: getGlobalReviewPageDataMock,
-        getReviewPageData: getReviewPageDataMock
-      };
-    });
-    vi.doMock("@/features/review/server", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/features/review/server")>("@/features/review/server");
-
-      return {
-        ...actual,
-        hydrateReviewCard: hydrateReviewCardMock,
-        getGlobalReviewPageData: getGlobalReviewPageDataMock,
-        getReviewPageData: getReviewPageDataMock
-      };
-    });
-    globalDatabase.__japaneseCustomStudyDb__ = database;
-
-    return {
-      ...(await import("@/actions/review")),
-      reviewPageCalls
-    };
-  } finally {
-    globalDatabase.__japaneseCustomStudyDb__ = previousDatabase;
-    vi.doUnmock("@/features/cache/server/data-cache");
-    vi.doUnmock("@/features/review/server/card-hydration");
-    vi.doUnmock("@/features/review/server/page-data");
-    vi.doUnmock("@/features/review/server");
-  }
+  return loadReviewActionsForDatabaseHarness(database, options, {
+    updateGlossarySummaryCacheMock,
+    updateReviewSummaryCacheMock
+  });
 }
 
 describe("review session actions", () => {
@@ -809,12 +669,16 @@ describe("review session actions", () => {
     const { gradeReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database);
     const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
 
     await gradeReviewCardSessionAction({
       answeredCount: 0,
       cardId: developmentFixture.primaryCardId,
       cardMediaSlug: developmentFixture.mediaSlug,
       extraNewCount: 0,
+      expectedUpdatedAt: beforeState?.updatedAt ?? null,
       rating: "good",
       scope: "global"
     });
@@ -856,6 +720,8 @@ describe("review session actions", () => {
         cardId: currentCardId,
         cardMediaSlug: developmentFixture.mediaSlug,
         extraNewCount: pageData?.session.extraNewCount ?? 0,
+        expectedUpdatedAt:
+          pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
         gradedCardBucket: pageData?.selectedCard?.bucket,
         mediaSlug: developmentFixture.mediaSlug,
         nextCardId,
@@ -904,6 +770,58 @@ describe("review session actions", () => {
     }
   });
 
+  it("falls back instead of advancing to a stale candidate that is no longer queued", async () => {
+    const { currentCardId, nextCardId } =
+      await prepareTwoQueueCardFixture(database);
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database
+    );
+    expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z",
+        state: "review",
+        updatedAt: "2026-03-09T12:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
+
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database);
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: currentCardId,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      candidateCardIds: [nextCardId],
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(result.selectedCard?.id).not.toBe(nextCardId);
+    expect(reviewPageCalls).toEqual([
+      {
+        mediaSlug: developmentFixture.mediaSlug,
+        scope: "media",
+        searchParams: {
+          answered: "1"
+        }
+      }
+    ]);
+  });
+
   it("returns forced contrast session metadata when grading with an incremental session plan", async () => {
     const { currentCardId, nextCardId } =
       await prepareTwoQueueCardFixture(database);
@@ -920,6 +838,8 @@ describe("review session actions", () => {
       cardId: currentCardId,
       cardMediaSlug: developmentFixture.mediaSlug,
       extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
       forcedContrast: {
         source: "review-grading",
         targetResultKey: `grammar:entry:${developmentFixture.grammarDbId}`
@@ -982,6 +902,8 @@ describe("review session actions", () => {
       cardMediaSlug: developmentFixture.mediaSlug,
       candidateCardIds: ["missing-card", nextCardId],
       extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: pageData?.selectedCard?.bucket,
       mediaSlug: developmentFixture.mediaSlug,
       rating: "good",
@@ -1019,6 +941,8 @@ describe("review session actions", () => {
       cardMediaSlug: developmentFixture.mediaSlug,
       candidateCardIds: [currentCardId, nextCardId],
       extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: pageData?.selectedCard?.bucket,
       mediaSlug: developmentFixture.mediaSlug,
       nextCardId,
@@ -1077,6 +1001,8 @@ describe("review session actions", () => {
         developmentFixture.secondaryCardId
       ],
       extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: pageData?.selectedCard?.bucket,
       mediaSlug: developmentFixture.mediaSlug,
       nextCardId: bufferedCardCId,
@@ -1105,6 +1031,8 @@ describe("review session actions", () => {
       ],
       candidateCardIds: [developmentFixture.secondaryCardId],
       extraNewCount: firstResult.session.extraNewCount,
+      expectedUpdatedAt:
+        firstResult.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: firstResult.selectedCard?.bucket,
       mediaSlug: developmentFixture.mediaSlug,
       nextCardId: developmentFixture.secondaryCardId,
@@ -1201,6 +1129,8 @@ describe("review session actions", () => {
         developmentFixture.secondaryCardId
       ],
       extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: pageData?.selectedCard?.bucket,
       mediaSlug: developmentFixture.mediaSlug,
       nextCardId: bufferedCardCId,
@@ -1246,6 +1176,8 @@ describe("review session actions", () => {
       cardId: currentCardId,
       cardMediaSlug: pageData.selectedCard?.mediaSlug,
       extraNewCount: pageData.session.extraNewCount,
+      expectedUpdatedAt:
+        pageData.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: pageData.selectedCard?.bucket,
       rating: "good",
       scope: "global",
@@ -1284,6 +1216,8 @@ describe("review session actions", () => {
       cardId: currentCardId,
       cardMediaSlug: developmentFixture.mediaSlug,
       extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
       gradedCardBucket: pageData?.selectedCard?.bucket,
       mediaSlug: developmentFixture.mediaSlug,
       nextCardId: null,
@@ -1420,12 +1354,16 @@ describe("review session actions", () => {
   it("rejects malformed review form counters instead of partially parsing them", async () => {
     const { gradeReviewCardAction } =
       await loadReviewActionsForDatabase(database);
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
     const formData = new FormData();
     formData.set("mediaSlug", developmentFixture.mediaSlug);
     formData.set("cardId", developmentFixture.primaryCardId);
     formData.set("rating", "good");
     formData.set("answered", "3abc");
     formData.set("extraNew", "2abc");
+    formData.set("expectedUpdatedAt", beforeState?.updatedAt ?? "");
 
     await expect(gradeReviewCardAction(formData)).rejects.toThrow(
       `redirect:/media/${developmentFixture.mediaSlug}/review?answered=1`
@@ -1435,6 +1373,44 @@ describe("review session actions", () => {
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
+  });
+
+  it("rejects malformed review form ratings instead of grading them as good", async () => {
+    const { gradeReviewCardAction } =
+      await loadReviewActionsForDatabase(database);
+    const beforeState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
+    const beforeLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
+    });
+    const formData = new FormData();
+    formData.set("mediaSlug", developmentFixture.mediaSlug);
+    formData.set("cardId", developmentFixture.primaryCardId);
+    formData.set("rating", "bogus");
+    formData.set("answered", "0");
+    formData.set("extraNew", "0");
+    formData.set("expectedUpdatedAt", beforeState?.updatedAt ?? "");
+
+    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
+      "Invalid review rating."
+    );
+
+    const afterState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
+    });
+    const afterLogs = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
+    });
+
+    expect(afterState).toMatchObject({
+      dueAt: beforeState?.dueAt,
+      reps: beforeState?.reps,
+      state: beforeState?.state,
+      updatedAt: beforeState?.updatedAt
+    });
+    expect(afterLogs).toHaveLength(beforeLogs.length);
+    expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
   });
 
   it("treats a blank form freshness token as an observed missing subject state", async () => {

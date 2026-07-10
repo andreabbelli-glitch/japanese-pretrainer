@@ -14,8 +14,10 @@ import { runMigrations } from "@/db/migrate";
 import {
   card,
   cardEntryLink,
+  lesson,
   lessonProgress,
   media,
+  preReviewConsolidationState,
   reviewSubjectLog,
   reviewSubjectState,
   term
@@ -282,6 +284,192 @@ describe("review subject state recovery backfill", () => {
       "legacy-log-beta"
     ]);
     expect(rewrittenLogs.every((log) => log.cardId)).toBe(true);
+  });
+
+  it("migrates legacy card subject state, logs, and pending consolidation to the canonical entry subject", async () => {
+    const now = "2026-03-11T09:00:00.000Z";
+    const legacySubjectKey = "card:card-legacy-card-subject";
+    const canonicalSubjectKey = "entry:term:term-legacy-card-subject";
+
+    await database.insert(media).values({
+      id: "media-legacy-card-subject",
+      slug: "legacy-card-subject",
+      title: "Legacy Card Subject",
+      mediaType: "test",
+      segmentKind: "lesson",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      status: "active",
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(lesson).values({
+      id: "lesson-legacy-card-subject",
+      mediaId: "media-legacy-card-subject",
+      segmentId: null,
+      slug: "legacy-card-subject-lesson",
+      title: "Legacy Card Subject Lesson",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Legacy Card Subject Lesson",
+      status: "active",
+      sourceFile: "legacy-card-subject.md",
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(term).values({
+      id: "term-legacy-card-subject",
+      sourceId: "term-legacy-card-subject",
+      mediaId: "media-legacy-card-subject",
+      lemma: "語",
+      reading: "ご",
+      romaji: "go",
+      meaningIt: "parola",
+      searchLemmaNorm: "語",
+      searchReadingNorm: "ご",
+      searchRomajiNorm: "go",
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(card).values({
+      id: "card-legacy-card-subject",
+      mediaId: "media-legacy-card-subject",
+      lessonId: "lesson-legacy-card-subject",
+      sourceFile: "legacy-card-subject.md",
+      cardType: "recognition",
+      front: "語",
+      normalizedFront: "語",
+      back: "ご - parola",
+      status: "active",
+      orderIndex: 1,
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(cardEntryLink).values({
+      id: "card-entry-link-legacy-card-subject",
+      cardId: "card-legacy-card-subject",
+      entryType: "term",
+      entryId: "term-legacy-card-subject",
+      relationshipType: "primary"
+    });
+    await database.insert(reviewSubjectState).values({
+      subjectKey: legacySubjectKey,
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
+      cardId: "card-legacy-card-subject",
+      state: "review",
+      stability: 12,
+      difficulty: 4,
+      dueAt: "2026-03-20T00:00:00.000Z",
+      lastReviewedAt: "2026-03-10T09:00:00.000Z",
+      lastInteractionAt: "2026-03-10T09:00:00.000Z",
+      scheduledDays: 10,
+      learningSteps: 0,
+      lapses: 1,
+      reps: 7,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: false,
+      createdAt: now,
+      updatedAt: "2026-03-10T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectLog).values({
+      id: "legacy-card-subject-log",
+      subjectKey: legacySubjectKey,
+      cardId: "card-legacy-card-subject",
+      answeredAt: "2026-03-10T09:00:00.000Z",
+      rating: "good",
+      previousState: "learning",
+      newState: "review",
+      scheduledDueAt: "2026-03-20T00:00:00.000Z",
+      elapsedDays: 1,
+      responseMs: 1200,
+      schedulerVersion: "fsrs_v1"
+    });
+    await database.insert(preReviewConsolidationState).values({
+      subjectKey: legacySubjectKey,
+      subjectType: "card",
+      entryType: null,
+      crossMediaGroupId: null,
+      entryId: null,
+      representativeCardId: "card-legacy-card-subject",
+      lessonId: "lesson-legacy-card-subject",
+      mediaId: "media-legacy-card-subject",
+      status: "pending",
+      attemptCount: 0,
+      lastAttemptAt: null,
+      readingPassedAt: null,
+      completedAt: null,
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(preReviewConsolidationState).values({
+      subjectKey: canonicalSubjectKey,
+      subjectType: "entry",
+      entryType: "term",
+      crossMediaGroupId: null,
+      entryId: "term-legacy-card-subject",
+      representativeCardId: "card-legacy-card-subject",
+      lessonId: "lesson-legacy-card-subject",
+      mediaId: "media-legacy-card-subject",
+      status: "passed",
+      attemptCount: 2,
+      lastAttemptAt: "2026-03-11T09:10:00.000Z",
+      readingPassedAt: "2026-03-11T09:12:00.000Z",
+      completedAt: "2026-03-11T09:15:00.000Z",
+      createdAt: "2026-03-11T09:05:00.000Z",
+      updatedAt: "2026-03-11T09:15:00.000Z"
+    });
+
+    await backfillReviewSubjectState(database, {
+      now: new Date("2026-03-11T09:30:00.000Z")
+    });
+
+    const canonicalState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+    });
+    const oldState = await database.query.reviewSubjectState.findFirst({
+      where: eq(reviewSubjectState.subjectKey, legacySubjectKey)
+    });
+    const rewrittenLog = await database.query.reviewSubjectLog.findFirst({
+      where: eq(reviewSubjectLog.id, "legacy-card-subject-log")
+    });
+    const migratedConsolidation =
+      await database.query.preReviewConsolidationState.findFirst({
+        where: eq(preReviewConsolidationState.subjectKey, canonicalSubjectKey)
+      });
+    const oldConsolidation =
+      await database.query.preReviewConsolidationState.findFirst({
+        where: eq(preReviewConsolidationState.subjectKey, legacySubjectKey)
+      });
+
+    expect(canonicalState).toMatchObject({
+      cardId: "card-legacy-card-subject",
+      dueAt: "2026-03-20T00:00:00.000Z",
+      entryId: "term-legacy-card-subject",
+      entryType: "term",
+      lapses: 1,
+      reps: 7,
+      scheduledDays: 10,
+      state: "review",
+      subjectKey: canonicalSubjectKey,
+      subjectType: "entry"
+    });
+    expect(oldState).toBeUndefined();
+    expect(rewrittenLog?.subjectKey).toBe(canonicalSubjectKey);
+    expect(migratedConsolidation).toMatchObject({
+      attemptCount: 0,
+      completedAt: null,
+      entryId: "term-legacy-card-subject",
+      entryType: "term",
+      representativeCardId: "card-legacy-card-subject",
+      status: "pending",
+      subjectKey: canonicalSubjectKey,
+      subjectType: "entry"
+    });
+    expect(oldConsolidation).toBeUndefined();
   });
 
   it("backfills large subject sets without exceeding SQLite variable limits", async () => {

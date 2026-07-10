@@ -154,7 +154,7 @@ export async function resolvePostGradeReviewSessionPageData(input: {
         now
       });
 
-      if (hydratedCard) {
+      if (hydratedCard && isHydratedQueueCandidate(hydratedCard)) {
         return buildReviewSessionPageData({
           queue: updatedQueue,
           selectedCard: hydratedCard,
@@ -383,7 +383,7 @@ async function resolveHydratedAdvanceCandidate(input: {
 
     const hydratedCard = outcome.card;
 
-    if (hydratedCard) {
+    if (hydratedCard && isHydratedQueueCandidate(hydratedCard)) {
       const canonicalQueuePosition = canonicalCandidateCardIds.indexOf(cardId);
 
       return {
@@ -396,6 +396,10 @@ async function resolveHydratedAdvanceCandidate(input: {
   }
 
   return null;
+}
+
+function isHydratedQueueCandidate(card: ReviewQueueCard) {
+  return card.bucket === "due" || card.bucket === "new";
 }
 
 async function hydrateReviewAdvanceCards(input: {

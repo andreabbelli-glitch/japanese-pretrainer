@@ -25,13 +25,17 @@ export type FsrsTrainingDataset = {
   subjectCount: number;
 };
 
+type FsrsTrainingReviewWithTimestamp = FsrsTrainingReview & {
+  answeredAt: string;
+};
+
 type FsrsTrainingDataCounter = Pick<DatabaseClient, "select">;
 
 export function buildFsrsTrainingDataset(
   rows: FsrsOptimizerLogRow[],
   presetKey: FsrsPresetKey
 ): FsrsTrainingDataset {
-  const reviewsBySubject = new Map<string, FsrsTrainingReview[]>();
+  const reviewsBySubject = new Map<string, FsrsTrainingReviewWithTimestamp[]>();
   let reviewCount = 0;
 
   for (const row of rows) {
@@ -46,10 +50,13 @@ export function buildFsrsTrainingDataset(
     }
 
     const subjectReviews = reviewsBySubject.get(row.subjectKey) ?? [];
-    const deltaT =
-      subjectReviews.length === 0 ? 0 : normalizeElapsedDays(row.elapsedDays);
+    const previousReview = subjectReviews.at(-1);
+    const deltaT = previousReview
+      ? calculateElapsedDaysBetweenReviews(previousReview.answeredAt, row)
+      : 0;
 
     subjectReviews.push({
+      answeredAt: row.answeredAt,
       deltaT,
       rating
     });
@@ -151,4 +158,19 @@ function normalizeElapsedDays(value: number | null) {
   }
 
   return Math.max(0, Math.round(value));
+}
+
+function calculateElapsedDaysBetweenReviews(
+  previousAnsweredAt: string,
+  current: FsrsOptimizerLogRow
+) {
+  const previousTime = new Date(previousAnsweredAt).getTime();
+  const currentTime = new Date(current.answeredAt).getTime();
+  const elapsedMs = currentTime - previousTime;
+
+  if (!Number.isFinite(elapsedMs) || elapsedMs < 0) {
+    return normalizeElapsedDays(current.elapsedDays);
+  }
+
+  return Math.round(elapsedMs / 86_400_000);
 }

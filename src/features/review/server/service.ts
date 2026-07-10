@@ -13,6 +13,7 @@ import {
   resolveFsrsPresetKey
 } from "@/features/fsrs-optimizer/server";
 import {
+  reviewRatingValues,
   scheduleReview,
   type ReviewRating,
   type ReviewState
@@ -37,6 +38,7 @@ import {
 } from "@/features/review/server/mutation-context";
 
 const REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE = "Review card is out of date.";
+const validReviewRatings = new Set<string>(reviewRatingValues);
 
 export {
   resetReviewCardProgress,
@@ -90,6 +92,10 @@ export async function gradeReviewCardInTransaction(input: {
   responseMs?: number | null;
   transaction: ReviewMutationTransaction;
 }): Promise<ReviewGradeResult> {
+  if (!validReviewRatings.has(input.rating)) {
+    throw new Error("Invalid review rating.");
+  }
+
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
   const loadedCard = await loadReviewCardForMutation(
@@ -119,11 +125,10 @@ export async function gradeReviewCardInTransaction(input: {
     input.expectedUpdatedAt
   );
   const currentUpdatedAt = subjectContext.subjectState?.updatedAt ?? null;
+  const requiredUpdatedAt =
+    expectedUpdatedAt === undefined ? null : expectedUpdatedAt;
 
-  if (
-    expectedUpdatedAt !== undefined &&
-    expectedUpdatedAt !== currentUpdatedAt
-  ) {
+  if (requiredUpdatedAt !== currentUpdatedAt) {
     throw new Error(REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE);
   }
 
@@ -195,7 +200,7 @@ export async function gradeReviewCardInTransaction(input: {
       suspended: false,
       updatedAt: nowIso
     }),
-    expectedUpdatedAt
+    requiredUpdatedAt
   );
 
   if (!didWriteSubjectState) {

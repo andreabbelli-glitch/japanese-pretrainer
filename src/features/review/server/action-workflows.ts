@@ -6,10 +6,8 @@ import {
   buildReviewRedirectUrl,
   type ReviewRedirectMode
 } from "@/features/navigation";
-import type {
-  ReviewPageData,
-  ReviewQueueCard
-} from "@/features/review/types";
+import type { ReviewRating } from "@/features/review/model/scheduler";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/types";
 import type { ReviewMutationKind } from "@/features/review/server/action-mutations";
 import { applyReviewActionCachePolicy } from "@/features/review/server/action-cache-policy";
 import { hydrateReviewCard } from "@/features/review/server/card-hydration";
@@ -60,13 +58,7 @@ export async function gradeReviewCardFormWorkflow(
     cardId: input.cardId,
     expectedMediaId: mediaId,
     expectedUpdatedAt: input.expectedUpdatedAt,
-    rating:
-      input.rating === "again" ||
-      input.rating === "hard" ||
-      input.rating === "good" ||
-      input.rating === "easy"
-        ? input.rating
-        : "good"
+    rating: assertReviewFormRating(input.rating)
   });
 
   applyReviewActionCachePolicy({
@@ -80,6 +72,19 @@ export async function gradeReviewCardFormWorkflow(
     extraNewCount: input.extraNewCount,
     mediaSlug: input.mediaSlug
   });
+}
+
+function assertReviewFormRating(rating: string): ReviewRating {
+  if (
+    rating === "again" ||
+    rating === "hard" ||
+    rating === "good" ||
+    rating === "easy"
+  ) {
+    return rating;
+  }
+
+  throw new Error("Invalid review rating.");
 }
 
 export async function runReviewFormMutationWorkflow(

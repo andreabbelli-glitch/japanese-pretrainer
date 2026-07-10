@@ -170,6 +170,13 @@ async function buildFsrsReschedulePlan(input: {
 
     eligibleSubjects += 1;
 
+    if (hasAmbiguousReplayFreshStart(subject)) {
+      currentDueDates.push(subject.state.dueAt);
+      proposedDueDates.push(subject.state.dueAt);
+      unchangedSubjects += 1;
+      continue;
+    }
+
     const replayed = replayReviewHistory(
       subject.logs.map(mapReplayLog),
       replayOptions
@@ -292,15 +299,50 @@ function mapReplayLog(
   };
 }
 
+function hasAmbiguousReplayFreshStart(subject: ReviewSubjectFsrsReplaySubject) {
+  for (const [index, log] of subject.logs.entries()) {
+    if (index === 0) {
+      continue;
+    }
+
+    if (isReplayFreshStartState(log.previousState)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function isReplayFreshStartState(
+  state: ReviewSubjectFsrsReplayLogRecord["previousState"]
+) {
+  return state !== "learning" && state !== "review" && state !== "relearning";
+}
+
 function resolveLifecycleSafeProjectedState(
   subject: ReviewSubjectFsrsReplaySubject,
   projected: ReplayedReviewHistory["state"]
 ): ReplayedReviewHistory["state"] {
+  const latestLog = subject.logs.at(-1);
+
   if (projected.state === "review") {
+    if (
+      latestLog?.newState === "review" &&
+      shouldPreserveLoggedReviewDueForPartialHistory(
+        subject,
+        projected,
+        latestLog
+      )
+    ) {
+      return buildProjectionFromLoggedReviewTransition(
+        subject,
+        projected,
+        latestLog
+      );
+    }
+
     return projected;
   }
-
-  const latestLog = subject.logs.at(-1);
 
   if (latestLog?.newState !== "review") {
     return projected;
@@ -319,6 +361,22 @@ function resolveLifecycleSafeProjectedState(
   }
 
   return projected;
+}
+
+function shouldPreserveLoggedReviewDueForPartialHistory(
+  subject: ReviewSubjectFsrsReplaySubject,
+  projected: ReplayedReviewHistory["state"],
+  latestLog: ReviewSubjectFsrsReplayLogRecord
+) {
+  const firstLog = subject.logs[0];
+  const preservedDueAt = latestLog.scheduledDueAt ?? subject.state.dueAt;
+
+  return (
+    firstLog !== undefined &&
+    firstLog.previousState !== "new" &&
+    preservedDueAt !== null &&
+    compareDueDates(projected.dueAt, preservedDueAt) < 0
+  );
 }
 
 function buildProjectionFromCurrentReviewState(
@@ -365,15 +423,19 @@ function buildProjectionFromLoggedReviewTransition(
   );
 
   return {
-    difficulty: projected.difficulty,
+    difficulty: subject.state.difficulty ?? projected.difficulty,
     dueAt,
-    lapses: projected.lapses,
+    lapses: Math.max(subject.state.lapses, projected.lapses),
     learningSteps: 0,
     lastReviewedAt: latestLog.answeredAt,
-    reps: projected.reps,
+    reps: Math.max(subject.state.reps, projected.reps),
     scheduledDays,
     schedulerVersion: "fsrs_v1",
-    stability: Math.max(projected.stability, scheduledDays),
+    stability: Math.max(
+      subject.state.stability ?? 0,
+      projected.stability,
+      scheduledDays
+    ),
     state: "review"
   };
 }

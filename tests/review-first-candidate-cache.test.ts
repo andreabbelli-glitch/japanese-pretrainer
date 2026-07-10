@@ -108,6 +108,7 @@ import {
   hydrateReviewCard
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
+import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
 import {
   buildReviewSubjectStateRow,
   seedSingleReviewCardFixture
@@ -145,6 +146,10 @@ function buildTestFsrsSnapshot(recognitionWeights: number[] | null = null) {
       totalEligibleReviewsAtLastTraining: 0
     }
   };
+}
+
+function buildTestFsrsWeights(value: number) {
+  return reviewSchedulerConfig.fsrs.w.map(() => value);
 }
 
 describe("global review first-candidate cache", () => {
@@ -429,7 +434,7 @@ describe("global review first-candidate cache", () => {
           presetKey: "recognition",
           trainedAt: "2026-03-10T10:02:00.000Z",
           trainingReviewCount: 42,
-          weights: new Array(17).fill(1)
+          weights: buildTestFsrsWeights(1)
         },
         database,
         "2026-03-10T10:02:00.000Z"
@@ -526,8 +531,8 @@ describe("global review first-candidate cache", () => {
   it("reloads the hydrated-card cache after FSRS optimized parameters change", async () => {
     await seedSingleReviewCardFixture(database);
 
-    const initialWeights = new Array(17).fill(1);
-    const updatedWeights = new Array(17).fill(2);
+    const initialWeights = buildTestFsrsWeights(1);
+    const updatedWeights = buildTestFsrsWeights(2);
     await writeFsrsOptimizedParameters(
       {
         desiredRetention: 0.9,
@@ -604,7 +609,7 @@ describe("global review first-candidate cache", () => {
         presetKey: "recognition",
         trainedAt: "2026-03-10T12:01:00.000Z",
         trainingReviewCount: 42,
-        weights: new Array(17).fill(1)
+        weights: buildTestFsrsWeights(1)
       },
       database,
       "2026-03-10T12:01:00.000Z"

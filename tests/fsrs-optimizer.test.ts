@@ -32,6 +32,7 @@ import {
   writeFsrsOptimizerConfig,
   writeFsrsOptimizerState
 } from "@/features/fsrs-optimizer/server";
+import { planFsrsOptimizerRun } from "@/features/fsrs-optimizer/model/training-policy";
 import * as settingsStore from "@/features/fsrs-optimizer/server/settings-store";
 import { runFsrsOptimizer } from "@/features/fsrs-optimizer/tooling/trainer";
 import { buildReviewGradePreviews } from "@/features/review/model/grade-previews";
@@ -72,6 +73,24 @@ describe("fsrs optimizer", () => {
   afterEach(async () => {
     closeDatabaseClient(database);
     await rm(tempDir, { recursive: true, force: true });
+  });
+
+  it("allows automatic training inside the cron delivery tolerance", () => {
+    expect(
+      planFsrsOptimizerRun({
+        config: {
+          enabled: true,
+          minDaysBetweenRuns: 30
+        },
+        force: false,
+        newEligibleReviews: 3380,
+        newReviewThreshold: 1219,
+        now: new Date("2026-07-01T03:12:00.000Z"),
+        state: {
+          lastSuccessfulTrainingAt: "2026-06-01T03:29:00.000Z"
+        }
+      })
+    ).toEqual({ action: "train" });
   });
 
   it("builds a trainable dataset grouped by subject and ordered by review history", () => {
@@ -123,6 +142,78 @@ describe("fsrs optimizer", () => {
     expect(dataset.items[0]?.map((review) => review.deltaT)).toEqual([0, 2]);
     expect(dataset.items[0]?.map((review) => review.rating)).toEqual([3, 2]);
     expect(dataset.items[1]?.map((review) => review.deltaT)).toEqual([0, 2, 5]);
+  });
+
+  it("recomputes preset deltas after filtering mixed card-type subject histories", () => {
+    const dataset = buildFsrsTrainingDataset(
+      [
+        buildLogRow({
+          answeredAt: "2026-01-01T09:00:00.000Z",
+          cardType: "recognition",
+          cardId: "recognition-card-1",
+          elapsedDays: 0,
+          id: "mixed-r1",
+          rating: "good",
+          subjectKey: "group:term:mixed"
+        }),
+        buildLogRow({
+          answeredAt: "2026-01-03T09:00:00.000Z",
+          cardType: "concept",
+          cardId: "concept-card",
+          elapsedDays: 2,
+          id: "mixed-c1",
+          rating: "hard",
+          subjectKey: "group:term:mixed"
+        }),
+        buildLogRow({
+          answeredAt: "2026-01-04T09:00:00.000Z",
+          cardType: "recognition",
+          cardId: "recognition-card-2",
+          elapsedDays: 1,
+          id: "mixed-r2",
+          rating: "good",
+          subjectKey: "group:term:mixed"
+        })
+      ],
+      "recognition"
+    );
+
+    expect(dataset.items[0]?.map((review) => review.deltaT)).toEqual([0, 3]);
+  });
+
+  it("rejects invalid optimized parameter writes without clearing the previous preset", async () => {
+    await settingsStore.writeFsrsOptimizedParameters(
+      {
+        desiredRetention: 0.9,
+        presetKey: "recognition",
+        trainedAt: "2026-01-01T09:00:00.000Z",
+        trainingReviewCount: 42,
+        weights: [...reviewSchedulerConfig.fsrs.w]
+      },
+      database,
+      "2026-01-01T09:00:00.000Z"
+    );
+
+    await expect(
+      settingsStore.writeFsrsOptimizedParameters(
+        {
+          desiredRetention: 0.9,
+          presetKey: "recognition",
+          trainedAt: "2026-01-02T09:00:00.000Z",
+          trainingReviewCount: 43,
+          weights: [1, 2, 3]
+        },
+        database,
+        "2026-01-02T09:00:00.000Z"
+      )
+    ).rejects.toThrow("Invalid FSRS optimized parameters");
+
+    const snapshot = await getFsrsOptimizerSnapshot(database);
+
+    expect(snapshot.presets.recognition).toMatchObject({
+      trainedAt: "2026-01-01T09:00:00.000Z",
+      trainingReviewCount: 42
+    });
   });
 
   it("skips automatic training when the last successful run is still too recent", async () => {
@@ -839,6 +930,7 @@ describe("fsrs optimizer", () => {
     const result = await applyReviewGrade({
       cardId: "recognition-card",
       database,
+      expectedUpdatedAt: subjectState!.updatedAt,
       now,
       rating: "good"
     });

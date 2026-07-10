@@ -136,6 +136,80 @@ describe("review model", () => {
     expect(scheduled[3]?.scheduledDays).toBe(1);
   });
 
+  it("logs fractional elapsed days when a review crosses UTC midnight by minutes", () => {
+    const scheduled = scheduleReview({
+      current: {
+        difficulty: 5,
+        dueAt: "2026-05-20T00:00:00.000Z",
+        lapses: 0,
+        lastReviewedAt: "2026-05-19T23:58:00.000Z",
+        learningSteps: 0,
+        reps: 3,
+        scheduledDays: 1,
+        stability: 1,
+        state: "review"
+      },
+      now: new Date("2026-05-20T00:02:00.000Z"),
+      rating: "good"
+    });
+
+    expect(scheduled.elapsedDays).toBeCloseTo(0.003, 3);
+    expect(scheduled.scheduledDays).toBeLessThanOrEqual(3);
+  });
+
+  it("replays fractional elapsed days when review history crosses UTC midnight by minutes", () => {
+    const firstReviewedAt = "2026-05-19T23:58:00.000Z";
+    const secondReviewedAt = "2026-05-20T00:02:00.000Z";
+    const first = scheduleReview({
+      current: {
+        difficulty: null,
+        dueAt: null,
+        lapses: 0,
+        lastReviewedAt: null,
+        reps: 0,
+        stability: null,
+        state: "new"
+      },
+      now: new Date(firstReviewedAt),
+      rating: "good"
+    });
+    const sequential = scheduleReview({
+      current: {
+        difficulty: first.difficulty,
+        dueAt: first.dueAt,
+        lapses: first.lapses,
+        lastReviewedAt: firstReviewedAt,
+        learningSteps: first.learningSteps,
+        reps: first.reps,
+        scheduledDays: first.scheduledDays,
+        stability: first.stability,
+        state: first.state
+      },
+      now: new Date(secondReviewedAt),
+      rating: "good"
+    });
+    const replayed = replayReviewHistory([
+      {
+        answeredAt: firstReviewedAt,
+        id: "utc-midnight-log-1",
+        previousState: "new",
+        rating: "good",
+        responseMs: null
+      },
+      {
+        answeredAt: secondReviewedAt,
+        id: "utc-midnight-log-2",
+        previousState: first.state,
+        rating: "good",
+        responseMs: null
+      }
+    ]);
+
+    expect(replayed?.logs[1]?.elapsedDays).toBeCloseTo(0.003, 3);
+    expect(replayed?.state.dueAt).toBe(sequential.dueAt);
+    expect(replayed?.state.scheduledDays).toBe(sequential.scheduledDays);
+  });
+
   it("replays review history with a caller-provided scheduler config", () => {
     const logs = [
       {

@@ -5,6 +5,7 @@ import type {
 } from "./snapshot.ts";
 
 const DAY = 24 * 60 * 60_000;
+const CRON_DELIVERY_TOLERANCE_MS = 60 * 60_000;
 const MIN_TRAINING_REVIEW_COUNT = 10;
 const MIN_TRAINING_ITEM_COUNT = 5;
 
@@ -77,7 +78,7 @@ export function planFsrsOptimizerRun(input: {
     input.state.lastSuccessfulTrainingAt &&
     input.now.getTime() -
       new Date(input.state.lastSuccessfulTrainingAt).getTime() <
-      input.config.minDaysBetweenRuns * DAY
+      input.config.minDaysBetweenRuns * DAY - CRON_DELIVERY_TOLERANCE_MS
   ) {
     return {
       action: "skip",
