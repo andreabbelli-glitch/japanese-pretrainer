@@ -26,6 +26,7 @@ import {
   runWithTaggedCache
 } from "@/features/cache/server/data-cache";
 import { compareRankedEntries } from "@/features/glossary/model/search";
+import { isGlossaryAutocompleteQueryEligible } from "@/features/glossary/model/autocomplete-query";
 import {
   buildGlossaryStats,
   groupRowsByEntry,
@@ -294,7 +295,7 @@ export async function loadGlobalGlossaryAutocompleteData(
     defaultStudySettings.glossaryDefaultSort
   );
 
-  if (filters.query.length === 0) {
+  if (!isGlossaryAutocompleteQueryEligible(filters.query)) {
     return [];
   }
 

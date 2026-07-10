@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { getGlossaryAutocompleteSuggestions } from "@/features/glossary/model/autocomplete";
+import { isGlossaryAutocompleteQueryEligible } from "@/features/glossary/model/autocomplete-query";
 
 const suggestions = [
   {
@@ -49,6 +50,25 @@ const suggestions = [
 ];
 
 describe("glossary autocomplete", () => {
+  it("waits for three meaningful non-Japanese characters but accepts one Japanese character", () => {
+    expect(isGlossaryAutocompleteQueryEligible("")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible(" a ")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible("a-")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible("ａ！")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible("aーー")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible("aéè")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible("ab")).toBe(false);
+    expect(isGlossaryAutocompleteQueryEligible("abc")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("a墓")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("墓")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("ボ")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("カード")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("ゲーム")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("第1話")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("1枚")).toBe(true);
+    expect(isGlossaryAutocompleteQueryEligible("S級")).toBe(true);
+  });
+
   it("matches romaji queries against readings and romaji fields", () => {
     const result = getGlossaryAutocompleteSuggestions({
       filters: {

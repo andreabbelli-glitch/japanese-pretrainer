@@ -6,6 +6,7 @@ import type {
   GlobalGlossaryAutocompleteSuggestion,
   GlobalGlossaryPageData
 } from "@/features/glossary/types";
+import { isGlossaryAutocompleteQueryEligible } from "@/features/glossary/model/autocomplete-query";
 import { normalizeSearchText } from "@/features/study/model/search";
 
 type GlossaryAutocompleteFilters = Pick<
@@ -67,7 +68,7 @@ export function useGlossaryAutocomplete({
   useEffect(() => {
     const trimmedQuery = debouncedQuery;
 
-    if (!isOpen || trimmedQuery.length === 0) {
+    if (!isOpen || !isGlossaryAutocompleteQueryEligible(trimmedQuery)) {
       startTransition(() => {
         setSuggestions([]);
         setSuggestionsKey("");
@@ -139,16 +140,19 @@ export function useGlossaryAutocomplete({
     isOpen
   ]);
 
-  const autocompleteKey = buildAutocompleteKey({
-    cards: filters.cards,
-    entryType: filters.entryType,
-    media: filters.media,
-    query,
-    study: filters.study
-  });
+  const normalizedQuery = normalizeSearchText(query);
+  const autocompleteKey = isGlossaryAutocompleteQueryEligible(normalizedQuery)
+    ? buildAutocompleteKey({
+        cards: filters.cards,
+        entryType: filters.entryType,
+        media: filters.media,
+        query: normalizedQuery,
+        study: filters.study
+      })
+    : "";
   const shouldShowSuggestions =
     isOpen &&
-    query.trim().length > 0 &&
+    autocompleteKey.length > 0 &&
     suggestions.length > 0 &&
     suggestionsKey === autocompleteKey;
 

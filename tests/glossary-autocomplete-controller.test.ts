@@ -74,7 +74,7 @@ describe("useGlossaryAutocomplete", () => {
     uninstallMinimalDom();
   });
 
-  it("debounces requests, hides stale results, and reuses cached suggestions for the same normalized key", async () => {
+  it("debounces requests, handles Japanese variants, and reuses cached suggestions for the same normalized key", async () => {
     const firstResponse = new Response(JSON.stringify(initialSuggestions), {
       status: 200
     });
@@ -84,6 +84,13 @@ describe("useGlossaryAutocomplete", () => {
     const fetchMock = vi.mocked(fetch);
     fetchMock.mockResolvedValueOnce(firstResponse);
     fetchMock.mockResolvedValueOnce(secondResponse);
+    fetchMock.mockImplementation(() =>
+      Promise.resolve(
+        new Response(JSON.stringify(initialSuggestions), {
+          status: 200
+        })
+      )
+    );
 
     let latestController: GlossaryAutocompleteProbeResult | null = null;
 
@@ -194,6 +201,29 @@ describe("useGlossaryAutocomplete", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(controller().suggestions).toEqual(initialSuggestions);
     expect(controller().shouldShowSuggestions).toBe(true);
+
+    for (const japaneseQuery of ["カード", "ゲーム", "第1話", "a墓"]) {
+      await act(async () => {
+        controller().setQuery(japaneseQuery);
+        await Promise.resolve();
+      });
+
+      await act(async () => {
+        vi.advanceTimersByTime(140);
+        await Promise.resolve();
+      });
+
+      await act(async () => {
+        await Promise.resolve();
+      });
+    }
+
+    expect(fetchMock).toHaveBeenCalledTimes(6);
+    expect(
+      fetchMock.mock.calls
+        .slice(2)
+        .map(([request]) => readFetchedAutocompleteQuery(request))
+    ).toEqual([{ q: "カード" }, { q: "ゲーム" }, { q: "第1話" }, { q: "a墓" }]);
   });
 
   it("does not fetch while suggestions stay closed", async () => {
@@ -314,6 +344,99 @@ describe("useGlossaryAutocomplete", () => {
     expect(readFetchedAutocompleteQuery(fetchMock.mock.calls[1]?.[0])).toEqual({
       q: "kosuto"
     });
+  });
+
+  it("hides loaded suggestions without fetching an incomplete Latin query", async () => {
+    const fetchMock = vi.mocked(fetch);
+    fetchMock.mockResolvedValueOnce(
+      new Response(JSON.stringify(initialSuggestions), {
+        status: 200
+      })
+    );
+    let latestController: GlossaryAutocompleteProbeResult | null = null;
+
+    function Probe() {
+      const [query, setQuery] = useState("");
+      const controller = useGlossaryAutocompleteProbe({
+        isOpen: true,
+        query
+      });
+
+      useEffect(() => {
+        latestController = {
+          ...controller,
+          closeSuggestions: () => undefined,
+          openSuggestions: () => undefined,
+          query,
+          setQuery
+        };
+      }, [controller, query]);
+
+      return createElement("div");
+    }
+
+    container = document.createElement("div");
+    root = createRoot(container);
+
+    await act(async () => {
+      root!.render(createElement(Probe));
+    });
+
+    const controller = () => {
+      if (!latestController) {
+        throw new Error("controller not mounted");
+      }
+
+      return latestController;
+    };
+
+    await act(async () => {
+      controller().setQuery("kosu");
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(controller().suggestions).toEqual(initialSuggestions);
+    expect(controller().shouldShowSuggestions).toBe(true);
+
+    await act(async () => {
+      controller().setQuery("a-");
+      await Promise.resolve();
+    });
+
+    expect(controller().shouldShowSuggestions).toBe(false);
+
+    await act(async () => {
+      vi.advanceTimersByTime(140);
+      await Promise.resolve();
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(controller().suggestions).toEqual([]);
+    expect(controller().shouldShowSuggestions).toBe(false);
+
+    for (const paddedQuery of ["aーー", "aéè"]) {
+      await act(async () => {
+        controller().setQuery(paddedQuery);
+        await Promise.resolve();
+      });
+
+      await act(async () => {
+        vi.advanceTimersByTime(140);
+        await Promise.resolve();
+      });
+    }
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
   it("does not restart the request while only query casing or spacing changes for the same normalized key", async () => {

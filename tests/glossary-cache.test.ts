@@ -40,10 +40,9 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/features/cache/server/data-cache", async () => {
-  const actual =
-    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
-      "@/features/cache/server/data-cache"
-    );
+  const actual = await vi.importActual<
+    typeof import("@/features/cache/server/data-cache")
+  >("@/features/cache/server/data-cache");
 
   return {
     ...actual,
@@ -175,7 +174,7 @@ describe("global glossary cache", () => {
 
     const cacheKey = JSON.stringify([
       "glossary",
-      "autocomplete",
+      "autocomplete-v2",
       "cards:all",
       "media:all",
       "query:iku",
@@ -193,7 +192,51 @@ describe("global glossary cache", () => {
     expect(cacheStore.has(cacheKey)).toBe(true);
   });
 
-  it("reuses the normalized global glossary search caches across autocomplete and results pages", async () => {
+  it("skips storage work for an incomplete Latin autocomplete query", async () => {
+    const suggestions = await Promise.all(
+      ["a", "no", "a-", "ａ！", "aーー", "aéè"].map((query) =>
+        getGlobalGlossaryAutocompleteData(
+          {
+            q: query
+          },
+          database
+        )
+      )
+    );
+
+    expect(suggestions).toEqual([[], [], [], [], [], []]);
+    expect(unstableCacheMock).not.toHaveBeenCalled();
+  });
+
+  it("keeps Japanese autocomplete active while suppressing a short compact variant", async () => {
+    const candidateRefsSpy = vi.spyOn(
+      dbQueriesModule,
+      "listGlossarySearchCandidateRefs"
+    );
+
+    await Promise.all(
+      ["カード", "ゲーム", "第1話", "a墓"].map((query) =>
+        getGlobalGlossaryAutocompleteData(
+          {
+            q: query
+          },
+          database
+        )
+      )
+    );
+
+    expect(candidateRefsSpy).toHaveBeenCalledTimes(4);
+    expect(candidateRefsSpy).toHaveBeenCalledWith(
+      database,
+      expect.objectContaining({
+        limit: 65,
+        romajiCompact: ""
+      })
+    );
+    expect(unstableCacheMock).toHaveBeenCalledTimes(4);
+  });
+
+  it("keeps normalized result caches stable after a bounded autocomplete request", async () => {
     await getGlobalGlossaryAutocompleteData(
       {
         q: "  IKU  "
@@ -240,7 +283,7 @@ describe("global glossary cache", () => {
     const resolvedKeySpecificCalls = unstableCacheMock.mock.calls.filter(
       ([, keyParts]) => JSON.stringify(keyParts) === sharedResolvedCacheKey
     );
-    expect(resolvedKeySpecificCalls).toHaveLength(2);
+    expect(resolvedKeySpecificCalls).toHaveLength(1);
     expect(cacheStore.has(sharedResolvedCacheKey)).toBe(true);
   });
 

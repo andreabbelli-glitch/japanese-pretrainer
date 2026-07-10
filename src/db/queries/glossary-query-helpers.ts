@@ -1,11 +1,15 @@
 import type { EntryType } from "../schema/index.ts";
 
 export type GlossarySearchCandidateInput = {
+  cards?: "all" | "with_cards" | "without_cards";
   entryType?: EntryType;
   grammarKana: string;
   kana: string;
+  limit?: number;
+  mediaSlug?: string;
   normalized: string;
   romajiCompact: string;
+  study?: "known" | "review" | "learning" | "new" | "available";
 };
 
 type TextMatchClause = {
