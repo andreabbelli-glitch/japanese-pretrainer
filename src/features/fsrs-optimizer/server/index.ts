@@ -6,10 +6,14 @@ import {
   type FsrsPresetKey
 } from "../model/snapshot.ts";
 import {
+  resolveFsrsOptimizerPresetProgress,
+  summarizeFsrsOptimizerPresetProgress
+} from "../model/progress.ts";
+import {
   calculateFsrsOptimizerNewReviewThreshold,
   getFsrsOptimizerSnapshot
 } from "./settings-store.ts";
-import { countEligibleFsrsOptimizerReviews } from "./training-data.ts";
+import { countEligibleFsrsOptimizerReviewsByPreset } from "./training-data.ts";
 
 export {
   buildReviewSeedStateWithFsrsPreset,
@@ -35,26 +39,35 @@ export {
   buildDefaultFsrsOptimizerSnapshot,
   calculateFsrsOptimizerNewReviewThreshold,
   getBindingPackageVersion,
+  getFreshFsrsOptimizerTrainingContext,
   getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerConfigDefaults,
   getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
   getFsrsOptimizerSnapshot,
+  invalidateFsrsOptimizerCaches,
   invalidateFsrsOptimizerRuntimeContextCache,
   normalizeFsrsWeights,
   writeFsrsOptimizedParameters,
+  writeFsrsOptimizedParametersToDatabase,
   writeFsrsOptimizerConfig,
   writeFsrsOptimizerState
 } from "./settings-store.ts";
 export {
   buildFsrsTrainingDataset,
   countEligibleFsrsOptimizerReviews,
+  countEligibleFsrsOptimizerReviewsByPreset,
   loadFsrsOptimizerLogRows
 } from "./training-data.ts";
 export {
   applyFsrsReschedule,
   buildFsrsReschedulePreview
 } from "./reschedule.ts";
+export {
+  buildFsrsParameterSet,
+  persistFsrsParameterSet,
+  persistFsrsParameterSetsForSnapshot
+} from "./parameter-set.ts";
 export type {
   FsrsOptimizerLogRow,
   FsrsTrainingDataset,
@@ -68,6 +81,11 @@ export type {
 
 export type FsrsOptimizerPresetStatus = {
   desiredRetention: number;
+  eligibleReviewCount?: number;
+  lastError?: string | null;
+  lastEvaluationAt?: string | null;
+  newEligibleReviews?: number;
+  nextTrainingNewReviewThreshold?: number;
   presetKey: FsrsPresetKey;
   trainedAt: string | null;
   trainingReviewCount: number;
@@ -86,38 +104,59 @@ export type FsrsOptimizerStatus = {
 export async function getFsrsOptimizerStatus(
   database: DatabaseClient = db
 ): Promise<FsrsOptimizerStatus> {
-  const [snapshot, totalEligibleReviews] = await Promise.all([
+  const [snapshot, eligibleReviewCounts] = await Promise.all([
     getFsrsOptimizerSnapshot(database),
-    countEligibleFsrsOptimizerReviews(database)
+    countEligibleFsrsOptimizerReviewsByPreset(database)
   ]);
-  const newEligibleReviews = Math.max(
-    totalEligibleReviews - snapshot.state.totalEligibleReviewsAtLastTraining,
-    0
+  const totalEligibleReviews =
+    eligibleReviewCounts.recognition + eligibleReviewCounts.concept;
+  const presetProgress = resolveFsrsOptimizerPresetProgress(
+    snapshot.state,
+    eligibleReviewCounts
   );
+  const stateSummary = summarizeFsrsOptimizerPresetProgress(presetProgress);
+  const presetThresholds = {
+    concept: calculateFsrsOptimizerNewReviewThreshold({
+      minNewReviews: snapshot.config.minNewReviews,
+      totalEligibleReviewsAtLastTraining:
+        presetProgress.concept.eligibleReviewCountAtLastEvaluation
+    }),
+    recognition: calculateFsrsOptimizerNewReviewThreshold({
+      minNewReviews: snapshot.config.minNewReviews,
+      totalEligibleReviewsAtLastTraining:
+        presetProgress.recognition.eligibleReviewCountAtLastEvaluation
+    })
+  };
 
   return {
     config: snapshot.config,
-    newEligibleReviews,
-    nextTrainingNewReviewThreshold: calculateFsrsOptimizerNewReviewThreshold({
-      minNewReviews: snapshot.config.minNewReviews,
-      totalEligibleReviewsAtLastTraining:
-        snapshot.state.totalEligibleReviewsAtLastTraining
-    }),
+    newEligibleReviews: stateSummary.newEligibleReviewsSinceLastTraining,
+    nextTrainingNewReviewThreshold: Math.min(
+      presetThresholds.recognition,
+      presetThresholds.concept
+    ),
     presets: {
       concept: buildPresetStatus(
         "concept",
         snapshot.config.desiredRetention,
-        snapshot.presets.concept
+        snapshot.presets.concept,
+        eligibleReviewCounts.concept,
+        presetProgress.concept,
+        presetThresholds.concept
       ),
       recognition: buildPresetStatus(
         "recognition",
         snapshot.config.desiredRetention,
-        snapshot.presets.recognition
+        snapshot.presets.recognition,
+        eligibleReviewCounts.recognition,
+        presetProgress.recognition,
+        presetThresholds.recognition
       )
     },
     state: {
       ...snapshot.state,
-      newEligibleReviewsSinceLastTraining: newEligibleReviews
+      ...stateSummary,
+      presetProgress
     },
     totalEligibleReviews
   };
@@ -126,10 +165,19 @@ export async function getFsrsOptimizerStatus(
 function buildPresetStatus(
   presetKey: FsrsPresetKey,
   desiredRetention: number,
-  parameters: FsrsOptimizedParameters | null
+  parameters: FsrsOptimizedParameters | null,
+  eligibleReviewCount: number,
+  progress: NonNullable<FsrsOptimizerState["presetProgress"]>[FsrsPresetKey],
+  nextTrainingNewReviewThreshold: number
 ): FsrsOptimizerPresetStatus {
   return {
     desiredRetention,
+    eligibleReviewCount,
+    lastError: progress?.lastError ?? null,
+    lastEvaluationAt: progress?.lastEvaluationAt ?? null,
+    newEligibleReviews:
+      progress?.newEligibleReviewsSinceLastEvaluation ?? eligibleReviewCount,
+    nextTrainingNewReviewThreshold,
     presetKey,
     trainedAt: parameters?.trainedAt ?? null,
     trainingReviewCount: parameters?.trainingReviewCount ?? 0,

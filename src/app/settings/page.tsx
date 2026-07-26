@@ -14,18 +14,7 @@ type SettingsRouteProps = {
 export default async function SettingsRoute({
   searchParams
 }: SettingsRouteProps) {
-  const [
-    fsrsOptimizerStatus,
-    fsrsReschedulePreview,
-    settings,
-    resolvedSearchParams
-  ] =
-    await Promise.all([
-      getFsrsOptimizerStatus(),
-      buildFsrsReschedulePreview(),
-      getStudySettings(),
-      searchParams
-    ]);
+  const resolvedSearchParams = await searchParams;
   const saved = hasSearchParamValue(resolvedSearchParams.saved, "1");
   const fsrsRescheduleStatus = hasSearchParamValue(
     resolvedSearchParams.fsrsRescheduled,
@@ -37,6 +26,17 @@ export default async function SettingsRoute({
       : hasSearchParamValue(resolvedSearchParams.fsrsRescheduleNoop, "1")
         ? "noop"
         : null;
+  const shouldBuildFsrsReschedulePreview =
+    fsrsRescheduleStatus !== null ||
+    hasSearchParamValue(resolvedSearchParams.fsrsPreview, "1");
+  const [fsrsOptimizerStatus, fsrsReschedulePreview, settings] =
+    await Promise.all([
+      getFsrsOptimizerStatus(),
+      shouldBuildFsrsReschedulePreview
+        ? buildFsrsReschedulePreview()
+        : Promise.resolve(null),
+      getStudySettings()
+    ]);
   const returnTo = readInternalHref(resolvedSearchParams.returnTo);
 
   return (

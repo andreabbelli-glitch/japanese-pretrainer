@@ -83,4 +83,85 @@ describe("FSRS optimizer cron route", () => {
       database: dbMock
     });
   });
+
+  it("returns a non-success response when every evaluated preset fails", async () => {
+    const result = {
+      error: "FSRS optimizer failed for every evaluated preset.",
+      failedAt: "2026-05-01T03:00:00.000Z",
+      lastCheckAt: "2026-05-01T03:00:00.000Z",
+      newEligibleReviews: 24,
+      presetResults: {
+        concept: {
+          error: "concept optimizer failed",
+          reason: "training-error",
+          status: "failed",
+          trainingReviewCount: 12
+        },
+        recognition: {
+          error: "recognition optimizer failed",
+          reason: "training-error",
+          status: "failed",
+          trainingReviewCount: 12
+        }
+      },
+      reason: "all-presets-failed",
+      status: "failed",
+      totalEligibleReviews: 24
+    };
+
+    runFsrsOptimizerMock.mockResolvedValue(result);
+
+    const response = await GET(
+      new Request("https://example.test/api/internal/fsrs-optimizer/run", {
+        headers: {
+          authorization: "Bearer cron-secret"
+        }
+      })
+    );
+
+    expect(response.status).toBe(500);
+    await expect(response.json()).resolves.toEqual({
+      ok: false,
+      result
+    });
+  });
+
+  it("keeps a partial preset success on the successful cron path", async () => {
+    const result = {
+      lastCheckAt: "2026-05-01T03:00:00.000Z",
+      newEligibleReviews: 12,
+      presetResults: {
+        concept: {
+          error: "concept optimizer failed",
+          reason: "training-error",
+          status: "failed",
+          trainingReviewCount: 12
+        },
+        recognition: {
+          reason: "candidate-improved",
+          status: "trained",
+          trainingReviewCount: 12
+        }
+      },
+      status: "trained",
+      totalEligibleReviews: 24,
+      trainedAt: "2026-05-01T03:00:00.000Z"
+    };
+
+    runFsrsOptimizerMock.mockResolvedValue(result);
+
+    const response = await GET(
+      new Request("https://example.test/api/internal/fsrs-optimizer/run", {
+        headers: {
+          authorization: "Bearer cron-secret"
+        }
+      })
+    );
+
+    expect(response.status).toBe(200);
+    await expect(response.json()).resolves.toEqual({
+      ok: true,
+      result
+    });
+  });
 });

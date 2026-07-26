@@ -1,16 +1,14 @@
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  closeDatabaseClient,
-  type DatabaseClient
-} from "@/db";
+import { closeDatabaseClient, type DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
 import { reviewSubjectLog, reviewSubjectState, term } from "@/db/schema";
+import {
+  primarySubjectKey,
+  secondarySubjectKey
+} from "./helpers/review-shared";
 import { withTestDatabase } from "./helpers/test-db";
-
-const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
-const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
 
 describe("mobile review API", () => {
   const previousDatabaseUrl = process.env.DATABASE_URL;
@@ -190,6 +188,48 @@ describe("mobile review API", () => {
         });
         expect(logRows).toHaveLength(existingLogRows.length + 1);
         expect(state?.lastReviewedAt).not.toBeNull();
+      }
+    );
+  });
+
+  it("rejects mobile grades that omit the required freshness token", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-mobile-review-no-freshness-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database, databasePath }) => {
+        await makePrimaryCardDue(database);
+        const existingLogRows = await database.query.reviewSubjectLog.findMany({
+          where: eq(reviewSubjectLog.cardId, developmentFixture.primaryCardId)
+        });
+        const { POST } = await importGradeRouteForDatabase(databasePath);
+
+        const response = await POST(
+          new Request("https://example.test/api/mobile/review/grade", {
+            body: JSON.stringify({
+              cardId: developmentFixture.primaryCardId,
+              rating: "good"
+            }),
+            headers: {
+              authorization: "Bearer mobile-review-secret",
+              "content-type": "application/json"
+            },
+            method: "POST"
+          })
+        );
+        const body = await response.json();
+        const logRows = await database.query.reviewSubjectLog.findMany({
+          where: eq(reviewSubjectLog.cardId, developmentFixture.primaryCardId)
+        });
+
+        expect(response.status, JSON.stringify(body)).toBe(400);
+        expect(body).toEqual({
+          error: "Invalid mobile review grade request.",
+          ok: false
+        });
+        expect(logRows).toHaveLength(existingLogRows.length);
       }
     );
   });

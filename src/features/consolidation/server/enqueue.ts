@@ -86,8 +86,10 @@ export async function enqueueLessonConsolidation(
     .insert(preReviewConsolidationState)
     .values(
       rowsToInsert.map((candidate) => ({
+        canonicalSubjectKey: candidate.identity.canonicalSubjectKey,
         subjectKey: candidate.identity.subjectKey,
         subjectType: candidate.identity.subjectKind,
+        recallTask: candidate.identity.recallTask,
         entryType: candidate.identity.entryType,
         crossMediaGroupId: candidate.identity.crossMediaGroupId,
         entryId: candidate.identity.entryId,
@@ -174,6 +176,7 @@ export async function syncReviewGradeConsolidation(input: {
 
   const rowValues = {
     attemptCount: 0,
+    canonicalSubjectKey: input.identity.canonicalSubjectKey,
     completedAt: null,
     crossMediaGroupId: input.identity.crossMediaGroupId,
     entryId: input.identity.entryId,
@@ -182,6 +185,7 @@ export async function syncReviewGradeConsolidation(input: {
     lessonId: input.lessonId,
     mediaId: input.mediaId,
     readingPassedAt: null,
+    recallTask: input.identity.recallTask,
     representativeCardId: input.representativeCardId,
     status: "retraining" as const,
     subjectType: input.identity.subjectKind,

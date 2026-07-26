@@ -31,10 +31,15 @@ export async function GET(request: Request) {
       database: db
     });
 
-    return NextResponse.json({
-      ok: true,
-      result
-    });
+    const failed = result.status === "failed";
+
+    return NextResponse.json(
+      {
+        ok: !failed,
+        result
+      },
+      { status: failed ? 500 : 200 }
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown error";
 

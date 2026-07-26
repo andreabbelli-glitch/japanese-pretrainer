@@ -9,11 +9,14 @@ import {
 } from "@/features/review/server/page-data";
 import { hydrateReviewCard } from "@/features/review/server/card-hydration";
 import type { ReviewGradeResult } from "@/features/review/server/service";
-import type {
-  ReviewPageData,
-  ReviewQueueCard
-} from "@/features/review/types";
+import type { ReviewPageData, ReviewQueueCard } from "@/features/review/types";
 import type { ReviewSessionInput } from "@/features/review/types";
+import { DEFAULT_REVIEW_LEARN_AHEAD_MINUTES } from "@/features/review/model/queue";
+import {
+  addReviewStudyDays,
+  getReviewStudyDay,
+  getReviewStudyDayBoundsForKey
+} from "@/features/review/model/study-day";
 
 import { buildReviewSearchParams } from "@/features/navigation/review-session.ts";
 
@@ -34,30 +37,34 @@ type HydratedReviewCardOutcome =
     };
 
 export async function resolvePostGradeReviewSessionPageData(input: {
-  gradeResult: Pick<ReviewGradeResult, "dueAt" | "forcedContrast">;
+  gradeResult: Pick<
+    ReviewGradeResult,
+    "dueAt" | "forcedContrast" | "newState" | "scheduledDays"
+  >;
   resolvedMedia?: ResolvedReviewScopeMedia;
   sessionInput: ReviewSessionInput;
 }): Promise<ReviewPageData> {
   const sessionInput = input.sessionInput;
+  const now = new Date();
+  const gradedQueueKind = resolveGradedQueueKind(sessionInput, now);
 
   if (
-    (sessionInput.gradedCardBucket === "due" ||
-      sessionInput.gradedCardBucket === "new") &&
+    gradedQueueKind !== null &&
     sessionInput.sessionMedia &&
     sessionInput.sessionQueue &&
     sessionInput.sessionSettings
   ) {
-    const now = new Date();
     const updatedQueue = buildIncrementalQueueUpdate({
       currentQueue: sessionInput.sessionQueue,
-      gradedCardBucket: sessionInput.gradedCardBucket,
       gradedDueAt: input.gradeResult.dueAt,
+      gradedQueueKind,
+      gradedScheduledDays: input.gradeResult.scheduledDays,
+      gradedState: input.gradeResult.newState,
       now
     });
     const hydratedAdvanceCandidate = await resolveHydratedAdvanceCandidate({
       candidateCardIds: sessionInput.candidateCardIds ?? [],
-      canonicalCandidateCardIds:
-        sessionInput.canonicalCandidateCardIds ?? [],
+      canonicalCandidateCardIds: sessionInput.canonicalCandidateCardIds ?? [],
       nextCardId: sessionInput.nextCardId,
       now
     });
@@ -100,7 +107,13 @@ export async function resolvePostGradeReviewSessionPageData(input: {
 
     if (!hasAdvanceCandidates) {
       if (sessionInput.nextCardId === null) {
-        if (updatedQueue.queueCount > 0) {
+        if (
+          updatedQueue.queueCount > 0 ||
+          shouldRebuildReviewQueueForLearnAhead({
+            nextLearningDueAt: updatedQueue.pendingLearningDueAt ?? null,
+            now
+          })
+        ) {
           return requireReviewPageDataForScope(
             sessionInput,
             buildReviewSearchParams({
@@ -126,7 +139,13 @@ export async function resolvePostGradeReviewSessionPageData(input: {
       }
 
       if (sessionInput.nextCardId === undefined) {
-        if (updatedQueue.queueCount <= 0) {
+        if (
+          updatedQueue.queueCount <= 0 &&
+          !shouldRebuildReviewQueueForLearnAhead({
+            nextLearningDueAt: updatedQueue.pendingLearningDueAt ?? null,
+            now
+          })
+        ) {
           return buildReviewSessionPageData({
             queue: updatedQueue,
             selectedCard: null,
@@ -148,13 +167,12 @@ export async function resolvePostGradeReviewSessionPageData(input: {
         );
       }
 
-      const now = new Date();
       const hydratedCard = await hydrateReviewCard({
         cardId: sessionInput.nextCardId,
         now
       });
 
-      if (hydratedCard && isHydratedQueueCandidate(hydratedCard)) {
+      if (hydratedCard && isHydratedQueueCandidate(hydratedCard, now)) {
         return buildReviewSessionPageData({
           queue: updatedQueue,
           selectedCard: hydratedCard,
@@ -213,8 +231,74 @@ export async function resolvePostGradeReviewSessionPageData(input: {
   );
 }
 
+type GradedQueueKind = "due" | "learn-ahead" | "new";
+
+function resolveGradedQueueKind(
+  input: Pick<
+    ReviewSessionInput,
+    | "gradedCardBucket"
+    | "gradedCardDueAt"
+    | "gradedCardScheduledDays"
+    | "gradedCardState"
+  >,
+  now: Date
+): GradedQueueKind | null {
+  if (input.gradedCardBucket === "due" || input.gradedCardBucket === "new") {
+    return input.gradedCardBucket;
+  }
+
+  return isIntradayLearnAheadCandidate(
+    {
+      bucket: input.gradedCardBucket,
+      dueAt: input.gradedCardDueAt ?? null,
+      scheduledDays: input.gradedCardScheduledDays,
+      state: input.gradedCardState ?? null
+    },
+    now
+  )
+    ? "learn-ahead"
+    : null;
+}
+
+function resolveScheduledIntradayDueAt(input: {
+  dueAt: string | null;
+  newState: ReviewGradeResult["newState"];
+  scheduledDays: number;
+}) {
+  return input.scheduledDays === 0 &&
+    (input.newState === "learning" || input.newState === "relearning") &&
+    input.dueAt
+    ? input.dueAt
+    : null;
+}
+
+function isIntradayLearnAheadCandidate(
+  input: {
+    bucket: ReviewQueueCard["bucket"] | undefined;
+    dueAt: string | null;
+    scheduledDays: number | undefined;
+    state: ReviewQueueCard["reviewSeedState"]["state"];
+  },
+  now: Date
+) {
+  if (
+    input.bucket !== "upcoming" ||
+    input.scheduledDays !== 0 ||
+    (input.state !== "learning" && input.state !== "relearning") ||
+    !input.dueAt
+  ) {
+    return false;
+  }
+
+  const dueTime = new Date(input.dueAt).getTime();
+  const cutoffTime =
+    now.getTime() + DEFAULT_REVIEW_LEARN_AHEAD_MINUTES * 60_000;
+
+  return Number.isFinite(dueTime) && dueTime <= cutoffTime;
+}
+
 export async function requireReviewPageDataForScope(
-  input: Pick<ReviewSessionInput, "gradedCardIds" | "mediaSlug" | "scope">,
+  input: Pick<ReviewSessionInput, "mediaSlug" | "scope">,
   searchParams: Record<string, string | string[] | undefined>,
   options: {
     bypassCache?: boolean;
@@ -222,13 +306,11 @@ export async function requireReviewPageDataForScope(
     resolvedMediaRows?: Awaited<ReturnType<typeof listMediaCached>>;
   } = {}
 ) {
-  const excludeCardIds = input.gradedCardIds;
   const bypassCache = options.bypassCache ?? true;
 
   if (input.scope === "global") {
     return getGlobalReviewPageData(searchParams, db, {
       bypassCache,
-      excludeCardIds,
       resolvedMediaRows: options.resolvedMediaRows
     });
   }
@@ -239,10 +321,24 @@ export async function requireReviewPageDataForScope(
 
   return requireReviewPageData(input.mediaSlug, searchParams, {
     bypassCache,
-    excludeCardIds,
     resolvedMedia: options.resolvedMedia,
     resolvedMediaRows: options.resolvedMediaRows
   });
+}
+
+export function shouldRebuildReviewQueueForLearnAhead(input: {
+  nextLearningDueAt: string | null;
+  now: Date;
+}) {
+  if (!input.nextLearningDueAt) {
+    return false;
+  }
+
+  const nextDueTime = new Date(input.nextLearningDueAt).getTime();
+  const learnAheadCutoff =
+    input.now.getTime() + DEFAULT_REVIEW_LEARN_AHEAD_MINUTES * 60_000;
+
+  return Number.isFinite(nextDueTime) && nextDueTime <= learnAheadCutoff;
 }
 
 export async function resolveReviewSessionMedia(
@@ -281,43 +377,68 @@ export async function requireMediaIdForSlug(mediaSlug: string) {
 
 function buildIncrementalQueueUpdate(input: {
   currentQueue: ReviewPageData["queue"];
-  gradedCardBucket: ReviewQueueCard["bucket"];
   gradedDueAt: string | null;
+  gradedQueueKind: GradedQueueKind;
+  gradedScheduledDays: number;
+  gradedState: ReviewGradeResult["newState"];
   now: Date;
 }): ReviewPageData["queue"] {
-  const { currentQueue, gradedCardBucket } = input;
-  const isQueuedBucket =
-    gradedCardBucket === "due" || gradedCardBucket === "new";
-  const gradedDueAt = isQueuedBucket ? input.gradedDueAt : null;
+  const { currentQueue, gradedQueueKind } = input;
+  const gradedDueAt = input.gradedDueAt;
   const gradedDueTime = gradedDueAt ? new Date(gradedDueAt).getTime() : NaN;
   const gradedBecomesUpcoming =
     Number.isFinite(gradedDueTime) && gradedDueTime > input.now.getTime();
-  const nextDueAt = resolveEarliestDueAt(
-    currentQueue.nextDueAt ?? null,
+  const scheduledIntradayDueAt = resolveScheduledIntradayDueAt({
+    dueAt: input.gradedDueAt,
+    newState: input.gradedState,
+    scheduledDays: input.gradedScheduledDays
+  });
+  const pendingLearningDueAt = resolveEarliestDueAt(
+    currentQueue.pendingLearningDueAt ?? null,
+    scheduledIntradayDueAt
+  );
+  const pendingScheduledDueAt = resolveEarliestDueAt(
+    currentQueue.pendingScheduledDueAt ?? null,
     gradedDueAt
   );
+  const nextDueAt =
+    gradedQueueKind === "learn-ahead"
+      ? pendingScheduledDueAt
+      : resolveEarliestDueAt(currentQueue.nextDueAt ?? null, gradedDueAt);
+  const nextLearningDueAt =
+    gradedQueueKind === "learn-ahead"
+      ? pendingLearningDueAt
+      : resolveEarliestDueAt(
+          currentQueue.nextLearningDueAt ?? null,
+          pendingLearningDueAt
+        );
 
   return {
     ...currentQueue,
     advanceCards: [],
     dueCount:
-      gradedCardBucket === "due"
+      gradedQueueKind === "due"
         ? Math.max(0, currentQueue.dueCount - 1)
         : currentQueue.dueCount,
     newAvailableCount:
-      gradedCardBucket === "new"
+      gradedQueueKind === "new"
         ? Math.max(0, currentQueue.newAvailableCount - 1)
         : currentQueue.newAvailableCount,
     newQueuedCount:
-      gradedCardBucket === "new"
+      gradedQueueKind === "new"
         ? Math.max(0, currentQueue.newQueuedCount - 1)
         : currentQueue.newQueuedCount,
     nextDueAt,
-    queueCount: Math.max(0, currentQueue.queueCount - (isQueuedBucket ? 1 : 0)),
+    nextLearningDueAt,
+    pendingLearningDueAt,
+    pendingScheduledDueAt,
+    queueCount: Math.max(0, currentQueue.queueCount - 1),
     tomorrowCount:
       currentQueue.tomorrowCount +
       (gradedBecomesUpcoming && isDueTomorrow(gradedDueAt!, input.now) ? 1 : 0),
-    upcomingCount: currentQueue.upcomingCount + (gradedBecomesUpcoming ? 1 : 0)
+    upcomingCount:
+      currentQueue.upcomingCount +
+      (gradedQueueKind !== "learn-ahead" && gradedBecomesUpcoming ? 1 : 0)
   };
 }
 
@@ -337,18 +458,11 @@ function resolveEarliestDueAt(
 }
 
 function isDueTomorrow(dueAt: string, now: Date) {
-  const tomorrowStart = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 1
-  );
-  const tomorrowEnd = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 2
+  const { dayEndIso, dayStartIso } = getReviewStudyDayBoundsForKey(
+    addReviewStudyDays(getReviewStudyDay(now), 1)
   );
 
-  return dueAt >= tomorrowStart.toISOString() && dueAt < tomorrowEnd.toISOString();
+  return dueAt >= dayStartIso && dueAt < dayEndIso;
 }
 
 async function resolveHydratedAdvanceCandidate(input: {
@@ -358,7 +472,8 @@ async function resolveHydratedAdvanceCandidate(input: {
   now: Date;
 }) {
   const canonicalCandidateCardIds =
-    input.canonicalCandidateCardIds && input.canonicalCandidateCardIds.length > 0
+    input.canonicalCandidateCardIds &&
+    input.canonicalCandidateCardIds.length > 0
       ? input.canonicalCandidateCardIds
       : input.candidateCardIds;
   const orderedCardIds = [
@@ -368,10 +483,10 @@ async function resolveHydratedAdvanceCandidate(input: {
     ])
   ];
   const hydratedCardOutcomes = new Map(
-    orderedCardIds.map((cardId) => [
-      cardId,
-      loadHydratedReviewCardOutcome(cardId, input.now)
-    ] as const)
+    orderedCardIds.map(
+      (cardId) =>
+        [cardId, loadHydratedReviewCardOutcome(cardId, input.now)] as const
+    )
   );
 
   for (const [index, cardId] of orderedCardIds.entries()) {
@@ -383,7 +498,7 @@ async function resolveHydratedAdvanceCandidate(input: {
 
     const hydratedCard = outcome.card;
 
-    if (hydratedCard && isHydratedQueueCandidate(hydratedCard)) {
+    if (hydratedCard && isHydratedQueueCandidate(hydratedCard, input.now)) {
       const canonicalQueuePosition = canonicalCandidateCardIds.indexOf(cardId);
 
       return {
@@ -398,13 +513,28 @@ async function resolveHydratedAdvanceCandidate(input: {
   return null;
 }
 
-function isHydratedQueueCandidate(card: ReviewQueueCard) {
-  return card.bucket === "due" || card.bucket === "new";
+function isHydratedQueueCandidate(card: ReviewQueueCard, now: Date) {
+  return (
+    card.bucket === "due" ||
+    card.bucket === "new" ||
+    isIntradayLearnAheadCandidate(
+      {
+        bucket: card.bucket,
+        dueAt: card.dueAt,
+        scheduledDays: card.reviewSeedState.scheduledDays,
+        state: card.reviewSeedState.state
+      },
+      now
+    )
+  );
 }
 
 async function hydrateReviewAdvanceCards(input: {
   canonicalCandidateCardIds: string[];
-  hydratedCardOutcomes?: ReadonlyMap<string, Promise<HydratedReviewCardOutcome>>;
+  hydratedCardOutcomes?: ReadonlyMap<
+    string,
+    Promise<HydratedReviewCardOutcome>
+  >;
   now: Date;
   selectedQueuePosition: number;
 }) {
@@ -432,7 +562,8 @@ async function hydrateReviewAdvanceCards(input: {
   );
 
   return hydratedCards.filter(
-    (card): card is ReviewQueueCard => card !== null
+    (card): card is ReviewQueueCard =>
+      card !== null && isHydratedQueueCandidate(card, input.now)
   );
 }
 

@@ -1,12 +1,14 @@
 import { eq } from "drizzle-orm";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { type DatabaseClient } from "@/db";
+import { listReviewSubjectFsrsReplaySubjects } from "@/db/queries";
 import {
   card,
   lesson,
   lessonProgress,
   media,
+  reviewMemoryAlias,
   reviewSubjectLog,
   reviewSubjectState,
   userSetting
@@ -14,9 +16,14 @@ import {
 import {
   applyFsrsReschedule,
   buildFsrsReschedulePreview,
+  loadFsrsOptimizerLogRows,
   writeFsrsOptimizedParameters
 } from "@/features/fsrs-optimizer/server";
 import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
+import {
+  buildReviewMemoryKey,
+  type ReviewRecallTask
+} from "@/features/review/model/recall-task";
 
 import {
   cleanupReviewDatabase,
@@ -37,6 +44,7 @@ describe("fsrs reschedule preview", () => {
   });
 
   afterEach(async () => {
+    vi.restoreAllMocks();
     await cleanupReviewDatabase(fixture);
   });
 
@@ -53,36 +61,48 @@ describe("fsrs reschedule preview", () => {
       "2026-02-01T09:00:00.000Z"
     );
 
+    const selectSpy = vi.spyOn(database, "select");
     const preview = await buildFsrsReschedulePreview({
       database,
       now: new Date("2026-01-21T10:00:00.000Z")
     });
+    // One state query + one ledger query, independent of subject count. The
+    // batch load maps add no per-subject database round trip.
+    expect(selectSpy).toHaveBeenCalledTimes(2);
     const today = preview.days[0]!;
 
     expect(preview.horizonDays).toBe(30);
     expect(preview.summary).toMatchObject({
-      affectedSubjects: 1,
+      affectedSubjects: 2,
       eligibleSubjects: 2,
-      movedLater: 1,
-      unchangedSubjects: 1
+      movedLater: 2,
+      unchangedSubjects: 0
     });
     expect(today.date).toBe("2026-01-21");
     expect(today.currentCount).toBe(1);
     expect(today.proposedCount).toBe(0);
     expect(today.delta).toBe(-1);
-    expect(preview.days.find((day) => day.date === "2026-01-26")).toMatchObject(
+    expect(preview.days.find((day) => day.date === "2026-01-27")).toMatchObject(
       {
-        currentCount: 1,
+        currentCount: 0,
         delta: 1,
-        proposedCount: 2
+        proposedCount: 1
       }
     );
+    expect(
+      preview.days.reduce((total, day) => total + day.proposedCount, 0)
+    ).toBe(2);
   });
 
-  it("applies replayed state without writing synthetic review logs and blocks stale previews", async () => {
+  it("applies replayed state, records an immutable reschedule event, and blocks stale previews", async () => {
+    const previewNow = new Date("2026-01-21T10:00:00.000Z");
     const preview = await buildFsrsReschedulePreview({
       database,
-      now: new Date("2026-01-21T10:00:00.000Z")
+      now: previewNow
+    });
+    const repeatedPreview = await buildFsrsReschedulePreview({
+      database,
+      now: previewNow
     });
     const staleResult = await applyFsrsReschedule({
       database,
@@ -91,6 +111,7 @@ describe("fsrs reschedule preview", () => {
     });
     const logsBefore = await database.query.reviewSubjectLog.findMany();
 
+    expect(repeatedPreview).toEqual(preview);
     expect(staleResult.status).toBe("stale");
 
     const result = await applyFsrsReschedule({
@@ -99,18 +120,159 @@ describe("fsrs reschedule preview", () => {
       now: new Date("2026-01-21T10:05:00.000Z")
     });
     const state = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:recognition-card")
+      where: eq(
+        reviewSubjectState.subjectKey,
+        reviewMemoryKey("recognition-card")
+      )
     });
     const logsAfter = await database.query.reviewSubjectLog.findMany();
+    const rescheduleEvents = logsAfter.filter(
+      (log) => log.eventKind === "reschedule"
+    );
+    const rescheduleEvent = rescheduleEvents.find(
+      (event) => event.cardId === "recognition-card"
+    )!;
+    const trainingRows = await loadFsrsOptimizerLogRows(database);
+    const replaySubjects = await listReviewSubjectFsrsReplaySubjects(database);
+    const replaySubject = replaySubjects.find(
+      (subject) =>
+        subject.state.subjectKey === reviewMemoryKey("recognition-card")
+    );
 
     expect(result).toMatchObject({
-      affectedSubjects: 1,
+      affectedSubjects: 2,
       status: "applied"
     });
-    expect(state?.dueAt).toBe("2026-01-26T00:00:00.000Z");
+    expect(state?.dueAt).toBe("2026-01-27T03:00:00.000Z");
     expect(state?.updatedAt).toBe("2026-01-21T10:05:00.000Z");
     expect(state?.lastInteractionAt).toBe("2026-01-08T09:00:00.000Z");
-    expect(logsAfter).toHaveLength(logsBefore.length);
+    expect(logsAfter).toHaveLength(logsBefore.length + 2);
+    expect(rescheduleEvents).toHaveLength(2);
+    expect(rescheduleEvent).toMatchObject({
+      algorithmVersion: "fsrs6",
+      answeredAt: "2026-01-21T10:05:00.000Z",
+      bindingVersion: "ts-fsrs@5.2.3",
+      canonicalSubjectKey: "card:recognition-card",
+      cardId: "recognition-card",
+      cardTypeSnapshot: "recognition",
+      eventKind: "reschedule",
+      eventSchemaVersion: 2,
+      mediaIdSnapshot: "reschedule-media",
+      memoryKey: reviewMemoryKey("recognition-card"),
+      newState: "review",
+      previousDueAt: "2026-01-20T00:00:00.000Z",
+      previousState: "review",
+      rating: null,
+      recallTask: "recognition",
+      reason: "fsrs_optimizer_reschedule_apply",
+      recordedAt: "2026-01-21T10:05:00.000Z",
+      scheduledDueAt: "2026-01-27T03:00:00.000Z",
+      studyDay: "2026-01-21",
+      subjectKey: reviewMemoryKey("recognition-card")
+    });
+    expect(rescheduleEvent.batchId).toMatch(/^fsrs_reschedule_/u);
+    expect(rescheduleEvent.parameterHash).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    expect(JSON.parse(rescheduleEvent.beforeStateJson ?? "{}")).toMatchObject({
+      dueAt: "2026-01-20T00:00:00.000Z",
+      reps: 3,
+      updatedAt: "2026-01-08T09:00:00.000Z"
+    });
+    expect(JSON.parse(rescheduleEvent.afterStateJson ?? "{}")).toMatchObject({
+      dueAt: "2026-01-27T03:00:00.000Z",
+      reps: 3,
+      updatedAt: "2026-01-21T10:05:00.000Z"
+    });
+    expect(trainingRows.map((row) => row.id)).not.toContain(rescheduleEvent.id);
+    expect(replaySubject?.logs.map((log) => log.id)).not.toContain(
+      rescheduleEvent.id
+    );
+  });
+
+  it("merges an aliased history into one memory before rescheduling", async () => {
+    const canonicalSubjectKey = "card:recognition-card";
+    const oldMemoryKey = "mnemonic:v1:recognition:card:recognition-card-old";
+    const currentMemoryKey = "mnemonic:v1:recognition:card:recognition-card";
+
+    await database.delete(reviewSubjectLog);
+    await database.delete(reviewSubjectState);
+    await database.insert(reviewMemoryAlias).values({
+      aliasMemoryKey: oldMemoryKey,
+      currentMemoryKey,
+      migratedAt: "2026-01-08T09:00:00.000Z",
+      reason: "canonical_rekey"
+    });
+    await database.insert(reviewSubjectState).values({
+      canonicalSubjectKey,
+      cardId: "recognition-card",
+      createdAt: "2026-01-01T09:00:00.000Z",
+      crossMediaGroupId: null,
+      difficulty: 2.104,
+      dueAt: "2026-01-20T00:00:00.000Z",
+      entryId: null,
+      entryType: null,
+      lapses: 0,
+      lastInteractionAt: "2026-01-08T09:00:00.000Z",
+      lastReviewedAt: "2026-01-08T09:00:00.000Z",
+      learningSteps: 0,
+      manualOverride: false,
+      recallTask: "recognition",
+      reps: 3,
+      scheduledDays: 12,
+      schedulerVersion: "fsrs_v1",
+      stability: 18.18,
+      state: "review",
+      subjectKey: currentMemoryKey,
+      subjectType: "card",
+      suspended: false,
+      updatedAt: "2026-01-08T09:00:00.000Z"
+    });
+    await database.insert(reviewSubjectLog).values([
+      buildAliasedReplayEvent({
+        answeredAt: "2026-01-01T09:00:00.000Z",
+        canonicalSubjectKey,
+        id: "aliased-replay-old",
+        memoryKey: oldMemoryKey,
+        newState: "learning",
+        previousState: "new",
+        scheduledDueAt: "2026-01-01T09:10:00.000Z"
+      }),
+      buildAliasedReplayEvent({
+        answeredAt: "2026-01-03T09:00:00.000Z",
+        canonicalSubjectKey,
+        id: "aliased-replay-current-1",
+        memoryKey: currentMemoryKey,
+        newState: "review",
+        previousState: "learning",
+        scheduledDueAt: "2026-01-08T00:00:00.000Z"
+      }),
+      buildAliasedReplayEvent({
+        answeredAt: "2026-01-08T09:00:00.000Z",
+        canonicalSubjectKey,
+        id: "aliased-replay-current-2",
+        memoryKey: currentMemoryKey,
+        newState: "review",
+        previousState: "review",
+        scheduledDueAt: "2026-01-26T00:00:00.000Z"
+      })
+    ]);
+
+    const replaySubjects = await listReviewSubjectFsrsReplaySubjects(database);
+    const preview = await buildFsrsReschedulePreview({
+      database,
+      now: new Date("2026-01-21T10:00:00.000Z")
+    });
+
+    expect(replaySubjects).toHaveLength(1);
+    expect(replaySubjects[0]?.state.subjectKey).toBe(currentMemoryKey);
+    expect(replaySubjects[0]?.logs.map((log) => log.id)).toEqual([
+      "aliased-replay-old",
+      "aliased-replay-current-1",
+      "aliased-replay-current-2"
+    ]);
+    expect(preview.summary).toMatchObject({
+      affectedSubjects: 1,
+      eligibleSubjects: 1
+    });
   });
 
   it("does not downgrade legacy one-step review subjects into expired learning steps", async () => {
@@ -133,7 +295,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-01T09:00:00.000Z"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:legacy-one-step-card",
+      subjectKey: reviewMemoryKey("legacy-one-step-card"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -157,7 +319,7 @@ describe("fsrs reschedule preview", () => {
     });
     await database.insert(reviewSubjectLog).values({
       id: "legacy-one-step-card-log-1",
-      subjectKey: "card:legacy-one-step-card",
+      ...reviewEventIdentity("legacy-one-step-card"),
       cardId: "legacy-one-step-card",
       answeredAt: "2026-01-01T09:00:00.000Z",
       rating: "good",
@@ -179,24 +341,28 @@ describe("fsrs reschedule preview", () => {
       now: new Date("2026-01-21T10:05:00.000Z")
     });
     const legacyState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:legacy-one-step-card")
+      where: eq(
+        reviewSubjectState.subjectKey,
+        reviewMemoryKey("legacy-one-step-card")
+      )
     });
 
     expect(preview.summary).toMatchObject({
-      affectedSubjects: 1,
+      affectedSubjects: 3,
       eligibleSubjects: 3,
-      unchangedSubjects: 2
+      unchangedSubjects: 0
     });
     expect(result).toMatchObject({
-      affectedSubjects: 1,
+      affectedSubjects: 3,
       status: "applied"
     });
     expect(legacyState).toMatchObject({
       dueAt: "2026-01-24T00:00:00.000Z",
       learningSteps: 0,
       scheduledDays: 23,
+      schedulerVersion: "fsrs_v2_study_day",
       state: "review",
-      updatedAt: "2026-01-01T09:00:00.000Z"
+      updatedAt: "2026-01-21T10:05:00.000Z"
     });
   });
 
@@ -220,7 +386,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-01T09:00:00.000Z"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:legacy-downgraded-card",
+      subjectKey: reviewMemoryKey("legacy-downgraded-card"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -244,7 +410,7 @@ describe("fsrs reschedule preview", () => {
     });
     await database.insert(reviewSubjectLog).values({
       id: "legacy-downgraded-card-log-1",
-      subjectKey: "card:legacy-downgraded-card",
+      ...reviewEventIdentity("legacy-downgraded-card"),
       cardId: "legacy-downgraded-card",
       answeredAt: "2026-01-01T09:00:00.000Z",
       rating: "good",
@@ -266,24 +432,36 @@ describe("fsrs reschedule preview", () => {
       now: new Date("2026-01-21T10:05:00.000Z")
     });
     const legacyState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:legacy-downgraded-card")
+      where: eq(
+        reviewSubjectState.subjectKey,
+        reviewMemoryKey("legacy-downgraded-card")
+      )
+    });
+    const rescheduleEvents = await database.query.reviewSubjectLog.findMany({
+      where: eq(reviewSubjectLog.eventKind, "reschedule")
     });
 
     expect(preview.summary).toMatchObject({
-      affectedSubjects: 2,
+      affectedSubjects: 3,
       eligibleSubjects: 3
     });
     expect(result).toMatchObject({
-      affectedSubjects: 2,
+      affectedSubjects: 3,
       status: "applied"
     });
     expect(legacyState).toMatchObject({
       dueAt: "2026-01-24T00:00:00.000Z",
       learningSteps: 0,
-      scheduledDays: 23,
+      scheduledDays: 22,
+      schedulerVersion: "fsrs_v2_study_day",
       state: "review",
       updatedAt: "2026-01-21T10:05:00.000Z"
     });
+    expect(rescheduleEvents).toHaveLength(3);
+    expect(new Set(rescheduleEvents.map((event) => event.batchId)).size).toBe(
+      1
+    );
+    expect(rescheduleEvents.every((event) => event.rating === null)).toBe(true);
   });
 
   it("does not shrink partial review histories below the latest logged review due date", async () => {
@@ -306,7 +484,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-01T09:00:00.000Z"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:partial-review-history-card",
+      subjectKey: reviewMemoryKey("partial-review-history-card", "concept"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -331,7 +509,7 @@ describe("fsrs reschedule preview", () => {
     await database.insert(reviewSubjectLog).values([
       {
         id: "partial-review-history-card-log-1",
-        subjectKey: "card:partial-review-history-card",
+        ...reviewEventIdentity("partial-review-history-card", "concept"),
         cardId: "partial-review-history-card",
         answeredAt: "2026-01-01T09:00:00.000Z",
         rating: "hard",
@@ -344,7 +522,7 @@ describe("fsrs reschedule preview", () => {
       },
       {
         id: "partial-review-history-card-log-2",
-        subjectKey: "card:partial-review-history-card",
+        ...reviewEventIdentity("partial-review-history-card", "concept"),
         cardId: "partial-review-history-card",
         answeredAt: "2026-01-10T09:00:00.000Z",
         rating: "good",
@@ -369,7 +547,7 @@ describe("fsrs reschedule preview", () => {
     const partialState = await database.query.reviewSubjectState.findFirst({
       where: eq(
         reviewSubjectState.subjectKey,
-        "card:partial-review-history-card"
+        reviewMemoryKey("partial-review-history-card", "concept")
       )
     });
 
@@ -379,11 +557,12 @@ describe("fsrs reschedule preview", () => {
     expect(partialState).toMatchObject({
       dueAt: "2026-05-01T00:00:00.000Z",
       learningSteps: 0,
-      scheduledDays: 111,
+      scheduledDays: 110,
+      schedulerVersion: "fsrs_v2_study_day",
       state: "review",
       updatedAt: "2026-01-21T10:05:00.000Z"
     });
-    expect(partialState?.stability).toBeGreaterThanOrEqual(111);
+    expect(partialState?.stability).toBeGreaterThanOrEqual(110);
   });
 
   it("preserves mature counters when partial review histories need logged due preservation", async () => {
@@ -406,7 +585,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-01T09:00:00.000Z"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:partial-mature-history-card",
+      subjectKey: reviewMemoryKey("partial-mature-history-card", "concept"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -418,7 +597,7 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-05-01T00:00:00.000Z",
       lastReviewedAt: "2026-01-10T09:00:00.000Z",
       lastInteractionAt: "2026-01-10T09:00:00.000Z",
-      scheduledDays: 111,
+      scheduledDays: 110,
       learningSteps: 0,
       lapses: 3,
       reps: 40,
@@ -431,7 +610,7 @@ describe("fsrs reschedule preview", () => {
     await database.insert(reviewSubjectLog).values([
       {
         id: "partial-mature-history-card-log-1",
-        subjectKey: "card:partial-mature-history-card",
+        ...reviewEventIdentity("partial-mature-history-card", "concept"),
         cardId: "partial-mature-history-card",
         answeredAt: "2026-01-01T09:00:00.000Z",
         rating: "hard",
@@ -444,7 +623,7 @@ describe("fsrs reschedule preview", () => {
       },
       {
         id: "partial-mature-history-card-log-2",
-        subjectKey: "card:partial-mature-history-card",
+        ...reviewEventIdentity("partial-mature-history-card", "concept"),
         cardId: "partial-mature-history-card",
         answeredAt: "2026-01-10T09:00:00.000Z",
         rating: "good",
@@ -469,7 +648,7 @@ describe("fsrs reschedule preview", () => {
     const partialState = await database.query.reviewSubjectState.findFirst({
       where: eq(
         reviewSubjectState.subjectKey,
-        "card:partial-mature-history-card"
+        reviewMemoryKey("partial-mature-history-card", "concept")
       )
     });
 
@@ -478,7 +657,7 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-05-01T00:00:00.000Z",
       lapses: 3,
       reps: 40,
-      scheduledDays: 111,
+      scheduledDays: 110,
       stability: 120,
       state: "review"
     });
@@ -504,7 +683,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-01T09:00:00.000Z"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:partial-null-due-history-card",
+      subjectKey: reviewMemoryKey("partial-null-due-history-card", "concept"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -529,7 +708,7 @@ describe("fsrs reschedule preview", () => {
     await database.insert(reviewSubjectLog).values([
       {
         id: "partial-null-due-history-card-log-1",
-        subjectKey: "card:partial-null-due-history-card",
+        ...reviewEventIdentity("partial-null-due-history-card", "concept"),
         cardId: "partial-null-due-history-card",
         answeredAt: "2026-01-01T09:00:00.000Z",
         rating: "hard",
@@ -542,7 +721,7 @@ describe("fsrs reschedule preview", () => {
       },
       {
         id: "partial-null-due-history-card-log-2",
-        subjectKey: "card:partial-null-due-history-card",
+        ...reviewEventIdentity("partial-null-due-history-card", "concept"),
         cardId: "partial-null-due-history-card",
         answeredAt: "2026-01-10T09:00:00.000Z",
         rating: "good",
@@ -567,7 +746,7 @@ describe("fsrs reschedule preview", () => {
     const partialState = await database.query.reviewSubjectState.findFirst({
       where: eq(
         reviewSubjectState.subjectKey,
-        "card:partial-null-due-history-card"
+        reviewMemoryKey("partial-null-due-history-card", "concept")
       )
     });
 
@@ -575,8 +754,8 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-04-15T00:00:00.000Z",
       lapses: 1,
       reps: 20,
-      scheduledDays: 95,
-      stability: 95,
+      scheduledDays: 94,
+      stability: 94,
       state: "review"
     });
   });
@@ -811,7 +990,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-21T09:00:00.000Z"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:genuine-learning-card",
+      subjectKey: reviewMemoryKey("genuine-learning-card"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -835,7 +1014,7 @@ describe("fsrs reschedule preview", () => {
     });
     await database.insert(reviewSubjectLog).values({
       id: "genuine-learning-card-log-1",
-      subjectKey: "card:genuine-learning-card",
+      ...reviewEventIdentity("genuine-learning-card"),
       cardId: "genuine-learning-card",
       answeredAt: "2026-01-21T09:00:00.000Z",
       rating: "good",
@@ -857,31 +1036,35 @@ describe("fsrs reschedule preview", () => {
       now: new Date("2026-01-21T10:05:00.000Z")
     });
     const learningState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:genuine-learning-card")
+      where: eq(
+        reviewSubjectState.subjectKey,
+        reviewMemoryKey("genuine-learning-card")
+      )
     });
 
     expect(preview.summary).toMatchObject({
-      affectedSubjects: 1,
+      affectedSubjects: 3,
       eligibleSubjects: 3,
-      unchangedSubjects: 2
+      unchangedSubjects: 0
     });
     expect(result).toMatchObject({
-      affectedSubjects: 1,
+      affectedSubjects: 3,
       status: "applied"
     });
     expect(learningState).toMatchObject({
       dueAt: "2026-01-21T09:10:00.000Z",
       learningSteps: 1,
       scheduledDays: 0,
+      schedulerVersion: "fsrs_v2_study_day",
       state: "learning",
-      updatedAt: "2026-01-21T09:00:00.000Z"
+      updatedAt: "2026-01-21T10:05:00.000Z"
     });
   });
 
   it("skips manual, suspended, new, and no-history subjects", async () => {
     const expectStateUnchanged = async (cardId: string) => {
       const state = await database.query.reviewSubjectState.findFirst({
-        where: eq(reviewSubjectState.subjectKey, `card:${cardId}`)
+        where: eq(reviewSubjectState.subjectKey, reviewMemoryKey(cardId))
       });
 
       expect(state?.dueAt).toBe("2026-01-20T00:00:00.000Z");
@@ -917,7 +1100,7 @@ describe("fsrs reschedule preview", () => {
 
     expect(preview.summary.eligibleSubjects).toBe(2);
     expect(preview.summary.skippedNoHistory).toBe(1);
-    expect(result.affectedSubjects).toBe(1);
+    expect(result.affectedSubjects).toBe(2);
     await expectStateUnchanged("manual-card");
     await expectStateUnchanged("suspended-card");
     await expectStateUnchanged("new-card");
@@ -942,10 +1125,13 @@ describe("fsrs reschedule preview", () => {
       now: new Date("2026-01-21T10:00:00.000Z")
     });
     const productionState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:production-card")
+      where: eq(
+        reviewSubjectState.subjectKey,
+        reviewMemoryKey("production-card", "other")
+      )
     });
 
-    expect(preview.summary.affectedSubjects).toBe(1);
+    expect(preview.summary.affectedSubjects).toBe(2);
     expect(productionState?.dueAt).toBe("2026-01-26T00:00:00.000Z");
   });
 });
@@ -1045,7 +1231,7 @@ async function seedRescheduleFixture(database: DatabaseClient) {
   ]);
   await database.insert(reviewSubjectState).values([
     {
-      subjectKey: "card:recognition-card",
+      subjectKey: reviewMemoryKey("recognition-card"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -1070,7 +1256,7 @@ async function seedRescheduleFixture(database: DatabaseClient) {
   ]);
   await database.insert(reviewSubjectState).values([
     {
-      subjectKey: "card:production-card",
+      subjectKey: reviewMemoryKey("production-card", "other"),
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -1097,7 +1283,10 @@ async function seedRescheduleFixture(database: DatabaseClient) {
     (cardId) => [
       {
         id: `${cardId}-log-1`,
-        subjectKey: `card:${cardId}`,
+        ...reviewEventIdentity(
+          cardId,
+          cardId === "production-card" ? "other" : "recognition"
+        ),
         cardId,
         answeredAt: "2026-01-01T09:00:00.000Z",
         rating: "good" as const,
@@ -1110,7 +1299,10 @@ async function seedRescheduleFixture(database: DatabaseClient) {
       },
       {
         id: `${cardId}-log-2`,
-        subjectKey: `card:${cardId}`,
+        ...reviewEventIdentity(
+          cardId,
+          cardId === "production-card" ? "other" : "recognition"
+        ),
         cardId,
         answeredAt: "2026-01-03T09:00:00.000Z",
         rating: "good" as const,
@@ -1123,7 +1315,10 @@ async function seedRescheduleFixture(database: DatabaseClient) {
       },
       {
         id: `${cardId}-log-3`,
-        subjectKey: `card:${cardId}`,
+        ...reviewEventIdentity(
+          cardId,
+          cardId === "production-card" ? "other" : "recognition"
+        ),
         cardId,
         answeredAt: "2026-01-08T09:00:00.000Z",
         rating: "good" as const,
@@ -1154,7 +1349,7 @@ function buildSkippableState(
   }
 ): typeof reviewSubjectState.$inferInsert {
   return {
-    subjectKey: `card:${cardId}`,
+    subjectKey: reviewMemoryKey(cardId),
     subjectType: "card",
     entryType: null,
     crossMediaGroupId: null,
@@ -1176,4 +1371,58 @@ function buildSkippableState(
     createdAt: "2026-01-01T09:00:00.000Z",
     updatedAt: "2026-01-08T09:00:00.000Z"
   };
+}
+
+function buildAliasedReplayEvent(input: {
+  answeredAt: string;
+  canonicalSubjectKey: string;
+  id: string;
+  memoryKey: string;
+  newState: "learning" | "review";
+  previousState: "learning" | "new" | "review";
+  scheduledDueAt: string;
+}): typeof reviewSubjectLog.$inferInsert {
+  return {
+    answeredAt: input.answeredAt,
+    canonicalSubjectKey: input.canonicalSubjectKey,
+    cardId: "recognition-card",
+    cardTypeSnapshot: "recognition",
+    elapsedDays: input.previousState === "new" ? null : 2,
+    eventKind: "grade",
+    eventSchemaVersion: 2,
+    id: input.id,
+    memoryKey: input.memoryKey,
+    newState: input.newState,
+    previousState: input.previousState,
+    rating: "good",
+    recallTask: "recognition",
+    scheduledDueAt: input.scheduledDueAt,
+    subjectKey: input.memoryKey
+  };
+}
+
+function reviewMemoryKey(
+  cardId: string,
+  recallTask: ReviewRecallTask = "recognition"
+) {
+  return buildReviewMemoryKey({
+    canonicalSubjectKey: `card:${cardId}`,
+    cardId,
+    recallTask
+  });
+}
+
+function reviewEventIdentity(
+  cardId: string,
+  recallTask: ReviewRecallTask = "recognition"
+) {
+  const memoryKey = reviewMemoryKey(cardId, recallTask);
+
+  return {
+    canonicalSubjectKey: `card:${cardId}`,
+    eventSchemaVersion: 2,
+    memoryKey,
+    recallTask,
+    subjectKey: memoryKey
+  } as const;
 }

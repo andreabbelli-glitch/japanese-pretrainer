@@ -41,8 +41,7 @@ export function FsrsOptimizerStatusPanel({
           </strong>
         </p>
         <p className="settings-panel__body">
-          Review nuove accumulate:{" "}
-          <strong>{status.newEligibleReviews}</strong>
+          Review nuove accumulate: <strong>{status.newEligibleReviews}</strong>
           {` / ${status.nextTrainingNewReviewThreshold} minime`}
         </p>
         <p className="settings-panel__body">
@@ -65,6 +64,9 @@ export function FsrsOptimizerStatusPanel({
                 {preset.usesOptimizedParameters
                   ? `Parametri ottimizzati attivi. Training su ${preset.trainingReviewCount} review. Ultimo aggiornamento ${formatDateTime(preset.trainedAt)}.`
                   : "Nessun training valido salvato: la review usa il fallback di default."}
+                {preset.lastError
+                  ? ` Ultimo errore del preset: ${preset.lastError}`
+                  : ""}
               </span>
             </div>
           );

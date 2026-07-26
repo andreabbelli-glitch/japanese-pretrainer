@@ -6,17 +6,30 @@ function normalizeReviewSubjectSurfaceSql(expression: string) {
 
 function buildEligibleReviewSubjectsCteSql() {
   return `
-    eligible_review_subjects AS (
+    ranked_eligible_review_subjects AS (
       SELECT
-        rss.subject_key AS subjectKey,
+        COALESCE(rss.canonical_subject_key, rss.subject_key) AS subjectKey,
         rss.subject_type AS subjectType,
         rss.entry_id AS canonicalEntryId,
         rss.cross_media_group_id AS crossMediaGroupId,
         rss.state AS reviewState,
         rss.stability AS stability,
-        rss.reps AS reps
+        rss.reps AS reps,
+        ROW_NUMBER() OVER (
+          PARTITION BY COALESCE(rss.canonical_subject_key, rss.subject_key)
+          ORDER BY
+            CASE COALESCE(rss.recall_task, 'recognition')
+              WHEN 'recognition' THEN 0
+              WHEN 'concept' THEN 1
+              ELSE 2
+            END,
+            rss.reps DESC,
+            rss.stability DESC,
+            rss.subject_key ASC
+        ) AS taskRank
       FROM review_subject_state rss
       WHERE rss.entry_type = 'term'
+        AND COALESCE(rss.recall_task, 'recognition') IN ('recognition', 'concept')
         AND rss.subject_type IN ('entry', 'group')
         AND rss.state IN ('review', 'relearning')
         AND rss.manual_override = 0
@@ -24,6 +37,18 @@ function buildEligibleReviewSubjectsCteSql() {
         AND rss.stability IS NOT NULL
         AND rss.stability >= 7
         AND rss.reps >= 2
+    ),
+    eligible_review_subjects AS (
+      SELECT
+        subjectKey,
+        subjectType,
+        canonicalEntryId,
+        crossMediaGroupId,
+        reviewState,
+        stability,
+        reps
+      FROM ranked_eligible_review_subjects
+      WHERE taskRank = 1
     )
   `;
 }

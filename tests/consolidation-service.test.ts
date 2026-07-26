@@ -35,13 +35,44 @@ import {
   markConsolidationKnown,
   submitConsolidationAnswer
 } from "@/features/consolidation/server";
-import { getGlobalReviewPageData, hydrateReviewCard } from "@/features/review/server";
+import {
+  getGlobalReviewPageData,
+  hydrateReviewCard
+} from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import {
   buildReviewDailyLimitSetting,
   buildReviewSubjectStateRow,
   seedTwoMediaGlobalQueueFixture
 } from "./helpers/review-fixture";
+
+const CARD_A_MEMORY_KEY = recognitionMemoryKey("card:card_a", "card_a");
+const CARD_B_MEMORY_KEY = recognitionMemoryKey("card:card_b", "card_b");
+const MEANING_MEMORY_KEY = recognitionMemoryKey(
+  "entry:term:term_consolidation_meaning",
+  "card_consolidation_meaning"
+);
+const READING_MEMORY_KEY = recognitionMemoryKey(
+  "entry:term:term_consolidation_reading",
+  "card_consolidation_reading"
+);
+const KANA_MEMORY_KEY = recognitionMemoryKey(
+  "entry:term:term_consolidation_kana",
+  "card_consolidation_kana"
+);
+const GRAMMAR_MEMORY_KEY = recognitionMemoryKey(
+  "entry:grammar:grammar_consolidation_before",
+  "card_consolidation_grammar"
+);
+
+function recognitionMemoryKey(canonicalSubjectKey: string, cardId: string) {
+  return buildReviewMemoryKey({
+    canonicalSubjectKey,
+    cardId,
+    recallTask: "recognition"
+  });
+}
 
 describe("pre-FSRS consolidation service", () => {
   let database: DatabaseClient;
@@ -81,14 +112,14 @@ describe("pre-FSRS consolidation service", () => {
         mediaId: "media_consolidation",
         representativeCardId: "card_consolidation_meaning",
         status: "pending",
-        subjectKey: "entry:term:term_consolidation_meaning"
+        subjectKey: MEANING_MEMORY_KEY
       },
       {
         lessonId: "lesson_consolidation",
         mediaId: "media_consolidation",
         representativeCardId: "card_consolidation_reading",
         status: "pending",
-        subjectKey: "entry:term:term_consolidation_reading"
+        subjectKey: READING_MEMORY_KEY
       }
     ]);
   });
@@ -108,7 +139,7 @@ describe("pre-FSRS consolidation service", () => {
         scheduledDays: 1,
         stability: 1,
         state: "review",
-        subjectKey: "entry:term:term_consolidation_reading"
+        subjectKey: READING_MEMORY_KEY
       })
     );
 
@@ -120,7 +151,7 @@ describe("pre-FSRS consolidation service", () => {
     const pendingKeys = await getPendingConsolidationSubjectKeys(database);
 
     expect(result.createdCount).toBe(1);
-    expect(pendingKeys).toEqual(["entry:term:term_consolidation_meaning"]);
+    expect(pendingKeys).toEqual([MEANING_MEMORY_KEY]);
   });
 
   it("enqueues subjects that only have importer-seeded new FSRS state", async () => {
@@ -144,7 +175,7 @@ describe("pre-FSRS consolidation service", () => {
         schedulerVersion: "fsrs_v1",
         stability: null,
         state: "new",
-        subjectKey: "entry:term:term_consolidation_reading",
+        subjectKey: READING_MEMORY_KEY,
         subjectType: "entry",
         suspended: false,
         updatedAt: "2026-04-01T09:00:00.000Z"
@@ -167,7 +198,7 @@ describe("pre-FSRS consolidation service", () => {
         schedulerVersion: "fsrs_v1",
         stability: null,
         state: "new",
-        subjectKey: "entry:term:term_consolidation_meaning",
+        subjectKey: MEANING_MEMORY_KEY,
         subjectType: "entry",
         suspended: false,
         updatedAt: "2026-04-01T09:01:00.000Z"
@@ -182,16 +213,13 @@ describe("pre-FSRS consolidation service", () => {
     const pendingKeys = await getPendingConsolidationSubjectKeys(database);
 
     expect(result.createdCount).toBe(2);
-    expect(pendingKeys).toEqual([
-      "entry:term:term_consolidation_meaning",
-      "entry:term:term_consolidation_reading"
-    ]);
+    expect(pendingKeys).toEqual([MEANING_MEMORY_KEY, READING_MEMORY_KEY]);
   });
 
   it("keeps pending subjects out of FSRS review until they pass consolidation", async () => {
     await seedTwoMediaGlobalQueueFixture(database);
     await database.insert(preReviewConsolidationState).values({
-      subjectKey: "card:card_a",
+      subjectKey: CARD_A_MEMORY_KEY,
       subjectType: "card",
       representativeCardId: "card_a",
       lessonId: "lesson_a",
@@ -221,7 +249,7 @@ describe("pre-FSRS consolidation service", () => {
         status: "passed",
         updatedAt: "2026-04-01T10:05:00.000Z"
       })
-      .where(eq(preReviewConsolidationState.subjectKey, "card:card_a"));
+      .where(eq(preReviewConsolidationState.subjectKey, CARD_A_MEMORY_KEY));
 
     const passedPage = await getGlobalReviewPageData({}, database);
     const passedHydrated = await hydrateReviewCard({
@@ -237,7 +265,7 @@ describe("pre-FSRS consolidation service", () => {
   it("rejects FSRS grading for a pending consolidation subject without writing logs", async () => {
     await seedTwoMediaGlobalQueueFixture(database);
     await database.insert(preReviewConsolidationState).values({
-      subjectKey: "card:card_a",
+      subjectKey: CARD_A_MEMORY_KEY,
       subjectType: "card",
       representativeCardId: "card_a",
       lessonId: "lesson_a",
@@ -261,7 +289,7 @@ describe("pre-FSRS consolidation service", () => {
 
     const [subjectState, logs] = await Promise.all([
       database.query.reviewSubjectState.findFirst({
-        where: eq(reviewSubjectState.subjectKey, "card:card_a")
+        where: eq(reviewSubjectState.subjectKey, CARD_A_MEMORY_KEY)
       }),
       database.query.reviewSubjectLog.findMany()
     ]);
@@ -282,15 +310,15 @@ describe("pre-FSRS consolidation service", () => {
     const [consolidationRow, subjectState, logs, pendingKeys, hydratedCard] =
       await Promise.all([
         database.query.preReviewConsolidationState.findFirst({
-          where: eq(preReviewConsolidationState.subjectKey, "card:card_a")
+          where: eq(preReviewConsolidationState.subjectKey, CARD_A_MEMORY_KEY)
         }),
         database.query.reviewSubjectState.findFirst({
-          where: eq(reviewSubjectState.subjectKey, "card:card_a")
+          where: eq(reviewSubjectState.subjectKey, CARD_A_MEMORY_KEY)
         }),
         database.query.reviewSubjectLog.findMany({
-          where: eq(reviewSubjectLog.subjectKey, "card:card_a")
+          where: eq(reviewSubjectLog.subjectKey, CARD_A_MEMORY_KEY)
         }),
-        getPendingConsolidationSubjectKeys(database, ["card:card_a"]),
+        getPendingConsolidationSubjectKeys(database, [CARD_A_MEMORY_KEY]),
         hydrateReviewCard({
           cardId: "card_a",
           database
@@ -307,18 +335,18 @@ describe("pre-FSRS consolidation service", () => {
       readingPassedAt: null,
       representativeCardId: "card_a",
       status: "retraining",
-      subjectKey: "card:card_a"
+      subjectKey: CARD_A_MEMORY_KEY
     });
     expect(subjectState).toMatchObject({
       cardId: "card_a",
       reps: 1,
-      subjectKey: "card:card_a"
+      subjectKey: CARD_A_MEMORY_KEY
     });
     expect(logs).toHaveLength(1);
     expect(logs[0]).toMatchObject({
       cardId: "card_a",
       rating: "hard",
-      subjectKey: "card:card_a"
+      subjectKey: CARD_A_MEMORY_KEY
     });
     expect(pendingKeys).toEqual([]);
     expect(hydratedCard?.id).toBe("card_a");
@@ -335,20 +363,20 @@ describe("pre-FSRS consolidation service", () => {
     });
     const consolidationRow =
       await database.query.preReviewConsolidationState.findFirst({
-        where: eq(preReviewConsolidationState.subjectKey, "card:card_a")
+        where: eq(preReviewConsolidationState.subjectKey, CARD_A_MEMORY_KEY)
       });
 
     expect(result.consolidationQueued).toBe(true);
     expect(consolidationRow).toMatchObject({
       status: "retraining",
-      subjectKey: "card:card_a"
+      subjectKey: CARD_A_MEMORY_KEY
     });
   });
 
   it("reopens completed consolidation after a future hard FSRS review grade", async () => {
     await seedTwoMediaGlobalQueueFixture(database);
     await database.insert(preReviewConsolidationState).values({
-      subjectKey: "card:card_a",
+      subjectKey: CARD_A_MEMORY_KEY,
       subjectType: "card",
       representativeCardId: "card_a",
       lessonId: "lesson_a",
@@ -369,7 +397,7 @@ describe("pre-FSRS consolidation service", () => {
     });
     const consolidationRow =
       await database.query.preReviewConsolidationState.findFirst({
-        where: eq(preReviewConsolidationState.subjectKey, "card:card_a")
+        where: eq(preReviewConsolidationState.subjectKey, CARD_A_MEMORY_KEY)
       });
 
     expect(result.consolidationQueued).toBe(true);
@@ -379,7 +407,7 @@ describe("pre-FSRS consolidation service", () => {
       lastAttemptAt: null,
       readingPassedAt: null,
       status: "retraining",
-      subjectKey: "card:card_a"
+      subjectKey: CARD_A_MEMORY_KEY
     });
   });
 
@@ -440,16 +468,16 @@ describe("pre-FSRS consolidation service", () => {
     expect(lessonSession?.subjects).toEqual([]);
     expect(
       retrainingSession?.subjects.map((subject) => subject.subjectKey)
-    ).toEqual(["card:card_a", "card:card_b"]);
+    ).toEqual([CARD_A_MEMORY_KEY, CARD_B_MEMORY_KEY]);
     expect(retrainingSession?.subjects).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
           canMarkKnown: false,
-          subjectKey: "card:card_a"
+          subjectKey: CARD_A_MEMORY_KEY
         }),
         expect.objectContaining({
           canMarkKnown: false,
-          subjectKey: "card:card_b"
+          subjectKey: CARD_B_MEMORY_KEY
         })
       ])
     );
@@ -472,25 +500,25 @@ describe("pre-FSRS consolidation service", () => {
       rating: "hard"
     });
     const beforeState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:card_a")
+      where: eq(reviewSubjectState.subjectKey, CARD_A_MEMORY_KEY)
     });
     const beforeLogs = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, "card:card_a")
+      where: eq(reviewSubjectLog.subjectKey, CARD_A_MEMORY_KEY)
     });
 
     await expect(
       markConsolidationKnown({
         database,
         now: new Date("2026-04-01T11:05:00.000Z"),
-        subjectKey: "card:card_a"
+        subjectKey: CARD_A_MEMORY_KEY
       })
     ).rejects.toThrow("Retraining consolidation cannot mark FSRS cards known.");
 
     const afterState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, "card:card_a")
+      where: eq(reviewSubjectState.subjectKey, CARD_A_MEMORY_KEY)
     });
     const afterLogs = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, "card:card_a")
+      where: eq(reviewSubjectLog.subjectKey, CARD_A_MEMORY_KEY)
     });
 
     expect(afterState).toEqual(beforeState);
@@ -510,11 +538,11 @@ describe("pre-FSRS consolidation service", () => {
         scheduledDays: 1,
         stability: 1,
         state: "review",
-        subjectKey: "card:card_a"
+        subjectKey: CARD_A_MEMORY_KEY
       })
     );
     await database.insert(preReviewConsolidationState).values({
-      subjectKey: "card:card_a",
+      subjectKey: CARD_A_MEMORY_KEY,
       subjectType: "card",
       representativeCardId: "card_a",
       lessonId: "lesson_a",
@@ -549,11 +577,11 @@ describe("pre-FSRS consolidation service", () => {
         scheduledDays: 1,
         stability: 1,
         state: "review",
-        subjectKey: "card:card_a"
+        subjectKey: CARD_A_MEMORY_KEY
       })
     );
     await database.insert(preReviewConsolidationState).values({
-      subjectKey: "card:card_a",
+      subjectKey: CARD_A_MEMORY_KEY,
       subjectType: "card",
       representativeCardId: "card_a",
       lessonId: "lesson_a",
@@ -661,8 +689,7 @@ describe("pre-FSRS consolidation service", () => {
       mediaSlug: "media-consolidation"
     });
     const readingSubject = session?.subjects.find(
-      (subject) =>
-        subject.subjectKey === "entry:term:term_consolidation_reading"
+      (subject) => subject.subjectKey === READING_MEMORY_KEY
     );
     const readingStep = readingSubject?.steps.find(
       (step) => step.step === "reading"
@@ -674,8 +701,8 @@ describe("pre-FSRS consolidation service", () => {
     expect(session?.media.slug).toBe("media-consolidation");
     expect(session?.lesson.slug).toBe("consolidation-intro");
     expect(session?.subjects.map((subject) => subject.subjectKey)).toEqual([
-      "entry:term:term_consolidation_reading",
-      "entry:term:term_consolidation_meaning"
+      READING_MEMORY_KEY,
+      MEANING_MEMORY_KEY
     ]);
     expect(readingStep?.answerLabel).toBe("よむ");
     expect(readingStep?.options).toHaveLength(4);
@@ -710,7 +737,7 @@ describe("pre-FSRS consolidation service", () => {
       mediaSlug: "media-consolidation"
     });
     const subject = session?.subjects.find(
-      (item) => item.subjectKey === "entry:term:term_consolidation_reading"
+      (item) => item.subjectKey === READING_MEMORY_KEY
     );
 
     expect(subject?.pronunciation).toMatchObject({
@@ -738,8 +765,7 @@ describe("pre-FSRS consolidation service", () => {
       mediaSlug: "media-consolidation"
     });
     const readingSubject = session?.subjects.find(
-      (subject) =>
-        subject.subjectKey === "entry:term:term_consolidation_reading"
+      (subject) => subject.subjectKey === READING_MEMORY_KEY
     );
     const meaningOptions =
       readingSubject?.steps.find((step) => step.step === "meaning")?.options ??
@@ -763,7 +789,7 @@ describe("pre-FSRS consolidation service", () => {
       mediaSlug: "media-consolidation"
     });
     const kanaOnlySubject = session?.subjects.find(
-      (subject) => subject.subjectKey === "entry:term:term_consolidation_kana"
+      (subject) => subject.subjectKey === KANA_MEMORY_KEY
     );
 
     expect(kanaOnlySubject?.steps.map((step) => step.step)).toEqual([
@@ -782,16 +808,13 @@ describe("pre-FSRS consolidation service", () => {
     const firstResult = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:02:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_meaning",
+      selectedSubjectKey: MEANING_MEMORY_KEY,
       step: "reading",
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
     const firstRow = await database.query.preReviewConsolidationState.findFirst(
       {
-        where: eq(
-          preReviewConsolidationState.subjectKey,
-          "entry:term:term_consolidation_reading"
-        )
+        where: eq(preReviewConsolidationState.subjectKey, READING_MEMORY_KEY)
       }
     );
 
@@ -802,19 +825,14 @@ describe("pre-FSRS consolidation service", () => {
         lastAttemptAt: null,
         updatedAt: "2026-04-01T10:00:00.000Z"
       })
-      .where(
-        eq(
-          preReviewConsolidationState.subjectKey,
-          "entry:term:term_consolidation_reading"
-        )
-      );
+      .where(eq(preReviewConsolidationState.subjectKey, READING_MEMORY_KEY));
 
     const secondResult = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:02:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_meaning",
+      selectedSubjectKey: MEANING_MEMORY_KEY,
       step: "reading",
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
 
     expect(firstResult).toMatchObject({
@@ -845,9 +863,9 @@ describe("pre-FSRS consolidation service", () => {
     const result = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:02:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      selectedSubjectKey: READING_MEMORY_KEY,
       step: "meaning",
-      subjectKey: "entry:term:term_consolidation_kana"
+      subjectKey: KANA_MEMORY_KEY
     });
 
     expect(result).toMatchObject({
@@ -861,7 +879,7 @@ describe("pre-FSRS consolidation service", () => {
   it("keeps retraining status in answer results until the subject passes", async () => {
     await seedConsolidationLesson(database);
     await database.insert(preReviewConsolidationState).values({
-      subjectKey: "entry:term:term_consolidation_reading",
+      subjectKey: READING_MEMORY_KEY,
       subjectType: "entry",
       representativeCardId: "card_consolidation_reading",
       lessonId: "lesson_consolidation",
@@ -879,22 +897,19 @@ describe("pre-FSRS consolidation service", () => {
     const wrongResult = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:02:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_meaning",
+      selectedSubjectKey: MEANING_MEMORY_KEY,
       step: "reading",
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
     const readingResult = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:03:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      selectedSubjectKey: READING_MEMORY_KEY,
       step: "reading",
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
     const row = await database.query.preReviewConsolidationState.findFirst({
-      where: eq(
-        preReviewConsolidationState.subjectKey,
-        "entry:term:term_consolidation_reading"
-      )
+      where: eq(preReviewConsolidationState.subjectKey, READING_MEMORY_KEY)
     });
 
     expect(wrongResult).toMatchObject({
@@ -927,32 +942,29 @@ describe("pre-FSRS consolidation service", () => {
       submitConsolidationAnswer({
         database,
         now: new Date("2026-04-01T10:03:00.000Z"),
-        selectedSubjectKey: "entry:term:term_consolidation_reading",
+        selectedSubjectKey: READING_MEMORY_KEY,
         step: "meaning",
-        subjectKey: "entry:term:term_consolidation_reading"
+        subjectKey: READING_MEMORY_KEY
       })
     ).rejects.toThrow("Reading step must be completed before meaning.");
 
     const readingResult = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:03:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      selectedSubjectKey: READING_MEMORY_KEY,
       step: "reading",
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
     const meaningResult = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:04:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_reading",
+      selectedSubjectKey: READING_MEMORY_KEY,
       step: "meaning",
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
     const completedRow =
       await database.query.preReviewConsolidationState.findFirst({
-        where: eq(
-          preReviewConsolidationState.subjectKey,
-          "entry:term:term_consolidation_reading"
-        )
+        where: eq(preReviewConsolidationState.subjectKey, READING_MEMORY_KEY)
       });
 
     expect(readingResult).toMatchObject({
@@ -986,15 +998,12 @@ describe("pre-FSRS consolidation service", () => {
     const result = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:03:00.000Z"),
-      selectedSubjectKey: "entry:term:term_consolidation_kana",
+      selectedSubjectKey: KANA_MEMORY_KEY,
       step: "meaning",
-      subjectKey: "entry:term:term_consolidation_kana"
+      subjectKey: KANA_MEMORY_KEY
     });
     const row = await database.query.preReviewConsolidationState.findFirst({
-      where: eq(
-        preReviewConsolidationState.subjectKey,
-        "entry:term:term_consolidation_kana"
-      )
+      where: eq(preReviewConsolidationState.subjectKey, KANA_MEMORY_KEY)
     });
 
     expect(result).toMatchObject({
@@ -1026,15 +1035,14 @@ describe("pre-FSRS consolidation service", () => {
       mediaSlug: "media-consolidation"
     });
     const grammarSubject = session?.subjects.find(
-      (subject) =>
-        subject.subjectKey === "entry:grammar:grammar_consolidation_before"
+      (subject) => subject.subjectKey === GRAMMAR_MEMORY_KEY
     );
     const result = await submitConsolidationAnswer({
       database,
       now: new Date("2026-04-01T10:03:00.000Z"),
-      selectedSubjectKey: "entry:grammar:grammar_consolidation_before",
+      selectedSubjectKey: GRAMMAR_MEMORY_KEY,
       step: "meaning",
-      subjectKey: "entry:grammar:grammar_consolidation_before"
+      subjectKey: GRAMMAR_MEMORY_KEY
     });
 
     expect(grammarSubject?.steps.map((step) => step.step)).toEqual(["meaning"]);
@@ -1046,7 +1054,7 @@ describe("pre-FSRS consolidation service", () => {
     });
   });
 
-  it("marks a pending subject known manually without writing FSRS logs", async () => {
+  it("marks a pending subject known manually and records an immutable manual event", async () => {
     await seedConsolidationLesson(database);
     await enqueueLessonConsolidation({
       database,
@@ -1057,26 +1065,17 @@ describe("pre-FSRS consolidation service", () => {
     const result = await markConsolidationKnown({
       database,
       now: new Date("2026-04-01T10:04:00.000Z"),
-      subjectKey: "entry:term:term_consolidation_reading"
+      subjectKey: READING_MEMORY_KEY
     });
     const [consolidationRow, subjectState, logs] = await Promise.all([
       database.query.preReviewConsolidationState.findFirst({
-        where: eq(
-          preReviewConsolidationState.subjectKey,
-          "entry:term:term_consolidation_reading"
-        )
+        where: eq(preReviewConsolidationState.subjectKey, READING_MEMORY_KEY)
       }),
       database.query.reviewSubjectState.findFirst({
-        where: eq(
-          reviewSubjectState.subjectKey,
-          "entry:term:term_consolidation_reading"
-        )
+        where: eq(reviewSubjectState.subjectKey, READING_MEMORY_KEY)
       }),
       database.query.reviewSubjectLog.findMany({
-        where: eq(
-          reviewSubjectLog.subjectKey,
-          "entry:term:term_consolidation_reading"
-        )
+        where: eq(reviewSubjectLog.subjectKey, READING_MEMORY_KEY)
       })
     ]);
 
@@ -1091,10 +1090,33 @@ describe("pre-FSRS consolidation service", () => {
     expect(subjectState).toMatchObject({
       cardId: "card_consolidation_reading",
       manualOverride: true,
-      state: "known_manual",
-      subjectKey: "entry:term:term_consolidation_reading"
+      state: "new",
+      subjectKey: READING_MEMORY_KEY
     });
-    expect(logs).toEqual([]);
+    expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      answeredAt: "2026-04-01T10:04:00.000Z",
+      canonicalSubjectKey: "entry:term:term_consolidation_reading",
+      cardId: "card_consolidation_reading",
+      cardTypeSnapshot: "recognition",
+      eventKind: "manual",
+      eventSchemaVersion: 2,
+      memoryKey: READING_MEMORY_KEY,
+      mediaIdSnapshot: "media_consolidation",
+      newState: "new",
+      previousState: null,
+      rating: null,
+      recallTask: "recognition",
+      reason: "consolidation_known_manual",
+      recordedAt: "2026-04-01T10:04:00.000Z",
+      subjectKey: READING_MEMORY_KEY
+    });
+    expect(logs[0]?.beforeStateJson).toBeNull();
+    expect(JSON.parse(logs[0]?.afterStateJson ?? "{}")).toMatchObject({
+      manualOverride: true,
+      state: "new",
+      updatedAt: "2026-04-01T10:04:00.000Z"
+    });
   });
 });
 

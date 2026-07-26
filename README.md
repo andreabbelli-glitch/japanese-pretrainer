@@ -89,18 +89,43 @@ su `Again/Hard/Good/Easy`, avanza in modo ottimistico mentre il server conferma
 la mutazione in background. Se il submit fallisce, il client ripristina la card
 precedente e mostra l'errore senza perdere il contesto della sessione.
 
+Il contratto completo e le differenze intenzionali rispetto ad Anki sono in
+[`docs/fsrs6-alignment.md`](./docs/fsrs6-alignment.md). In sintesi, la review
+usa FSRS 6 a 21 pesi, giornata logica alle 04:00 `Europe/Rome`, learn-ahead di
+20 minuti, fuzz/load balancing giornaliero Anki 25.07 e reschedule manuale. La
+review globale, il dedup cross-media e la separazione recognition/concept
+restano invarianti del prodotto.
+
 Lo scheduler FSRS supporta anche parametri ottimizzati sui log reali. Il
 training automatico vive fuori dal runtime interattivo dell'app: in produzione
 Vercel Cron chiama ogni giorno `/api/internal/fsrs-optimizer/run`, protetta da
 `CRON_SECRET`, e l'endpoint esegue lo stesso gate di
-`pnpm fsrs:optimize:if-needed`. Il gate interno allena al massimo una volta ogni
-`30` giorni e solo quando le review eleggibili nuove raggiungono
-`min(3000, max(500, 25% del training precedente))`, segmentando i parametri in
-due preset per `cardType`: `recognition` e `concept`. La pagina `/settings`
+`pnpm fsrs:optimize:if-needed`. Il gate interno valuta ogni preset al massimo
+una volta ogni `30` giorni e solo quando le sue review eleggibili nuove
+raggiungono `min(3000, max(500, 25% dell'ultima valutazione))`. I watermark e
+la readiness restano separati per `recognition` e `concept`, quindi un preset
+con pochi dati, in errore o scaduto non blocca e non viene azzerato dal training
+dell'altro. Se falliscono tutti i preset valutati, il run termina come fallito e
+Settings mostra sia l'errore globale sia quello di ogni preset. Un dataset
+ancora insufficiente viene riprovato dopo `7` giorni
+senza avanzare il suo watermark; i run forzati ignorano questo cooldown. Le
+dipendenze sono fissate a `ts-fsrs@5.2.3` e al binding optimizer `0.5.0` (FSRS
+Rust `6.5.0`). Il dataset usa solo
+prefissi il cui ultimo evento ha `deltaT > 0`, rispetta reset e study day, e
+separa cronologicamente training e holdout. I nuovi pesi diventano attivi solo
+se migliorano la log loss rispetto ai pesi correnti senza superare il guardrail
+RMSE; altrimenti l'incumbent resta invariato. La pagina `/settings`
 mostra in sola lettura lo stato corrente dell'optimizer, la soglia dinamica
-corrente e i preset salvati in `user_setting`. `FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS`
-puo essere impostato per cambiare il timeout per-preset del training CLI/server,
-altrimenti resta il default di `5000ms`.
+corrente e i preset salvati in `user_setting`. Parametri e progressi vengono
+committati nella stessa transazione; cache runtime e tag vengono invalidati una
+sola volta, solo dopo il commit. `FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS`
+puo essere impostato per cambiare la deadline end-to-end per preset (lettura e
+costruzione del ledger condiviso e del dataset, split, training e valutazione)
+del training CLI/server;
+altrimenti resta il default di `4000ms`. Il training nativo usa il `90%` del
+budget residuo e lascia la coda finale alla restituzione dei pesi e alla
+valutazione holdout. L'optimizer resta fuori dal percorso interattivo di
+review: durante una sessione vengono letti soltanto i parametri gia attivi.
 
 ## Kanji Clash
 

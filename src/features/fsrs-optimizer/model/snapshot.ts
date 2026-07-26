@@ -10,20 +10,48 @@ export type FsrsOptimizerConfig = {
   presetStrategy: "card_type_v1";
 };
 
+export type FsrsModelEvaluation = {
+  logLoss: number;
+  rmseBins: number;
+};
+
+export type FsrsOptimizerPresetProgress = {
+  eligibleReviewCountAtLastEvaluation: number;
+  lastCandidateEvaluation: FsrsModelEvaluation | null;
+  lastError: string | null;
+  lastEvaluationAt: string | null;
+  lastIncumbentEvaluation: FsrsModelEvaluation | null;
+  lastAttemptAt: string | null;
+  lastWatermarkAnsweredAt: string | null;
+  newEligibleReviewsSinceLastEvaluation: number;
+};
+
 export type FsrsOptimizerState = {
+  activeRunId?: string | null;
   bindingVersion: string;
+  datasetVersion?: string;
   lastAttemptAt: string | null;
   lastCheckAt: string | null;
   lastSuccessfulTrainingAt: string | null;
   lastTrainingError: string | null;
   newEligibleReviewsSinceLastTraining: number;
+  presetProgress?: Partial<Record<FsrsPresetKey, FsrsOptimizerPresetProgress>>;
   totalEligibleReviewsAtLastTraining: number;
 };
 
 export type FsrsOptimizedParameters = {
+  algorithmVersion?: "fsrs6";
+  bindingVersion?: string;
+  candidateEvaluation?: FsrsModelEvaluation;
+  datasetVersion?: string;
   desiredRetention: number;
+  holdoutItemCount?: number;
+  incumbentEvaluation?: FsrsModelEvaluation;
+  metric?: "log_loss";
   presetKey: FsrsPresetKey;
+  studyDayPolicy?: string;
   trainedAt: string;
+  trainingItemCount?: number;
   trainingReviewCount: number;
   weights: number[];
 };

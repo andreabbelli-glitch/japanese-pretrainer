@@ -1,21 +1,41 @@
-export function getLocalDayBounds(asOf: Date) {
-  const dayStart = new Date(
-    asOf.getFullYear(),
-    asOf.getMonth(),
-    asOf.getDate()
-  );
-  const dayEnd = new Date(dayStart);
+import { REVIEW_MEMORY_KEY_VERSION } from "../../domain/review.ts";
+import { getReviewStudyDayBounds } from "../../features/review/model/study-day.ts";
 
-  dayEnd.setDate(dayEnd.getDate() + 1);
+export function getLocalDayBounds(asOf: Date) {
+  const { dayEndIso, dayStartIso } = getReviewStudyDayBounds(asOf);
 
   return {
-    dayEndIso: dayEnd.toISOString(),
-    dayStartIso: dayStart.toISOString()
+    dayEndIso,
+    dayStartIso
   };
 }
 
 export function quoteSqlString(value: string) {
   return `'${value.replaceAll("'", "''")}'`;
+}
+
+export function buildEffectiveReviewEventMemoryKeySql(input: {
+  canonicalSubjectKeyExpression: string;
+  cardIdExpression: string;
+  eventSchemaVersionExpression: string;
+  memoryKeyExpression: string;
+  recallTaskExpression: string;
+  subjectKeyExpression: string;
+}) {
+  const recallTask = `COALESCE(${input.recallTaskExpression}, 'other')`;
+  const canonicalSubjectKey = `COALESCE(NULLIF(trim(${input.canonicalSubjectKeyExpression}), ''), ${input.subjectKeyExpression})`;
+
+  return `CASE
+    WHEN ${input.eventSchemaVersionExpression} >= 2
+      AND NULLIF(trim(${input.memoryKeyExpression}), '') IS NOT NULL
+      THEN trim(${input.memoryKeyExpression})
+    ELSE ${quoteSqlString(REVIEW_MEMORY_KEY_VERSION)} || ':' || ${recallTask} || ':' ||
+      CASE
+        WHEN ${recallTask} IN ('recognition', 'concept')
+          THEN ${canonicalSubjectKey}
+        ELSE 'card:' || ${input.cardIdExpression}
+      END
+  END`;
 }
 
 export function buildCompletedReviewLessonsCteSql(mediaId?: string) {
@@ -82,7 +102,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
       FROM driving_links dl
       GROUP BY dl.card_id
     ),
-    subject_identity AS (
+    canonical_subject_identity AS (
       SELECT
         c.id AS card_id,
         c.media_id AS media_id,
@@ -133,7 +153,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
           WHEN dlc.entry_type = 'grammar' AND gp.cross_media_group_id IS NOT NULL
             THEN 'group:grammar:' || gp.cross_media_group_id
           ELSE 'entry:' || COALESCE(dlc.entry_type, 'card') || ':' || COALESCE(dlc.entry_id, c.id)
-        END AS subject_key
+        END AS canonical_subject_key
       FROM card c
       LEFT JOIN driving_link_counts dlc
         ON dlc.card_id = c.id
@@ -144,6 +164,34 @@ export function buildReviewSubjectIdentityCteSql(options?: {
         ON dlc.entry_type = 'grammar'
        AND gp.id = dlc.entry_id
       WHERE c.status != 'archived'${mediaClause}
+    ),
+    recall_task_identity AS (
+      SELECT
+        csi.*,
+        CASE
+          WHEN csi.card_type = 'recognition' THEN 'recognition'
+          WHEN csi.card_type = 'concept' THEN 'concept'
+          ELSE 'other'
+        END AS recall_task
+      FROM canonical_subject_identity csi
+    ),
+    memory_subject_identity AS (
+      SELECT
+        rti.*,
+        'mnemonic:v1:' ||
+          rti.recall_task || ':' ||
+          CASE
+            WHEN rti.recall_task IN ('recognition', 'concept')
+              THEN rti.canonical_subject_key
+            ELSE 'card:' || rti.card_id
+          END AS memory_key
+      FROM recall_task_identity rti
+    ),
+    subject_identity AS (
+      SELECT
+        msi.*,
+        msi.memory_key AS subject_key
+      FROM memory_subject_identity msi
     )
   `;
 }

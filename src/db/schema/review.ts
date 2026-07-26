@@ -14,6 +14,10 @@ import {
   cardStatusValues,
   entryTypeValues,
   preReviewConsolidationStatusValues,
+  reviewAlgorithmVersionValues,
+  reviewCanonicalControlStatusValues,
+  reviewEventKindValues,
+  reviewRecallTaskValues,
   reviewRatingValues,
   reviewSchedulerVersionValues,
   reviewSubjectKindValues,
@@ -98,6 +102,8 @@ export const reviewSubjectState = sqliteTable(
   "review_subject_state",
   {
     subjectKey: text("subject_key").primaryKey(),
+    canonicalSubjectKey: text("canonical_subject_key"),
+    recallTask: text("recall_task", { enum: reviewRecallTaskValues }),
     subjectType: text("subject_type", {
       enum: reviewSubjectKindValues
     }).notNull(),
@@ -133,6 +139,10 @@ export const reviewSubjectState = sqliteTable(
     index("review_subject_state_due_idx").on(table.dueAt),
     index("review_subject_state_interaction_idx").on(table.lastInteractionAt),
     index("review_subject_state_card_idx").on(table.cardId),
+    index("review_subject_state_canonical_task_idx").on(
+      table.canonicalSubjectKey,
+      table.recallTask
+    ),
     index("review_subject_state_entry_idx").on(
       table.entryType,
       table.crossMediaGroupId,
@@ -161,16 +171,25 @@ export const reviewSubjectLog = sqliteTable(
   "review_subject_log",
   {
     id: text("id").primaryKey(),
-    subjectKey: text("subject_key")
+    eventKind: text("event_kind", { enum: reviewEventKindValues })
       .notNull()
-      .references(() => reviewSubjectState.subjectKey, { onDelete: "cascade" }),
-    cardId: text("card_id")
-      .notNull()
-      .references(() => card.id, { onDelete: "cascade" }),
+      .default("grade"),
+    eventSchemaVersion: integer("event_schema_version").notNull().default(0),
+    subjectKey: text("subject_key").notNull(),
+    memoryKey: text("memory_key"),
+    canonicalSubjectKey: text("canonical_subject_key"),
+    recallTask: text("recall_task", { enum: reviewRecallTaskValues }),
+    cardId: text("card_id").notNull(),
+    cardTypeSnapshot: text("card_type_snapshot"),
+    mediaIdSnapshot: text("media_id_snapshot"),
     answeredAt: text("answered_at").notNull(),
-    rating: text("rating", { enum: reviewRatingValues }).notNull(),
+    recordedAt: text("recorded_at"),
+    studyDay: text("study_day"),
+    studyDayPolicy: text("study_day_policy"),
+    rating: text("rating", { enum: reviewRatingValues }),
     previousState: text("previous_state", { enum: reviewStateValues }),
     newState: text("new_state", { enum: reviewStateValues }),
+    previousDueAt: text("previous_due_at"),
     scheduledDueAt: text("scheduled_due_at"),
     elapsedDays: real("elapsed_days"),
     responseMs: integer("response_ms"),
@@ -178,7 +197,16 @@ export const reviewSubjectLog = sqliteTable(
       enum: reviewSchedulerVersionValues
     })
       .notNull()
-      .default("fsrs_v1")
+      .default("fsrs_v1"),
+    algorithmVersion: text("algorithm_version", {
+      enum: reviewAlgorithmVersionValues
+    }),
+    bindingVersion: text("binding_version"),
+    parameterHash: text("parameter_hash"),
+    beforeStateJson: text("before_state_json"),
+    afterStateJson: text("after_state_json"),
+    batchId: text("batch_id"),
+    reason: text("reason")
   },
   (table) => [
     index("review_subject_log_subject_answered_idx").on(
@@ -189,19 +217,96 @@ export const reviewSubjectLog = sqliteTable(
       table.cardId,
       table.answeredAt
     ),
+    index("review_subject_log_memory_idx").on(table.memoryKey),
     index("review_subject_log_introduced_day_idx").on(
       table.previousState,
       table.answeredAt,
       table.subjectKey,
       table.cardId
+    ),
+    index("review_subject_log_training_idx").on(
+      table.eventKind,
+      table.recallTask,
+      table.subjectKey,
+      table.answeredAt,
+      table.id
+    ),
+    index("review_subject_log_training_v2_idx").on(
+      table.eventKind,
+      table.recallTask,
+      table.memoryKey,
+      table.answeredAt,
+      table.id
+    ),
+    index("review_subject_log_study_day_idx").on(
+      table.eventKind,
+      table.studyDay,
+      table.previousState,
+      table.subjectKey,
+      table.mediaIdSnapshot
+    ),
+    index("review_subject_log_study_day_v2_idx").on(
+      table.eventKind,
+      table.studyDay,
+      table.previousState,
+      table.memoryKey,
+      table.mediaIdSnapshot
     )
   ]
 );
+
+export const reviewFsrsParameterSet = sqliteTable(
+  "review_fsrs_parameter_set",
+  {
+    parameterHash: text("parameter_hash").primaryKey(),
+    algorithmVersion: text("algorithm_version", {
+      enum: reviewAlgorithmVersionValues
+    }).notNull(),
+    schedulerVersion: text("scheduler_version", {
+      enum: reviewSchedulerVersionValues
+    }).notNull(),
+    bindingVersion: text("binding_version").notNull(),
+    recallTask: text("recall_task", { enum: reviewRecallTaskValues }).notNull(),
+    desiredRetention: real("desired_retention").notNull(),
+    parametersJson: text("parameters_json").notNull(),
+    createdAt: text("created_at").notNull()
+  },
+  (table) => [
+    index("review_fsrs_parameter_set_task_created_idx").on(
+      table.recallTask,
+      table.createdAt
+    )
+  ]
+);
+
+export const reviewMemoryAlias = sqliteTable(
+  "review_memory_alias",
+  {
+    aliasMemoryKey: text("alias_memory_key").primaryKey(),
+    currentMemoryKey: text("current_memory_key").notNull(),
+    reason: text("reason").notNull(),
+    migratedAt: text("migrated_at").notNull()
+  },
+  (table) => [
+    index("review_memory_alias_current_idx").on(table.currentMemoryKey)
+  ]
+);
+
+export const reviewCanonicalControl = sqliteTable("review_canonical_control", {
+  canonicalSubjectKey: text("canonical_subject_key").primaryKey(),
+  status: text("status", {
+    enum: reviewCanonicalControlStatusValues
+  }).notNull(),
+  createdAt: text("created_at").notNull(),
+  updatedAt: text("updated_at").notNull()
+});
 
 export const preReviewConsolidationState = sqliteTable(
   "pre_review_consolidation_state",
   {
     subjectKey: text("subject_key").primaryKey(),
+    canonicalSubjectKey: text("canonical_subject_key"),
+    recallTask: text("recall_task", { enum: reviewRecallTaskValues }),
     subjectType: text("subject_type", {
       enum: reviewSubjectKindValues
     }).notNull(),
@@ -246,6 +351,10 @@ export const preReviewConsolidationState = sqliteTable(
       table.createdAt,
       table.subjectKey
     ),
-    index("pre_review_consolidation_card_idx").on(table.representativeCardId)
+    index("pre_review_consolidation_card_idx").on(table.representativeCardId),
+    index("pre_review_consolidation_canonical_task_idx").on(
+      table.canonicalSubjectKey,
+      table.recallTask
+    )
   ]
 );

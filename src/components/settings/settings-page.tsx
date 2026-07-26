@@ -8,7 +8,10 @@ import type {
   FsrsReschedulePreview
 } from "@/features/fsrs-optimizer/server";
 import type { StudySettings } from "@/features/settings/server";
-import { resolveReturnToContext, resolveReturnToLabel } from "@/features/navigation";
+import {
+  resolveReturnToContext,
+  resolveReturnToLabel
+} from "@/features/navigation";
 
 import { StickyPageHeader } from "../layout/sticky-page-header";
 import { Section } from "../ui/section";
@@ -23,7 +26,7 @@ import { SaveSettingsButton } from "./save-settings-button";
 
 type SettingsPageProps = {
   fsrsOptimizerStatus: FsrsOptimizerStatus;
-  fsrsReschedulePreview: FsrsReschedulePreview;
+  fsrsReschedulePreview: FsrsReschedulePreview | null;
   fsrsRescheduleStatus?: FsrsRescheduleStatus | null;
   returnTo?: Route | null;
   saved: boolean;

@@ -40,6 +40,7 @@ import {
   loadReviewWorkspaceV2
 } from "@/features/review/server/loader";
 import { normalizeReviewSearchState } from "@/features/review/model/search-state";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
@@ -658,7 +659,13 @@ describe("review media query reuse", () => {
 
     await database.insert(reviewSubjectState).values([
       {
-        subjectKey: `entry:term:${alphaTermId}`,
+        canonicalSubjectKey: `entry:term:${alphaTermId}`,
+        recallTask: "recognition",
+        subjectKey: buildReviewMemoryKey({
+          canonicalSubjectKey: `entry:term:${alphaTermId}`,
+          cardId: alphaCardId,
+          recallTask: "recognition"
+        }),
         subjectType: "entry",
         entryType: "term",
         crossMediaGroupId: null,
@@ -671,7 +678,13 @@ describe("review media query reuse", () => {
         updatedAt: alphaDueAt
       },
       {
-        subjectKey: `entry:term:${betaTermId}`,
+        canonicalSubjectKey: `entry:term:${betaTermId}`,
+        recallTask: "recognition",
+        subjectKey: buildReviewMemoryKey({
+          canonicalSubjectKey: `entry:term:${betaTermId}`,
+          cardId: betaCardId,
+          recallTask: "recognition"
+        }),
         subjectType: "entry",
         entryType: "term",
         crossMediaGroupId: null,
@@ -839,7 +852,11 @@ describe("review media query reuse", () => {
       .where(
         eq(
           reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
+          buildReviewMemoryKey({
+            canonicalSubjectKey: `entry:term:${developmentFixture.termDbId}`,
+            cardId: developmentFixture.primaryCardId,
+            recallTask: "recognition"
+          })
         )
       );
 

@@ -12,6 +12,10 @@ export type ReviewPageLoadCall = {
 };
 
 export type LoadReviewActionsOptions = {
+  getReviewPageData?: (input: {
+    mediaSlug: string;
+    searchParams: Record<string, string>;
+  }) => Promise<ReviewPageData> | ReviewPageData;
   hydrateReviewCard?: (input: {
     cardId: string;
   }) =>
@@ -38,10 +42,9 @@ export async function loadReviewActionsForDatabase(
   try {
     vi.resetModules();
     vi.doMock("@/features/cache/server/data-cache", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
-          "@/features/cache/server/data-cache"
-        );
+      const actual = await vi.importActual<
+        typeof import("@/features/cache/server/data-cache")
+      >("@/features/cache/server/data-cache");
 
       return {
         ...actual,
@@ -58,10 +61,9 @@ export async function loadReviewActionsForDatabase(
         }
       }
 
-      const actual =
-        await vi.importActual<
-          typeof import("@/features/review/server/card-hydration")
-        >("@/features/review/server/card-hydration");
+      const actual = await vi.importActual<
+        typeof import("@/features/review/server/card-hydration")
+      >("@/features/review/server/card-hydration");
 
       return actual.hydrateReviewCard(input);
     });
@@ -106,14 +108,17 @@ export async function loadReviewActionsForDatabase(
             : {})
         });
 
+        if (options.getReviewPageData) {
+          return options.getReviewPageData({ mediaSlug, searchParams });
+        }
+
         return {} as ReviewPageData;
       }
     );
     vi.doMock("@/features/review/server/card-hydration", async () => {
-      const actual =
-        await vi.importActual<
-          typeof import("@/features/review/server/card-hydration")
-        >("@/features/review/server/card-hydration");
+      const actual = await vi.importActual<
+        typeof import("@/features/review/server/card-hydration")
+      >("@/features/review/server/card-hydration");
 
       return {
         ...actual,
@@ -121,10 +126,9 @@ export async function loadReviewActionsForDatabase(
       };
     });
     vi.doMock("@/features/review/server/page-data", async () => {
-      const actual =
-        await vi.importActual<
-          typeof import("@/features/review/server/page-data")
-        >("@/features/review/server/page-data");
+      const actual = await vi.importActual<
+        typeof import("@/features/review/server/page-data")
+      >("@/features/review/server/page-data");
 
       return {
         ...actual,
@@ -133,10 +137,9 @@ export async function loadReviewActionsForDatabase(
       };
     });
     vi.doMock("@/features/review/server", async () => {
-      const actual =
-        await vi.importActual<typeof import("@/features/review/server")>(
-          "@/features/review/server"
-        );
+      const actual = await vi.importActual<
+        typeof import("@/features/review/server")
+      >("@/features/review/server");
 
       return {
         ...actual,

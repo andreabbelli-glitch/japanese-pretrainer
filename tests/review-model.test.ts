@@ -81,7 +81,7 @@ describe("review model", () => {
       learningSteps: 1,
       reps: 1,
       scheduledDays: 0,
-      schedulerVersion: "fsrs_v1",
+      schedulerVersion: "fsrs_v2_study_day",
       stability: 2.307,
       state: "learning"
     });
@@ -96,7 +96,7 @@ describe("review model", () => {
       learningSteps: 0,
       reps: 6,
       scheduledDays: 0,
-      schedulerVersion: "fsrs_v1",
+      schedulerVersion: "fsrs_v2_study_day",
       stability: 0.716,
       state: "relearning"
     });
@@ -133,10 +133,10 @@ describe("review model", () => {
     expect(dueTimes[1]).toBeLessThanOrEqual(dueTimes[2]);
     expect(dueTimes[2]).toBeLessThanOrEqual(dueTimes[3]);
     expect(scheduled[2]?.scheduledDays).toBe(1);
-    expect(scheduled[3]?.scheduledDays).toBe(1);
+    expect(scheduled[3]?.scheduledDays).toBe(2);
   });
 
-  it("logs fractional elapsed days when a review crosses UTC midnight by minutes", () => {
+  it("keeps elapsed days at zero inside the same logical study day", () => {
     const scheduled = scheduleReview({
       current: {
         difficulty: 5,
@@ -153,11 +153,11 @@ describe("review model", () => {
       rating: "good"
     });
 
-    expect(scheduled.elapsedDays).toBeCloseTo(0.003, 3);
+    expect(scheduled.elapsedDays).toBe(0);
     expect(scheduled.scheduledDays).toBeLessThanOrEqual(3);
   });
 
-  it("replays fractional elapsed days when review history crosses UTC midnight by minutes", () => {
+  it("replays zero elapsed days inside the same logical study day", () => {
     const firstReviewedAt = "2026-05-19T23:58:00.000Z";
     const secondReviewedAt = "2026-05-20T00:02:00.000Z";
     const first = scheduleReview({
@@ -205,9 +205,32 @@ describe("review model", () => {
       }
     ]);
 
-    expect(replayed?.logs[1]?.elapsedDays).toBeCloseTo(0.003, 3);
+    expect(replayed?.logs[1]?.elapsedDays).toBe(0);
     expect(replayed?.state.dueAt).toBe(sequential.dueAt);
     expect(replayed?.state.scheduledDays).toBe(sequential.scheduledDays);
+  });
+
+  it("replays the persisted logical-day distance instead of recalculating wall time", () => {
+    const replayed = replayReviewHistory([
+      {
+        answeredAt: "2026-01-01T09:00:00.000Z",
+        elapsedDays: 0,
+        id: "persisted-day-log-1",
+        previousState: "new",
+        rating: "good",
+        responseMs: null
+      },
+      {
+        answeredAt: "2026-01-10T09:00:00.000Z",
+        elapsedDays: 0,
+        id: "persisted-day-log-2",
+        previousState: "learning",
+        rating: "good",
+        responseMs: null
+      }
+    ]);
+
+    expect(replayed?.logs[1]?.elapsedDays).toBe(0);
   });
 
   it("replays review history with a caller-provided scheduler config", () => {
@@ -245,20 +268,57 @@ describe("review model", () => {
       })
     });
 
-    expect(defaultReplay?.state.scheduledDays).toBe(18);
-    expect(optimizedReplay?.state.scheduledDays).toBe(60);
-    expect(optimizedReplay?.state.dueAt).toBe("2026-03-09T00:00:00.000Z");
+    expect(defaultReplay?.state.scheduledDays).toBe(21);
+    expect(optimizedReplay?.state.scheduledDays).toBe(65);
+    expect(optimizedReplay?.state.dueAt).toBe("2026-03-14T03:00:00.000Z");
   });
 
-  it("derives study-day boundaries from the runtime local timezone", () => {
+  it("uses one stable memory seed across physical-card replay logs", () => {
+    const logs = [
+      {
+        answeredAt: "2026-01-01T09:00:00.000Z",
+        id: "log-1",
+        previousState: "new" as const,
+        rating: "good" as const,
+        responseMs: null,
+        schedulingKey: "physical-card-a"
+      },
+      {
+        answeredAt: "2026-01-03T09:00:00.000Z",
+        id: "log-2",
+        previousState: "learning" as const,
+        rating: "good" as const,
+        responseMs: null,
+        schedulingKey: "physical-card-b"
+      },
+      {
+        answeredAt: "2026-01-08T09:00:00.000Z",
+        id: "log-3",
+        previousState: "review" as const,
+        rating: "good" as const,
+        responseMs: null,
+        schedulingKey: "physical-card-c"
+      }
+    ];
+    const memoryKey = "mnemonic:v1:recognition:term:shared";
+    const replayed = replayReviewHistory(logs, { schedulingKey: memoryKey });
+    const equivalent = replayReviewHistory(
+      logs.map((log) => ({ ...log, schedulingKey: memoryKey }))
+    );
+
+    expect(replayed?.finalIntervalPolicy?.schedulingKey).toBe(memoryKey);
+    expect(replayed?.state).toEqual(equivalent?.state);
+  });
+
+  it("derives study-day boundaries from the explicit review policy", () => {
     const originalTimezone = process.env.TZ;
 
     try {
       process.env.TZ = "America/Los_Angeles";
 
       expect(getLocalDayBounds(new Date("2026-03-11T00:15:00.000Z"))).toEqual({
-        dayEndIso: "2026-03-11T07:00:00.000Z",
-        dayStartIso: "2026-03-10T07:00:00.000Z"
+        dayEndIso: "2026-03-11T03:00:00.000Z",
+        dayStartIso: "2026-03-10T03:00:00.000Z"
       });
     } finally {
       process.env.TZ = originalTimezone;

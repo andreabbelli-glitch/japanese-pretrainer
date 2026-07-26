@@ -198,7 +198,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           media.title as mediaTitle,
           term.lemma as label,
           coalesce(segment.order_index, 999999) as segmentOrder,
-          cast(count(card.id) as integer) as cardCount,
+          cast(count(distinct card.id) as integer) as cardCount,
           max(
             case
               when card.status = 'active'
@@ -270,7 +270,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           media.title as mediaTitle,
           term.lemma as label,
           coalesce(segment.order_index, 999999) as segmentOrder,
-          cast(count(card.id) as integer) as cardCount,
+          cast(count(distinct card.id) as integer) as cardCount,
           max(
             case
               when card.status = 'active'
@@ -348,7 +348,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           media.title as mediaTitle,
           grammar_pattern.pattern as label,
           coalesce(segment.order_index, 999999) as segmentOrder,
-          cast(count(card.id) as integer) as cardCount,
+          cast(count(distinct card.id) as integer) as cardCount,
           max(
             case
               when card.status = 'active'
@@ -420,7 +420,7 @@ export function buildGlobalGlossaryBrowseScopeQuery(
           media.title as mediaTitle,
           grammar_pattern.pattern as label,
           coalesce(segment.order_index, 999999) as segmentOrder,
-          cast(count(card.id) as integer) as cardCount,
+          cast(count(distinct card.id) as integer) as cardCount,
           max(
             case
               when card.status = 'active'

@@ -371,7 +371,7 @@ export function ReviewPageStage({
                     <small>{rating.detail}</small>
                     <small className="review-grade-button__next">
                       Prossima review:{" "}
-                      {gradePreviewLookup.get(rating.value) ?? "n/d"}
+                      {gradePreviewLookup.get(rating.value) ?? "Calcolo…"}
                     </small>
                   </button>
                 ))}

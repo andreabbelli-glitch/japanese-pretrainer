@@ -2,9 +2,13 @@ import type { DatabaseQueryClient } from "../client.ts";
 import {
   buildCompletedReviewLessonsCteSql,
   buildReviewSubjectIdentityCteSql,
-  getLocalDayBounds,
   quoteSqlString
 } from "./review-query-helpers.ts";
+import {
+  addReviewStudyDays,
+  getReviewStudyDay,
+  getReviewStudyDayBoundsForKey
+} from "../../features/review/model/study-day.ts";
 
 export type ReviewLaunchCandidate = {
   activeReviewCards: number;
@@ -223,8 +227,8 @@ export async function loadReviewLaunchCandidateRows(
     subjectCardPartitionByMedia = false
   } = input;
   const asOfIso = asOf.toISOString();
-  const { dayStartIso, dayEndIso } = getLocalDayBounds(
-    new Date(asOf.getTime() + 86400000)
+  const { dayStartIso, dayEndIso } = getReviewStudyDayBoundsForKey(
+    addReviewStudyDays(getReviewStudyDay(asOf), 1)
   );
 
   const subjectCardCandidatesCte = `${scopePrefix}_subject_card_candidates`;

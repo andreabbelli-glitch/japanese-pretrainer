@@ -1,6 +1,8 @@
 import type { DatabaseQueryClient } from "@/db";
 import type { EntryType } from "@/db/schema";
 import {
+  buildReviewCanonicalSubjectKey,
+  buildReviewSubjectIdentityFromCanonical,
   deriveReviewSubjectIdentity,
   normalizeReviewSubjectSurface,
   type ReviewSubjectIdentity
@@ -103,14 +105,23 @@ function buildPendingRowPresentation(
     attemptCount: row.attemptCount,
     cardItem: row.representativeCard,
     entryLookup,
-    identity: {
+    identity: buildReviewSubjectIdentityFromCanonical({
       cardId: row.representativeCardId,
+      cardType: row.representativeCard.cardType,
+      canonicalSubjectKey: buildReviewCanonicalSubjectKey({
+        crossMediaGroupId: row.crossMediaGroupId,
+        entryId:
+          row.subjectType === "card"
+            ? row.representativeCardId
+            : (row.entryId ?? row.representativeCardId),
+        entryType: row.entryType,
+        subjectKind: row.subjectType
+      }),
       crossMediaGroupId: row.crossMediaGroupId,
       entryId: row.entryId,
       entryType: row.entryType,
-      subjectKey: row.subjectKey,
       subjectKind: row.subjectType
-    },
+    }),
     lessonId: row.lessonId,
     canMarkKnown: row.status === "pending",
     choiceGroupId: options.choiceGroupId ?? row.lessonId,

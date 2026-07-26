@@ -26,7 +26,7 @@ vi.mock("@/features/settings/server", () => ({
 import SettingsRoute from "@/app/settings/page";
 
 describe("settings route", () => {
-  it("keeps the saved notice active when duplicated search params include a valid flag", async () => {
+  it("keeps settings lightweight until the FSRS preview is explicitly requested", async () => {
     getFsrsOptimizerStatusMock.mockResolvedValue({
       config: {
         desiredRetention: 0.9,
@@ -106,11 +106,19 @@ describe("settings route", () => {
     });
 
     expect(element.props).toMatchObject({
-      fsrsReschedulePreview: {
-        fsrsCacheKeyPart: "config|recognition|concept"
-      },
+      fsrsReschedulePreview: null,
       returnTo: "/review?answered=2&card=card-iku",
       saved: true
     });
+    expect(buildFsrsReschedulePreviewMock).not.toHaveBeenCalled();
+
+    const previewElement = await SettingsRoute({
+      searchParams: Promise.resolve({ fsrsPreview: "1" })
+    });
+
+    expect(previewElement.props.fsrsReschedulePreview).toMatchObject({
+      fsrsCacheKeyPart: "config|recognition|concept"
+    });
+    expect(buildFsrsReschedulePreviewMock).toHaveBeenCalledTimes(1);
   });
 });

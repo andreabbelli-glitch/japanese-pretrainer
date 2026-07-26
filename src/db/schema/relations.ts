@@ -181,12 +181,11 @@ export const cardEntryLinkRelations = relations(cardEntryLink, ({ one }) => ({
 
 export const reviewSubjectStateRelations = relations(
   reviewSubjectState,
-  ({ many, one }) => ({
+  ({ one }) => ({
     lastCard: one(card, {
       fields: [reviewSubjectState.cardId],
       references: [card.id]
-    }),
-    logs: many(reviewSubjectLog)
+    })
   })
 );
 
@@ -196,10 +195,6 @@ export const reviewSubjectLogRelations = relations(
     card: one(card, {
       fields: [reviewSubjectLog.cardId],
       references: [card.id]
-    }),
-    subjectState: one(reviewSubjectState, {
-      fields: [reviewSubjectLog.subjectKey],
-      references: [reviewSubjectState.subjectKey]
     })
   })
 );

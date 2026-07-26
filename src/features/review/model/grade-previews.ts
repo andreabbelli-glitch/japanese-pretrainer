@@ -4,17 +4,23 @@ import {
   type ReviewSchedulerRuntimeConfig,
   type ReviewState
 } from "@/features/review/model/scheduler";
+import {
+  DEFAULT_REVIEW_STUDY_DAY_POLICY,
+  differenceInReviewStudyDays
+} from "@/features/review/model/study-day";
 
 export type ReviewSeedState = {
   difficulty: number | null;
   dueAt: string | null;
   fsrsDesiredRetention?: number | null;
+  fsrsMaximumInterval?: number | null;
   fsrsWeights?: number[] | null;
   lapses: number;
   lastReviewedAt: string | null;
   learningSteps: number;
   reps: number;
   scheduledDays: number;
+  schedulingKey?: string | null;
   stability: number | null;
   state: ReviewState | null;
 };
@@ -43,6 +49,9 @@ export function buildReviewGradePreviews(
         stability: reviewSeedState.stability,
         state: reviewSeedState.state
       },
+      intervalPolicy: {
+        schedulingKey: reviewSeedState.schedulingKey
+      },
       now,
       rating,
       scheduler: buildReviewSchedulerRuntimeConfig(reviewSeedState)
@@ -55,7 +64,7 @@ export function buildReviewGradePreviews(
   });
 }
 
-function formatScheduledReviewPreview(dueAt: string, now: Date) {
+export function formatScheduledReviewPreview(dueAt: string, now: Date) {
   const dueDate = new Date(dueAt);
   const diffMs = dueDate.getTime() - now.getTime();
 
@@ -63,84 +72,54 @@ function formatScheduledReviewPreview(dueAt: string, now: Date) {
     return "Subito";
   }
 
-  if (diffMs < 60 * 60_000) {
-    return `Tra ${Math.ceil(diffMs / 60_000)} min`;
-  }
+  const studyDayDiff = differenceInReviewStudyDays(now, dueDate);
 
-  if (isSameLocalDate(dueDate, now)) {
+  if (studyDayDiff === 0) {
+    if (diffMs < 60 * 60_000) {
+      return `Tra ${Math.ceil(diffMs / 60_000)} min`;
+    }
+
     return `Oggi alle ${formatShortTime(dueDate)}`;
   }
 
-  if (isNextLocalDate(dueDate, now)) {
+  if (studyDayDiff === 1) {
     return `Domani alle ${formatShortTime(dueDate)}`;
   }
 
-  if (diffMs < 48 * 60 * 60_000) {
-    return formatHourCountdown(diffMs);
-  }
-
-  const dayDiff = Math.round(
-    (startOfLocalDay(dueDate).getTime() - startOfLocalDay(now).getTime()) /
-      86_400_000
-  );
-
-  if (dayDiff > 1 && dayDiff <= 6) {
-    return `Tra ${dayDiff} giorni`;
+  if (studyDayDiff > 1 && studyDayDiff <= 6) {
+    return `Tra ${studyDayDiff} giorni`;
   }
 
   return `Il ${formatLocalDate(dueDate)}`;
 }
 
-function buildReviewSchedulerRuntimeConfig(
+export function buildReviewSchedulerRuntimeConfig(
   reviewSeedState: ReviewSeedState
 ): ReviewSchedulerRuntimeConfig {
   return {
     desiredRetention: reviewSeedState.fsrsDesiredRetention ?? undefined,
+    maximumInterval: reviewSeedState.fsrsMaximumInterval ?? undefined,
     weights: reviewSeedState.fsrsWeights ?? undefined
   };
 }
 
 const shortTimeFormatter = new Intl.DateTimeFormat("it-IT", {
   hour: "2-digit",
-  minute: "2-digit"
+  minute: "2-digit",
+  timeZone: DEFAULT_REVIEW_STUDY_DAY_POLICY.timeZone
 });
 
 const localDateFormatter = new Intl.DateTimeFormat("sv-SE", {
   year: "numeric",
   month: "2-digit",
-  day: "2-digit"
+  day: "2-digit",
+  timeZone: DEFAULT_REVIEW_STUDY_DAY_POLICY.timeZone
 });
 
 function formatShortTime(value: Date) {
   return shortTimeFormatter.format(value);
 }
 
-function formatHourCountdown(diffMs: number) {
-  const hours = Math.ceil(diffMs / 60 / 60_000);
-
-  return hours === 1 ? "Tra 1 ora" : `Tra ${hours} ore`;
-}
-
 function formatLocalDate(value: Date) {
   return localDateFormatter.format(value);
-}
-
-function isSameLocalDate(left: Date, right: Date) {
-  return (
-    left.getFullYear() === right.getFullYear() &&
-    left.getMonth() === right.getMonth() &&
-    left.getDate() === right.getDate()
-  );
-}
-
-function isNextLocalDate(left: Date, right: Date) {
-  const nextLocalDay = startOfLocalDay(right);
-
-  nextLocalDay.setDate(nextLocalDay.getDate() + 1);
-
-  return isSameLocalDate(left, nextLocalDay);
-}
-
-function startOfLocalDay(value: Date) {
-  return new Date(value.getFullYear(), value.getMonth(), value.getDate());
 }

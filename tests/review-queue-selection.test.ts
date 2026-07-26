@@ -27,14 +27,15 @@ function createModel(input: {
     card: representativeCard,
     group: {
       cards,
-      identity: {
+      identity: reviewSubjectModule.buildReviewSubjectIdentityFromCanonical({
         cardId: representativeCard.id,
+        cardType: "recognition",
+        canonicalSubjectKey: `group:${representativeCard.id}`,
         crossMediaGroupId: null,
         entryId: representativeCard.id,
         entryType: "term",
-        subjectKey: `group:${representativeCard.id}`,
         subjectKind: "group"
-      },
+      }),
       lastInteractionAt: "2026-03-10T09:00:00.000Z",
       representativeCard,
       subjectState: null
@@ -208,14 +209,15 @@ describe("resolveReviewPageSelection", () => {
     const subjectGroups = [
       {
         cards: sharedCards,
-        identity: {
+        identity: reviewSubjectModule.buildReviewSubjectIdentityFromCanonical({
           cardId: "card-global",
+          cardType: "recognition",
+          canonicalSubjectKey: "group:shared",
           crossMediaGroupId: "group-shared",
           entryId: "entry-shared",
           entryType: "term",
-          subjectKey: "group:shared",
           subjectKind: "group"
-        },
+        }),
         lastInteractionAt: "2026-03-10T09:00:00.000Z",
         representativeCard: sharedCards[0]!,
         subjectState: {

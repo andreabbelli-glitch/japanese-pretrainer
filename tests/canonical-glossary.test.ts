@@ -11,6 +11,7 @@ import {
 } from "@/db";
 import { runMigrations } from "@/db/migrate";
 import { importContentWorkspace } from "@/features/content/importer";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 
 describe("canonical global glossary subjects", () => {
   let tempDir = "";
@@ -83,7 +84,13 @@ describe("canonical global glossary subjects", () => {
     expect(states).toHaveLength(2);
     expect(states.map((state) => state.subjectKey).sort()).toEqual(
       groups
-        .map((group) => `group:${group.entryType}:${group.id}`)
+        .map((group) =>
+          buildReviewMemoryKey({
+            canonicalSubjectKey: `group:${group.entryType}:${group.id}`,
+            cardId: `canonical-${group.entryType}`,
+            recallTask: group.entryType === "term" ? "recognition" : "concept"
+          })
+        )
         .sort()
     );
   });

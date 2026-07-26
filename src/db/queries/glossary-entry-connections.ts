@@ -181,6 +181,17 @@ export async function listEntryCardConnections(
         ${reviewSubjectState.entryType} = ${cardEntryLink.entryType}
         AND (
           (
+            ${card.cardType} IN ('recognition', 'concept')
+            AND ${reviewSubjectState.recallTask} = ${card.cardType}
+          )
+          OR (
+            ${card.cardType} NOT IN ('recognition', 'concept')
+            AND ${reviewSubjectState.recallTask} = 'other'
+            AND ${reviewSubjectState.cardId} = ${card.id}
+          )
+        )
+        AND (
+          (
             ${cardEntryLink.entryType} = 'term'
             AND (
               (

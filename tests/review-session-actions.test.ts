@@ -3,12 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ReviewPage } from "@/components/review/review-page";
-import {
-  card,
-  lessonProgress,
-  reviewSubjectLog,
-  reviewSubjectState
-} from "@/db/schema";
+import { card, lessonProgress, reviewSubjectState } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
 import { buildKanjiClashContrastKey } from "@/features/kanji-clash";
@@ -18,11 +13,9 @@ import {
   hydrateReviewCard
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import type { ReviewForcedContrastResolution } from "@/features/review/types";
-import {
-  buildCanonicalReviewSessionHref,
-  mediaReviewCardHref
-} from "@/features/navigation";
+import { buildCanonicalReviewSessionHref } from "@/features/navigation";
 import { updateStudySettings } from "@/features/settings/server";
 import {
   buildReviewSubjectStateRow,
@@ -38,8 +31,18 @@ import {
 } from "./helpers/review-action-test-harness";
 import { flushMicrotasks, waitForTruthy } from "./helpers/async";
 
-const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
-const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
+const primaryCanonicalSubjectKey = `entry:term:${developmentFixture.termDbId}`;
+const secondaryCanonicalSubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
+const primarySubjectKey = buildReviewMemoryKey({
+  canonicalSubjectKey: primaryCanonicalSubjectKey,
+  cardId: developmentFixture.primaryCardId,
+  recallTask: "recognition"
+});
+const secondarySubjectKey = buildReviewMemoryKey({
+  canonicalSubjectKey: secondaryCanonicalSubjectKey,
+  cardId: developmentFixture.secondaryCardId,
+  recallTask: "other"
+});
 const {
   updateGlossarySummaryCacheMock,
   revalidatePathMock,
@@ -262,7 +265,22 @@ describe("review session actions", () => {
       database
     );
     const { gradeReviewCardSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
+      await loadReviewActionsForDatabase(database, {
+        getReviewPageData: async ({ mediaSlug, searchParams }) => {
+          const pageData = await getReviewPageData(
+            mediaSlug,
+            searchParams,
+            database,
+            { bypassCache: true }
+          );
+
+          if (!pageData) {
+            throw new Error("Expected review page data.");
+          }
+
+          return pageData;
+        }
+      });
 
     expect(initialPage?.queue.dailyLimit).toBe(1);
     expect(initialPage?.queue.newAvailableCount).toBe(3);
@@ -284,20 +302,33 @@ describe("review session actions", () => {
       sessionSettings: initialPage?.settings
     });
 
-    expect(reviewPageCalls).toEqual([]);
+    expect(reviewPageCalls).toEqual([
+      {
+        mediaSlug: fixture.mediaSlug,
+        scope: "media",
+        searchParams: {
+          answered: "1"
+        }
+      }
+    ]);
     expect(completionResult.queue.dailyLimit).toBe(1);
     expect(completionResult.queue.newAvailableCount).toBe(2);
     expect(completionResult.queue.newQueuedCount).toBe(0);
-    expect(completionResult.queue.queueCount).toBe(0);
+    expect(completionResult.queue.queueCount).toBe(1);
+    expect(completionResult.selectedCard?.id).toBe(fixture.cardIds[0]);
+    expect(completionResult.selectedCard?.bucket).toBe("upcoming");
     expect(completionResult.session.extraNewCount).toBe(0);
 
-    const firstGradedState =
-      await database.query.reviewSubjectState.findFirst({
-        where: eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${fixture.termIds[0]}`
-        )
-      });
+    const firstGradedState = await database.query.reviewSubjectState.findFirst({
+      where: eq(
+        reviewSubjectState.subjectKey,
+        buildReviewMemoryKey({
+          canonicalSubjectKey: `entry:term:${fixture.termIds[0]}`,
+          cardId: fixture.cardIds[0]!,
+          recallTask: "recognition"
+        })
+      )
+    });
 
     expect(completionResult.queue.nextDueAt).toBe(firstGradedState?.dueAt);
     expect(completionResult.queue.upcomingCount).toBeGreaterThanOrEqual(1);
@@ -306,11 +337,8 @@ describe("review session actions", () => {
       ReviewPage({ data: completionResult })
     );
 
-    expect(completionMarkup).toContain("Aggiungi altre 2 nuove");
-    expect(completionMarkup).toContain("Prossime card");
-    expect(completionMarkup).toContain(
-      "alla rotazione attuale di questo media"
-    );
+    expect(completionMarkup).not.toContain("Aggiungi altre 2 nuove");
+    expect(completionMarkup).toContain("Da ripassare nei prossimi giorni");
 
     const toppedUpPage = await getReviewPageData(
       fixture.mediaSlug,
@@ -354,7 +382,11 @@ describe("review session actions", () => {
       await database.query.reviewSubjectState.findFirst({
         where: eq(
           reviewSubjectState.subjectKey,
-          `entry:term:${fixture.termIds[1]}`
+          buildReviewMemoryKey({
+            canonicalSubjectKey: `entry:term:${fixture.termIds[1]}`,
+            cardId: fixture.cardIds[1]!,
+            recallTask: "recognition"
+          })
         )
       })
     ).toMatchObject({
@@ -525,67 +557,271 @@ describe("review session actions", () => {
     }
   });
 
-  it("keeps a one-card Again completion out of the queue until its next due time", async () => {
-    const fixture = await createIsolatedNewMediaFixture(database, {
-      cardCount: 1,
-      mediaId: "terminal_again_media",
-      mediaSlug: "terminal-again-media",
-      title: "Terminal Again Media"
-    });
-
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
-
-    try {
-      const initialPage = await getReviewPageData(
-        fixture.mediaSlug,
-        {},
-        database
-      );
-      const { gradeReviewCardSessionAction, reviewPageCalls } =
-        await loadReviewActionsForDatabase(database);
-
-      const completionResult = await gradeReviewCardSessionAction({
-        answeredCount: initialPage?.session.answeredCount ?? 0,
-        cardId: fixture.cardIds[0],
-        cardMediaSlug: fixture.mediaSlug,
-        extraNewCount: initialPage?.session.extraNewCount ?? 0,
-        gradedCardBucket: initialPage?.selectedCard?.bucket,
-        mediaSlug: fixture.mediaSlug,
-        nextCardId: null,
-        rating: "again",
-        scope: "media",
-        sessionMedia: initialPage?.media,
-        sessionQueue: initialPage?.queue,
-        sessionSettings: initialPage?.settings
+  it.each(["again", "hard"] as const)(
+    "requeues a one-card %s as learn-ahead and makes it due when its intraday delay expires",
+    async (rating) => {
+      const fixture = await createIsolatedNewMediaFixture(database, {
+        cardCount: 1,
+        mediaId: "terminal_again_media",
+        mediaSlug: "terminal-again-media",
+        title: "Terminal Again Media"
       });
 
-      expect(reviewPageCalls).toEqual([]);
-      expect(completionResult.selectedCard).toBeNull();
-      expect(completionResult.selectedCardContext.showAnswer).toBe(false);
-      expect(completionResult.queue.queueCount).toBe(0);
-      expect(completionResult.queue.nextDueAt).toEqual(expect.any(String));
-      expect(completionResult.queue.upcomingCount).toBeGreaterThanOrEqual(1);
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
 
-      vi.setSystemTime(
-        new Date(new Date(completionResult.queue.nextDueAt!).getTime() + 1_000)
-      );
+      try {
+        const initialPage = await getReviewPageData(
+          fixture.mediaSlug,
+          {},
+          database
+        );
+        const { gradeReviewCardSessionAction, reviewPageCalls } =
+          await loadReviewActionsForDatabase(database, {
+            getReviewPageData: async ({ mediaSlug, searchParams }) => {
+              const pageData = await getReviewPageData(
+                mediaSlug,
+                searchParams,
+                database,
+                { bypassCache: true }
+              );
 
-      const dueRefresh = await getReviewPageData(
-        fixture.mediaSlug,
-        {
-          answered: String(completionResult.session.answeredCount)
-        },
-        database
-      );
+              if (!pageData) {
+                throw new Error("Expected review page data.");
+              }
 
-      expect(dueRefresh?.selectedCard?.id).toBe(fixture.cardIds[0]);
-      expect(dueRefresh?.selectedCard?.bucket).toBe("due");
-      expect(dueRefresh?.selectedCardContext.showAnswer).toBe(false);
-    } finally {
-      vi.useRealTimers();
+              return pageData;
+            }
+          });
+
+        const completionResult = await gradeReviewCardSessionAction({
+          answeredCount: initialPage?.session.answeredCount ?? 0,
+          cardId: fixture.cardIds[0],
+          cardMediaSlug: fixture.mediaSlug,
+          extraNewCount: initialPage?.session.extraNewCount ?? 0,
+          gradedCardBucket: initialPage?.selectedCard?.bucket,
+          mediaSlug: fixture.mediaSlug,
+          nextCardId: null,
+          rating,
+          scope: "media",
+          sessionMedia: initialPage?.media,
+          sessionQueue: initialPage?.queue,
+          sessionSettings: initialPage?.settings
+        });
+
+        expect(reviewPageCalls).toEqual([
+          {
+            mediaSlug: fixture.mediaSlug,
+            scope: "media",
+            searchParams: {
+              answered: "1"
+            }
+          }
+        ]);
+        expect(completionResult.selectedCard?.id).toBe(fixture.cardIds[0]);
+        expect(completionResult.selectedCard?.bucket).toBe("upcoming");
+        expect(completionResult.selectedCardContext.showAnswer).toBe(false);
+        expect(completionResult.queue.queueCount).toBe(1);
+        expect(completionResult.queue.nextDueAt).toEqual(expect.any(String));
+        expect(completionResult.queue.upcomingCount).toBeGreaterThanOrEqual(1);
+
+        vi.setSystemTime(
+          new Date(
+            new Date(completionResult.queue.nextDueAt!).getTime() + 1_000
+          )
+        );
+
+        const dueRefresh = await getReviewPageData(
+          fixture.mediaSlug,
+          {
+            answered: String(completionResult.session.answeredCount)
+          },
+          database
+        );
+
+        expect(dueRefresh?.selectedCard?.id).toBe(fixture.cardIds[0]);
+        expect(dueRefresh?.selectedCard?.bucket).toBe("due");
+        expect(dueRefresh?.selectedCardContext.showAnswer).toBe(false);
+      } finally {
+        vi.useRealTimers();
+      }
     }
-  });
+  );
+
+  it.each([
+    {
+      expectedRequeuedCard: "second" as const,
+      expectedTerminalRebuilds: 1,
+      firstRating: "good" as const,
+      preservesFirstScheduledDue: false,
+      terminalRating: "again" as const
+    },
+    {
+      expectedRequeuedCard: null,
+      expectedTerminalRebuilds: 0,
+      firstRating: "good" as const,
+      preservesFirstScheduledDue: false,
+      terminalRating: "good" as const
+    },
+    {
+      expectedRequeuedCard: null,
+      expectedTerminalRebuilds: 0,
+      firstRating: "good" as const,
+      preservesFirstScheduledDue: true,
+      terminalRating: "easy" as const
+    },
+    {
+      expectedRequeuedCard: "first" as const,
+      expectedTerminalRebuilds: 1,
+      firstRating: "again" as const,
+      preservesFirstScheduledDue: false,
+      terminalRating: "good" as const
+    }
+  ])(
+    "keeps two learn-ahead cards on the fast path for $firstRating then performs $expectedTerminalRebuilds terminal rebuild(s) after $terminalRating",
+    async ({
+      expectedRequeuedCard,
+      expectedTerminalRebuilds,
+      firstRating,
+      preservesFirstScheduledDue,
+      terminalRating
+    }) => {
+      const fixture = await createIsolatedNewMediaFixture(database, {
+        cardCount: 2,
+        mediaId: `learn_ahead_pair_${firstRating}_${terminalRating}`,
+        mediaSlug: `learn-ahead-pair-${firstRating}-${terminalRating}`,
+        title: `Learn Ahead Pair ${firstRating} ${terminalRating}`
+      });
+
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date("2026-03-11T13:00:00.000Z"));
+
+      try {
+        await applyReviewGrade({
+          cardId: fixture.cardIds[0]!,
+          database,
+          rating: "good"
+        });
+        await applyReviewGrade({
+          cardId: fixture.cardIds[1]!,
+          database,
+          rating: "good"
+        });
+
+        const initialPage = await getReviewPageData(
+          fixture.mediaSlug,
+          {},
+          database
+        );
+        const firstCard = initialPage?.selectedCard;
+        const secondCardId = initialPage?.queueCardIds.find(
+          (cardId) => cardId !== firstCard?.id
+        );
+
+        expect(firstCard?.bucket).toBe("upcoming");
+        expect(initialPage?.queue.queueCount).toBe(2);
+        expect(secondCardId).toEqual(expect.any(String));
+
+        const { gradeReviewCardSessionAction, reviewPageCalls } =
+          await loadReviewActionsForDatabase(database, {
+            getReviewPageData: async ({ mediaSlug, searchParams }) => {
+              const pageData = await getReviewPageData(
+                mediaSlug,
+                searchParams,
+                database,
+                { bypassCache: true }
+              );
+
+              if (!pageData) {
+                throw new Error("Expected review page data.");
+              }
+
+              return pageData;
+            }
+          });
+
+        const afterFirst = await gradeReviewCardSessionAction({
+          answeredCount: initialPage?.session.answeredCount ?? 0,
+          candidateCardIds: [secondCardId!],
+          canonicalCandidateCardIds: [secondCardId!],
+          cardId: firstCard!.id,
+          cardMediaSlug: fixture.mediaSlug,
+          expectedUpdatedAt:
+            initialPage?.selectedCardContext.reviewStateUpdatedAt ?? null,
+          extraNewCount: 0,
+          gradedCardBucket: firstCard!.bucket,
+          gradedCardDueAt: firstCard!.dueAt,
+          gradedCardScheduledDays: firstCard!.reviewSeedState.scheduledDays,
+          gradedCardState: firstCard!.reviewSeedState.state,
+          mediaSlug: fixture.mediaSlug,
+          nextCardId: secondCardId!,
+          rating: firstRating,
+          scope: "media",
+          sessionMedia: initialPage!.media,
+          sessionQueue: initialPage!.queue,
+          sessionSettings: initialPage!.settings
+        });
+
+        expect(reviewPageCalls).toEqual([]);
+        expect(afterFirst.selectedCard?.id).toBe(secondCardId);
+        expect(afterFirst.selectedCard?.bucket).toBe("upcoming");
+        expect(afterFirst.queue.queueCount).toBe(1);
+        expect(afterFirst.queue.dueCount).toBe(0);
+        expect(afterFirst.queue.newQueuedCount).toBe(0);
+        if (firstRating === "again") {
+          expect(afterFirst.queue.pendingLearningDueAt).toEqual(
+            expect.any(String)
+          );
+          expect(afterFirst.queue.nextLearningDueAt).toBe(
+            afterFirst.queue.pendingLearningDueAt
+          );
+        } else {
+          expect(afterFirst.queue.pendingLearningDueAt).toBeNull();
+          expect(afterFirst.queue.nextLearningDueAt).toBeNull();
+        }
+
+        const secondCard = afterFirst.selectedCard!;
+        const terminalResult = await gradeReviewCardSessionAction({
+          answeredCount: afterFirst.session.answeredCount,
+          cardId: secondCard.id,
+          cardMediaSlug: fixture.mediaSlug,
+          expectedUpdatedAt:
+            afterFirst.selectedCardContext.reviewStateUpdatedAt ?? null,
+          extraNewCount: 0,
+          gradedCardBucket: secondCard.bucket,
+          gradedCardDueAt: secondCard.dueAt,
+          gradedCardScheduledDays: secondCard.reviewSeedState.scheduledDays,
+          gradedCardState: secondCard.reviewSeedState.state,
+          mediaSlug: fixture.mediaSlug,
+          nextCardId: null,
+          rating: terminalRating,
+          scope: "media",
+          sessionMedia: afterFirst.media,
+          sessionQueue: afterFirst.queue,
+          sessionSettings: afterFirst.settings
+        });
+
+        expect(reviewPageCalls).toHaveLength(expectedTerminalRebuilds);
+        if (expectedTerminalRebuilds === 1) {
+          expect(terminalResult.selectedCard?.id).toBe(
+            expectedRequeuedCard === "first" ? firstCard!.id : secondCard.id
+          );
+          expect(terminalResult.selectedCard?.bucket).toBe("upcoming");
+          expect(terminalResult.queue.queueCount).toBe(1);
+        } else {
+          expect(terminalResult.selectedCard).toBeNull();
+          expect(terminalResult.queue.queueCount).toBe(0);
+          if (preservesFirstScheduledDue) {
+            expect(terminalResult.queue.nextDueAt).toBe(
+              afterFirst.queue.nextDueAt
+            );
+          }
+        }
+      } finally {
+        vi.useRealTimers();
+      }
+    }
+  );
 
   it("blocks single-card hydration, prefetch, and grading when the lesson is incomplete", async () => {
     await database
@@ -857,15 +1093,15 @@ describe("review session actions", () => {
     expect(reviewPageCalls).toEqual([]);
     expect(result.session.forcedContrast).toEqual({
       contrastKey: buildKanjiClashContrastKey(
-        primarySubjectKey,
-        secondarySubjectKey
+        primaryCanonicalSubjectKey,
+        secondaryCanonicalSubjectKey
       ),
       current: {
         cardId: currentCardId,
         crossMediaGroupId: null,
         entryId: developmentFixture.termDbId,
         entryType: "term",
-        subjectKey: primarySubjectKey,
+        subjectKey: primaryCanonicalSubjectKey,
         subjectType: "entry"
       },
       mediaId: developmentFixture.mediaId,
@@ -877,7 +1113,7 @@ describe("review session actions", () => {
         crossMediaGroupId: null,
         entryId: developmentFixture.grammarDbId,
         entryType: "grammar",
-        subjectKey: secondarySubjectKey,
+        subjectKey: secondaryCanonicalSubjectKey,
         subjectType: "entry"
       }
     } satisfies ReviewForcedContrastResolution);
@@ -1242,233 +1478,5 @@ describe("review session actions", () => {
       developmentFixture.mediaId
     );
     expect(revalidatePathMock).not.toHaveBeenCalled();
-  });
-
-  it("prefetches a queued review card without touching session rebuild paths", async () => {
-    const { nextCardId } = await prepareTwoQueueCardFixture(database);
-    const { prefetchReviewCardSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
-
-    const result = await prefetchReviewCardSessionAction({
-      cardId: nextCardId
-    });
-
-    expect(reviewPageCalls).toEqual([]);
-    expect(result?.id).toBe(nextCardId);
-    expect(result?.gradePreviews).toHaveLength(4);
-    expect(revalidatePathMock).not.toHaveBeenCalled();
-  });
-
-  it("advances to the next queue card after suspending a manual card when redirectMode advances queue", async () => {
-    const { targetCardId } =
-      await prepareReviewSessionRedirectFixture(database);
-    const { setReviewCardSuspendedSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
-
-    await setReviewCardSuspendedSessionAction({
-      answeredCount: 0,
-      cardId: targetCardId,
-      extraNewCount: 0,
-      mediaSlug: developmentFixture.mediaSlug,
-      redirectMode: "advance_queue",
-      scope: "media",
-      suspended: true
-    });
-
-    expect(reviewPageCalls).toHaveLength(1);
-    expect(reviewPageCalls[0]).toEqual({
-      mediaSlug: developmentFixture.mediaSlug,
-      resolvedMediaRowsLength: 1,
-      scope: "media",
-      searchParams: {
-        notice: "suspended"
-      }
-    });
-  });
-
-  it("revalidates review and glossary paths after marking a linked entry known in global review", async () => {
-    const { markLinkedEntryKnownSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
-    const mediaFindFirstSpy = vi.spyOn(database.query.media, "findFirst");
-
-    await markLinkedEntryKnownSessionAction({
-      answeredCount: 0,
-      cardId: developmentFixture.primaryCardId,
-      cardMediaSlug: developmentFixture.mediaSlug,
-      extraNewCount: 0,
-      redirectMode: "advance_queue",
-      scope: "global"
-    });
-
-    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
-      developmentFixture.mediaId
-    );
-    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
-    expect(updateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
-    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledWith(
-      developmentFixture.mediaId
-    );
-    expect(revalidatePathMock).not.toHaveBeenCalled();
-    expect(reviewPageCalls).toEqual([
-      {
-        resolvedMediaRowsLength: 1,
-        scope: "global",
-        searchParams: {
-          notice: "known"
-        }
-      }
-    ]);
-    expect(mediaFindFirstSpy).not.toHaveBeenCalled();
-
-    mediaFindFirstSpy.mockRestore();
-  });
-
-  it("keeps stay_detail mutations on tag invalidation only", async () => {
-    const { markLinkedEntryKnownAction } =
-      await loadReviewActionsForDatabase(database);
-    const formData = new FormData();
-    formData.set("mediaSlug", developmentFixture.mediaSlug);
-    formData.set("cardId", developmentFixture.primaryCardId);
-    formData.set("answered", "0");
-    formData.set("redirectMode", "stay_detail");
-    formData.set("returnTo", "/review?answered=3&card=card-iku");
-
-    await expect(markLinkedEntryKnownAction(formData)).rejects.toThrow(
-      `redirect:${mediaReviewCardHref(
-        developmentFixture.mediaSlug,
-        developmentFixture.primaryCardId
-      )}?returnTo=%2Freview%3Fanswered%3D3%26card%3Dcard-iku`
-    );
-
-    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
-      developmentFixture.mediaId
-    );
-    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledTimes(2);
-    expect(updateGlossarySummaryCacheMock).toHaveBeenNthCalledWith(1);
-    expect(updateGlossarySummaryCacheMock).toHaveBeenCalledWith(
-      developmentFixture.mediaId
-    );
-    expect(revalidatePathMock).not.toHaveBeenCalled();
-  });
-
-  it("rejects malformed review form counters instead of partially parsing them", async () => {
-    const { gradeReviewCardAction } =
-      await loadReviewActionsForDatabase(database);
-    const beforeState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
-    });
-    const formData = new FormData();
-    formData.set("mediaSlug", developmentFixture.mediaSlug);
-    formData.set("cardId", developmentFixture.primaryCardId);
-    formData.set("rating", "good");
-    formData.set("answered", "3abc");
-    formData.set("extraNew", "2abc");
-    formData.set("expectedUpdatedAt", beforeState?.updatedAt ?? "");
-
-    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
-      `redirect:/media/${developmentFixture.mediaSlug}/review?answered=1`
-    );
-
-    expect(updateReviewSummaryCacheMock).toHaveBeenCalledWith(
-      developmentFixture.mediaId
-    );
-    expect(revalidatePathMock).not.toHaveBeenCalled();
-  });
-
-  it("rejects malformed review form ratings instead of grading them as good", async () => {
-    const { gradeReviewCardAction } =
-      await loadReviewActionsForDatabase(database);
-    const beforeState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
-    });
-    const beforeLogs = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
-    });
-    const formData = new FormData();
-    formData.set("mediaSlug", developmentFixture.mediaSlug);
-    formData.set("cardId", developmentFixture.primaryCardId);
-    formData.set("rating", "bogus");
-    formData.set("answered", "0");
-    formData.set("extraNew", "0");
-    formData.set("expectedUpdatedAt", beforeState?.updatedAt ?? "");
-
-    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
-      "Invalid review rating."
-    );
-
-    const afterState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, primarySubjectKey)
-    });
-    const afterLogs = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, primarySubjectKey)
-    });
-
-    expect(afterState).toMatchObject({
-      dueAt: beforeState?.dueAt,
-      reps: beforeState?.reps,
-      state: beforeState?.state,
-      updatedAt: beforeState?.updatedAt
-    });
-    expect(afterLogs).toHaveLength(beforeLogs.length);
-    expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
-  });
-
-  it("treats a blank form freshness token as an observed missing subject state", async () => {
-    const fixture = await createIsolatedNewMediaFixture(database, {
-      cardCount: 1,
-      mediaId: "media_form_grade_guard",
-      mediaSlug: "form-grade-guard",
-      title: "Form Grade Guard"
-    });
-    const cardId = fixture.cardIds[0]!;
-    const subjectKey = `entry:term:${fixture.termIds[0]}`;
-    const { gradeReviewCardAction } =
-      await loadReviewActionsForDatabase(database);
-    const formData = new FormData();
-    formData.set("mediaSlug", fixture.mediaSlug);
-    formData.set("cardId", cardId);
-    formData.set("rating", "good");
-    formData.set("answered", "0");
-    formData.set("extraNew", "0");
-    formData.set("expectedUpdatedAt", "");
-
-    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
-      `redirect:/media/${fixture.mediaSlug}/review?answered=1`
-    );
-    await expect(gradeReviewCardAction(formData)).rejects.toThrow(
-      "Review card is out of date."
-    );
-
-    const logs = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, subjectKey)
-    });
-
-    expect(logs).toHaveLength(1);
-  });
-
-  it("advances to the next queue card after reopening a manual card when redirectMode advances queue", async () => {
-    const { targetCardId } =
-      await prepareReviewSessionRedirectFixture(database);
-    const { setLinkedEntryLearningSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
-
-    await setLinkedEntryLearningSessionAction({
-      answeredCount: 0,
-      cardId: targetCardId,
-      extraNewCount: 0,
-      mediaSlug: developmentFixture.mediaSlug,
-      redirectMode: "advance_queue",
-      scope: "media"
-    });
-
-    expect(reviewPageCalls).toHaveLength(1);
-    expect(reviewPageCalls[0]).toEqual({
-      mediaSlug: developmentFixture.mediaSlug,
-      resolvedMediaRowsLength: 1,
-      scope: "media",
-      searchParams: {
-        notice: "learning"
-      }
-    });
   });
 });

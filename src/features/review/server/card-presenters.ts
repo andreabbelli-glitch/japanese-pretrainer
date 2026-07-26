@@ -277,6 +277,7 @@ export function mapQueueCard(
   options: {
     includePronunciations?: boolean;
     reviewStateUpdatedAt?: string | null;
+    schedulingKey?: string | null;
   } = {}
 ): ReviewQueueCard {
   const cardMedia = resolveReviewCardMedia(card, mediaById);
@@ -341,11 +342,14 @@ export function mapQueueCard(
     pronunciations,
     rawReviewLabel: resolved.rawReviewLabel,
     reading,
-    reviewSeedState: buildReviewSeedStateWithFsrsPreset(
-      resolved.reviewSeedState,
-      card.cardType,
-      fsrsOptimizerSnapshot ?? DEFAULT_FSRS_OPTIMIZER_SEED_SNAPSHOT
-    ),
+    reviewSeedState: {
+      ...buildReviewSeedStateWithFsrsPreset(
+        resolved.reviewSeedState,
+        card.cardType,
+        fsrsOptimizerSnapshot ?? DEFAULT_FSRS_OPTIMIZER_SEED_SNAPSHOT
+      ),
+      schedulingKey: options.schedulingKey?.trim() || card.id
+    },
     reviewStateUpdatedAt: options.reviewStateUpdatedAt ?? null,
     segmentTitle: card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(card.cardType)
@@ -520,10 +524,12 @@ function buildReviewEntryPronunciation(
         pronunciationSource,
         "audioSrc"
       ),
-      audioUpdatedAt: getOptionalPronunciationVersionField(
-        pronunciationSource,
-        "audioUpdatedAt"
-      ) ?? getOptionalPronunciationVersionField(pronunciationSource, "updatedAt"),
+      audioUpdatedAt:
+        getOptionalPronunciationVersionField(
+          pronunciationSource,
+          "audioUpdatedAt"
+        ) ??
+        getOptionalPronunciationVersionField(pronunciationSource, "updatedAt"),
       pitchAccent: getOptionalPronunciationNumberField(
         pronunciationSource,
         "pitchAccent"

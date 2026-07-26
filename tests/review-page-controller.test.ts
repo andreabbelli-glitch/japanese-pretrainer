@@ -125,13 +125,9 @@ describe("useReviewPageController first-candidate grading", () => {
     uninstallMinimalDom();
   });
 
-  it("keeps the first-candidate grading path optimistic while full hydration is pending", async () => {
-    mocks.loadReviewPageDataSessionAction.mockImplementation(
-      () =>
-        new Promise<ReviewPageClientData>(() => {
-          // Intentionally left pending to keep the hydration window open.
-        })
-    );
+  it("gates a reveal/grade race until authoritative previews hydrate", async () => {
+    const hydration = createDeferred<ReviewPageData>();
+    mocks.loadReviewPageDataSessionAction.mockReturnValue(hydration.promise);
     mocks.gradeReviewCardSessionAction.mockImplementation(
       () =>
         new Promise<ReviewPageClientData>(() => {
@@ -189,6 +185,8 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().isFullReviewPageData).toBe(false);
     expect(controller().isHydratingFullData).toBe(true);
     expect(controller().isAnswerRevealed).toBe(false);
+    expect(controller().isGradeControlsDisabled).toBe(true);
+    expect(controller().gradePreviewLookup.size).toBe(0);
 
     act(() => {
       controller().handleRevealAnswer();
@@ -199,6 +197,24 @@ describe("useReviewPageController first-candidate grading", () => {
       (controller().viewData as ReviewFirstCandidatePageData)
         .selectedCardContext.showAnswer
     ).toBe(true);
+
+    act(() => {
+      controller().handleGradeCard("good");
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).not.toHaveBeenCalled();
+
+    await act(async () => {
+      hydration.resolve(buildFullReviewPageData("card-a"));
+      await hydration.promise;
+      await flushMicrotasks();
+    });
+
+    expect(controller().isFullReviewPageData).toBe(true);
+    expect(controller().isHydratingFullData).toBe(false);
+    expect(controller().isAnswerRevealed).toBe(true);
+    expect(controller().isGradeControlsDisabled).toBe(false);
+    expect(controller().gradePreviewLookup.size).toBe(4);
 
     act(() => {
       controller().handleGradeCard("good");
@@ -224,13 +240,10 @@ describe("useReviewPageController first-candidate grading", () => {
       })
     );
 
-    expect(controller().isFullReviewPageData).toBe(false);
-    expect(controller().isHydratingFullData).toBe(true);
+    expect(controller().isFullReviewPageData).toBe(true);
+    expect(controller().isHydratingFullData).toBe(false);
     expect(controller().isAnswerRevealed).toBe(false);
     expect(controller().viewData.selectedCard?.id).toBe("card-b");
-    expect(
-      (controller().viewData as ReviewFirstCandidatePageData).nextCardId
-    ).toBe("card-c");
     expect(controller().viewData.session.answeredCount).toBe(1);
     expect(controller().viewData.selectedCardContext.position).toBe(1);
     expect(controller().viewData.selectedCardContext.remainingCount).toBe(1);
@@ -270,7 +283,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -377,7 +390,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -707,7 +720,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -790,7 +803,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -937,7 +950,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -1016,7 +1029,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -1095,7 +1108,7 @@ describe("useReviewPageController first-candidate grading", () => {
     await act(async () => {
       root!.render(
         createElement(Probe, {
-          data: buildFirstCandidateReviewPageData(),
+          data: buildFullReviewPageData("card-a"),
           searchParams: { answered: "0", card: "card-a" }
         })
       );
@@ -1223,12 +1236,9 @@ function buildFirstCandidateReviewPageData(
       upcomingCount: 0
     },
     scope: "global",
-    selectedCard: buildQueueCard(
-      "card-a",
-      {
-        audioSrc: options.audioSrc
-      }
-    ) as ReviewFirstCandidatePageData["selectedCard"],
+    selectedCard: buildQueueCard("card-a", {
+      audioSrc: options.audioSrc
+    }) as ReviewFirstCandidatePageData["selectedCard"],
     selectedCardContext: {
       bucket: "due",
       isQueueCard: true,
@@ -1273,7 +1283,7 @@ function buildFullReviewPageData(
     selectedCard,
     selectedCardContext: {
       ...data.selectedCardContext,
-      gradePreviews: [],
+      gradePreviews: selectedCard.gradePreviews,
       isQueueCard: true,
       position: 1,
       remainingCount: 2,
@@ -1313,7 +1323,7 @@ function buildPersistedGradeReviewPageData(input: {
     selectedCard,
     selectedCardContext: {
       ...data.selectedCardContext,
-      gradePreviews: [],
+      gradePreviews: selectedCard.gradePreviews,
       position: input.answeredCount + 1,
       remainingCount: Math.max(input.queueCardIds.length - 1, 0),
       reviewStateUpdatedAt: selectedCard.reviewStateUpdatedAt ?? null,
@@ -1352,7 +1362,7 @@ function buildQueueCard(
     exampleIt: undefined,
     exampleJp: undefined,
     front: id === "card-a" ? "コスト" : "札",
-    gradePreviews: [],
+    gradePreviews: buildGradePreviews(),
     href: `/media/duel-masters-dm25/review/card/${id}` as ReviewQueueCard["href"],
     id,
     mediaSlug: "duel-masters-dm25",
@@ -1393,14 +1403,22 @@ function buildQueueCard(
   };
 }
 
+function buildGradePreviews(): ReviewQueueCard["gradePreviews"] {
+  return [
+    { nextReviewLabel: "Tra 10 min", rating: "again" },
+    { nextReviewLabel: "Domani alle 04:00", rating: "hard" },
+    { nextReviewLabel: "Tra 2 giorni", rating: "good" },
+    { nextReviewLabel: "Tra 4 giorni", rating: "easy" }
+  ];
+}
+
 function buildReviewSettings(
   overrides: {
     reviewAutoplayAudioOnReveal?: boolean;
   } = {}
 ): ReviewPageData["settings"] {
   return {
-    reviewAutoplayAudioOnReveal:
-      overrides.reviewAutoplayAudioOnReveal ?? true,
+    reviewAutoplayAudioOnReveal: overrides.reviewAutoplayAudioOnReveal ?? true,
     reviewFrontFurigana: true
   };
 }

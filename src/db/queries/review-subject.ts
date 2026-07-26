@@ -3,17 +3,35 @@ import {
   asc,
   eq,
   gte,
+  gt,
   inArray,
+  isNotNull,
+  isNull,
+  like,
   lt,
   ne,
   notInArray,
+  or,
   sql
 } from "drizzle-orm";
 
 import type { DatabaseClient, DatabaseQueryClient } from "../client.ts";
-import { card, reviewSubjectLog, reviewSubjectState } from "../schema/index.ts";
+import {
+  card,
+  reviewMemoryAlias,
+  reviewSubjectLog,
+  reviewSubjectState
+} from "../schema/index.ts";
 import type { EntryType } from "../schema/index.ts";
-import { getLocalDayBounds, quoteSqlString } from "./review-query-helpers.ts";
+import {
+  REVIEW_MEMORY_KEY_VERSION,
+  type ReviewRecallTask
+} from "../../domain/review.ts";
+import {
+  buildEffectiveReviewEventMemoryKeySql,
+  getLocalDayBounds,
+  quoteSqlString
+} from "./review-query-helpers.ts";
 
 export type ReviewSubjectEntryRef = {
   entryId: string;
@@ -21,6 +39,10 @@ export type ReviewSubjectEntryRef = {
 };
 
 export type ReviewSubjectStateRecord = typeof reviewSubjectState.$inferSelect;
+export type ReviewSubjectDueCountRow = {
+  count: number;
+  dueAt: string;
+};
 export type ReviewSubjectFsrsReplayLogRecord = Pick<
   typeof reviewSubjectLog.$inferSelect,
   | "answeredAt"
@@ -29,17 +51,18 @@ export type ReviewSubjectFsrsReplayLogRecord = Pick<
   | "id"
   | "newState"
   | "previousState"
-  | "rating"
   | "responseMs"
   | "scheduledDueAt"
   | "subjectKey"
 > & {
   cardType: string;
+  rating: NonNullable<(typeof reviewSubjectLog.$inferSelect)["rating"]>;
 };
 export type ReviewSubjectFsrsReplaySubject = {
   cardStatus: string;
   cardType: string;
   logs: ReviewSubjectFsrsReplayLogRecord[];
+  mediaId: string;
   state: ReviewSubjectStateRecord;
 };
 
@@ -52,6 +75,68 @@ export async function getReviewSubjectStateByKey(
       where: eq(reviewSubjectState.subjectKey, subjectKey)
     })) ?? null
   );
+}
+
+/**
+ * One index-bounded aggregate used by the daily interval load balancer. Rows
+ * are bounded by UTC hour and folded into logical study days by the caller,
+ * which keeps Europe/Rome DST handling out of SQLite.
+ */
+export async function listReviewSubjectDueCountsInRange(
+  database: Pick<DatabaseClient, "select">,
+  input: {
+    endExclusiveIso: string;
+    excludeSubjectKey?: string | null;
+    recallTask?: ReviewRecallTask | null;
+    startInclusiveIso: string;
+  }
+): Promise<ReviewSubjectDueCountRow[]> {
+  const dueHour = sql<string>`substr(${reviewSubjectState.dueAt}, 1, 13)`;
+  const rows = await database
+    .select({
+      count: sql<number>`cast(count(*) as integer)`.mapWith(Number),
+      // The 04:00 Europe/Rome boundary always lands on a whole UTC hour.
+      // Hour buckets therefore remain logical-day safe across both DST edges,
+      // while bounding legacy non-normalized payloads independently of cards.
+      dueAt: sql<string>`min(${reviewSubjectState.dueAt})`
+    })
+    .from(reviewSubjectState)
+    .where(
+      and(
+        isNotNull(reviewSubjectState.dueAt),
+        gte(reviewSubjectState.dueAt, input.startInclusiveIso),
+        lt(reviewSubjectState.dueAt, input.endExclusiveIso),
+        eq(reviewSubjectState.manualOverride, false),
+        eq(reviewSubjectState.suspended, false),
+        gt(reviewSubjectState.scheduledDays, 0),
+        notInArray(reviewSubjectState.state, [
+          "new",
+          "known_manual",
+          "suspended"
+        ]),
+        input.recallTask
+          ? or(
+              eq(reviewSubjectState.recallTask, input.recallTask),
+              and(
+                isNull(reviewSubjectState.recallTask),
+                // A v1 memory key encodes the task unambiguously. Older NULL
+                // rows without that prefix are excluded instead of guessed.
+                like(
+                  reviewSubjectState.subjectKey,
+                  `${REVIEW_MEMORY_KEY_VERSION}:${input.recallTask}:%`
+                )
+              )
+            )
+          : undefined,
+        input.excludeSubjectKey
+          ? ne(reviewSubjectState.subjectKey, input.excludeSubjectKey)
+          : undefined
+      )
+    )
+    .groupBy(dueHour)
+    .orderBy(asc(sql`min(${reviewSubjectState.dueAt})`));
+
+  return rows;
 }
 
 export async function listReviewSubjectStatesByKeys(
@@ -76,6 +161,7 @@ export async function listReviewSubjectFsrsReplaySubjects(
     .select({
       cardStatus: card.status,
       cardType: card.cardType,
+      mediaId: card.mediaId,
       state: reviewSubjectState
     })
     .from(reviewSubjectState)
@@ -98,30 +184,47 @@ export async function listReviewSubjectFsrsReplaySubjects(
     return [];
   }
 
-  const subjectKeys = stateRows.map((row) => row.state.subjectKey);
+  const memoryKeys = stateRows.map((row) => row.state.subjectKey);
+  const eventMemoryKey = buildReviewEventMemoryKeyExpression();
+  const effectiveMemoryKey = sql<string>`coalesce(${reviewMemoryAlias.currentMemoryKey}, ${eventMemoryKey})`;
   const logRows = await database
     .select({
       answeredAt: reviewSubjectLog.answeredAt,
       cardId: reviewSubjectLog.cardId,
-      cardType: card.cardType,
+      cardType: sql<string>`coalesce(${reviewSubjectLog.cardTypeSnapshot}, ${card.cardType})`,
       elapsedDays: reviewSubjectLog.elapsedDays,
       id: reviewSubjectLog.id,
       newState: reviewSubjectLog.newState,
       previousState: reviewSubjectLog.previousState,
-      rating: reviewSubjectLog.rating,
+      rating: sql<
+        NonNullable<(typeof reviewSubjectLog.$inferSelect)["rating"]>
+      >`${reviewSubjectLog.rating}`,
       responseMs: reviewSubjectLog.responseMs,
       scheduledDueAt: reviewSubjectLog.scheduledDueAt,
-      subjectKey: reviewSubjectLog.subjectKey
+      subjectKey: effectiveMemoryKey
     })
     .from(reviewSubjectLog)
-    .innerJoin(card, eq(card.id, reviewSubjectLog.cardId))
-    .where(inArray(reviewSubjectLog.subjectKey, subjectKeys))
+    .leftJoin(card, eq(card.id, reviewSubjectLog.cardId))
+    .leftJoin(
+      reviewMemoryAlias,
+      eq(reviewMemoryAlias.aliasMemoryKey, eventMemoryKey)
+    )
+    .where(
+      and(
+        inArray(effectiveMemoryKey, memoryKeys),
+        eq(reviewSubjectLog.eventKind, "grade"),
+        isNotNull(reviewSubjectLog.rating)
+      )
+    )
     .orderBy(
-      asc(reviewSubjectLog.subjectKey),
+      asc(effectiveMemoryKey),
       asc(reviewSubjectLog.answeredAt),
       asc(reviewSubjectLog.id)
     );
-  const logsBySubjectKey = new Map<string, ReviewSubjectFsrsReplayLogRecord[]>();
+  const logsBySubjectKey = new Map<
+    string,
+    ReviewSubjectFsrsReplayLogRecord[]
+  >();
 
   for (const log of logRows) {
     const logs = logsBySubjectKey.get(log.subjectKey) ?? [];
@@ -134,6 +237,7 @@ export async function listReviewSubjectFsrsReplaySubjects(
     cardStatus: row.cardStatus,
     cardType: row.cardType,
     logs: logsBySubjectKey.get(row.state.subjectKey) ?? [],
+    mediaId: row.mediaId,
     state: row.state
   }));
 }
@@ -216,17 +320,25 @@ export async function countReviewSubjectsIntroducedOnDay(
   asOf = new Date()
 ) {
   const { dayEndIso, dayStartIso } = getLocalDayBounds(asOf);
+  const eventMemoryKey = buildReviewEventMemoryKeyExpression();
+  const effectiveMemoryKey = sql<string>`coalesce(${reviewMemoryAlias.currentMemoryKey}, ${eventMemoryKey})`;
 
   const rows = await database
     .select({
-      count: sql<number>`cast(count(distinct ${reviewSubjectLog.subjectKey}) as integer)`
+      count: sql<number>`cast(count(distinct ${effectiveMemoryKey}) as integer)`
     })
     .from(reviewSubjectLog)
+    .leftJoin(
+      reviewMemoryAlias,
+      eq(reviewMemoryAlias.aliasMemoryKey, eventMemoryKey)
+    )
     .where(
       and(
+        eq(reviewSubjectLog.eventKind, "grade"),
+        isNotNull(reviewSubjectLog.rating),
         eq(reviewSubjectLog.previousState, "new"),
-        ne(reviewSubjectLog.subjectKey, ""),
-        ne(reviewSubjectLog.subjectKey, "undefined"),
+        ne(effectiveMemoryKey, ""),
+        ne(effectiveMemoryKey, "undefined"),
         gte(reviewSubjectLog.answeredAt, dayStartIso),
         lt(reviewSubjectLog.answeredAt, dayEndIso)
       )
@@ -259,24 +371,33 @@ export async function countReviewSubjectsIntroducedOnDayByMediaIds(
   }
 
   const { dayEndIso, dayStartIso } = getLocalDayBounds(asOf);
+  const eventMediaId = sql<string>`coalesce(${reviewSubjectLog.mediaIdSnapshot}, ${card.mediaId})`;
+  const eventMemoryKey = buildReviewEventMemoryKeyExpression();
+  const effectiveMemoryKey = sql<string>`coalesce(${reviewMemoryAlias.currentMemoryKey}, ${eventMemoryKey})`;
   const rows = await database
     .select({
-      count: sql<number>`cast(count(distinct ${reviewSubjectLog.subjectKey}) as integer)`,
-      mediaId: card.mediaId
+      count: sql<number>`cast(count(distinct ${effectiveMemoryKey}) as integer)`,
+      mediaId: eventMediaId
     })
     .from(reviewSubjectLog)
-    .innerJoin(card, eq(reviewSubjectLog.cardId, card.id))
+    .leftJoin(card, eq(reviewSubjectLog.cardId, card.id))
+    .leftJoin(
+      reviewMemoryAlias,
+      eq(reviewMemoryAlias.aliasMemoryKey, eventMemoryKey)
+    )
     .where(
       and(
-        inArray(card.mediaId, mediaIds),
+        inArray(eventMediaId, mediaIds),
+        eq(reviewSubjectLog.eventKind, "grade"),
+        isNotNull(reviewSubjectLog.rating),
         eq(reviewSubjectLog.previousState, "new"),
-        ne(reviewSubjectLog.subjectKey, ""),
-        ne(reviewSubjectLog.subjectKey, "undefined"),
+        ne(effectiveMemoryKey, ""),
+        ne(effectiveMemoryKey, "undefined"),
         gte(reviewSubjectLog.answeredAt, dayStartIso),
         lt(reviewSubjectLog.answeredAt, dayEndIso)
       )
     )
-    .groupBy(card.mediaId);
+    .groupBy(eventMediaId);
 
   return rows;
 }
@@ -286,11 +407,33 @@ export async function listReviewSubjectLogsBySubjectKey(
   subjectKey: string,
   limit = 50
 ) {
-  return database.query.reviewSubjectLog.findMany({
-    where: eq(reviewSubjectLog.subjectKey, subjectKey),
-    orderBy: [asc(reviewSubjectLog.answeredAt)],
-    limit
-  });
+  const eventMemoryKey = buildReviewEventMemoryKeyExpression();
+  const effectiveMemoryKey = sql<string>`coalesce(${reviewMemoryAlias.currentMemoryKey}, ${eventMemoryKey})`;
+  const rows = await database
+    .select({ log: reviewSubjectLog })
+    .from(reviewSubjectLog)
+    .leftJoin(
+      reviewMemoryAlias,
+      eq(reviewMemoryAlias.aliasMemoryKey, eventMemoryKey)
+    )
+    .where(eq(effectiveMemoryKey, subjectKey))
+    .orderBy(asc(reviewSubjectLog.answeredAt), asc(reviewSubjectLog.id))
+    .limit(limit);
+
+  return rows.map((row) => row.log);
+}
+
+function buildReviewEventMemoryKeyExpression() {
+  return sql<string>`${sql.raw(
+    buildEffectiveReviewEventMemoryKeySql({
+      canonicalSubjectKeyExpression: "review_subject_log.canonical_subject_key",
+      cardIdExpression: "review_subject_log.card_id",
+      eventSchemaVersionExpression: "review_subject_log.event_schema_version",
+      memoryKeyExpression: "review_subject_log.memory_key",
+      recallTaskExpression: "review_subject_log.recall_task",
+      subjectKeyExpression: "review_subject_log.subject_key"
+    })
+  )}`;
 }
 
 function dedupeEntryRefs(entryRefs: ReviewSubjectEntryRef[]) {

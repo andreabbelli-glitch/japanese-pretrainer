@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { randomUUID } from "node:crypto";
 
 import { db, type DatabaseClient } from "@/db";
 import {
@@ -6,16 +6,27 @@ import {
   type ReviewSubjectFsrsReplayLogRecord,
   type ReviewSubjectFsrsReplaySubject
 } from "@/db/queries";
-import { reviewSubjectState } from "@/db/schema";
-import { getLocalIsoDateKey } from "@/features/shared/model/local-date";
+import type { ReviewRecallTask } from "@/domain/review";
 import {
+  applyReviewDailyIntervalPolicy,
+  getReviewFuzzBounds
+} from "@/features/review/model/interval-policy";
+import { resolveReviewRecallTask } from "@/features/review/model/recall-task";
+import {
+  CURRENT_REVIEW_SCHEDULER_VERSION,
   replayReviewHistory,
   type ReplayReviewHistoryOptions,
   type ReplayedReviewHistory,
   type ReviewLogReplayInput,
   type ReviewSchedulerRuntimeConfig
 } from "@/features/review/model/scheduler";
-
+import {
+  addReviewStudyDays,
+  differenceInReviewStudyDayKeys,
+  differenceInReviewStudyDays,
+  getReviewStudyDay,
+  normalizeReviewDueAt
+} from "@/features/review/model/study-day";
 import {
   resolveFsrsPresetKey,
   type FsrsOptimizerSnapshot
@@ -24,13 +35,9 @@ import {
   getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerSnapshot
 } from "./settings-store";
+import { writeFsrsRescheduleBatch } from "./reschedule-batch";
 
 const FSRS_RESCHEDULE_HORIZON_DAYS = 30;
-const DAY = 24 * 60 * 60_000;
-
-type FsrsRescheduleTransaction = Parameters<
-  Parameters<DatabaseClient["transaction"]>[0]
->[0];
 
 export type FsrsRescheduleDayDelta = {
   currentCount: number;
@@ -79,7 +86,10 @@ type FsrsRescheduleCandidate = {
 
 type FsrsReschedulePlan = FsrsReschedulePreview & {
   candidates: FsrsRescheduleCandidate[];
+  snapshot: FsrsOptimizerSnapshot;
 };
+
+type FsrsRescheduleDueLoad = Map<ReviewRecallTask, Map<string, number>>;
 
 export async function buildFsrsReschedulePreview(
   input: {
@@ -103,40 +113,67 @@ export async function applyFsrsReschedule(input: {
   const database = input.database ?? db;
   const now = input.now ?? new Date();
   const nowIso = now.toISOString();
-  return database.transaction(async (tx) => {
-    const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(tx);
+  const preflightFsrsCacheKeyPart =
+    await getFsrsOptimizerCacheKeyPart(database);
 
-    if (fsrsCacheKeyPart !== input.expectedFsrsCacheKeyPart) {
-      return {
-        affectedSubjects: 0,
-        fsrsCacheKeyPart,
-        status: "stale" as const
-      };
-    }
+  if (preflightFsrsCacheKeyPart !== input.expectedFsrsCacheKeyPart) {
+    return {
+      affectedSubjects: 0,
+      fsrsCacheKeyPart: preflightFsrsCacheKeyPart,
+      status: "stale"
+    };
+  }
 
-    const plan = await buildFsrsReschedulePlan({
-      database: tx,
-      now
-    });
+  // Replay and load balancing are intentionally outside the write
+  // transaction. The final batch validates both optimizer settings and every
+  // subject snapshot before committing any state or immutable ledger row.
+  const plan = await buildFsrsReschedulePlan({
+    database,
+    now
+  });
 
-    if (plan.candidates.length === 0) {
-      return {
-        affectedSubjects: 0,
-        fsrsCacheKeyPart,
-        status: "noop" as const
-      };
-    }
+  if (plan.fsrsCacheKeyPart !== input.expectedFsrsCacheKeyPart) {
+    return {
+      affectedSubjects: 0,
+      fsrsCacheKeyPart: plan.fsrsCacheKeyPart,
+      status: "stale"
+    };
+  }
 
-    for (const candidate of plan.candidates) {
-      await updateReviewSubjectFromRescheduleCandidate(tx, candidate, nowIso);
-    }
+  if (plan.candidates.length === 0) {
+    const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(database);
 
     return {
-      affectedSubjects: plan.candidates.length,
+      affectedSubjects: 0,
       fsrsCacheKeyPart,
-      status: "applied" as const
+      status:
+        fsrsCacheKeyPart === input.expectedFsrsCacheKeyPart ? "noop" : "stale"
     };
+  }
+
+  const batchId = `fsrs_reschedule_${randomUUID()}`;
+  const writeStatus = await writeFsrsRescheduleBatch({
+    batchId,
+    candidates: plan.candidates,
+    database,
+    expectedFsrsCacheKeyPart: input.expectedFsrsCacheKeyPart,
+    nowIso,
+    snapshot: plan.snapshot
   });
+
+  if (writeStatus === "stale") {
+    return {
+      affectedSubjects: 0,
+      fsrsCacheKeyPart: await getFsrsOptimizerCacheKeyPart(database),
+      status: "stale"
+    };
+  }
+
+  return {
+    affectedSubjects: plan.candidates.length,
+    fsrsCacheKeyPart: plan.fsrsCacheKeyPart,
+    status: "applied"
+  };
 }
 
 async function buildFsrsReschedulePlan(input: {
@@ -149,6 +186,7 @@ async function buildFsrsReschedulePlan(input: {
     listReviewSubjectFsrsReplaySubjects(input.database)
   ]);
   const replayOptions = buildReplayOptions(snapshot);
+  const dueLoadByRecallTask = buildFsrsRescheduleDueLoad(subjects);
   const candidates: FsrsRescheduleCandidate[] = [];
   let eligibleSubjects = 0;
   let movedEarlier = 0;
@@ -177,19 +215,40 @@ async function buildFsrsReschedulePlan(input: {
       continue;
     }
 
-    const replayed = replayReviewHistory(
-      subject.logs.map(mapReplayLog),
-      replayOptions
-    );
+    const replayed = replayReviewHistory(subject.logs.map(mapReplayLog), {
+      ...replayOptions,
+      schedulingKey: subject.state.subjectKey
+    });
 
     if (!replayed) {
       skippedNoHistory += 1;
       continue;
     }
 
-    const projected = resolveLifecycleSafeProjectedState(
-      subject,
-      replayed.state
+    let projected = resolveLifecycleSafeProjectedState(subject, replayed.state);
+    const recallTask = resolveRescheduleRecallTask(subject);
+
+    updateFsrsRescheduleDueLoad(
+      dueLoadByRecallTask,
+      recallTask,
+      subject.state.dueAt,
+      -1
+    );
+
+    if (projected === replayed.state && replayed.finalIntervalPolicy !== null) {
+      projected = applyFsrsRescheduleFinalIntervalPolicy({
+        dueLoadByRecallTask,
+        intervalPolicy: replayed.finalIntervalPolicy,
+        projected,
+        recallTask
+      });
+    }
+
+    updateFsrsRescheduleDueLoad(
+      dueLoadByRecallTask,
+      recallTask,
+      projected.dueAt,
+      1
     );
 
     currentDueDates.push(subject.state.dueAt);
@@ -234,6 +293,7 @@ async function buildFsrsReschedulePlan(input: {
     fsrsCacheKeyPart,
     generatedAt: input.now.toISOString(),
     horizonDays: FSRS_RESCHEDULE_HORIZON_DAYS,
+    snapshot,
     summary: {
       affectedSubjects: candidates.length,
       currentDue30Days,
@@ -252,6 +312,104 @@ async function buildFsrsReschedulePlan(input: {
       unchangedSubjects
     }
   };
+}
+
+function buildFsrsRescheduleDueLoad(
+  subjects: readonly ReviewSubjectFsrsReplaySubject[]
+): FsrsRescheduleDueLoad {
+  const dueLoad: FsrsRescheduleDueLoad = new Map();
+
+  for (const subject of subjects) {
+    if (!isReplayEligibleSubject(subject) || subject.state.scheduledDays <= 0) {
+      continue;
+    }
+
+    updateFsrsRescheduleDueLoad(
+      dueLoad,
+      resolveRescheduleRecallTask(subject),
+      subject.state.dueAt,
+      1
+    );
+  }
+
+  return dueLoad;
+}
+
+function applyFsrsRescheduleFinalIntervalPolicy(input: {
+  dueLoadByRecallTask: FsrsRescheduleDueLoad;
+  intervalPolicy: NonNullable<ReplayedReviewHistory["finalIntervalPolicy"]>;
+  projected: ReplayedReviewHistory["state"];
+  recallTask: ReviewRecallTask;
+}): ReplayedReviewHistory["state"] {
+  const bounds = getReviewFuzzBounds(
+    input.intervalPolicy.baseInterval,
+    input.intervalPolicy.minimumInterval,
+    input.intervalPolicy.maximumInterval
+  );
+  const dueByStudyDay =
+    input.dueLoadByRecallTask.get(input.recallTask) ?? new Map();
+  const reviewedStudyDay = getReviewStudyDay(input.intervalPolicy.reviewedAt);
+  const dueCountsByInterval = new Map<number, number>();
+
+  for (let interval = bounds.lower; interval <= bounds.upper; interval += 1) {
+    const dueStudyDay = addReviewStudyDays(reviewedStudyDay, interval);
+    dueCountsByInterval.set(interval, dueByStudyDay.get(dueStudyDay) ?? 0);
+  }
+
+  const selected = applyReviewDailyIntervalPolicy({
+    baseInterval: input.intervalPolicy.baseInterval,
+    dueCountsByInterval,
+    maximumInterval: input.intervalPolicy.maximumInterval,
+    minimumInterval: input.intervalPolicy.minimumInterval,
+    rating: input.intervalPolicy.rating,
+    reps: input.intervalPolicy.reps,
+    reviewedAt: input.intervalPolicy.reviewedAt,
+    schedulingKey: input.intervalPolicy.schedulingKey
+  });
+
+  return {
+    ...input.projected,
+    dueAt: normalizeReviewDueAt({
+      dueAt: input.projected.dueAt,
+      reviewedAt: input.intervalPolicy.reviewedAt,
+      scheduledDays: selected.interval
+    }).toISOString(),
+    scheduledDays: selected.interval
+  };
+}
+
+function updateFsrsRescheduleDueLoad(
+  dueLoad: FsrsRescheduleDueLoad,
+  recallTask: ReviewRecallTask,
+  dueAt: string | null,
+  delta: 1 | -1
+) {
+  if (!dueAt) {
+    return;
+  }
+
+  let studyDay: string;
+
+  try {
+    studyDay = getReviewStudyDay(dueAt);
+  } catch {
+    return;
+  }
+
+  const dueByStudyDay = dueLoad.get(recallTask) ?? new Map<string, number>();
+  const nextCount = Math.max(0, (dueByStudyDay.get(studyDay) ?? 0) + delta);
+
+  if (nextCount === 0) {
+    dueByStudyDay.delete(studyDay);
+  } else {
+    dueByStudyDay.set(studyDay, nextCount);
+  }
+
+  dueLoad.set(recallTask, dueByStudyDay);
+}
+
+function resolveRescheduleRecallTask(subject: ReviewSubjectFsrsReplaySubject) {
+  return subject.state.recallTask ?? resolveReviewRecallTask(subject.cardType);
 }
 
 function buildReplayOptions(
@@ -289,13 +447,19 @@ function isReplayEligibleSubject(subject: ReviewSubjectFsrsReplaySubject) {
 function mapReplayLog(
   log: ReviewSubjectFsrsReplaySubject["logs"][number]
 ): ReviewLogReplayInput {
+  if (!log.rating) {
+    throw new Error(`Grade review event ${log.id} is missing its rating.`);
+  }
+
   return {
     answeredAt: log.answeredAt,
     cardType: log.cardType,
+    elapsedDays: log.elapsedDays,
     id: log.id,
     previousState: log.previousState,
     rating: log.rating,
-    responseMs: log.responseMs
+    responseMs: log.responseMs,
+    schedulingKey: log.cardId
   };
 }
 
@@ -393,7 +557,7 @@ function buildProjectionFromCurrentReviewState(
     lastReviewedAt: state.lastReviewedAt ?? projected.lastReviewedAt,
     reps: state.reps,
     scheduledDays: state.scheduledDays,
-    schedulerVersion: "fsrs_v1",
+    schedulerVersion: CURRENT_REVIEW_SCHEDULER_VERSION,
     stability: state.stability ?? projected.stability,
     state: "review"
   };
@@ -430,7 +594,7 @@ function buildProjectionFromLoggedReviewTransition(
     lastReviewedAt: latestLog.answeredAt,
     reps: Math.max(subject.state.reps, projected.reps),
     scheduledDays,
-    schedulerVersion: "fsrs_v1",
+    schedulerVersion: CURRENT_REVIEW_SCHEDULER_VERSION,
     stability: Math.max(
       subject.state.stability ?? 0,
       projected.stability,
@@ -445,12 +609,14 @@ function inferScheduledReviewDays(
   dueAt: string,
   fallback: number
 ) {
-  const answeredAtTime = new Date(answeredAt).getTime();
-  const dueAtTime = new Date(dueAt).getTime();
-  const diffDays = (dueAtTime - answeredAtTime) / DAY;
+  try {
+    const diffDays = differenceInReviewStudyDays(answeredAt, dueAt);
 
-  if (Number.isFinite(diffDays) && diffDays > 0) {
-    return Math.max(1, Math.round(diffDays));
+    if (diffDays > 0) {
+      return diffDays;
+    }
+  } catch {
+    // Fall through to the persisted interval for malformed legacy timestamps.
   }
 
   return Math.max(1, Math.round(fallback));
@@ -497,18 +663,13 @@ function buildFsrsRescheduleDayDeltas(input: {
 }) {
   const days = buildHorizonDays(input.now, input.horizonDays);
   const dayByDate = new Map(days.map((day) => [day.date, day]));
-  const tomorrowStart = new Date(
-    input.now.getFullYear(),
-    input.now.getMonth(),
-    input.now.getDate() + 1
-  );
 
   for (const dueAt of input.currentDueDates) {
-    incrementDueDateBucket(dayByDate, dueAt, tomorrowStart, "currentCount");
+    incrementDueDateBucket(dayByDate, dueAt, "currentCount");
   }
 
   for (const dueAt of input.proposedDueDates) {
-    incrementDueDateBucket(dayByDate, dueAt, tomorrowStart, "proposedCount");
+    incrementDueDateBucket(dayByDate, dueAt, "proposedCount");
   }
 
   return days.map((day) => ({
@@ -518,14 +679,12 @@ function buildFsrsRescheduleDayDeltas(input: {
 }
 
 function buildHorizonDays(now: Date, horizonDays: number) {
+  const currentStudyDay = getReviewStudyDay(now);
+
   return Array.from({ length: horizonDays }, (_, index) => {
-    const day = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-    day.setDate(day.getDate() + index);
-
     return {
       currentCount: 0,
-      date: getLocalIsoDateKey(day),
+      date: addReviewStudyDays(currentStudyDay, index),
       delta: 0,
       proposedCount: 0
     };
@@ -535,7 +694,6 @@ function buildHorizonDays(now: Date, horizonDays: number) {
 function incrementDueDateBucket(
   dayByDate: Map<string, FsrsRescheduleDayDelta>,
   dueAt: string | null,
-  tomorrowStart: Date,
   countKey: "currentCount" | "proposedCount"
 ) {
   if (!dueAt) {
@@ -548,10 +706,17 @@ function incrementDueDateBucket(
     return;
   }
 
+  const currentStudyDay = dayByDate.keys().next().value;
+
+  if (typeof currentStudyDay !== "string") {
+    return;
+  }
+
+  const dueStudyDay = getReviewStudyDay(dueDate);
   const dateKey =
-    dueDate.getTime() < tomorrowStart.getTime()
-      ? dayByDate.keys().next().value
-      : getLocalIsoDateKey(dueDate);
+    differenceInReviewStudyDayKeys(currentStudyDay, dueStudyDay) <= 0
+      ? currentStudyDay
+      : dueStudyDay;
 
   if (typeof dateKey !== "string") {
     return;
@@ -571,31 +736,6 @@ function sumDays(
   key: "currentCount" | "proposedCount"
 ) {
   return days.reduce((total, day) => total + day[key], 0);
-}
-
-async function updateReviewSubjectFromRescheduleCandidate(
-  transaction: FsrsRescheduleTransaction,
-  candidate: FsrsRescheduleCandidate,
-  nowIso: string
-) {
-  await transaction
-    .update(reviewSubjectState)
-    .set({
-      difficulty: candidate.projected.difficulty,
-      dueAt: candidate.projected.dueAt,
-      lapses: candidate.projected.lapses,
-      lastReviewedAt: candidate.projected.lastReviewedAt,
-      learningSteps: candidate.projected.learningSteps,
-      reps: candidate.projected.reps,
-      scheduledDays: candidate.projected.scheduledDays,
-      schedulerVersion: candidate.projected.schedulerVersion,
-      stability: candidate.projected.stability,
-      state: candidate.projected.state,
-      updatedAt: nowIso
-    })
-    .where(
-      eq(reviewSubjectState.subjectKey, candidate.subject.state.subjectKey)
-    );
 }
 
 function stripFsrsReschedulePlanCandidates(

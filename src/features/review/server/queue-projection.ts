@@ -73,6 +73,7 @@ export function mapReviewQueueSubjectCardPreview(input: {
   mediaById: ReviewMediaLookup;
   nowIso: string;
   queueStateSnapshot: ReviewQueueStateSnapshot;
+  schedulingKey: string;
 }) {
   const cardMedia = resolveReviewCardMedia(input.card, input.mediaById);
 
@@ -110,11 +111,14 @@ export function mapReviewQueueSubjectCardPreview(input: {
     ),
     rawReviewLabel: input.queueStateSnapshot.rawReviewLabel,
     reading: resolveReviewCardReading(input.card, input.entryLookup),
-    reviewSeedState: buildReviewSeedStateWithFsrsPreset(
-      input.queueStateSnapshot.reviewSeedState,
-      input.card.cardType,
-      input.fsrsOptimizerSnapshot
-    ),
+    reviewSeedState: {
+      ...buildReviewSeedStateWithFsrsPreset(
+        input.queueStateSnapshot.reviewSeedState,
+        input.card.cardType,
+        input.fsrsOptimizerSnapshot
+      ),
+      schedulingKey: input.schedulingKey
+    },
     segmentTitle: input.card.segment?.title ?? undefined,
     typeLabel: capitalizeToken(input.card.cardType)
   } satisfies ReviewFirstCandidateCard;
@@ -169,6 +173,7 @@ export function buildReviewQueueSnapshot(input: {
     newAvailableCount: snapshot.newAvailableCount,
     newQueuedCount: snapshot.newQueuedCount,
     nextDueAt: snapshot.nextDueAt ?? null,
+    nextLearningDueAt: snapshot.nextLearningDueAt ?? null,
     queueLabel: snapshot.introLabel,
     queueCount: snapshot.queueCount,
     suspendedCards: snapshot.suspendedModels.map((model) =>
@@ -208,7 +213,8 @@ export function mapReviewQueueSubjectModel(
     ),
     {
       includePronunciations: input.includePronunciations,
-      reviewStateUpdatedAt: model.group.subjectState?.updatedAt ?? null
+      reviewStateUpdatedAt: model.group.subjectState?.updatedAt ?? null,
+      schedulingKey: model.group.identity.subjectKey
     }
   );
 }

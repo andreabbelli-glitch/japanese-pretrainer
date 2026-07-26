@@ -17,39 +17,42 @@ describe("fsrs optimizer query scheduling", () => {
 
     vi.spyOn(
       settingsStoreModule,
-      "getFsrsOptimizerSnapshot"
+      "getFreshFsrsOptimizerTrainingContext"
     ).mockImplementation(async () => {
       await snapshotGate.loader()();
 
       return {
-        config: {
-          desiredRetention: 0.9,
-          enabled: false,
-          minDaysBetweenRuns: 7,
-          minNewReviews: 50,
-          presetStrategy: "card_type_v1"
-        },
-        presets: {
-          concept: null,
-          recognition: null
-        },
-        state: {
-          bindingVersion: "0.3.0",
-          lastAttemptAt: null,
-          lastCheckAt: null,
-          lastSuccessfulTrainingAt: null,
-          lastTrainingError: null,
-          newEligibleReviewsSinceLastTraining: 0,
-          totalEligibleReviewsAtLastTraining: 0
+        cacheKeyPart: "test-cache-key",
+        snapshot: {
+          config: {
+            desiredRetention: 0.9,
+            enabled: false,
+            minDaysBetweenRuns: 7,
+            minNewReviews: 50,
+            presetStrategy: "card_type_v1"
+          },
+          presets: {
+            concept: null,
+            recognition: null
+          },
+          state: {
+            bindingVersion: "0.3.0",
+            lastAttemptAt: null,
+            lastCheckAt: null,
+            lastSuccessfulTrainingAt: null,
+            lastTrainingError: null,
+            newEligibleReviewsSinceLastTraining: 0,
+            totalEligibleReviewsAtLastTraining: 0
+          }
         }
       };
     });
     vi.spyOn(
       trainingDataModule,
-      "countEligibleFsrsOptimizerReviews"
+      "countEligibleFsrsOptimizerReviewsByPreset"
     ).mockImplementation(async () => {
       await eligibleReviewCountGate.loader()();
-      return 12;
+      return { concept: 0, recognition: 12 };
     });
     vi.spyOn(settingsStoreModule, "writeFsrsOptimizerConfig").mockResolvedValue(
       undefined

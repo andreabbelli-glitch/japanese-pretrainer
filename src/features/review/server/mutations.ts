@@ -1,7 +1,9 @@
-import { inArray } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "@/db";
-import { card } from "@/db/schema";
+import { card, reviewCanonicalControl, reviewSubjectState } from "@/db/schema";
+import { buildReviewSubjectIdentityFromCanonical } from "@/features/review/model/subject";
+import { CURRENT_REVIEW_SCHEDULER_VERSION } from "@/features/review/model/scheduler";
 import {
   assertCardBelongsToExpectedMedia,
   isActiveReviewableMutationCard,
@@ -11,8 +13,10 @@ import {
   loadReviewSubjectMutationContext,
   patchReviewSubjectState,
   resolveReviewSubjectStateSource,
+  type ReviewSubjectStateInsert,
   upsertReviewSubjectState
 } from "@/features/review/server/mutation-context";
+import { appendReviewEvent } from "@/features/review/server/event-ledger";
 
 type ReviewEntryMutationStatus = "known_manual" | "learning" | "ignored";
 
@@ -54,31 +58,40 @@ export async function resetReviewCardProgress(input: {
       );
 
     const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
+    const nextState = patchReviewSubjectState(sourceState, {
+      cardId: loadedCard.id,
+      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+      difficulty: null,
+      dueAt: nowIso,
+      entryId: subjectContext.identity.entryId,
+      entryType: subjectContext.identity.entryType,
+      lapses: 0,
+      lastInteractionAt: nowIso,
+      lastReviewedAt: null,
+      learningSteps: 0,
+      manualOverride: false,
+      reps: 0,
+      scheduledDays: 0,
+      schedulerVersion: CURRENT_REVIEW_SCHEDULER_VERSION,
+      stability: null,
+      state: "new",
+      subjectType: subjectContext.identity.subjectKind,
+      suspended: false,
+      updatedAt: nowIso
+    });
 
-    await upsertReviewSubjectState(
-      tx,
-      patchReviewSubjectState(sourceState, {
-        cardId: loadedCard.id,
-        crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-        difficulty: null,
-        dueAt: nowIso,
-        entryId: subjectContext.identity.entryId,
-        entryType: subjectContext.identity.entryType,
-        lapses: 0,
-        lastInteractionAt: nowIso,
-        lastReviewedAt: null,
-        learningSteps: 0,
-        manualOverride: false,
-        reps: 0,
-        scheduledDays: 0,
-        schedulerVersion: "fsrs_v1",
-        stability: null,
-        state: "new",
-        subjectType: subjectContext.identity.subjectKind,
-        suspended: false,
-        updatedAt: nowIso
-      })
-    );
+    await upsertReviewSubjectState(tx, nextState);
+    await appendReviewEvent(tx, {
+      afterState: nextState,
+      answeredAt: nowIso,
+      beforeState: sourceState,
+      cardId: loadedCard.id,
+      cardType: loadedCard.cardType,
+      eventKind: "reset",
+      identity: subjectContext.identity,
+      mediaId: loadedCard.mediaId,
+      reason: "user_reset"
+    });
 
     return {
       cardId: loadedCard.id,
@@ -126,16 +139,24 @@ export async function setReviewCardSuspended(input: {
       );
 
     const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
+    const nextState = patchReviewSubjectState(sourceState, {
+      lastInteractionAt: nowIso,
+      suspended: input.suspended,
+      updatedAt: nowIso
+    });
 
-    await upsertReviewSubjectState(
-      tx,
-      patchReviewSubjectState(sourceState, {
-        lastInteractionAt: nowIso,
-        schedulerVersion: "fsrs_v1",
-        suspended: input.suspended,
-        updatedAt: nowIso
-      })
-    );
+    await upsertReviewSubjectState(tx, nextState);
+    await appendReviewEvent(tx, {
+      afterState: nextState,
+      answeredAt: nowIso,
+      beforeState: sourceState,
+      cardId: loadedCard.id,
+      cardType: loadedCard.cardType,
+      eventKind: "manual",
+      identity: subjectContext.identity,
+      mediaId: loadedCard.mediaId,
+      reason: input.suspended ? "suspend" : "resume"
+    });
 
     return {
       cardId: loadedCard.id,
@@ -174,8 +195,6 @@ export async function setLinkedEntryStatusByCard(input: {
       throw new Error("This card has no canonical entry to update.");
     }
 
-    const isManualOverride = input.status === "known_manual";
-    const isSuspended = input.status === "ignored";
     const sourceState = resolveReviewSubjectStateSource(
       subjectContext,
       nowIso,
@@ -183,22 +202,96 @@ export async function setLinkedEntryStatusByCard(input: {
         initialState: input.status === "learning" ? "learning" : "new"
       }
     );
-    const restoredState =
-      input.status === "learning" && sourceState.state === "known_manual"
-        ? "learning"
-        : sourceState.state;
-
-    await upsertReviewSubjectState(
-      tx,
-      patchReviewSubjectState(sourceState, {
-        lastInteractionAt: nowIso,
-        manualOverride: isManualOverride,
-        schedulerVersion: "fsrs_v1",
-        state: restoredState,
-        suspended: isSuspended,
+    await tx
+      .insert(reviewCanonicalControl)
+      .values({
+        canonicalSubjectKey: subjectContext.identity.canonicalSubjectKey,
+        createdAt: nowIso,
+        status: input.status,
         updatedAt: nowIso
       })
+      .onConflictDoUpdate({
+        target: reviewCanonicalControl.canonicalSubjectKey,
+        set: {
+          status: input.status,
+          updatedAt: nowIso
+        }
+      });
+
+    const canonicalStates = await tx.query.reviewSubjectState.findMany({
+      where: eq(
+        reviewSubjectState.canonicalSubjectKey,
+        subjectContext.identity.canonicalSubjectKey
+      )
+    });
+    const statesByKey = new Map<string, ReviewSubjectStateInsert>(
+      canonicalStates.map((state) => [state.subjectKey, state])
     );
+
+    statesByKey.set(sourceState.subjectKey, sourceState);
+
+    const representativeCardIds = [...statesByKey.values()]
+      .map((state) => state.cardId)
+      .filter(
+        (cardId): cardId is string => cardId !== null && cardId !== undefined
+      );
+    const representativeCards =
+      representativeCardIds.length > 0
+        ? await tx.query.card.findMany({
+            where: inArray(card.id, representativeCardIds)
+          })
+        : [];
+    const cardById = new Map(
+      representativeCards.map((representativeCard) => [
+        representativeCard.id,
+        representativeCard
+      ])
+    );
+
+    for (const state of statesByKey.values()) {
+      const representativeCard = state.cardId
+        ? cardById.get(state.cardId)
+        : undefined;
+
+      if (!representativeCard) {
+        throw new Error(
+          `Review memory ${state.subjectKey} has no representative card.`
+        );
+      }
+
+      const nextState = patchReviewSubjectState(state, {
+        lastInteractionAt: nowIso,
+        manualOverride: input.status === "known_manual",
+        state:
+          input.status === "learning" && state.state === "known_manual"
+            ? "learning"
+            : state.state,
+        suspended: input.status === "ignored",
+        updatedAt: nowIso
+      });
+      const identity = buildReviewSubjectIdentityFromCanonical({
+        cardId: representativeCard.id,
+        cardType: representativeCard.cardType,
+        canonicalSubjectKey: subjectContext.identity.canonicalSubjectKey,
+        crossMediaGroupId: state.crossMediaGroupId ?? null,
+        entryId: state.entryId ?? null,
+        entryType: state.entryType ?? null,
+        subjectKind: state.subjectType
+      });
+
+      await upsertReviewSubjectState(tx, nextState);
+      await appendReviewEvent(tx, {
+        afterState: nextState,
+        answeredAt: nowIso,
+        beforeState: state,
+        cardId: representativeCard.id,
+        cardType: representativeCard.cardType,
+        eventKind: "manual",
+        identity,
+        mediaId: representativeCard.mediaId,
+        reason: `entry_status_${input.status}`
+      });
+    }
 
     return {
       cardId: loadedCard.id,

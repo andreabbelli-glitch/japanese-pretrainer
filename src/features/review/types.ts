@@ -1,4 +1,5 @@
 import type { EffectiveReviewState } from "@/features/review/model/state";
+import type { ReviewState } from "@/features/review/model/scheduler";
 import type { EntryType } from "@/domain/content";
 import type {
   ReviewGradePreview,
@@ -112,6 +113,9 @@ export type ReviewQueueSnapshot = {
   newAvailableCount: number;
   newQueuedCount: number;
   nextDueAt?: string | null;
+  nextLearningDueAt?: string | null;
+  pendingLearningDueAt?: string | null;
+  pendingScheduledDueAt?: string | null;
   queueLabel: string;
   queueCount: number;
   suspendedCount: number;
@@ -129,6 +133,7 @@ export type ReviewOverviewSnapshot = {
   newQueuedCount: number;
   nextCardFront?: string;
   nextDueAt?: string | null;
+  nextLearningDueAt?: string | null;
   queueCount: number;
   queueLabel: string;
   suspendedCount: number;
@@ -223,6 +228,7 @@ export type ReviewFirstCandidateQueueSnapshot = Pick<
   | "newAvailableCount"
   | "newQueuedCount"
   | "nextDueAt"
+  | "nextLearningDueAt"
   | "queueCount"
   | "suspendedCount"
   | "tomorrowCount"
@@ -317,7 +323,10 @@ export type ReviewSessionInput = {
   forcedContrast?: ReviewForcedContrastPayload;
   forcedKanjiClashContrast?: ReviewForcedContrastPayload;
   gradedCardBucket?: ReviewQueueCard["bucket"];
+  gradedCardDueAt?: string | null;
   gradedCardIds?: string[];
+  gradedCardScheduledDays?: number;
+  gradedCardState?: ReviewState | null;
   mediaSlug?: string;
   nextCardId?: string | null;
   segmentId?: string | null;

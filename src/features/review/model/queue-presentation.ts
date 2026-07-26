@@ -1,5 +1,7 @@
-import { formatLocalIsoDate } from "@/features/shared/model/local-date";
+import { formatIsoDateInTimeZone } from "@/features/shared/model/local-date";
 import type { ReviewQueueCard } from "@/features/review/types";
+
+import { DEFAULT_REVIEW_STUDY_DAY_POLICY } from "./study-day";
 
 export function buildBucketDetail(
   bucket: ReviewQueueCard["bucket"],
@@ -49,5 +51,8 @@ export function formatBucketLabel(bucket: ReviewQueueCard["bucket"]) {
 }
 
 export function formatShortIsoDate(value: string) {
-  return formatLocalIsoDate(value);
+  return formatIsoDateInTimeZone(
+    value,
+    DEFAULT_REVIEW_STUDY_DAY_POLICY.timeZone
+  );
 }

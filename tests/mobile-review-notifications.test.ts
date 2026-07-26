@@ -1,15 +1,10 @@
 import { eq } from "drizzle-orm";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  closeDatabaseClient,
-  type DatabaseClient
-} from "@/db";
-import { developmentFixture } from "@/db/seed";
+import { closeDatabaseClient, type DatabaseClient } from "@/db";
 import { reviewSubjectState, userSetting } from "@/db/schema";
+import { primarySubjectKey } from "./helpers/review-shared";
 import { withTestDatabase } from "./helpers/test-db";
-
-const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const { sendApnsMock } = vi.hoisted(() => ({
   sendApnsMock: vi.fn()
 }));
@@ -229,7 +224,7 @@ describe("mobile review notification monitor", () => {
 
 async function registerDeviceToken(database: DatabaseClient) {
   await database.insert(userSetting).values({
-    key: "mobile_review_apns_device_token" as typeof userSetting.$inferInsert["key"],
+    key: "mobile_review_apns_device_token" as (typeof userSetting.$inferInsert)["key"],
     updatedAt: "2026-04-02T12:00:00.000Z",
     valueJson: JSON.stringify({
       deviceToken: "a".repeat(64),

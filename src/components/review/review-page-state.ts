@@ -1,5 +1,4 @@
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
-import { buildReviewGradePreviews } from "@/features/review/client";
 import type {
   ReviewFirstCandidatePageData,
   ReviewPageData
@@ -33,23 +32,9 @@ export function resolveReviewGradePreviews(input: {
   selectedCardContext: ReviewPageClientData["selectedCardContext"];
   now?: Date;
 }) {
-  const gradePreviews =
-    "gradePreviews" in input.selectedCardContext
-      ? input.selectedCardContext.gradePreviews
-      : [];
-
-  if (gradePreviews.length > 0) {
-    return gradePreviews;
-  }
-
-  if (!input.selectedCard || !input.selectedCardContext.isQueueCard) {
-    return [];
-  }
-
-  return buildReviewGradePreviews(
-    input.selectedCard.reviewSeedState,
-    input.now ?? new Date()
-  );
+  return "gradePreviews" in input.selectedCardContext
+    ? input.selectedCardContext.gradePreviews
+    : [];
 }
 
 export function mergeReviewPageData(
@@ -122,7 +107,8 @@ export function shouldAcceptServerReviewData(
     currentData.scope !== nextData.scope ||
     currentData.media.slug !== nextData.media.slug ||
     currentData.session.extraNewCount !== nextData.session.extraNewCount ||
-    (currentData.session.segmentId ?? null) !== (nextData.session.segmentId ?? null)
+    (currentData.session.segmentId ?? null) !==
+      (nextData.session.segmentId ?? null)
   ) {
     return true;
   }

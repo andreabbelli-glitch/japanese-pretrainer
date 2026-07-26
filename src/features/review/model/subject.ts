@@ -3,13 +3,18 @@ import type { EntryType } from "../../../domain/content";
 import type { ReviewCardSource } from "./card-contract.ts";
 import { buildEntryKey } from "../../../features/study/model/entry-id.ts";
 import { stripInlineMarkdown } from "../../study/model/inline-markdown.ts";
+import {
+  buildReviewMemoryKey,
+  resolveReviewRecallTask,
+  type ReviewRecallTask
+} from "./recall-task.ts";
 
 import {
   getDrivingEntryLinks,
   resolveEffectiveReviewState,
   type ReviewEntryLinkLike
 } from "./state.ts";
-import type { ReviewState } from "./scheduler.ts";
+import type { ReviewSchedulerVersion, ReviewState } from "./scheduler.ts";
 
 export type ReviewSubjectKind = "group" | "entry" | "card";
 
@@ -23,15 +28,19 @@ export type ReviewSubjectEntryMeta = {
 
 export type ReviewSubjectIdentity = {
   cardId: string;
+  canonicalSubjectKey: string;
   crossMediaGroupId: string | null;
   entryId: string | null;
   entryType: EntryType | null;
+  memoryKey: string;
+  recallTask: ReviewRecallTask;
   subjectKey: string;
   subjectKind: ReviewSubjectKind;
 };
 
 export type ReviewSubjectStateSnapshot = {
   cardId: string | null;
+  canonicalSubjectKey?: string | null;
   crossMediaGroupId: string | null;
   createdAt: string;
   dueAt: string | null;
@@ -44,8 +53,9 @@ export type ReviewSubjectStateSnapshot = {
   lastReviewedAt: string | null;
   manualOverride: boolean;
   reps: number;
+  recallTask?: ReviewRecallTask | null;
   scheduledDays: number;
-  schedulerVersion: "fsrs_v1";
+  schedulerVersion: ReviewSchedulerVersion;
   stability: number | null;
   state: ReviewState;
   subjectKey: string;
@@ -117,7 +127,7 @@ export function deriveReviewSubjectIdentity(input: {
   );
 
   if (drivingLinks.length !== 1) {
-    return buildReviewSubjectCardIdentity(input.cardId);
+    return buildReviewSubjectCardIdentity(input.cardId, input.cardType);
   }
 
   const drivingLink = drivingLinks[0]!;
@@ -126,7 +136,7 @@ export function deriveReviewSubjectIdentity(input: {
   );
 
   if (!drivingEntry) {
-    return buildReviewSubjectCardIdentity(input.cardId);
+    return buildReviewSubjectCardIdentity(input.cardId, input.cardType);
   }
 
   if (
@@ -134,59 +144,63 @@ export function deriveReviewSubjectIdentity(input: {
     input.cardType === "concept" &&
     !matchesReviewSubjectEntrySurface(input.front, drivingEntry)
   ) {
-    return buildReviewSubjectCardIdentity(input.cardId);
+    return buildReviewSubjectCardIdentity(input.cardId, input.cardType);
   }
 
   if (drivingEntry?.crossMediaGroupId) {
-    return {
+    return buildReviewSubjectIdentityFromCanonical({
+      cardType: input.cardType,
       cardId: input.cardId,
-      crossMediaGroupId: drivingEntry.crossMediaGroupId,
-      entryId: drivingEntry.entryId,
-      entryType: drivingEntry.entryType,
-      subjectKey: buildReviewSubjectKey({
+      canonicalSubjectKey: buildReviewCanonicalSubjectKey({
         crossMediaGroupId: drivingEntry.crossMediaGroupId,
         entryId: drivingEntry.entryId,
         entryType: drivingEntry.entryType,
         subjectKind: "group"
       }),
+      crossMediaGroupId: drivingEntry.crossMediaGroupId,
+      entryId: drivingEntry.entryId,
+      entryType: drivingEntry.entryType,
       subjectKind: "group"
-    };
+    });
   }
 
-  return {
+  return buildReviewSubjectIdentityFromCanonical({
+    cardType: input.cardType,
     cardId: input.cardId,
-    crossMediaGroupId: null,
-    entryId: drivingLink.entryId,
-    entryType: drivingLink.entryType,
-    subjectKey: buildReviewSubjectKey({
+    canonicalSubjectKey: buildReviewCanonicalSubjectKey({
       crossMediaGroupId: null,
       entryId: drivingLink.entryId,
       entryType: drivingLink.entryType,
       subjectKind: "entry"
     }),
+    crossMediaGroupId: null,
+    entryId: drivingLink.entryId,
+    entryType: drivingLink.entryType,
     subjectKind: "entry"
-  };
+  });
 }
 
 export function buildReviewSubjectCardIdentity(
-  cardId: string
+  cardId: string,
+  cardType: string
 ): ReviewSubjectIdentity {
-  return {
+  return buildReviewSubjectIdentityFromCanonical({
+    cardType,
     cardId,
-    crossMediaGroupId: null,
-    entryId: null,
-    entryType: null,
-    subjectKey: buildReviewSubjectKey({
+    canonicalSubjectKey: buildReviewCanonicalSubjectKey({
       crossMediaGroupId: null,
       entryId: cardId,
       entryType: null,
       subjectKind: "card"
     }),
+    crossMediaGroupId: null,
+    entryId: null,
+    entryType: null,
     subjectKind: "card"
-  };
+  });
 }
 
-export function buildReviewSubjectKey(input: {
+export function buildReviewCanonicalSubjectKey(input: {
   crossMediaGroupId: string | null;
   entryId: string;
   entryType: EntryType | null;
@@ -205,6 +219,41 @@ export function buildReviewSubjectKey(input: {
   }
 
   return `entry:${input.entryType}:${input.entryId}`;
+}
+
+export function buildReviewSubjectKey(
+  input: Parameters<typeof buildReviewCanonicalSubjectKey>[0]
+) {
+  return buildReviewCanonicalSubjectKey(input);
+}
+
+export function buildReviewSubjectIdentityFromCanonical(input: {
+  cardId: string;
+  cardType: string;
+  canonicalSubjectKey: string;
+  crossMediaGroupId: string | null;
+  entryId: string | null;
+  entryType: EntryType | null;
+  subjectKind: ReviewSubjectKind;
+}): ReviewSubjectIdentity {
+  const recallTask = resolveReviewRecallTask(input.cardType);
+  const memoryKey = buildReviewMemoryKey({
+    canonicalSubjectKey: input.canonicalSubjectKey,
+    cardId: input.cardId,
+    recallTask
+  });
+
+  return {
+    cardId: input.cardId,
+    canonicalSubjectKey: input.canonicalSubjectKey,
+    crossMediaGroupId: input.crossMediaGroupId,
+    entryId: input.entryId,
+    entryType: input.entryType,
+    memoryKey,
+    recallTask,
+    subjectKey: memoryKey,
+    subjectKind: input.subjectKind
+  };
 }
 
 export function matchesReviewSubjectEntrySurface(

@@ -39,10 +39,9 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/features/cache/server/data-cache", async () => {
-  const actual =
-    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
-      "@/features/cache/server/data-cache"
-    );
+  const actual = await vi.importActual<
+    typeof import("@/features/cache/server/data-cache")
+  >("@/features/cache/server/data-cache");
 
   return {
     ...actual,
@@ -65,6 +64,7 @@ import { getMediaDetailData } from "@/features/media/server";
 import { getMediaProgressPageData } from "@/features/progress/server";
 import * as reviewModule from "@/features/review/server";
 import * as settingsModule from "@/features/settings/server";
+import { primarySubjectKey } from "./helpers/review-shared";
 
 describe("app shell day-scoped cache keys", () => {
   let database: DatabaseClient;
@@ -235,14 +235,12 @@ describe("app shell day-scoped cache keys", () => {
     const secondTime = new Date("2026-03-10T21:11:00.000Z");
     const firstBucketKey = getLocalIsoTimeBucketKey(firstTime);
     const secondBucketKey = getLocalIsoTimeBucketKey(secondTime);
-    const subjectKey = `entry:term:${developmentFixture.termDbId}`;
-
     await database
       .update(reviewSubjectState)
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewSubjectState.subjectKey, subjectKey));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     vi.setSystemTime(firstTime);
     const first = await getMediaProgressPageData(
@@ -259,7 +257,7 @@ describe("app shell day-scoped cache keys", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(eq(reviewSubjectState.subjectKey, subjectKey));
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     vi.setSystemTime(secondTime);
     const second = await getMediaProgressPageData(

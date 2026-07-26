@@ -41,7 +41,7 @@ import {
   getDrivingEntryLinks,
   hasCompletedReviewLesson
 } from "@/features/review/model/state";
-import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";
+import { buildServerReviewGradePreviews } from "@/features/review/server/grade-previews";
 import {
   getFsrsOptimizerRuntimeContext,
   getFsrsOptimizerRuntimeSnapshot,
@@ -225,7 +225,8 @@ export async function hydrateReviewCardUncached(input: {
           subjectContext.mediaById
         ),
         {
-          reviewStateUpdatedAt: subjectState?.updatedAt ?? null
+          reviewStateUpdatedAt: subjectState?.updatedAt ?? null,
+          schedulingKey: subjectIdentity.subjectKey
         }
       ),
     { cardId: card.id }
@@ -233,10 +234,13 @@ export async function hydrateReviewCardUncached(input: {
 
   return {
     ...queueCard,
-    gradePreviews: buildSharedReviewGradePreviews(
-      queueCard.reviewSeedState,
-      now
-    )
+    gradePreviews: await buildServerReviewGradePreviews({
+      database,
+      excludeSubjectKey: subjectIdentity.subjectKey,
+      now,
+      recallTask: subjectIdentity.recallTask,
+      reviewSeedState: queueCard.reviewSeedState
+    })
   };
 }
 
@@ -335,7 +339,8 @@ export async function getReviewCardDetailData(
       subjectContext.mediaById
     ),
     {
-      reviewStateUpdatedAt: subjectState?.updatedAt ?? null
+      reviewStateUpdatedAt: subjectState?.updatedAt ?? null,
+      schedulingKey: subjectIdentity.subjectKey
     }
   );
   const crossMedia = drivingLinks.map((link) => {

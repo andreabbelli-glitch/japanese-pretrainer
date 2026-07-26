@@ -156,6 +156,14 @@ non sostituisce un audit completo e aggiornato del codice.
 - Settings mostra anche lo stato read-only dell'optimizer FSRS, inclusi ultimo
   training riuscito, review nuove accumulate e stato dei preset `recognition` /
   `concept`.
+- La giornata review cambia alle 04:00 `Europe/Rome`: i test manuali vicino al
+  rollover e ai cambi DST non devono anticipare/posticipare il giorno per una
+  divisione fissa di 24 ore.
+- Le card learning/relearning possono rientrare nella stessa sessione. Il
+  learn-ahead arriva al massimo a 20 minuti e solo a coda ordinaria vuota; non
+  deve avviare polling o una ricostruzione completa dopo ogni risposta.
+- La preview di riallineamento FSRS in Settings e on-demand. Una visita normale
+  a `/settings` non deve rileggere la cronologia completa.
 - Il media `web-giapponese` resta navigabile come `Giapponese random` nelle
   route principali, con lesson reali e senza contenuti bootstrap residui.
 

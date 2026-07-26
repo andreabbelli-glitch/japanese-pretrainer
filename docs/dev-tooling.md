@@ -408,31 +408,61 @@ non fallisce per quel flag obsoleto. Questo non estende la matrice supportata:
 per check, release gate e automazioni repo-shared resta obbligatorio `Node 22.x`
 via `./scripts/with-node.sh`.
 
-`fsrs:optimize` forza un training immediato dei preset `recognition` e
-`concept` usando i log di `review_subject_log`, poi salva config, stato e pesi
-ottimizzati in `user_setting`. Il run forzato ignora il flag `enabled`: quel
-flag blocca solo il job automatico schedulato.
+`fsrs:optimize` forza una valutazione dei preset `recognition` e `concept`
+usando i log di `review_subject_log`. Il run forzato ignora il flag `enabled`:
+quel flag blocca solo il job automatico schedulato. Un preset viene salvato in
+`user_setting` soltanto quando il candidato migliora l'incumbent sul holdout
+temporale e rispetta il guardrail RMSE; un candidato regressivo viene registrato
+nello stato del run ma non attivato.
 
-`FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo ridurre o estendere il timeout di ogni
-training preset; se non e impostato resta il default runtime di `5000ms`.
+`FSRS_OPTIMIZER_TRAINING_TIMEOUT_MS` puo ridurre o estendere la deadline
+end-to-end di ogni preset, che comprende lettura del ledger condiviso,
+costruzione dataset, split, training e valutazione; se non e impostato resta il
+default runtime di `4000ms`. Il binding riceve il `90%` del budget residuo:
+la coda restante e riservata alla restituzione dei pesi e alle due valutazioni
+sul holdout, evitando che il timeout interno del binding corra contro la stessa
+deadline esterna.
+
+Le dipendenze sono pin esatti a `ts-fsrs@5.2.3` e
+`@open-spaced-repetition/binding@0.5.0`, basato su FSRS Rust `6.5.0`. Il dataset
+`fsrs6-prefix-target-v2` include un
+prefisso solo quando la review finale ha `deltaT > 0`; gli eventi `reset` e una
+transizione legacy da `new` iniziano una nuova sequenza. Training e holdout
+sono separati cronologicamente (almeno 100 target per lato con il binding
+ufficiale). I due preset mantengono conteggi, watermark, errori e readiness
+indipendenti. Un errore o una deadline scaduta viene registrata solo sul preset
+coinvolto e non impedisce la promozione dell'altro; promozioni e progressi dei
+due preset vengono committati insieme. Il writer transazionale non produce
+side effect: cache runtime e tag vengono invalidati una sola volta dopo il
+commit riuscito, mai dopo un rollback. Se tutti i preset valutati falliscono,
+il risultato globale e `failed` e `lastTrainingError` conserva il riepilogo;
+Settings mostra anche l'errore specifico di ciascun preset. Un token di run
+impedisce a un'esecuzione lenta o duplicata di sovrascrivere parametri piu
+recenti.
 
 `fsrs:optimize:if-needed` e il comando CLI per eseguire manualmente lo stesso
-gate. Il comando fa no-op finche non sono passati almeno `30` giorni
-dall'ultimo training riuscito oppure non ci sono abbastanza review nuove
-eleggibili. La soglia review e dinamica:
-`min(3000, max(500, 25% delle review usate nell'ultimo training riuscito))`.
+gate. Il comando fa no-op, per ogni preset, finche non sono passati almeno `30`
+giorni dall'ultima valutazione oppure non ci sono abbastanza review nuove
+eleggibili. La soglia review per-preset e dinamica:
+`min(3000, max(500, 25% delle review usate nell'ultima valutazione))`.
 Il gate temporale include `60` minuti di tolleranza per la finestra di consegna
 del cron Vercel.
 Questa policy mantiene un floor minimo nelle prime fasi, cresce con il dataset
 quando il segnale storico e ancora piccolo, e applica un cap per non rendere il
 retrain troppo raro quando la cronologia diventa grande.
+Se un preset supera il gate ma non ha ancora abbastanza target per lo split,
+l'optimizer conserva baseline e watermark e applica un cooldown di `7` giorni
+prima di ricostruire lo stesso storico. `fsrs:optimize` ignora il cooldown.
 
 In produzione il job e registrato in `vercel.json`: Vercel Cron chiama una
 volta al giorno `/api/internal/fsrs-optimizer/run`, che richiede
 `Authorization: Bearer $CRON_SECRET` e usa il `DATABASE_URL` canonico del
 runtime. L'orario cron e in UTC e puo essere invocato da Vercel entro la
 finestra oraria prevista dal piano. Il job deve restare leggero: controlla prima
-le soglie e non carica lo storico completo dei log se il training non e dovuto.
+le soglie con un'aggregazione SQL e non carica lo storico completo dei log se
+nessun preset e dovuto. I preset vengono elaborati in sequenza, non nel request
+path interattivo, per limitare picchi CPU/memoria e roundtrip Turso sul piano
+gratuito mono-utente.
 
 Per Turso remoto, non usare i workflow GitHub come sync generico a ogni push:
 `Sync Turso On Main` e limitato a migrazioni e import media-scoped, mentre il

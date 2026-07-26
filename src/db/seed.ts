@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "./client.ts";
 import { buildScopedEntryId } from "../features/study/model/entry-id.ts";
+import { buildReviewMemoryKey } from "../features/review/model/recall-task.ts";
 import {
   card,
   cardEntryLink,
@@ -43,6 +44,18 @@ const createdAt = "2026-03-08T09:00:00.000Z";
 const updatedAt = "2026-03-08T09:30:00.000Z";
 const dueSoonAt = "2026-03-09T08:00:00.000Z";
 const dueLaterAt = "2030-03-12T08:00:00.000Z";
+const fixtureTermCanonicalSubjectKey = `entry:term:${developmentFixture.termDbId}`;
+const fixtureTermMemoryKey = buildReviewMemoryKey({
+  canonicalSubjectKey: fixtureTermCanonicalSubjectKey,
+  cardId: developmentFixture.primaryCardId,
+  recallTask: "recognition"
+});
+const fixtureGrammarCanonicalSubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
+const fixtureGrammarMemoryKey = buildReviewMemoryKey({
+  canonicalSubjectKey: fixtureGrammarCanonicalSubjectKey,
+  cardId: developmentFixture.secondaryCardId,
+  recallTask: "other"
+});
 
 export async function seedDevelopmentDatabase(
   database: DatabaseClient = db
@@ -547,7 +560,9 @@ export async function seedDevelopmentDatabase(
       .insert(reviewSubjectState)
       .values([
         {
-          subjectKey: `entry:term:${developmentFixture.termDbId}`,
+          subjectKey: fixtureTermMemoryKey,
+          canonicalSubjectKey: fixtureTermCanonicalSubjectKey,
+          recallTask: "recognition",
           subjectType: "entry",
           entryType: "term",
           entryId: developmentFixture.termDbId,
@@ -570,7 +585,9 @@ export async function seedDevelopmentDatabase(
           updatedAt
         },
         {
-          subjectKey: `entry:grammar:${developmentFixture.grammarDbId}`,
+          subjectKey: fixtureGrammarMemoryKey,
+          canonicalSubjectKey: fixtureGrammarCanonicalSubjectKey,
+          recallTask: "other",
           subjectType: "entry",
           entryType: "grammar",
           entryId: developmentFixture.grammarDbId,
@@ -596,6 +613,7 @@ export async function seedDevelopmentDatabase(
       .onConflictDoUpdate({
         target: reviewSubjectState.subjectKey,
         set: {
+          canonicalSubjectKey: sql`excluded.canonical_subject_key`,
           subjectType: sql`excluded.subject_type`,
           entryType: sql`excluded.entry_type`,
           entryId: sql`excluded.entry_id`,
@@ -613,6 +631,7 @@ export async function seedDevelopmentDatabase(
           reps: sql`excluded.reps`,
           schedulerVersion: sql`excluded.scheduler_version`,
           manualOverride: sql`excluded.manual_override`,
+          recallTask: sql`excluded.recall_task`,
           suspended: sql`excluded.suspended`,
           createdAt: sql`excluded.created_at`,
           updatedAt: sql`excluded.updated_at`
@@ -623,44 +642,80 @@ export async function seedDevelopmentDatabase(
       .insert(reviewSubjectLog)
       .values([
         {
+          algorithmVersion: "fsrs6",
           id: "review_subject_log_fixture_iku_1",
-          subjectKey: `entry:term:${developmentFixture.termDbId}`,
+          eventKind: "grade",
+          eventSchemaVersion: 0,
+          subjectKey: fixtureTermMemoryKey,
+          memoryKey: fixtureTermMemoryKey,
+          canonicalSubjectKey: fixtureTermCanonicalSubjectKey,
+          recallTask: "recognition",
           cardId: developmentFixture.primaryCardId,
+          cardTypeSnapshot: "recognition",
+          mediaIdSnapshot: developmentFixture.mediaId,
           answeredAt: updatedAt,
+          recordedAt: updatedAt,
+          studyDay: "2026-03-08",
+          studyDayPolicy: "study-day:v1:Europe/Rome:rollover-240",
           rating: "good",
           previousState: "new",
           newState: "learning",
           scheduledDueAt: dueSoonAt,
           elapsedDays: 0.5,
           responseMs: 4200,
-          schedulerVersion: "fsrs_v1"
+          schedulerVersion: "fsrs_v1",
+          bindingVersion: "ts-fsrs@5.2.3"
         },
         {
+          algorithmVersion: "fsrs6",
           id: "review_subject_log_fixture_teiru_1",
-          subjectKey: `entry:grammar:${developmentFixture.grammarDbId}`,
+          eventKind: "grade",
+          eventSchemaVersion: 0,
+          subjectKey: fixtureGrammarMemoryKey,
+          memoryKey: fixtureGrammarMemoryKey,
+          canonicalSubjectKey: fixtureGrammarCanonicalSubjectKey,
+          recallTask: "other",
           cardId: developmentFixture.secondaryCardId,
+          cardTypeSnapshot: "grammar",
+          mediaIdSnapshot: developmentFixture.mediaId,
           answeredAt: updatedAt,
+          recordedAt: updatedAt,
+          studyDay: "2026-03-08",
+          studyDayPolicy: "study-day:v1:Europe/Rome:rollover-240",
           rating: "easy",
           previousState: "learning",
           newState: "review",
           scheduledDueAt: dueLaterAt,
           elapsedDays: 2.1,
           responseMs: 3800,
-          schedulerVersion: "fsrs_v1"
+          schedulerVersion: "fsrs_v1",
+          bindingVersion: "ts-fsrs@5.2.3"
         }
       ])
       .onConflictDoUpdate({
         target: reviewSubjectLog.id,
         set: {
+          algorithmVersion: sql`excluded.algorithm_version`,
+          bindingVersion: sql`excluded.binding_version`,
+          canonicalSubjectKey: sql`excluded.canonical_subject_key`,
           subjectKey: sql`excluded.subject_key`,
           cardId: sql`excluded.card_id`,
+          cardTypeSnapshot: sql`excluded.card_type_snapshot`,
+          eventKind: sql`excluded.event_kind`,
+          eventSchemaVersion: sql`excluded.event_schema_version`,
+          mediaIdSnapshot: sql`excluded.media_id_snapshot`,
+          memoryKey: sql`excluded.memory_key`,
+          recallTask: sql`excluded.recall_task`,
           answeredAt: sql`excluded.answered_at`,
+          recordedAt: sql`excluded.recorded_at`,
           rating: sql`excluded.rating`,
           previousState: sql`excluded.previous_state`,
           newState: sql`excluded.new_state`,
           scheduledDueAt: sql`excluded.scheduled_due_at`,
           elapsedDays: sql`excluded.elapsed_days`,
-          responseMs: sql`excluded.response_ms`
+          responseMs: sql`excluded.response_ms`,
+          studyDay: sql`excluded.study_day`,
+          studyDayPolicy: sql`excluded.study_day_policy`
         }
       });
 

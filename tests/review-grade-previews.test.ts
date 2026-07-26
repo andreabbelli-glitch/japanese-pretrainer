@@ -119,7 +119,7 @@ describe("review grade previews", () => {
     ).toBe(true);
   });
 
-  it("uses hours for sub-48-hour previews that cross two local calendar dates", async () => {
+  it("labels a pre-rollover due time as tomorrow's study day", async () => {
     const { buildReviewGradePreviews } =
       await import("@/features/review/model/grade-previews");
     const now = new Date("2026-07-03T18:03:00.000Z");
@@ -133,7 +133,9 @@ describe("review grade previews", () => {
     const previews = buildReviewGradePreviews(baseSeedState, now);
 
     expect(
-      previews.some((preview) => preview.nextReviewLabel === "Tra 30 ore")
+      previews.some(
+        (preview) => preview.nextReviewLabel === "Domani alle 02:00"
+      )
     ).toBe(true);
     expect(
       previews.every((preview) => preview.nextReviewLabel !== "Tra 2 giorni")

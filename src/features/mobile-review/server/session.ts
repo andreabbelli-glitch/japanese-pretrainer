@@ -102,7 +102,7 @@ export async function loadMobileReviewSession(
 export async function gradeMobileReviewCard(input: {
   cardId: string;
   database?: DatabaseClient;
-  expectedUpdatedAt?: string | null;
+  expectedUpdatedAt: string | null;
   rating: ReviewRating;
   responseMs?: number | null;
 }): Promise<MobileReviewGradeResult> {
@@ -152,7 +152,10 @@ function mapReviewPageDataToMobileSession(
       upcomingCount: data.queue.upcomingCount
     },
     selectedCard: data.selectedCard
-      ? mapReviewQueueCard(data.selectedCard, data.selectedCardContext.gradePreviews)
+      ? mapReviewQueueCard(
+          data.selectedCard,
+          data.selectedCardContext.gradePreviews
+        )
       : null,
     source: "live"
   };

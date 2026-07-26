@@ -54,6 +54,7 @@ import {
   deriveReviewSubjectIdentity,
   normalizeReviewSubjectSurface
 } from "@/features/review/model/subject";
+import { primarySubjectKey } from "./helpers/review-shared";
 
 describe("database layer", () => {
   let tempDir = "";
@@ -1026,23 +1027,41 @@ describe("database layer", () => {
       entryLookup
     });
 
-    const [sqlIdentity] = await database.all<{ subjectKey: string }>(`
+    const [sqlIdentity] = await database.all<{
+      canonicalSubjectKey: string;
+      memoryKey: string;
+      recallTask: string;
+      subjectKey: string;
+    }>(`
       WITH ${buildReviewSubjectIdentityCteSql()}
-      SELECT subject_key AS subjectKey
+      SELECT
+        canonical_subject_key AS canonicalSubjectKey,
+        memory_key AS memoryKey,
+        recall_task AS recallTask,
+        subject_key AS subjectKey
       FROM subject_identity
       WHERE card_id = ${quoteSqlString(canonicalCardId)}
     `);
 
-    expect(tsIdentity.subjectKey).toBe(
+    expect(tsIdentity.canonicalSubjectKey).toBe(
       `entry:term:${developmentFixture.termDbId}`
     );
+    expect(tsIdentity.subjectKey).toBe(
+      `mnemonic:v1:concept:entry:term:${developmentFixture.termDbId}`
+    );
     expect(sqlIdentity?.subjectKey).toBe(tsIdentity.subjectKey);
+    expect(sqlIdentity).toMatchObject({
+      canonicalSubjectKey: tsIdentity.canonicalSubjectKey,
+      memoryKey: tsIdentity.memoryKey,
+      recallTask: tsIdentity.recallTask
+    });
   });
 
   it("keeps concept cards with noncanonical primary fronts on card subjects in TS and SQL", async () => {
     const chunkCardId = "card_fixture_iku_chunk";
     const chunkFront = "{{行|い}}かずに{{残|のこ}}る";
-    const chunkSubjectKey = `card:${chunkCardId}`;
+    const chunkCanonicalSubjectKey = `card:${chunkCardId}`;
+    const chunkSubjectKey = `mnemonic:v1:concept:${chunkCanonicalSubjectKey}`;
 
     await database.insert(card).values({
       id: chunkCardId,
@@ -1120,15 +1139,30 @@ describe("database layer", () => {
     });
 
     expect(tsIdentity.subjectKey).toBe(chunkSubjectKey);
+    expect(tsIdentity.canonicalSubjectKey).toBe(chunkCanonicalSubjectKey);
 
-    const [sqlIdentity] = await database.all<{ subjectKey: string }>(`
+    const [sqlIdentity] = await database.all<{
+      canonicalSubjectKey: string;
+      memoryKey: string;
+      recallTask: string;
+      subjectKey: string;
+    }>(`
       WITH ${buildReviewSubjectIdentityCteSql()}
-      SELECT subject_key AS subjectKey
+      SELECT
+        canonical_subject_key AS canonicalSubjectKey,
+        memory_key AS memoryKey,
+        recall_task AS recallTask,
+        subject_key AS subjectKey
       FROM subject_identity
       WHERE card_id = ${quoteSqlString(chunkCardId)}
     `);
 
     expect(sqlIdentity?.subjectKey).toBe(chunkSubjectKey);
+    expect(sqlIdentity).toMatchObject({
+      canonicalSubjectKey: tsIdentity.canonicalSubjectKey,
+      memoryKey: tsIdentity.memoryKey,
+      recallTask: tsIdentity.recallTask
+    });
 
     const dueCards = await listDueCardsByMediaId(
       database,
@@ -1203,12 +1237,7 @@ describe("database layer", () => {
         manualOverride: false,
         suspended: false
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     const candidate = await getReviewLaunchCandidateByMediaId(
       database,
@@ -1230,12 +1259,7 @@ describe("database layer", () => {
         dueAt: "2026-03-01T00:00:00.000Z",
         manualOverride: true
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     const dueCards = await listDueCardsByMediaId(
       database,

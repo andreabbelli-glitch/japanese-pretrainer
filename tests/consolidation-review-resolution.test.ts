@@ -12,11 +12,16 @@ import {
 } from "@/db";
 import { runMigrations } from "@/db/migrate";
 import { preReviewConsolidationState } from "@/db/schema";
+import { buildReviewSubjectCardIdentity } from "@/features/review/model/subject";
 import { applyReviewGrade } from "@/features/review/server/service";
 
 import { seedTwoMediaGlobalQueueFixture } from "./helpers/review-fixture";
 
-const SUBJECT_KEY = "card:card_a";
+const SUBJECT_IDENTITY = buildReviewSubjectCardIdentity(
+  "card_a",
+  "recognition"
+);
+const SUBJECT_KEY = SUBJECT_IDENTITY.subjectKey;
 const RETRAINING_UPDATED_AT = "2026-04-01T10:01:00.000Z";
 const REVIEWED_AT = "2026-04-01T11:00:00.000Z";
 
@@ -85,6 +90,8 @@ describe("review consolidation resolution", () => {
 
 async function seedRetrainingConsolidation(database: DatabaseClient) {
   await database.insert(preReviewConsolidationState).values({
+    canonicalSubjectKey: SUBJECT_IDENTITY.canonicalSubjectKey,
+    recallTask: SUBJECT_IDENTITY.recallTask,
     subjectKey: SUBJECT_KEY,
     subjectType: "card",
     representativeCardId: "card_a",

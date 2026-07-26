@@ -10,6 +10,10 @@ import {
   userSetting
 } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
+import {
+  buildReviewMemoryKey,
+  REVIEW_MEMORY_KEY_VERSION
+} from "@/features/review/model/recall-task";
 
 const REVIEW_FIXTURE_CREATED_AT = "2026-03-10T09:00:00.000Z";
 const REVIEW_FIXTURE_SETTINGS_UPDATED_AT = "2026-03-10T11:00:00.000Z";
@@ -195,6 +199,7 @@ export function buildReviewDailyLimitSetting(
 export function buildReviewSubjectStateRow(
   input: {
     cardId: string;
+    canonicalSubjectKey?: string;
     crossMediaGroupId?: string | null;
     difficulty: number;
     dueAt: string;
@@ -206,6 +211,7 @@ export function buildReviewSubjectStateRow(
     lapses: number;
     manualOverride?: boolean;
     reps: number;
+    recallTask?: "recognition" | "concept" | "other";
     scheduledDays: number;
     schedulerVersion?: "fsrs_v1";
     state: "new" | "learning" | "review" | "relearning";
@@ -215,8 +221,21 @@ export function buildReviewSubjectStateRow(
   },
   now = REVIEW_FIXTURE_CREATED_AT
 ) {
+  const recallTask = input.recallTask ?? "recognition";
+  const canonicalSubjectKey = input.canonicalSubjectKey ?? input.subjectKey;
+  const subjectKey = input.subjectKey.startsWith(
+    `${REVIEW_MEMORY_KEY_VERSION}:`
+  )
+    ? input.subjectKey
+    : buildReviewMemoryKey({
+        canonicalSubjectKey,
+        cardId: input.cardId,
+        recallTask
+      });
+
   return {
     cardId: input.cardId,
+    canonicalSubjectKey,
     createdAt: now,
     crossMediaGroupId: input.crossMediaGroupId ?? null,
     difficulty: input.difficulty,
@@ -228,12 +247,13 @@ export function buildReviewSubjectStateRow(
     learningSteps: input.learningSteps,
     lapses: input.lapses,
     manualOverride: input.manualOverride ?? false,
+    recallTask,
     reps: input.reps,
     scheduledDays: input.scheduledDays,
     schedulerVersion: input.schedulerVersion ?? "fsrs_v1",
     state: input.state,
     stability: input.stability,
-    subjectKey: input.subjectKey,
+    subjectKey,
     subjectType: "card",
     suspended: input.suspended ?? false,
     updatedAt: now
@@ -252,17 +272,28 @@ export function buildReviewSubjectLogRow(input: {
   scheduledDueAt: string;
   subjectKey: string;
 }) {
+  const memoryKey = input.subjectKey.startsWith(`${REVIEW_MEMORY_KEY_VERSION}:`)
+    ? input.subjectKey
+    : buildReviewMemoryKey({
+        canonicalSubjectKey: input.subjectKey,
+        cardId: input.cardId,
+        recallTask: "recognition"
+      });
+
   return {
     answeredAt: input.answeredAt,
     cardId: input.cardId,
+    canonicalSubjectKey: input.subjectKey,
     elapsedDays: input.elapsedDays,
     id: input.id,
+    memoryKey,
     newState: input.newState,
     previousState: input.previousState,
     rating: input.rating,
+    recallTask: "recognition",
     responseMs: input.responseMs,
     scheduledDueAt: input.scheduledDueAt,
-    subjectKey: input.subjectKey
+    subjectKey: memoryKey
   } satisfies ReviewSubjectLogRow;
 }
 

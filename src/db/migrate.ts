@@ -7,14 +7,24 @@ import { db, type DatabaseClient } from "./client.ts";
 import { normalizeReviewSubjectSurface } from "../features/review/model/subject.ts";
 import { romanizeKanaForSearch } from "../features/study/model/search.ts";
 import { card, grammarPattern } from "./schema/index.ts";
+import { getFsrsOptimizerSnapshot } from "../features/fsrs-optimizer/server/settings-store.ts";
+import { persistFsrsParameterSetsForSnapshot } from "../features/fsrs-optimizer/server/parameter-set.ts";
+import { backfillLegacyReviewEvents } from "./backfills/review-event-ledger.ts";
+import { backfillReviewMemoryKeysOnce } from "../features/review/server/subject-state-backfill.ts";
 
 export async function runMigrations(
   database: DatabaseClient = db,
   migrationsFolder = path.resolve(process.cwd(), "drizzle")
 ): Promise<void> {
   await migrate(database, { migrationsFolder });
+  await backfillLegacyReviewEvents(database);
   await backfillNormalizedFront(database);
+  await backfillReviewMemoryKeysOnce(database);
   await backfillGrammarSearchRomaji(database);
+  await persistFsrsParameterSetsForSnapshot(
+    database,
+    await getFsrsOptimizerSnapshot(database)
+  );
 }
 
 async function backfillNormalizedFront(database: DatabaseClient) {

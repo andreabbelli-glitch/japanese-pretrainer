@@ -20,6 +20,7 @@ import {
   kanjiClashManualContrastRoundState,
   lesson,
   lessonProgress,
+  reviewFsrsParameterSet,
   reviewSubjectLog,
   reviewSubjectState,
   term
@@ -57,8 +58,9 @@ import {
 } from "./helpers/review-db-fixture";
 import {
   loadCrossMediaTermSubjectContext,
+  primaryCanonicalSubjectKey,
   primarySubjectKey,
-  secondarySubjectKey
+  secondaryCanonicalSubjectKey
 } from "./helpers/review-shared";
 
 describe("review mutations", () => {
@@ -106,15 +108,49 @@ describe("review mutations", () => {
     expect(persistedState?.state).toBe("review");
     expect(persistedState?.reps).toBe(4);
     expect(persistedState?.lapses).toBe(1);
-    expect(persistedState?.dueAt).toBe("2026-03-10T00:00:00.000Z");
-    expect(persistedState?.schedulerVersion).toBe("fsrs_v1");
+    expect(persistedState?.dueAt).toBe("2026-03-10T03:00:00.000Z");
+    expect(persistedState?.schedulerVersion).toBe("fsrs_v2_study_day");
     expect(persistedState?.scheduledDays).toBe(1);
     expect(persistedState?.learningSteps).toBe(0);
     expect(logs).toHaveLength(2);
     expect(logs.at(-1)?.previousState).toBe("learning");
     expect(logs.at(-1)?.newState).toBe("review");
     expect(logs.at(-1)?.rating).toBe("good");
-    expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v1");
+    expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v2_study_day");
+    expect(logs.at(-1)).toMatchObject({
+      algorithmVersion: "fsrs6",
+      canonicalSubjectKey: primaryCanonicalSubjectKey,
+      cardId: developmentFixture.primaryCardId,
+      cardTypeSnapshot: "recognition",
+      eventKind: "grade",
+      eventSchemaVersion: 2,
+      mediaIdSnapshot: developmentFixture.mediaId,
+      memoryKey: primarySubjectKey,
+      recallTask: "recognition",
+      recordedAt: "2026-03-09T12:00:00.000Z",
+      studyDay: "2026-03-09",
+      studyDayPolicy: "study-day:v1:Europe/Rome:rollover-240"
+    });
+    expect(logs.at(-1)?.beforeStateJson).not.toBeNull();
+    expect(logs.at(-1)?.afterStateJson).not.toBeNull();
+    expect(logs.at(-1)?.parameterHash).toMatch(/^sha256:[a-f0-9]{64}$/u);
+    const parameterSet = await database.query.reviewFsrsParameterSet.findFirst({
+      where: eq(
+        reviewFsrsParameterSet.parameterHash,
+        logs.at(-1)!.parameterHash!
+      )
+    });
+
+    expect(parameterSet).toMatchObject({
+      algorithmVersion: "fsrs6",
+      bindingVersion: "ts-fsrs@5.2.3",
+      recallTask: "recognition",
+      schedulerVersion: "fsrs_v2_study_day"
+    });
+    expect(JSON.parse(parameterSet!.parametersJson)).toMatchObject({
+      schedulerVersion: "fsrs_v2_study_day",
+      studyDayPolicy: "study-day:v1:Europe/Rome:rollover-240"
+    });
   });
 
   it("rejects grading an existing review subject without a freshness token", async () => {
@@ -214,7 +250,7 @@ describe("review mutations", () => {
       title: "New Grade Guard"
     });
     const cardId = fixture.cardIds[0]!;
-    const subjectKey = `entry:term:${fixture.termIds[0]}`;
+    const subjectKey = `mnemonic:v1:recognition:entry:term:${fixture.termIds[0]}`;
 
     await applyReviewGrade({
       cardId,
@@ -239,6 +275,10 @@ describe("review mutations", () => {
     });
 
     expect(logs).toHaveLength(1);
+    expect(logs[0]).toMatchObject({
+      eventKind: "grade",
+      rating: "good"
+    });
   });
 
   it("stores cross-media grading on the canonical shared subject state", async () => {
@@ -306,15 +346,15 @@ describe("review mutations", () => {
 
     expect(result.forcedContrast).toEqual({
       contrastKey: buildKanjiClashContrastKey(
-        primarySubjectKey,
-        secondarySubjectKey
+        primaryCanonicalSubjectKey,
+        secondaryCanonicalSubjectKey
       ),
       current: {
         cardId: developmentFixture.primaryCardId,
         crossMediaGroupId: null,
         entryId: developmentFixture.termDbId,
         entryType: "term",
-        subjectKey: primarySubjectKey,
+        subjectKey: primaryCanonicalSubjectKey,
         subjectType: "entry"
       },
       mediaId: developmentFixture.mediaId,
@@ -326,7 +366,7 @@ describe("review mutations", () => {
         crossMediaGroupId: null,
         entryId: developmentFixture.grammarDbId,
         entryType: "grammar",
-        subjectKey: secondarySubjectKey,
+        subjectKey: secondaryCanonicalSubjectKey,
         subjectType: "entry"
       }
     } satisfies ReviewForcedContrastResolution);
@@ -335,14 +375,20 @@ describe("review mutations", () => {
       await database.query.kanjiClashManualContrast.findFirst({
         where: eq(
           kanjiClashManualContrast.contrastKey,
-          buildKanjiClashContrastKey(primarySubjectKey, secondarySubjectKey)
+          buildKanjiClashContrastKey(
+            primaryCanonicalSubjectKey,
+            secondaryCanonicalSubjectKey
+          )
         )
       });
     const storedRoundStates =
       await database.query.kanjiClashManualContrastRoundState.findMany({
         where: eq(
           kanjiClashManualContrastRoundState.contrastKey,
-          buildKanjiClashContrastKey(primarySubjectKey, secondarySubjectKey)
+          buildKanjiClashContrastKey(
+            primaryCanonicalSubjectKey,
+            secondaryCanonicalSubjectKey
+          )
         )
       });
 
@@ -366,8 +412,12 @@ describe("review mutations", () => {
     });
     await markAllLessonsCompleted(database, "2026-03-11T09:00:00.000Z");
 
-    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
-      await loadCrossMediaTermSubjectContext(database);
+    const {
+      alphaTermEntry,
+      canonicalSubjectKey,
+      crossMediaGroupId,
+      subjectKey
+    } = await loadCrossMediaTermSubjectContext(database);
     const beforeState = await database.query.reviewSubjectState.findFirst({
       where: eq(reviewSubjectState.subjectKey, subjectKey)
     });
@@ -391,7 +441,7 @@ describe("review mutations", () => {
       crossMediaGroupId,
       entryId: alphaTermEntry.id,
       entryType: "term",
-      subjectKey,
+      subjectKey: canonicalSubjectKey,
       subjectType: "group"
     });
   });
@@ -496,7 +546,13 @@ describe("review mutations", () => {
     expect(manualQueue?.manualCount).toBe(2);
     expect(persistedState?.state).toBe("learning");
     expect(persistedState?.manualOverride).toBe(true);
-    expect(logs).toHaveLength(1);
+    expect(logs).toHaveLength(2);
+    expect(logs.map((log) => log.eventKind)).toEqual(["grade", "manual"]);
+    expect(logs.at(-1)).toMatchObject({
+      eventKind: "manual",
+      rating: null,
+      reason: "entry_status_known_manual"
+    });
 
     await setLinkedEntryStatusByCard({
       cardId: developmentFixture.primaryCardId,
@@ -725,7 +781,17 @@ describe("review mutations", () => {
     expect(resetState?.reps).toBe(0);
     expect(resetState?.lapses).toBe(0);
     expect(resetState?.dueAt).toBe("2026-03-09T14:10:00.000Z");
-    expect(logs).toHaveLength(1);
+    expect(logs).toHaveLength(4);
+    expect(logs.map((log) => log.eventKind)).toEqual([
+      "grade",
+      "manual",
+      "manual",
+      "reset"
+    ]);
+    expect(logs.at(-1)).toMatchObject({
+      rating: null,
+      reason: "user_reset"
+    });
     expect(resetQueue?.cards[0]?.id).toBe(developmentFixture.primaryCardId);
   });
 

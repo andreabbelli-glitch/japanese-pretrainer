@@ -29,6 +29,7 @@ import {
   normalizeFsrsOptimizerState,
   normalizeFsrsWeights
 } from "../model/settings-codec.ts";
+import { persistFsrsParameterSetsForSnapshot } from "./parameter-set.ts";
 
 type FsrsOptimizerSettingRow = UserSettingStorageRow;
 
@@ -53,7 +54,7 @@ const fsrsOptimizerRuntimeCacheKeySettingKeys = [
 const FSRS_RUNTIME_CONTEXT_TTL_MS = 60_000;
 
 type FsrsSettingsReader = Pick<DatabaseClient, "query" | "select">;
-type FsrsSettingsWriter = Pick<DatabaseClient, "insert" | "query">;
+type FsrsSettingsWriter = Pick<DatabaseClient, "insert" | "query" | "select">;
 
 let cachedFsrsRuntimeContext: {
   expiresAt: number;
@@ -79,6 +80,25 @@ export async function getFsrsOptimizerSnapshot(
   return buildFsrsOptimizerSnapshotFromRows(
     await loadFsrsOptimizerRows(database, fsrsOptimizerSettingKeys)
   );
+}
+
+/**
+ * Loads config, parameters, state and their stale-run cache key from one
+ * settings snapshot. Optimizer jobs must not use the request-path runtime
+ * context because that intentionally omits mutable optimizer state.
+ */
+export async function getFreshFsrsOptimizerTrainingContext(
+  database: FsrsSettingsReader = db
+): Promise<{
+  cacheKeyPart: string;
+  snapshot: FsrsOptimizerSnapshot;
+}> {
+  const rows = await loadFsrsOptimizerRows(database, fsrsOptimizerSettingKeys);
+
+  return {
+    cacheKeyPart: buildFsrsOptimizerCacheKeyPartFromRows(rows),
+    snapshot: buildFsrsOptimizerSnapshotFromRows(rows)
+  };
 }
 
 export async function getFsrsOptimizerRuntimeContext(
@@ -150,6 +170,11 @@ export async function writeFsrsOptimizerConfig(
       parsedExistingConfig &&
       areFsrsOptimizerConfigsEqual(parsedExistingConfig, normalizedConfig)
     ) {
+      await persistFsrsParameterSetsForSnapshot(
+        database,
+        await getFsrsOptimizerSnapshot(database),
+        nowIso
+      );
       return;
     }
   }
@@ -160,8 +185,12 @@ export async function writeFsrsOptimizerConfig(
     nowIso,
     valueJson: JSON.stringify(normalizedConfig)
   });
-  invalidateFsrsOptimizerRuntimeContextCache();
-  await revalidateReviewFirstCandidateCacheIfSupported();
+  await persistFsrsParameterSetsForSnapshot(
+    database,
+    await getFsrsOptimizerSnapshot(database),
+    nowIso
+  );
+  await invalidateFsrsOptimizerCaches();
 }
 
 export async function writeFsrsOptimizerState(
@@ -184,6 +213,20 @@ export async function writeFsrsOptimizedParameters(
   database: FsrsSettingsWriter = db,
   nowIso = new Date().toISOString()
 ) {
+  await writeFsrsOptimizedParametersToDatabase(parameters, database, nowIso);
+  await invalidateFsrsOptimizerCaches();
+}
+
+/**
+ * Persists an optimized preset without publishing cache invalidations. This is
+ * the transaction-safe writer used by the optimizer; callers must invalidate
+ * only after their transaction has committed successfully.
+ */
+export async function writeFsrsOptimizedParametersToDatabase(
+  parameters: FsrsOptimizedParameters,
+  database: FsrsSettingsWriter = db,
+  nowIso = new Date().toISOString()
+) {
   const normalizedParameters = normalizeFsrsOptimizedParameters(parameters);
 
   if (!normalizedParameters) {
@@ -201,8 +244,11 @@ export async function writeFsrsOptimizedParameters(
     nowIso,
     valueJson: JSON.stringify(normalizedParameters)
   });
-  invalidateFsrsOptimizerRuntimeContextCache();
-  await revalidateReviewFirstCandidateCacheIfSupported();
+  await persistFsrsParameterSetsForSnapshot(
+    database,
+    await getFsrsOptimizerSnapshot(database),
+    nowIso
+  );
 }
 
 async function loadFsrsOptimizerRows(
@@ -270,6 +316,11 @@ function canUseFsrsRuntimeContextCache(database: DatabaseClient) {
 
 export function invalidateFsrsOptimizerRuntimeContextCache() {
   cachedFsrsRuntimeContext = null;
+}
+
+export async function invalidateFsrsOptimizerCaches() {
+  invalidateFsrsOptimizerRuntimeContextCache();
+  await revalidateReviewFirstCandidateCacheIfSupported();
 }
 
 type NextCacheModule = {

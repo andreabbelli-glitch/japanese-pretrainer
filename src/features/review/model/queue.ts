@@ -12,6 +12,11 @@ import type {
   ReviewQueueCard
 } from "@/features/review/types";
 import { resolveReviewQueueState } from "@/features/review/model/queue-state";
+import {
+  addReviewStudyDays,
+  getReviewStudyDay,
+  getReviewStudyDayBoundsForKey
+} from "@/features/review/model/study-day";
 import type {
   ReviewQueueSubjectSnapshot,
   ReviewSubjectModel
@@ -30,6 +35,10 @@ export type {
   ReviewQueueSubjectSnapshot,
   ReviewSubjectModel
 } from "@/features/review/model/queue-types";
+
+export const DEFAULT_REVIEW_LEARN_AHEAD_MINUTES = 20;
+const DEFAULT_REVIEW_LEARN_AHEAD_MS =
+  DEFAULT_REVIEW_LEARN_AHEAD_MINUTES * 60_000;
 
 function createReviewSubjectVisibilityResolver(visibleMediaId?: string) {
   if (!visibleMediaId) {
@@ -130,6 +139,13 @@ function compareReviewSubjectModelsByDue(
   left: ReviewSubjectModel,
   right: ReviewSubjectModel
 ) {
+  const leftIsIntradayLearning = isIntradayLearningModel(left);
+  const rightIsIntradayLearning = isIntradayLearningModel(right);
+
+  if (leftIsIntradayLearning !== rightIsIntradayLearning) {
+    return leftIsIntradayLearning ? -1 : 1;
+  }
+
   if (
     (left.queueStateSnapshot.dueAt ?? "") !==
     (right.queueStateSnapshot.dueAt ?? "")
@@ -148,6 +164,44 @@ function compareReviewSubjectModelsByDue(
   }
 
   return compareReviewCardsByOrder(left.card, right.card);
+}
+
+function isIntradayLearningModel(model: ReviewSubjectModel) {
+  const subjectState = model.group.subjectState;
+
+  return (
+    (subjectState?.state === "learning" ||
+      subjectState?.state === "relearning") &&
+    (subjectState.scheduledDays ?? 0) === 0 &&
+    model.queueStateSnapshot.dueAt !== null
+  );
+}
+
+function selectLearnAheadModels(input: {
+  hasRegularQueue: boolean;
+  nowIso: string;
+  upcomingModels: ReviewSubjectModel[];
+}) {
+  if (input.hasRegularQueue) {
+    return [];
+  }
+
+  const learnAheadCutoff =
+    new Date(input.nowIso).getTime() + DEFAULT_REVIEW_LEARN_AHEAD_MS;
+
+  if (!Number.isFinite(learnAheadCutoff)) {
+    return [];
+  }
+
+  return input.upcomingModels.filter((model) => {
+    if (!isIntradayLearningModel(model)) {
+      return false;
+    }
+
+    const dueTime = new Date(model.queueStateSnapshot.dueAt!).getTime();
+
+    return Number.isFinite(dueTime) && dueTime <= learnAheadCutoff;
+  });
 }
 
 function compareReviewSubjectModelsByOrder(
@@ -311,22 +365,38 @@ export function buildReviewOverviewSnapshot(input: {
     resolveModelForDisplay,
     input.visibleMediaId
   );
+  const upcomingModelsForDisplay = mapReviewSubjectModelsForVisibleMedia(
+    classifiedModels.upcomingModels,
+    resolveModelForDisplay,
+    input.visibleMediaId
+  );
+  const learnAheadModels = selectLearnAheadModels({
+    hasRegularQueue:
+      dueModelsForDisplay.length > 0 || queuedNewModels.length > 0,
+    nowIso: input.nowIso,
+    upcomingModels: upcomingModelsForDisplay
+  });
 
   const dueCount = classifiedModels.dueModels.length;
   const newQueuedCount = queuedNewModels.length;
   const manualCount = classifiedModels.manualModels.length;
   const upcomingCount = classifiedModels.upcomingModels.length;
   const nextDueAt = resolveNextDueAt(classifiedModels.upcomingModels);
+  const nextLearningDueAt = resolveNextIntradayDueAt(
+    classifiedModels.upcomingModels
+  );
   const queueLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount,
     manualCount,
     newQueuedCount,
+    learnAheadCount: learnAheadModels.length,
     sessionTopUpNewCount: input.extraNewCount,
     upcomingCount
   });
 
-  const firstQueueModel = dueModelsForDisplay[0] ?? queuedNewModels[0];
+  const firstQueueModel =
+    dueModelsForDisplay[0] ?? queuedNewModels[0] ?? learnAheadModels[0];
 
   return {
     activeCards: dueCount + upcomingCount,
@@ -337,10 +407,11 @@ export function buildReviewOverviewSnapshot(input: {
     newAvailableCount: classifiedModels.visibleNewModels.length,
     newQueuedCount,
     nextDueAt,
+    nextLearningDueAt,
     nextCardFront: firstQueueModel?.card.front
       ? stripInlineMarkdown(firstQueueModel.card.front)
       : undefined,
-    queueCount: dueCount + newQueuedCount,
+    queueCount: dueCount + newQueuedCount + learnAheadModels.length,
     queueLabel,
     suspendedCount: classifiedModels.suspendedModels.length,
     tomorrowCount: countUpcomingDueTomorrow(
@@ -425,12 +496,23 @@ export function buildReviewQueueSubjectSnapshot(input: {
   );
   const mappedDueModels = mapModelsForDisplay(classifiedModels.dueModels);
   const nextDueAt = resolveNextDueAt(mappedUpcomingModels);
+  const nextLearningDueAt = resolveNextIntradayDueAt(mappedUpcomingModels);
 
   // queuedNewModels are already resolved for display inside buildQueuedNewReviewSubjectModels if visibleMediaId is provided.
-  const queueModels = [...mappedDueModels, ...queuedNewModels];
+  const learnAheadModels = selectLearnAheadModels({
+    hasRegularQueue: mappedDueModels.length > 0 || queuedNewModels.length > 0,
+    nowIso: input.nowIso,
+    upcomingModels: mappedUpcomingModels
+  });
+  const queueModels = [
+    ...mappedDueModels,
+    ...queuedNewModels,
+    ...learnAheadModels
+  ];
   const introLabel = buildQueueIntroLabel({
     dailyLimit: effectiveDailyLimit,
     dueCount: classifiedModels.dueModels.length,
+    learnAheadCount: learnAheadModels.length,
     manualCount: classifiedModels.manualModels.length,
     newQueuedCount: queuedNewModels.length,
     sessionTopUpNewCount: input.extraNewCount,
@@ -447,6 +529,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
     newAvailableCount: classifiedModels.visibleNewModels.length,
     newQueuedCount: queuedNewModels.length,
     nextDueAt,
+    nextLearningDueAt,
     queueCount: queueModels.length,
     queueModels,
     subjectModels: visibleSubjectModels,
@@ -463,7 +546,21 @@ export function buildReviewQueueSubjectSnapshot(input: {
 }
 
 function resolveNextDueAt(models: ReviewSubjectModel[]) {
-  return models[0]?.queueStateSnapshot.dueAt ?? null;
+  let earliestDueAt: string | null = null;
+
+  for (const model of models) {
+    const dueAt = model.queueStateSnapshot.dueAt;
+
+    if (dueAt && (earliestDueAt === null || dueAt < earliestDueAt)) {
+      earliestDueAt = dueAt;
+    }
+  }
+
+  return earliestDueAt;
+}
+
+function resolveNextIntradayDueAt(models: ReviewSubjectModel[]) {
+  return resolveNextDueAt(models.filter(isIntradayLearningModel));
 }
 
 export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
@@ -590,29 +687,20 @@ function countUpcomingDueTomorrow(
   upcomingModels: ReviewSubjectModel[],
   nowIso: string
 ): number {
-  const now = new Date(nowIso);
-  const tomorrowStart = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 1
+  const { dayEndIso, dayStartIso } = getReviewStudyDayBoundsForKey(
+    addReviewStudyDays(getReviewStudyDay(nowIso), 1)
   );
-  const tomorrowEnd = new Date(
-    now.getFullYear(),
-    now.getMonth(),
-    now.getDate() + 2
-  );
-  const tomorrowStartIso = tomorrowStart.toISOString();
-  const tomorrowEndIso = tomorrowEnd.toISOString();
 
   return upcomingModels.filter((model) => {
     const dueAt = model.queueStateSnapshot.dueAt;
-    return dueAt != null && dueAt >= tomorrowStartIso && dueAt < tomorrowEndIso;
+    return dueAt != null && dueAt >= dayStartIso && dueAt < dayEndIso;
   }).length;
 }
 
 export function buildQueueIntroLabel(input: {
   dailyLimit: number;
   dueCount: number;
+  learnAheadCount?: number;
   manualCount: number;
   newQueuedCount: number;
   sessionTopUpNewCount: number;
@@ -650,6 +738,12 @@ export function buildQueueIntroLabel(input: {
     }
 
     return `${segments.join(". ")}.`;
+  }
+
+  if ((input.learnAheadCount ?? 0) > 0) {
+    return input.learnAheadCount === 1
+      ? "1 ripetizione di apprendimento anticipata: non ci sono altre card pronte."
+      : `${input.learnAheadCount} ripetizioni di apprendimento anticipate: non ci sono altre card pronte.`;
   }
 
   if (input.upcomingCount > 0) {

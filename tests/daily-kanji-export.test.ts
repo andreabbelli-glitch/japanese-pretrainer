@@ -21,6 +21,7 @@ import {
 } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
 import { buildDailyKanjiDataset } from "@/features/daily-kanji/server/exporter";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import { withTestDatabase } from "./helpers/test-db";
 
 const nowIso = "2026-06-10T12:00:00.000Z";
@@ -113,6 +114,57 @@ describe("daily kanji iOS export", () => {
             (entry) => entry.cardId === developmentFixture.secondaryCardId
           )
         ).toBeUndefined();
+      }
+    );
+  });
+
+  it("matches recent mistakes by canonical ledger key and excludes non-grade events", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-daily-kanji-canonical-ledger-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database }) => {
+        await seedDailyKanjiCards(database);
+
+        const canonicalSubjectKey = "entry:term:term_daily_kanten";
+        await database
+          .update(reviewSubjectLog)
+          .set({
+            canonicalSubjectKey,
+            eventSchemaVersion: 1,
+            memoryKey: null,
+            recallTask: "recognition",
+            subjectKey: "legacy:daily-kanji-kanten"
+          })
+          .where(eq(reviewSubjectLog.cardId, "card_daily_recent_again"));
+        await database.insert(reviewSubjectLog).values({
+          ...buildReviewLog({
+            answeredAt: "2026-06-10T10:00:00.000Z",
+            id: "review_log_daily_kanten_non_grade",
+            rating: "again"
+          }),
+          canonicalSubjectKey,
+          eventKind: "reset",
+          subjectKey: canonicalSubjectKey
+        });
+
+        const dataset = await buildDailyKanjiDataset({
+          database,
+          limit: 10,
+          nowIso,
+          recentMistakeLookbackDays: 3
+        });
+        const recentMistake = dataset.cards.find(
+          (entry) => entry.cardId === "card_daily_recent_again"
+        );
+
+        expect(recentMistake?.srs.recentHardAgainCount).toBe(2);
+        expect(recentMistake?.srs.lastHardAgainAt).toBe(
+          "2026-06-09T11:00:00.000Z"
+        );
+        expect(recentMistake?.studyModes?.lastLessonsHardAgain).toBeDefined();
       }
     );
   });
@@ -1264,8 +1316,17 @@ function buildReviewState(input: {
   state: "known_manual" | "learning" | "review" | "relearning";
   suspended?: boolean;
 }) {
+  const canonicalSubjectKey = `entry:term:${input.entryId}`;
+  const memoryKey = buildReviewMemoryKey({
+    canonicalSubjectKey,
+    cardId: input.cardId,
+    recallTask: "recognition"
+  });
+
   return {
-    subjectKey: `entry:term:${input.entryId}`,
+    canonicalSubjectKey,
+    recallTask: "recognition" as const,
+    subjectKey: memoryKey,
     cardId: input.cardId,
     createdAt: nowIso,
     crossMediaGroupId: null,
@@ -1298,18 +1359,28 @@ function buildReviewLog(input: {
 }) {
   const cardId = input.cardId ?? "card_daily_recent_again";
   const entryId = input.entryId ?? "term_daily_kanten";
+  const canonicalSubjectKey = `entry:term:${entryId}`;
+  const memoryKey = buildReviewMemoryKey({
+    canonicalSubjectKey,
+    cardId,
+    recallTask: "recognition"
+  });
 
   return {
     id: input.id,
     answeredAt: input.answeredAt,
     cardId,
+    canonicalSubjectKey,
     elapsedDays: 0.1,
+    eventSchemaVersion: 2,
+    memoryKey,
     newState: "relearning" as const,
     previousState: "review" as const,
     rating: input.rating,
+    recallTask: "recognition" as const,
     responseMs: 4200,
     scheduledDueAt: "2026-06-10T08:00:00.000Z",
     schedulerVersion: "fsrs_v1" as const,
-    subjectKey: `entry:term:${entryId}`
+    subjectKey: memoryKey
   };
 }

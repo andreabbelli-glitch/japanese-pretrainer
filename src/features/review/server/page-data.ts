@@ -17,7 +17,7 @@ import {
   measureWith,
   type ReviewProfiler
 } from "@/features/review/server/profiler";
-import { buildReviewGradePreviews as buildSharedReviewGradePreviews } from "@/features/review/model/grade-previews";
+import { buildServerReviewGradePreviews } from "@/features/review/server/grade-previews";
 import {
   getFsrsOptimizerCacheKeyPart,
   getFsrsOptimizerRuntimeSnapshot,
@@ -307,7 +307,14 @@ export async function buildReviewPageDataFromWorkspace(input: {
         }
       : selectedCardBase;
   const selectedGradePreviews = selectedCard
-    ? buildSharedReviewGradePreviews(selectedCard.reviewSeedState, input.now)
+    ? await buildServerReviewGradePreviews({
+        database: input.database,
+        excludeSubjectKey:
+          selection.selectedModel?.group.identity.subjectKey ?? null,
+        now: input.now,
+        recallTask: selection.selectedModel?.group.identity.recallTask ?? null,
+        reviewSeedState: selectedCard.reviewSeedState
+      })
     : [];
   input.profiler?.addMeta({
     selectedCardId: selectedCard?.id ?? null
@@ -332,6 +339,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
       newAvailableCount: queueSnapshot.newAvailableCount,
       newQueuedCount: queueSnapshot.newQueuedCount,
       nextDueAt: queueSnapshot.nextDueAt ?? null,
+      nextLearningDueAt: queueSnapshot.nextLearningDueAt ?? null,
       queueCount: queueSnapshot.queueCount,
       queueLabel: queueSnapshot.introLabel,
       suspendedCards: [],
@@ -605,7 +613,8 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
           fsrsOptimizerSnapshot,
           mediaById: input.mediaById,
           nowIso,
-          queueStateSnapshot: selection.selectedModel.queueStateSnapshot
+          queueStateSnapshot: selection.selectedModel.queueStateSnapshot,
+          schedulingKey: selection.selectedModel.group.identity.subjectKey
         })
       : null;
   const selectedCardContext = buildReviewFirstCandidateSelectedCardContext({
@@ -649,6 +658,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
       newAvailableCount: queueSnapshot.newAvailableCount,
       newQueuedCount: queueSnapshot.newQueuedCount,
       nextDueAt: queueSnapshot.nextDueAt ?? null,
+      nextLearningDueAt: queueSnapshot.nextLearningDueAt ?? null,
       queueCount: queueSnapshot.queueCount,
       queueLabel: queueSnapshot.introLabel,
       suspendedCount: queueSnapshot.suspendedCount,
@@ -821,6 +831,7 @@ export async function getReviewQueueSnapshotForMedia(
     newAvailableCount: snapshot.newAvailableCount,
     newQueuedCount: snapshot.newQueuedCount,
     nextDueAt: snapshot.nextDueAt ?? null,
+    nextLearningDueAt: snapshot.nextLearningDueAt ?? null,
     queueLabel: snapshot.introLabel,
     queueCount: snapshot.queueCount,
     suspendedCount: snapshot.suspendedCount,

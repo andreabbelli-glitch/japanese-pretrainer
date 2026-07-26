@@ -73,11 +73,74 @@ describe("review subject representative fallback", () => {
     });
 
     expect(identity).toMatchObject({
+      canonicalSubjectKey: "group:term:shared-iku",
       crossMediaGroupId: "shared-iku",
       entryId: "term-iku",
       entryType: "term",
-      subjectKey: "group:term:shared-iku",
+      memoryKey: "mnemonic:v1:recognition:group:term:shared-iku",
+      recallTask: "recognition",
+      subjectKey: "mnemonic:v1:recognition:group:term:shared-iku",
       subjectKind: "group"
+    });
+  });
+
+  it("separates mnemonic recall tasks without changing the canonical subject", () => {
+    const entryLookup = buildReviewSubjectEntryLookup({
+      grammar: [],
+      terms: [
+        {
+          crossMediaGroupId: "shared-iku",
+          id: "term-iku",
+          lemma: "行く",
+          reading: "いく"
+        }
+      ]
+    });
+    const baseInput = {
+      front: "{{行|い}}く",
+      entryLinks: [
+        {
+          entryId: "term-iku",
+          entryType: "term" as const,
+          relationshipType: "primary" as const
+        }
+      ],
+      entryLookup
+    };
+    const recognition = deriveReviewSubjectIdentity({
+      ...baseInput,
+      cardId: "card-iku-recognition",
+      cardType: "recognition"
+    });
+    const concept = deriveReviewSubjectIdentity({
+      ...baseInput,
+      cardId: "card-iku-concept",
+      cardType: "concept"
+    });
+
+    expect(recognition.canonicalSubjectKey).toBe(concept.canonicalSubjectKey);
+    expect(recognition.subjectKey).toBe(recognition.memoryKey);
+    expect(concept.subjectKey).toBe(concept.memoryKey);
+    expect(recognition.subjectKey).not.toBe(concept.subjectKey);
+    expect(recognition.recallTask).toBe("recognition");
+    expect(concept.recallTask).toBe("concept");
+    expect(recognition.memoryKey).not.toBe(concept.memoryKey);
+  });
+
+  it("keeps unsupported recall tasks on card-level memory keys", () => {
+    const identity = deriveReviewSubjectIdentity({
+      cardId: "card-production",
+      cardType: "production",
+      front: "行く",
+      entryLinks: [],
+      entryLookup: buildReviewSubjectEntryLookup({ grammar: [], terms: [] })
+    });
+
+    expect(identity).toMatchObject({
+      canonicalSubjectKey: "card:card-production",
+      memoryKey: "mnemonic:v1:other:card:card-production",
+      recallTask: "other",
+      subjectKey: "mnemonic:v1:other:card:card-production"
     });
   });
 
@@ -109,10 +172,13 @@ describe("review subject representative fallback", () => {
     });
 
     expect(identity).toMatchObject({
+      canonicalSubjectKey: "card:card-iku-chunk",
       crossMediaGroupId: null,
       entryId: null,
       entryType: null,
-      subjectKey: "card:card-iku-chunk",
+      memoryKey: "mnemonic:v1:concept:card:card-iku-chunk",
+      recallTask: "concept",
+      subjectKey: "mnemonic:v1:concept:card:card-iku-chunk",
       subjectKind: "card"
     });
   });
@@ -159,6 +225,7 @@ describe("review subject representative fallback", () => {
         [olderCard, newerCard],
         {
           cardId: null,
+          canonicalSubjectKey: null,
           createdAt: "2026-03-10T07:00:00.000Z",
           crossMediaGroupId: null,
           dueAt: "2026-03-10T07:30:00.000Z",
@@ -171,6 +238,7 @@ describe("review subject representative fallback", () => {
           learningSteps: 0,
           manualOverride: false,
           reps: 1,
+          recallTask: "recognition",
           scheduledDays: 1,
           schedulerVersion: "fsrs_v1",
           stability: 2,

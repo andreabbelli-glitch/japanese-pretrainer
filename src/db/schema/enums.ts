@@ -8,6 +8,18 @@ export type {
   LessonStatus,
   MediaStatus
 } from "../../domain/content.ts";
+export {
+  reviewAlgorithmVersionValues,
+  reviewCanonicalControlStatusValues,
+  reviewEventKindValues,
+  reviewRecallTaskValues
+} from "../../domain/review.ts";
+export type {
+  ReviewAlgorithmVersion,
+  ReviewCanonicalControlStatus,
+  ReviewEventKind,
+  ReviewRecallTask
+} from "../../domain/review.ts";
 
 export const cardStatusValues = ["active", "suspended", "archived"] as const;
 export const sourceTypeValues = ["lesson", "card"] as const;
@@ -32,7 +44,10 @@ export const reviewStateValues = [
 ] as const;
 export const reviewSubjectKindValues = ["group", "entry", "card"] as const;
 export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
-export const reviewSchedulerVersionValues = ["fsrs_v1"] as const;
+export const reviewSchedulerVersionValues = [
+  "fsrs_v1",
+  "fsrs_v2_study_day"
+] as const;
 export const preReviewConsolidationStatusValues = [
   "pending",
   "retraining",
@@ -121,6 +136,7 @@ export const userSettingKeys = [
   "fsrs_optimizer_state",
   "fsrs_params_recognition",
   "fsrs_params_concept",
+  "review_memory_key_version",
   "mobile_review_apns_device_token",
   "mobile_review_notification_state"
 ] as const;

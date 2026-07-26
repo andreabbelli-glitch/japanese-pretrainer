@@ -30,6 +30,7 @@ import { buildScopedEntryId } from "@/features/study/model/entry-id";
 import { getGlossaryPageData } from "@/features/glossary/server";
 import { importContentWorkspace } from "@/features/content/importer";
 import { getMediaProgressPageData } from "@/features/progress/server";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import { getReviewPageData } from "@/features/review/server";
 import { mediaKanjiClashHref } from "@/features/navigation";
 import {
@@ -40,6 +41,7 @@ import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { primarySubjectKey } from "./helpers/review-shared";
 
 describe("progress, settings, and study controls", () => {
   let tempDir = "";
@@ -73,12 +75,7 @@ describe("progress, settings, and study controls", () => {
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     const data = await getMediaProgressPageData(
       developmentFixture.mediaSlug,
@@ -191,12 +188,7 @@ describe("progress, settings, and study controls", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(card).values({
       id: "card_fixture_progress_new_only",
@@ -248,12 +240,7 @@ describe("progress, settings, and study controls", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(media).values({
       id: "media_progress_global_review",
@@ -302,8 +289,16 @@ describe("progress, settings, and study controls", () => {
       createdAt: "2026-03-09T10:00:00.000Z",
       updatedAt: "2026-03-09T10:00:00.000Z"
     });
+    const canonicalSubjectKey = "card:card_progress_global_due";
+
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:card_progress_global_due",
+      subjectKey: buildReviewMemoryKey({
+        canonicalSubjectKey,
+        cardId: "card_progress_global_due",
+        recallTask: "recognition"
+      }),
+      canonicalSubjectKey,
+      recallTask: "recognition",
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -461,12 +456,7 @@ describe("progress, settings, and study controls", () => {
       .set({
         dueAt: "2000-01-01T00:00:00.000Z"
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
     await database.insert(card).values({
       id: "card_fixture_new_limit",
       mediaId: developmentFixture.mediaId,

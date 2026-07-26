@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, describe, expect, it } from "vitest";
 
 import { SettingsPage } from "@/components/settings/settings-page";
+import { FsrsOptimizerStatusPanel } from "@/components/settings/fsrs-optimizer-status-panel";
 import type { FsrsOptimizerStatus } from "@/features/fsrs-optimizer/server";
 
 const AUTH_ENV_KEYS = [
@@ -30,6 +31,26 @@ afterEach(() => {
 });
 
 describe("settings page", () => {
+  it("shows global and per-preset optimizer failures", () => {
+    const status = buildFsrsOptimizerStatus();
+
+    status.state.lastTrainingError = "All evaluated presets failed.";
+    status.presets.recognition.lastError = "Recognition timeout.";
+    status.presets.concept.lastError = "Concept optimizer failed.";
+
+    const markup = renderToStaticMarkup(
+      createElement(FsrsOptimizerStatusPanel, { status })
+    );
+
+    expect(markup).toContain(
+      "Ultimo errore training: All evaluated presets failed."
+    );
+    expect(markup).toContain("Ultimo errore del preset: Recognition timeout.");
+    expect(markup).toContain(
+      "Ultimo errore del preset: Concept optimizer failed."
+    );
+  });
+
   it("renders logout only as the final account setting when auth is enabled", () => {
     clearAuthEnv();
     process.env.AUTH_USERNAME = "owner";
@@ -69,7 +90,9 @@ describe("settings page", () => {
     expect(markup).toContain("Applica riallineamento FSRS");
     expect(markup).toContain("Delta 7 giorni");
     expect(markup).toContain("2026-01-21");
-    expect(markup).toContain("aria-label=\"Impatto giornaliero del riallineamento FSRS\"");
+    expect(markup).toContain(
+      'aria-label="Impatto giornaliero del riallineamento FSRS"'
+    );
     expect(markup).toContain("Esci dall&#x27;account");
     expect(markup).toContain(">Esci<");
     expect(markup.indexOf("Salva preferenze")).toBeLessThan(
@@ -130,6 +153,32 @@ describe("settings page", () => {
     expect(markup).toContain("pnpm fsrs:optimize");
   });
 
+  it("loads the expensive FSRS reschedule preview only on request", () => {
+    clearAuthEnv();
+
+    const markup = renderToStaticMarkup(
+      createElement(SettingsPage, {
+        fsrsOptimizerStatus: buildFsrsOptimizerStatus(),
+        fsrsReschedulePreview: null,
+        saved: false,
+        settings: {
+          furiganaMode: "hover",
+          glossaryDefaultSort: "lesson_order",
+          kanjiClashDailyNewLimit: 5,
+          kanjiClashDefaultScope: "global",
+          kanjiClashManualDefaultSize: 20,
+          reviewAutoplayAudioOnReveal: true,
+          reviewFrontFurigana: true,
+          reviewDailyLimit: 20
+        }
+      })
+    );
+
+    expect(markup).toContain("Calcola preview FSRS");
+    expect(markup).toContain("/settings?fsrsPreview=1");
+    expect(markup).not.toContain("Impatto giornaliero");
+  });
+
   it("preserves a valid persisted review daily limit outside the preset list", () => {
     clearAuthEnv();
 
@@ -179,7 +228,7 @@ describe("settings page", () => {
     );
 
     expect(markup).toContain("Calendario FSRS riallineato.");
-    expect(markup).toContain("disabled=\"\"");
+    expect(markup).toContain('disabled=""');
     expect(markup).toContain("Nessuna card da riallineare");
   });
 });

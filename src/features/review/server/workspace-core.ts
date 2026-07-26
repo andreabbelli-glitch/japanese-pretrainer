@@ -17,7 +17,10 @@ import {
   filterReviewCardsBySubjectGroups,
   resolveReviewWorkspaceSubjectGroups
 } from "@/features/review/server/workspace-helpers";
-import { getLocalIsoDateKey } from "@/features/shared/model/local-date";
+import {
+  getReviewStudyDay,
+  getReviewStudyDayPolicyKey
+} from "@/features/review/model/study-day";
 import { getReviewDailyLimit } from "@/features/settings/server";
 
 export type ReviewWorkspaceTermIdentityRow = {
@@ -127,7 +130,11 @@ export async function loadReviewIntroducedTodayCountCached(
 ) {
   return runWithTaggedCache({
     enabled: !bypassCache && canUseDataCache(database),
-    keyParts: ["review-introduced-global", getLocalIsoDateKey(asOf)],
+    keyParts: [
+      "review-introduced-global",
+      getReviewStudyDayPolicyKey(),
+      getReviewStudyDay(asOf)
+    ],
     loader: () => countReviewSubjectsIntroducedOnDay(database, asOf),
     tags: buildReviewSummaryTags()
   });

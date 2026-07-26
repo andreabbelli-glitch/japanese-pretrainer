@@ -251,6 +251,13 @@ export function useReviewPageController(input: {
   });
 
   function handleGradeCard(rating: ReviewGradeValue) {
+    // The first-candidate payload intentionally omits server-derived previews.
+    // Keep pointer and programmatic grading closed until full hydration uses
+    // the same authoritative schedule that persistence will use.
+    if (isGradeControlsDisabled) {
+      return;
+    }
+
     submitGradeCard(rating, {
       activeQueueCardIds,
       advanceWindowCardIds,

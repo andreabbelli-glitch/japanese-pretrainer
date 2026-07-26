@@ -12,9 +12,14 @@ describe("local date formatting", () => {
 
   it("formats UTC timestamps using the local calendar day", () => {
     const value = "2026-04-10T23:30:00.000Z";
+    const hostLocalDate = new Intl.DateTimeFormat("sv-SE", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit"
+    }).format(new Date(value));
 
     expect(formatShortIsoDate(value)).toBe("2026-04-11");
-    expect(formatGlossaryShortDate(value)).toBe("2026-04-11");
+    expect(formatGlossaryShortDate(value)).toBe(hostLocalDate);
   });
 
   it("keeps ISO date-only strings stable when the local timezone trails UTC", async () => {
@@ -37,7 +42,8 @@ describe("local date formatting", () => {
       DateTimeFormat: MockDateTimeFormat
     });
 
-    const { formatLocalIsoDate } = await import("@/features/shared/model/local-date");
+    const { formatLocalIsoDate } =
+      await import("@/features/shared/model/local-date");
 
     expect(formatLocalIsoDate("2026-04-10")).toBe("2026-04-10");
   });

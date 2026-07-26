@@ -3,7 +3,9 @@ import { generatorParameters } from "ts-fsrs";
 import {
   DEFAULT_FSRS_OPTIMIZER_CONFIG,
   type FsrsOptimizedParameters,
+  type FsrsModelEvaluation,
   type FsrsOptimizerConfig,
+  type FsrsOptimizerPresetProgress,
   type FsrsOptimizerSnapshot,
   type FsrsOptimizerState,
   type FsrsPresetKey
@@ -89,12 +91,26 @@ export function normalizeFsrsOptimizerState(
   input: Partial<FsrsOptimizerState>,
   fallbackBindingVersion: string
 ): FsrsOptimizerState {
+  const presetProgress = input.presetProgress
+    ? {
+        concept: normalizeFsrsOptimizerPresetProgress(
+          input.presetProgress.concept
+        ),
+        recognition: normalizeFsrsOptimizerPresetProgress(
+          input.presetProgress.recognition
+        )
+      }
+    : undefined;
+
   return {
+    activeRunId: normalizeNullableNonEmptyString(input.activeRunId),
     bindingVersion:
       typeof input.bindingVersion === "string" &&
       input.bindingVersion.length > 0
         ? input.bindingVersion
         : fallbackBindingVersion,
+    datasetVersion:
+      normalizeNullableNonEmptyString(input.datasetVersion) ?? undefined,
     lastAttemptAt: normalizeNullableIsoString(input.lastAttemptAt),
     lastCheckAt: normalizeNullableIsoString(input.lastCheckAt),
     lastSuccessfulTrainingAt: normalizeNullableIsoString(
@@ -108,6 +124,7 @@ export function normalizeFsrsOptimizerState(
     newEligibleReviewsSinceLastTraining: normalizeNonNegativeInteger(
       input.newEligibleReviewsSinceLastTraining
     ),
+    presetProgress,
     totalEligibleReviewsAtLastTraining: normalizeNonNegativeInteger(
       input.totalEligibleReviewsAtLastTraining
     )
@@ -130,11 +147,77 @@ export function normalizeFsrsOptimizedParameters(
   }
 
   return {
+    algorithmVersion:
+      input.algorithmVersion === "fsrs6" ? input.algorithmVersion : undefined,
+    bindingVersion:
+      normalizeNullableNonEmptyString(input.bindingVersion) ?? undefined,
+    candidateEvaluation:
+      normalizeFsrsModelEvaluation(input.candidateEvaluation) ?? undefined,
+    datasetVersion:
+      normalizeNullableNonEmptyString(input.datasetVersion) ?? undefined,
     desiredRetention: normalizeDesiredRetention(input.desiredRetention),
+    holdoutItemCount:
+      input.holdoutItemCount === undefined
+        ? undefined
+        : normalizeNonNegativeInteger(input.holdoutItemCount),
+    incumbentEvaluation:
+      normalizeFsrsModelEvaluation(input.incumbentEvaluation) ?? undefined,
+    metric: input.metric === "log_loss" ? input.metric : undefined,
     presetKey,
+    studyDayPolicy:
+      normalizeNullableNonEmptyString(input.studyDayPolicy) ?? undefined,
     trainedAt,
+    trainingItemCount:
+      input.trainingItemCount === undefined
+        ? undefined
+        : normalizeNonNegativeInteger(input.trainingItemCount),
     trainingReviewCount: normalizePositiveInteger(input.trainingReviewCount, 0),
     weights
+  };
+}
+
+function normalizeFsrsOptimizerPresetProgress(
+  input: Partial<FsrsOptimizerPresetProgress> | undefined
+): FsrsOptimizerPresetProgress {
+  return {
+    eligibleReviewCountAtLastEvaluation: normalizeNonNegativeInteger(
+      input?.eligibleReviewCountAtLastEvaluation
+    ),
+    lastCandidateEvaluation:
+      normalizeFsrsModelEvaluation(input?.lastCandidateEvaluation) ?? null,
+    lastError:
+      typeof input?.lastError === "string" && input.lastError.trim().length > 0
+        ? input.lastError.trim()
+        : null,
+    lastEvaluationAt: normalizeNullableIsoString(input?.lastEvaluationAt),
+    lastIncumbentEvaluation:
+      normalizeFsrsModelEvaluation(input?.lastIncumbentEvaluation) ?? null,
+    lastAttemptAt: normalizeNullableIsoString(input?.lastAttemptAt),
+    lastWatermarkAnsweredAt: normalizeNullableIsoString(
+      input?.lastWatermarkAnsweredAt
+    ),
+    newEligibleReviewsSinceLastEvaluation: normalizeNonNegativeInteger(
+      input?.newEligibleReviewsSinceLastEvaluation
+    )
+  };
+}
+
+function normalizeFsrsModelEvaluation(
+  input: Partial<FsrsModelEvaluation> | null | undefined
+): FsrsModelEvaluation | null {
+  if (
+    !input ||
+    !Number.isFinite(input.logLoss) ||
+    !Number.isFinite(input.rmseBins) ||
+    input.logLoss! < 0 ||
+    input.rmseBins! < 0
+  ) {
+    return null;
+  }
+
+  return {
+    logLoss: input.logLoss!,
+    rmseBins: input.rmseBins!
   };
 }
 
@@ -178,6 +261,12 @@ function normalizeNullableIsoString(value: string | null | undefined) {
   const parsed = new Date(value);
 
   return Number.isNaN(parsed.getTime()) ? null : parsed.toISOString();
+}
+
+function normalizeNullableNonEmptyString(value: string | null | undefined) {
+  return typeof value === "string" && value.trim().length > 0
+    ? value.trim()
+    : null;
 }
 
 function roundTo(value: number, decimals: number) {

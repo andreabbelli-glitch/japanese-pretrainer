@@ -1,23 +1,22 @@
-import { randomUUID } from "node:crypto";
-
 import { and, eq } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "@/db";
-import { preReviewConsolidationState, reviewSubjectLog } from "@/db/schema";
+import { preReviewConsolidationState } from "@/db/schema";
 import { resolveReviewForcedContrast } from "@/features/kanji-clash/server/manual-contrast-review";
 
 import { resolveEffectiveReviewState } from "@/features/review/model/state";
 import { buildReviewSubjectSeedState } from "@/features/review/model/subject";
 import {
+  buildFsrsParameterSet,
   getFsrsOptimizerSnapshot,
   resolveFsrsPresetKey
 } from "@/features/fsrs-optimizer/server";
 import {
   reviewRatingValues,
-  scheduleReview,
   type ReviewRating,
   type ReviewState
 } from "@/features/review/model/scheduler";
+import { scheduleReviewWithDailyIntervalPolicy } from "@/features/review/server/interval-policy";
 import type {
   ReviewForcedContrastPayload,
   ReviewForcedContrastResolution,
@@ -36,6 +35,7 @@ import {
   writeReviewSubjectStateForGrade,
   type ReviewMutationTransaction
 } from "@/features/review/server/mutation-context";
+import { appendReviewEvent } from "@/features/review/server/event-ledger";
 
 const REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE = "Review card is out of date.";
 const validReviewRatings = new Set<string>(reviewRatingValues);
@@ -56,6 +56,7 @@ export type ReviewGradeResult = {
   mediaId: string;
   newState: ReviewState;
   previousState: ReviewState;
+  scheduledDays: number;
 };
 
 export async function applyReviewGrade(input: {
@@ -166,9 +167,15 @@ export async function gradeReviewCardInTransaction(input: {
     ? fsrsOptimizerSnapshot.presets[presetKey]
     : null;
   const previousState = (resolvedSubjectState?.state ?? "new") as ReviewState;
-  const scheduled = scheduleReview({
+  const scheduled = await scheduleReviewWithDailyIntervalPolicy({
     current: seedState.current,
+    database: input.transaction,
+    excludeSubjectKey: subjectContext.identity.subjectKey,
+    intervalPolicy: {
+      schedulingKey: subjectContext.identity.subjectKey
+    },
     now,
+    recallTask: subjectContext.identity.recallTask,
     rating: input.rating,
     scheduler: {
       desiredRetention: fsrsOptimizerSnapshot.config.desiredRetention,
@@ -176,30 +183,31 @@ export async function gradeReviewCardInTransaction(input: {
     }
   });
   const sourceState = resolveReviewSubjectStateSource(subjectContext, nowIso);
+  const nextSubjectState = patchReviewSubjectState(sourceState, {
+    cardId: loadedCard.id,
+    crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
+    difficulty: scheduled.difficulty,
+    dueAt: scheduled.dueAt,
+    entryId: subjectContext.identity.entryId,
+    entryType: subjectContext.identity.entryType,
+    lapses: scheduled.lapses,
+    lastInteractionAt: nowIso,
+    lastReviewedAt: nowIso,
+    learningSteps: scheduled.learningSteps,
+    manualOverride: false,
+    reps: scheduled.reps,
+    scheduledDays: scheduled.scheduledDays,
+    schedulerVersion: scheduled.schedulerVersion,
+    stability: scheduled.stability,
+    state: scheduled.state,
+    subjectType: subjectContext.identity.subjectKind,
+    suspended: false,
+    updatedAt: nowIso
+  });
 
   const didWriteSubjectState = await writeReviewSubjectStateForGrade(
     input.transaction,
-    patchReviewSubjectState(sourceState, {
-      cardId: loadedCard.id,
-      crossMediaGroupId: subjectContext.identity.crossMediaGroupId,
-      difficulty: scheduled.difficulty,
-      dueAt: scheduled.dueAt,
-      entryId: subjectContext.identity.entryId,
-      entryType: subjectContext.identity.entryType,
-      lapses: scheduled.lapses,
-      lastInteractionAt: nowIso,
-      lastReviewedAt: nowIso,
-      learningSteps: scheduled.learningSteps,
-      manualOverride: false,
-      reps: scheduled.reps,
-      scheduledDays: scheduled.scheduledDays,
-      schedulerVersion: scheduled.schedulerVersion,
-      stability: scheduled.stability,
-      state: scheduled.state,
-      subjectType: subjectContext.identity.subjectKind,
-      suspended: false,
-      updatedAt: nowIso
-    }),
+    nextSubjectState,
     requiredUpdatedAt
   );
 
@@ -207,20 +215,23 @@ export async function gradeReviewCardInTransaction(input: {
     throw new Error(REVIEW_CARD_OUT_OF_DATE_ERROR_MESSAGE);
   }
 
-  const reviewLogId = `review_subject_log_${randomUUID()}`;
-
-  await input.transaction.insert(reviewSubjectLog).values({
-    id: reviewLogId,
-    subjectKey: subjectContext.identity.subjectKey,
-    cardId: loadedCard.id,
+  await appendReviewEvent(input.transaction, {
+    afterState: nextSubjectState,
     answeredAt: nowIso,
-    rating: input.rating,
-    previousState,
-    newState: scheduled.state,
-    scheduledDueAt: scheduled.dueAt,
+    beforeState: sourceState,
+    cardId: loadedCard.id,
+    cardType: loadedCard.cardType,
     elapsedDays: scheduled.elapsedDays,
-    responseMs: input.responseMs ?? null,
-    schedulerVersion: scheduled.schedulerVersion
+    eventKind: "grade",
+    identity: subjectContext.identity,
+    mediaId: loadedCard.mediaId,
+    parameterSet: buildFsrsParameterSet(
+      fsrsOptimizerSnapshot,
+      subjectContext.identity.recallTask,
+      nowIso
+    ),
+    rating: input.rating,
+    responseMs: input.responseMs ?? null
   });
 
   const consolidationResult = await syncReviewGradeConsolidation({
@@ -253,7 +264,8 @@ export async function gradeReviewCardInTransaction(input: {
     forcedContrast,
     mediaId: loadedCard.mediaId,
     newState: scheduled.state,
-    previousState
+    previousState,
+    scheduledDays: scheduled.scheduledDays
   };
 }
 

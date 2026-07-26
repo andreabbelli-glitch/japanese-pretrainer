@@ -45,8 +45,8 @@ export function useReviewGradeSubmissionController(input: {
     hasBlockingGradeSubmissionInFlight,
     setHasBlockingGradeSubmissionInFlight
   ] = useState(false);
-  const submittedGradeCardIdsRef = useRef<Set<string>>(new Set());
-  const pendingGradeCardIdsRef = useRef<Set<string>>(new Set());
+  const submittedGradeAttemptByCardRef = useRef<Map<string, string>>(new Map());
+  const pendingGradeAttemptKeysRef = useRef<Set<string>>(new Set());
   const blockingGradeSubmissionInFlightRef = useRef(false);
   const gradedCardIdsRef = useRef<Set<string>>(new Set());
   const [submittedGradeCardIds, setSubmittedGradeCardIds] = useState<
@@ -70,10 +70,18 @@ export function useReviewGradeSubmissionController(input: {
       return;
     }
 
+    const gradeAttemptKey = buildReviewGradeAttemptKey({
+      answeredCount: context.viewData.session.answeredCount,
+      cardId: selectedCard.id,
+      expectedUpdatedAt:
+        context.viewData.selectedCardContext.reviewStateUpdatedAt ?? null
+    });
+
     if (
       input.clientError !== null ||
       blockingGradeSubmissionInFlightRef.current ||
-      submittedGradeCardIdsRef.current.has(selectedCard.id)
+      submittedGradeAttemptByCardRef.current.get(selectedCard.id) ===
+        gradeAttemptKey
     ) {
       return;
     }
@@ -92,7 +100,7 @@ export function useReviewGradeSubmissionController(input: {
       ),
       isHydratingFullData: context.isHydratingFullData,
       isQueueCard: context.isQueueCard,
-      pendingGradeSubmissionCount: pendingGradeCardIdsRef.current.size,
+      pendingGradeSubmissionCount: pendingGradeAttemptKeysRef.current.size,
       prefetchedCards: context.prefetchedCards,
       rating,
       selectedCard,
@@ -104,10 +112,15 @@ export function useReviewGradeSubmissionController(input: {
     }
 
     gradedCardIdsRef.current.add(selectedCard.id);
-    submittedGradeCardIdsRef.current.add(selectedCard.id);
-    pendingGradeCardIdsRef.current.add(selectedCard.id);
-    setSubmittedGradeCardIds(new Set(submittedGradeCardIdsRef.current));
-    setPendingGradeCardIds(new Set(pendingGradeCardIdsRef.current));
+    submittedGradeAttemptByCardRef.current.set(
+      selectedCard.id,
+      gradeAttemptKey
+    );
+    pendingGradeAttemptKeysRef.current.add(gradeAttemptKey);
+    setSubmittedGradeCardIds(
+      (current) => new Set([...current, selectedCard.id])
+    );
+    setPendingGradeCardIds((current) => new Set([...current, selectedCard.id]));
     input.setPendingAnsweredCountScroll(sessionViewData.session.answeredCount);
     const { isBlockingGradeSubmission } = gradeSubmissionPlan;
     if (isBlockingGradeSubmission) {
@@ -116,16 +129,28 @@ export function useReviewGradeSubmissionController(input: {
     }
 
     const releaseGradeSubmission = (options?: { allowRetry?: boolean }) => {
-      pendingGradeCardIdsRef.current.delete(selectedCard.id);
-      if (options?.allowRetry) {
-        submittedGradeCardIdsRef.current.delete(selectedCard.id);
+      pendingGradeAttemptKeysRef.current.delete(gradeAttemptKey);
+      if (
+        options?.allowRetry &&
+        submittedGradeAttemptByCardRef.current.get(selectedCard.id) ===
+          gradeAttemptKey
+      ) {
+        submittedGradeAttemptByCardRef.current.delete(selectedCard.id);
       }
       if (isBlockingGradeSubmission) {
         blockingGradeSubmissionInFlightRef.current = false;
         setHasBlockingGradeSubmissionInFlight(false);
       }
-      setPendingGradeCardIds(new Set(pendingGradeCardIdsRef.current));
-      setSubmittedGradeCardIds(new Set(submittedGradeCardIdsRef.current));
+      setPendingGradeCardIds((current) => {
+        const next = new Set(current);
+        next.delete(selectedCard.id);
+        return next;
+      });
+      setSubmittedGradeCardIds((current) => {
+        const next = new Set(current);
+        next.delete(selectedCard.id);
+        return next;
+      });
     };
 
     const forcedContrastUpdateOptions =
@@ -225,4 +250,16 @@ export function useReviewGradeSubmissionController(input: {
     pendingGradeCardIds,
     submittedGradeCardIds
   };
+}
+
+export function buildReviewGradeAttemptKey(input: {
+  answeredCount: number;
+  cardId: string;
+  expectedUpdatedAt: string | null;
+}) {
+  return JSON.stringify([
+    input.cardId,
+    input.expectedUpdatedAt,
+    input.answeredCount
+  ]);
 }

@@ -1,5 +1,6 @@
 import type { DatabaseQueryClient } from "../../../db/create-client.ts";
 import {
+  buildEffectiveReviewEventMemoryKeySql,
   buildReviewSubjectIdentityCteSql,
   quoteSqlString
 } from "../../../db/queries/review-query-helpers.ts";
@@ -116,23 +117,29 @@ async function listDailyKanjiExportRows(input: {
   cutoffIso: string;
   nowIso: string;
 }) {
+  const eventMemoryKey = buildDailyKanjiEventMemoryKeySql();
+  const currentEventMemoryKey = `COALESCE(rma.current_memory_key, ${eventMemoryKey})`;
+
   return input.database.all<DailyKanjiExportRow>(`
     WITH ${buildReviewSubjectIdentityCteSql()},
     recent_hard_again AS (
       SELECT
-        rsl.subject_key AS subjectKey,
+        ${currentEventMemoryKey} AS memoryKey,
         COUNT(*) AS recentHardAgainCount,
         MAX(rsl.answered_at) AS lastHardAgainAt
       FROM review_subject_log rsl
-      WHERE rsl.rating IN ('again', 'hard')
+      LEFT JOIN review_memory_alias rma
+        ON rma.alias_memory_key = ${eventMemoryKey}
+      WHERE rsl.event_kind = 'grade'
+        AND rsl.rating IN ('again', 'hard')
         AND rsl.answered_at >= ${quoteSqlString(input.cutoffIso)}
         AND rsl.answered_at <= ${quoteSqlString(input.nowIso)}
-      GROUP BY rsl.subject_key
+      GROUP BY ${currentEventMemoryKey}
     ),
     eligible_cards AS (
       SELECT
         si.card_id AS cardId,
-        si.subject_key AS subjectKey,
+        si.canonical_subject_key AS subjectKey,
         si.entry_type AS entryKind,
         si.entry_id AS entryId,
         c.front AS front,
@@ -217,7 +224,7 @@ async function listDailyKanjiExportRows(input: {
         ON si.entry_type = 'grammar'
        AND gp.id = si.entry_id
       LEFT JOIN recent_hard_again rha
-        ON rha.subjectKey = si.subject_key
+        ON rha.memoryKey = si.memory_key
       WHERE c.status = 'active'
         AND m.status = 'active'
         AND l.status = 'active'
@@ -262,7 +269,7 @@ async function listDailyKanjiPrestudyRows(input: {
     candidate_cards AS (
       SELECT
         si.card_id AS cardId,
-        si.subject_key AS subjectKey,
+        si.canonical_subject_key AS subjectKey,
         si.entry_type AS entryKind,
         si.entry_id AS entryId,
         c.front AS front,
@@ -364,18 +371,24 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
   cutoffIso: string;
   nowIso: string;
 }) {
+  const eventMemoryKey = buildDailyKanjiEventMemoryKeySql();
+  const currentEventMemoryKey = `COALESCE(rma.current_memory_key, ${eventMemoryKey})`;
+
   return input.database.all<DailyKanjiExportRow>(`
     WITH ${buildReviewSubjectIdentityCteSql()},
     recent_hard_again AS (
       SELECT
-        rsl.subject_key AS subjectKey,
+        ${currentEventMemoryKey} AS memoryKey,
         COUNT(*) AS recentHardAgainCount,
         MAX(rsl.answered_at) AS lastHardAgainAt
       FROM review_subject_log rsl
-      WHERE rsl.rating IN ('again', 'hard')
+      LEFT JOIN review_memory_alias rma
+        ON rma.alias_memory_key = ${eventMemoryKey}
+      WHERE rsl.event_kind = 'grade'
+        AND rsl.rating IN ('again', 'hard')
         AND rsl.answered_at >= ${quoteSqlString(input.cutoffIso)}
         AND rsl.answered_at <= ${quoteSqlString(input.nowIso)}
-      GROUP BY rsl.subject_key
+      GROUP BY ${currentEventMemoryKey}
     ),
     lesson_hard_again AS (
       SELECT DISTINCT
@@ -386,7 +399,7 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
       INNER JOIN subject_identity si
         ON si.card_id = c.id
       INNER JOIN recent_hard_again rha
-        ON rha.subjectKey = si.subject_key
+        ON rha.memoryKey = si.memory_key
       WHERE l.status = 'active'
         AND c.status = 'active'
     ),
@@ -413,7 +426,7 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
     candidate_cards AS (
       SELECT
         si.card_id AS cardId,
-        si.subject_key AS subjectKey,
+        si.canonical_subject_key AS subjectKey,
         si.entry_type AS entryKind,
         si.entry_id AS entryId,
         c.front AS front,
@@ -491,7 +504,7 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
       INNER JOIN review_subject_state rss
         ON rss.subject_key = si.subject_key
       INNER JOIN recent_hard_again rha
-        ON rha.subjectKey = si.subject_key
+        ON rha.memoryKey = si.memory_key
       LEFT JOIN segment s
         ON s.id = c.segment_id
       LEFT JOIN term t
@@ -517,6 +530,17 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
       lastHardAgainAt DESC,
       cardId ASC
   `);
+}
+
+function buildDailyKanjiEventMemoryKeySql() {
+  return buildEffectiveReviewEventMemoryKeySql({
+    canonicalSubjectKeyExpression: "rsl.canonical_subject_key",
+    cardIdExpression: "rsl.card_id",
+    eventSchemaVersionExpression: "rsl.event_schema_version",
+    memoryKeyExpression: "rsl.memory_key",
+    recallTaskExpression: "rsl.recall_task",
+    subjectKeyExpression: "rsl.subject_key"
+  });
 }
 
 function mapDailyKanjiExportRow(

@@ -212,6 +212,19 @@ Tabelle incluse nel perimetro del task:
 - `review_subject_log` e la cronologia canonica delle risposte a livello
   subject. Ogni voto salva stato precedente e successivo, `scheduled_due_at` e
   tempo di risposta quando disponibile.
+- L'identita di memoria persistita e versionata (`memory_key`) combina subject
+  canonico e recall task. Recognition e concept non condividono lo stesso stato;
+  una tabella di alias mantiene leggibili gli eventi quando una identity viene
+  riallineata senza riscrivere la cronologia.
+- Il log e un ledger append-only: oltre ai grade puo registrare eventi di
+  controllo/migrazione e conserva snapshot prima/dopo, giorno logico,
+  scheduler/binding e hash del parameter set. Replay e optimizer usano i campi
+  persistiti invece di dedurre nuovamente il tempo storico dalla timezone
+  corrente.
+- `review_fsrs_parameter_set` conserva i set di pesi immutabili per recall task.
+  Il relativo hash include scheduler, policy giorno di studio e policy degli
+  intervalli giornalieri, cosi una preview di reschedule non puo applicare un
+  contratto diventato stale.
 - La migrazione SQL `drizzle/0011_global_review_subjects.sql` crea
   `review_subject_state` e `review_subject_log`; il contenuto sincronizzato via
   importer crea e riallinea direttamente `review_subject_state`, quindi

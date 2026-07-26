@@ -22,6 +22,16 @@ try {
         `DB: ${location.databasePath ?? location.configuredPath}.`
       ].join(" ")
     );
+  } else if (result.status === "failed") {
+    console.error(
+      [
+        `FSRS optimizer fallito il ${result.failedAt}: ${result.error}`,
+        `Preset recognition: ${result.presetResults.recognition.status} (${result.presetResults.recognition.trainingReviewCount} review).`,
+        `Preset concept: ${result.presetResults.concept.status} (${result.presetResults.concept.trainingReviewCount} review).`,
+        `DB: ${location.databasePath ?? location.configuredPath}.`
+      ].join(" ")
+    );
+    process.exitCode = 1;
   } else {
     console.info(
       [

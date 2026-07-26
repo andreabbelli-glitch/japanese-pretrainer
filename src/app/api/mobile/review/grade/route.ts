@@ -37,8 +37,9 @@ export async function POST(request: Request) {
   const body = await parseJsonBody(request);
   const cardId = readRequiredString(body, "cardId");
   const rating = readRating(body);
+  const expectedUpdatedAt = readRequiredFreshnessToken(body);
 
-  if (!cardId || !rating) {
+  if (!cardId || !rating || expectedUpdatedAt === undefined) {
     return NextResponse.json(
       { error: "Invalid mobile review grade request.", ok: false },
       { headers: mobileReviewNoStoreHeaders, status: 400 }
@@ -50,7 +51,7 @@ export async function POST(request: Request) {
       await gradeMobileReviewCard({
         cardId,
         database: db,
-        expectedUpdatedAt: readOptionalFreshnessToken(body),
+        expectedUpdatedAt,
         rating,
         responseMs: readOptionalResponseMs(body)
       }),
@@ -79,10 +80,7 @@ async function parseJsonBody(request: Request) {
   }
 }
 
-function readRequiredString(
-  body: Record<string, unknown> | null,
-  key: string
-) {
+function readRequiredString(body: Record<string, unknown> | null, key: string) {
   const value = body?.[key];
 
   return typeof value === "string" && value.trim().length > 0
@@ -98,7 +96,7 @@ function readRating(body: Record<string, unknown> | null) {
     : null;
 }
 
-function readOptionalFreshnessToken(body: Record<string, unknown> | null) {
+function readRequiredFreshnessToken(body: Record<string, unknown> | null) {
   const value = body?.expectedUpdatedAt;
 
   if (value === null) {
@@ -113,9 +111,7 @@ function readOptionalFreshnessToken(body: Record<string, unknown> | null) {
 function readOptionalResponseMs(body: Record<string, unknown> | null) {
   const value = body?.responseMs;
 
-  return typeof value === "number" &&
-    Number.isSafeInteger(value) &&
-    value >= 0
+  return typeof value === "number" && Number.isSafeInteger(value) && value >= 0
     ? value
     : null;
 }

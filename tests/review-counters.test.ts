@@ -9,12 +9,14 @@ import type { DatabaseClient } from "@/db";
 import {
   countReviewSubjectsIntroducedOnDay,
   countReviewSubjectsIntroducedOnDayByMediaId,
-  countReviewSubjectsIntroducedOnDayByMediaIds
+  countReviewSubjectsIntroducedOnDayByMediaIds,
+  listReviewSubjectLogsBySubjectKey
 } from "@/db/queries";
 import {
   card,
   lesson,
   media,
+  reviewMemoryAlias,
   reviewSubjectLog,
   reviewSubjectState
 } from "@/db/schema";
@@ -364,6 +366,9 @@ describe("review counters", () => {
       {
         id: "review_subject_log_cross_media_alpha",
         subjectKey,
+        canonicalSubjectKey: subjectKey,
+        eventSchemaVersion: 1,
+        recallTask: "recognition",
         cardId: crossMediaFixture.alpha.termCardId,
         answeredAt: "2026-03-11T08:00:00.000Z",
         rating: "good",
@@ -376,6 +381,9 @@ describe("review counters", () => {
       {
         id: "review_subject_log_cross_media_beta",
         subjectKey,
+        canonicalSubjectKey: subjectKey,
+        eventSchemaVersion: 1,
+        recallTask: "recognition",
         cardId: crossMediaFixture.beta.termCardId,
         answeredAt: "2026-03-11T09:00:00.000Z",
         rating: "good",
@@ -394,4 +402,96 @@ describe("review counters", () => {
 
     expect(introducedCount).toBe(1);
   });
+
+  it("counts distinct task memories and resolves historical aliases only once", async () => {
+    const canonicalSubjectKey = "entry:term:shared-memory";
+    const oldRecognitionMemoryKey =
+      "mnemonic:v1:recognition:entry:term:shared-memory-old";
+    const recognitionMemoryKey =
+      "mnemonic:v1:recognition:entry:term:shared-memory";
+    const conceptMemoryKey = "mnemonic:v1:concept:entry:term:shared-memory";
+
+    await database.delete(reviewSubjectLog);
+    await database.insert(reviewMemoryAlias).values({
+      aliasMemoryKey: oldRecognitionMemoryKey,
+      currentMemoryKey: recognitionMemoryKey,
+      migratedAt: "2026-03-11T08:00:00.000Z",
+      reason: "canonical_rekey"
+    });
+    await database.insert(reviewSubjectLog).values([
+      buildMemoryLog({
+        canonicalSubjectKey,
+        id: "introduced-recognition-old",
+        memoryKey: oldRecognitionMemoryKey,
+        recallTask: "recognition"
+      }),
+      buildMemoryLog({
+        canonicalSubjectKey,
+        id: "introduced-recognition-current",
+        memoryKey: recognitionMemoryKey,
+        recallTask: "recognition"
+      }),
+      buildMemoryLog({
+        canonicalSubjectKey,
+        id: "introduced-concept",
+        memoryKey: conceptMemoryKey,
+        recallTask: "concept"
+      }),
+      {
+        ...buildMemoryLog({
+          canonicalSubjectKey,
+          id: "introduced-non-grade",
+          memoryKey: recognitionMemoryKey,
+          recallTask: "recognition"
+        }),
+        eventKind: "reset" as const
+      }
+    ]);
+
+    const introducedCount = await countReviewSubjectsIntroducedOnDay(
+      database,
+      new Date("2026-03-11T12:00:00.000Z")
+    );
+    const recognitionLogs = await listReviewSubjectLogsBySubjectKey(
+      database,
+      recognitionMemoryKey
+    );
+
+    expect(introducedCount).toBe(2);
+    expect(recognitionLogs.map((log) => log.id)).toEqual([
+      "introduced-recognition-current",
+      "introduced-non-grade",
+      "introduced-recognition-old"
+    ]);
+  });
 });
+
+function buildMemoryLog(input: {
+  canonicalSubjectKey: string;
+  id: string;
+  memoryKey: string;
+  recallTask: "concept" | "recognition";
+}): typeof reviewSubjectLog.$inferInsert {
+  const answeredAtById: Record<string, string> = {
+    "introduced-recognition-current": "2026-03-11T09:00:00.000Z",
+    "introduced-non-grade": "2026-03-11T09:30:00.000Z",
+    "introduced-recognition-old": "2026-03-11T10:00:00.000Z"
+  };
+
+  return {
+    answeredAt: answeredAtById[input.id] ?? "2026-03-11T11:00:00.000Z",
+    canonicalSubjectKey: input.canonicalSubjectKey,
+    cardId: `card-${input.id}`,
+    cardTypeSnapshot: input.recallTask,
+    eventKind: "grade",
+    eventSchemaVersion: 2,
+    id: input.id,
+    memoryKey: input.memoryKey,
+    newState: "review",
+    previousState: "new",
+    rating: "good",
+    recallTask: input.recallTask,
+    scheduledDueAt: "2026-03-12T09:00:00.000Z",
+    subjectKey: input.memoryKey
+  };
+}

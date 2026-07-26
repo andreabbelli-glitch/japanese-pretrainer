@@ -124,6 +124,7 @@ export function buildReviewGradeSubmissionPlan(input: {
   const canOptimisticallyAdvance =
     optimisticSourceData !== null &&
     (optimisticNextCard !== null || canOptimisticallyCompleteQueue) &&
+    input.selectedCard.bucket !== "upcoming" &&
     forcedKanjiClashContrast === undefined;
   const optimisticViewData = canOptimisticallyAdvance
     ? buildOptimisticViewData({
@@ -208,6 +209,10 @@ function buildAdvanceQueueGradeActionInput(input: {
   actionInput.candidateCardIds = input.candidateCardIds;
   actionInput.canonicalCandidateCardIds = input.nextQueueCardIds;
   actionInput.gradedCardBucket = input.selectedCard.bucket;
+  actionInput.gradedCardDueAt = input.selectedCard.dueAt;
+  actionInput.gradedCardScheduledDays =
+    input.selectedCard.reviewSeedState.scheduledDays;
+  actionInput.gradedCardState = input.selectedCard.reviewSeedState.state;
   actionInput.nextCardId = input.nextCardId;
   actionInput.sessionMedia = input.sessionViewData.media;
 

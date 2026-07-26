@@ -21,7 +21,10 @@ import {
   type ReviewSubjectIdentity,
   type ReviewSubjectStateSnapshot
 } from "@/features/review/model/subject";
-import type { ReviewState } from "@/features/review/model/scheduler";
+import {
+  CURRENT_REVIEW_SCHEDULER_VERSION,
+  type ReviewState
+} from "@/features/review/model/scheduler";
 import { buildEntryKey } from "@/features/study/model/entry-id";
 
 export type ReviewMutationTransaction = Parameters<
@@ -372,6 +375,7 @@ function normalizeReviewSubjectStateSource(
 ): ReviewSubjectStateInsert {
   return {
     cardId: subjectState.cardId,
+    canonicalSubjectKey: subjectState.canonicalSubjectKey,
     createdAt: subjectState.createdAt,
     crossMediaGroupId: subjectState.crossMediaGroupId,
     difficulty: subjectState.difficulty,
@@ -383,6 +387,7 @@ function normalizeReviewSubjectStateSource(
     lastReviewedAt: subjectState.lastReviewedAt,
     learningSteps: subjectState.learningSteps,
     manualOverride: subjectState.manualOverride,
+    recallTask: subjectState.recallTask,
     reps: subjectState.reps,
     scheduledDays: subjectState.scheduledDays,
     schedulerVersion: subjectState.schedulerVersion,
@@ -405,6 +410,7 @@ function buildInitialReviewSubjectStateSource(input: {
 
   return {
     cardId: sourceSeedCard.id,
+    canonicalSubjectKey: context.identity.canonicalSubjectKey,
     createdAt: sourceSeedCard.createdAt,
     crossMediaGroupId: context.identity.crossMediaGroupId,
     difficulty: null,
@@ -416,9 +422,10 @@ function buildInitialReviewSubjectStateSource(input: {
     lastReviewedAt: null,
     learningSteps: 0,
     manualOverride: false,
+    recallTask: context.identity.recallTask,
     reps: 0,
     scheduledDays: 0,
-    schedulerVersion: "fsrs_v1",
+    schedulerVersion: CURRENT_REVIEW_SCHEDULER_VERSION,
     stability: null,
     state,
     subjectKey: context.identity.subjectKey,
@@ -513,6 +520,7 @@ async function updateReviewSubjectStateIfCurrent(
 function getReviewSubjectStateMutationSet(state: ReviewSubjectStateInsert) {
   return {
     cardId: state.cardId,
+    canonicalSubjectKey: state.canonicalSubjectKey,
     crossMediaGroupId: state.crossMediaGroupId,
     difficulty: state.difficulty,
     dueAt: state.dueAt,
@@ -523,6 +531,7 @@ function getReviewSubjectStateMutationSet(state: ReviewSubjectStateInsert) {
     learningSteps: state.learningSteps,
     lapses: state.lapses,
     manualOverride: state.manualOverride,
+    recallTask: state.recallTask,
     reps: state.reps,
     scheduledDays: state.scheduledDays,
     schedulerVersion: state.schedulerVersion,

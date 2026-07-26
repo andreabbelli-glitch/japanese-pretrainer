@@ -146,6 +146,47 @@ describe("useReviewGradeSubmissionController", () => {
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(2);
   });
 
+  it("deduplicates one attempt but allows the same card after its freshness token advances", async () => {
+    const initialData = buildReviewPageData("card-a", {
+      queueCardIds: ["card-a"]
+    });
+    const repeatedData = buildReviewPageData("card-a", {
+      answeredCount: 1,
+      queueCardIds: ["card-a"],
+      selectedUpdatedAt: "2026-04-02T12:00:00.000Z"
+    });
+    mocks.gradeReviewCardSessionAction.mockResolvedValue(repeatedData);
+    const controller = await renderGradeSubmissionController(initialData, {
+      runnerMode: "execute"
+    });
+
+    await act(async () => {
+      controller().handleGradeCard("again");
+      controller().handleGradeCard("hard");
+      await flushPromises();
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
+    expect(controller().viewData.selectedCard?.id).toBe("card-a");
+    expect(controller().viewData.selectedCardContext.reviewStateUpdatedAt).toBe(
+      "2026-04-02T12:00:00.000Z"
+    );
+
+    await act(async () => {
+      controller().handleGradeCard("hard");
+      await flushPromises();
+    });
+
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(2);
+    expect(mocks.gradeReviewCardSessionAction).toHaveBeenLastCalledWith(
+      expect.objectContaining({
+        cardId: "card-a",
+        expectedUpdatedAt: "2026-04-02T12:00:00.000Z",
+        rating: "hard"
+      })
+    );
+  });
+
   it("keeps forced contrast submissions blocking and non-optimistic", async () => {
     mocks.gradeReviewCardSessionAction.mockImplementation(
       () =>
@@ -360,6 +401,7 @@ function buildReviewPageData(
   options?: {
     answeredCount?: number;
     queueCardIds?: string[];
+    selectedUpdatedAt?: string;
   }
 ): ReviewPageData {
   const queueCardIds = options?.queueCardIds ?? ["card-a", "card-b", "card-c"];
@@ -367,6 +409,9 @@ function buildReviewPageData(
   const selectedCard =
     cards.find((card) => card.id === selectedCardId) ??
     buildQueueCard(selectedCardId);
+  if (options?.selectedUpdatedAt) {
+    selectedCard.reviewStateUpdatedAt = options.selectedUpdatedAt;
+  }
   const advanceCards = cards.filter((card) => card.id !== selectedCard.id);
 
   return {

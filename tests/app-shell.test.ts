@@ -15,11 +15,13 @@ import { developmentFixture } from "@/db/seed";
 import { importContentWorkspace } from "@/features/content/importer";
 import { getDashboardData } from "@/features/dashboard/server";
 import { getMediaDetailData } from "@/features/media/server";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import { loadGlobalReviewOverviewSnapshot } from "@/features/review/server";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
+import { primarySubjectKey } from "./helpers/review-shared";
 import {
   cleanupTestDatabase,
   setupTestDatabase,
@@ -59,12 +61,7 @@ describe("app shell live data", () => {
         dueAt: "2026-03-01T00:00:00.000Z",
         manualOverride: true
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     const media = await getMediaDetailData(
       developmentFixture.mediaSlug,
@@ -102,12 +99,7 @@ describe("app shell live data", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(media).values({
       id: "media_duel_masters",
@@ -159,8 +151,16 @@ describe("app shell live data", () => {
       updatedAt: "2026-03-08T09:30:00.000Z"
     });
 
+    const canonicalSubjectKey = "card:card_duel_masters_due";
+
     await database.insert(reviewSubjectState).values({
-      subjectKey: "card:card_duel_masters_due",
+      subjectKey: buildReviewMemoryKey({
+        canonicalSubjectKey,
+        cardId: "card_duel_masters_due",
+        recallTask: "recognition"
+      }),
+      canonicalSubjectKey,
+      recallTask: "recognition",
       subjectType: "card",
       entryType: null,
       crossMediaGroupId: null,
@@ -415,12 +415,7 @@ describe("app shell live data", () => {
       .set({
         dueAt: "2999-01-01T00:00:00.000Z"
       })
-      .where(
-        eq(
-          reviewSubjectState.subjectKey,
-          `entry:term:${developmentFixture.termDbId}`
-        )
-      );
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
     await database.insert(card).values({
       id: "card_dashboard_new_queue",

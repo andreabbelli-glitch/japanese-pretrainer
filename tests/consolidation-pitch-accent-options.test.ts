@@ -10,10 +10,19 @@ import {
   term
 } from "@/db/schema";
 import { getConsolidationSessionData } from "@/features/consolidation/server";
+import { buildReviewSubjectIdentityFromCanonical } from "@/features/review/model/subject";
 
 import { withTestDatabase } from "./helpers/test-db";
 
 const createdAt = "2026-04-01T09:00:00.000Z";
+const yomuIdentity = buildPitchTermIdentity(
+  "card_pitch_yomu",
+  "term_pitch_yomu"
+);
+const kakuIdentity = buildPitchTermIdentity(
+  "card_pitch_kaku",
+  "term_pitch_kaku"
+);
 
 describe("consolidation pitch accent options", () => {
   it("adds pitch accent data to reading choices without adding it to meaning choices", async () => {
@@ -28,7 +37,7 @@ describe("consolidation pitch accent options", () => {
           mediaSlug: "pitch-media"
         });
         const subject = session?.subjects.find(
-          (item) => item.subjectKey === "entry:term:term_pitch_yomu"
+          (item) => item.subjectKey === yomuIdentity.subjectKey
         );
         const readingStep = subject?.steps.find(
           (step) => step.step === "reading"
@@ -175,7 +184,9 @@ async function seedPitchAccentConsolidation(database: DatabaseClient) {
   ]);
   await database.insert(preReviewConsolidationState).values([
     {
-      subjectKey: "entry:term:term_pitch_yomu",
+      canonicalSubjectKey: yomuIdentity.canonicalSubjectKey,
+      recallTask: yomuIdentity.recallTask,
+      subjectKey: yomuIdentity.subjectKey,
       subjectType: "entry",
       entryType: "term",
       entryId: "term_pitch_yomu",
@@ -188,7 +199,9 @@ async function seedPitchAccentConsolidation(database: DatabaseClient) {
       updatedAt: createdAt
     },
     {
-      subjectKey: "entry:term:term_pitch_kaku",
+      canonicalSubjectKey: kakuIdentity.canonicalSubjectKey,
+      recallTask: kakuIdentity.recallTask,
+      subjectKey: kakuIdentity.subjectKey,
       subjectType: "entry",
       entryType: "term",
       entryId: "term_pitch_kaku",
@@ -201,4 +214,16 @@ async function seedPitchAccentConsolidation(database: DatabaseClient) {
       updatedAt: createdAt
     }
   ]);
+}
+
+function buildPitchTermIdentity(cardId: string, entryId: string) {
+  return buildReviewSubjectIdentityFromCanonical({
+    cardId,
+    cardType: "recognition",
+    canonicalSubjectKey: `entry:term:${entryId}`,
+    crossMediaGroupId: null,
+    entryId,
+    entryType: "term",
+    subjectKind: "entry"
+  });
 }

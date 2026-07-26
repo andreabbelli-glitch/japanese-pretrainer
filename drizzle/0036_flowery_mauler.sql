@@ -1,0 +1,2 @@
+CREATE INDEX `review_subject_log_training_v2_idx` ON `review_subject_log` (`event_kind`,`recall_task`,`memory_key`,`answered_at`,`id`);--> statement-breakpoint
+CREATE INDEX `review_subject_log_study_day_v2_idx` ON `review_subject_log` (`event_kind`,`study_day`,`previous_state`,`memory_key`,`media_id_snapshot`);

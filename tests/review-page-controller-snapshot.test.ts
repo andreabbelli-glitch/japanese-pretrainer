@@ -30,6 +30,8 @@ describe("buildReviewControllerSnapshot", () => {
     expect(snapshot.isHydratingFullData).toBe(true);
     expect(snapshot.globalHydrationRequestKey).toBe("answered=0&card=card-a");
     expect(snapshot.requestedSelectedCardId).toBe("card-a");
+    expect(snapshot.gradePreviewLookup.size).toBe(0);
+    expect(snapshot.isGradeControlsDisabled).toBe(true);
   });
 
   it("resolves requested selected card search params from array form", () => {
@@ -278,7 +280,7 @@ function buildFullReviewPageData(
     selectedCard,
     selectedCardContext: {
       bucket: selectedCard.bucket,
-      gradePreviews: [],
+      gradePreviews: selectedCard.gradePreviews,
       isQueueCard: options?.isQueueCard ?? true,
       position: options?.position ?? 1,
       remainingCount:
@@ -373,7 +375,7 @@ function buildQueueCard(id: string): ReviewQueueCard {
     effectiveStateLabel: "Review",
     entries: [],
     front: id,
-    gradePreviews: [],
+    gradePreviews: buildGradePreviews(),
     href: `/media/duel-masters-dm25/review/card/${id}` as Route,
     id,
     mediaSlug: "duel-masters-dm25",
@@ -397,4 +399,13 @@ function buildQueueCard(id: string): ReviewQueueCard {
     },
     typeLabel: "Recognition"
   };
+}
+
+function buildGradePreviews(): ReviewQueueCard["gradePreviews"] {
+  return [
+    { nextReviewLabel: "Tra 10 min", rating: "again" },
+    { nextReviewLabel: "Domani alle 04:00", rating: "hard" },
+    { nextReviewLabel: "Tra 2 giorni", rating: "good" },
+    { nextReviewLabel: "Tra 4 giorni", rating: "easy" }
+  ];
 }

@@ -269,6 +269,14 @@
 - Settings: salvare furigana reader, furigana review, autoplay audio review e ordine glossary aggiorna le viste collegate.
 - Settings: la sezione `FSRS optimizer` mostra stato read-only coerente con i
   dati salvati in `user_setting`, senza esporre pulsanti manuali di retrain.
+- Settings: il riallineamento FSRS non calcola la preview al caricamento
+  ordinario; `Calcola preview FSRS` la apre esplicitamente e l'applicazione
+  rifiuta una preview il cui hash parametri e diventato stale.
+- Review intraday: dopo `Again`, una card learning/relearning rientra quando
+  dovuta; se restano solo step entro 20 minuti il learn-ahead ne propone una,
+  mentre con review dovute o nuove disponibili non anticipa card future.
+- Review day: prima e dopo le 04:00 `Europe/Rome` i contatori cambiano una sola
+  volta; i passaggi ora legale/solare mantengono corretti giorni da 23/25 ore.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook,
   glossary globale filtrato e progress risultano navigabili senza errori o
   stati vuoti incoerenti.

@@ -50,6 +50,19 @@ describe("resolveReviewQueueRefreshState", () => {
     });
   });
 
+  it.each([
+    ["spring DST", "2026-03-28T03:30:00.000Z", "2026-03-29T02:00:00.000Z"],
+    ["autumn DST", "2026-10-24T02:30:00.000Z", "2026-10-25T03:00:00.000Z"]
+  ])("labels the next logical day as tomorrow across %s", (_, now, dueAt) => {
+    expect(
+      resolveReviewQueueRefreshState({
+        isPending: false,
+        nextDueAt: dueAt,
+        now: new Date(now)
+      }).statusLabel
+    ).toBe("Prossime card domani.");
+  });
+
   it("keeps the completion refresh disabled while a session update is pending", () => {
     expect(
       resolveReviewQueueRefreshState({
@@ -178,10 +191,10 @@ describe("resolveReviewQueuePosition", () => {
   it("drops in-flight prefetch ids that are no longer present in the queue", () => {
     expect(
       Array.from(
-        pruneQueuedPrefetchingCardIds(
-          new Set(["card-a", "card-b", "card-c"]),
-          ["card-b", "card-d"]
-        )
+        pruneQueuedPrefetchingCardIds(new Set(["card-a", "card-b", "card-c"]), [
+          "card-b",
+          "card-d"
+        ])
       )
     ).toEqual(["card-b"]);
   });
@@ -545,7 +558,9 @@ describe("resolveReviewQueuePosition", () => {
       "2026-04-02T11:30:00.000Z"
     );
     expect(result.selectedCardContext.remainingCount).toBe(1);
-    expect(result.queue.advanceCards.map((card) => card.id)).toEqual(["card-c"]);
+    expect(result.queue.advanceCards.map((card) => card.id)).toEqual([
+      "card-c"
+    ]);
     expect(result.nextCardId).toBe("card-c");
   });
 });

@@ -14,17 +14,25 @@ import { runMigrations } from "@/db/migrate";
 import {
   card,
   cardEntryLink,
+  crossMediaGroup,
   lesson,
   lessonProgress,
   media,
   preReviewConsolidationState,
+  reviewCanonicalControl,
+  reviewMemoryAlias,
   reviewSubjectLog,
   reviewSubjectState,
-  term
+  term,
+  userSetting
 } from "@/db/schema";
-import { getGlobalReviewPageData, getReviewPageData } from "@/features/review/server";
+import {
+  getGlobalReviewPageData,
+  getReviewPageData
+} from "@/features/review/server";
 import { importContentWorkspace } from "@/features/content/importer";
 import { backfillReviewSubjectState } from "@/features/review/server/subject-state-backfill";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
@@ -118,7 +126,9 @@ describe("review subject state recovery backfill", () => {
       scheduledDays: 0,
       stability: null,
       state: "new",
-      subjectKey: expect.stringMatching(/^group:term:/),
+      subjectKey: expect.stringMatching(/^mnemonic:v1:recognition:group:term:/),
+      canonicalSubjectKey: expect.stringMatching(/^group:term:/),
+      recallTask: "recognition",
       suspended: false
     });
 
@@ -150,7 +160,7 @@ describe("review subject state recovery backfill", () => {
     );
   });
 
-  it("merges legacy per-entry subject states into the canonical surface subject and rewrites logs", async () => {
+  it("merges legacy per-entry states, compresses aliases, and leaves immutable logs untouched", async () => {
     const contentRoot = path.join(tempDir, "cross-media-state-merge");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -176,6 +186,21 @@ describe("review subject state recovery backfill", () => {
     expect(betaTerm?.crossMediaGroupId).toBe(alphaTerm?.crossMediaGroupId);
 
     const canonicalSubjectKey = `group:term:${alphaTerm?.crossMediaGroupId}`;
+    const targetMemoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey,
+      cardId: crossMediaFixture.alpha.termCardId,
+      recallTask: "recognition"
+    });
+    const alphaLegacyMemoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey: `entry:term:${alphaTerm!.id}`,
+      cardId: crossMediaFixture.alpha.termCardId,
+      recallTask: "recognition"
+    });
+    const oldAliasMemoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey: "entry:term:pre-canonical-alpha",
+      cardId: crossMediaFixture.alpha.termCardId,
+      recallTask: "recognition"
+    });
 
     await database.insert(reviewSubjectState).values([
       {
@@ -253,13 +278,19 @@ describe("review subject state recovery backfill", () => {
         schedulerVersion: "fsrs_v1"
       }
     ]);
+    await database.insert(reviewMemoryAlias).values({
+      aliasMemoryKey: oldAliasMemoryKey,
+      currentMemoryKey: alphaLegacyMemoryKey,
+      migratedAt: "2026-03-10T08:00:00.000Z",
+      reason: "older_rekey"
+    });
 
     await backfillReviewSubjectState(database, {
       now: new Date("2026-03-11T09:00:00.000Z")
     });
 
     const canonicalState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+      where: eq(reviewSubjectState.subjectKey, targetMemoryKey)
     });
     const oldAlphaState = await database.query.reviewSubjectState.findFirst({
       where: eq(reviewSubjectState.subjectKey, `entry:term:${alphaTerm!.id}`)
@@ -267,29 +298,47 @@ describe("review subject state recovery backfill", () => {
     const oldBetaState = await database.query.reviewSubjectState.findFirst({
       where: eq(reviewSubjectState.subjectKey, `entry:term:${betaTerm!.id}`)
     });
-    const rewrittenLogs = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, canonicalSubjectKey)
+    const preservedLogs = await database.query.reviewSubjectLog.findMany();
+    const compressedAlias = await database.query.reviewMemoryAlias.findFirst({
+      where: eq(reviewMemoryAlias.aliasMemoryKey, oldAliasMemoryKey)
     });
 
     expect(canonicalState).toMatchObject({
       manualOverride: true,
+      canonicalSubjectKey,
+      recallTask: "recognition",
       state: "known_manual",
-      subjectKey: canonicalSubjectKey,
+      subjectKey: targetMemoryKey,
       subjectType: "group"
     });
     expect(oldAlphaState).toBeUndefined();
     expect(oldBetaState).toBeUndefined();
-    expect(rewrittenLogs.map((log) => log.id).sort()).toEqual([
+    expect(preservedLogs.map((log) => log.id).sort()).toEqual([
       "legacy-log-alpha",
       "legacy-log-beta"
     ]);
-    expect(rewrittenLogs.every((log) => log.cardId)).toBe(true);
+    expect(preservedLogs.map((log) => log.subjectKey).sort()).toEqual(
+      [`entry:term:${alphaTerm!.id}`, `entry:term:${betaTerm!.id}`].sort()
+    );
+    expect(preservedLogs.every((log) => log.canonicalSubjectKey === null)).toBe(
+      true
+    );
+    expect(preservedLogs.every((log) => log.cardId)).toBe(true);
+    expect(compressedAlias).toMatchObject({
+      aliasMemoryKey: oldAliasMemoryKey,
+      currentMemoryKey: targetMemoryKey
+    });
   });
 
   it("migrates legacy card subject state, logs, and pending consolidation to the canonical entry subject", async () => {
     const now = "2026-03-11T09:00:00.000Z";
     const legacySubjectKey = "card:card-legacy-card-subject";
     const canonicalSubjectKey = "entry:term:term-legacy-card-subject";
+    const targetMemoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey,
+      cardId: "card-legacy-card-subject",
+      recallTask: "recognition"
+    });
 
     await database.insert(media).values({
       id: "media-legacy-card-subject",
@@ -370,7 +419,7 @@ describe("review subject state recovery backfill", () => {
       lapses: 1,
       reps: 7,
       schedulerVersion: "fsrs_v1",
-      manualOverride: false,
+      manualOverride: true,
       suspended: false,
       createdAt: now,
       updatedAt: "2026-03-10T09:00:00.000Z"
@@ -428,7 +477,7 @@ describe("review subject state recovery backfill", () => {
     });
 
     const canonicalState = await database.query.reviewSubjectState.findFirst({
-      where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+      where: eq(reviewSubjectState.subjectKey, targetMemoryKey)
     });
     const oldState = await database.query.reviewSubjectState.findFirst({
       where: eq(reviewSubjectState.subjectKey, legacySubjectKey)
@@ -438,7 +487,7 @@ describe("review subject state recovery backfill", () => {
     });
     const migratedConsolidation =
       await database.query.preReviewConsolidationState.findFirst({
-        where: eq(preReviewConsolidationState.subjectKey, canonicalSubjectKey)
+        where: eq(preReviewConsolidationState.subjectKey, targetMemoryKey)
       });
     const oldConsolidation =
       await database.query.preReviewConsolidationState.findFirst({
@@ -454,19 +503,26 @@ describe("review subject state recovery backfill", () => {
       reps: 7,
       scheduledDays: 10,
       state: "review",
-      subjectKey: canonicalSubjectKey,
+      canonicalSubjectKey,
+      recallTask: "recognition",
+      subjectKey: targetMemoryKey,
       subjectType: "entry"
     });
     expect(oldState).toBeUndefined();
-    expect(rewrittenLog?.subjectKey).toBe(canonicalSubjectKey);
+    expect(rewrittenLog).toMatchObject({
+      canonicalSubjectKey: null,
+      subjectKey: legacySubjectKey
+    });
     expect(migratedConsolidation).toMatchObject({
       attemptCount: 0,
       completedAt: null,
       entryId: "term-legacy-card-subject",
       entryType: "term",
       representativeCardId: "card-legacy-card-subject",
+      canonicalSubjectKey,
+      recallTask: "recognition",
       status: "pending",
-      subjectKey: canonicalSubjectKey,
+      subjectKey: targetMemoryKey,
       subjectType: "entry"
     });
     expect(oldConsolidation).toBeUndefined();
@@ -532,6 +588,34 @@ describe("review subject state recovery backfill", () => {
           relationshipType: "primary" as const
         }))
       );
+
+      await database.insert(reviewSubjectState).values(
+        batch
+          .filter((index) => index % 10 === 0)
+          .map((index) => ({
+            subjectKey: `card:card-large-review-backfill-${index}`,
+            subjectType: "card" as const,
+            entryType: null,
+            crossMediaGroupId: null,
+            entryId: null,
+            cardId: `card-large-review-backfill-${index}`,
+            state: "new" as const,
+            stability: null,
+            difficulty: null,
+            dueAt: null,
+            lastReviewedAt: null,
+            lastInteractionAt: now,
+            scheduledDays: 0,
+            learningSteps: 0,
+            lapses: 0,
+            reps: 0,
+            schedulerVersion: "fsrs_v1" as const,
+            manualOverride: false,
+            suspended: false,
+            createdAt: now,
+            updatedAt: now
+          }))
+      );
     }
 
     const result = await backfillReviewSubjectState(database, {
@@ -542,6 +626,312 @@ describe("review subject state recovery backfill", () => {
     expect(await database.query.reviewSubjectState.findMany()).toHaveLength(
       1_600
     );
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(
+          reviewSubjectState.subjectKey,
+          buildReviewMemoryKey({
+            canonicalSubjectKey: "entry:term:term-large-review-backfill-1590",
+            cardId: "card-large-review-backfill-1590",
+            recallTask: "recognition"
+          })
+        )
+      })
+    ).toMatchObject({
+      cardId: "card-large-review-backfill-1590",
+      subjectType: "entry"
+    });
+  });
+
+  it("keeps task memories separate, preserves the legacy owner, and migrates canonical controls", async () => {
+    const now = "2026-03-11T09:00:00.000Z";
+    const canonicalSubjectKey = "entry:term:term-task-split";
+
+    await database.insert(media).values({
+      id: "media-task-split",
+      slug: "task-split",
+      title: "Task split",
+      mediaType: "test",
+      segmentKind: "lesson",
+      language: "ja",
+      baseExplanationLanguage: "it",
+      status: "active",
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(term).values({
+      id: "term-task-split",
+      sourceId: "term-task-split",
+      mediaId: "media-task-split",
+      lemma: "語",
+      reading: "ご",
+      romaji: "go",
+      meaningIt: "parola",
+      searchLemmaNorm: "語",
+      searchReadingNorm: "ご",
+      searchRomajiNorm: "go",
+      createdAt: now,
+      updatedAt: now
+    });
+    await database.insert(card).values([
+      {
+        id: "card-task-recognition",
+        mediaId: "media-task-split",
+        sourceFile: "task-split.md",
+        cardType: "recognition",
+        front: "語",
+        normalizedFront: "語",
+        back: "parola",
+        status: "active",
+        orderIndex: 1,
+        createdAt: now,
+        updatedAt: now
+      },
+      {
+        id: "card-task-concept",
+        mediaId: "media-task-split",
+        sourceFile: "task-split.md",
+        cardType: "concept",
+        front: "語",
+        normalizedFront: "語",
+        back: "parola",
+        status: "active",
+        orderIndex: 2,
+        createdAt: now,
+        updatedAt: now
+      }
+    ]);
+    await database.insert(cardEntryLink).values([
+      {
+        id: "link-task-recognition",
+        cardId: "card-task-recognition",
+        entryType: "term",
+        entryId: "term-task-split",
+        relationshipType: "primary"
+      },
+      {
+        id: "link-task-concept",
+        cardId: "card-task-concept",
+        entryType: "term",
+        entryId: "term-task-split",
+        relationshipType: "primary"
+      }
+    ]);
+    await database.insert(reviewSubjectState).values({
+      subjectKey: canonicalSubjectKey,
+      subjectType: "entry",
+      entryType: "term",
+      entryId: "term-task-split",
+      cardId: "card-task-recognition",
+      state: "review",
+      stability: 12,
+      difficulty: 4,
+      dueAt: "2026-03-20T09:00:00.000Z",
+      lastReviewedAt: now,
+      lastInteractionAt: now,
+      scheduledDays: 9,
+      learningSteps: 0,
+      lapses: 1,
+      reps: 7,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: true,
+      suspended: false,
+      createdAt: now,
+      updatedAt: now
+    });
+
+    await backfillReviewSubjectState(database, { now: new Date(now) });
+
+    const recognitionMemoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey,
+      cardId: "card-task-recognition",
+      recallTask: "recognition"
+    });
+    const conceptMemoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey,
+      cardId: "card-task-concept",
+      recallTask: "concept"
+    });
+    const [recognition, concept] = await Promise.all([
+      database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, recognitionMemoryKey)
+      }),
+      database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, conceptMemoryKey)
+      })
+    ]);
+
+    expect(recognition).toMatchObject({
+      canonicalSubjectKey,
+      cardId: "card-task-recognition",
+      recallTask: "recognition",
+      manualOverride: true,
+      reps: 7,
+      state: "review"
+    });
+    expect(concept).toMatchObject({
+      canonicalSubjectKey,
+      cardId: "card-task-concept",
+      recallTask: "concept",
+      manualOverride: true,
+      reps: 0,
+      state: "new"
+    });
+    expect(
+      await database.query.reviewSubjectState.findFirst({
+        where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+      })
+    ).toBeUndefined();
+
+    expect(
+      await database.query.reviewCanonicalControl.findFirst({
+        where: eq(
+          reviewCanonicalControl.canonicalSubjectKey,
+          canonicalSubjectKey
+        )
+      })
+    ).toMatchObject({ status: "known_manual" });
+    await backfillReviewSubjectState(database, {
+      now: new Date("2026-03-11T09:30:00.000Z")
+    });
+
+    const controlledStates = await database.query.reviewSubjectState.findMany();
+
+    expect(controlledStates).toHaveLength(2);
+    expect(
+      controlledStates.every(
+        (state) => state.manualOverride && !state.suspended
+      )
+    ).toBe(true);
+    expect(
+      controlledStates.find(
+        (state) => state.subjectKey === recognitionMemoryKey
+      )
+    ).toMatchObject({ difficulty: 4, stability: 12, state: "review" });
+    expect(
+      controlledStates.find((state) => state.subjectKey === conceptMemoryKey)
+    ).toMatchObject({ difficulty: null, stability: null, state: "new" });
+
+    const beforeSecondRun = await database.query.reviewSubjectState.findMany();
+    await backfillReviewSubjectState(database, {
+      now: new Date("2026-03-11T10:00:00.000Z")
+    });
+    expect(await database.query.reviewSubjectState.findMany()).toEqual(
+      beforeSecondRun
+    );
+
+    const crossMediaGroupId = "group-task-split";
+    const groupCanonicalSubjectKey = `group:term:${crossMediaGroupId}`;
+
+    await database.insert(crossMediaGroup).values({
+      id: crossMediaGroupId,
+      entryType: "term",
+      groupKey: "task-split",
+      createdAt: "2026-03-11T10:01:00.000Z",
+      updatedAt: "2026-03-11T10:01:00.000Z"
+    });
+    await database
+      .update(term)
+      .set({
+        crossMediaGroupId,
+        updatedAt: "2026-03-11T10:01:00.000Z"
+      })
+      .where(eq(term.id, "term-task-split"));
+
+    await backfillReviewSubjectState(database, {
+      now: new Date("2026-03-11T10:02:00.000Z")
+    });
+
+    expect(
+      await database.query.reviewCanonicalControl.findFirst({
+        where: eq(
+          reviewCanonicalControl.canonicalSubjectKey,
+          groupCanonicalSubjectKey
+        )
+      })
+    ).toMatchObject({ status: "known_manual" });
+    expect(
+      await database.query.reviewSubjectState.findMany({
+        where: eq(
+          reviewSubjectState.canonicalSubjectKey,
+          groupCanonicalSubjectKey
+        )
+      })
+    ).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          manualOverride: true,
+          recallTask: "recognition",
+          reps: 7,
+          state: "review"
+        }),
+        expect.objectContaining({
+          manualOverride: true,
+          recallTask: "concept",
+          reps: 0,
+          state: "new"
+        })
+      ])
+    );
+
+    await database.delete(reviewSubjectState);
+    await database.delete(reviewCanonicalControl);
+    await database.insert(reviewSubjectState).values({
+      subjectKey: canonicalSubjectKey,
+      subjectType: "entry",
+      entryType: "term",
+      entryId: "term-task-split",
+      cardId: "card-task-recognition",
+      state: "review",
+      stability: 12,
+      difficulty: 4,
+      dueAt: "2026-03-20T09:00:00.000Z",
+      lastReviewedAt: now,
+      lastInteractionAt: "2026-03-11T10:05:00.000Z",
+      scheduledDays: 9,
+      learningSteps: 0,
+      lapses: 1,
+      reps: 7,
+      schedulerVersion: "fsrs_v1",
+      manualOverride: false,
+      suspended: true,
+      createdAt: now,
+      updatedAt: "2026-03-11T10:05:00.000Z"
+    });
+
+    await backfillReviewSubjectState(database, {
+      now: new Date("2026-03-11T10:10:00.000Z")
+    });
+
+    expect(
+      await database.query.reviewCanonicalControl.findFirst({
+        where: eq(
+          reviewCanonicalControl.canonicalSubjectKey,
+          groupCanonicalSubjectKey
+        )
+      })
+    ).toMatchObject({ status: "ignored" });
+    expect(
+      (await database.query.reviewSubjectState.findMany()).every(
+        (state) => state.suspended && !state.manualOverride
+      )
+    ).toBe(true);
+  });
+
+  it("records the one-time migration marker idempotently", async () => {
+    const marker = await database.query.userSetting.findFirst({
+      where: eq(userSetting.key, "review_memory_key_version")
+    });
+
+    expect(marker?.valueJson).toBe(JSON.stringify("mnemonic:v1"));
+
+    await runMigrations(database);
+
+    expect(
+      await database.query.userSetting.findFirst({
+        where: eq(userSetting.key, "review_memory_key_version")
+      })
+    ).toEqual(marker);
   });
 });
 

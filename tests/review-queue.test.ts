@@ -38,6 +38,7 @@ import {
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
 import { buildCanonicalReviewSessionHref } from "@/features/navigation";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import * as settings from "@/features/settings/server";
 import { updateStudySettings } from "@/features/settings/server";
 import {
@@ -196,13 +197,14 @@ describe("review queue", () => {
 
     expect(queue).not.toBeNull();
     expect(queue?.dueCount).toBe(1);
-    expect(queue?.newAvailableCount).toBe(0);
-    expect(queue?.newQueuedCount).toBe(0);
-    expect(queue?.queueCount).toBe(1);
+    expect(queue?.newAvailableCount).toBe(1);
+    expect(queue?.newQueuedCount).toBe(1);
+    expect(queue?.queueCount).toBe(2);
     expect(queue?.manualCount).toBe(1);
     expect(queue?.suspendedCount).toBe(0);
     expect(queue?.cards.map((reviewCard) => reviewCard.id)).toEqual([
-      developmentFixture.primaryCardId
+      developmentFixture.primaryCardId,
+      "card_fixture_new_context"
     ]);
   });
 
@@ -363,7 +365,13 @@ describe("review queue", () => {
       relationshipType: "primary"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "entry:term:term_duel_masters_review",
+      canonicalSubjectKey: "entry:term:term_duel_masters_review",
+      recallTask: "recognition",
+      subjectKey: buildReviewMemoryKey({
+        canonicalSubjectKey: "entry:term:term_duel_masters_review",
+        cardId: "card_duel_masters_due",
+        recallTask: "recognition"
+      }),
       subjectType: "entry",
       entryType: "term",
       entryId: "term_duel_masters_review",
@@ -575,8 +583,11 @@ describe("review queue", () => {
 
       expect(completionPage?.queue.newAvailableCount).toBe(1);
       expect(completionPage?.queue.newQueuedCount).toBe(0);
-      expect(completionPage?.queue.queueCount).toBe(0);
-      expect(completionPage?.selectedCard).toBeNull();
+      expect(completionPage?.queue.queueCount).toBe(2);
+      expect(completionPage?.selectedCard?.bucket).toBe("upcoming");
+      expect([fixture.cardIds[0], firstTopUpCardId]).toContain(
+        completionPage?.selectedCard?.id
+      );
 
       const toppedUpPage = await getReviewPageData(
         fixture.mediaSlug,
@@ -713,7 +724,13 @@ describe("review queue", () => {
       relationshipType: "primary"
     });
     await database.insert(reviewSubjectState).values({
-      subjectKey: "entry:term:term_fixture_remaining_count",
+      canonicalSubjectKey: "entry:term:term_fixture_remaining_count",
+      recallTask: "recognition",
+      subjectKey: buildReviewMemoryKey({
+        canonicalSubjectKey: "entry:term:term_fixture_remaining_count",
+        cardId: "card_fixture_remaining_count",
+        recallTask: "recognition"
+      }),
       subjectType: "entry",
       entryType: "term",
       entryId: "term_fixture_remaining_count",
@@ -802,8 +819,12 @@ describe("review queue", () => {
     });
 
     expect(result.status).toBe("completed");
-    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
-      await loadCrossMediaTermSubjectContext(database);
+    const {
+      alphaTermEntry,
+      canonicalSubjectKey,
+      crossMediaGroupId,
+      subjectKey
+    } = await loadCrossMediaTermSubjectContext(database);
 
     await database.insert(lessonProgress).values([
       {
@@ -821,6 +842,8 @@ describe("review queue", () => {
       .delete(reviewSubjectState)
       .where(eq(reviewSubjectState.subjectKey, subjectKey));
     await database.insert(reviewSubjectState).values({
+      canonicalSubjectKey,
+      recallTask: "recognition",
       subjectKey,
       subjectType: "group",
       entryType: "term",
@@ -900,8 +923,12 @@ describe("review queue", () => {
     });
 
     expect(result.status).toBe("completed");
-    const { alphaTermEntry, crossMediaGroupId, subjectKey } =
-      await loadCrossMediaTermSubjectContext(database);
+    const {
+      alphaTermEntry,
+      canonicalSubjectKey,
+      crossMediaGroupId,
+      subjectKey
+    } = await loadCrossMediaTermSubjectContext(database);
 
     await database.insert(lessonProgress).values([
       {
@@ -919,6 +946,8 @@ describe("review queue", () => {
       .delete(reviewSubjectState)
       .where(eq(reviewSubjectState.subjectKey, subjectKey));
     await database.insert(reviewSubjectState).values({
+      canonicalSubjectKey,
+      recallTask: "recognition",
       subjectKey,
       subjectType: "group",
       entryType: "term",

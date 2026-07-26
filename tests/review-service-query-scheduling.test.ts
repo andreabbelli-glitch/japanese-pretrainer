@@ -17,8 +17,7 @@ import { runMigrations } from "@/db/migrate";
 import { lessonProgress, reviewSubjectState } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
-
-const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
+import { primarySubjectKey } from "./helpers/review-shared";
 
 describe("review service query scheduling", () => {
   let tempDir = "";
@@ -89,10 +88,7 @@ describe("review service query scheduling", () => {
     });
 
     try {
-      await schedule.expectStarted(
-        "subject state",
-        "member-card lookup"
-      );
+      await schedule.expectStarted("subject state", "member-card lookup");
       schedule.expectNotSettled("subject state");
     } finally {
       subjectStateGate.resolve();

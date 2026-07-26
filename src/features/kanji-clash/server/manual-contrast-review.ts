@@ -92,7 +92,7 @@ export function resolveReviewForcedContrastEndpoint(
     crossMediaGroupId: identity.crossMediaGroupId,
     entryId: identity.entryId,
     entryType: identity.entryType,
-    subjectKey: identity.subjectKey,
+    subjectKey: identity.canonicalSubjectKey,
     subjectType: identity.subjectKind
   };
 }

@@ -7,6 +7,7 @@ import type { DatabaseClient } from "@/db";
 import { term } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
 import { mediaGlossaryEntryHref } from "@/features/navigation";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import { crossMediaFixture } from "./cross-media-fixture";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,8 +22,18 @@ export const reviewValidContentRoot = path.join(
   "content"
 );
 
-export const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
-export const secondarySubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
+export const primaryCanonicalSubjectKey = `entry:term:${developmentFixture.termDbId}`;
+export const primarySubjectKey = buildReviewMemoryKey({
+  canonicalSubjectKey: primaryCanonicalSubjectKey,
+  cardId: developmentFixture.primaryCardId,
+  recallTask: "recognition"
+});
+export const secondaryCanonicalSubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
+export const secondarySubjectKey = buildReviewMemoryKey({
+  canonicalSubjectKey: secondaryCanonicalSubjectKey,
+  cardId: developmentFixture.secondaryCardId,
+  recallTask: "other"
+});
 
 export function expectedGlossaryEntryHref(
   mediaSlug: string,
@@ -58,6 +69,11 @@ export async function loadCrossMediaTermSubjectContext(client: DatabaseClient) {
     alphaTermEntry,
     betaTermEntry,
     crossMediaGroupId: alphaTermEntry.crossMediaGroupId,
-    subjectKey: `group:term:${alphaTermEntry.crossMediaGroupId}`
+    canonicalSubjectKey: `group:term:${alphaTermEntry.crossMediaGroupId}`,
+    subjectKey: buildReviewMemoryKey({
+      canonicalSubjectKey: `group:term:${alphaTermEntry.crossMediaGroupId}`,
+      cardId: crossMediaFixture.alpha.termCardId,
+      recallTask: "recognition"
+    })
   };
 }

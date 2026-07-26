@@ -151,7 +151,7 @@ describe("study settings", () => {
       database
     );
 
-    const rows = await database.query.userSetting.findMany();
+    const rows = await listStudySettingRows(database);
     const rowsByKey = new Map(rows.map((row) => [row.key, row]));
 
     expect(rows).toHaveLength(2);
@@ -194,7 +194,7 @@ describe("study settings", () => {
     vi.setSystemTime(new Date("2026-04-16T10:00:00.000Z"));
     await updateStudySettings({}, database);
 
-    const rows = await database.query.userSetting.findMany();
+    const rows = await listStudySettingRows(database);
     const rowsByKey = new Map(rows.map((row) => [row.key, row]));
 
     expect(rows).toHaveLength(4);
@@ -230,7 +230,7 @@ describe("study settings", () => {
     vi.setSystemTime(new Date("2026-04-16T10:00:00.000Z"));
     await updateStudySettings({}, database);
 
-    const rows = await database.query.userSetting.findMany();
+    const rows = await listStudySettingRows(database);
 
     expect(rows).toEqual([
       {
@@ -247,3 +247,9 @@ describe("study settings", () => {
     expect(resolveKanjiClashDefaultScope("global", null)).toBe("global");
   });
 });
+
+async function listStudySettingRows(database: DatabaseClient) {
+  const rows = await database.query.userSetting.findMany();
+
+  return rows.filter((row) => row.key !== "review_memory_key_version");
+}

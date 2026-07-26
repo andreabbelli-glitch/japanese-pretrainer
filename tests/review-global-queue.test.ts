@@ -34,6 +34,7 @@ import {
   getReviewQueueSnapshotForMedia,
   loadReviewOverviewSnapshots
 } from "@/features/review/server";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import {
   buildReviewDailyLimitSetting,
   buildReviewSubjectLogRow,
@@ -166,7 +167,9 @@ describe("global review queue filtering", () => {
 
     const [mediaBProgress, snapshots] = await Promise.all([
       getMediaProgressPageData("media-b", database),
-      loadReviewOverviewSnapshots(database, [{ id: "media_b", slug: "media-b" }])
+      loadReviewOverviewSnapshots(database, [
+        { id: "media_b", slug: "media-b" }
+      ])
     ]);
     const mediaBSnapshot = snapshots.get("media_b");
 
@@ -558,9 +561,9 @@ describe("global review queue filtering", () => {
         updatedAt: "2026-03-10T09:00:00.000Z"
       }
     ]);
-    await database.insert(cardEntryLink).values(
-      buildReviewCardEntryLink("card_a_term_a", "card_a", "term_a")
-    );
+    await database
+      .insert(cardEntryLink)
+      .values(buildReviewCardEntryLink("card_a_term_a", "card_a", "term_a"));
     await database
       .insert(userSetting)
       .values(buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z"));
@@ -1105,12 +1108,30 @@ async function seedCrossMediaDueOrderingFixture(database: DatabaseClient) {
       orderIndex: 1
     })
   ]);
-  await database.insert(cardEntryLink).values([
-    buildReviewCardEntryLink("link_a_due_one", "card_a_due_one", "term_a_due_one"),
-    buildReviewCardEntryLink("link_b_due_one", "card_b_due_one", "term_b_due_one"),
-    buildReviewCardEntryLink("link_a_due_two", "card_a_due_two", "term_a_due_two"),
-    buildReviewCardEntryLink("link_b_due_two", "card_b_due_two", "term_b_due_two")
-  ]);
+  await database
+    .insert(cardEntryLink)
+    .values([
+      buildReviewCardEntryLink(
+        "link_a_due_one",
+        "card_a_due_one",
+        "term_a_due_one"
+      ),
+      buildReviewCardEntryLink(
+        "link_b_due_one",
+        "card_b_due_one",
+        "term_b_due_one"
+      ),
+      buildReviewCardEntryLink(
+        "link_a_due_two",
+        "card_a_due_two",
+        "term_a_due_two"
+      ),
+      buildReviewCardEntryLink(
+        "link_b_due_two",
+        "card_b_due_two",
+        "term_b_due_two"
+      )
+    ]);
   await database.insert(reviewSubjectState).values([
     buildDueSubjectState({
       cardId: "card_a_due_one",
@@ -1212,8 +1233,15 @@ function buildDueSubjectState(input: {
   entryId: string;
   subjectKey: string;
 }): typeof reviewSubjectState.$inferInsert {
+  const memoryKey = buildReviewMemoryKey({
+    canonicalSubjectKey: input.subjectKey,
+    cardId: input.cardId,
+    recallTask: "recognition"
+  });
+
   return {
-    subjectKey: input.subjectKey,
+    canonicalSubjectKey: input.subjectKey,
+    subjectKey: memoryKey,
     subjectType: "group",
     entryType: "term",
     entryId: input.entryId,
@@ -1229,6 +1257,7 @@ function buildDueSubjectState(input: {
     learningSteps: 0,
     lapses: 0,
     reps: 1,
+    recallTask: "recognition",
     schedulerVersion: "fsrs_v1",
     manualOverride: false,
     suspended: false,

@@ -3,6 +3,7 @@ import type {
   ReviewPageData,
   ReviewQueueCard
 } from "@/features/review/client";
+import { differenceInReviewStudyDays } from "@/features/review/model/study-day";
 
 import type { ReviewPageClientData } from "./review-page-state";
 
@@ -97,7 +98,9 @@ export function pruneQueuedPrefetchedCardMap<T>(
   const queuedCardIdSet = new Set(queueCardIds);
 
   return new Map(
-    Array.from(prefetchedCards).filter(([cardId]) => queuedCardIdSet.has(cardId))
+    Array.from(prefetchedCards).filter(([cardId]) =>
+      queuedCardIdSet.has(cardId)
+    )
   );
 }
 
@@ -164,7 +167,9 @@ export function prioritizeReviewAdvanceCandidateCardIds(input: {
 
   return [
     input.preferredCardId,
-    ...input.candidateCardIds.filter((cardId) => cardId !== input.preferredCardId)
+    ...input.candidateCardIds.filter(
+      (cardId) => cardId !== input.preferredCardId
+    )
   ];
 }
 
@@ -276,7 +281,10 @@ export function buildOptimisticGradeResult(input: {
           position: input.nextQueuePosition,
           remainingCount:
             input.nextQueuePosition !== null
-              ? Math.max(0, input.nextQueueCardIds.length - input.nextQueuePosition)
+              ? Math.max(
+                  0,
+                  input.nextQueueCardIds.length - input.nextQueuePosition
+                )
               : 0,
           reviewStateUpdatedAt: input.nextCard.reviewStateUpdatedAt ?? null,
           showAnswer: false
@@ -315,7 +323,7 @@ export function buildOptimisticFirstCandidateGradeResult(input: {
     ...input.currentData,
     nextCardId:
       input.nextQueuePosition !== null
-        ? input.nextQueueCardIds[input.nextQueuePosition] ?? null
+        ? (input.nextQueueCardIds[input.nextQueuePosition] ?? null)
         : null,
     queue: buildOptimisticQueueUpdate(
       {
@@ -332,7 +340,10 @@ export function buildOptimisticFirstCandidateGradeResult(input: {
           position: input.nextQueuePosition,
           remainingCount:
             input.nextQueuePosition !== null
-              ? Math.max(0, input.nextQueueCardIds.length - input.nextQueuePosition)
+              ? Math.max(
+                  0,
+                  input.nextQueueCardIds.length - input.nextQueuePosition
+                )
               : 0,
           reviewStateUpdatedAt: input.nextCard.reviewStateUpdatedAt ?? null,
           showAnswer: false
@@ -381,12 +392,11 @@ function buildOptimisticQueueUpdate<
     newQueuedCount: number;
     queueCount: number;
   }
->(
-  currentQueue: T,
-  gradedCardBucket: ReviewQueueCard["bucket"]
-): T {
+>(currentQueue: T, gradedCardBucket: ReviewQueueCard["bucket"]): T {
   const isQueuedBucket =
-    gradedCardBucket === "due" || gradedCardBucket === "new";
+    gradedCardBucket === "due" ||
+    gradedCardBucket === "new" ||
+    gradedCardBucket === "upcoming";
 
   return {
     ...currentQueue,
@@ -455,28 +465,32 @@ export function resolveReviewQueueRefreshState(input: {
   return {
     buttonLabel: "Controlla card pronte",
     canRefresh: false,
-    statusLabel: `Prossime card ${formatReviewQueueRefreshWait(dueTime - nowTime)}.`
+    statusLabel: `Prossime card ${formatReviewQueueRefreshWait(
+      input.now,
+      new Date(dueTime)
+    )}.`
   };
 }
 
-export function formatReviewQueueRefreshWait(diffMs: number) {
+export function formatReviewQueueRefreshWait(now: Date, dueAt: Date) {
+  const diffMs = dueAt.getTime() - now.getTime();
+
   if (!Number.isFinite(diffMs) || diffMs <= 60_000) {
     return "tra 1 min";
   }
 
-  if (diffMs < 60 * 60_000) {
-    return `tra ${Math.ceil(diffMs / 60_000)} min`;
-  }
+  const studyDayDiff = differenceInReviewStudyDays(now, dueAt);
 
-  const diffHours = Math.ceil(diffMs / (60 * 60_000));
+  if (studyDayDiff <= 0) {
+    if (diffMs < 60 * 60_000) {
+      return `tra ${Math.ceil(diffMs / 60_000)} min`;
+    }
 
-  if (diffHours < 24) {
+    const diffHours = Math.ceil(diffMs / (60 * 60_000));
     return diffHours === 1 ? "tra 1 ora" : `tra ${diffHours} ore`;
   }
 
-  const diffDays = Math.ceil(diffMs / (24 * 60 * 60_000));
-
-  return diffDays === 1 ? "domani" : `tra ${diffDays} giorni`;
+  return studyDayDiff === 1 ? "domani" : `tra ${studyDayDiff} giorni`;
 }
 
 export function isReviewPageData(

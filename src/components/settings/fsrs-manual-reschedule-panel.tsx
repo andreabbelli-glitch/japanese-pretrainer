@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import Link from "next/link";
 
 import { applyFsrsRescheduleAction } from "@/actions/settings";
 import type { FsrsReschedulePreview } from "@/features/fsrs-optimizer/server";
@@ -9,7 +10,7 @@ import { ApplyFsrsRescheduleButton } from "./apply-fsrs-reschedule-button";
 export type FsrsRescheduleStatus = "applied" | "noop" | "stale";
 
 type FsrsManualReschedulePanelProps = {
-  preview: FsrsReschedulePreview;
+  preview: FsrsReschedulePreview | null;
   returnTo?: Route | null;
   status?: FsrsRescheduleStatus | null;
 };
@@ -19,6 +20,33 @@ export function FsrsManualReschedulePanel({
   returnTo,
   status
 }: FsrsManualReschedulePanelProps) {
+  if (!preview) {
+    return (
+      <SurfaceCard className="settings-panel" variant="quiet">
+        <div className="settings-panel__header">
+          <div>
+            <p className="eyebrow">Review</p>
+            <h3 className="settings-panel__title">
+              Riallineamento calendario FSRS
+            </h3>
+          </div>
+          <p className="settings-panel__body">
+            La preview rilegge la cronologia completa, quindi viene calcolata
+            solo quando ti serve.
+          </p>
+        </div>
+        <div className="settings-form__footer">
+          <Link
+            className="button button--ghost"
+            href={buildFsrsPreviewHref(returnTo)}
+          >
+            Calcola preview FSRS
+          </Link>
+        </div>
+      </SurfaceCard>
+    );
+  }
+
   const hasAffectedCards = preview.summary.affectedSubjects > 0;
   const maxAbsDelta = Math.max(
     1,
@@ -47,7 +75,10 @@ export function FsrsManualReschedulePanel({
           label="Card interessate"
           value={preview.summary.affectedSubjects}
         />
-        <MetricCard label="Spostate prima" value={preview.summary.movedEarlier} />
+        <MetricCard
+          label="Spostate prima"
+          value={preview.summary.movedEarlier}
+        />
         <MetricCard label="Spostate dopo" value={preview.summary.movedLater} />
         <MetricCard
           label="Delta oggi"
@@ -103,7 +134,9 @@ export function FsrsManualReschedulePanel({
           type="hidden"
           value={preview.fsrsCacheKeyPart}
         />
-        {returnTo ? <input name="returnTo" type="hidden" value={returnTo} /> : null}
+        {returnTo ? (
+          <input name="returnTo" type="hidden" value={returnTo} />
+        ) : null}
         <div className="settings-form__footer">
           <ApplyFsrsRescheduleButton disabled={!hasAffectedCards} />
         </div>
@@ -114,6 +147,16 @@ export function FsrsManualReschedulePanel({
       ) : null}
     </SurfaceCard>
   );
+}
+
+function buildFsrsPreviewHref(returnTo?: Route | null): Route {
+  const params = new URLSearchParams({ fsrsPreview: "1" });
+
+  if (returnTo) {
+    params.set("returnTo", returnTo);
+  }
+
+  return `/settings?${params.toString()}` as Route;
 }
 
 function MetricCard({

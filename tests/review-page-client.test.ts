@@ -40,7 +40,7 @@ describe("review page client hydration", () => {
     ).toBe("card-a");
   });
 
-  it("builds fallback grade previews from the visible queue card before full hydration", () => {
+  it("does not invent client grade previews before authoritative hydration", () => {
     const data = buildFirstCandidateReviewPageData({
       cardId: "card-a"
     });
@@ -51,9 +51,7 @@ describe("review page client hydration", () => {
       now: new Date("2026-04-02T12:00:00.000Z")
     });
 
-    expect(lookup.size).toBe(4);
-    expect(lookup.get("again")).toBeDefined();
-    expect(lookup.get("good")).toBeDefined();
+    expect(lookup.size).toBe(0);
   });
 
   it("clears stale hydration errors after a successful full-data refresh", () => {
@@ -176,7 +174,7 @@ describe("review page client hydration", () => {
     });
   });
 
-  it("renders grading controls even when the stage is still hydrating the full payload", () => {
+  it("renders a disabled calculation state while grade previews hydrate", () => {
     const data = buildFirstCandidateReviewPageData({
       cardId: "card-a",
       showAnswer: true
@@ -216,7 +214,7 @@ describe("review page client hydration", () => {
         isForcedContrastOpen: false,
         isFullReviewPageData: false,
         isGlobalReview: true,
-        isGradeControlsDisabled: false,
+        isGradeControlsDisabled: true,
         isHydratingFullData: true,
         isPending: false,
         remainingCount: 3,
@@ -232,6 +230,8 @@ describe("review page client hydration", () => {
     expect(markup).toContain("Good");
     expect(markup).toContain("Hard");
     expect(markup).toContain("Easy");
+    expect(markup).toContain("Calcolo…");
+    expect(markup).toContain('disabled=""');
     expect(markup).toContain("+ Contrasto");
   });
 

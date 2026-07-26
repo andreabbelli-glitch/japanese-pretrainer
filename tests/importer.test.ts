@@ -27,6 +27,7 @@ import {
   term
 } from "@/db/schema/index.ts";
 import { importContentWorkspace } from "@/features/content/importer.ts";
+import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import { buildScopedEntryId } from "@/features/study/model/entry-id";
 import {
   crossMediaFixture,
@@ -292,9 +293,14 @@ describe("content importer", () => {
     });
     expect(persistedTerm?.crossMediaGroupId).toBeTruthy();
     const canonicalSubjectKey = `group:term:${persistedTerm?.crossMediaGroupId}`;
+    const memoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey,
+      cardId: termCardId,
+      recallTask: "recognition"
+    });
     const persistedReviewState =
       await database.query.reviewSubjectState.findFirst({
-        where: eq(reviewSubjectState.subjectKey, canonicalSubjectKey)
+        where: eq(reviewSubjectState.subjectKey, memoryKey)
       });
     const legacyReviewState = await database.query.reviewSubjectState.findFirst(
       {
@@ -302,7 +308,7 @@ describe("content importer", () => {
       }
     );
     const persistedReviewLog = await database.query.reviewSubjectLog.findMany({
-      where: eq(reviewSubjectLog.subjectKey, canonicalSubjectKey)
+      where: eq(reviewSubjectLog.id, "review_subject_log_term_taberu")
     });
     const persistedLessonProgress =
       await database.query.lessonProgress.findFirst({
@@ -313,6 +319,7 @@ describe("content importer", () => {
     expect(persistedReviewState?.manualOverride).toBe(true);
     expect(legacyReviewState).toBeUndefined();
     expect(persistedReviewLog).toHaveLength(1);
+    expect(persistedReviewLog[0]?.subjectKey).toBe(`entry:term:${termDbId}`);
     expect(persistedLessonProgress?.status).toBe("in_progress");
   }, 60_000);
 
@@ -510,12 +517,15 @@ describe("content importer", () => {
     const importedCard = await database.query.card.findFirst({
       where: eq(card.id, termCardId)
     });
+    const canonicalSubjectKey = `group:term:${importedTerm?.crossMediaGroupId}`;
+    const memoryKey = buildReviewMemoryKey({
+      canonicalSubjectKey,
+      cardId: termCardId,
+      recallTask: "recognition"
+    });
     const persistedReviewState =
       await database.query.reviewSubjectState.findFirst({
-        where: eq(
-          reviewSubjectState.subjectKey,
-          `group:term:${importedTerm?.crossMediaGroupId}`
-        )
+        where: eq(reviewSubjectState.subjectKey, memoryKey)
       });
     const legacyReviewState = await database.query.reviewSubjectState.findFirst(
       {

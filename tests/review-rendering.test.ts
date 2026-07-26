@@ -34,10 +34,9 @@ import {
 } from "./helpers/review-db-fixture";
 import {
   expectedGlossaryEntryHref,
+  primarySubjectKey,
   reviewValidContentRoot as validContentRoot
 } from "./helpers/review-shared";
-
-const primarySubjectKey = `entry:term:${developmentFixture.termDbId}`;
 
 describe("review rendering", () => {
   let tempDir = "";
@@ -527,6 +526,9 @@ describe("review rendering", () => {
 
     expect(reviewPage?.selectedCardContext.gradePreviews).toHaveLength(4);
     expect(reviewPage?.selectedCard?.gradePreviews).toEqual([]);
+    expect(reviewPage?.selectedCard?.reviewSeedState.schedulingKey).toBe(
+      primarySubjectKey
+    );
     expect(
       reviewPage?.queue.advanceCards.every(
         (card) => card.gradePreviews.length === 0
