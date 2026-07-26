@@ -1,4 +1,5 @@
 import { and, eq, isNull } from "drizzle-orm";
+import type { InStatement } from "@libsql/client";
 
 import type { DatabaseClient } from "../client.ts";
 import { card, reviewSubjectLog } from "../schema/index.ts";
@@ -16,12 +17,14 @@ export const LEGACY_UNKNOWN_REVIEW_CARD_TYPE = "legacy_unknown";
 
 type ReviewEventLedgerBackfillDatabase = Pick<
   DatabaseClient,
-  "select" | "update"
+  "$client" | "select"
 >;
 
 export type ReviewEventLedgerBackfillResult = {
   backfilledCount: number;
 };
+
+const REVIEW_EVENT_LEDGER_BACKFILL_BATCH_SIZE = 100;
 
 export async function backfillLegacyReviewEvents(
   database: ReviewEventLedgerBackfillDatabase
@@ -47,39 +50,64 @@ export async function backfillLegacyReviewEvents(
       )
     );
 
-  let backfilledCount = 0;
-
-  for (const row of legacyRows) {
+  const statements: InStatement[] = legacyRows.map((row) => {
     const cardTypeSnapshot =
       row.cardTypeSnapshot ??
       row.liveCardType ??
       LEGACY_UNKNOWN_REVIEW_CARD_TYPE;
     const recordedAt = row.answeredAt;
-    const updatedRows = await database
-      .update(reviewSubjectLog)
-      .set({
-        algorithmVersion: FSRS_ALGORITHM_VERSION,
-        bindingVersion: FSRS_SCHEDULER_BINDING_VERSION,
-        canonicalSubjectKey: row.canonicalSubjectKey ?? row.subjectKey,
-        cardTypeSnapshot,
-        eventKind: "grade",
-        eventSchemaVersion: 0,
-        mediaIdSnapshot: row.mediaIdSnapshot ?? row.liveMediaId,
-        recallTask: row.recallTask ?? resolveReviewRecallTask(cardTypeSnapshot),
-        recordedAt,
-        studyDay: getReviewStudyDay(recordedAt),
-        studyDayPolicy: getReviewStudyDayPolicyKey()
-      })
-      .where(
-        and(
-          eq(reviewSubjectLog.id, row.id),
-          eq(reviewSubjectLog.eventSchemaVersion, 0),
-          isNull(reviewSubjectLog.recordedAt)
-        )
-      )
-      .returning({ id: reviewSubjectLog.id });
 
-    backfilledCount += updatedRows.length;
+    return {
+      args: [
+        FSRS_ALGORITHM_VERSION,
+        FSRS_SCHEDULER_BINDING_VERSION,
+        row.canonicalSubjectKey ?? row.subjectKey,
+        cardTypeSnapshot,
+        row.mediaIdSnapshot ?? row.liveMediaId,
+        row.recallTask ?? resolveReviewRecallTask(cardTypeSnapshot),
+        recordedAt,
+        getReviewStudyDay(recordedAt),
+        getReviewStudyDayPolicyKey(),
+        row.id
+      ],
+      sql: `
+        update review_subject_log
+        set algorithm_version = ?,
+          binding_version = ?,
+          canonical_subject_key = ?,
+          card_type_snapshot = ?,
+          event_kind = 'grade',
+          event_schema_version = 0,
+          media_id_snapshot = ?,
+          recall_task = ?,
+          recorded_at = ?,
+          study_day = ?,
+          study_day_policy = ?
+        where id = ?
+          and event_schema_version = 0
+          and recorded_at is null
+      `
+    };
+  });
+  let backfilledCount = 0;
+
+  for (
+    let index = 0;
+    index < statements.length;
+    index += REVIEW_EVENT_LEDGER_BACKFILL_BATCH_SIZE
+  ) {
+    const results = await database.$client.batch(
+      statements.slice(
+        index,
+        index + REVIEW_EVENT_LEDGER_BACKFILL_BATCH_SIZE
+      ),
+      "write"
+    );
+
+    backfilledCount += results.reduce(
+      (total, result) => total + result.rowsAffected,
+      0
+    );
   }
 
   return { backfilledCount };

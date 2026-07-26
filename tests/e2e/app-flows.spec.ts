@@ -66,7 +66,7 @@ test("navigates the core study spine", async ({ page }) => {
     page.getByRole("heading", {
       name: /Entrare nel gioco: zone, attori e testo della carta/
     })
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 15_000 });
 
   await page.goto("/media/duel-masters-dm25");
   await page

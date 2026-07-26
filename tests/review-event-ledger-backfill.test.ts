@@ -1,5 +1,5 @@
 import { eq } from "drizzle-orm";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   backfillLegacyReviewEvents,
@@ -149,6 +149,47 @@ describe("legacy review event ledger backfill", () => {
           recallTask: "other",
           recordedAt: "2026-01-15T03:00:00.000Z"
         });
+      }
+    );
+  });
+
+  it("uses bounded write batches for a remote-sized legacy ledger", async () => {
+    await withTestDatabase(
+      {
+        prefix: "jcs-review-event-ledger-batch-",
+        seedDevelopmentFixture: false
+      },
+      async ({ database }) => {
+        const legacyEvents = Array.from({ length: 205 }, (_, index) => ({
+          answeredAt: "2026-01-15T03:00:00.000Z",
+          cardId: `deleted_card_${index}`,
+          id: `legacy_batch_event_${index}`,
+          rating: "good" as const,
+          subjectKey: `card:deleted_card_${index}`
+        }));
+
+        for (let index = 0; index < legacyEvents.length; index += 50) {
+          await database
+            .insert(reviewSubjectLog)
+            .values(legacyEvents.slice(index, index + 50));
+        }
+
+        const batchSpy = vi.spyOn(database.$client, "batch");
+
+        try {
+          await expect(backfillLegacyReviewEvents(database)).resolves.toEqual({
+            backfilledCount: 205
+          });
+
+          expect(batchSpy).toHaveBeenCalledTimes(3);
+          expect(
+            batchSpy.mock.calls.every(
+              ([statements]) => statements.length > 0 && statements.length <= 100
+            )
+          ).toBe(true);
+        } finally {
+          batchSpy.mockRestore();
+        }
       }
     );
   });
