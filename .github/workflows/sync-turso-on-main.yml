@@ -8,6 +8,7 @@ on:
       - "content/media/**"
       - "drizzle/**"
       - "scripts/db-migrate.ts"
+      - "src/db/backfills/**"
       - "src/db/migrate.ts"
       - "src/db/schema/**"
       - ".github/workflows/sync-turso-on-main.yml"
@@ -97,7 +98,7 @@ jobs:
             echo "Changed files:"
             printf '%s\n' "$changed_files"
 
-            if grep -Eq '^(drizzle/|scripts/db-migrate\.ts$|src/db/migrate\.ts$|src/db/schema/)' <<< "$changed_files"; then
+            if grep -Eq '^(\.github/workflows/sync-turso-on-main\.yml$|drizzle/|scripts/db-migrate\.ts$|src/db/backfills/|src/db/migrate\.ts$|src/db/schema/)' <<< "$changed_files"; then
               run_migrations=true
             fi
 

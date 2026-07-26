@@ -383,6 +383,7 @@ specifico, ma non conta come matrice ufficiale di verifica.
   stesso gate puo essere verificato con
   `./scripts/with-node.sh pnpm fsrs:optimize:if-needed`.
 - I workflow GitHub che toccano Turso remoto sono volutamente limitati: il sync
-  automatico su `main` copre solo migrazioni e import `content/media/**`
-  incrementali per slug, mentre il backup `turso db export` resta manuale per
-  evitare consumi improvvisi della quota `Rows Read`.
+  automatico su `main` copre migrazioni, relativi backfill in
+  `src/db/backfills/**` e import `content/media/**` incrementali per slug,
+  mentre il backup `turso db export` resta manuale per evitare consumi
+  improvvisi della quota `Rows Read`.
