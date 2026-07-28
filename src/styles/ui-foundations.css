@@ -24,6 +24,15 @@
   transform: translateY(calc(-100% - var(--space-4)));
 }
 
+.entry-preview-card__title.jp-inline,
+.entry-tooltip-card__title.jp-inline,
+.glossary-result-card__title.jp-inline {
+  font-family: var(--font-family-jp);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0;
+  line-height: var(--line-height-jp);
+}
+
 .skip-link:focus-visible {
   transform: translateY(0);
 }

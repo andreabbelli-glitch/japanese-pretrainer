@@ -113,7 +113,9 @@ metadati. Nessun testo essenziale va affidato solo al colore.
 
 Questa combinazione e implementata con font self-hosted via `@fontsource` /
 `@fontsource-variable`, evita fetch esterni in build e mantiene il giapponese
-piu leggibile del testo italiano.
+piu leggibile del testo italiano. `BIZ UDPGothic` precede sempre i fallback
+generici anche negli stack display e UI, cosi i glifi giapponesi non ricadono
+mai accidentalmente in un Mincho serif.
 
 ### Regole tipografiche
 
