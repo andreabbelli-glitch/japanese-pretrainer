@@ -428,6 +428,285 @@
       "updatedAt": "2026-05-24T16:10:17.485Z"
     },
     {
+      "entryId": "term-sv-vocabulary-012-bikkuri",
+      "entryKind": "term",
+      "label": "ビックリ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ビックリ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:46:19.065Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-014-korogasu",
+      "entryKind": "term",
+      "label": "ころがす",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ころがす",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:45:02.751Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-025-yorokobi",
+      "entryKind": "term",
+      "label": "よろこび",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "よろこび",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:44:16.429Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-026-buibuiiwasu",
+      "entryKind": "term",
+      "label": "ブイブイ言わす",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ブイブイいわす",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:48:15.929Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-034-harikiru",
+      "entryKind": "term",
+      "label": "はりきる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "はりきる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:48:45.194Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-043-soratobu",
+      "entryKind": "term",
+      "label": "そらとぶ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "そらとぶ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:45:00.094Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-066-utsuwa",
+      "entryKind": "term",
+      "label": "うつわ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "うつわ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:52:50.377Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-072-magatama",
+      "entryKind": "term",
+      "label": "まがたま",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "まがたま",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:46:10.724Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-075-koegake",
+      "entryKind": "term",
+      "label": "声がけ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "こえがけ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:47:40.528Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-079-yobidasu",
+      "entryKind": "term",
+      "label": "呼びだす",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "よびだす",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:52:39.740Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-086-watakushi",
+      "entryKind": "term",
+      "label": "ワタクシ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ワタクシ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:49:46.035Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-094-suberu",
+      "entryKind": "term",
+      "label": "すべる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "すべる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:50:42.477Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-099-kakezan",
+      "entryKind": "term",
+      "label": "かけ算",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かけざん",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:45:43.816Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-106-azukaru",
+      "entryKind": "term",
+      "label": "あずかる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "あずかる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:53:23.026Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-162-wadachi",
+      "entryKind": "term",
+      "label": "わだち",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "わだち",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:45:08.334Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-181-mairu",
+      "entryKind": "term",
+      "label": "まいる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "まいる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:45:24.882Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-187-komatta",
+      "entryKind": "term",
+      "label": "こまった",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "こまった",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:50:23.222Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-201-yattsukeru",
+      "entryKind": "term",
+      "label": "やっつける",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "やっつける",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:47:59.336Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-205-zettaireido",
+      "entryKind": "term",
+      "label": "ぜったいれいど",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ぜったいれいど",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:47:45.967Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-213-hima",
+      "entryKind": "term",
+      "label": "ヒマ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ヒマ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:44:04.635Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-217-oshare",
+      "entryKind": "term",
+      "label": "オシャレ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "オシャレ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:44:57.441Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-220-fubuki",
+      "entryKind": "term",
+      "label": "ふぶき",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ふぶき",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:49:59.824Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-225-otagai",
+      "entryKind": "term",
+      "label": "おたがい",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "おたがい",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:46:40.266Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-227-kakomu",
+      "entryKind": "term",
+      "label": "かこむ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "かこむ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:47:13.077Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-238-ateru",
+      "entryKind": "term",
+      "label": "あてる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "あてる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:47:54.045Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-262-sumika",
+      "entryKind": "term",
+      "label": "すみか",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "すみか",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:52:07.362Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-285-yada",
+      "entryKind": "term",
+      "label": "ヤダ",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "ヤダ",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:53:31.075Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-319-konayuki",
+      "entryKind": "term",
+      "label": "こなゆき",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "こなゆき",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:48:55.896Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-339-tsumeru",
+      "entryKind": "term",
+      "label": "つめる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "つめる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:47:34.855Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-350-batsugun",
+      "entryKind": "term",
+      "label": "バツグン",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "バツグン",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:50:05.656Z"
+    },
+    {
+      "entryId": "term-sv-vocabulary-367-meshiagaru",
+      "entryKind": "term",
+      "label": "めしあがる",
+      "mediaSlug": "pokemon-scarlet-violet",
+      "reading": "めしあがる",
+      "reason": "not_found_on_forvo",
+      "updatedAt": "2026-07-31T13:52:13.093Z"
+    },
+    {
       "entryId": "term-v022-eriazero",
       "entryKind": "term",
       "label": "エリアゼロ",
