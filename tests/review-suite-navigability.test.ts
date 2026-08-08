@@ -11,7 +11,7 @@ const splitReviewTestFiles = [
   "tests/review-rendering.test.ts"
 ];
 const maxReviewSplitLines = 1_150;
-const expectedReviewTestCount = 60;
+const expectedReviewTestCount = 64;
 
 function extractTestTitles(source: string) {
   const titles = [

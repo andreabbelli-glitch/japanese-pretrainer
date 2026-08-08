@@ -28,9 +28,11 @@ export const reviewStateValues = [
 export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
 export type ReviewRating = (typeof reviewRatingValues)[number];
 export type ReviewState = (typeof reviewStateValues)[number];
-export const CURRENT_REVIEW_SCHEDULER_VERSION = "fsrs_v2_study_day" as const;
+export const CURRENT_REVIEW_SCHEDULER_VERSION =
+  "fsrs_v3_overdue_transient" as const;
 export type ReviewSchedulerVersion =
   | "fsrs_v1"
+  | "fsrs_v2_study_day"
   | typeof CURRENT_REVIEW_SCHEDULER_VERSION;
 export type ReviewSchedulerRuntimeConfig = {
   desiredRetention?: number | null;
@@ -172,11 +174,17 @@ export function scheduleReview(
 export function scheduleReviewBase(
   input: ScheduleReviewInput
 ): ScheduleReviewResult {
-  const card = buildFsrsCard(input.current, input.now);
-  const scheduler = getReviewScheduler(input.scheduler);
-  const result = scheduler.next(card, input.now, mapReviewRating(input.rating));
+  const schedulingInput = normalizeOverdueTransientScheduleInput(input);
+  const card = buildFsrsCard(schedulingInput.current, schedulingInput.now);
+  const usesLongTermReviewTransition = card.state === State.Review;
+  const scheduler = getReviewScheduler(schedulingInput.scheduler);
+  const result = scheduler.next(
+    card,
+    schedulingInput.now,
+    mapReviewRating(schedulingInput.rating)
+  );
 
-  normalizeInternalCardDueDate(result.card, input.now);
+  normalizeInternalCardDueDate(result.card, schedulingInput.now);
 
   const elapsedDays = calculateElapsedDays(
     input.current.lastReviewedAt,
@@ -204,7 +212,7 @@ export function scheduleReviewBase(
     scheduled,
     result.card,
     scheduler,
-    input.current.state === "review"
+    usesLongTermReviewTransition
   );
   return scheduled;
 }
@@ -235,17 +243,21 @@ export function resolveReviewIntervalPolicySelection(
   scheduled: ScheduleReviewResult,
   input: ScheduleReviewInput
 ) {
+  const schedulingInput = normalizeOverdueTransientScheduleInput(input);
   const maximumInterval = normalizeMaximumInterval(
-    input.scheduler?.maximumInterval
+    schedulingInput.scheduler?.maximumInterval
   );
-  const minimumInterval = getReviewIntervalPolicyMinimum(scheduled, input);
+  const minimumInterval = getReviewIntervalPolicyMinimum(
+    scheduled,
+    schedulingInput
+  );
 
   return {
     maximumInterval,
     minimumInterval,
     selected: selectReviewDailyInterval(
       scheduled,
-      input,
+      schedulingInput,
       minimumInterval,
       maximumInterval
     )
@@ -256,9 +268,11 @@ export function getReviewIntervalPolicyMinimum(
   scheduled: ScheduleReviewResult,
   input: ScheduleReviewInput
 ) {
+  const schedulingInput = normalizeOverdueTransientScheduleInput(input);
+
   return (
-    input.intervalPolicy?.minimumInterval ??
-    resolveReviewIntervalMinimum(input, scheduled)
+    schedulingInput.intervalPolicy?.minimumInterval ??
+    resolveReviewIntervalMinimum(schedulingInput, scheduled)
   );
 }
 
@@ -314,6 +328,67 @@ function buildFsrsCard(
       ? buildFsrsElapsedDayAnchor(now, elapsedDayCount)
       : undefined
   };
+}
+
+function normalizeOverdueTransientScheduleInput(
+  input: ScheduleReviewInput
+): ScheduleReviewInput {
+  const previousState = normalizeSchedulableState(input.current.state);
+  const elapsedDays = calculateElapsedDays(
+    input.current.lastReviewedAt,
+    input.now
+  );
+
+  if (
+    !shouldPromoteOverdueTransientReview(
+      previousState,
+      elapsedDays,
+      input.rating
+    )
+  ) {
+    return input;
+  }
+
+  return {
+    ...input,
+    current: {
+      ...input.current,
+      learningSteps: 0,
+      state: "review"
+    }
+  };
+}
+
+function promoteOverdueTransientCardForSuccessfulReview(
+  card: Card,
+  previousState: SchedulableReviewState,
+  elapsedDays: number,
+  rating: ReviewRating
+): Card {
+  if (
+    !shouldPromoteOverdueTransientReview(previousState, elapsedDays, rating) ||
+    (card.state !== State.Learning && card.state !== State.Relearning)
+  ) {
+    return card;
+  }
+
+  return {
+    ...card,
+    learning_steps: 0,
+    state: State.Review
+  };
+}
+
+function shouldPromoteOverdueTransientReview(
+  previousState: SchedulableReviewState,
+  elapsedDays: number | null,
+  rating: ReviewRating
+) {
+  return (
+    (previousState === "learning" || previousState === "relearning") &&
+    (rating === "good" || rating === "easy") &&
+    (elapsedDays ?? 0) >= 1
+  );
 }
 
 function buildFsrsElapsedDayAnchor(now: Date, elapsedDayCount: number) {
@@ -429,7 +504,14 @@ export function replayReviewHistory(
       lastReviewBeforeScheduling,
       reviewAt
     );
-    const cardForScheduling = buildFsrsReplayCard(card, reviewAt, elapsedDays);
+    const replayCard = buildFsrsReplayCard(card, reviewAt, elapsedDays);
+    const previousState = normalizeSchedulableState(log.previousState);
+    const cardForScheduling = promoteOverdueTransientCardForSuccessfulReview(
+      replayCard,
+      previousState,
+      elapsedDays ?? 0,
+      log.rating
+    );
     const schedulerConfig = resolveReplayReviewSchedulerConfig(
       options,
       log,
@@ -466,7 +548,7 @@ export function replayReviewHistory(
           : 0),
       id: log.id,
       newState: mapFsrsState(result.card.state),
-      previousState: mapFsrsState(result.log.state),
+      previousState,
       rating: log.rating,
       responseMs: log.responseMs,
       scheduledDueAt: result.card.due.toISOString(),
@@ -809,7 +891,8 @@ function rememberUnroundedFsrsInterval(
  * ts-fsrs exposes both the resulting stability and its public
  * `interval_modifier` getter. Their product is the library's review interval
  * before `next_interval()` rounds it. Anki passes that value into fuzz as an
- * f32; learning/relearning exits intentionally keep ts-fsrs' rounded interval.
+ * f32. Same-day learning/relearning exits keep ts-fsrs' rounded interval;
+ * overdue successful transient steps promoted to Review use this float path.
  */
 function resolveUnroundedFsrsInterval(
   card: Pick<Card, "scheduled_days" | "stability">,

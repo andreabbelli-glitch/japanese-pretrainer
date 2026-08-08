@@ -108,15 +108,17 @@ describe("review mutations", () => {
     expect(persistedState?.state).toBe("review");
     expect(persistedState?.reps).toBe(4);
     expect(persistedState?.lapses).toBe(1);
-    expect(persistedState?.dueAt).toBe("2026-03-10T03:00:00.000Z");
-    expect(persistedState?.schedulerVersion).toBe("fsrs_v2_study_day");
-    expect(persistedState?.scheduledDays).toBe(1);
+    expect(persistedState?.dueAt).toBe("2026-03-13T03:00:00.000Z");
+    expect(persistedState?.schedulerVersion).toBe("fsrs_v3_overdue_transient");
+    expect(persistedState?.scheduledDays).toBe(4);
+    expect(persistedState?.stability).toBe(5.178);
     expect(persistedState?.learningSteps).toBe(0);
     expect(logs).toHaveLength(2);
     expect(logs.at(-1)?.previousState).toBe("learning");
     expect(logs.at(-1)?.newState).toBe("review");
     expect(logs.at(-1)?.rating).toBe("good");
-    expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v2_study_day");
+    expect(logs.at(-1)?.elapsedDays).toBe(1);
+    expect(logs.at(-1)?.schedulerVersion).toBe("fsrs_v3_overdue_transient");
     expect(logs.at(-1)).toMatchObject({
       algorithmVersion: "fsrs6",
       canonicalSubjectKey: primaryCanonicalSubjectKey,
@@ -145,10 +147,10 @@ describe("review mutations", () => {
       algorithmVersion: "fsrs6",
       bindingVersion: "ts-fsrs@5.2.3",
       recallTask: "recognition",
-      schedulerVersion: "fsrs_v2_study_day"
+      schedulerVersion: "fsrs_v3_overdue_transient"
     });
     expect(JSON.parse(parameterSet!.parametersJson)).toMatchObject({
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       studyDayPolicy: "study-day:v1:Europe/Rome:rollover-240"
     });
   });

@@ -82,11 +82,11 @@ describe("fsrs reschedule preview", () => {
     expect(today.currentCount).toBe(1);
     expect(today.proposedCount).toBe(0);
     expect(today.delta).toBe(-1);
-    expect(preview.days.find((day) => day.date === "2026-01-27")).toMatchObject(
+    expect(preview.days.find((day) => day.date === "2026-02-08")).toMatchObject(
       {
         currentCount: 0,
-        delta: 1,
-        proposedCount: 1
+        delta: 2,
+        proposedCount: 2
       }
     );
     expect(
@@ -143,7 +143,7 @@ describe("fsrs reschedule preview", () => {
       affectedSubjects: 2,
       status: "applied"
     });
-    expect(state?.dueAt).toBe("2026-01-27T03:00:00.000Z");
+    expect(state?.dueAt).toBe("2026-02-08T03:00:00.000Z");
     expect(state?.updatedAt).toBe("2026-01-21T10:05:00.000Z");
     expect(state?.lastInteractionAt).toBe("2026-01-08T09:00:00.000Z");
     expect(logsAfter).toHaveLength(logsBefore.length + 2);
@@ -166,7 +166,7 @@ describe("fsrs reschedule preview", () => {
       recallTask: "recognition",
       reason: "fsrs_optimizer_reschedule_apply",
       recordedAt: "2026-01-21T10:05:00.000Z",
-      scheduledDueAt: "2026-01-27T03:00:00.000Z",
+      scheduledDueAt: "2026-02-08T03:00:00.000Z",
       studyDay: "2026-01-21",
       subjectKey: reviewMemoryKey("recognition-card")
     });
@@ -178,7 +178,7 @@ describe("fsrs reschedule preview", () => {
       updatedAt: "2026-01-08T09:00:00.000Z"
     });
     expect(JSON.parse(rescheduleEvent.afterStateJson ?? "{}")).toMatchObject({
-      dueAt: "2026-01-27T03:00:00.000Z",
+      dueAt: "2026-02-08T03:00:00.000Z",
       reps: 3,
       updatedAt: "2026-01-21T10:05:00.000Z"
     });
@@ -360,7 +360,7 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-01-24T00:00:00.000Z",
       learningSteps: 0,
       scheduledDays: 23,
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       state: "review",
       updatedAt: "2026-01-21T10:05:00.000Z"
     });
@@ -453,7 +453,7 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-01-24T00:00:00.000Z",
       learningSteps: 0,
       scheduledDays: 22,
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       state: "review",
       updatedAt: "2026-01-21T10:05:00.000Z"
     });
@@ -558,7 +558,7 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-05-01T00:00:00.000Z",
       learningSteps: 0,
       scheduledDays: 110,
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       state: "review",
       updatedAt: "2026-01-21T10:05:00.000Z"
     });
@@ -1055,7 +1055,7 @@ describe("fsrs reschedule preview", () => {
       dueAt: "2026-01-21T09:10:00.000Z",
       learningSteps: 1,
       scheduledDays: 0,
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       state: "learning",
       updatedAt: "2026-01-21T10:05:00.000Z"
     });

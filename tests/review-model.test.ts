@@ -81,7 +81,7 @@ describe("review model", () => {
       learningSteps: 1,
       reps: 1,
       scheduledDays: 0,
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       stability: 2.307,
       state: "learning"
     });
@@ -96,7 +96,7 @@ describe("review model", () => {
       learningSteps: 0,
       reps: 6,
       scheduledDays: 0,
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       stability: 0.716,
       state: "relearning"
     });
@@ -114,9 +114,9 @@ describe("review model", () => {
         scheduleReview({
           current: {
             difficulty: 5,
-            dueAt: "2026-05-19T00:00:00.000Z",
+            dueAt: "2026-05-19T04:00:00.000Z",
             lapses: 0,
-            lastReviewedAt: "2026-05-19T00:00:00.000Z",
+            lastReviewedAt: "2026-05-19T04:00:00.000Z",
             learningSteps: 1,
             reps: 1,
             scheduledDays: 0,
@@ -155,6 +155,136 @@ describe("review model", () => {
 
     expect(scheduled.elapsedDays).toBe(0);
     expect(scheduled.scheduledDays).toBeLessThanOrEqual(3);
+  });
+
+  it.each(["learning", "relearning"] as const)(
+    "credits overdue successful %s steps as long-term review evidence",
+    (state) => {
+      const current = {
+        difficulty: 5,
+        dueAt: "2026-01-15T12:10:00.000Z",
+        lapses: state === "relearning" ? 1 : 0,
+        lastReviewedAt: "2026-01-15T12:00:00.000Z",
+        learningSteps: 1,
+        reps: 3,
+        scheduledDays: 0,
+        stability: 0.5,
+        state
+      };
+
+      for (const rating of ["good", "easy"] as const) {
+        const intervalPolicy = {
+          schedulingKey: `memory:${state}:${rating}:overdue-transition`
+        };
+        const onTime = scheduleReview({
+          current,
+          intervalPolicy,
+          now: new Date("2026-01-15T12:10:00.000Z"),
+          rating
+        });
+        const overdue = scheduleReview({
+          current,
+          intervalPolicy,
+          now: new Date("2026-01-19T12:10:00.000Z"),
+          rating
+        });
+        const longTermReference = scheduleReview({
+          current: {
+            ...current,
+            learningSteps: 0,
+            state: "review"
+          },
+          intervalPolicy,
+          now: new Date("2026-01-19T12:10:00.000Z"),
+          rating
+        });
+
+        expect(overdue).toMatchObject({
+          elapsedDays: 4,
+          learningSteps: 0,
+          schedulerVersion: "fsrs_v3_overdue_transient",
+          state: "review"
+        });
+        expect(overdue.stability).toBeGreaterThan(onTime.stability);
+        expect(overdue.scheduledDays).toBeGreaterThan(onTime.scheduledDays);
+        expect(overdue).toEqual(longTermReference);
+      }
+    }
+  );
+
+  it.each(["learning", "relearning"] as const)(
+    "keeps overdue %s Again and Hard ratings on the short-term path",
+    (state) => {
+      const current = {
+        difficulty: 5,
+        dueAt: "2026-01-15T12:10:00.000Z",
+        lapses: state === "relearning" ? 1 : 0,
+        lastReviewedAt: "2026-01-15T12:00:00.000Z",
+        learningSteps: 1,
+        reps: 3,
+        scheduledDays: 0,
+        stability: 0.5,
+        state
+      };
+
+      for (const rating of ["again", "hard"] as const) {
+        const onTime = scheduleReview({
+          current,
+          intervalPolicy: { enabled: false },
+          now: new Date("2026-01-15T12:10:00.000Z"),
+          rating
+        });
+        const overdue = scheduleReview({
+          current,
+          intervalPolicy: { enabled: false },
+          now: new Date("2026-01-19T12:10:00.000Z"),
+          rating
+        });
+
+        expect(overdue).toMatchObject({
+          learningSteps: onTime.learningSteps,
+          scheduledDays: onTime.scheduledDays,
+          stability: onTime.stability,
+          state: onTime.state
+        });
+      }
+    }
+  );
+
+  it("uses remembered duration rather than due-date metadata for transient promotion", () => {
+    const current = {
+      difficulty: 5,
+      dueAt: "2030-01-15T12:10:00.000Z",
+      lapses: 0,
+      lastReviewedAt: "2026-01-15T12:00:00.000Z",
+      learningSteps: 1,
+      reps: 3,
+      scheduledDays: 0,
+      stability: 0.5,
+      state: "learning" as const
+    };
+    const intervalPolicy = {
+      schedulingKey: "memory:recognition:future-due-transient"
+    };
+    const scheduled = scheduleReview({
+      current,
+      intervalPolicy,
+      now: new Date("2026-01-19T12:10:00.000Z"),
+      rating: "good"
+    });
+    const longTermReference = scheduleReview({
+      current: {
+        ...current,
+        learningSteps: 0,
+        state: "review"
+      },
+      intervalPolicy,
+      now: new Date("2026-01-19T12:10:00.000Z"),
+      rating: "good"
+    });
+
+    expect(scheduled.elapsedDays).toBe(4);
+    expect(scheduled).toEqual(longTermReference);
   });
 
   it("replays zero elapsed days inside the same logical study day", () => {
@@ -211,7 +341,7 @@ describe("review model", () => {
   });
 
   it("replays the persisted logical-day distance instead of recalculating wall time", () => {
-    const replayed = replayReviewHistory([
+    const logs = [
       {
         answeredAt: "2026-01-01T09:00:00.000Z",
         elapsedDays: 0,
@@ -228,9 +358,103 @@ describe("review model", () => {
         rating: "good",
         responseMs: null
       }
-    ]);
+    ] as const;
+    const persistedSameDay = replayReviewHistory(logs, {
+      schedulingKey: "persisted-elapsed"
+    });
+    const persistedOverdue = replayReviewHistory(
+      logs.map((log, index) =>
+        index === 1 ? { ...log, elapsedDays: 9 } : log
+      ),
+      { schedulingKey: "persisted-elapsed" }
+    );
 
-    expect(replayed?.logs[1]?.elapsedDays).toBe(0);
+    expect(persistedSameDay?.logs[1]?.elapsedDays).toBe(0);
+    expect(persistedSameDay?.state).toMatchObject({
+      scheduledDays: 2,
+      stability: 2.307,
+      state: "review"
+    });
+    expect(persistedOverdue?.logs[1]?.elapsedDays).toBe(9);
+    expect(persistedOverdue?.state).toMatchObject({
+      scheduledDays: 22,
+      stability: 23.993,
+      state: "review"
+    });
+  });
+
+  it("replays overdue learning success through the same long-term transition", () => {
+    const firstReviewedAt = "2026-01-15T12:00:00.000Z";
+    const overdueReviewedAt = "2026-01-19T12:10:00.000Z";
+    const schedulingKey = "memory:recognition:overdue-learning";
+    const first = scheduleReview({
+      current: {
+        difficulty: null,
+        dueAt: null,
+        lapses: 0,
+        lastReviewedAt: null,
+        learningSteps: 0,
+        reps: 0,
+        scheduledDays: 0,
+        stability: null,
+        state: "new"
+      },
+      intervalPolicy: { schedulingKey },
+      now: new Date(firstReviewedAt),
+      rating: "good"
+    });
+    const sequential = scheduleReview({
+      current: {
+        difficulty: first.difficulty,
+        dueAt: first.dueAt,
+        lapses: first.lapses,
+        lastReviewedAt: firstReviewedAt,
+        learningSteps: first.learningSteps,
+        reps: first.reps,
+        scheduledDays: first.scheduledDays,
+        stability: first.stability,
+        state: first.state
+      },
+      intervalPolicy: { schedulingKey },
+      now: new Date(overdueReviewedAt),
+      rating: "good"
+    });
+    const replayed = replayReviewHistory(
+      [
+        {
+          answeredAt: firstReviewedAt,
+          elapsedDays: 0,
+          id: "overdue-learning-log-1",
+          previousState: "new",
+          rating: "good",
+          responseMs: null
+        },
+        {
+          answeredAt: overdueReviewedAt,
+          elapsedDays: 4,
+          id: "overdue-learning-log-2",
+          previousState: "learning",
+          rating: "good",
+          responseMs: null
+        }
+      ],
+      { schedulingKey }
+    );
+
+    expect(replayed?.logs[1]).toMatchObject({
+      elapsedDays: 4,
+      newState: "review",
+      previousState: "learning",
+      schedulerVersion: "fsrs_v3_overdue_transient"
+    });
+    expect(replayed?.state).toMatchObject({
+      difficulty: sequential.difficulty,
+      dueAt: sequential.dueAt,
+      learningSteps: 0,
+      scheduledDays: sequential.scheduledDays,
+      state: "review"
+    });
+    expect(replayed?.state.stability).toBeCloseTo(sequential.stability, 2);
   });
 
   it("replays review history with a caller-provided scheduler config", () => {
@@ -268,9 +492,9 @@ describe("review model", () => {
       })
     });
 
-    expect(defaultReplay?.state.scheduledDays).toBe(21);
-    expect(optimizedReplay?.state.scheduledDays).toBe(65);
-    expect(optimizedReplay?.state.dueAt).toBe("2026-03-14T03:00:00.000Z");
+    expect(defaultReplay?.state.scheduledDays).toBe(34);
+    expect(optimizedReplay?.state.scheduledDays).toBe(106);
+    expect(optimizedReplay?.state.dueAt).toBe("2026-04-24T02:00:00.000Z");
   });
 
   it("uses one stable memory seed across physical-card replay logs", () => {

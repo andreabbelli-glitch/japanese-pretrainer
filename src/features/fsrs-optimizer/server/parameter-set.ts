@@ -4,7 +4,10 @@ import type { DatabaseClient } from "../../../db/index.ts";
 import { reviewFsrsParameterSet } from "../../../db/schema/index.ts";
 import type { ReviewRecallTask } from "../../../domain/review.ts";
 import { getReviewDailyIntervalPolicyKey } from "../../review/model/interval-policy.ts";
-import { reviewSchedulerConfig } from "../../review/model/scheduler.ts";
+import {
+  CURRENT_REVIEW_SCHEDULER_VERSION,
+  reviewSchedulerConfig
+} from "../../review/model/scheduler.ts";
 import { getReviewStudyDayPolicyKey } from "../../review/model/study-day.ts";
 
 import type { FsrsOptimizerSnapshot } from "../model/snapshot";
@@ -34,7 +37,7 @@ export function buildFsrsParameterSet(
     optimizerBindingVersion: preset?.bindingVersion ?? null,
     optimizerDatasetVersion: preset?.datasetVersion ?? null,
     recallTask,
-    schedulerVersion: "fsrs_v2_study_day" as const,
+    schedulerVersion: CURRENT_REVIEW_SCHEDULER_VERSION,
     studyDayPolicy: getReviewStudyDayPolicyKey(),
     weights: preset?.weights ?? [...reviewSchedulerConfig.fsrs.w]
   };
@@ -51,7 +54,7 @@ export function buildFsrsParameterSet(
     parameterHash,
     parametersJson,
     recallTask,
-    schedulerVersion: "fsrs_v2_study_day" as const
+    schedulerVersion: CURRENT_REVIEW_SCHEDULER_VERSION
   };
 }
 

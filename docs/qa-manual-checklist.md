@@ -275,6 +275,10 @@
 - Review intraday: dopo `Again`, una card learning/relearning rientra quando
   dovuta; se restano solo step entro 20 minuti il learn-ahead ne propone una,
   mentre con review dovute o nuove disponibili non anticipa card future.
+- Review transient arretrata: una card learning/relearning completata nello
+  stesso giorno mantiene lo step breve; dopo almeno un giorno logico,
+  `Good`/`Easy` la portano in review e la nuova scadenza valorizza tutto il
+  tempo ricordato, mentre `Again`/`Hard` mantengono il percorso conservativo.
 - Review day: prima e dopo le 04:00 `Europe/Rome` i contatori cambiano una sola
   volta; i passaggi ora legale/solare mantengono corretti giorni da 23/25 ore.
 - Media secondario: aprendo `Mobile Suit Gundam Arsenal Base`, textbook,

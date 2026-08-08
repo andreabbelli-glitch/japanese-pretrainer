@@ -22,7 +22,7 @@ Fonti di riferimento:
 | Memoria | Una memoria stabile per `canonicalSubject + recallTask`; recognition e concept restano separate; alias espliciti assorbono cambi di identita | Adattamento necessario al dominio |
 | Cronologia | Ledger immutabile con stato prima/dopo, rating, tempo logico, versione algoritmo/binding, hash parametri ed eventi di controllo | Allineato e piu auditabile |
 | Giorno di studio | Cambio giorno alle 04:00 in `Europe/Rome`, inclusi giorni DST da 23/25 ore; intervalli giornalieri ancorati al confine logico | Allineato |
-| Learning intraday | Scadenze sotto il giorno conservano l'ora esatta; anticipo massimo 20 minuti solo quando non ci sono altre card dovute o nuove | Allineato |
+| Learning e relearning | Gli step nello stesso giorno conservano l'ora esatta; dopo almeno un giorno logico, `Good`/`Easy` promuovono la memoria al percorso review usando tutto il tempo trascorso, mentre `Again`/`Hard` restano conservativi | Adattamento di prodotto |
 | Rientro nella sessione | Una card in learning/relearning puo ricomparire nella stessa sessione; nessun polling e nessuna ricostruzione completa fra card quando non serve | Allineato |
 | Fuzz giornaliero | Stesse finestre, aritmetica `f32` e stessi limiti Anki 25.07; per le review usa l'intervallo FSRS float prima dell'arrotondamento | Allineato nel comportamento |
 | Load balancing | Distribuzione pesata Anki entro la stessa finestra di fuzz, solo fino a 90 giorni; Easy Days supportati con default tutti `normal` | Allineato |
@@ -37,8 +37,13 @@ Fonti di riferimento:
   ricava da questi l'intervallo review pre-round senza copiare la formula FSRS.
   Il prodotto e la matematica delle finestre vengono convertiti a `f32`, come
   `constrained_fuzz_bounds(interval: f32, ...)` di Anki 25.07. Gli ingressi da
-  learning/relearning conservano invece l'intervallo arrotondato prodotto da
-  `ts-fsrs`, coerentemente con il percorso learning di Anki.
+  learning/relearning completati nello stesso giorno conservano l'intervallo
+  arrotondato prodotto da `ts-fsrs`, coerentemente con il percorso learning di
+  Anki. Se invece una memoria resta in uno stato transitorio per almeno un
+  giorno logico, `Good` ed `Easy` la trattano come una review riuscita: FSRS usa
+  i giorni effettivamente trascorsi e la policy giornaliera parte
+  dall'intervallo review pre-round. `Again` e `Hard` non ricevono questa
+  promozione.
 - Il seed deterministico e `memoryKey + reps`: resta stabile se cambia la card
   fisica che rappresenta una memoria cross-media ed e condiviso fra i quattro
   rating, come l'unico fattore casuale usato da Anki per una risposta.
@@ -55,6 +60,11 @@ Fonti di riferimento:
   separati che possano duplicare la stessa memoria.
 - Esistono due preset coerenti col prodotto, `recognition` e `concept`, invece
   di gruppi di opzioni per deck.
+- Una memoria abbandonata in learning/relearning non viene penalizzata se viene
+  ricordata dopo almeno un giorno logico: con `Good`/`Easy` esce dallo stato
+  transitorio e il tempo realmente trascorso diventa evidenza di memoria. La
+  decisione usa `lastReviewedAt` nel grading live e l'`elapsedDays` persistito
+  nel replay, quindi non dipende da quanto la scadenza era arretrata.
 - La selezione casuale dentro il range di fuzz e deterministica. La data resta
   dentro gli stessi limiti Anki, ma non e richiesto ottenere lo stesso singolo
   numero casuale di un'installazione Anki.

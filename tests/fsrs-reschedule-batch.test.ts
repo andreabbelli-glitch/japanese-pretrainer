@@ -231,7 +231,7 @@ describe("FSRS reschedule atomic batch", () => {
       where: eq(reviewSubjectState.subjectKey, memoryKey(0, "other"))
     });
 
-    expect(policy.baseInterval).toBeCloseTo(18.18, 2);
+    expect(policy.baseInterval).toBeCloseTo(30.13, 2);
     expect(replayed.state.scheduledDays).toBeGreaterThanOrEqual(bounds.lower);
     expect(replayed.state.scheduledDays).toBeLessThanOrEqual(bounds.upper);
     expect(persisted?.dueAt).toBe(replayed.state.dueAt);

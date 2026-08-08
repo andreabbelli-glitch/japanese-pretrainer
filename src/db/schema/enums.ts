@@ -46,7 +46,8 @@ export const reviewSubjectKindValues = ["group", "entry", "card"] as const;
 export const reviewRatingValues = ["again", "hard", "good", "easy"] as const;
 export const reviewSchedulerVersionValues = [
   "fsrs_v1",
-  "fsrs_v2_study_day"
+  "fsrs_v2_study_day",
+  "fsrs_v3_overdue_transient"
 ] as const;
 export const preReviewConsolidationStatusValues = [
   "pending",

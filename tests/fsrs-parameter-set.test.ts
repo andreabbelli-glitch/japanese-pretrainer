@@ -29,7 +29,7 @@ describe("FSRS parameter-set registry", () => {
         "daily-interval:v2:anki-25.07:app-fuzz-shared-rating-seed:load-balance-90:easy-days-normal",
       desiredRetention: 0.9,
       recallTask: "recognition",
-      schedulerVersion: "fsrs_v2_study_day",
+      schedulerVersion: "fsrs_v3_overdue_transient",
       studyDayPolicy: "study-day:v1:Europe/Rome:rollover-240"
     });
   });

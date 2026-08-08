@@ -181,6 +181,50 @@ describe("Anki-style review daily interval policy", () => {
     }
   );
 
+  it.each(["learning", "relearning"] as const)(
+    "uses the unrounded Review interval for overdue successful %s steps",
+    (state) => {
+      const current = {
+        difficulty: 5,
+        dueAt: "2030-03-28T12:00:00.000Z",
+        lapses: state === "relearning" ? 1 : 0,
+        lastReviewedAt: "2026-03-24T12:00:00.000Z",
+        learningSteps: 1,
+        reps: 3,
+        scheduledDays: 0,
+        stability: 0.5,
+        state
+      };
+      const overdue = scheduleReviewBase({
+        current,
+        intervalPolicy: {
+          schedulingKey: `memory-${state}-overdue-graduation`
+        },
+        now: new Date("2026-03-28T12:00:00.000Z"),
+        rating: "good"
+      });
+      const longTermReference = scheduleReviewBase({
+        current: {
+          ...current,
+          learningSteps: 0,
+          state: "review"
+        },
+        intervalPolicy: {
+          schedulingKey: `memory-${state}-overdue-graduation`
+        },
+        now: new Date("2026-03-28T12:00:00.000Z"),
+        rating: "good"
+      });
+      const rawInterval = getReviewIntervalPolicyBaseInterval(overdue);
+
+      expect(overdue).toEqual(longTermReference);
+      expect(rawInterval).toBe(
+        getReviewIntervalPolicyBaseInterval(longTermReference)
+      );
+      expect(rawInterval).not.toBe(overdue.scheduledDays);
+    }
+  );
+
   it("keeps representative float-vs-rounded fuzz bounds within one day", () => {
     for (const rawInterval of [2.5, 2.51, 6.51, 7.49, 19.51, 37.49, 365.51]) {
       const fromFloat = getReviewFuzzBounds(rawInterval, 1, 1_000);

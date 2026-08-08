@@ -123,7 +123,7 @@ describe("review daily interval load query", () => {
     expect(scheduled.get("good")?.scheduledDays).toBeGreaterThan(0);
   });
 
-  it("keeps the deterministic server preview schedule equal to the persisted grade", async () => {
+  it("keeps an overdue transient preview equal to the persisted grade", async () => {
     await seedDevelopmentDatabase(database);
     await markLessonsCompleted(database, "2026-03-01T00:00:00.000Z");
     const now = new Date("2026-03-28T12:00:00.000Z");
@@ -131,17 +131,17 @@ describe("review daily interval load query", () => {
     await database
       .update(reviewSubjectState)
       .set({
-        difficulty: 4,
-        dueAt: now.toISOString(),
+        difficulty: 5,
+        dueAt: "2026-03-24T12:10:00.000Z",
         lapses: 0,
-        lastInteractionAt: "2026-03-08T12:00:00.000Z",
-        lastReviewedAt: "2026-03-08T12:00:00.000Z",
-        learningSteps: 0,
-        reps: 8,
-        scheduledDays: 20,
-        stability: 20,
-        state: "review",
-        updatedAt: "2026-03-08T12:00:00.000Z"
+        lastInteractionAt: "2026-03-24T12:00:00.000Z",
+        lastReviewedAt: "2026-03-24T12:00:00.000Z",
+        learningSteps: 1,
+        reps: 3,
+        scheduledDays: 0,
+        stability: 0.5,
+        state: "learning",
+        updatedAt: "2026-03-24T12:00:00.000Z"
       })
       .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
     const before = await database.query.reviewSubjectState.findFirst({
@@ -182,8 +182,15 @@ describe("review daily interval load query", () => {
     });
     const preview = previews.get("good")!;
 
+    expect(preview).toMatchObject({
+      elapsedDays: 4,
+      learningSteps: 0,
+      state: "review"
+    });
     expect(persisted?.dueAt).toBe(preview.dueAt);
     expect(persisted?.scheduledDays).toBe(preview.scheduledDays);
+    expect(persisted?.stability).toBe(preview.stability);
+    expect(persisted?.state).toBe("review");
   });
 });
 
