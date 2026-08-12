@@ -18,6 +18,7 @@ export default defineConfig({
     environment: "node",
     execArgv: ["--disable-warning=DEP0040"],
     fileParallelism: true,
+    globalSetup: ["tests/helpers/test-db-global-setup.ts"],
     hookTimeout: 30_000,
     include: ["tests/**/*.test.ts"],
     isolate: true,
