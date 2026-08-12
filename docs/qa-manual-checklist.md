@@ -209,9 +209,11 @@
   devono essere richiesti da `/media-audio/...`, con
   `Cache-Control: public, max-age=31536000, immutable`, e non da
   `/media/[mediaSlug]/assets/audio/...`.
-- Review: la coda propone prima le memorie con retrievability FSRS piu alta e
-  lascia progressivamente per ultime quelle meno probabili da ricordare;
-  l'ordine resta identico tra dashboard, root globale e filtro media.
+- Review: la coda propone prima le memorie consolidate in stato `review`, dalla
+  retrievability FSRS piu alta alla piu bassa; gli step `learning/relearning`
+  seguono il tier maturo e sono ordinati dal piu facile al piu difficile, poi
+  arrivano le nuove. L'ordine resta identico tra dashboard, root globale e
+  filtro media.
 - Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` resta
   cliccabile anche mentre l'intervallo mostra `Calcolo…`, avanza la sessione
   subito senza flash di pagina completa e, in caso di errore, ripristina la

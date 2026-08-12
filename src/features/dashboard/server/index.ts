@@ -21,6 +21,7 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
 } from "@/features/review/server";
+import { REVIEW_QUEUE_ORDERING_VERSION } from "@/features/review/model/queue-ordering";
 import { getFsrsOptimizerRuntimeSnapshot } from "@/features/fsrs-optimizer/server";
 import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { getReviewDailyLimit } from "@/features/settings/server";
@@ -67,7 +68,12 @@ export async function getDashboardData(
 
   return runWithTaggedCache({
     enabled: canUseDataCache(database),
-    keyParts: ["app-shell", "dashboard", `bucket:${cacheBucketKey}`],
+    keyParts: [
+      "app-shell",
+      "dashboard",
+      `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
+      `bucket:${cacheBucketKey}`
+    ],
     loader: () => loadDashboardData(database, now),
     tags: [
       MEDIA_LIST_TAG,

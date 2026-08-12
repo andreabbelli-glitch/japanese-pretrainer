@@ -29,6 +29,7 @@ import {
   type ReviewSearchState
 } from "@/features/review/model/search-state";
 import { buildReviewQueueSubjectSnapshot } from "@/features/review/model/queue";
+import { REVIEW_QUEUE_ORDERING_VERSION } from "@/features/review/model/queue-ordering";
 import {
   buildReviewFirstCandidateSelectedCardContext,
   resolveReviewPageSelection
@@ -691,6 +692,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
   const cacheKeyParts = [
     "review",
     "global-first-candidate",
+    `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
     `bucket:${cacheBucketKey}`,
     `fsrs:${fsrsCacheKeyPart}`,
     ...buildReviewSearchStateCacheKeyParts(searchState)

@@ -14,7 +14,7 @@ import {
 const NOW_ISO = "2026-04-02T10:00:00.000Z";
 
 describe("review intraday queue", () => {
-  it("orders due intraday repetitions before mature reviews and then new cards", () => {
+  it("orders mature reviews before due intraday repetitions and then new cards", () => {
     const intraday = buildSubjectGroup({
       cardId: "intraday",
       dueAt: "2026-04-02T09:59:00.000Z",
@@ -32,8 +32,8 @@ describe("review intraday queue", () => {
     const snapshot = buildSnapshot([matureReview, newCard, intraday]);
 
     expect(snapshot.queueModels.map((model) => model.card.id)).toEqual([
-      "intraday",
       "review",
+      "intraday",
       "new"
     ]);
     expect(snapshot.dueCount).toBe(2);

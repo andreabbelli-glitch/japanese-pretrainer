@@ -135,6 +135,7 @@ import {
   setReviewCardSuspended
 } from "@/features/review/server/mutations";
 import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
+import { REVIEW_QUEUE_ORDERING_VERSION } from "@/features/review/model/queue-ordering";
 import {
   buildReviewSubjectStateRow,
   seedSingleReviewCardFixture
@@ -236,6 +237,7 @@ describe("global review first-candidate cache", () => {
       const firstCacheKey = JSON.stringify([
         "review",
         "global-first-candidate",
+        `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
         `bucket:${firstBucketKey}`,
         `fsrs:${fsrsCacheKeyPart}`,
         "answered:0",
@@ -249,6 +251,7 @@ describe("global review first-candidate cache", () => {
       const thirdCacheKey = JSON.stringify([
         "review",
         "global-first-candidate",
+        `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
         `bucket:${thirdBucketKey}`,
         `fsrs:${fsrsCacheKeyPart}`,
         "answered:0",
@@ -291,10 +294,7 @@ describe("global review first-candidate cache", () => {
 
   it("batches cold FSRS and study settings into one database read", async () => {
     await seedSingleReviewCardFixture(database);
-    const settingsReadSpy = vi.spyOn(
-      database.query.userSetting,
-      "findMany"
-    );
+    const settingsReadSpy = vi.spyOn(database.query.userSetting, "findMany");
 
     const result = await getGlobalReviewFirstCandidateLoadResult({}, database);
 
@@ -562,6 +562,7 @@ describe("global review first-candidate cache", () => {
       const firstCacheKey = JSON.stringify([
         "review",
         "global-first-candidate",
+        `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
         `bucket:${cacheBucketKey}`,
         `fsrs:${initialFsrsCacheKeyPart}`,
         "answered:0",
@@ -575,6 +576,7 @@ describe("global review first-candidate cache", () => {
       const secondCacheKey = JSON.stringify([
         "review",
         "global-first-candidate",
+        `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
         `bucket:${cacheBucketKey}`,
         `fsrs:${updatedFsrsCacheKeyPart}`,
         "answered:0",

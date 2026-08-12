@@ -106,6 +106,8 @@ async function prepareTwoQueueCardFixture(database: DatabaseClient) {
     .set({
       dueAt: "2000-01-01T00:00:00.000Z",
       lastReviewedAt: "2026-03-09T08:59:00.000Z",
+      scheduledDays: 1,
+      state: "review",
       stability: 100
     })
     .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));

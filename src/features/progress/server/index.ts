@@ -30,6 +30,7 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
 } from "@/features/review/server";
+import { REVIEW_QUEUE_ORDERING_VERSION } from "@/features/review/model/queue-ordering";
 import { getFsrsOptimizerRuntimeSnapshot } from "@/features/fsrs-optimizer/server";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
 import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
@@ -127,7 +128,13 @@ export async function getMediaProgressPageData(
 
   return runWithTaggedCache({
     enabled: cacheEligible,
-    keyParts: ["progress", "media-page", mediaSlug, `bucket:${cacheBucketKey}`],
+    keyParts: [
+      "progress",
+      "media-page",
+      mediaSlug,
+      `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
+      `bucket:${cacheBucketKey}`
+    ],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
       const fsrsOptimizerSnapshotPromise =

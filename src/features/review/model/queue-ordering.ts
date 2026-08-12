@@ -1,11 +1,12 @@
 import { forgetting_curve } from "ts-fsrs";
 
 import type { FsrsOptimizerSeedSnapshot } from "@/features/fsrs-optimizer/model/snapshot";
-import {
-  calculateElapsedDays,
-  reviewSchedulerConfig
-} from "@/features/review/model/scheduler";
+import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
 import type { ReviewSubjectModel } from "@/features/review/model/queue-types";
+
+const MILLISECONDS_PER_DAY = 24 * 60 * 60 * 1_000;
+// Bump this whenever ordering semantics change so Vercel cannot serve a stale first candidate.
+export const REVIEW_QUEUE_ORDERING_VERSION = "mastery-first-v2";
 
 export type ReviewQueueOrderingContext = {
   fsrsOptimizerSnapshot?: FsrsOptimizerSeedSnapshot;
@@ -78,7 +79,7 @@ export function calculateReviewSubjectRetrievability(
     return null;
   }
 
-  const elapsedDays = calculateElapsedDays(lastReviewedAt, context.nowIso);
+  const elapsedDays = calculateExactElapsedDays(lastReviewedAt, context.nowIso);
 
   if (elapsedDays === null || !Number.isFinite(elapsedDays)) {
     return null;
@@ -98,6 +99,17 @@ export function calculateReviewSubjectRetrievability(
   } catch {
     return null;
   }
+}
+
+function calculateExactElapsedDays(lastReviewedAt: string, nowIso: string) {
+  const lastReviewedTime = new Date(lastReviewedAt).getTime();
+  const nowTime = new Date(nowIso).getTime();
+
+  if (!Number.isFinite(lastReviewedTime) || !Number.isFinite(nowTime)) {
+    return null;
+  }
+
+  return Math.max(0, (nowTime - lastReviewedTime) / MILLISECONDS_PER_DAY);
 }
 
 export function isIntradayLearningModel(model: ReviewSubjectModel) {
@@ -131,6 +143,23 @@ function compareDueReviewSubjectModels(
   rightRank: ReviewSubjectRecallRank,
   stableOrderBySubjectKey?: ReadonlyMap<string, number>
 ) {
+  const leftIsTransient = isTransientLearningModel(left);
+  const rightIsTransient = isTransientLearningModel(right);
+
+  if (leftIsTransient !== rightIsTransient) {
+    return leftIsTransient ? 1 : -1;
+  }
+
+  if (leftIsTransient) {
+    return compareDueTransientReviewSubjectModels(
+      left,
+      right,
+      leftRank,
+      rightRank,
+      stableOrderBySubjectKey
+    );
+  }
+
   if (leftRank.retrievability === null && rightRank.retrievability === null) {
     return (
       compareReviewSubjectModelsByDueTime(left, right, false) ||
@@ -192,6 +221,66 @@ function compareDueReviewSubjectModels(
   }
 
   return compareReviewSubjectModelsByStableFallback(left, right);
+}
+
+function compareDueTransientReviewSubjectModels(
+  left: ReviewSubjectModel,
+  right: ReviewSubjectModel,
+  leftRank: ReviewSubjectRecallRank,
+  rightRank: ReviewSubjectRecallRank,
+  stableOrderBySubjectKey?: ReadonlyMap<string, number>
+) {
+  const difficultyDifference = compareNullableNumbers(
+    leftRank.difficulty,
+    rightRank.difficulty,
+    "ascending"
+  );
+
+  if (difficultyDifference !== 0) {
+    return difficultyDifference;
+  }
+
+  const retrievabilityDifference = compareNullableNumbers(
+    leftRank.retrievability,
+    rightRank.retrievability,
+    "descending"
+  );
+
+  if (retrievabilityDifference !== 0) {
+    return retrievabilityDifference;
+  }
+
+  const stabilityDifference = compareNullableNumbers(
+    leftRank.stability,
+    rightRank.stability,
+    "descending"
+  );
+
+  if (stabilityDifference !== 0) {
+    return stabilityDifference;
+  }
+
+  const dueAtDifference = (right.queueStateSnapshot.dueAt ?? "").localeCompare(
+    left.queueStateSnapshot.dueAt ?? ""
+  );
+
+  if (dueAtDifference !== 0) {
+    return dueAtDifference;
+  }
+
+  return (
+    compareReviewSubjectModelsByCanonicalOrder(
+      left,
+      right,
+      stableOrderBySubjectKey
+    ) || compareReviewSubjectModelsByStableFallback(left, right)
+  );
+}
+
+function isTransientLearningModel(model: ReviewSubjectModel) {
+  const state = model.group.subjectState?.state;
+
+  return state === "learning" || state === "relearning";
 }
 
 function compareReviewSubjectModelsByDueTime(

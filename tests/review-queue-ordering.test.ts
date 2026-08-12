@@ -121,6 +121,103 @@ describe("review queue easiest-first ordering", () => {
     ]);
   });
 
+  it.each(["learning", "relearning"] as const)(
+    "uses exact same-day elapsed time for a hard %s card instead of assigning perfect recall",
+    (state) => {
+      const matureEasy = buildModel({
+        dueAt: "2026-04-10T10:00:00.000Z",
+        id: "mature-easy",
+        lastReviewedAt: "2026-04-09T12:00:00.000Z",
+        stability: 10,
+        state: "review"
+      });
+      const intradayHard = buildModel({
+        dueAt: "2026-04-10T11:55:00.000Z",
+        id: `intraday-hard-${state}`,
+        lastReviewedAt: "2026-04-10T08:00:00.000Z",
+        scheduledDays: 0,
+        stability: 0.1,
+        state
+      });
+      const context = orderingContext();
+      const matureRetrievability = calculateReviewSubjectRetrievability(
+        matureEasy,
+        context
+      );
+      const intradayRetrievability = calculateReviewSubjectRetrievability(
+        intradayHard,
+        context
+      );
+      const models = [intradayHard, matureEasy];
+
+      sortDueReviewSubjectModelsEasiestFirst(models, context);
+
+      expect(intradayRetrievability).toBeCloseTo(
+        forgetting_curve(reviewSchedulerConfig.fsrs.w, 4 / 24, 0.1),
+        8
+      );
+      expect(intradayRetrievability).toBeLessThan(matureRetrievability!);
+      expect(models.map((model) => model.card.id)).toEqual([
+        "mature-easy",
+        `intraday-hard-${state}`
+      ]);
+    }
+  );
+
+  it.each(["learning", "relearning"] as const)(
+    "keeps mature reviews ahead of easier %s cards and ranks transient cards by difficulty",
+    (state) => {
+      const matureHard = buildModel({
+        difficulty: 9,
+        id: "mature-hard",
+        lastReviewedAt: "2026-04-01T12:00:00.000Z",
+        stability: 1,
+        state: "review"
+      });
+      const transientLowerDifficulty = buildModel({
+        difficulty: 3,
+        id: `transient-lower-difficulty-${state}`,
+        lastReviewedAt: "2026-04-10T08:00:00.000Z",
+        scheduledDays: 0,
+        stability: 0.1,
+        state
+      });
+      const transientHigherDifficulty = buildModel({
+        difficulty: 9,
+        id: `transient-higher-difficulty-${state}`,
+        lastReviewedAt: "2026-04-10T11:59:00.000Z",
+        scheduledDays: 0,
+        stability: 10,
+        state
+      });
+      const context = orderingContext();
+      const models = [
+        transientHigherDifficulty,
+        transientLowerDifficulty,
+        matureHard
+      ];
+
+      expect(
+        calculateReviewSubjectRetrievability(transientHigherDifficulty, context)
+      ).toBeGreaterThan(
+        calculateReviewSubjectRetrievability(matureHard, context)!
+      );
+      expect(
+        calculateReviewSubjectRetrievability(transientHigherDifficulty, context)
+      ).toBeGreaterThan(
+        calculateReviewSubjectRetrievability(transientLowerDifficulty, context)!
+      );
+
+      sortDueReviewSubjectModelsEasiestFirst(models, context);
+
+      expect(models.map((model) => model.card.id)).toEqual([
+        "mature-hard",
+        `transient-lower-difficulty-${state}`,
+        `transient-higher-difficulty-${state}`
+      ]);
+    }
+  );
+
   it("uses the deterministic legacy due-time fallback for non-scoreable states", () => {
     const common = {
       difficulty: null,

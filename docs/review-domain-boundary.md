@@ -4,7 +4,7 @@ Review is one scheduling system with two presentation scopes:
 
 - `/review` is the real global review queue. It deduplicates across media and uses the global daily limit.
 - `/media/[mediaSlug]/review` is a local media filter over the same review system, not a launcher for a separate media-owned scheduler.
-- All scoreable due subjects, including intraday learning and relearning steps, are ordered by current FSRS retrievability, highest first; new cards stay after due cards. The queue is ranked in memory from persisted scheduling state and active task-specific FSRS weights; retrievability is never persisted.
+- Due subjects already consolidated in `review` are ordered by current FSRS retrievability, highest first. Learning and relearning steps follow the mature tier and are ordered easiest first by difficulty, exact intraday retrievability, and stability; new cards stay after all due cards. The queue is ranked in memory from persisted scheduling state and active task-specific FSRS weights; derived ranking values are never persisted.
 - The canonical order is fixed for the active session. Prefetch and optimistic rendering may reduce latency, but they must never promote a later card ahead of the next canonical subject.
 - Global dashboard and global CTAs must show real global numbers.
 - Media surfaces may show local numbers only when they are clearly labeled as local to that media.

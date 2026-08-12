@@ -62,6 +62,7 @@ import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { getDashboardData } from "@/features/dashboard/server";
 import { getMediaDetailData } from "@/features/media/server";
 import { getMediaProgressPageData } from "@/features/progress/server";
+import { REVIEW_QUEUE_ORDERING_VERSION } from "@/features/review/model/queue-ordering";
 import * as reviewModule from "@/features/review/server";
 import * as settingsModule from "@/features/settings/server";
 import { primarySubjectKey } from "./helpers/review-shared";
@@ -112,12 +113,22 @@ describe("app shell day-scoped cache keys", () => {
 
     expect(
       cacheStore.has(
-        JSON.stringify(["app-shell", "dashboard", `bucket:${firstBucketKey}`])
+        JSON.stringify([
+          "app-shell",
+          "dashboard",
+          `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
+          `bucket:${firstBucketKey}`
+        ])
       )
     ).toBe(true);
     expect(
       cacheStore.has(
-        JSON.stringify(["app-shell", "dashboard", `bucket:${secondBucketKey}`])
+        JSON.stringify([
+          "app-shell",
+          "dashboard",
+          `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
+          `bucket:${secondBucketKey}`
+        ])
       )
     ).toBe(true);
     expect(
@@ -148,6 +159,7 @@ describe("app shell day-scoped cache keys", () => {
           "progress",
           "media-page",
           developmentFixture.mediaSlug,
+          `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
           `bucket:${firstBucketKey}`
         ])
       )
@@ -158,6 +170,7 @@ describe("app shell day-scoped cache keys", () => {
           "progress",
           "media-page",
           developmentFixture.mediaSlug,
+          `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
           `bucket:${secondBucketKey}`
         ])
       )
@@ -274,6 +287,7 @@ describe("app shell day-scoped cache keys", () => {
           "progress",
           "media-page",
           developmentFixture.mediaSlug,
+          `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
           `bucket:${firstBucketKey}`
         ])
       )
@@ -284,6 +298,7 @@ describe("app shell day-scoped cache keys", () => {
           "progress",
           "media-page",
           developmentFixture.mediaSlug,
+          `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
           `bucket:${secondBucketKey}`
         ])
       )
@@ -300,6 +315,7 @@ describe("app shell day-scoped cache keys", () => {
       "progress",
       "media-page",
       developmentFixture.mediaSlug,
+      `ordering:${REVIEW_QUEUE_ORDERING_VERSION}`,
       `bucket:${getLocalIsoTimeBucketKey(new Date())}`
     ]);
     const progressCalls = unstableCacheMock.mock.calls.filter(
