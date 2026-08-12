@@ -67,23 +67,30 @@ Rinnovo/install su iPhone personale via CoreDevice:
 Automazione launchd per rinnovo firma a basso consumo:
 
 ```sh
-DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-success-now
+DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
 ./scripts/xcode-renew-if-needed.sh --status
 ./scripts/xcode-renew-if-needed.sh --force
 ```
 
-Il LaunchAgent utente non fa polling continuo: `install-renew-launchd.sh` genera
-un `StartCalendarInterval` alla prossima scadenza reale dei provisioning profile
-embedded registrata in
-`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, piu' un piccolo
-grace period. `StartCalendarInterval` non contiene un campo anno, quindi questa
-automazione e' intenzionalmente tarata sui profili Xcode Personal Team
-short-lived, che scadono circa 7 giorni dopo l'install. Se la scadenza manca, e'
-corrotta o e' gia passata, l'install interattivo fa un run immediato e programma
-una retry futura; quando il job gira da launchd, riscrive il calendario con
-`--reschedule-only` senza rilanciarsi subito. Il rinnovo automatico parte solo se
-l'iPhone e' raggiungibile via CoreDevice e la Developer Disk Image e'
-montabile. Il `DEVICE_ID` viene scritto nel file locale non versionato
+Il LaunchAgent utente e' persistente: usa `RunAtLoad` e `StartInterval` ogni 4
+ore (`RENEW_CHECK_INTERVAL_SECONDS=14400`). Ogni attivazione legge soltanto la
+scadenza minima dei provisioning profile registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`; prima delle
+ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce subito, senza lock,
+CoreDevice, package o Xcode. Nella finestra preventiva tenta il rinnovo a ogni
+intervallo finche app e widget non sono realmente reinstallati con una scadenza
+nuova. Non riscrive il plist e non genera processi figli o retry in background.
+L'installer conserva il plist precedente finche il bootstrap del nuovo non e'
+riuscito; in caso di errore lo ripristina e tenta di ricaricarlo, mantenendo
+come exit code quello del bootstrap nuovo fallito.
+
+Il rinnovo dovuto parte solo se l'iPhone e' raggiungibile via CoreDevice e la
+Developer Disk Image e' montabile. Device offline/bloccato, package, signing,
+build, install e lettura profili falliscono con exit non-zero: `launchd` conserva
+il job e riprova al controllo successivo. Il marker
+`last-renew-success.epoch` viene aggiornato soltanto dopo install riuscita e
+scadenza embedded valida, successiva alla precedente e fuori dalla finestra di
+48 ore. Il `DEVICE_ID` viene scritto nel file locale non versionato
 `~/Library/Application Support/DailyKanji/renew.env`; lo stesso file puo
 contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`, `DAILY_KANJI_IOS_SYNC_TOKEN`,
 `MOBILE_API_ENDPOINT`, `MOBILE_API_TOKEN` e opzionalmente
@@ -91,18 +98,17 @@ contenere `DAILY_KANJI_IOS_SYNC_ENDPOINT`, `DAILY_KANJI_IOS_SYNC_TOKEN`,
 settings locali senza committare segreti. Lascia APNs disabilitato per Personal
 Team; abilitalo solo con provisioning Apple Developer che supporta Push
 Notifications. Rieseguire `scripts/install-renew-launchd.sh` aggiorna solo
-`DEVICE_ID` e conserva le altre righe del file. Usa `--mark-success-now` solo
-dopo un rinnovo/install manuale gia riuscito: scrive solo il marker diagnostico
-`last-renew-success.epoch`; la decisione automatica resta basata sulla scadenza
-dei profili embedded. Quando il rinnovo e' davvero dovuto, il wrapper preflighta
-CoreDevice/DDI, poi esegue `pnpm daily-kanji:package` dalla root del repo e poi
-`scripts/xcode-renew.sh`, cosi' il verifier non blocca risorse packaged stale.
-Dopo l'install, `xcode-renew.sh` registra la scadenza minima tra app e widget
-leggendo gli `embedded.mobileprovision`; il wrapper poi rischedula launchd sulla
-nuova data. Se non riesce, se il device non e' disponibile o se l'iPhone e'
-bloccato durante il mount DDI, il job termina senza marcare successo e programma
-una retry dopo `RENEW_RETRY_DELAY_SECONDS` (default 30 minuti). Errori durante
-la rischedulazione launchd finiscono in
+`DEVICE_ID` e conserva le altre righe del file. Le vecchie opzioni
+`--mark-success-now` e `--reschedule-only` sono accettate solo per migrazione:
+non creano successi sintetici e installano comunque il job persistente. Quando
+il rinnovo e' dovuto, il wrapper preflighta CoreDevice/DDI, poi esegue
+`pnpm daily-kanji:package` dalla root del repo e `scripts/xcode-renew.sh`, cosi'
+il verifier non blocca risorse packaged stale. La build fisica usa `Release` di
+default per ridurre overhead e consumo sul telefono; `CONFIGURATION=Debug`
+resta disponibile solo per diagnosi esplicite. Dopo l'install,
+`xcode-renew.sh` registra atomicamente la scadenza minima tra app e widget
+leggendo gli `embedded.mobileprovision`. I log sono in
+`~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`. Per rimuoverlo:
 
 ```sh

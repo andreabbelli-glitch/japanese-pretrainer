@@ -9,7 +9,7 @@ STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
 SCHEME="${SCHEME:-DailyKanji}"
-CONFIGURATION="${CONFIGURATION:-Debug}"
+CONFIGURATION="${CONFIGURATION:-Release}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
 DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
 
@@ -168,25 +168,48 @@ profile_expiry_epoch_for_file() {
   local profile_path="$1"
   local profile_plist
   local expiry_iso
+  local expiry_epoch
+  local status
 
-  profile_plist="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-profile.XXXXXX")"
-  if ! security cms -D -i "$profile_path" > "$profile_plist"; then
-    rm -f "$profile_plist"
-    printf "Impossibile leggere il provisioning profile embedded: %s\n" "$profile_path" >&2
-    return 1
+  if profile_plist="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-profile.XXXXXX")"; then
+    :
+  else
+    status="$?"
+    printf "Impossibile creare il file temporaneo per il provisioning profile (exit %s).\n" "$status" >&2
+    return "$status"
   fi
 
-  if ! expiry_iso="$(plutil -extract ExpirationDate raw -o - "$profile_plist")"; then
+  set +e
+  security cms -D -i "$profile_path" > "$profile_plist"
+  status=$?
+  set -e
+  if [ "$status" -ne 0 ]; then
     rm -f "$profile_plist"
-    printf "Impossibile leggere ExpirationDate dal provisioning profile: %s\n" "$profile_path" >&2
-    return 1
+    printf "Impossibile leggere il provisioning profile embedded (exit %s): %s\n" "$status" "$profile_path" >&2
+    return "$status"
+  fi
+
+  set +e
+  expiry_iso="$(plutil -extract ExpirationDate raw -o - "$profile_plist")"
+  status=$?
+  set -e
+  if [ "$status" -ne 0 ]; then
+    rm -f "$profile_plist"
+    printf "Impossibile leggere ExpirationDate dal provisioning profile (exit %s): %s\n" "$status" "$profile_path" >&2
+    return "$status"
   fi
   rm -f "$profile_plist"
 
-  if ! date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$expiry_iso" +%s; then
-    printf "ExpirationDate non parsabile per %s: %s\n" "$profile_path" "$expiry_iso" >&2
-    return 1
+  set +e
+  expiry_epoch="$(date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$expiry_iso" +%s)"
+  status=$?
+  set -e
+  if [ "$status" -ne 0 ]; then
+    printf "ExpirationDate non parsabile (exit %s) per %s: %s\n" "$status" "$profile_path" "$expiry_iso" >&2
+    return "$status"
   fi
+
+  printf "%s\n" "$expiry_epoch"
 }
 
 record_embedded_profile_expiry() {
@@ -196,10 +219,16 @@ record_embedded_profile_expiry() {
   local profile_path
   local expiry_epoch
   local expiry_label
+  local expiry_temp
+  local status
 
   while IFS= read -r -d '' profile_path; do
-    if ! expiry_epoch="$(profile_expiry_epoch_for_file "$profile_path")"; then
-      return 1
+    set +e
+    expiry_epoch="$(profile_expiry_epoch_for_file "$profile_path")"
+    status=$?
+    set -e
+    if [ "$status" -ne 0 ]; then
+      return "$status"
     fi
 
     if [ -z "$min_expiry" ] || [ "$expiry_epoch" -lt "$min_expiry" ]; then
@@ -214,19 +243,61 @@ record_embedded_profile_expiry() {
     return 1
   fi
 
-  mkdir -p "$STATE_DIR"
-  printf "%s\n" "$min_expiry" > "$PROFILE_EXPIRY_FILE"
+  if mkdir -p "$STATE_DIR"; then
+    :
+  else
+    status="$?"
+    printf "Impossibile creare la directory stato Daily Kanji (exit %s): %s\n" "$status" "$STATE_DIR" >&2
+    return "$status"
+  fi
+  if expiry_temp="$(mktemp "$PROFILE_EXPIRY_FILE.XXXXXX")"; then
+    :
+  else
+    status="$?"
+    printf "Impossibile creare il file temporaneo della scadenza (exit %s).\n" "$status" >&2
+    return "$status"
+  fi
+  if printf "%s\n" "$min_expiry" > "$expiry_temp"; then
+    :
+  else
+    status="$?"
+    rm -f "$expiry_temp"
+    printf "Impossibile scrivere la scadenza profili (exit %s).\n" "$status" >&2
+    return "$status"
+  fi
+  if chmod 600 "$expiry_temp"; then
+    :
+  else
+    status="$?"
+    rm -f "$expiry_temp"
+    printf "Impossibile proteggere la scadenza profili (exit %s).\n" "$status" >&2
+    return "$status"
+  fi
+  if mv "$expiry_temp" "$PROFILE_EXPIRY_FILE"; then
+    :
+  else
+    status="$?"
+    rm -f "$expiry_temp"
+    printf "Impossibile registrare atomicamente la scadenza profili (exit %s).\n" "$status" >&2
+    return "$status"
+  fi
   expiry_label="$(date -r "$min_expiry" "+%Y-%m-%d %H:%M:%S %Z" 2>/dev/null || printf "%s" "$min_expiry")"
   printf "Daily Kanji profile expiry recorded: %s (%s)\n" "$min_expiry" "$expiry_label"
 }
 
 developer_disk_image_ready() {
   local output
+  local status
 
-  if output="$(xcrun devicectl device info ddiServices \
+  set +e
+  output="$(xcrun devicectl device info ddiServices \
     --device "$DEVICE_ID" \
     --auto-mount-ddis \
-    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS" 2>&1)"; then
+    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS" 2>&1)"
+  status=$?
+  set -e
+
+  if [ "$status" -eq 0 ]; then
     printf "Daily Kanji developer disk image services ready.\n"
     return 0
   fi
@@ -234,22 +305,29 @@ developer_disk_image_ready() {
   if [[ "$output" == *"kAMDMobileImageMounterDeviceLocked"* ]] ||
     [[ "$output" == *"device is locked"* ]] ||
     [[ "$output" == *"The device is locked"* ]]; then
-    printf "Daily Kanji iPhone bloccato: sblocca l'iPhone e lascialo acceso, poi rilancia il rinnovo.\n"
-    printf "%s\n" "$output"
-    return 1
+    printf "Daily Kanji iPhone bloccato: sblocca l'iPhone e lascialo acceso, poi rilancia il rinnovo (DDI exit %s).\n" "$status" >&2
+    printf "%s\n" "$output" >&2
+    return "$status"
   fi
 
-  printf "Daily Kanji developer disk image non pronta; correggi CoreDevice/DDI e rilancia il rinnovo.\n"
-  printf "%s\n" "$output"
-  return 1
+  printf "Daily Kanji developer disk image non pronta; CoreDevice/DDI exited %s.\n" "$status" >&2
+  printf "%s\n" "$output" >&2
+  return "$status"
 }
 
-if ! device_details="$(xcrun devicectl device info details \
+set +e
+device_details="$(xcrun devicectl device info details \
   --device "$DEVICE_ID" \
-  --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS" 2>/dev/null)"; then
-  echo "Device $DEVICE_ID non raggiungibile da CoreDevice." >&2
+  --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS" 2>&1)"
+device_details_status=$?
+set -e
+if [ "$device_details_status" -ne 0 ]; then
+  echo "Device $DEVICE_ID non raggiungibile da CoreDevice (exit $device_details_status)." >&2
+  if [ -n "$device_details" ]; then
+    printf "%s\n" "$device_details" >&2
+  fi
   echo "Metti iPhone e Mac sulla stessa Wi-Fi oppure collega il cavo." >&2
-  exit 1
+  exit "$device_details_status"
 fi
 
 transport="$(printf "%s\n" "$device_details" | awk -F': ' '/transportType/ {print $2; exit}')"
@@ -261,8 +339,10 @@ if [ -z "$transport" ]; then
 fi
 
 printf "Device raggiunto via: %s\n" "$transport"
-if ! developer_disk_image_ready; then
-  exit 75
+if developer_disk_image_ready; then
+  :
+else
+  exit "$?"
 fi
 
 if [ -n "${DAILY_KANJI_IOS_SYNC_ENDPOINT:-}" ]; then
@@ -284,8 +364,20 @@ else
 fi
 
 cd "$ROOT"
-"$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:verify-resources -- --ios-root "$ROOT"
-xcodegen generate
+if "$REPO_ROOT/scripts/with-node.sh" pnpm daily-kanji:verify-resources -- --ios-root "$ROOT"; then
+  :
+else
+  status="$?"
+  printf "Daily Kanji resource verification failed with exit %s.\n" "$status" >&2
+  exit "$status"
+fi
+if xcodegen generate; then
+  :
+else
+  status="$?"
+  printf "Daily Kanji xcodegen failed with exit %s.\n" "$status" >&2
+  exit "$status"
+fi
 
 xcodebuild_args=(
   -quiet
@@ -321,7 +413,19 @@ if [ ! -d "$APP_PATH" ]; then
   exit 1
 fi
 
-xcrun devicectl device install app --device "$DEVICE_ID" "$APP_PATH"
-record_embedded_profile_expiry "$APP_PATH"
+if xcrun devicectl device install app --device "$DEVICE_ID" "$APP_PATH"; then
+  :
+else
+  install_status="$?"
+  printf "Daily Kanji device install failed with exit %s.\n" "$install_status" >&2
+  exit "$install_status"
+fi
+if record_embedded_profile_expiry "$APP_PATH"; then
+  :
+else
+  profile_status="$?"
+  printf "Daily Kanji profile expiry recording failed with exit %s.\n" "$profile_status" >&2
+  exit "$profile_status"
+fi
 
 printf "Rinnovo/install completato: %s\n" "$APP_PATH"

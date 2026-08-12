@@ -117,39 +117,40 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/xcode-renew.sh
 Automazione rinnovo firma via launchd:
 
 ```sh
-DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh --mark-success-now
+DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
 ./scripts/xcode-renew-if-needed.sh --status
 ./scripts/xcode-renew-if-needed.sh --force
 ```
 
-Il LaunchAgent non fa polling continuo: `install-renew-launchd.sh` genera un
-`StartCalendarInterval` alla prossima scadenza reale dei provisioning profile
-embedded registrata in
-`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, piu' un piccolo
-grace period. `StartCalendarInterval` non contiene un campo anno, quindi questa
-automazione e' intenzionalmente tarata sui profili Xcode Personal Team
-short-lived, che scadono circa 7 giorni dopo l'install. Se la scadenza manca, e'
-corrotta o e' gia passata, l'install interattivo esegue un run immediato e
-programma anche una retry futura; quando il job gira da launchd, invece,
-riscrive il calendario con `--reschedule-only` senza rilanciarsi subito. Esegue
-package + build/install solo quando l'iPhone e' raggiungibile via CoreDevice,
-via cavo oppure stessa Wi-Fi `localNetwork`; prima del package preflighta anche
-il mount della Developer Disk Image. Il package viene lanciato dalla root del
-repo anche quando launchd avvia il job da un'altra directory. Il device id resta
-in
+`install-renew-launchd.sh` installa un LaunchAgent persistente con `RunAtLoad`
+e `StartInterval`: il check avviene al caricamento/login e ogni 4 ore
+(`RENEW_CHECK_INTERVAL_SECONDS=14400`). Il check legge la scadenza reale minima
+dei provisioning profile embedded registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`. Prima delle
+ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce subito senza lock,
+CoreDevice, package o Xcode. Nella finestra preventiva prova package +
+build/install; se il device, DDI, signing, package, build o install non sono
+pronti, termina non-zero e il plist persistente riprova al successivo intervallo.
+Non esiste piu' un calendario da autoriscrivere o un processo figlio per i retry.
+L'installer valida il nuovo plist prima di sostituire quello attivo e, se il
+bootstrap fallisce, ripristina e prova a ricaricare automaticamente il plist
+precedente.
+
+L'iPhone puo essere raggiunto via cavo oppure stessa Wi-Fi `localNetwork`; prima
+del package viene preflightato anche il mount della Developer Disk Image. Il
+package parte dalla root del repo anche quando launchd avvia il job da un'altra
+directory. Il device id resta in
 `~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Rieseguire
 `install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva eventuali
-endpoint/token di sync gia' presenti nello stesso file. Usa `--mark-success-now`
-solo dopo un rinnovo/install manuale gia riuscito: aggiorna il marker
-diagnostico `last-renew-success.epoch`, ma non sostituisce la scadenza reale dei
-profili. Dopo un install riuscito, `xcode-renew.sh` registra la scadenza minima
-tra app e widget leggendo gli `embedded.mobileprovision`; il wrapper poi
-rischedula launchd sulla nuova data. Se non riesce, il job non marca successo e
-programma una retry dopo `RENEW_RETRY_DELAY_SECONDS` (default 30 minuti). Se
-l'iPhone e' bloccato durante il mount DDI, il job logga di sbloccare il telefono
-e segue la stessa retry programmata. Errori durante la rischedulazione launchd
-finiscono in `~/Library/Logs/DailyKanji/xcode-renew.err.log`. Per rimuovere
-l'automazione:
+endpoint/token di sync gia' presenti nello stesso file. Le opzioni legacy
+`--mark-success-now` e `--reschedule-only` restano accettate per migrazione, ma
+non creano marker sintetici: `last-renew-success.epoch` cambia soltanto dopo un
+install riuscito e una nuova scadenza embedded valida, successiva alla
+precedente e oltre la finestra preventiva. `xcode-renew.sh` registra
+atomicamente la scadenza minima tra app e widget e usa una build fisica
+`Release` di default, piu adatta all'uso quotidiano e ai consumi; per una
+diagnosi intenzionale si puo usare `CONFIGURATION=Debug ./scripts/xcode-renew.sh`.
+Per rimuovere l'automazione:
 
 ```sh
 ./scripts/install-renew-launchd.sh --uninstall

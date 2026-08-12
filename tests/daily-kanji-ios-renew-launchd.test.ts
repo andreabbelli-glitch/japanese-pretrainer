@@ -41,14 +41,12 @@ describe("Daily Kanji iOS launchd renew automation", () => {
 
   it("keeps the scheduled renew check cheap until a renewal is actually due", async () => {
     const source = await readFile(renewIfNeededScriptPath, "utf8");
-    const reachabilityIndex = source.indexOf(
-      "xcrun devicectl device info details"
-    );
-    const packageIndex = source.indexOf("pnpm daily-kanji:package");
-    const heavyRenewIndex = source.indexOf('"$ROOT/scripts/xcode-renew.sh"');
 
     expect(source).toContain(
-      'RENEW_MIN_AGE_SECONDS="${RENEW_MIN_AGE_SECONDS:-432000}"'
+      'RENEW_BEFORE_EXPIRY_SECONDS="${RENEW_BEFORE_EXPIRY_SECONDS:-172800}"'
+    );
+    expect(source).toContain(
+      'RENEW_CHECK_INTERVAL_SECONDS="${RENEW_CHECK_INTERVAL_SECONDS:-14400}"'
     );
     expect(source).toContain(
       'LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"'
@@ -57,56 +55,52 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       'CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"'
     );
     expect(source).toContain('mkdir "$LOCK_DIR"');
-    expect(source).toContain("--mark-success-now");
     expect(source).toContain("should_renew");
     expect(source).toContain("lock_owner_active");
     expect(source).toContain("recover_stale_lock_if_needed");
-    expect(source).toContain("return 1");
+    expect(source).toContain("validate_refreshed_expiry");
+    expect(source).toContain("refusing false success");
+    expect(source).toContain("launchd will retry at the next interval");
     expect(source).not.toContain("xcodebuild");
+    expect(source).not.toContain("reschedule_launchd");
+    expect(source).not.toContain("DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD");
     expect(source).not.toContain("D584E119");
-    expect(reachabilityIndex).toBeGreaterThanOrEqual(0);
-    expect(packageIndex).toBeGreaterThanOrEqual(0);
-    expect(heavyRenewIndex).toBeGreaterThanOrEqual(0);
-    expect(reachabilityIndex).toBeLessThan(packageIndex);
-    expect(packageIndex).toBeLessThan(heavyRenewIndex);
-    expect(reachabilityIndex).toBeLessThan(heavyRenewIndex);
   });
 
-  it("installs a low-priority user LaunchAgent scheduled from the recorded expiry", async () => {
+  it("installs a persistent low-priority user LaunchAgent", async () => {
     const source = await readFile(installLaunchdScriptPath, "utf8");
 
     expect(source).toContain("dev.local.daily-kanji.renew");
-    expect(source).toContain("<key>StartCalendarInterval</key>");
-    expect(source).toContain("<key>Month</key>");
-    expect(source).toContain("<key>Day</key>");
-    expect(source).toContain("<key>Hour</key>");
-    expect(source).toContain("<key>Minute</key>");
+    expect(source).toContain("<key>StartInterval</key>");
+    expect(source).toContain(
+      "<integer>$RENEW_CHECK_INTERVAL_SECONDS</integer>"
+    );
+    expect(source).toContain("<key>RunAtLoad</key>");
     expect(source).toContain("PROFILE_EXPIRY_FILE");
-    expect(source).toContain("RENEW_RETRY_DELAY_SECONDS");
-    expect(source).toContain("RENEW_AFTER_EXPIRY_GRACE_SECONDS");
-    expect(source).toContain("embedded provisioning profile expiry");
+    expect(source).toContain("RENEW_BEFORE_EXPIRY_SECONDS");
+    expect(source).toContain("RENEW_CHECK_INTERVAL_SECONDS");
     expect(source).toContain("--reschedule-only");
-    expect(source).not.toContain("<key>StartInterval</key>");
-    expect(source).not.toContain("START_INTERVAL_SECONDS");
-    expect(source).not.toContain("${START_INTERVAL_SECONDS:-900}");
-    expect(source).not.toContain("since the last success");
+    expect(source).not.toContain("<key>StartCalendarInterval</key>");
+    expect(source).not.toContain("DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD");
     expect(source).toContain("--device-id");
     expect(source).toContain(
       'CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"'
     );
     expect(source).toContain("DEVICE_ID is required for install");
     expect(source).toContain("write_config_value DEVICE_ID");
-    expect(source).toContain("<key>RunAtLoad</key>");
     expect(source).toContain("<key>LowPriorityIO</key>");
     expect(source).toContain("<key>ProcessType</key>");
     expect(source).toContain("<string>Background</string>");
     expect(source).toContain("<key>Nice</key>");
-    expect(source).toContain("DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD");
+    expect(source).toContain("<string>Release</string>");
+    expect(source.indexOf('launchctl enable "$service_target"')).toBeLessThan(
+      source.indexOf('launchctl bootstrap "$domain" "$PLIST"')
+    );
     expect(source).toContain("launchctl bootstrap");
     expect(source).not.toContain("D584E119");
   });
 
-  it("writes a calendar schedule at the recorded profile expiry instead of polling", async () => {
+  it("writes the configured persistent interval independently of the recorded expiry", async () => {
     const tempRoot = await mkdtemp(
       path.join(tmpdir(), "jcs-daily-kanji-calendar-")
     );
@@ -116,8 +110,6 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     const logDir = path.join(tempRoot, "logs");
     const binDir = path.join(tempRoot, "bin");
     const expiryEpoch = Math.floor(Date.now() / 1000) + 6 * 24 * 60 * 60 + 31;
-    const scheduledEpoch = ceilToNextMinute(expiryEpoch + 120);
-    const scheduledDate = new Date(scheduledEpoch * 1000);
     await mkdir(stateDir, { recursive: true });
     await mkdir(binDir, { recursive: true });
     await writeFile(
@@ -142,6 +134,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
           HOME: homeDir,
           LOG_DIR: logDir,
           PATH: `${binDir}:${process.env.PATH ?? ""}`,
+          RENEW_CHECK_INTERVAL_SECONDS: "7200",
           STATE_DIR: stateDir
         }
       }
@@ -156,30 +149,16 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       ),
       "utf8"
     );
-    expect(plist).toContain("<key>StartCalendarInterval</key>");
-    expect(plist).not.toContain("<key>StartInterval</key>");
-    expect(plist).not.toContain("<key>RunAtLoad</key>");
-    expect(plist).toContain(
-      `<key>Month</key>\n    <integer>${scheduledDate.getMonth() + 1}</integer>`
-    );
-    expect(plist).toContain(
-      `<key>Day</key>\n    <integer>${scheduledDate.getDate()}</integer>`
-    );
-    expect(plist).toContain(
-      `<key>Hour</key>\n    <integer>${scheduledDate.getHours()}</integer>`
-    );
-    expect(plist).toContain(
-      `<key>Minute</key>\n    <integer>${scheduledDate.getMinutes()}</integer>`
-    );
+    expect(plist).toContain("<key>StartInterval</key>");
+    expect(plist).toContain("<integer>7200</integer>");
+    expect(plist).toContain("<key>RunAtLoad</key>\n  <true/>");
+    expect(plist).not.toContain("<key>StartCalendarInterval</key>");
     expect(`${result.stdout}\n${result.stderr}`).toContain(
-      "Next scheduled run"
-    );
-    expect(`${result.stdout}\n${result.stderr}`).not.toContain(
-      "Check interval"
+      "Check/retry interval: 7200s"
     );
   });
 
-  it("schedules a retry without immediate RunAtLoad when rescheduling an overdue profile", async () => {
+  it("migrates the legacy reschedule option to the persistent interval job", async () => {
     const tempRoot = await mkdtemp(
       path.join(tmpdir(), "jcs-daily-kanji-reschedule-overdue-")
     );
@@ -214,7 +193,6 @@ describe("Daily Kanji iOS launchd renew automation", () => {
           HOME: homeDir,
           LOG_DIR: logDir,
           PATH: `${binDir}:${process.env.PATH ?? ""}`,
-          RENEW_RETRY_DELAY_SECONDS: "1800",
           STATE_DIR: stateDir
         }
       }
@@ -229,10 +207,10 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       ),
       "utf8"
     );
-    expect(plist).toContain("<key>StartCalendarInterval</key>");
-    expect(plist).not.toContain("<key>RunAtLoad</key>");
-    expect(`${result.stdout}\n${result.stderr}`).toContain("Run at load: no");
-    expect(`${result.stdout}\n${result.stderr}`).toContain("overdue");
+    expect(plist).toContain("<key>StartInterval</key>");
+    expect(plist).toContain("<integer>14400</integer>");
+    expect(plist).toContain("<key>RunAtLoad</key>\n  <true/>");
+    expect(`${result.stdout}\n${result.stderr}`).toContain("deprecated");
   });
 
   it("updates only DEVICE_ID in renew.env when reinstalling the LaunchAgent", async () => {
@@ -303,7 +281,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect((await stat(configFile)).mode & 0o777).toBe(0o600);
   });
 
-  it("does not create a fake success marker when installing launchd without mark-success-now", async () => {
+  it("does not create a fake success marker for the legacy mark-success-now option", async () => {
     const tempRoot = await mkdtemp(
       path.join(tmpdir(), "jcs-daily-kanji-install-marker-")
     );
@@ -325,7 +303,12 @@ describe("Daily Kanji iOS launchd renew automation", () => {
 
     await execFileAsync(
       "bash",
-      [installLaunchdScriptPath, "--device-id", "NEW_DEVICE"],
+      [
+        installLaunchdScriptPath,
+        "--device-id",
+        "NEW_DEVICE",
+        "--mark-success-now"
+      ],
       {
         env: {
           ...process.env,
@@ -394,7 +377,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
         '  echo "xcode-renew cwd=$PWD" >&2',
         "  exit 44",
         "fi",
-        'printf "xcode-renew:%s:%s\\n" "$PWD" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+        'printf "xcode-renew:%s:%s\\n" "$PWD" "${DEVICE_ID:-}" >> "$CALL_LOG"',
+        'printf "%s\\n" "$(( $(date +%s) + 604800 ))" > "$STATE_DIR/profile-expiry.epoch"'
       ].join("\n") + "\n"
     );
     await writeExecutable(
@@ -426,7 +410,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     );
   });
 
-  it("skips due renew before packaging when the iPhone is locked for DDI mount", async () => {
+  it("fails a due attempt before packaging when the iPhone is locked for DDI mount", async () => {
     const tempRoot = await mkdtemp(path.join(tmpdir(), "jcs-daily-kanji-ddi-"));
     tempDirs.push(tempRoot);
     const repoRoot = path.join(tempRoot, "repo");
@@ -471,7 +455,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       [
         "#!/usr/bin/env bash",
         "set -euo pipefail",
-        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"',
+        'printf "%s\\n" "$(( $(date +%s) + 604800 ))" > "$STATE_DIR/profile-expiry.epoch"'
       ].join("\n") + "\n"
     );
     await writeExecutable(
@@ -491,23 +476,26 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       ].join("\n") + "\n"
     );
 
-    const result = await execFileAsync(
-      "bash",
-      [path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh")],
-      {
-        cwd: "/",
-        env: {
-          ...process.env,
-          CALL_LOG: callLogPath,
-          PATH: `${binDir}:${process.env.PATH ?? ""}`,
-          STATE_DIR: stateDir
+    await expect(
+      execFileAsync(
+        "bash",
+        [path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh")],
+        {
+          cwd: "/",
+          env: {
+            ...process.env,
+            CALL_LOG: callLogPath,
+            PATH: `${binDir}:${process.env.PATH ?? ""}`,
+            STATE_DIR: stateDir
+          }
         }
-      }
-    );
+      )
+    ).rejects.toMatchObject({
+      code: 1,
+      stderr: expect.stringContaining("iPhone bloccato")
+    });
 
-    const output = `${result.stdout}\n${result.stderr}`;
     const callLog = await readFile(callLogPath, "utf8");
-    expect(output).toContain("iPhone bloccato");
     expect(callLog).toContain("xcrun:devicectl device info details");
     expect(callLog).toContain("xcrun:devicectl device info ddiServices");
     expect(callLog).not.toContain("with-node:");
@@ -561,7 +549,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       [
         "#!/usr/bin/env bash",
         "set -euo pipefail",
-        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"',
+        'printf "%s\\n" "$(( $(date +%s) + 604800 ))" > "$STATE_DIR/profile-expiry.epoch"'
       ].join("\n") + "\n"
     );
     await writeExecutable(
@@ -625,6 +614,10 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       `${Math.floor(Date.now() / 1000)}\n`
     );
     await writeFile(
+      path.join(stateDir, "profile-expiry.epoch"),
+      `${Math.floor(Date.now() / 1000) + 5 * 24 * 60 * 60}\n`
+    );
+    await writeFile(
       path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
       await readFile(renewIfNeededScriptPath, "utf8")
     );
@@ -645,7 +638,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       [
         "#!/usr/bin/env bash",
         "set -euo pipefail",
-        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"',
+        'printf "%s\\n" "$(( $(date +%s) + 604800 ))" > "$STATE_DIR/profile-expiry.epoch"'
       ].join("\n") + "\n"
     );
     await writeExecutable(
@@ -733,7 +727,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       [
         "#!/usr/bin/env bash",
         "set -euo pipefail",
-        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"'
+        'printf "xcode-renew:%s\\n" "${DEVICE_ID:-}" >> "$CALL_LOG"',
+        'printf "%s\\n" "$(( $(date +%s) + 604800 ))" > "$STATE_DIR/profile-expiry.epoch"'
       ].join("\n") + "\n"
     );
     await writeExecutable(
@@ -767,7 +762,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(callLog).toContain("xcode-renew:TEST_DEVICE");
   });
 
-  it("reschedules launchd after an automatic renew records the next profile expiry", async () => {
+  it("records verified success without self-rescheduling launchd", async () => {
     const tempRoot = await mkdtemp(
       path.join(tmpdir(), "jcs-daily-kanji-reschedule-success-")
     );
@@ -822,14 +817,6 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       ].join("\n") + "\n"
     );
     await writeExecutable(
-      path.join(tempIosScriptsRoot, "install-renew-launchd.sh"),
-      [
-        "#!/usr/bin/env bash",
-        "set -euo pipefail",
-        'printf "install-renew-launchd:%s\\n" "$*" >> "$CALL_LOG"'
-      ].join("\n") + "\n"
-    );
-    await writeExecutable(
       path.join(binDir, "xcrun"),
       [
         "#!/usr/bin/env bash",
@@ -847,8 +834,6 @@ describe("Daily Kanji iOS launchd renew automation", () => {
         env: {
           ...process.env,
           CALL_LOG: callLogPath,
-          DAILY_KANJI_AUTO_RESCHEDULE_LAUNCHD: "1",
-          DAILY_KANJI_LAUNCHD_RESCHEDULE_SYNCHRONOUS: "1",
           PATH: `${binDir}:${process.env.PATH ?? ""}`,
           STATE_DIR: stateDir
         }
@@ -858,7 +843,10 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     const callLog = await readFile(callLogPath, "utf8");
     expect(callLog).toContain("with-node:pnpm daily-kanji:package");
     expect(callLog).toContain("xcode-renew:TEST_DEVICE");
-    expect(callLog).toContain("install-renew-launchd:--reschedule-only");
+    expect(callLog).not.toContain("install-renew-launchd:");
+    expect(
+      await readFile(path.join(stateDir, "last-renew-success.epoch"), "utf8")
+    ).toMatch(/^\d+\n$/);
   });
 
   it("skips before the recorded embedded profile expiry even when the success marker is old", async () => {
@@ -889,7 +877,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     await writeFile(path.join(stateDir, "last-renew-success.epoch"), "1\n");
     await writeFile(
       path.join(stateDir, "profile-expiry.epoch"),
-      `${nowEpoch + 3600}\n`
+      `${nowEpoch + 3 * 24 * 60 * 60}\n`
     );
     await writeFile(
       path.join(tempIosScriptsRoot, "xcode-renew-if-needed.sh"),
@@ -1004,7 +992,7 @@ describe("Daily Kanji iOS launchd renew automation", () => {
       [
         "#!/usr/bin/env bash",
         "set -euo pipefail",
-        'app="$DERIVED_DATA/Build/Products/Debug-iphoneos/Daily Kanji.app"',
+        'app="$DERIVED_DATA/Build/Products/Release-iphoneos/Daily Kanji.app"',
         'mkdir -p "$app/PlugIns/Daily Kanji Widget.appex"',
         'touch "$app/embedded.mobileprovision"',
         'touch "$app/PlugIns/Daily Kanji Widget.appex/embedded.mobileprovision"'
@@ -1250,8 +1238,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
         }
       })
     ).rejects.toMatchObject({
-      code: 75,
-      stdout: expect.stringContaining("iPhone bloccato")
+      code: 1,
+      stderr: expect.stringContaining("iPhone bloccato")
     });
 
     const callLog = await readFile(callLogPath, "utf8");
@@ -1455,13 +1443,4 @@ describe("Daily Kanji iOS launchd renew automation", () => {
 async function writeExecutable(filePath: string, contents: string) {
   await writeFile(filePath, contents);
   await chmod(filePath, 0o755);
-}
-
-function ceilToNextMinute(epochSeconds: number) {
-  const remainder = epochSeconds % 60;
-  if (remainder === 0) {
-    return epochSeconds;
-  }
-
-  return epochSeconds + 60 - remainder;
 }
