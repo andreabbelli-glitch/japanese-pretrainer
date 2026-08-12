@@ -20,7 +20,10 @@
 ## Gate Finale
 
 - Eseguire `./scripts/with-node.sh pnpm release:check`
-- Il comando canonico copre lint, typecheck, test unit/integration, build, validazione contenuti sul bundle reale ed E2E
+- Il comando canonico copre lint, typecheck, test unit/integration, import
+  completo nel DB release, build ed E2E. Il full import include parse e
+  validazione di tutti i bundle e abortisce prima della sync sulle issue, senza
+  una seconda esecuzione ridondante di `content:validate`.
 - Se una automazione Codex in sandbox `workspace-write` non riesce a lanciare
   il browser Playwright, segnalarlo esplicitamente nel riepilogo finale come
   limite dell'ambiente di sandbox, non come failure delle asserzioni E2E

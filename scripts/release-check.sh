@@ -32,6 +32,7 @@ prepare_release_database() {
     "$RELEASE_CHECK_DATABASE_URL-wal"
 
   run_with_release_database ./scripts/with-node.sh pnpm db:migrate
+  echo "content:import completo: parse e validazione di tutti i bundle prima della sync."
   run_with_release_database ./scripts/with-node.sh pnpm content:import
 }
 
@@ -40,14 +41,11 @@ cd "$ROOT_DIR"
 run_step "Lint, typecheck e test unit/integration" \
   ./scripts/with-node.sh pnpm check
 
-run_step "Preparazione DB SQLite locale per release" \
+run_step "Preparazione DB SQLite + import completo validato per release" \
   prepare_release_database
 
 run_step "Build di produzione" \
   run_with_release_database ./scripts/with-node.sh pnpm build
-
-run_step "Validazione contenuti su tutti i bundle reali" \
-  ./scripts/with-node.sh pnpm content:validate
 
 run_step "Validazione corpus Pitch Accent Minimal Pairs" \
   ./scripts/with-node.sh pnpm pitch-accent:validate-corpus

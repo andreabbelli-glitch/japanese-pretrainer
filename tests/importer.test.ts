@@ -1274,7 +1274,7 @@ tags: [grammar, bonus]
     );
   }, 60_000);
 
-  it("fails cleanly on invalid content without partially mutating imported tables", async () => {
+  it("surfaces parser validation issues and aborts before syncing invalid content", async () => {
     const result = await importContentWorkspace({
       contentRoot: invalidContentRoot,
       database,
@@ -1282,7 +1282,22 @@ tags: [grammar, bonus]
     });
 
     expect(result.status).toBe("failed");
-    expect(result.issues.length).toBeGreaterThan(0);
+    if (result.status !== "failed") {
+      throw new Error("expected an invalid content import to fail");
+    }
+
+    const issueCodes = result.issues.map((issue) => issue.code);
+
+    expect(result.parseResult.ok).toBe(false);
+    expect(result.issues).toEqual(result.parseResult.issues);
+    expect(result.message).toBe(
+      `Import aborted: ${result.issues.length} validation issue(s).`
+    );
+    expect(issueCodes).toContain("schema.unknown-field");
+    expect(issueCodes).toContain("reference.missing-target");
+    expect(issueCodes).toContain("media.missing-directory");
+    expect(result.filesScanned).toBeGreaterThan(0);
+    expect(result.filesChanged).toBe(0);
 
     expect(await countRows(database.query.media.findMany())).toBe(0);
     expect(await countRows(database.query.lesson.findMany())).toBe(0);
@@ -1293,7 +1308,12 @@ tags: [grammar, bonus]
       where: eq(contentImport.id, result.importId)
     });
 
-    expect(failedImport?.status).toBe("failed");
+    expect(failedImport).toMatchObject({
+      filesChanged: 0,
+      filesScanned: result.filesScanned,
+      message: result.message,
+      status: "failed"
+    });
   }, 60_000);
 });
 

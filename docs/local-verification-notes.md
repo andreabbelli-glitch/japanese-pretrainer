@@ -341,12 +341,17 @@ Per eseguire il controllo locale piu completo:
 Il gate canonico copre nell'ordine:
 
 - `pnpm check` per lint, typecheck e test unit/integration;
-- preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`;
+- preparazione di un DB SQLite locale dedicato in `.tmp/release-check/`, con
+  migrazioni e `pnpm content:import` completo;
 - `pnpm build`;
-- `pnpm content:validate`;
 - `pnpm pitch-accent:validate-corpus`;
 - `pnpm pitch-accent:validate-tofugu-pairs`;
 - runner E2E Playwright sul setup locale dedicato.
+
+Il full `content:import` esegue il parse e la validazione di tutti i bundle
+prima della sync e propaga le issue come import fallito. Il gate non ripete
+quindi `content:validate` dopo l'import; il comando resta disponibile come
+preflight editoriale standalone e nei workflow content-only mirati.
 
 Il DB locale del release gate viene passato esplicitamente come `DATABASE_URL` e
 `E2E_DATABASE_URL`, con `DATABASE_AUTH_TOKEN`, `LIBSQL_AUTH_TOKEN` e le variabili

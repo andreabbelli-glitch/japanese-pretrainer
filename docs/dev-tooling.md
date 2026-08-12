@@ -218,9 +218,13 @@ Action repo-shared consigliate nell'app Codex:
 ```
 
 `./scripts/with-node.sh pnpm release:check` prepara un DB SQLite locale dedicato
-in `.tmp/release-check/`, valida i corpus Pitch Accent vendorizzati e forza
-build/E2E su quel database. Questo evita che un `.env.local` puntato a Turso
-consumi quota remota durante i gate locali.
+in `.tmp/release-check/`, esegue un `content:import` completo e forza build/E2E
+su quel database. L'import completo esegue gia il parse e la validazione di
+tutti i bundle e interrompe la sync se trova issue; il release gate non ripete
+quindi un secondo `content:validate`. Il comando standalone resta il preflight
+editoriale canonico, mentre il gate valida anche i corpus Pitch Accent
+vendorizzati. Questo evita inoltre che un `.env.local` puntato a Turso consumi
+quota remota durante i gate locali.
 
 Applicazione di blocchi immagine da asset reali:
 
