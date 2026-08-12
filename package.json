@@ -30,6 +30,7 @@
     "daily-kanji:export-audio": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/export-daily-kanji-ios-audio.ts",
     "daily-kanji:verify-resources": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/verify-daily-kanji-ios-resources.ts",
     "daily-kanji:package": "pnpm daily-kanji:export && pnpm daily-kanji:export-audio && pnpm daily-kanji:verify-resources",
+    "daily-kanji:test": "./apps/daily-kanji-ios/scripts/test.sh",
     "docs:agent-orientation": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts",
     "docs:agent-orientation:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types ./scripts/generate-agent-orientation.ts --check",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",

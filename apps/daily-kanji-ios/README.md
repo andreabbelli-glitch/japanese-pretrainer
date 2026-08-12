@@ -250,13 +250,24 @@ fa rete direttamente; legge la cache condivisa App Group scritta dall'app.
 Unit test iOS:
 
 ```sh
-DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcodebuild -project DailyKanji.xcodeproj \
-  -scheme DailyKanji \
-  -configuration Debug \
-  -destination 'platform=iOS Simulator,name=iPhone 17' \
-  -derivedDataPath build/SimulatorDerivedData test
+cd ../..
+./scripts/with-node.sh pnpm daily-kanji:test
 ```
+
+Il comando rigenera `DailyKanji.xcodeproj` con XcodeGen e lancia XCTest sul
+simulatore, riusando `apps/daily-kanji-ios/build/SimulatorDerivedData` tra le
+esecuzioni. Per scegliere un altro simulatore o una cache diversa:
+
+```sh
+DAILY_KANJI_IOS_TEST_DESTINATION='platform=iOS Simulator,name=iPhone 17 Pro' \
+DAILY_KANJI_IOS_TEST_DERIVED_DATA_PATH="$PWD/.tmp/daily-kanji-derived-data" \
+  ./scripts/with-node.sh pnpm daily-kanji:test
+```
+
+`DAILY_KANJI_IOS_TEST_CONFIGURATION` puo cambiare la configurazione `Debug`
+predefinita. Se `DEVELOPER_DIR` non e' gia impostato, lo script usa il path
+canonico di `/Applications/Xcode.app` quando presente; in caso contrario
+rispetta l'Xcode selezionato dal sistema.
 
 ## Note widget
 
@@ -333,14 +344,8 @@ lato endpoint, piu export/package manuale.
 Per slice che toccano solo iOS:
 
 ```sh
-cd apps/daily-kanji-ios
-./scripts/doctor.sh
-DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
-  xcodebuild -project DailyKanji.xcodeproj \
-  -scheme DailyKanji \
-  -configuration Debug \
-  -destination 'platform=iOS Simulator,name=iPhone 17' \
-  -derivedDataPath build/SimulatorDerivedData test
+./apps/daily-kanji-ios/scripts/doctor.sh
+./scripts/with-node.sh pnpm daily-kanji:test
 ```
 
 Per slice che toccano signing/widget su device:
