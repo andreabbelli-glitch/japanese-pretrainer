@@ -1683,6 +1683,133 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(model.liveReviewState.canGrade)
     }
 
+    func testLiveReviewRefreshPolicyAppliesFreshnessBackoffAndForcedBypass() {
+        let policy = DailyKanjiLiveReviewRefreshPolicy(
+            freshnessInterval: 5 * 60,
+            initialFailureBackoff: 60,
+            maximumFailureBackoff: 15 * 60
+        )
+
+        XCTAssertFalse(
+            policy.shouldRefresh(
+                now: now,
+                lastSuccessAt: now.addingTimeInterval(-(4 * 60)),
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+        XCTAssertTrue(
+            policy.shouldRefresh(
+                now: now,
+                lastSuccessAt: now.addingTimeInterval(-(5 * 60)),
+                lastFailureAt: nil,
+                consecutiveFailureCount: 0,
+                force: false
+            )
+        )
+        XCTAssertFalse(
+            policy.shouldRefresh(
+                now: now,
+                lastSuccessAt: nil,
+                lastFailureAt: now.addingTimeInterval(-(3 * 60)),
+                consecutiveFailureCount: 3,
+                force: false
+            )
+        )
+        XCTAssertTrue(
+            policy.shouldRefresh(
+                now: now,
+                lastSuccessAt: now,
+                lastFailureAt: now,
+                consecutiveFailureCount: 8,
+                force: true
+            )
+        )
+    }
+
+    @MainActor
+    func testAutomaticLiveReviewFetchUsesFreshnessAndOnlyRunsInReview() async throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(fetchResults: [
+            .success(session),
+            .success(session)
+        ])
+        var clock = now
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewRefreshPolicy: DailyKanjiLiveReviewRefreshPolicy(
+                freshnessInterval: 5 * 60
+            ),
+            liveReviewClient: liveClient,
+            liveReviewNow: { clock },
+            now: clock
+        )
+
+        model.activate(now: clock)
+        await Self.waitUntil { liveClient.fetchCount == 1 && model.liveReviewState.canGrade }
+
+        clock = now.addingTimeInterval(4 * 60)
+        model.activate(now: clock)
+        await Task.yield()
+        XCTAssertEqual(liveClient.fetchCount, 1)
+
+        model.selectAppSection(.glossary, now: clock)
+        clock = now.addingTimeInterval(6 * 60)
+        model.activate(now: clock)
+        model.refreshLiveReviewNow()
+        await Task.yield()
+        XCTAssertEqual(liveClient.fetchCount, 1)
+
+        model.selectAppSection(.review, now: clock)
+        await Self.waitUntil { liveClient.fetchCount == 2 }
+        XCTAssertEqual(model.liveReviewState, .ready(session: session))
+    }
+
+    @MainActor
+    func testAutomaticLiveReviewFailureBackoffStillAllowsManualRefresh() async throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(fetchResults: [
+            .failure(DailyKanjiLiveReviewClientError.invalidResponse),
+            .success(session)
+        ])
+        var clock = now
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewRefreshPolicy: DailyKanjiLiveReviewRefreshPolicy(
+                freshnessInterval: 5 * 60,
+                initialFailureBackoff: 60,
+                maximumFailureBackoff: 60
+            ),
+            liveReviewClient: liveClient,
+            liveReviewNow: { clock },
+            now: clock
+        )
+
+        model.activate(now: clock)
+        await Self.waitUntil {
+            if case .failed = model.liveReviewState {
+                return liveClient.fetchCount == 1
+            }
+            return false
+        }
+
+        clock = now.addingTimeInterval(30)
+        model.activate(now: clock)
+        await Task.yield()
+        XCTAssertEqual(liveClient.fetchCount, 1)
+
+        model.refreshLiveReviewNow()
+        await Self.waitUntil { liveClient.fetchCount == 2 }
+        XCTAssertEqual(model.liveReviewState, .ready(session: session))
+    }
+
     @MainActor
     func testLiveReviewFailureKeepsStaleSessionReadOnly() async throws {
         let liveSession = try JSONDecoder().decode(
@@ -2295,7 +2422,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let second = DailyKanjiSelector.select(
             cards: cards,
             history: [],
-            now: Date(timeIntervalSince1970: 15 * 60),
+            now: Date(timeIntervalSince1970: DailyKanjiSelector.widgetSlotDuration),
             mode: .widgetTimeline
         )
 
@@ -2729,28 +2856,60 @@ final class DailyKanjiCoreTests: XCTestCase {
 
         XCTAssertEqual(
             DailyKanjiSelector.nextWidgetRefreshDate(after: date),
-            Date(timeIntervalSince1970: (60 * 60) + (15 * 60))
+            Date(timeIntervalSince1970: 2 * 60 * 60)
         )
     }
 
-    func testWidgetTimelineDatesPrebuildCanonicalFifteenMinuteRotationSlots() {
+    func testWidgetTimelineDatesPrebuildCanonicalHourlyRotationSlots() {
         let now = Date(timeIntervalSince1970: (60 * 60) + 123)
 
         XCTAssertEqual(
             DailyKanjiSelector.widgetTimelineDates(startingAt: now, count: 4),
             [
                 Date(timeIntervalSince1970: 60 * 60),
-                Date(timeIntervalSince1970: (60 * 60) + (15 * 60)),
-                Date(timeIntervalSince1970: (60 * 60) + (30 * 60)),
-                Date(timeIntervalSince1970: (60 * 60) + (45 * 60))
+                Date(timeIntervalSince1970: 2 * 60 * 60),
+                Date(timeIntervalSince1970: 3 * 60 * 60),
+                Date(timeIntervalSince1970: 4 * 60 * 60)
             ]
         )
+    }
+
+    func testDefaultWidgetTimelineUsesHourlySlotsAndCoversTwentyFourHours() throws {
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: (72 * 60 * 60) + 123)
+        )
+
+        XCTAssertEqual(DailyKanjiSelector.widgetSlotDuration, 60 * 60)
+        XCTAssertEqual(dates.count, 24)
+        XCTAssertEqual(
+            try XCTUnwrap(dates.last).addingTimeInterval(DailyKanjiSelector.widgetSlotDuration)
+                .timeIntervalSince(try XCTUnwrap(dates.first)),
+            24 * 60 * 60
+        )
+    }
+
+    func testWidgetRotationContinuesIntoTheLargerPoolAcrossDays() throws {
+        let cards = try Self.rankedCards(count: 120)
+        let dates = DailyKanjiSelector.widgetTimelineDates(
+            startingAt: Date(timeIntervalSince1970: 0),
+            count: DailyKanjiSelector.defaultWidgetTimelineEntryCount + 1
+        )
+        let timelineCards = DailyKanjiSelector.widgetTimelineCards(
+            cards: cards,
+            dates: dates
+        )
+
+        XCTAssertEqual(DailyKanjiSelector.defaultWidgetTimelineEntryCount, 24)
+        XCTAssertEqual(DailyKanjiSelector.defaultWidgetRotationPoolSize, 96)
+        XCTAssertEqual(timelineCards.first?.cardId, "card-0")
+        XCTAssertEqual(timelineCards[24].cardId, "card-24")
+        XCTAssertNotEqual(timelineCards[24].cardId, timelineCards.first?.cardId)
     }
 
     func testWidgetSnapshotAndTimelineUseTheSameFullRotationPool() throws {
         let cards = try Self.rankedCards(count: 120)
         let now = Date(
-            timeIntervalSince1970: 50 * DailyKanjiSelector.widgetSlotDuration
+            timeIntervalSince1970: 18 * DailyKanjiSelector.widgetSlotDuration
         )
         let snapshotDates = DailyKanjiSelector.widgetTimelineDates(
             startingAt: now,
@@ -2779,7 +2938,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
 
         XCTAssertEqual(snapshotCard.cardId, firstTimelineCard.cardId)
-        XCTAssertEqual(snapshotCard.cardId, "card-50")
+        XCTAssertEqual(snapshotCard.cardId, "card-18")
         XCTAssertNotEqual(snapshotCard.cardId, legacyWindowCard?.cardId)
     }
 
@@ -2809,7 +2968,7 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testWidgetTimelineDatesStaySynchronizedWithinTheSameRotationSlot() throws {
         let cards = try Self.rankedCards(count: 120)
         let earlyRequest = Date(timeIntervalSince1970: (72 * 60 * 60) + 1)
-        let lateRequest = Date(timeIntervalSince1970: (72 * 60 * 60) + (14 * 60) + 59)
+        let lateRequest = Date(timeIntervalSince1970: (72 * 60 * 60) + (59 * 60) + 59)
 
         let earlyDates = DailyKanjiSelector.widgetTimelineDates(
             startingAt: earlyRequest,
@@ -2829,8 +2988,8 @@ final class DailyKanjiCoreTests: XCTestCase {
 
     func testWidgetTimelineDatesKeepOverlappingBoundarySlotsSynchronized() throws {
         let cards = try Self.rankedCards(count: 120)
-        let beforeBoundary = Date(timeIntervalSince1970: (72 * 60 * 60) + (14 * 60) + 59)
-        let afterBoundary = Date(timeIntervalSince1970: (72 * 60 * 60) + (15 * 60) + 1)
+        let beforeBoundary = Date(timeIntervalSince1970: (72 * 60 * 60) + (59 * 60) + 59)
+        let afterBoundary = Date(timeIntervalSince1970: (73 * 60 * 60) + 1)
 
         let beforeDates = DailyKanjiSelector.widgetTimelineDates(
             startingAt: beforeBoundary,
@@ -2856,8 +3015,7 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testWidgetTimelineCardsAvoidRepeatingCardsAcrossTwentyFourHoursWhenPossible() throws {
         let cards = try Self.rankedCards(count: 120)
         let dates = DailyKanjiSelector.widgetTimelineDates(
-            startingAt: Date(timeIntervalSince1970: (72 * 60 * 60) + 60),
-            count: 96
+            startingAt: Date(timeIntervalSince1970: (72 * 60 * 60) + 60)
         )
 
         let selectedCards = DailyKanjiSelector.widgetTimelineCards(
@@ -2865,8 +3023,11 @@ final class DailyKanjiCoreTests: XCTestCase {
             dates: dates
         )
 
-        XCTAssertEqual(selectedCards.count, 96)
-        XCTAssertEqual(Set(selectedCards.map(\.cardId)).count, 96)
+        XCTAssertEqual(selectedCards.count, DailyKanjiSelector.defaultWidgetTimelineEntryCount)
+        XCTAssertEqual(
+            Set(selectedCards.map(\.cardId)).count,
+            DailyKanjiSelector.defaultWidgetTimelineEntryCount
+        )
     }
 
     func testWidgetTimelineCardsPreferPitchKnownCardsWhileFillingTwentyFourHourPool() throws {
@@ -2876,8 +3037,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
         let cards = try Self.rankedCards(count: 120, pitchAccents: pitchAccents)
         let dates = DailyKanjiSelector.widgetTimelineDates(
-            startingAt: Date(timeIntervalSince1970: 0),
-            count: 96
+            startingAt: Date(timeIntervalSince1970: 0)
         )
 
         let selectedCards = DailyKanjiSelector.widgetTimelineCards(
@@ -2885,8 +3045,11 @@ final class DailyKanjiCoreTests: XCTestCase {
             dates: dates
         )
 
-        XCTAssertEqual(selectedCards.count, 96)
-        XCTAssertEqual(Set(selectedCards.map(\.cardId)).count, 96)
+        XCTAssertEqual(selectedCards.count, DailyKanjiSelector.defaultWidgetTimelineEntryCount)
+        XCTAssertEqual(
+            Set(selectedCards.map(\.cardId)).count,
+            DailyKanjiSelector.defaultWidgetTimelineEntryCount
+        )
         XCTAssertEqual(selectedCards.prefix(2).map(\.cardId), ["card-10", "card-30"])
         XCTAssertTrue(selectedCards.prefix(2).allSatisfy { $0.entry.pitchAccent != nil })
         XCTAssertTrue(selectedCards.dropFirst(2).contains { $0.entry.pitchAccent == nil })
@@ -2917,7 +3080,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             cards: cards,
             dates: firstTimelineDates
         )
-        let reloadTime = Date(timeIntervalSince1970: 30 * 60)
+        let reloadTime = Date(timeIntervalSince1970: 2 * 60 * 60)
         let regeneratedDates = DailyKanjiSelector.widgetTimelineDates(
             startingAt: reloadTime,
             count: 8
@@ -2957,8 +3120,8 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
         let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let firstSlot = Date(timeIntervalSince1970: 72 * 60 * 60)
-        let secondSlot = firstSlot.addingTimeInterval(15 * 60)
-        let thirdSlot = secondSlot.addingTimeInterval(15 * 60)
+        let secondSlot = firstSlot.addingTimeInterval(DailyKanjiSelector.widgetSlotDuration)
+        let thirdSlot = secondSlot.addingTimeInterval(DailyKanjiSelector.widgetSlotDuration)
 
         store.replaceTimeline(
             entries: [
@@ -3023,7 +3186,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
         let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let currentSlot = Date(timeIntervalSince1970: 72 * 60 * 60)
-        let futureSlot = currentSlot.addingTimeInterval(15 * 60)
+        let futureSlot = currentSlot.addingTimeInterval(DailyKanjiSelector.widgetSlotDuration)
 
         store.replaceTimeline(
             entries: [
@@ -3066,7 +3229,9 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
         let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults, retentionDays: 3)
         let expiredSlot = Date(timeIntervalSince1970: 0)
-        let currentSlot = expiredSlot.addingTimeInterval((4 * 24 * 60 * 60) + (15 * 60))
+        let currentSlot = expiredSlot.addingTimeInterval(
+            (4 * 24 * 60 * 60) + DailyKanjiSelector.widgetSlotDuration
+        )
 
         store.replaceTimeline(
             entries: [
@@ -3105,7 +3270,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
         let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let currentSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
-        let previousSlot = currentSlot.addingTimeInterval(-15 * 60)
+        let previousSlot = currentSlot.addingTimeInterval(-DailyKanjiSelector.widgetSlotDuration)
         widgetHistoryStore.replaceTimeline(
             entries: [
                 DailyKanjiWidgetTimelineHistoryItem(
@@ -3185,7 +3350,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let pastSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
-            .addingTimeInterval(-15 * 60)
+            .addingTimeInterval(-DailyKanjiSelector.widgetSlotDuration)
         widgetHistoryStore.replaceTimeline(
             entries: [
                 DailyKanjiWidgetTimelineHistoryItem(
@@ -3226,7 +3391,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let cards = try Self.rankedCards(count: 2)
         let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let pastSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
-            .addingTimeInterval(-15 * 60)
+            .addingTimeInterval(-DailyKanjiSelector.widgetSlotDuration)
         widgetHistoryStore.replaceTimeline(
             entries: [
                 DailyKanjiWidgetTimelineHistoryItem(
@@ -3262,7 +3427,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         let cards = try Self.rankedCards(count: 2)
         let widgetHistoryStore = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let pastSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
-            .addingTimeInterval(-15 * 60)
+            .addingTimeInterval(-DailyKanjiSelector.widgetSlotDuration)
         widgetHistoryStore.replaceTimeline(
             entries: [
                 DailyKanjiWidgetTimelineHistoryItem(
@@ -3474,10 +3639,12 @@ final class DailyKanjiCoreTests: XCTestCase {
         }
         let store = DailyKanjiWidgetTimelineHistoryStore(defaults: defaults)
         let firstSlot = DailyKanjiSelector.currentWidgetSlotStart(for: now)
-            .addingTimeInterval(-95 * 15 * 60)
+            .addingTimeInterval(
+                -TimeInterval(DailyKanjiSelector.defaultWidgetTimelineEntryCount - 1)
+                    * DailyKanjiSelector.widgetSlotDuration
+            )
         let dates = DailyKanjiSelector.widgetTimelineDates(
-            startingAt: firstSlot,
-            count: 96
+            startingAt: firstSlot
         )
         let timelineCards = DailyKanjiSelector.widgetTimelineCards(
             cards: cards,
@@ -3510,8 +3677,14 @@ final class DailyKanjiCoreTests: XCTestCase {
             mode: .appOpen
         )
 
-        XCTAssertEqual(widgetSelectionHistory.count, 97)
-        XCTAssertEqual(Set(widgetSelectionHistory.map(\.cardId)).count, 97)
+        XCTAssertEqual(
+            widgetSelectionHistory.count,
+            DailyKanjiSelector.defaultWidgetTimelineEntryCount + 1
+        )
+        XCTAssertEqual(
+            Set(widgetSelectionHistory.map(\.cardId)).count,
+            DailyKanjiSelector.defaultWidgetTimelineEntryCount + 1
+        )
         XCTAssertTrue(widgetSelectionHistory.contains { $0.cardId == timelineCards[0].cardId })
         XCTAssertTrue(widgetSelectionHistory.contains { $0.cardId == originalCurrentCardId })
         XCTAssertTrue(widgetSelectionHistory.contains { $0.cardId == "card-119" })
@@ -4053,6 +4226,44 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
+    func testNavigationSelectionsAndDeepLinksDoNotReloadWidgetTimelines() throws {
+        let defaultsName = "DailyKanjiEnergy.\(UUID().uuidString)"
+        let defaults = UserDefaults(suiteName: defaultsName)!
+        defer {
+            defaults.removePersistentDomain(forName: defaultsName)
+        }
+        let cards = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards
+        let historyStore = DailyKanjiHistoryStore(defaults: defaults)
+        var reloadCount = 0
+        let model = DailyKanjiAppModel(
+            cards: cards,
+            historyStore: historyStore,
+            reloadTimelines: { reloadCount += 1 },
+            now: now
+        )
+
+        model.activate(now: now)
+        model.selectAppSection(.glossary, now: now.addingTimeInterval(1))
+        model.selectAppSection(.daily, now: now.addingTimeInterval(2))
+        model.selectHistoryItem(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "stable",
+                shownAt: now.addingTimeInterval(-60),
+                source: .app
+            ),
+            now: now.addingTimeInterval(3)
+        )
+        model.openDeepLink(
+            DailyKanjiDeepLink.cardURL(cardId: "hard"),
+            now: now.addingTimeInterval(4)
+        )
+
+        XCTAssertEqual(reloadCount, 0)
+        XCTAssertEqual(model.selectedCard?.cardId, "hard")
+        XCTAssertFalse(historyStore.allItems().isEmpty)
+    }
+
+    @MainActor
     func testSelectingRecentHistoryItemPreservesItsReviewContext() throws {
         let defaultsName = "DailyKanjiTests.\(UUID().uuidString)"
         let defaults = UserDefaults(suiteName: defaultsName)!
@@ -4426,6 +4637,25 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(player.cachedRemoteAudioCount, 1)
     }
 
+    @MainActor
+    func testSuspendingAudioCancelsAnActivePreload() async {
+        let loader = ControllableDailyKanjiAudioLoader()
+        let player = DailyKanjiAudioPlayer(
+            remoteAudioLoader: { try await loader.load($0) }
+        )
+        let url = URL(string: "https://example.test/backgrounded.mp3")!
+
+        player.preload(url: url)
+        await loader.waitForRequestCount(1)
+        player.suspend()
+
+        XCTAssertNil(player.activePreloadURL)
+
+        await loader.resolveRequest(at: 0, with: Data(repeating: 1, count: 4))
+        await Task.yield()
+        XCTAssertEqual(player.cachedRemoteAudioCount, 0)
+    }
+
     func testAudioPlayerStopsBothBackendsBeforeStartingPlayback() throws {
         let source = try Self.audioPlayerSourceFileContents()
         guard
@@ -4450,45 +4680,13 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testLiveReviewPreloadCancelsWhenTheReviewIsNotVisible() throws {
         let source = try Self.appSourceFileContents()
 
-        XCTAssertTrue(
-            source.contains(
-                """
-                .onDisappear {
-                                audioPlayer.stopPlayback()
-                                audioPlayer.preload(url: nil)
-                            }
-                """
-            )
-        )
-        XCTAssertTrue(
-            source.contains(
-                """
-                private func resetAndPreloadCurrentLiveReviewAudio() {
-                        audioPlayer.stopPlayback()
-                """
-            )
-        )
-        XCTAssertTrue(
-            source.contains(
-                """
-                .onChange(of: currentLiveReviewCardKey) { _, _ in
-                                liveReviewAnswerRevealed = false
-                                guard model.selectedAppSection == .review else {
-                                    return
-                                }
-                """
-            )
-        )
-        XCTAssertTrue(
-            source.contains(
-                """
-                else {
-                            audioPlayer.preload(url: nil)
-                            return
-                        }
-                """
-            )
-        )
+        XCTAssertTrue(source.contains("@Environment(\\.scenePhase) private var scenePhase"))
+        XCTAssertTrue(source.contains(".onChange(of: scenePhase) { _, phase in"))
+        XCTAssertTrue(source.contains("if phase == .active"))
+        XCTAssertTrue(source.contains("audioPlayer.suspend()"))
+        XCTAssertTrue(source.contains("guard scenePhase == .active,"))
+        XCTAssertTrue(source.contains("model.selectedAppSection == .review"))
+        XCTAssertTrue(source.contains("audioPlayer.preload(url: nil)"))
     }
 
     private static let liveReviewSessionJSON = """

@@ -232,6 +232,11 @@ final class DailyKanjiAudioPlayer: ObservableObject {
         remotePlayer = nil
     }
 
+    func suspend() {
+        stopPlayback()
+        cancelPreload()
+    }
+
     func waitForPendingPreload() async {
         await preloadTask?.value
     }

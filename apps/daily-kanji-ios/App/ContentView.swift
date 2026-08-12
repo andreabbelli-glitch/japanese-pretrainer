@@ -2,6 +2,7 @@ import Combine
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var model: DailyKanjiAppModel
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
     @StateObject private var glossarySearch: DailyKanjiGlossarySearchModel
@@ -61,9 +62,6 @@ struct ContentView: View {
                 } else {
                     glossarySearch.prepareIndex()
                 }
-                if section == .review {
-                    model.refreshLiveReviewNow()
-                }
                 resetAndPreloadCurrentLiveReviewAudio()
             }
             .onChange(of: currentLiveReviewCardKey) { _, _ in
@@ -77,8 +75,14 @@ struct ContentView: View {
                 resetAndPreloadCurrentLiveReviewAudio()
             }
             .onDisappear {
-                audioPlayer.stopPlayback()
-                audioPlayer.preload(url: nil)
+                audioPlayer.suspend()
+            }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active {
+                    resetAndPreloadCurrentLiveReviewAudio()
+                } else {
+                    audioPlayer.suspend()
+                }
             }
             .onReceive(model.$glossaryEntries.dropFirst()) { entries in
                 glossarySearch.replaceEntries(entries)
@@ -800,7 +804,8 @@ struct ContentView: View {
 
     private func resetAndPreloadCurrentLiveReviewAudio() {
         audioPlayer.stopPlayback()
-        guard model.selectedAppSection == .review,
+        guard scenePhase == .active,
+              model.selectedAppSection == .review,
               let card = model.liveReviewState.session?.selectedCard
         else {
             audioPlayer.preload(url: nil)

@@ -9,8 +9,9 @@ struct DailyKanjiSelector {
     static let defaultHistoryLookbackDays = 3
     static let defaultWidgetRotationWindow = 8
     static let defaultWidgetNoRepeatLookbackDays = 1
-    static let widgetSlotDuration: TimeInterval = 15 * 60
-    static let defaultWidgetTimelineEntryCount = 96
+    static let widgetSlotDuration: TimeInterval = 60 * 60
+    static let defaultWidgetTimelineEntryCount = 24
+    static let defaultWidgetRotationPoolSize = 96
 
     static func select(
         cards: [DailyKanjiCard],
@@ -226,7 +227,7 @@ struct DailyKanjiSelector {
 
         let targetPoolSize = min(
             ordered.count,
-            max(widgetRotationWindow, defaultWidgetTimelineEntryCount)
+            max(widgetRotationWindow, defaultWidgetRotationPoolSize)
         )
         let pool = pitchPreferredTimelinePool(
             ordered,

@@ -9,6 +9,53 @@ enum DailyKanjiSyncState: Equatable {
     case failed(message: String, source: DailyKanjiDatasetSource)
 }
 
+struct DailyKanjiLiveReviewRefreshPolicy {
+    static let maximumTrackedFailureCount = 8
+
+    let freshnessInterval: TimeInterval
+    let initialFailureBackoff: TimeInterval
+    let maximumFailureBackoff: TimeInterval
+
+    init(
+        freshnessInterval: TimeInterval = 5 * 60,
+        initialFailureBackoff: TimeInterval = 60,
+        maximumFailureBackoff: TimeInterval = 15 * 60
+    ) {
+        self.freshnessInterval = max(freshnessInterval, 0)
+        self.initialFailureBackoff = max(initialFailureBackoff, 0)
+        self.maximumFailureBackoff = max(maximumFailureBackoff, 0)
+    }
+
+    func shouldRefresh(
+        now: Date,
+        lastSuccessAt: Date?,
+        lastFailureAt: Date?,
+        consecutiveFailureCount: Int,
+        force: Bool
+    ) -> Bool {
+        if force {
+            return true
+        }
+
+        if let lastFailureAt {
+            let exponent = max(min(consecutiveFailureCount, Self.maximumTrackedFailureCount) - 1, 0)
+            let backoff = min(
+                initialFailureBackoff * pow(2, Double(exponent)),
+                maximumFailureBackoff
+            )
+            if now.timeIntervalSince(lastFailureAt) < backoff {
+                return false
+            }
+        }
+
+        guard let lastSuccessAt else {
+            return true
+        }
+
+        return now.timeIntervalSince(lastSuccessAt) >= freshnessInterval
+    }
+}
+
 @MainActor
 final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var cards: [DailyKanjiCard]
@@ -29,6 +76,7 @@ final class DailyKanjiAppModel: ObservableObject {
     private let widgetHistoryStore: DailyKanjiWidgetTimelineHistoryStore
     private let scopeStore: DailyKanjiStudyScopeStore
     private let syncPolicy: DailyKanjiSyncPolicy
+    private let liveReviewRefreshPolicy: DailyKanjiLiveReviewRefreshPolicy
     private let syncer: DailyKanjiSyncing?
     private let liveReviewClient: DailyKanjiLiveReviewing?
     private let notificationRegistrar: DailyKanjiNotificationRegistering?
@@ -54,6 +102,9 @@ final class DailyKanjiAppModel: ObservableObject {
     private var transientInitialActivationEvent: DailyKanjiHistoryItem?
     private var liveCardPresentedAt: Date?
     private var pendingLiveReviewResponseRetry: LiveReviewResponseRetry?
+    private var lastLiveReviewSuccessAt: Date?
+    private var lastLiveReviewFailureAt: Date?
+    private var liveReviewConsecutiveFailureCount = 0
 
     private struct LiveReviewFetchContext {
         let id: UUID
@@ -94,6 +145,8 @@ final class DailyKanjiAppModel: ObservableObject {
             DailyKanjiWidgetTimelineHistoryStore(),
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
+        liveReviewRefreshPolicy: DailyKanjiLiveReviewRefreshPolicy =
+            DailyKanjiLiveReviewRefreshPolicy(),
         syncer: DailyKanjiSyncing? = DailyKanjiSyncClient(),
         liveReviewClient: DailyKanjiLiveReviewing? = DailyKanjiLiveReviewClient(),
         notificationRegistrar: DailyKanjiNotificationRegistering? =
@@ -114,6 +167,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.widgetHistoryStore = widgetHistoryStore
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
+        self.liveReviewRefreshPolicy = liveReviewRefreshPolicy
         self.syncer = syncer
         self.liveReviewClient = liveReviewClient
         self.notificationRegistrar = notificationRegistrar
@@ -145,6 +199,8 @@ final class DailyKanjiAppModel: ObservableObject {
         cacheWriter: (any DailyKanjiCacheWriting)? = nil,
         scopeStore: DailyKanjiStudyScopeStore = DailyKanjiStudyScopeStore(),
         syncPolicy: DailyKanjiSyncPolicy = DailyKanjiSyncPolicy(),
+        liveReviewRefreshPolicy: DailyKanjiLiveReviewRefreshPolicy =
+            DailyKanjiLiveReviewRefreshPolicy(),
         syncer: DailyKanjiSyncing? = nil,
         liveReviewClient: DailyKanjiLiveReviewing? = nil,
         notificationRegistrar: DailyKanjiNotificationRegistering? = nil,
@@ -161,6 +217,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.widgetHistoryStore = widgetHistoryStore
         self.scopeStore = scopeStore
         self.syncPolicy = syncPolicy
+        self.liveReviewRefreshPolicy = liveReviewRefreshPolicy
         self.syncer = syncer
         self.liveReviewClient = liveReviewClient
         self.notificationRegistrar = notificationRegistrar
@@ -219,7 +276,7 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func activate(now: Date = .now) {
         refreshHistory(now: now)
-        startLiveReviewFetchTask()
+        startLiveReviewFetchTask(now: now)
         defer {
             startSyncTask(now: now, force: false)
         }
@@ -261,12 +318,18 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func refreshLiveReviewNow() {
-        startLiveReviewFetchTask(force: true)
+        startLiveReviewFetchTask(now: liveReviewNow(), force: true)
     }
 
     func selectAppSection(_ section: DailyKanjiAppSection, now: Date = .now) {
         let previousSection = selectedAppSection
         selectedAppSection = section
+
+        if section == .review {
+            startLiveReviewFetchTask(now: now)
+        } else {
+            cancelLiveReviewFetch()
+        }
 
         guard
             previousSection != .daily,
@@ -377,7 +440,7 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func fetchLiveReviewSession() async {
-        let task = startLiveReviewFetchTask(force: true)
+        let task = startLiveReviewFetchTask(now: liveReviewNow(), force: true)
         await task?.value
     }
 
@@ -492,6 +555,8 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
+        cancelLiveReviewFetch()
+
         guard let card = cards.first(where: { $0.cardId == cardId }) else {
             selectedAppSection = .daily
             pendingPreparedSelectionCardId = nil
@@ -594,7 +659,7 @@ final class DailyKanjiAppModel: ObservableObject {
             && (previousCardId != nextCard.cardId
                 || (recordsPreparedSelection && isPreparedSelection)) {
             pendingPreparedSelectionCardId = nil
-            select(card: nextCard, shownAt: now, reloadsTimelines: false)
+            select(card: nextCard, shownAt: now)
             return
         }
 
@@ -612,8 +677,7 @@ final class DailyKanjiAppModel: ObservableObject {
         card: DailyKanjiCard,
         shownAt: Date,
         context: DailyKanjiPresentationHistoryItem? = nil,
-        tracksTransientInitialActivation: Bool = false,
-        reloadsTimelines: Bool = true
+        tracksTransientInitialActivation: Bool = false
     ) {
         selectedCard = card
         selectedHistoryContext = context ?? DailyKanjiPresentationHistoryItem(
@@ -624,9 +688,6 @@ final class DailyKanjiAppModel: ObservableObject {
         let historyItem = historyStore.record(cardId: card.cardId, shownAt: shownAt)
         transientInitialActivationEvent = tracksTransientInitialActivation ? historyItem : nil
         refreshHistory(now: shownAt)
-        if reloadsTimelines {
-            reloadTimelines()
-        }
     }
 
     private func startSyncTask(now: Date, force: Bool) {
@@ -649,8 +710,12 @@ final class DailyKanjiAppModel: ObservableObject {
 
     @discardableResult
     private func startLiveReviewFetchTask(
+        now: Date,
         force: Bool = false
     ) -> Task<Void, Never>? {
+        guard selectedAppSection == .review else {
+            return nil
+        }
         guard liveReviewClient != nil else {
             liveReviewState = .unavailable
             return nil
@@ -662,6 +727,17 @@ final class DailyKanjiAppModel: ObservableObject {
             return nil
         }
         guard liveReviewFetchTask == nil || force else {
+            return nil
+        }
+        guard
+            liveReviewRefreshPolicy.shouldRefresh(
+                now: now,
+                lastSuccessAt: lastLiveReviewSuccessAt,
+                lastFailureAt: lastLiveReviewFailureAt,
+                consecutiveFailureCount: liveReviewConsecutiveFailureCount,
+                force: force
+            )
+        else {
             return nil
         }
 
@@ -703,6 +779,9 @@ final class DailyKanjiAppModel: ObservableObject {
             }
 
             liveReviewState = .ready(session: session)
+            lastLiveReviewSuccessAt = liveReviewNow()
+            lastLiveReviewFailureAt = nil
+            liveReviewConsecutiveFailureCount = 0
             updateLiveCardPresentationAfterFetch(session: session, context: context)
         } catch {
             guard activeLiveReviewFetchId == context.id else {
@@ -716,6 +795,11 @@ final class DailyKanjiAppModel: ObservableObject {
                 message: Self.liveReviewFailureMessage(for: error),
                 staleSession: context.staleSession
             )
+            lastLiveReviewFailureAt = liveReviewNow()
+            liveReviewConsecutiveFailureCount = min(
+                liveReviewConsecutiveFailureCount + 1,
+                DailyKanjiLiveReviewRefreshPolicy.maximumTrackedFailureCount
+            )
         }
     }
 
@@ -726,6 +810,19 @@ final class DailyKanjiAppModel: ObservableObject {
 
         activeLiveReviewFetchId = nil
         liveReviewFetchTask = nil
+    }
+
+    private func cancelLiveReviewFetch() {
+        guard liveReviewFetchTask != nil else {
+            return
+        }
+
+        activeLiveReviewFetchId = nil
+        liveReviewFetchTask?.cancel()
+        liveReviewFetchTask = nil
+        if case .loading(let staleSession) = liveReviewState, let staleSession {
+            liveReviewState = .ready(session: staleSession)
+        }
     }
 
     private func updateLiveCardPresentationAfterFetch(
@@ -876,7 +973,7 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         pendingForcedLiveReviewFetch = false
-        startLiveReviewFetchTask(force: true)
+        startLiveReviewFetchTask(now: liveReviewNow(), force: true)
     }
 
     private func updateLiveCardPresentationAfterGrade(
