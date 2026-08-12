@@ -305,6 +305,7 @@ pnpm typecheck
 pnpm test
 pnpm test:all
 pnpm test:fast
+pnpm test:coverage
 pnpm test:profile
 pnpm test:real-bundle
 pnpm test:ios-ops

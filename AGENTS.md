@@ -210,6 +210,7 @@ user_setting -> preferenze utente
 ./scripts/with-node.sh pnpm test
 ./scripts/with-node.sh pnpm test:all
 ./scripts/with-node.sh pnpm test:fast
+./scripts/with-node.sh pnpm test:coverage
 ./scripts/with-node.sh pnpm test:profile
 ./scripts/with-node.sh pnpm test:real-bundle
 ./scripts/with-node.sh pnpm test:ios-ops

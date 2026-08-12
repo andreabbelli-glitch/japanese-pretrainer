@@ -22,6 +22,13 @@ export default defineConfig({
     }
   },
   test: {
+    coverage: {
+      exclude: ["src/**/*.d.ts"],
+      include: ["src/**/*.{ts,tsx}"],
+      provider: "v8",
+      reporter: ["text", "json-summary", "html"],
+      reportsDirectory: "coverage"
+    },
     environment: "node",
     exclude: testLaneFiles.exclude,
     execArgv: ["--disable-warning=DEP0040"],

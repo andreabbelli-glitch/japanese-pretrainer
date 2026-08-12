@@ -114,6 +114,26 @@ e automazioni Daily Kanji con al massimo due worker. `pnpm test` e
 aggregata, anche se l'ambiente contiene un `JCS_VITEST_LANE` diverso. Anche
 `pnpm check` continua quindi a coprire tutte e tre le corsie.
 
+La coverage e' un audit esplicito e non rallenta il gate quotidiano:
+
+```sh
+./scripts/with-node.sh pnpm test:coverage
+```
+
+Il comando forza sempre la corsia completa, misura i file applicativi
+`src/**/*.{ts,tsx}` e genera un riepilogo terminale, `coverage/coverage-summary.json`
+e il report navigabile `coverage/index.html`. La directory e' locale e ignorata
+da Git. Il baseline iniziale non impone soglie arbitrarie: serve a individuare
+aree scoperte e a concordare threshold per feature solo dopo aver raccolto dati
+stabili. `pnpm check` non include questo audit.
+
+Il baseline V8 misura soltanto il codice caricato nei processi instrumentati da
+Vitest. Non aggrega i CLI avviati dai test come child process, le esecuzioni
+Playwright/Next.js o gli XCTest. Un file allo 0% puo' quindi avere comunque una
+copertura contrattuale o end-to-end esterna: i gap del report vanno letti insieme
+agli altri gate (`test:e2e`, `release:check` e `daily-kanji:test`), non come prova
+isolata che un comportamento non sia verificato.
+
 Per misurare la suite completa o un sottoinsieme usa il reporter di profiling:
 
 ```sh

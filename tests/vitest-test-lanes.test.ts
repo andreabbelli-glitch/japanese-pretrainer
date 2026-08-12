@@ -82,6 +82,9 @@ describe("Vitest test lanes", () => {
     expect(packageJson.scripts).toMatchObject({
       test: expect.stringContaining("JCS_VITEST_LANE=all"),
       "test:all": expect.stringContaining("JCS_VITEST_LANE=all"),
+      "test:coverage": expect.stringMatching(
+        /JCS_VITEST_LANE=all.*vitest\.mjs run --coverage/u
+      ),
       "test:fast": expect.stringContaining("JCS_VITEST_LANE=core"),
       "test:ios-ops": expect.stringContaining("JCS_VITEST_LANE=ios-ops"),
       "test:profile": expect.stringContaining("JCS_VITEST_LANE=all"),
