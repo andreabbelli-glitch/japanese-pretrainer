@@ -233,6 +233,10 @@ cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
 diagnostico: installa la app principale, ma non registra la WidgetKit extension
 nella gallery widget.
 
+Per il job unattended e' preferibile l'UDID hardware stabile mostrato da Xcode:
+l'UUID interno CoreDevice puo cambiare. Il tunnel Wi-Fi non e' destinato a
+restare connesso quando inattivo; CoreDevice lo ricrea al bisogno.
+
 ### Monitor Review Live
 
 La near-real-time push per le review mobile e sospesa finche APNs/notifiche non
@@ -261,7 +265,7 @@ e inviare push solo se serve. Secret APNs/mobile/monitor e token Turso non
 devono mai essere committati.
 
 Il rinnovo automatico launchd usa un plist persistente con `RunAtLoad` e
-`StartInterval=14400`: esegue un check al caricamento/login e ogni 4 ore. Il
+`StartInterval=3600`: esegue un check al caricamento/login e ogni ora. Il
 wrapper legge scadenza minima e UUID dei provisioning profile embedded dallo
 snapshot atomico
 `~/Library/Application Support/DailyKanji/profile-state.env`; il precedente
@@ -290,6 +294,18 @@ legacy `--mark-success-now` e `--reschedule-only` non creano successi sintetici.
 L'installer mantiene un backup del plist precedente fino al bootstrap del nuovo:
 se il bootstrap fallisce, ripristina il file precedente e tenta di ricaricarlo,
 ma restituisce comunque l'exit code originale dell'installazione fallita.
+
+Se un comando `devicectl` fallisce con le firme osservate di tunnel/RSD stale
+(`CoreDeviceError 4000`, `RemotePairingError 1001`, `-402653181`/
+`0xE8000003` o timeout di negoziazione), il wrapper condiviso riavvia una sola
+volta i servizi utente `com.apple.CoreDevice.remotepairingd` e
+`com.apple.CoreDevice.CoreDeviceService`, attende 4 secondi e ritenta una sola
+volta il comando. Lo stesso budget viene ereditato da `xcode-renew.sh`, quindi
+un'attivazione non puo creare loop o ripetere build. Errori locked, device non
+trovato, offline generico o pairing perso non riavviano servizi; vengono lasciati
+al retry orario. Il recovery non usa privilegi, non modifica il pairing e non
+tocca `com.apple.remoted`.
+
 I log unattended sono in
 `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`.

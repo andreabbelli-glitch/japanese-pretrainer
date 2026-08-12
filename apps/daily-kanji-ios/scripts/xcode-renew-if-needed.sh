@@ -7,7 +7,7 @@ STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 LOG_DIR="${LOG_DIR:-$HOME/Library/Logs/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 RENEW_BEFORE_EXPIRY_SECONDS="${RENEW_BEFORE_EXPIRY_SECONDS:-172800}"
-RENEW_CHECK_INTERVAL_SECONDS="${RENEW_CHECK_INTERVAL_SECONDS:-14400}"
+RENEW_CHECK_INTERVAL_SECONDS="${RENEW_CHECK_INTERVAL_SECONDS:-3600}"
 LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
 DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
@@ -21,6 +21,10 @@ PROFILE_REFRESH_VERIFIED=0
 PROFILE_STATE_EXPIRY=""
 PROFILE_UUIDS=()
 FORCE=0
+
+COREDEVICE_RECOVERY_HELPER="${COREDEVICE_RECOVERY_HELPER:-$ROOT/scripts/coredevice-recovery.sh}"
+# shellcheck source=coredevice-recovery.sh
+. "$COREDEVICE_RECOVERY_HELPER"
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
   export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
@@ -39,10 +43,11 @@ Environment:
   DEVICE_ID                         CoreDevice identifier of the target iPhone.
   CONFIG_FILE                       Default: ~/Library/Application Support/DailyKanji/renew.env.
   RENEW_BEFORE_EXPIRY_SECONDS       Default: 172800 (48 hours).
-  RENEW_CHECK_INTERVAL_SECONDS      Default: 14400 (4 hours; status only here).
+  RENEW_CHECK_INTERVAL_SECONDS      Default: 3600 (1 hour; status only here).
   LOCK_MAX_AGE_SECONDS              Default: 21600 (6 hours).
   COREDEVICE_INFO_TIMEOUT_SECONDS   Default: 60.
   DDI_MOUNT_TIMEOUT_SECONDS         Default: 120.
+  COREDEVICE_RECOVERY_DELAY_SECONDS Default: 4 (one bounded Wi-Fi tunnel retry).
   STATE_DIR                         Default: ~/Library/Application Support/DailyKanji.
   LOG_DIR                           Default: ~/Library/Logs/DailyKanji.
   PROFILE_STATE_FILE                Default: STATE_DIR/profile-state.env.
@@ -71,6 +76,12 @@ validate_settings() {
       exit 78
     fi
   done
+
+  if coredevice_recovery_validate_settings; then
+    :
+  else
+    exit "$?"
+  fi
 }
 
 now_epoch() {
@@ -288,16 +299,14 @@ device_reachable() {
   local output
   local status
 
-  set +e
-  output="$(xcrun devicectl device info details \
+  if coredevice_run_with_recovery "device reachability" \
+    xcrun devicectl device info details \
     --device "$DEVICE_ID" \
-    --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS" 2>&1)"
-  status=$?
-  set -e
-
-  if [ "$status" -eq 0 ]; then
+    --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS"; then
     return 0
   fi
+  status="$COREDEVICE_LAST_STATUS"
+  output="$COREDEVICE_LAST_OUTPUT"
 
   printf "Daily Kanji device %s not reachable; CoreDevice exited %s. launchd will retry at the next interval.\n" \
     "$DEVICE_ID" "$status" >&2
@@ -311,18 +320,16 @@ developer_disk_image_ready() {
   local output
   local status
 
-  set +e
-  output="$(xcrun devicectl device info ddiServices \
+  if coredevice_run_with_recovery "developer disk image preflight" \
+    xcrun devicectl device info ddiServices \
     --device "$DEVICE_ID" \
     --auto-mount-ddis \
-    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS" 2>&1)"
-  status=$?
-  set -e
-
-  if [ "$status" -eq 0 ]; then
+    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS"; then
     printf "Daily Kanji developer disk image services ready.\n"
     return 0
   fi
+  status="$COREDEVICE_LAST_STATUS"
+  output="$COREDEVICE_LAST_OUTPUT"
 
   if [[ "$output" == *"kAMDMobileImageMounterDeviceLocked"* ]] ||
     [[ "$output" == *"device is locked"* ]] ||

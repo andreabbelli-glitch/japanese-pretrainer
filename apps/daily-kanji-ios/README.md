@@ -108,7 +108,8 @@ Reinstall/rinnovo su iPhone fisico:
 ./scripts/xcode-renew.sh
 ```
 
-Per usare un altro device CoreDevice:
+Per usare un altro device, preferire l'UDID hardware stabile mostrato da Xcode
+rispetto all'UUID temporaneo assegnato da CoreDevice:
 
 ```sh
 DEVICE_ID=<coredevice-id-or-udid> ./scripts/xcode-renew.sh
@@ -123,8 +124,8 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
 ```
 
 `install-renew-launchd.sh` installa un LaunchAgent persistente con `RunAtLoad`
-e `StartInterval`: il check avviene al caricamento/login e ogni 4 ore
-(`RENEW_CHECK_INTERVAL_SECONDS=14400`). Il check legge la scadenza reale minima
+e `StartInterval`: il check avviene al caricamento/login e ogni ora
+(`RENEW_CHECK_INTERVAL_SECONDS=3600`). Il check legge la scadenza reale minima
 dei provisioning profile embedded registrata nello snapshot atomico
 `~/Library/Application Support/DailyKanji/profile-state.env`. Il precedente
 `profile-expiry.epoch` e' letto solo come fallback finche lo snapshot non e'
@@ -140,6 +141,12 @@ precedente.
 
 L'iPhone puo essere raggiunto via cavo oppure stessa Wi-Fi `localNetwork`; prima
 del package viene preflightato anche il mount della Developer Disk Image. Il
+tunnel Wi-Fi CoreDevice non deve restare aperto: viene ricreato on demand. Se
+la ricreazione fallisce con una delle firme tunnel/RSD osservate, gli script
+riavviano una sola volta i due servizi CoreDevice dell'utente e ripetono solo
+il comando fallito dopo 4 secondi. Device bloccato, offline, non trovato o non
+associato non attivano questo recovery; il LaunchAgent riprova all'ora
+successiva. Non vengono mai modificati pairing, rete o servizi di sistema. Il
 package parte dalla root del repo anche quando launchd avvia il job da un'altra
 directory. Il device id resta in
 `~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Rieseguire

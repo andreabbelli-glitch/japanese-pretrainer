@@ -12,10 +12,11 @@ PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
 PROFILE_STATE_FILE="${PROFILE_STATE_FILE:-$STATE_DIR/profile-state.env}"
 PROFILE_CACHE_DIR="${PROFILE_CACHE_DIR:-$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles}"
 RENEW_BEFORE_EXPIRY_SECONDS="${RENEW_BEFORE_EXPIRY_SECONDS:-172800}"
-RENEW_CHECK_INTERVAL_SECONDS="${RENEW_CHECK_INTERVAL_SECONDS:-${START_INTERVAL_SECONDS:-14400}}"
+RENEW_CHECK_INTERVAL_SECONDS="${RENEW_CHECK_INTERVAL_SECONDS:-${START_INTERVAL_SECONDS:-3600}}"
 LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
 DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
+COREDEVICE_RECOVERY_DELAY_SECONDS="${COREDEVICE_RECOVERY_DELAY_SECONDS:-4}"
 UNINSTALL=0
 LEGACY_MARK_SUCCESS_NOW=0
 LEGACY_RESCHEDULE_ONLY=0
@@ -28,7 +29,7 @@ usage() {
 Usage: install-renew-launchd.sh [--device-id <id>] [--uninstall]
 
 Installs a persistent user LaunchAgent. It runs a cheap check at login/load and
-every four hours by default. The expensive CoreDevice/package/Release build and
+every hour by default. The expensive CoreDevice/package/Release build and
 install path starts only during the last 48 hours of the recorded profile.
 Failed due attempts exit non-zero and are retried at the next fixed interval.
 
@@ -42,11 +43,12 @@ Environment:
   PROFILE_STATE_FILE                Default: ~/Library/Application Support/DailyKanji/profile-state.env.
   PROFILE_CACHE_DIR                 Default: Xcode UserData Provisioning Profiles.
   RENEW_BEFORE_EXPIRY_SECONDS       Default: 172800 (48 hours).
-  RENEW_CHECK_INTERVAL_SECONDS      Default: 14400 (4 hours).
+  RENEW_CHECK_INTERVAL_SECONDS      Default: 3600 (1 hour).
   START_INTERVAL_SECONDS            Legacy fallback for the check interval.
   LOCK_MAX_AGE_SECONDS              Default: 21600 (6 hours).
   COREDEVICE_INFO_TIMEOUT_SECONDS   Default: 60.
   DDI_MOUNT_TIMEOUT_SECONDS         Default: 120.
+  COREDEVICE_RECOVERY_DELAY_SECONDS Default: 4 (one bounded Wi-Fi tunnel retry).
 
 Deprecated compatibility options:
   --mark-success-now   Accepted but never creates a success marker.
@@ -84,6 +86,10 @@ is_positive_integer() {
   [[ "$1" =~ ^[1-9][0-9]*$ ]]
 }
 
+is_nonnegative_integer() {
+  [[ "$1" =~ ^[0-9]+$ ]]
+}
+
 validate_settings() {
   local name
   local value
@@ -100,6 +106,12 @@ validate_settings() {
       exit 78
     fi
   done
+
+  if ! is_nonnegative_integer "$COREDEVICE_RECOVERY_DELAY_SECONDS"; then
+    printf "Daily Kanji invalid COREDEVICE_RECOVERY_DELAY_SECONDS=%s; expected a non-negative integer.\n" \
+      "$COREDEVICE_RECOVERY_DELAY_SECONDS" >&2
+    exit 78
+  fi
 }
 
 config_value() {
@@ -270,6 +282,8 @@ cat > "$PLIST_TEMP" <<PLIST
     <string>$COREDEVICE_INFO_TIMEOUT_SECONDS</string>
     <key>DDI_MOUNT_TIMEOUT_SECONDS</key>
     <string>$DDI_MOUNT_TIMEOUT_SECONDS</string>
+    <key>COREDEVICE_RECOVERY_DELAY_SECONDS</key>
+    <string>$COREDEVICE_RECOVERY_DELAY_SECONDS</string>
     <key>STATE_DIR</key>
     <string>$STATE_DIR_XML</string>
     <key>LOG_DIR</key>

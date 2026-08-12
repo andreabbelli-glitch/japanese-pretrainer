@@ -12,7 +12,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { promisify } from "node:util";
 
-import { afterEach, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 
 const iosRoot = path.join(process.cwd(), "apps", "daily-kanji-ios");
 const renewIfNeededScriptPath = path.join(
@@ -25,7 +25,25 @@ const installLaunchdScriptPath = path.join(
   "scripts",
   "install-renew-launchd.sh"
 );
+const coredeviceRecoveryScriptPath = path.join(
+  iosRoot,
+  "scripts",
+  "coredevice-recovery.sh"
+);
 const execFileAsync = promisify(execFile);
+const originalCoredeviceRecoveryHelper = process.env.COREDEVICE_RECOVERY_HELPER;
+
+beforeAll(() => {
+  process.env.COREDEVICE_RECOVERY_HELPER = coredeviceRecoveryScriptPath;
+});
+
+afterAll(() => {
+  if (originalCoredeviceRecoveryHelper === undefined) {
+    delete process.env.COREDEVICE_RECOVERY_HELPER;
+  } else {
+    process.env.COREDEVICE_RECOVERY_HELPER = originalCoredeviceRecoveryHelper;
+  }
+});
 
 describe("Daily Kanji iOS persistent renew retry safety", () => {
   const tempDirs: string[] = [];

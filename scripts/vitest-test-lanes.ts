@@ -16,7 +16,9 @@ export const realBundleVitestTestFiles = [
 export const iosOpsVitestTestFiles = [
   "tests/daily-kanji-audio-packager.test.ts",
   "tests/daily-kanji-export.test.ts",
+  "tests/daily-kanji-ios-coredevice-recovery.test.ts",
   "tests/daily-kanji-ios-offline-contract.test.ts",
+  "tests/daily-kanji-ios-renew-profile-state.test.ts",
   "tests/daily-kanji-ios-renew-launchd-reschedule.test.ts",
   "tests/daily-kanji-ios-renew-launchd.test.ts",
   "tests/daily-kanji-ios-resource-verifier.test.ts",

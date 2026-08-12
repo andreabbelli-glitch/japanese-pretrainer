@@ -72,8 +72,8 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
 ./scripts/xcode-renew-if-needed.sh --force
 ```
 
-Il LaunchAgent utente e' persistente: usa `RunAtLoad` e `StartInterval` ogni 4
-ore (`RENEW_CHECK_INTERVAL_SECONDS=14400`). Ogni attivazione legge soltanto la
+Il LaunchAgent utente e' persistente: usa `RunAtLoad` e `StartInterval` ogni
+ora (`RENEW_CHECK_INTERVAL_SECONDS=3600`). Ogni attivazione legge soltanto la
 scadenza minima dei provisioning profile registrata nello snapshot atomico
 `~/Library/Application Support/DailyKanji/profile-state.env`; prima delle
 ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce subito, senza lock,
@@ -112,7 +112,18 @@ leggendo gli `embedded.mobileprovision` di app e widget. Nella finestra dovuta
 il wrapper sposta temporaneamente dalla cache Xcode solo i file di quegli UUID,
 forzando il refresh Personal Team: un errore li ripristina dal backup mirato
 sotto `STATE_DIR`, mentre una nuova scadenza verificata elimina il backup.
-Profili estranei non vengono cercati per bundle id ne' modificati. I log sono in
+Profili estranei non vengono cercati per bundle id ne' modificati.
+
+Per l'automazione usare preferibilmente l'UDID hardware stabile dell'iPhone,
+non l'UUID temporaneo CoreDevice. Un tunnel Wi-Fi inattivo e' normale e viene
+ricreato on demand. Solo per le firme note `CoreDeviceError 4000`,
+`RemotePairingError 1001`, RSD `-402653181`/`0xE8000003` o timeout di negoziazione,
+`coredevice-recovery.sh` riavvia una sola volta `remotepairingd` e
+`CoreDeviceService` nel dominio utente, attende 4 secondi e ritenta il solo
+comando fallito. Il budget e' condiviso tra wrapper e child. Non estendere
+l'allowlist a errori generici, device bloccato/non trovato, e non aggiungere
+`sudo`, unpair, reset rete, `killall` o restart di `com.apple.remoted`.
+I log sono in
 `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`. Per rimuoverlo:
 

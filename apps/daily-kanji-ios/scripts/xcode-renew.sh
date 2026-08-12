@@ -13,6 +13,10 @@ CONFIGURATION="${CONFIGURATION:-Release}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
 DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
 
+COREDEVICE_RECOVERY_HELPER="${COREDEVICE_RECOVERY_HELPER:-$ROOT/scripts/coredevice-recovery.sh}"
+# shellcheck source=coredevice-recovery.sh
+. "$COREDEVICE_RECOVERY_HELPER"
+
 config_value() {
   local key="$1"
 
@@ -126,6 +130,12 @@ fi
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
   export DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer
+fi
+
+if coredevice_recovery_validate_settings; then
+  :
+else
+  exit "$?"
 fi
 
 if [ -z "${DEVICE_ID:-}" ]; then
@@ -337,18 +347,16 @@ developer_disk_image_ready() {
   local output
   local status
 
-  set +e
-  output="$(xcrun devicectl device info ddiServices \
+  if coredevice_run_with_recovery "developer disk image preflight" \
+    xcrun devicectl device info ddiServices \
     --device "$DEVICE_ID" \
     --auto-mount-ddis \
-    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS" 2>&1)"
-  status=$?
-  set -e
-
-  if [ "$status" -eq 0 ]; then
+    --timeout "$DDI_MOUNT_TIMEOUT_SECONDS"; then
     printf "Daily Kanji developer disk image services ready.\n"
     return 0
   fi
+  status="$COREDEVICE_LAST_STATUS"
+  output="$COREDEVICE_LAST_OUTPUT"
 
   if [[ "$output" == *"kAMDMobileImageMounterDeviceLocked"* ]] ||
     [[ "$output" == *"device is locked"* ]] ||
@@ -363,13 +371,14 @@ developer_disk_image_ready() {
   return "$status"
 }
 
-set +e
-device_details="$(xcrun devicectl device info details \
+if coredevice_run_with_recovery "device reachability" \
+  xcrun devicectl device info details \
   --device "$DEVICE_ID" \
-  --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS" 2>&1)"
-device_details_status=$?
-set -e
-if [ "$device_details_status" -ne 0 ]; then
+  --timeout "$COREDEVICE_INFO_TIMEOUT_SECONDS"; then
+  device_details="$COREDEVICE_LAST_OUTPUT"
+else
+  device_details_status="$COREDEVICE_LAST_STATUS"
+  device_details="$COREDEVICE_LAST_OUTPUT"
   echo "Device $DEVICE_ID non raggiungibile da CoreDevice (exit $device_details_status)." >&2
   if [ -n "$device_details" ]; then
     printf "%s\n" "$device_details" >&2
@@ -461,10 +470,16 @@ if [ ! -d "$APP_PATH" ]; then
   exit 1
 fi
 
-if xcrun devicectl device install app --device "$DEVICE_ID" "$APP_PATH"; then
-  :
+if coredevice_run_with_recovery "device install" \
+  xcrun devicectl device install app --device "$DEVICE_ID" "$APP_PATH"; then
+  if [ -n "$COREDEVICE_LAST_OUTPUT" ]; then
+    printf "%s\n" "$COREDEVICE_LAST_OUTPUT"
+  fi
 else
-  install_status="$?"
+  install_status="$COREDEVICE_LAST_STATUS"
+  if [ -n "$COREDEVICE_LAST_OUTPUT" ]; then
+    printf "%s\n" "$COREDEVICE_LAST_OUTPUT" >&2
+  fi
   printf "Daily Kanji device install failed with exit %s.\n" "$install_status" >&2
   exit "$install_status"
 fi
