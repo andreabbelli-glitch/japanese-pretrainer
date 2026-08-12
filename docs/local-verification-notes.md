@@ -260,39 +260,29 @@ server-side dietro l'endpoint deve fare una sola due-count check Turso per run
 e inviare push solo se serve. Secret APNs/mobile/monitor e token Turso non
 devono mai essere committati.
 
-Il rinnovo automatico launchd usa un plist persistente con `RunAtLoad` e
-`StartInterval=14400`: esegue un check al caricamento/login e ogni 4 ore. Il
-wrapper legge la scadenza minima dei provisioning profile embedded registrata
-in `~/Library/Application Support/DailyKanji/profile-expiry.epoch`. Fino
-all'apertura della finestra preventiva di 48 ore esce prima di lock,
-CoreDevice, package e Xcode; una scadenza mancante o corrotta richiede invece un
-tentativo. I default sono configurabili con
-`RENEW_BEFORE_EXPIRY_SECONDS=172800` e
-`RENEW_CHECK_INTERVAL_SECONDS=14400`.
-
-Nella finestra il wrapper preflighta CoreDevice e Developer Disk Image, esegue
-il package dalla root del repo e usa `xcode-renew.sh` con configurazione fisica
-`Release` di default. Device offline/bloccato, DDI, package, signing, build,
-install o profili invalidi producono exit non-zero; il job non si rischedula e
-non genera child process, perche il prossimo `StartInterval` fornisce il retry.
-Dopo un install riuscito, `xcode-renew.sh` registra atomicamente la scadenza
-minima tra app e widget leggendo gli `embedded.mobileprovision`. Solo se la
-scadenza e' valida, successiva alla precedente e oltre la finestra preventiva
-il wrapper aggiorna
-`~/Library/Application Support/DailyKanji/last-renew-success.epoch`. Le vecchie
-opzioni `--mark-success-now` e `--reschedule-only` sono no-op compatibili per la
-migrazione e non creano falsi successi. I log unattended sono in
+Il rinnovo automatico launchd non fa polling continuo: il plist viene generato
+con `StartCalendarInterval` alla scadenza reale dei provisioning profile
+embedded registrata in
+`~/Library/Application Support/DailyKanji/profile-expiry.epoch`, piu' un piccolo
+grace period. `StartCalendarInterval` non contiene un campo anno: questa
+automazione e' pensata per profili Xcode Personal Team short-lived, circa 7
+giorni. Il marker
+`~/Library/Application Support/DailyKanji/last-renew-success.epoch` resta
+diagnostico; non decide piu' quando rinnovare. Se `profile-expiry.epoch` manca,
+e' corrotto o e' gia passato, l'install interattivo fa un run immediato e
+programma una retry futura; quando il job gira da launchd, rischedula con
+`--reschedule-only` senza rilanciarsi subito. Prima del package/build il wrapper
+preflighta CoreDevice e monta la Developer Disk Image: se l'iPhone e' bloccato,
+il job termina senza marcare successo e programma una retry dopo
+`RENEW_RETRY_DELAY_SECONDS` (default 30 minuti). Dopo un install riuscito,
+`xcode-renew.sh` registra la scadenza minima tra app e widget leggendo gli
+`embedded.mobileprovision`; il wrapper poi riscrive il calendario launchd sulla
+nuova data. Errori durante la rischedulazione launchd finiscono nel log stderr.
+Per aggiornare il marker diagnostico dopo un rinnovo manuale gia riuscito,
+installare o reinstallare il LaunchAgent con `--mark-success-now`. I log
+unattended sono in
 `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`.
-
-Installazione/migrazione e diagnosi:
-
-```sh
-cd apps/daily-kanji-ios
-DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
-./scripts/xcode-renew-if-needed.sh --status
-./scripts/xcode-renew-if-needed.sh --force
-```
 
 Se il rinnovo fallisce con `No Accounts`, `No profiles` o errori di provisioning,
 aprire Xcode Settings > Accounts, verificare il Personal Team, aprire
