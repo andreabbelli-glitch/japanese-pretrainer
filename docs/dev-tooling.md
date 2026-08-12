@@ -98,6 +98,22 @@ comando invece di produrre una configurazione ambigua. L'isolamento resta
 sempre attivo: disabilitarlo permette a mock e globali di contaminare altri
 file.
 
+La suite e inoltre divisa in tre corsie Vitest disgiunte:
+
+```sh
+./scripts/with-node.sh pnpm test:fast
+./scripts/with-node.sh pnpm test:real-bundle
+./scripts/with-node.sh pnpm test:ios-ops
+```
+
+`test:fast` esclude i canary sui bundle reali e i test operativi iOS;
+`test:real-bundle` esegue il canary e il workflow delle statistiche aggregate
+con un solo worker; `test:ios-ops` esegue packaging, risorse, contratto offline
+e automazioni Daily Kanji con al massimo due worker. `pnpm test` e
+`pnpm test:all` restano entrambi gate completi e forzano sempre la corsia
+aggregata, anche se l'ambiente contiene un `JCS_VITEST_LANE` diverso. Anche
+`pnpm check` continua quindi a coprire tutte e tre le corsie.
+
 Per misurare la suite completa o un sottoinsieme usa il reporter di profiling:
 
 ```sh
@@ -352,7 +368,9 @@ per decisioni editoriali la source of truth resta `content/media/**`.
 modificati nel repo e stampa i comandi minimi da eseguire (`check`,
 `release:check`, `agent:check`, o i gate content derivati da `content:scope`).
 Non esegue test o import e non sostituisce la sezione `Verification` delle
-skill content.
+skill content. Per modifiche sotto `apps/daily-kanji-ios/**` raccomanda sia
+`test:ios-ops`, per i contratti operativi TypeScript, sia `daily-kanji:test`,
+il gate XCTest canonico dell'app.
 
 Minimizza sempre lo scope del sync DB: se l'apply o la revisione tocca solo una
 o poche lesson note, devi limitare l'import alle sole route textbook coinvolte:
@@ -553,8 +571,10 @@ canary mirato invece di ricordare a mano il path Vitest:
 ./scripts/with-node.sh pnpm test:real-bundle
 ```
 
-Il comando esegue solo `tests/content-real-bundle-canary.test.ts`, cioe parse e
-import del bundle reale contro le statistiche aggregate versionate.
+Il comando esegue `tests/content-real-bundle-canary.test.ts` e
+`tests/update-real-bundle-test-stats-cli.test.ts`: copre quindi parse/import del
+bundle reale contro le statistiche aggregate versionate e il relativo workflow
+CLI.
 
 Quando le statistiche aggregate del canary sono intenzionalmente cambiate, usa
 `./scripts/with-node.sh pnpm content:canary-diff` per vedere le differenze

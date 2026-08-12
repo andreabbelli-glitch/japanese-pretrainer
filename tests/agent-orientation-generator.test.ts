@@ -71,6 +71,10 @@ description: Handles a sample repo workflow.
     expect(markdown).toContain("## Key Source Docs");
     expect(markdown).toContain("`./scripts/with-node.sh pnpm check`");
     expect(markdown).toContain("`./scripts/with-node.sh pnpm agent:check`");
+    expect(markdown).toContain("`./scripts/with-node.sh pnpm test:ios-ops`");
+    expect(markdown).toContain(
+      "`./scripts/with-node.sh pnpm daily-kanji:test`"
+    );
     expect(markdown).toContain("`content/`");
     expect(markdown).toContain("docs/review-domain-boundary.md");
     expect(markdown).toContain("docs/textbook-pronunciation-boundary.md");

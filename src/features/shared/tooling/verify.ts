@@ -4,6 +4,7 @@ export type AgentVerifyMode =
   | "agent"
   | "check"
   | "content"
+  | "ios"
   | "none"
   | "release"
   | "targeted";
@@ -29,7 +30,9 @@ const checkCommand = "./scripts/with-node.sh pnpm check";
 const releaseCheckCommand = "./scripts/with-node.sh pnpm release:check";
 const agentCheckCommand =
   "./scripts/with-node.sh pnpm agent:check -- --allow-protected-paths";
-const targetedTestCommandPrefix = "./scripts/with-node.sh pnpm test --";
+const targetedTestCommandPrefix = "./scripts/with-node.sh pnpm test";
+const iosOpsTestCommand = "./scripts/with-node.sh pnpm test:ios-ops";
+const dailyKanjiIosTestCommand = "./scripts/with-node.sh pnpm daily-kanji:test";
 
 export function buildAgentVerifyPlan(input: {
   contentScope?: AgentVerifyContentScopeInput | null;
@@ -47,6 +50,9 @@ export function buildAgentVerifyPlan(input: {
     (candidate) => isTestSupportPath(candidate) && !isTestPath(candidate)
   );
   const ignoredPaths: string[] = [];
+  const hasDailyKanjiIosAppChange = normalizedPaths.some(
+    isDailyKanjiIosAppPath
+  );
 
   if (contentPaths.length > 0) {
     if (input.contentScope) {
@@ -86,6 +92,11 @@ export function buildAgentVerifyPlan(input: {
     );
   }
 
+  if (hasDailyKanjiIosAppChange) {
+    commands.push(iosOpsTestCommand, dailyKanjiIosTestCommand);
+    reasons.add("daily kanji iOS app changed");
+  }
+
   if (normalizedPaths.some(isAgentFacingPath)) {
     commands.push(agentCheckCommand);
     reasons.add("agent-facing docs or skills changed");
@@ -118,7 +129,8 @@ export function buildAgentVerifyPlan(input: {
       !isTestSupportPath(candidate) &&
       !isApplicationCodeOrToolingPath(candidate) &&
       !isAgentFacingPath(candidate) &&
-      !isGeneratedDatabasePath(candidate)
+      !isGeneratedDatabasePath(candidate) &&
+      !isDailyKanjiIosAppPath(candidate)
     ) {
       ignoredPaths.push(candidate);
     }
@@ -194,6 +206,10 @@ function resolveMode(input: {
     return "content";
   }
 
+  if (input.commands.includes(dailyKanjiIosTestCommand)) {
+    return "ios";
+  }
+
   if (input.commands.some(isTargetedTestCommand)) {
     return "targeted";
   }
@@ -206,11 +222,14 @@ function resolveMode(input: {
 }
 
 function buildTargetedTestCommand(testPaths: string[]) {
-  return [targetedTestCommandPrefix, ...testPaths.slice().sort()].join(" ");
+  return `${targetedTestCommandPrefix} ${testPaths.slice().sort().join(" ")}`;
 }
 
 function isTargetedTestCommand(command: string) {
-  return command.startsWith(targetedTestCommandPrefix);
+  return (
+    command.startsWith(`${targetedTestCommandPrefix} `) ||
+    command === iosOpsTestCommand
+  );
 }
 
 function normalizePaths(paths: string[]) {
@@ -285,6 +304,13 @@ function isAgentOrientationGeneratorPath(candidate: string) {
 
 function isGeneratedDatabasePath(candidate: string) {
   return candidate === "drizzle" || candidate.startsWith("drizzle/");
+}
+
+function isDailyKanjiIosAppPath(candidate: string) {
+  return (
+    candidate === "apps/daily-kanji-ios" ||
+    candidate.startsWith("apps/daily-kanji-ios/")
+  );
 }
 
 function isApplicationCodeOrToolingPath(candidate: string) {

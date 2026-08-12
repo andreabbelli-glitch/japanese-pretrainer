@@ -50,7 +50,7 @@ describe("agent verify CLI", () => {
 
     expect(stdout).toContain("VERIFY targeted");
     expect(stdout).toContain(
-      "COMMAND ./scripts/with-node.sh pnpm test -- tests/agent-check.test.ts tests/content-scope-cli.test.ts"
+      "COMMAND ./scripts/with-node.sh pnpm test tests/agent-check.test.ts tests/content-scope-cli.test.ts"
     );
     expect(stdout).toContain("REASON test-only change");
   });
@@ -68,7 +68,7 @@ describe("agent verify CLI", () => {
 
     expect(stdout).toContain("VERIFY targeted");
     expect(stdout).toContain(
-      "COMMAND ./scripts/with-node.sh pnpm test -- tests/content-scope-cli.test.ts"
+      "COMMAND ./scripts/with-node.sh pnpm test tests/content-scope-cli.test.ts"
     );
     expect(stdout).toContain("REASON direct test file changed");
   });
@@ -86,6 +86,71 @@ describe("agent verify CLI", () => {
     expect(stdout).toContain("VERIFY check");
     expect(stdout).toContain("COMMAND ./scripts/with-node.sh pnpm check");
     expect(stdout).toContain("REASON test support changed");
+  });
+
+  it("routes Daily Kanji iOS app changes to the operational lane", async () => {
+    const { stdout } = await runNodeCli(
+      [
+        "--experimental-strip-types",
+        verifyScriptPath,
+        "apps/daily-kanji-ios/Sources/DailyKanji/ContentView.swift",
+        "apps/daily-kanji-ios/project.yml"
+      ],
+      { timeoutMs: 60_000 }
+    );
+
+    expect(stdout).toContain("VERIFY ios");
+    expect(stdout).toContain(
+      "COMMAND ./scripts/with-node.sh pnpm test:ios-ops"
+    );
+    expect(stdout).toContain(
+      "COMMAND ./scripts/with-node.sh pnpm daily-kanji:test"
+    );
+    expect(stdout).toContain("REASON daily kanji iOS app changed");
+    expect(stdout).not.toContain("IGNORED apps/daily-kanji-ios");
+  });
+
+  it("emits the dedicated iOS mode in JSON automation output", async () => {
+    const { stdout } = await runNodeCli(
+      [
+        "--experimental-strip-types",
+        verifyScriptPath,
+        "--json",
+        "apps/daily-kanji-ios/App/ContentView.swift"
+      ],
+      { timeoutMs: 60_000 }
+    );
+
+    expect(JSON.parse(stdout)).toMatchObject({
+      commands: [
+        "./scripts/with-node.sh pnpm test:ios-ops",
+        "./scripts/with-node.sh pnpm daily-kanji:test"
+      ],
+      mode: "ios",
+      reasons: ["daily kanji iOS app changed"]
+    });
+  });
+
+  it("keeps release, check, and content above iOS while iOS stays above targeted", () => {
+    const iosPath = "apps/daily-kanji-ios/App/ContentView.swift";
+
+    expect(
+      buildAgentVerifyPlan({ paths: [iosPath, "src/app/review/page.tsx"] }).mode
+    ).toBe("release");
+    expect(
+      buildAgentVerifyPlan({ paths: [iosPath, "src/domain/study-day.ts"] }).mode
+    ).toBe("check");
+    expect(
+      buildAgentVerifyPlan({
+        contentScope: { commands: [], notes: [], warnings: [] },
+        paths: [iosPath, "content/media/duel-masters-dm25/media.yaml"]
+      }).mode
+    ).toBe("content");
+    expect(
+      buildAgentVerifyPlan({
+        paths: [iosPath, "tests/content-scope-cli.test.ts"]
+      }).mode
+    ).toBe("ios");
   });
 
   it("recommends check and release:check for routing changes", async () => {

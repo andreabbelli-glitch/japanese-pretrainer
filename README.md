@@ -303,8 +303,11 @@ pnpm format
 pnpm format:check
 pnpm typecheck
 pnpm test
+pnpm test:all
+pnpm test:fast
 pnpm test:profile
 pnpm test:real-bundle
+pnpm test:ios-ops
 pnpm test:watch
 pnpm test:e2e:runner
 pnpm test:e2e
@@ -313,6 +316,7 @@ pnpm release:check
 pnpm file-size:check
 pnpm agent:check
 pnpm agent:verify
+pnpm daily-kanji:test
 pnpm app:progress-brief
 pnpm docs:agent-orientation
 pnpm docs:agent-orientation:check

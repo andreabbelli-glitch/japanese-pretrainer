@@ -208,8 +208,11 @@ user_setting -> preferenze utente
 ./scripts/with-node.sh pnpm typecheck
 ./scripts/with-node.sh pnpm file-size:check
 ./scripts/with-node.sh pnpm test
+./scripts/with-node.sh pnpm test:all
+./scripts/with-node.sh pnpm test:fast
 ./scripts/with-node.sh pnpm test:profile
 ./scripts/with-node.sh pnpm test:real-bundle
+./scripts/with-node.sh pnpm test:ios-ops
 ./scripts/with-node.sh pnpm test:watch
 ./scripts/with-node.sh pnpm test:e2e
 ./scripts/with-node.sh pnpm test:e2e:runner
@@ -275,6 +278,7 @@ user_setting -> preferenze utente
 ./scripts/with-node.sh pnpm app:progress-brief
 ./scripts/with-node.sh pnpm docs:agent-orientation
 ./scripts/with-node.sh pnpm docs:agent-orientation:check
+./scripts/with-node.sh pnpm daily-kanji:test
 ./scripts/with-node.sh pnpm fsrs:optimize
 ./scripts/with-node.sh pnpm fsrs:optimize:if-needed
 ./scripts/with-node.sh pnpm auth:hash-password
