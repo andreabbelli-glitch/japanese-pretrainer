@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,10 +7,24 @@ import { promisify } from "node:util";
 
 import { describe, expect, it } from "vitest";
 
+import {
+  type DuelMastersRealBundleStats,
+  formatStatsDiff,
+  resolveRealBundleStatsCliOptions,
+  runRealBundleStatsCommand
+} from "@/features/content/tooling/duel-masters-real-bundle-stats";
+
 const execFileAsync = promisify(execFile);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
+const defaultExpectedStatsPath = path.join(
+  repoRoot,
+  "tests",
+  "fixtures",
+  "content",
+  "duel-masters-real-bundle-stats.json"
+);
 
 describe("real bundle test stats CLI", () => {
   const scriptPath = path.join(
@@ -19,24 +33,105 @@ describe("real bundle test stats CLI", () => {
     "update-real-bundle-test-stats.ts"
   );
 
-  it("rejects flag-like content root values before computing stats", async () => {
-    await expect(
-      execFileAsync(
-        process.execPath,
+  it("resolves paths and supported read-only flags", () => {
+    expect(
+      resolveRealBundleStatsCliOptions(
         [
-          "--experimental-strip-types",
-          scriptPath,
+          "--",
           "--content-root",
-          "--write"
+          "alternate-content",
+          "--diff",
+          "--expected-stats-file",
+          "alternate-stats.json"
         ],
-        {
-          cwd: repoRoot
-        }
+        { cwd: repoRoot, defaultExpectedStatsPath }
       )
-    ).rejects.toMatchObject({
-      stderr: expect.stringContaining("Missing value for --content-root.")
+    ).toEqual({
+      acceptFailure: false,
+      contentRoot: path.join(repoRoot, "alternate-content"),
+      diff: true,
+      expectedStatsPath: path.join(repoRoot, "alternate-stats.json"),
+      write: false
     });
-  }, 60_000);
+  });
+
+  it("rejects missing or unknown option values before computing stats", () => {
+    expect(() => resolveOptions(["--content-root", "--write"])).toThrow(
+      "Missing value for --content-root."
+    );
+    expect(() => resolveOptions(["--expected-stats-file"])).toThrow(
+      "Missing value for --expected-stats-file."
+    );
+    expect(() => resolveOptions(["--unknown"])).toThrow(
+      "Unknown argument: --unknown"
+    );
+  });
+
+  it("rejects accepting failures while writing stats fixtures", () => {
+    expect(() => resolveOptions(["--write", "--accept-failure"])).toThrow(
+      "--accept-failure cannot be combined with --write."
+    );
+  });
+
+  it("rejects unsafe real-bundle canary diff flag combinations", () => {
+    expect(() => resolveOptions(["--diff", "--write"])).toThrow(
+      "--diff cannot be combined with --write."
+    );
+    expect(() => resolveOptions(["--diff", "--accept-failure"])).toThrow(
+      "--diff cannot be combined with --accept-failure."
+    );
+    expect(() =>
+      resolveOptions(["--expected-stats-file", "expected.json"])
+    ).toThrow("--expected-stats-file can only be used with --diff.");
+  });
+
+  it("formats changed stats without mutating either snapshot", () => {
+    const previousStats = buildStats();
+    const nextStats = buildStats();
+
+    nextStats.parser.lessons = 77;
+    nextStats.importer.card = 429;
+
+    expect(formatStatsDiff(previousStats, nextStats)).toEqual([
+      "parser.lessons: 76 -> 77",
+      "importer.card: 428 -> 429"
+    ]);
+    expect(formatStatsDiff(previousStats, previousStats)).toEqual([]);
+    expect(previousStats.parser.lessons).toBe(76);
+  });
+
+  it("reports a changed diff as a failure without writing the fixture", async () => {
+    const previousStats = buildStats();
+    const nextStats = buildStats();
+    let writeCount = 0;
+
+    nextStats.importer.card = 429;
+
+    const result = await runRealBundleStatsCommand({
+      args: ["--diff", "--expected-stats-file", "alternate-stats.json"],
+      cwd: repoRoot,
+      dependencies: {
+        collectStats: async () => nextStats,
+        readRequiredStats: async () => previousStats,
+        writeStatsFile: async () => {
+          writeCount += 1;
+        }
+      },
+      repositoryRoot: repoRoot
+    });
+
+    expect(result).toEqual({
+      exitCode: 1,
+      stderr: "",
+      stdout: [
+        "CONTENT_CANARY_DIFF changed alternate-stats.json",
+        "importer.card: 428 -> 429",
+        "COMMAND ./scripts/with-node.sh pnpm content:test-stats -- --write",
+        ""
+      ].join("\n")
+    });
+    expect(writeCount).toBe(0);
+  });
 
   it("accepts read-only real-bundle stats collection failures when requested", async () => {
     const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-stats-failure-"));
@@ -63,27 +158,6 @@ describe("real bundle test stats CLI", () => {
     }
   }, 60_000);
 
-  it("rejects accepting failures while writing stats fixtures", async () => {
-    await expect(
-      execFileAsync(
-        process.execPath,
-        [
-          "--experimental-strip-types",
-          scriptPath,
-          "--write",
-          "--accept-failure"
-        ],
-        {
-          cwd: repoRoot
-        }
-      )
-    ).rejects.toMatchObject({
-      stderr: expect.stringContaining(
-        "--accept-failure cannot be combined with --write."
-      )
-    });
-  }, 60_000);
-
   it("reports a clean real-bundle canary diff when stats match", async () => {
     const { stdout } = await execFileAsync(
       process.execPath,
@@ -97,91 +171,33 @@ describe("real bundle test stats CLI", () => {
       "CONTENT_CANARY_DIFF clean tests/fixtures/content/duel-masters-real-bundle-stats.json"
     );
   }, 60_000);
-
-  it("reports changed real-bundle canary stats without writing fixtures", async () => {
-    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-stats-diff-"));
-    const expectedStatsPath = path.join(tempDir, "expected.json");
-
-    await writeFile(
-      expectedStatsPath,
-      `${JSON.stringify(
-        {
-          importer: {
-            card: 0,
-            cardEntryLink: 0,
-            entryLink: 0,
-            grammarAlias: 0,
-            grammarPattern: 0,
-            term: 0,
-            termAlias: 0
-          },
-          parser: {
-            cardFiles: 0,
-            cards: 0,
-            grammarPatterns: 0,
-            lessons: 0,
-            references: 0,
-            terms: 0
-          }
-        },
-        null,
-        2
-      )}\n`
-    );
-
-    try {
-      await expect(
-        execFileAsync(
-          process.execPath,
-          [
-            "--experimental-strip-types",
-            scriptPath,
-            "--diff",
-            "--expected-stats-file",
-            expectedStatsPath
-          ],
-          {
-            cwd: repoRoot
-          }
-        )
-      ).rejects.toMatchObject({
-        stdout: expect.stringContaining("CONTENT_CANARY_DIFF changed")
-      });
-    } finally {
-      await rm(tempDir, { force: true, recursive: true });
-    }
-  }, 60_000);
-
-  it("rejects unsafe real-bundle canary diff flag combinations", async () => {
-    await expect(
-      execFileAsync(
-        process.execPath,
-        ["--experimental-strip-types", scriptPath, "--diff", "--write"],
-        {
-          cwd: repoRoot
-        }
-      )
-    ).rejects.toMatchObject({
-      stderr: expect.stringContaining("--diff cannot be combined with --write.")
-    });
-
-    await expect(
-      execFileAsync(
-        process.execPath,
-        [
-          "--experimental-strip-types",
-          scriptPath,
-          "--diff",
-          "--accept-failure"
-        ],
-        {
-          cwd: repoRoot
-        }
-      )
-    ).rejects.toMatchObject({
-      stderr: expect.stringContaining(
-        "--diff cannot be combined with --accept-failure."
-      )
-    });
-  }, 60_000);
 });
+
+function resolveOptions(args: string[]) {
+  return resolveRealBundleStatsCliOptions(args, {
+    cwd: repoRoot,
+    defaultExpectedStatsPath
+  });
+}
+
+function buildStats(): DuelMastersRealBundleStats {
+  return {
+    parser: {
+      lessons: 76,
+      cardFiles: 70,
+      terms: 289,
+      grammarPatterns: 95,
+      cards: 428,
+      references: 7611
+    },
+    importer: {
+      term: 289,
+      termAlias: 839,
+      grammarPattern: 95,
+      grammarAlias: 142,
+      entryLink: 1935,
+      card: 428,
+      cardEntryLink: 610
+    }
+  };
+}
