@@ -83,16 +83,42 @@ glossary, textbook e consolidation devono usare `/media-audio/...` con
 `?v=<updatedAt>` quando il timestamp entry e' disponibile; immagini e altri
 asset continuano invece a usare `/media/[mediaSlug]/assets/...`.
 
-La suite Vitest esegue i file test in sequenza in `vitest.config.ts`. Molti
-test creano database SQLite temporanei, eseguono migrazioni e importano bundle
-reali; su macchine locali e sandbox Codex il parallelismo per file rende i test
-piu lenti e fragili invece che piu rapidi, fino a timeout del worker pool.
+La suite Vitest esegue i file in parallelo, con isolamento tra file e un limite
+predefinito di quattro worker. Questo e il compromesso verificato tra latenza e
+pressione CPU per i test che creano database SQLite temporanei, eseguono
+migrazioni o importano bundle reali. Su macchine piu piccole puoi ridurre il
+limite senza cambiare configurazione:
 
-Il gate `pnpm lint` usa ESLint su `.` ma la flat config esclude esplicitamente
-artefatti locali e directory di tooling generate (`.codex/`, `.playwright-*`,
-`output/`, `tmp/`, `test-results/`, cache SQLite/TypeScript). Le skill in
-`.agents/` restano nel repo, ma ESLint ignora solo i loro file Markdown/YAML e
-shell: eventuali helper JavaScript continuano a essere coperti dal lint.
+```sh
+VITEST_MAX_WORKERS=2 ./scripts/with-node.sh pnpm test
+```
+
+`VITEST_MAX_WORKERS` accetta solo interi positivi; valori non validi fermano il
+comando invece di produrre una configurazione ambigua. L'isolamento resta
+sempre attivo: disabilitarlo permette a mock e globali di contaminare altri
+file.
+
+Per misurare la suite completa o un sottoinsieme usa il reporter di profiling:
+
+```sh
+./scripts/with-node.sh pnpm test:profile
+./scripts/with-node.sh pnpm test:profile tests/review-queue-ordering.test.ts
+```
+
+Il comando mostra i 15 file e test piu lenti e scrive il report machine-readable
+versionato in `.tmp/test-profile/vitest-profile.json`. Il tempo worker e la
+somma di setup ambiente, preparazione, collection, setup e test/hook per tutti i
+file; con il parallelismo puo quindi essere superiore al tempo wall-clock. Puoi
+cambiare solo il path del report con `VITEST_PROFILE_OUTPUT=<path>`.
+
+Il gate `pnpm lint` usa ESLint su `.` e conserva la cache content-aware sotto
+`.tmp/eslint/`, una directory locale ignorata da Git. La flat config esclude
+esplicitamente artefatti locali e directory di tooling generate (`.codex/`,
+`.playwright-*`, `output/`, `tmp/`, `test-results/`, cache SQLite/TypeScript).
+Le skill in `.agents/` restano nel repo, ma ESLint ignora solo i loro file
+Markdown/YAML e shell: eventuali helper JavaScript continuano a essere coperti
+dal lint. Per una diagnosi eccezionale senza cache esegui direttamente
+`./scripts/with-node.sh pnpm exec eslint . --max-warnings=0 --no-cache`.
 
 Il gate `pnpm check` esegue prima `pnpm file-size:check`: il controllo guarda
 solo i file di codice human-maintained modificati nel diff corrente e fallisce

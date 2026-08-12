@@ -303,6 +303,7 @@ pnpm format
 pnpm format:check
 pnpm typecheck
 pnpm test
+pnpm test:profile
 pnpm test:real-bundle
 pnpm test:watch
 pnpm test:e2e:runner

@@ -208,6 +208,7 @@ user_setting -> preferenze utente
 ./scripts/with-node.sh pnpm typecheck
 ./scripts/with-node.sh pnpm file-size:check
 ./scripts/with-node.sh pnpm test
+./scripts/with-node.sh pnpm test:profile
 ./scripts/with-node.sh pnpm test:real-bundle
 ./scripts/with-node.sh pnpm test:watch
 ./scripts/with-node.sh pnpm test:e2e
