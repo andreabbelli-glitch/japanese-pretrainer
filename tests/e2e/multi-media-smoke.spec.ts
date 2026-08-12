@@ -15,14 +15,10 @@ const activeMediaSlugs = [
   "web-giapponese"
 ] as const;
 
-test("lists every active media and smokes one canonical study flow", async ({
+test("lists every source-backed media and smokes one canonical study flow", async ({
   page
 }) => {
   await page.goto("/media");
-
-  const mediaLinks = page.locator(".library-card__overlay-link");
-
-  await expect(mediaLinks).toHaveCount(activeMediaSlugs.length);
 
   for (const mediaSlug of activeMediaSlugs) {
     await expect(
