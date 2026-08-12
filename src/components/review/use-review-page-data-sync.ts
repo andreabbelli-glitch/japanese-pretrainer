@@ -20,6 +20,7 @@ import {
 import { isReviewPageData } from "./review-page-helpers";
 import {
   buildSuccessfulHydrationResult,
+  isReviewFirstCandidateDataConsistentWithSearchParams,
   resolveHydratedFirstCandidateRevealedCardId
 } from "./review-page-client-utils";
 
@@ -68,9 +69,20 @@ export function useReviewPageDataSync(input: {
       }
       return;
     }
-    lastAcceptedServerDataRef.current = data;
 
     if (!isReviewPageData(data)) {
+      if (
+        currentSearchParams &&
+        !isReviewFirstCandidateDataConsistentWithSearchParams({
+          data,
+          searchParams: currentSearchParams
+        })
+      ) {
+        return;
+      }
+
+      lastAcceptedServerDataRef.current = data;
+
       if (
         shouldAdoptServerFirstCandidateData({
           currentData: latestViewDataRef.current,
@@ -94,6 +106,7 @@ export function useReviewPageDataSync(input: {
       return;
     }
 
+    lastAcceptedServerDataRef.current = data;
     const currentViewData = latestViewDataRef.current;
     if (
       !shouldAcceptServerReviewData(
@@ -117,6 +130,7 @@ export function useReviewPageDataSync(input: {
     resetQueuedGradeFailure();
     setClientError(null);
   }, [
+    currentSearchParams,
     data,
     globalHydrationRequestKey,
     isGlobalReview,
@@ -132,7 +146,8 @@ export function useReviewPageDataSync(input: {
   useEffect(() => {
     if (
       !currentSearchParams ||
-      viewData.scope !== "global" ||
+      isReviewPageData(latestViewDataRef.current) ||
+      latestViewDataRef.current.scope !== "global" ||
       globalHydrationRequestKey === null ||
       lastGlobalHydrationRequestKeyRef.current === globalHydrationRequestKey ||
       inFlightGlobalHydrationRequestKeyRef.current === globalHydrationRequestKey
@@ -154,8 +169,16 @@ export function useReviewPageDataSync(input: {
 
         inFlightGlobalHydrationRequestKeyRef.current = null;
         lastGlobalHydrationRequestKeyRef.current = globalHydrationRequestKey;
+        const currentData = latestViewDataRef.current;
+
+        if (
+          nextData.session.answeredCount < currentData.session.answeredCount
+        ) {
+          return;
+        }
+
         const hydrationResult = buildSuccessfulHydrationResult(
-          latestViewDataRef.current,
+          currentData,
           nextData
         );
 
@@ -197,7 +220,6 @@ export function useReviewPageDataSync(input: {
     latestViewDataRef,
     setClientError,
     setQueueCardIds,
-    setViewData,
-    viewData.scope
+    setViewData
   ]);
 }

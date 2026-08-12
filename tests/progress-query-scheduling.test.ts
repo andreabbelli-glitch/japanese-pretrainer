@@ -8,6 +8,7 @@ describe("progress query scheduling", () => {
     vi.clearAllMocks();
     vi.doUnmock("@/db");
     vi.doUnmock("@/features/cache/server/data-cache");
+    vi.doUnmock("@/features/fsrs-optimizer/server");
     vi.doUnmock("@/features/shared/model/local-date");
     vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
@@ -54,6 +55,9 @@ describe("progress query scheduling", () => {
     }));
     vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/features/fsrs-optimizer/server", () => ({
+      getFsrsOptimizerRuntimeSnapshot: vi.fn(() => Promise.resolve({}))
     }));
     vi.doMock("@/features/review/server", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
@@ -106,6 +110,9 @@ describe("progress query scheduling", () => {
     }));
     vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/features/fsrs-optimizer/server", () => ({
+      getFsrsOptimizerRuntimeSnapshot: vi.fn(() => Promise.resolve({}))
     }));
     vi.doMock("@/features/review/server", () => ({
       loadGlobalReviewOverviewSnapshot: vi.fn(),
@@ -171,6 +178,9 @@ describe("progress query scheduling", () => {
     }));
     vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/features/fsrs-optimizer/server", () => ({
+      getFsrsOptimizerRuntimeSnapshot: vi.fn(() => Promise.resolve({}))
     }));
     vi.doMock("@/features/media/server", () => ({
       getMediaDetailData: vi.fn()
@@ -293,6 +303,9 @@ describe("progress query scheduling", () => {
     }));
     vi.doMock("@/features/shared/model/local-date", () => ({
       getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+    }));
+    vi.doMock("@/features/fsrs-optimizer/server", () => ({
+      getFsrsOptimizerRuntimeSnapshot: vi.fn(() => Promise.resolve({}))
     }));
     vi.doMock("@/features/media/server", () => ({
       getMediaDetailData: vi.fn(sharedMediaGate.loader())

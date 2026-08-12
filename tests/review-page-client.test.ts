@@ -6,6 +6,7 @@ import {
   buildSearchParamsRecord,
   buildSuccessfulHydrationResult,
   buildReviewGradePreviewLookup,
+  isReviewFirstCandidateDataConsistentWithSearchParams,
   resolveHydratedFirstCandidateRevealedCardId
 } from "@/components/review/review-page-client-utils";
 import {
@@ -20,7 +21,11 @@ import {
 import { ReviewPageStage } from "@/components/review/review-page-stage";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
 import type { GlobalGlossaryAutocompleteSuggestion } from "@/features/glossary/types";
-import type { ReviewPageData, ReviewQueueCard } from "@/features/review/types";
+import type {
+  ReviewFirstCandidatePageData,
+  ReviewPageData,
+  ReviewQueueCard
+} from "@/features/review/types";
 
 describe("review page client hydration", () => {
   it("keeps an early reveal open when the first-candidate hydration catches up on the same card", () => {
@@ -95,6 +100,81 @@ describe("review page client hydration", () => {
       card: "card-b",
       segment: "segment-1"
     });
+  });
+
+  it("accepts the server-normalized revealed state for a support card", () => {
+    const data = buildFirstCandidateReviewPageData({
+      cardId: "support-card",
+      showAnswer: true
+    });
+    data.queueCardIds = ["card-a", "card-b"];
+    data.selectedCardContext = {
+      ...data.selectedCardContext,
+      isQueueCard: false,
+      position: null
+    };
+
+    expect(
+      isReviewFirstCandidateDataConsistentWithSearchParams({
+        data,
+        searchParams: { card: "support-card" }
+      })
+    ).toBe(true);
+  });
+
+  it("accepts the canonical first-card fallback when the requested card disappeared", () => {
+    const data = buildFirstCandidateReviewPageData({ cardId: "card-a" });
+    data.queueCardIds = ["card-a", "card-c"];
+    data.requestedCardResolution = {
+      requestedCardId: "removed-card",
+      resolved: false
+    };
+
+    expect(
+      isReviewFirstCandidateDataConsistentWithSearchParams({
+        data,
+        searchParams: { card: "removed-card" }
+      })
+    ).toBe(true);
+  });
+
+  it("accepts the canonical first card when no explicit card was requested", () => {
+    const data = buildFirstCandidateReviewPageData({ cardId: "card-a" });
+
+    expect(
+      isReviewFirstCandidateDataConsistentWithSearchParams({
+        data,
+        searchParams: {}
+      })
+    ).toBe(true);
+  });
+
+  it("rejects a canonical fallback payload when the requested support card was resolved", () => {
+    const data = buildFirstCandidateReviewPageData({ cardId: "card-a" });
+    data.queueCardIds = ["card-a", "card-b"];
+    data.requestedCardResolution = {
+      requestedCardId: "support-card",
+      resolved: true
+    };
+
+    expect(
+      isReviewFirstCandidateDataConsistentWithSearchParams({
+        data,
+        searchParams: { card: "support-card" }
+      })
+    ).toBe(false);
+  });
+
+  it("rejects a same-count payload for another card when the requested card is still queued", () => {
+    const data = buildFirstCandidateReviewPageData({ cardId: "card-a" });
+    data.queueCardIds = ["card-a", "card-b"];
+
+    expect(
+      isReviewFirstCandidateDataConsistentWithSearchParams({
+        data,
+        searchParams: { card: "card-b" }
+      })
+    ).toBe(false);
   });
 
   it("skips queued card prefetches that are already buffered or already in flight", () => {
@@ -174,7 +254,7 @@ describe("review page client hydration", () => {
     });
   });
 
-  it("renders a disabled calculation state while grade previews hydrate", () => {
+  it("keeps grade controls enabled while preview labels hydrate", () => {
     const data = buildFirstCandidateReviewPageData({
       cardId: "card-a",
       showAnswer: true
@@ -214,7 +294,7 @@ describe("review page client hydration", () => {
         isForcedContrastOpen: false,
         isFullReviewPageData: false,
         isGlobalReview: true,
-        isGradeControlsDisabled: true,
+        isGradeControlsDisabled: false,
         isHydratingFullData: true,
         isPending: false,
         remainingCount: 3,
@@ -231,7 +311,7 @@ describe("review page client hydration", () => {
     expect(markup).toContain("Hard");
     expect(markup).toContain("Easy");
     expect(markup).toContain("Calcolo…");
-    expect(markup).toContain('disabled=""');
+    expect(markup).not.toContain('disabled=""');
     expect(markup).toContain("+ Contrasto");
   });
 
@@ -651,6 +731,7 @@ function buildCurrentReviewPageClientData(input: {
       title: "Review globale"
     },
     queue: {
+      advanceCards: [],
       dailyLimit: 20,
       dueCount: 1,
       effectiveDailyLimit: 20,
@@ -666,6 +747,10 @@ function buildCurrentReviewPageClientData(input: {
       tomorrowCount: 0,
       upcomingCards: [],
       upcomingCount: 0
+    },
+    requestedCardResolution: {
+      requestedCardId: null,
+      resolved: true
     },
     scope: "global",
     selectedCard: {
@@ -725,7 +810,7 @@ function buildCurrentReviewPageClientData(input: {
 function buildFirstCandidateReviewPageData(input: {
   cardId: string;
   showAnswer?: boolean;
-}) {
+}): ReviewFirstCandidatePageData {
   return {
     media: {
       glossaryHref: "/glossary",
@@ -836,7 +921,7 @@ function buildFirstCandidateReviewPageData(input: {
       extraNewCount: 0,
       segmentId: null
     }
-  } as unknown as ReviewPageClientData;
+  } as unknown as ReviewFirstCandidatePageData;
 }
 
 function buildFullReviewPageData(input: {
@@ -852,6 +937,7 @@ function buildFullReviewPageData(input: {
       title: "Review globale"
     },
     queue: {
+      advanceCards: [],
       dailyLimit: 20,
       dueCount: 2,
       effectiveDailyLimit: 20,

@@ -28,14 +28,6 @@ export type ResolvedReviewScopeMedia = {
   title: string;
 };
 
-type HydratedReviewCardOutcome =
-  | {
-      card: ReviewQueueCard | null;
-    }
-  | {
-      error: unknown;
-    };
-
 export async function resolvePostGradeReviewSessionPageData(input: {
   gradeResult: Pick<
     ReviewGradeResult,
@@ -62,28 +54,21 @@ export async function resolvePostGradeReviewSessionPageData(input: {
       gradedState: input.gradeResult.newState,
       now
     });
-    const hydratedAdvanceCandidate = await resolveHydratedAdvanceCandidate({
-      candidateCardIds: sessionInput.candidateCardIds ?? [],
-      canonicalCandidateCardIds: sessionInput.canonicalCandidateCardIds ?? [],
-      nextCardId: sessionInput.nextCardId,
-      now
-    });
     const hasAdvanceCandidates =
       (sessionInput.candidateCardIds?.length ?? 0) > 0;
+    const hydratedAdvanceCandidate = hasAdvanceCandidates
+      ? await resolveHydratedAdvanceCandidate({
+          candidateCardIds: sessionInput.candidateCardIds ?? [],
+          canonicalCandidateCardIds:
+            sessionInput.canonicalCandidateCardIds ?? [],
+          canonicalCandidateSnapshot: sessionInput.canonicalCandidateSnapshot,
+          now
+        })
+      : null;
 
     if (hydratedAdvanceCandidate) {
-      const advanceCards = await hydrateReviewAdvanceCards({
-        canonicalCandidateCardIds:
-          sessionInput.canonicalCandidateCardIds ??
-          sessionInput.candidateCardIds ??
-          [],
-        hydratedCardOutcomes: hydratedAdvanceCandidate.hydratedCardOutcomes,
-        now,
-        selectedQueuePosition: hydratedAdvanceCandidate.position
-      });
-
       return buildReviewSessionPageData({
-        advanceCards,
+        advanceCards: [],
         forcedContrast: input.gradeResult.forcedContrast,
         includeForcedContrast: true,
         queue: updatedQueue,
@@ -168,12 +153,15 @@ export async function resolvePostGradeReviewSessionPageData(input: {
       }
 
       const hydratedCard = await hydrateReviewCard({
+        bypassCache: true,
         cardId: sessionInput.nextCardId,
         now
       });
 
       if (hydratedCard && isHydratedQueueCandidate(hydratedCard, now)) {
         return buildReviewSessionPageData({
+          forcedContrast: input.gradeResult.forcedContrast,
+          includeForcedContrast: true,
           queue: updatedQueue,
           selectedCard: hydratedCard,
           selectedCardContext: {
@@ -468,7 +456,7 @@ function isDueTomorrow(dueAt: string, now: Date) {
 async function resolveHydratedAdvanceCandidate(input: {
   candidateCardIds: string[];
   canonicalCandidateCardIds?: string[];
-  nextCardId?: string | null;
+  canonicalCandidateSnapshot?: ReviewSessionInput["canonicalCandidateSnapshot"];
   now: Date;
 }) {
   const canonicalCandidateCardIds =
@@ -476,41 +464,54 @@ async function resolveHydratedAdvanceCandidate(input: {
     input.canonicalCandidateCardIds.length > 0
       ? input.canonicalCandidateCardIds
       : input.candidateCardIds;
-  const orderedCardIds = [
-    ...new Set([
-      ...(input.nextCardId ? [input.nextCardId] : []),
-      ...input.candidateCardIds
-    ])
-  ];
-  const hydratedCardOutcomes = new Map(
-    orderedCardIds.map(
-      (cardId) =>
-        [cardId, loadHydratedReviewCardOutcome(cardId, input.now)] as const
-    )
-  );
+  const canonicalCardId = canonicalCandidateCardIds[0];
 
-  for (const [index, cardId] of orderedCardIds.entries()) {
-    const outcome = await hydratedCardOutcomes.get(cardId)!;
-
-    if ("error" in outcome) {
-      throw outcome.error;
-    }
-
-    const hydratedCard = outcome.card;
-
-    if (hydratedCard && isHydratedQueueCandidate(hydratedCard, input.now)) {
-      const canonicalQueuePosition = canonicalCandidateCardIds.indexOf(cardId);
-
-      return {
-        card: hydratedCard,
-        hydratedCardOutcomes,
-        position:
-          canonicalQueuePosition >= 0 ? canonicalQueuePosition + 1 : index + 1
-      };
-    }
+  if (!canonicalCardId) {
+    return null;
   }
 
-  return null;
+  const snapshot = input.canonicalCandidateSnapshot;
+  const isLegacySingleCandidate = canonicalCandidateCardIds.length === 1;
+
+  if (!snapshot && !isLegacySingleCandidate) {
+    return null;
+  }
+
+  const hydratedCard = await hydrateReviewCard({
+    bypassCache: true,
+    cardId: canonicalCardId,
+    now: input.now
+  });
+
+  if (!hydratedCard || !isHydratedQueueCandidate(hydratedCard, input.now)) {
+    return null;
+  }
+
+  if (
+    snapshot
+      ? !doesHydratedCandidateMatchSnapshot(hydratedCard, snapshot)
+      : !isLegacySingleCandidate
+  ) {
+    return null;
+  }
+
+  return {
+    card: hydratedCard,
+    position: 1
+  };
+}
+
+function doesHydratedCandidateMatchSnapshot(
+  card: ReviewQueueCard,
+  snapshot: NonNullable<ReviewSessionInput["canonicalCandidateSnapshot"]>
+) {
+  return (
+    snapshot.cardId === card.id &&
+    snapshot.bucket === card.bucket &&
+    snapshot.reviewStateUpdatedAt === (card.reviewStateUpdatedAt ?? null) &&
+    snapshot.schedulingKey ===
+      (card.reviewSeedState.schedulingKey?.trim() || null)
+  );
 }
 
 function isHydratedQueueCandidate(card: ReviewQueueCard, now: Date) {
@@ -527,63 +528,6 @@ function isHydratedQueueCandidate(card: ReviewQueueCard, now: Date) {
       now
     )
   );
-}
-
-async function hydrateReviewAdvanceCards(input: {
-  canonicalCandidateCardIds: string[];
-  hydratedCardOutcomes?: ReadonlyMap<
-    string,
-    Promise<HydratedReviewCardOutcome>
-  >;
-  now: Date;
-  selectedQueuePosition: number;
-}) {
-  const advanceCardIds = input.canonicalCandidateCardIds.slice(
-    input.selectedQueuePosition,
-    input.selectedQueuePosition + 3
-  );
-
-  if (advanceCardIds.length === 0) {
-    return [];
-  }
-
-  const hydratedCards = await Promise.all(
-    advanceCardIds.map(async (cardId) => {
-      const outcome =
-        (await input.hydratedCardOutcomes?.get(cardId)) ??
-        (await loadHydratedReviewCardOutcome(cardId, input.now));
-
-      if ("error" in outcome) {
-        throw outcome.error;
-      }
-
-      return outcome.card;
-    })
-  );
-
-  return hydratedCards.filter(
-    (card): card is ReviewQueueCard =>
-      card !== null && isHydratedQueueCandidate(card, input.now)
-  );
-}
-
-function loadHydratedReviewCardOutcome(cardId: string, now: Date) {
-  return hydrateReviewCard({
-    cardId,
-    now
-  })
-    .then(
-      (card) =>
-        ({
-          card
-        }) satisfies HydratedReviewCardOutcome
-    )
-    .catch(
-      (error) =>
-        ({
-          error
-        }) satisfies HydratedReviewCardOutcome
-    );
 }
 
 async function requireReviewPageData(

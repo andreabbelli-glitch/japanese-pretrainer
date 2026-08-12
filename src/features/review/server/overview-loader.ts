@@ -1,7 +1,7 @@
 import { db, type DatabaseClient } from "@/db";
 import {
+  listEligibleReviewWorkspaceCardsByMediaIds,
   listGrammarReviewSubjectIdentityRowsByIds,
-  listReviewCardsByMediaIds,
   listReviewMediaRefs,
   listTermReviewSubjectIdentityRowsByIds,
   type GrammarReviewSubjectIdentityRowById,
@@ -9,11 +9,12 @@ import {
   type TermReviewSubjectIdentityRowById
 } from "@/db/queries";
 import {
-  buildReviewSummaryTags,
   canUseDataCache,
   listMediaCached,
+  REVIEW_CARD_CONTENT_TAG,
   runWithTaggedCache
 } from "@/features/cache/server/data-cache";
+import { getFsrsOptimizerRuntimeSnapshot } from "@/features/fsrs-optimizer/server";
 import {
   buildReviewOverviewSnapshot,
   buildReviewSubjectModels,
@@ -29,7 +30,6 @@ import {
   type ReviewProfiler
 } from "@/features/review/server/profiler";
 import { resolveLoadedReviewWorkspaceCore } from "@/features/review/server/workspace-core";
-import { filterEligibleReviewCards } from "@/features/review/server/workspace-helpers";
 import { pickBestBy } from "@/features/shared/model/collections";
 
 import type { ReviewOverviewSnapshot } from "../types";
@@ -81,17 +81,17 @@ export async function loadStableReviewOverviewWorkspace(input: {
   mediaIds: string[];
   profiler?: ReviewProfiler | null;
 }): Promise<CachedReviewOverviewWorkspace> {
-  const reviewCards = await (input.mediaIds.length > 0
-    ? measureWith(input.profiler, "listReviewCardsByMediaIds", () =>
-        listReviewCardsByMediaIds(input.database, input.mediaIds)
-      )
-    : Promise.resolve([]));
-  const cards = await measureWith(
+  const { cards, rawCardCount } = await measureWith(
     input.profiler,
-    "filterEligibleReviewCards",
-    () => filterEligibleReviewCards(reviewCards),
+    "listEligibleReviewWorkspaceCardsByMediaIds",
+    () =>
+      listEligibleReviewWorkspaceCardsByMediaIds(
+        input.database,
+        input.mediaIds
+      ),
     (value) => ({
-      cards: value.length
+      cards: value.cards.length,
+      rawCardCount: value.rawCardCount
     })
   );
 
@@ -99,7 +99,7 @@ export async function loadStableReviewOverviewWorkspace(input: {
     return {
       cards,
       grammar: [],
-      rawCardCount: reviewCards.length,
+      rawCardCount,
       terms: []
     };
   }
@@ -119,7 +119,7 @@ export async function loadStableReviewOverviewWorkspace(input: {
   return {
     cards,
     grammar,
-    rawCardCount: reviewCards.length,
+    rawCardCount,
     terms
   };
 }
@@ -149,7 +149,7 @@ export async function loadStableReviewOverviewWorkspaceCached(input: {
             ...input,
             mediaIds: orderedMediaIds
           }),
-        tags: buildReviewSummaryTags(orderedMediaIds)
+        tags: [REVIEW_CARD_CONTENT_TAG]
       }),
     { cacheEligible, mediaIds: orderedMediaIds.length }
   );
@@ -216,6 +216,9 @@ type ReviewOverviewLoadOptions = {
     slug: string;
   }>;
   resolvedDailyLimit?: number;
+  resolvedFsrsOptimizerSnapshot?: Awaited<
+    ReturnType<typeof getFsrsOptimizerRuntimeSnapshot>
+  >;
   resolvedNewIntroducedTodayCount?: number;
 };
 
@@ -228,17 +231,26 @@ export async function loadReviewOverviewBundle(
   options: ReviewOverviewLoadOptions = {}
 ) {
   const now = options.asOf ?? new Date();
+  const fsrsOptimizerSnapshotPromise = options.resolvedFsrsOptimizerSnapshot
+    ? Promise.resolve(options.resolvedFsrsOptimizerSnapshot)
+    : getFsrsOptimizerRuntimeSnapshot(database);
   const globalMediaRows =
     options.globalMediaRows ?? (await listReviewMediaRefs(database));
   const mediaIds = globalMediaRows.map((item) => item.id);
-  const workspace = await loadReviewOverviewWorkspace({
-    database,
-    mediaIds,
-    now,
-    resolvedDailyLimit: options.resolvedDailyLimit,
-    resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
-  });
-  const shared = buildSharedReviewOverviewInput(workspace);
+  const [workspace, fsrsOptimizerSnapshot] = await Promise.all([
+    loadReviewOverviewWorkspace({
+      database,
+      mediaIds,
+      now,
+      resolvedDailyLimit: options.resolvedDailyLimit,
+      resolvedNewIntroducedTodayCount: options.resolvedNewIntroducedTodayCount
+    }),
+    fsrsOptimizerSnapshotPromise
+  ]);
+  const shared = buildSharedReviewOverviewInput(
+    workspace,
+    fsrsOptimizerSnapshot
+  );
 
   return {
     byMedia: buildReviewOverviewSnapshotsFromWorkspace(
@@ -343,7 +355,10 @@ export async function getReviewLaunchMedia(
 }
 
 function buildSharedReviewOverviewInput(
-  workspace: LoadedReviewOverviewWorkspace
+  workspace: LoadedReviewOverviewWorkspace,
+  fsrsOptimizerSnapshot: Awaited<
+    ReturnType<typeof getFsrsOptimizerRuntimeSnapshot>
+  >
 ) {
   const nowIso = workspace.now.toISOString();
   const subjectModels = buildReviewSubjectModels({
@@ -354,7 +369,11 @@ function buildSharedReviewOverviewInput(
   });
 
   return {
-    buckets: bucketAndSortReviewSubjectModels(subjectModels),
+    buckets: bucketAndSortReviewSubjectModels(subjectModels, {
+      fsrsOptimizerSnapshot,
+      nowIso
+    }),
+    fsrsOptimizerSnapshot,
     nowIso,
     subjectModels
   };
@@ -362,9 +381,9 @@ function buildSharedReviewOverviewInput(
 
 function buildReviewOverviewSnapshotFromWorkspace(
   workspace: LoadedReviewOverviewWorkspace,
-  shared = buildSharedReviewOverviewInput(workspace)
+  shared: ReturnType<typeof buildSharedReviewOverviewInput>
 ) {
-  const { buckets, nowIso, subjectModels } = shared;
+  const { buckets, fsrsOptimizerSnapshot, nowIso, subjectModels } = shared;
 
   return buildReviewOverviewSnapshot({
     buckets,
@@ -375,7 +394,8 @@ function buildReviewOverviewSnapshotFromWorkspace(
     newIntroducedTodayCount: workspace.newIntroducedTodayCount,
     nowIso,
     subjectGroups: workspace.subjectGroups,
-    subjectModels
+    subjectModels,
+    fsrsOptimizerSnapshot
   });
 }
 
@@ -385,9 +405,9 @@ function buildReviewOverviewSnapshotsFromWorkspace(
     id: string;
     slug: string;
   }>,
-  shared = buildSharedReviewOverviewInput(workspace)
+  shared: ReturnType<typeof buildSharedReviewOverviewInput>
 ) {
-  const { buckets, nowIso, subjectModels } = shared;
+  const { buckets, fsrsOptimizerSnapshot, nowIso, subjectModels } = shared;
   const snapshots = new Map<string, ReviewOverviewSnapshot>();
 
   for (const item of media) {
@@ -403,6 +423,7 @@ function buildReviewOverviewSnapshotsFromWorkspace(
         nowIso,
         subjectGroups: workspace.subjectGroups,
         subjectModels,
+        fsrsOptimizerSnapshot,
         visibleMediaId: item.id
       })
     );

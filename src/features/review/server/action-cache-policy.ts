@@ -7,6 +7,7 @@ import {
 export type ReviewActionCachePolicy = ReviewMutationCachePolicy;
 
 export function applyReviewActionCachePolicy(input: {
+  includeCardContent?: boolean;
   includeConsolidation?: boolean;
   mediaId?: string;
   policy: ReviewActionCachePolicy;

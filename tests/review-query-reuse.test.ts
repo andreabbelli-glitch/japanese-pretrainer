@@ -41,6 +41,7 @@ import {
 } from "@/features/review/server/loader";
 import { normalizeReviewSearchState } from "@/features/review/model/search-state";
 import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
+import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
 import {
   crossMediaFixture,
   writeCrossMediaContentFixture
@@ -86,7 +87,7 @@ describe("review media query reuse", () => {
 
     expect(pageData).not.toBeNull();
     expect(mediaFindFirstSpy).not.toHaveBeenCalled();
-    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
+    expect(mediaFindManySpy).toHaveBeenCalledTimes(2);
 
     mediaFindFirstSpy.mockRestore();
     mediaFindManySpy.mockRestore();
@@ -191,8 +192,8 @@ describe("review media query reuse", () => {
     const resolvedMediaRows = await dataCacheModule.listMediaCached(database);
 
     const originalGetStudySettings = settingsModule.getStudySettings;
-    const originalListReviewCardsByMediaIds =
-      dbQueriesModule.listReviewCardsByMediaIds;
+    const originalListEligibleReviewWorkspaceCardsByMediaIds =
+      dbQueriesModule.listEligibleReviewWorkspaceCardsByMediaIds;
     const settingsLookupSpy = vi
       .spyOn(settingsModule, "getStudySettings")
       .mockImplementation(async (...args) => {
@@ -201,9 +202,10 @@ describe("review media query reuse", () => {
         return resultPromise;
       });
     const workspaceLookupSpy = vi
-      .spyOn(dbQueriesModule, "listReviewCardsByMediaIds")
+      .spyOn(dbQueriesModule, "listEligibleReviewWorkspaceCardsByMediaIds")
       .mockImplementation(async (...args) => {
-        const resultPromise = originalListReviewCardsByMediaIds(...args);
+        const resultPromise =
+          originalListEligibleReviewWorkspaceCardsByMediaIds(...args);
         await workspaceGate.loader()();
         return resultPromise;
       });
@@ -279,7 +281,7 @@ describe("review media query reuse", () => {
 
     expect(queueSnapshot).not.toBeNull();
     expect(mediaFindFirstSpy).not.toHaveBeenCalled();
-    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
+    expect(mediaFindManySpy).toHaveBeenCalledTimes(2);
 
     mediaFindFirstSpy.mockRestore();
     mediaFindManySpy.mockRestore();
@@ -402,7 +404,7 @@ describe("review media query reuse", () => {
     }
   });
 
-  it("starts selected-card pronunciation loading before the FSRS snapshot settles", async () => {
+  it("starts FSRS ordering in parallel and selects pronunciations after it settles", async () => {
     const schedule = createQuerySchedulingHarness();
     const fsrsGate = schedule.gate("fsrs snapshot");
     const pronunciationsGate = schedule.gate("pronunciations");
@@ -433,8 +435,12 @@ describe("review media query reuse", () => {
     );
 
     try {
-      await schedule.expectStarted("fsrs snapshot", "pronunciations");
+      await schedule.expectStarted("fsrs snapshot");
       schedule.expectNotSettled("fsrs snapshot");
+      expect(pronunciationsGate.started).toBe(false);
+
+      fsrsGate.resolve();
+      await schedule.expectStarted("pronunciations");
     } finally {
       fsrsGate.resolve();
       pronunciationsGate.resolve();
@@ -493,7 +499,7 @@ describe("review media query reuse", () => {
     );
     const reviewCardsSpy = vi.spyOn(
       dbQueriesModule,
-      "listReviewCardsByMediaIds"
+      "listEligibleReviewWorkspaceCardsByMediaIds"
     );
 
     const overview = await loadGlobalReviewOverviewSnapshot(database);
@@ -512,7 +518,99 @@ describe("review media query reuse", () => {
     databaseAllSpy.mockRestore();
   });
 
-  it("keeps the global next-card front on the earliest due media even when alphabetical order disagrees", async () => {
+  it("loads the FSRS snapshot alongside the overview workspace and uses it for ordering", async () => {
+    const now = new Date("2026-03-11T12:00:00.000Z");
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        difficulty: 5,
+        dueAt: "2026-03-10T08:00:00.000Z",
+        lastInteractionAt: "2026-03-09T12:00:00.000Z",
+        lastReviewedAt: "2026-03-09T12:00:00.000Z",
+        manualOverride: false,
+        scheduledDays: 2,
+        stability: 1,
+        state: "review",
+        suspended: false
+      })
+      .where(eq(reviewSubjectState.cardId, developmentFixture.primaryCardId));
+    await database
+      .update(reviewSubjectState)
+      .set({
+        difficulty: 5,
+        dueAt: "2026-03-10T08:00:00.000Z",
+        lastInteractionAt: "2026-03-08T12:00:00.000Z",
+        lastReviewedAt: "2026-03-08T12:00:00.000Z",
+        manualOverride: false,
+        scheduledDays: 3,
+        stability: 2,
+        state: "review",
+        suspended: false
+      })
+      .where(eq(reviewSubjectState.cardId, developmentFixture.secondaryCardId));
+
+    const weights = [...reviewSchedulerConfig.fsrs.w];
+    weights[20] = 0.05;
+    const fsrsOptimizerSnapshot = {
+      ...fsrsOptimizerModule.buildDefaultFsrsOptimizerSnapshot(),
+      presets: {
+        concept: null,
+        recognition: {
+          desiredRetention: 0.9,
+          presetKey: "recognition" as const,
+          trainedAt: "2026-03-11T08:00:00.000Z",
+          trainingReviewCount: 1,
+          weights
+        }
+      }
+    };
+    const schedule = createQuerySchedulingHarness();
+    const fsrsGate = schedule.gate("overview FSRS snapshot");
+    const workspaceGate = schedule.gate("overview workspace");
+    const originalListEligibleReviewWorkspaceCardsByMediaIds =
+      dbQueriesModule.listEligibleReviewWorkspaceCardsByMediaIds;
+    const fsrsSnapshotSpy = vi
+      .spyOn(fsrsOptimizerModule, "getFsrsOptimizerRuntimeSnapshot")
+      .mockImplementation(
+        fsrsGate.loader(() => Promise.resolve(fsrsOptimizerSnapshot))
+      );
+    const workspaceSpy = vi
+      .spyOn(dbQueriesModule, "listEligibleReviewWorkspaceCardsByMediaIds")
+      .mockImplementation(async (...args) => {
+        const resultPromise =
+          originalListEligibleReviewWorkspaceCardsByMediaIds(...args);
+        await workspaceGate.loader()();
+        return resultPromise;
+      });
+    const overviewPromise = loadGlobalReviewOverviewSnapshot(database, {
+      asOf: now
+    });
+
+    try {
+      await schedule.expectStarted(
+        "overview FSRS snapshot",
+        "overview workspace"
+      );
+      schedule.expectNotSettled("overview FSRS snapshot");
+      schedule.expectNotSettled("overview workspace");
+      fsrsGate.resolve();
+      workspaceGate.resolve();
+
+      const overview = await overviewPromise;
+
+      expect(overview.nextCardFront).toBe("行く");
+      expect(fsrsSnapshotSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      fsrsGate.resolve();
+      workspaceGate.resolve();
+      await overviewPromise.catch(() => undefined);
+      fsrsSnapshotSpy.mockRestore();
+      workspaceSpy.mockRestore();
+    }
+  });
+
+  it("keeps the global next-card front on the most retrievable due media even when due timestamps disagree", async () => {
     const contentRoot = path.join(tempDir, "cross-media-overview-content");
 
     await writeCrossMediaContentFixture(contentRoot);
@@ -545,8 +643,8 @@ describe("review media query reuse", () => {
     const betaTermId = "term_review_query_reuse_beta_launch";
     const alphaCardId = "card_review_query_reuse_alpha_launch";
     const betaCardId = "card_review_query_reuse_beta_launch";
-    const alphaDueAt = "2000-01-02T00:00:00.000Z";
-    const betaDueAt = "2000-01-01T00:00:00.000Z";
+    const alphaDueAt = "2026-03-10T00:00:00.000Z";
+    const betaDueAt = "2026-03-09T00:00:00.000Z";
 
     await database.insert(term).values([
       {
@@ -672,8 +770,12 @@ describe("review media query reuse", () => {
         entryId: alphaTermId,
         cardId: alphaCardId,
         state: "review",
+        stability: 1,
+        difficulty: 5,
         dueAt: alphaDueAt,
+        lastReviewedAt: "2026-03-09T08:00:00.000Z",
         lastInteractionAt: alphaDueAt,
+        scheduledDays: 2,
         createdAt: alphaDueAt,
         updatedAt: alphaDueAt
       },
@@ -691,14 +793,20 @@ describe("review media query reuse", () => {
         entryId: betaTermId,
         cardId: betaCardId,
         state: "review",
+        stability: 4,
+        difficulty: 5,
         dueAt: betaDueAt,
+        lastReviewedAt: "2026-03-07T08:00:00.000Z",
         lastInteractionAt: betaDueAt,
+        scheduledDays: 4,
         createdAt: betaDueAt,
         updatedAt: betaDueAt
       }
     ]);
 
-    const overviewFromDb = await loadGlobalReviewOverviewSnapshot(database);
+    const overviewFromDb = await loadGlobalReviewOverviewSnapshot(database, {
+      asOf: new Date("2026-03-11T12:00:00.000Z")
+    });
 
     expect(overviewFromDb.dueCount).toBe(2);
     expect(overviewFromDb.nextCardFront).toBe("ベータ早い");
@@ -773,7 +881,7 @@ describe("review media query reuse", () => {
   it("builds a single-media overview snapshot without loading full entry summaries", async () => {
     const reviewCardsSpy = vi.spyOn(
       dbQueriesModule,
-      "listReviewCardsByMediaIds"
+      "listEligibleReviewWorkspaceCardsByMediaIds"
     );
     const termsSpy = vi.spyOn(
       dbQueriesModule,

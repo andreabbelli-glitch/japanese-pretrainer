@@ -51,8 +51,9 @@ Fonti di riferimento:
   stessa policy. Gli stati intraday con `scheduledDays = 0` partecipano alla
   cronologia di replay, ma non al carico delle scadenze giornaliere.
 - Il payload first-candidate non calcola date sul client: dopo il reveal i voti
-  mostrano `Calcolo…` e restano disabilitati per il breve tempo necessario a
-  ricevere le quattro preview autoritative dal server.
+  mostrano `Calcolo…` finche non arrivano le quattro preview autoritative, ma
+  restano subito utilizzabili: grading e intervallo vengono comunque calcolati
+  in modo autoritativo dal server.
 
 ## Cosa resta intenzionalmente diverso da Anki
 

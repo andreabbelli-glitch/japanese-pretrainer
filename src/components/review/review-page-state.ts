@@ -53,6 +53,10 @@ export function mergeReviewPageData(
 
   return {
     ...nextData,
+    queue: {
+      ...nextData.queue,
+      advanceCards: resolveMergedReviewAdvanceCards(currentData, nextData)
+    },
     selectedCardContext: {
       ...nextData.selectedCardContext,
       gradePreviews: showAnswer
@@ -64,6 +68,23 @@ export function mergeReviewPageData(
       showAnswer
     }
   };
+}
+
+function resolveMergedReviewAdvanceCards(
+  currentData: ReviewPageClientData,
+  nextData: ReviewPageData
+) {
+  if (nextData.queue.advanceCards.length > 0) {
+    return nextData.queue.advanceCards;
+  }
+
+  const isCompactSameStepResponse =
+    nextData.queueCardIds.length === 0 &&
+    currentData.session.answeredCount === nextData.session.answeredCount &&
+    nextData.selectedCard !== null &&
+    currentData.selectedCard?.id === nextData.selectedCard.id;
+
+  return isCompactSameStepResponse ? currentData.queue.advanceCards : [];
 }
 
 export function shouldAdoptServerFirstCandidateData(input: {

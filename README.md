@@ -543,6 +543,12 @@ costose parte solo in background dopo l'avvio del runtime: e best-effort e non
 blocca la prima risposta del sito, cosi il cold start Vercel non paga in
 anticipo l'intera preparazione della review.
 
+Il database Turso di produzione risiede in `eu-west-1`; `vercel.json` fissa
+quindi l'unica regione Functions Hobby a `dub1` (Dublino). Mantieni compute e
+database co-localizzati: rimuovere questa impostazione riporterebbe le Functions
+al default Vercel `iad1` e aggiungerebbe un roundtrip transatlantico a ogni
+lettura o grade server-side.
+
 Per le notifiche live di Daily Kanji iOS, il monitor GitHub near-real-time e
 sospeso finche APNs/notifiche non sono affidabili. Il workflow resta disponibile
 solo come avvio manuale con `workflow_dispatch`:

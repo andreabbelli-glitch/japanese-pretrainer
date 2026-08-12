@@ -3,12 +3,14 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const {
   getMediaBySlugCachedDefaultMock,
   updateConsolidationSummaryCacheMock,
+  updateReviewCardContentCacheMock,
   updateMediaListCacheMock,
   updateReviewSummaryCacheMock,
   setLessonCompletionWithConsolidationMock
 } = vi.hoisted(() => ({
   getMediaBySlugCachedDefaultMock: vi.fn(),
   updateConsolidationSummaryCacheMock: vi.fn(),
+  updateReviewCardContentCacheMock: vi.fn(),
   updateMediaListCacheMock: vi.fn(),
   updateReviewSummaryCacheMock: vi.fn(),
   setLessonCompletionWithConsolidationMock: vi.fn()
@@ -17,6 +19,7 @@ const {
 vi.mock("@/features/cache/server/data-cache", () => ({
   getMediaBySlugCachedDefault: getMediaBySlugCachedDefaultMock,
   updateConsolidationSummaryCache: updateConsolidationSummaryCacheMock,
+  updateReviewCardContentCache: updateReviewCardContentCacheMock,
   updateMediaListCache: updateMediaListCacheMock,
   updateReviewSummaryCache: updateReviewSummaryCacheMock
 }));
@@ -32,6 +35,7 @@ describe("textbook action workflows", () => {
     getMediaBySlugCachedDefaultMock.mockReset();
     getMediaBySlugCachedDefaultMock.mockResolvedValue({ id: "media_fixture" });
     updateConsolidationSummaryCacheMock.mockReset();
+    updateReviewCardContentCacheMock.mockReset();
     updateMediaListCacheMock.mockReset();
     updateReviewSummaryCacheMock.mockReset();
     setLessonCompletionWithConsolidationMock.mockReset();
@@ -58,8 +62,11 @@ describe("textbook action workflows", () => {
       completed: true,
       lessonId: "lesson_001"
     });
-    expect(getMediaBySlugCachedDefaultMock).toHaveBeenCalledWith("fixture-media");
+    expect(getMediaBySlugCachedDefaultMock).toHaveBeenCalledWith(
+      "fixture-media"
+    );
     expect(updateMediaListCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateReviewCardContentCacheMock).toHaveBeenCalledTimes(1);
     expect(updateConsolidationSummaryCacheMock).toHaveBeenCalledWith(
       "media_fixture"
     );

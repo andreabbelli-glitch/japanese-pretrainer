@@ -209,7 +209,13 @@
   devono essere richiesti da `/media-audio/...`, con
   `Cache-Control: public, max-age=31536000, immutable`, e non da
   `/media/[mediaSlug]/assets/audio/...`.
-- Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` avanza la sessione subito, senza flash di pagina completa, e in caso di errore ripristina la card precedente con messaggio chiaro.
+- Review: la coda propone prima le memorie con retrievability FSRS piu alta e
+  lascia progressivamente per ultime quelle meno probabili da ricordare;
+  l'ordine resta identico tra dashboard, root globale e filtro media.
+- Review: `Mostra risposta` funziona; grading `Again/Hard/Good/Easy` resta
+  cliccabile anche mentre l'intervallo mostra `Calcolo…`, avanza la sessione
+  subito senza flash di pagina completa e, in caso di errore, ripristina la
+  card precedente con messaggio chiaro.
 - Review: l'H1 mostra `Review globale` sulla root e `Review · Nome media` nel
   filtro locale, con link per tornare alla globale; dopo il reveal il link al
   Glossary resta visibile mentre `Segna già nota`, `Reset card` e `Sospendi`

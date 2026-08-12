@@ -68,6 +68,14 @@ const reviewCardSelection = {
   }
 } as const;
 
+const reviewWorkspaceCardSelection = {
+  columns: reviewCardSelection.columns,
+  with: {
+    segment: reviewCardSelection.with.segment,
+    entryLinks: reviewCardSelection.with.entryLinks
+  }
+} as const;
+
 const prestudyReviewCardSelection = {
   ...reviewCardSelection,
   with: {
@@ -191,6 +199,108 @@ export async function listReviewCardsByMediaIds(
     ...reviewCardSelection,
     orderBy: [asc(card.mediaId), asc(card.orderIndex), asc(card.createdAt)]
   });
+}
+
+export async function listEligibleReviewWorkspaceCardsByMediaIds(
+  database: Pick<DatabaseQueryClient, "query">,
+  mediaIds: string[]
+): Promise<{
+  cards: ReviewCardListItem[];
+  rawCardCount: number;
+}> {
+  if (mediaIds.length === 0) {
+    return {
+      cards: [],
+      rawCardCount: 0
+    };
+  }
+
+  const mediaRows = await database.query.media.findMany({
+    where: inArray(media.id, mediaIds),
+    columns: {
+      id: true
+    },
+    extras: (_, { sql }) => ({
+      rawCardCount: sql<number>`(
+        SELECT cast(count(*) AS integer)
+        FROM card AS raw_review_card
+        WHERE raw_review_card.media_id = "media"."id"
+          AND raw_review_card.status <> 'archived'
+      )`
+        .mapWith(Number)
+        .as("raw_card_count")
+    }),
+    with: {
+      lessons: {
+        where: (lessonRow, { and, eq, exists, sql }) =>
+          and(
+            eq(lessonRow.status, "active"),
+            exists(sql`(
+                SELECT 1
+                FROM lesson_progress AS eligible_review_progress
+                WHERE eligible_review_progress.lesson_id = ${lessonRow.id}
+                  AND eligible_review_progress.status = 'completed'
+              )`)
+          ),
+        columns: {
+          id: true,
+          status: true
+        },
+        with: {
+          cards: {
+            where: (cardRow, { ne }) => ne(cardRow.status, "archived"),
+            ...reviewWorkspaceCardSelection
+          }
+        }
+      }
+    },
+    orderBy: [asc(media.id)]
+  });
+
+  return {
+    cards: mediaRows
+      .flatMap((mediaRow) =>
+        mediaRow.lessons.flatMap((lessonRow) =>
+          lessonRow.cards.map((workspaceCard) => ({
+            ...workspaceCard,
+            lesson: {
+              progress: {
+                status: "completed" as const
+              },
+              status: lessonRow.status
+            }
+          }))
+        )
+      )
+      .sort(compareReviewWorkspaceCards),
+    rawCardCount: mediaRows.reduce(
+      (total, mediaRow) => total + mediaRow.rawCardCount,
+      0
+    )
+  };
+}
+
+function compareReviewWorkspaceCards(
+  left: ReviewCardListItem,
+  right: ReviewCardListItem
+) {
+  if (left.mediaId !== right.mediaId) {
+    return left.mediaId < right.mediaId ? -1 : 1;
+  }
+
+  const orderDifference =
+    (left.orderIndex ?? Number.NEGATIVE_INFINITY) -
+    (right.orderIndex ?? Number.NEGATIVE_INFINITY);
+
+  if (orderDifference !== 0) {
+    return orderDifference;
+  }
+
+  if (left.createdAt !== right.createdAt) {
+    return left.createdAt < right.createdAt ? -1 : 1;
+  }
+
+  return 0;
 }
 
 export async function listTermEntryReviewSummariesByIds(

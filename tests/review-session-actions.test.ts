@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ReviewPage } from "@/components/review/review-page";
-import { card, lessonProgress, reviewSubjectState } from "@/db/schema";
+import { lessonProgress, reviewSubjectState } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
 import { buildKanjiClashContrastKey } from "@/features/kanji-clash";
@@ -14,12 +14,14 @@ import {
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
 import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
-import type { ReviewForcedContrastResolution } from "@/features/review/types";
-import { buildCanonicalReviewSessionHref } from "@/features/navigation";
+import type {
+  ReviewForcedContrastResolution,
+  ReviewQueueCard
+} from "@/features/review/types";
 import { updateStudySettings } from "@/features/settings/server";
 import {
-  buildReviewSubjectStateRow,
-  createIsolatedNewMediaFixture
+  createIsolatedNewMediaFixture,
+  prepareChainedBufferedAdvanceFixture as prepareChainedBufferedAdvanceFixtureBase
 } from "./helpers/review-fixture";
 import {
   cleanupReviewDatabase,
@@ -29,7 +31,6 @@ import {
   loadReviewActionsForDatabase as loadReviewActionsForDatabaseHarness,
   type LoadReviewActionsOptions
 } from "./helpers/review-action-test-harness";
-import { flushMicrotasks, waitForTruthy } from "./helpers/async";
 
 const primaryCanonicalSubjectKey = `entry:term:${developmentFixture.termDbId}`;
 const secondaryCanonicalSubjectKey = `entry:grammar:${developmentFixture.grammarDbId}`;
@@ -103,7 +104,9 @@ async function prepareTwoQueueCardFixture(database: DatabaseClient) {
   await database
     .update(reviewSubjectState)
     .set({
-      dueAt: "2000-01-01T00:00:00.000Z"
+      dueAt: "2000-01-01T00:00:00.000Z",
+      lastReviewedAt: "2026-03-09T08:59:00.000Z",
+      stability: 100
     })
     .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
 
@@ -118,7 +121,9 @@ async function prepareTwoQueueCardFixture(database: DatabaseClient) {
     .update(reviewSubjectState)
     .set({
       dueAt: "2000-01-01T00:05:00.000Z",
+      lastReviewedAt: "2000-01-01T00:00:00.000Z",
       manualOverride: false,
+      stability: 1,
       state: "learning"
     })
     .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
@@ -130,90 +135,12 @@ async function prepareTwoQueueCardFixture(database: DatabaseClient) {
 }
 
 async function prepareChainedBufferedAdvanceFixture(database: DatabaseClient) {
-  const bufferedCardBId = "card_fixture_buffered_b";
-  const bufferedCardCId = "card_fixture_buffered_c";
-
-  await database
-    .update(reviewSubjectState)
-    .set({
-      dueAt: "2026-03-09T08:03:00.000Z",
-      manualOverride: false,
-      state: "learning"
-    })
-    .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
-
-  await database.insert(card).values([
-    {
-      back: "B back",
-      cardType: "recognition",
-      createdAt: "2026-03-08T09:00:00.000Z",
-      exampleJp: null,
-      exampleIt: null,
-      front: "B",
-      id: bufferedCardBId,
-      lessonId: developmentFixture.lessonId,
-      mediaId: developmentFixture.mediaId,
-      notesIt: null,
-      orderIndex: 2,
-      segmentId: developmentFixture.segmentId,
-      sourceFile: "tests/review-buffered-advance/card-b.md",
-      status: "active",
-      updatedAt: "2026-03-08T09:00:00.000Z"
-    },
-    {
-      back: "C back",
-      cardType: "recognition",
-      createdAt: "2026-03-08T09:00:00.000Z",
-      exampleJp: null,
-      exampleIt: null,
-      front: "C",
-      id: bufferedCardCId,
-      lessonId: developmentFixture.lessonId,
-      mediaId: developmentFixture.mediaId,
-      notesIt: null,
-      orderIndex: 3,
-      segmentId: developmentFixture.segmentId,
-      sourceFile: "tests/review-buffered-advance/card-c.md",
-      status: "active",
-      updatedAt: "2026-03-08T09:00:00.000Z"
-    }
-  ]);
-
-  await database.insert(reviewSubjectState).values([
-    buildReviewSubjectStateRow({
-      cardId: bufferedCardBId,
-      difficulty: 4,
-      dueAt: "2026-03-09T08:01:00.000Z",
-      lapses: 0,
-      learningSteps: 0,
-      lastInteractionAt: "2026-03-08T09:00:00.000Z",
-      lastReviewedAt: "2026-03-08T09:00:00.000Z",
-      reps: 1,
-      scheduledDays: 0,
-      state: "learning",
-      stability: 1.6,
-      subjectKey: `card:${bufferedCardBId}`
-    }),
-    buildReviewSubjectStateRow({
-      cardId: bufferedCardCId,
-      difficulty: 4,
-      dueAt: "2026-03-09T08:02:00.000Z",
-      lapses: 0,
-      learningSteps: 0,
-      lastInteractionAt: "2026-03-08T09:00:00.000Z",
-      lastReviewedAt: "2026-03-08T09:00:00.000Z",
-      reps: 1,
-      scheduledDays: 0,
-      state: "learning",
-      stability: 1.6,
-      subjectKey: `card:${bufferedCardCId}`
-    })
-  ]);
-
-  return {
-    bufferedCardBId,
-    bufferedCardCId
-  };
+  return prepareChainedBufferedAdvanceFixtureBase(database, {
+    lessonId: developmentFixture.lessonId,
+    mediaId: developmentFixture.mediaId,
+    secondarySubjectKey,
+    segmentId: developmentFixture.segmentId
+  });
 }
 
 function loadReviewActionsForDatabase(
@@ -224,6 +151,31 @@ function loadReviewActionsForDatabase(
     updateGlossarySummaryCacheMock,
     updateReviewSummaryCacheMock
   });
+}
+
+async function requireFreshReviewPageData(
+  database: DatabaseClient,
+  mediaSlug: string,
+  searchParams: Record<string, string>
+) {
+  const pageData = await getReviewPageData(mediaSlug, searchParams, database, {
+    bypassCache: true
+  });
+
+  if (!pageData) {
+    throw new Error("Expected review page data.");
+  }
+
+  return pageData;
+}
+
+function buildCanonicalCandidateSnapshot(card: ReviewQueueCard) {
+  return {
+    bucket: card.bucket,
+    cardId: card.id,
+    reviewStateUpdatedAt: card.reviewStateUpdatedAt ?? null,
+    schedulingKey: card.reviewSeedState.schedulingKey?.trim() || null
+  };
 }
 
 describe("review session actions", () => {
@@ -1119,7 +1071,7 @@ describe("review session actions", () => {
     } satisfies ReviewForcedContrastResolution);
   });
 
-  it("hydrates a later prefetched queue card when the immediate next one is unavailable", async () => {
+  it("rebuilds the canonical queue when the first buffered candidate is unavailable", async () => {
     const { currentCardId, nextCardId } =
       await prepareTwoQueueCardFixture(database);
     const pageData = await getReviewPageData(
@@ -1128,7 +1080,10 @@ describe("review session actions", () => {
       database
     );
     const { gradeReviewCardSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
+      await loadReviewActionsForDatabase(database, {
+        getReviewPageData: ({ mediaSlug, searchParams }) =>
+          requireFreshReviewPageData(database, mediaSlug, searchParams)
+      });
 
     expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
 
@@ -1149,16 +1104,19 @@ describe("review session actions", () => {
       sessionSettings: pageData?.settings
     });
 
-    expect(reviewPageCalls).toEqual([]);
+    expect(reviewPageCalls).toEqual([
+      {
+        mediaSlug: developmentFixture.mediaSlug,
+        scope: "media",
+        searchParams: { answered: "1" }
+      }
+    ]);
     expect(result.selectedCard?.id).toBe(nextCardId);
-    expect(result.queue.queueCount).toBe(
-      Math.max(0, (pageData?.queue.queueCount ?? 0) - 1)
-    );
     expect(result.selectedCardContext.isQueueCard).toBe(true);
-    expect(result.selectedCardContext.position).toBe(2);
+    expect(result.selectedCardContext.position).toBe(1);
   });
 
-  it("keeps the canonical queue position when hydration prefers a later candidate", async () => {
+  it("rebuilds instead of trusting a legacy multi-candidate window", async () => {
     const { currentCardId, nextCardId } =
       await prepareTwoQueueCardFixture(database);
     const pageData = await getReviewPageData(
@@ -1166,8 +1124,19 @@ describe("review session actions", () => {
       {},
       database
     );
+    const hydrationInputs: Array<{
+      bypassCache?: boolean;
+      cardId: string;
+    }> = [];
     const { gradeReviewCardSessionAction, reviewPageCalls } =
-      await loadReviewActionsForDatabase(database);
+      await loadReviewActionsForDatabase(database, {
+        getReviewPageData: ({ mediaSlug, searchParams }) =>
+          requireFreshReviewPageData(database, mediaSlug, searchParams),
+        hydrateReviewCard: (input) => {
+          hydrationInputs.push(input);
+          return undefined;
+        }
+      });
 
     expect(pageData?.queueCardIds).toEqual([currentCardId, nextCardId]);
 
@@ -1189,15 +1158,14 @@ describe("review session actions", () => {
       sessionSettings: pageData?.settings
     });
 
-    expect(reviewPageCalls).toEqual([]);
+    expect(reviewPageCalls).toHaveLength(1);
+    expect(hydrationInputs).toHaveLength(0);
+    expect(hydrationInputs.every((input) => input.bypassCache)).toBe(true);
     expect(result.selectedCard?.id).toBe(nextCardId);
-    expect(result.selectedCardContext.position).toBe(2);
-    expect(result.selectedCardContext.remainingCount).toBe(
-      Math.max(0, result.queue.queueCount - 2)
-    );
+    expect(result.selectedCardContext.position).toBe(1);
   });
 
-  it("keeps canonical positions through chained buffered advances when the middle card is unavailable", async () => {
+  it("rebuilds when the canonical first candidate becomes unavailable", async () => {
     const { bufferedCardBId, bufferedCardCId } =
       await prepareChainedBufferedAdvanceFixture(database);
     const pageData = await getReviewPageData(
@@ -1207,6 +1175,8 @@ describe("review session actions", () => {
     );
     const { gradeReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database, {
+        getReviewPageData: ({ mediaSlug, searchParams }) =>
+          requireFreshReviewPageData(database, mediaSlug, searchParams),
         hydrateReviewCard: ({ cardId }) =>
           cardId === bufferedCardBId ? null : undefined
       });
@@ -1236,6 +1206,12 @@ describe("review session actions", () => {
         bufferedCardCId,
         developmentFixture.secondaryCardId
       ],
+      canonicalCandidateSnapshot: {
+        bucket: "due",
+        cardId: bufferedCardBId,
+        reviewStateUpdatedAt: "2026-03-08T09:00:00.000Z",
+        schedulingKey: `card:${bufferedCardBId}`
+      },
       extraNewCount: pageData?.session.extraNewCount ?? 0,
       expectedUpdatedAt:
         pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
@@ -1249,59 +1225,11 @@ describe("review session actions", () => {
       sessionSettings: pageData?.settings
     });
 
-    expect(reviewPageCalls).toEqual([]);
-    expect(firstResult.selectedCard?.id).toBe(bufferedCardCId);
-    expect(firstResult.selectedCardContext.position).toBe(2);
-    expect(firstResult.selectedCardContext.remainingCount).toBe(1);
-    expect(firstResult.queue.advanceCards.map((card) => card.id)).toEqual([
-      developmentFixture.secondaryCardId
-    ]);
-
-    const secondResult = await gradeReviewCardSessionAction({
-      answeredCount: firstResult.session.answeredCount,
-      cardId: bufferedCardCId,
-      cardMediaSlug: developmentFixture.mediaSlug,
-      canonicalCandidateCardIds: [
-        bufferedCardBId,
-        developmentFixture.secondaryCardId
-      ],
-      candidateCardIds: [developmentFixture.secondaryCardId],
-      extraNewCount: firstResult.session.extraNewCount,
-      expectedUpdatedAt:
-        firstResult.selectedCardContext.reviewStateUpdatedAt ?? null,
-      gradedCardBucket: firstResult.selectedCard?.bucket,
-      mediaSlug: developmentFixture.mediaSlug,
-      nextCardId: developmentFixture.secondaryCardId,
-      rating: "good",
-      scope: "media",
-      sessionMedia: firstResult.media,
-      sessionQueue: firstResult.queue,
-      sessionSettings: firstResult.settings
-    });
-
-    expect(secondResult.selectedCard?.id).toBe(
-      developmentFixture.secondaryCardId
-    );
-    expect(secondResult.selectedCardContext.position).toBe(2);
-    expect(secondResult.selectedCardContext.remainingCount).toBe(0);
-    expect(secondResult.queue.advanceCards).toEqual([]);
-
-    const sessionHref = buildCanonicalReviewSessionHref({
-      answeredCount: secondResult.session.answeredCount,
-      cardId: secondResult.selectedCard?.id,
-      extraNewCount: secondResult.session.extraNewCount,
-      isQueueCard: secondResult.selectedCardContext.isQueueCard,
-      mediaSlug: developmentFixture.mediaSlug,
-      position: secondResult.selectedCardContext.position,
-      segmentId: secondResult.session.segmentId,
-      showAnswer: secondResult.selectedCardContext.showAnswer
-    });
-
-    expect(sessionHref).toContain(`card=${developmentFixture.secondaryCardId}`);
-    expect(sessionHref).not.toContain(`card=${bufferedCardBId}`);
+    expect(reviewPageCalls).toHaveLength(1);
+    expect(firstResult.selectedCard?.id).not.toBe(bufferedCardBId);
   });
 
-  it("starts later queued card hydrations before the first missing candidate settles and reuses them for advance cards", async () => {
+  it("hydrates only the server-canonical next card when a client hint points later", async () => {
     const { bufferedCardBId, bufferedCardCId } =
       await prepareChainedBufferedAdvanceFixture(database);
     const pageData = await getReviewPageData(
@@ -1309,28 +1237,11 @@ describe("review session actions", () => {
       {},
       database
     );
-    const hydrateGate = (() => {
-      let resolve!: () => void;
-
-      return {
-        promise: new Promise<void>((innerResolve) => {
-          resolve = innerResolve;
-        }),
-        resolve
-      };
-    })();
     const hydrateCallsById = new Map<string, number>();
-    const startedCardIds = new Set<string>();
     const { gradeReviewCardSessionAction, reviewPageCalls } =
       await loadReviewActionsForDatabase(database, {
         hydrateReviewCard: async ({ cardId }) => {
-          startedCardIds.add(cardId);
           hydrateCallsById.set(cardId, (hydrateCallsById.get(cardId) ?? 0) + 1);
-
-          if (cardId === bufferedCardBId) {
-            await hydrateGate.promise;
-            return null;
-          }
 
           return hydrateReviewCard({
             cardId,
@@ -1350,7 +1261,7 @@ describe("review session actions", () => {
 
     expect(chainedSessionQueue).not.toBeNull();
 
-    const resultPromise = gradeReviewCardSessionAction({
+    const result = await gradeReviewCardSessionAction({
       answeredCount: pageData?.session.answeredCount ?? 0,
       cardId: developmentFixture.primaryCardId,
       cardMediaSlug: developmentFixture.mediaSlug,
@@ -1364,6 +1275,9 @@ describe("review session actions", () => {
         bufferedCardCId,
         developmentFixture.secondaryCardId
       ],
+      canonicalCandidateSnapshot: buildCanonicalCandidateSnapshot(
+        (await hydrateReviewCard({ cardId: bufferedCardBId, database }))!
+      ),
       extraNewCount: pageData?.session.extraNewCount ?? 0,
       expectedUpdatedAt:
         pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
@@ -1377,28 +1291,122 @@ describe("review session actions", () => {
       sessionSettings: pageData?.settings
     });
 
-    await waitForTruthy(
-      () => startedCardIds.has(bufferedCardBId),
-      "Expected the buffered card hydration to start."
-    );
-    await flushMicrotasks();
-
-    expect(startedCardIds).toContain(bufferedCardBId);
-    expect(startedCardIds).toContain(bufferedCardCId);
-    expect(startedCardIds).toContain(developmentFixture.secondaryCardId);
-
-    hydrateGate.resolve();
-
-    const result = await resultPromise;
-
     expect(reviewPageCalls).toEqual([]);
-    expect(result.selectedCard?.id).toBe(bufferedCardCId);
-    expect(result.queue.advanceCards.map((card) => card.id)).toEqual([
-      developmentFixture.secondaryCardId
-    ]);
+    expect(result.selectedCard?.id).toBe(bufferedCardBId);
+    expect(result.selectedCardContext.position).toBe(1);
+    expect(result.queue.advanceCards).toEqual([]);
     expect(hydrateCallsById.get(bufferedCardBId)).toBe(1);
-    expect(hydrateCallsById.get(bufferedCardCId)).toBe(1);
-    expect(hydrateCallsById.get(developmentFixture.secondaryCardId)).toBe(1);
+    expect(hydrateCallsById.get(bufferedCardCId)).toBeUndefined();
+    expect(
+      hydrateCallsById.get(developmentFixture.secondaryCardId)
+    ).toBeUndefined();
+  });
+
+  it("rebuilds the canonical queue when a concurrent tab changes the first candidate bucket", async () => {
+    const { bufferedCardBId, bufferedCardCId } =
+      await prepareChainedBufferedAdvanceFixture(database);
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z",
+        state: "review"
+      })
+      .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
+    await database
+      .update(reviewSubjectState)
+      .set({
+        difficulty: 1,
+        dueAt: "2026-08-11T09:00:00.000Z",
+        lastReviewedAt: "2026-08-11T09:00:00.000Z",
+        stability: 10_000,
+        state: "review",
+        updatedAt: "2026-08-11T09:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+    await database
+      .update(reviewSubjectState)
+      .set({
+        stability: 100
+      })
+      .where(eq(reviewSubjectState.cardId, bufferedCardBId));
+
+    const pageData = await getReviewPageData(
+      developmentFixture.mediaSlug,
+      {},
+      database,
+      { bypassCache: true }
+    );
+    const bufferedCardB = await hydrateReviewCard({
+      cardId: bufferedCardBId,
+      database
+    });
+
+    expect(pageData?.queueCardIds.indexOf(bufferedCardBId)).toBeGreaterThan(-1);
+    expect(pageData?.queueCardIds.indexOf(bufferedCardCId)).toBeGreaterThan(-1);
+    expect(pageData!.queueCardIds.indexOf(bufferedCardBId)).toBeLessThan(
+      pageData!.queueCardIds.indexOf(bufferedCardCId)
+    );
+    expect(bufferedCardB?.bucket).toBe("due");
+    expect(pageData?.selectedCard?.id).toBe(developmentFixture.primaryCardId);
+
+    await database
+      .update(reviewSubjectState)
+      .set({
+        dueAt: "2999-01-01T00:00:00.000Z",
+        state: "new",
+        updatedAt: "2026-03-12T09:00:00.000Z"
+      })
+      .where(eq(reviewSubjectState.cardId, bufferedCardBId));
+    const mutatedBufferedCardB = await hydrateReviewCard({
+      bypassCache: true,
+      cardId: bufferedCardBId,
+      database
+    });
+
+    expect(mutatedBufferedCardB?.bucket).toBe("new");
+
+    const { gradeReviewCardSessionAction, reviewPageCalls } =
+      await loadReviewActionsForDatabase(database, {
+        getReviewPageData: ({ mediaSlug, searchParams }) =>
+          requireFreshReviewPageData(database, mediaSlug, searchParams)
+      });
+
+    const result = await gradeReviewCardSessionAction({
+      answeredCount: pageData?.session.answeredCount ?? 0,
+      cardId: pageData!.selectedCard!.id,
+      cardMediaSlug: developmentFixture.mediaSlug,
+      canonicalCandidateCardIds: [bufferedCardBId, bufferedCardCId],
+      canonicalCandidateSnapshot: buildCanonicalCandidateSnapshot(
+        bufferedCardB!
+      ),
+      candidateCardIds: [bufferedCardBId, bufferedCardCId],
+      extraNewCount: pageData?.session.extraNewCount ?? 0,
+      expectedUpdatedAt:
+        pageData?.selectedCardContext.reviewStateUpdatedAt ?? null,
+      gradedCardBucket: pageData?.selectedCard?.bucket,
+      gradedCardDueAt: pageData?.selectedCard?.dueAt,
+      gradedCardScheduledDays:
+        pageData?.selectedCard?.reviewSeedState.scheduledDays,
+      gradedCardState: pageData?.selectedCard?.reviewSeedState.state,
+      mediaSlug: developmentFixture.mediaSlug,
+      nextCardId: bufferedCardBId,
+      rating: "good",
+      scope: "media",
+      sessionMedia: pageData?.media,
+      sessionQueue: pageData?.queue,
+      sessionSettings: pageData?.settings
+    });
+
+    expect(reviewPageCalls).toEqual([
+      {
+        mediaSlug: developmentFixture.mediaSlug,
+        scope: "media",
+        searchParams: { answered: "1" }
+      }
+    ]);
+    expect(result.selectedCard?.id).toBe(bufferedCardCId);
+    expect(result.selectedCard?.bucket).toBe("due");
   });
 
   it("falls back to a full rebuild instead of forcing completion when the session plan has no nextCardId", async () => {

@@ -92,7 +92,6 @@ describe("useReviewGradeSubmissionController", () => {
         cardId: "card-a",
         candidateCardIds: ["card-b", "card-c"],
         canonicalCandidateCardIds: ["card-b", "card-c"],
-        gradedCardIds: ["card-a"],
         nextCardId: "card-b",
         rating: "good"
       })
@@ -102,7 +101,6 @@ describe("useReviewGradeSubmissionController", () => {
     expect(controller().queueCardIds).toEqual(["card-b", "card-c"]);
     expect(Array.from(controller().submittedGradeCardIds)).toEqual(["card-a"]);
     expect(Array.from(controller().pendingGradeCardIds)).toEqual(["card-a"]);
-    expect(controller().getGradedCardIds()).toEqual(["card-a"]);
   });
 
   it("rolls back failed optimistic grades and allows retry", async () => {
@@ -144,6 +142,31 @@ describe("useReviewGradeSubmissionController", () => {
     });
 
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(2);
+  });
+
+  it("allows a grade response to replace an optimistic next card at the same progress", async () => {
+    const initialData = buildReviewPageData("card-a");
+    const canonicalServerData = buildReviewPageData("card-c", {
+      answeredCount: 1,
+      queueCardIds: ["card-c"]
+    });
+    mocks.gradeReviewCardSessionAction.mockResolvedValue(canonicalServerData);
+    let capturedOptions: ReviewSessionUpdateOptions | undefined;
+    const controller = await renderGradeSubmissionController(initialData, {
+      onEnqueueOptions: (options) => {
+        capturedOptions = options;
+      },
+      runnerMode: "execute"
+    });
+
+    await act(async () => {
+      controller().handleGradeCard("good");
+      await flushPromises();
+    });
+
+    expect(capturedOptions?.acceptSameProgressSelectionChange).toBe(true);
+    expect(controller().viewData.session.answeredCount).toBe(1);
+    expect(controller().viewData.selectedCard?.id).toBe("card-c");
   });
 
   it("deduplicates one attempt but allows the same card after its freshness token advances", async () => {
@@ -234,6 +257,9 @@ async function renderGradeSubmissionController(
   initialData: ReviewPageClientData,
   options?: {
     forcedContrastSelection?: ReviewForcedContrastSelection | null;
+    onEnqueueOptions?: (
+      options: ReviewSessionUpdateOptions | undefined
+    ) => void;
     runnerMode?: "capture" | "execute";
   }
 ) {
@@ -264,6 +290,7 @@ async function renderGradeSubmissionController(
     });
     const enqueueOptimisticGradeSessionUpdate: EnqueueOptimisticGradeSessionUpdate =
       (loadNextData, updateOptions) => {
+        options?.onEnqueueOptions?.(updateOptions);
         if (options?.runnerMode === "execute") {
           const rollbackOptimisticUpdate = updateOptions?.optimisticUpdate?.();
           void loadNextData()

@@ -21,6 +21,7 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
 } from "@/features/review/server";
+import { getFsrsOptimizerRuntimeSnapshot } from "@/features/fsrs-optimizer/server";
 import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 import { getReviewDailyLimit } from "@/features/settings/server";
 import { mediaTextbookLessonHref } from "@/features/navigation";
@@ -84,6 +85,8 @@ async function loadDashboardData(
 ): Promise<DashboardData> {
   const mediaRowsPromise = listMediaCached(database);
   const dailyLimitPromise = getReviewDailyLimit(database);
+  const fsrsOptimizerSnapshotPromise =
+    getFsrsOptimizerRuntimeSnapshot(database);
   const newIntroducedTodayCountPromise = loadReviewIntroducedTodayCountCached(
     database,
     now
@@ -95,21 +98,24 @@ async function loadDashboardData(
   const reviewOverviewBundlePromise = Promise.all([
     mediaRowsPromise,
     dailyLimitPromise,
+    fsrsOptimizerSnapshotPromise,
     newIntroducedTodayCountPromise
-  ]).then(([mediaRows, dailyLimit, newIntroducedTodayCount]) =>
-    loadReviewOverviewBundle(
-      database,
-      mediaRows.map((item) => ({
-        id: item.id,
-        slug: item.slug
-      })),
-      {
-        asOf: now,
-        globalMediaRows: mediaRows,
-        resolvedDailyLimit: dailyLimit,
-        resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-      }
-    )
+  ]).then(
+    ([mediaRows, dailyLimit, fsrsOptimizerSnapshot, newIntroducedTodayCount]) =>
+      loadReviewOverviewBundle(
+        database,
+        mediaRows.map((item) => ({
+          id: item.id,
+          slug: item.slug
+        })),
+        {
+          asOf: now,
+          globalMediaRows: mediaRows,
+          resolvedDailyLimit: dailyLimit,
+          resolvedFsrsOptimizerSnapshot: fsrsOptimizerSnapshot,
+          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+        }
+      )
   );
   const mediaPromise = Promise.all([
     mediaRowsPromise,

@@ -30,6 +30,7 @@ import {
   loadReviewIntroducedTodayCountCached,
   loadReviewOverviewBundle
 } from "@/features/review/server";
+import { getFsrsOptimizerRuntimeSnapshot } from "@/features/fsrs-optimizer/server";
 import type { ReviewOverviewSnapshot } from "@/features/review/types";
 import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
 
@@ -129,6 +130,8 @@ export async function getMediaProgressPageData(
     keyParts: ["progress", "media-page", mediaSlug, `bucket:${cacheBucketKey}`],
     loader: async () => {
       const settingsPromise = getStudySettings(database);
+      const fsrsOptimizerSnapshotPromise =
+        getFsrsOptimizerRuntimeSnapshot(database);
       const newIntroducedTodayCountPromise =
         loadReviewIntroducedTodayCountCached(database, now);
       const globalMediaRowsPromise = cacheEligible
@@ -149,15 +152,23 @@ export async function getMediaProgressPageData(
 
       const reviewSnapshotsPromise = Promise.all([
         settingsPromise,
+        fsrsOptimizerSnapshotPromise,
         newIntroducedTodayCountPromise,
         globalMediaRowsPromise
-      ]).then(([settings, newIntroducedTodayCount, globalMediaRows]) =>
-        loadReviewOverviewBundle(database, [media], {
-          asOf: now,
-          globalMediaRows,
-          resolvedDailyLimit: settings.reviewDailyLimit,
-          resolvedNewIntroducedTodayCount: newIntroducedTodayCount
-        })
+      ]).then(
+        ([
+          settings,
+          fsrsOptimizerSnapshot,
+          newIntroducedTodayCount,
+          globalMediaRows
+        ]) =>
+          loadReviewOverviewBundle(database, [media], {
+            asOf: now,
+            globalMediaRows,
+            resolvedDailyLimit: settings.reviewDailyLimit,
+            resolvedFsrsOptimizerSnapshot: fsrsOptimizerSnapshot,
+            resolvedNewIntroducedTodayCount: newIntroducedTodayCount
+          })
       );
       const [sharedMedia, reviewSnapshots, settings] = await Promise.all([
         getMediaDetailData(mediaSlug, database, {

@@ -31,7 +31,7 @@ describe("buildReviewControllerSnapshot", () => {
     expect(snapshot.globalHydrationRequestKey).toBe("answered=0&card=card-a");
     expect(snapshot.requestedSelectedCardId).toBe("card-a");
     expect(snapshot.gradePreviewLookup.size).toBe(0);
-    expect(snapshot.isGradeControlsDisabled).toBe(true);
+    expect(snapshot.isGradeControlsDisabled).toBe(false);
   });
 
   it("resolves requested selected card search params from array form", () => {

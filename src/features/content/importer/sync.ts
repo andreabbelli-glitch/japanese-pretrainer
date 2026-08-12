@@ -47,6 +47,7 @@ import type {
 } from "./types.ts";
 
 const LESSON_CONTENT_UPSERT_CHUNK_SIZE = 10;
+const CONTENT_ROW_WRITE_CHUNK_SIZE = 500;
 
 type DatabaseTransaction = Parameters<
   Parameters<DatabaseClient["transaction"]>[0]
@@ -490,27 +491,34 @@ async function applyMediaImportPlan(
   });
 
   if (input.plan.crossMediaGroups.length > 0) {
-    await transaction
-      .insert(crossMediaGroup)
-      .values(
-        input.plan.crossMediaGroups.map((row) =>
-          prepareTimestampedRow(null, row, crossMediaGroupComparisonKeys)
-        )
-      )
-      .onConflictDoUpdate({
-        target: crossMediaGroup.id,
-        set: crossMediaGroupUpsertSet
-      });
+    const crossMediaGroupRows = input.plan.crossMediaGroups.map((row) =>
+      prepareTimestampedRow(null, row, crossMediaGroupComparisonKeys)
+    );
+
+    for (const chunk of chunkRows(
+      crossMediaGroupRows,
+      CONTENT_ROW_WRITE_CHUNK_SIZE
+    )) {
+      await transaction
+        .insert(crossMediaGroup)
+        .values(chunk)
+        .onConflictDoUpdate({
+          target: crossMediaGroup.id,
+          set: crossMediaGroupUpsertSet
+        });
+    }
   }
 
   if (input.plan.segments.length > 0) {
-    await transaction
-      .insert(segment)
-      .values(input.plan.segments)
-      .onConflictDoUpdate({
+    for (const chunk of chunkRows(
+      input.plan.segments,
+      CONTENT_ROW_WRITE_CHUNK_SIZE
+    )) {
+      await transaction.insert(segment).values(chunk).onConflictDoUpdate({
         target: segment.id,
         set: segmentUpsertSet
       });
+    }
   }
 
   const archivedLessonIds =
@@ -562,10 +570,12 @@ async function applyMediaImportPlan(
       )
     );
 
-    await transaction.insert(lesson).values(lessonRows).onConflictDoUpdate({
-      target: lesson.id,
-      set: lessonUpsertSet
-    });
+    for (const chunk of chunkRows(lessonRows, CONTENT_ROW_WRITE_CHUNK_SIZE)) {
+      await transaction.insert(lesson).values(chunk).onConflictDoUpdate({
+        target: lesson.id,
+        set: lessonUpsertSet
+      });
+    }
   }
 
   if (input.plan.lessonContents.length > 0) {
@@ -621,7 +631,12 @@ async function applyMediaImportPlan(
   }
 
   if (input.plan.entryLinks.length > 0) {
-    await transaction.insert(entryLink).values(input.plan.entryLinks);
+    for (const chunk of chunkRows(
+      input.plan.entryLinks,
+      CONTENT_ROW_WRITE_CHUNK_SIZE
+    )) {
+      await transaction.insert(entryLink).values(chunk);
+    }
   }
 
   if (input.plan.terms.length > 0) {
@@ -633,10 +648,12 @@ async function applyMediaImportPlan(
       )
     );
 
-    await transaction.insert(term).values(termRows).onConflictDoUpdate({
-      target: term.id,
-      set: termUpsertSet
-    });
+    for (const chunk of chunkRows(termRows, CONTENT_ROW_WRITE_CHUNK_SIZE)) {
+      await transaction.insert(term).values(chunk).onConflictDoUpdate({
+        target: term.id,
+        set: termUpsertSet
+      });
+    }
   }
 
   if (currentTermIds.length > 0) {
@@ -648,7 +665,9 @@ async function applyMediaImportPlan(
   const termAliases = input.plan.terms.flatMap((plan) => plan.aliases);
 
   if (termAliases.length > 0) {
-    await transaction.insert(termAlias).values(termAliases);
+    for (const chunk of chunkRows(termAliases, CONTENT_ROW_WRITE_CHUNK_SIZE)) {
+      await transaction.insert(termAlias).values(chunk);
+    }
   }
 
   if (input.plan.grammarPatterns.length > 0) {
@@ -660,13 +679,15 @@ async function applyMediaImportPlan(
       )
     );
 
-    await transaction
-      .insert(grammarPattern)
-      .values(grammarRows)
-      .onConflictDoUpdate({
-        target: grammarPattern.id,
-        set: grammarUpsertSet
-      });
+    for (const chunk of chunkRows(grammarRows, CONTENT_ROW_WRITE_CHUNK_SIZE)) {
+      await transaction
+        .insert(grammarPattern)
+        .values(chunk)
+        .onConflictDoUpdate({
+          target: grammarPattern.id,
+          set: grammarUpsertSet
+        });
+    }
   }
 
   if (currentGrammarIds.length > 0) {
@@ -680,7 +701,12 @@ async function applyMediaImportPlan(
   );
 
   if (grammarAliases.length > 0) {
-    await transaction.insert(grammarAlias).values(grammarAliases);
+    for (const chunk of chunkRows(
+      grammarAliases,
+      CONTENT_ROW_WRITE_CHUNK_SIZE
+    )) {
+      await transaction.insert(grammarAlias).values(chunk);
+    }
   }
 
   if (input.plan.cards.length > 0) {
@@ -692,10 +718,12 @@ async function applyMediaImportPlan(
       )
     );
 
-    await transaction.insert(card).values(cardRows).onConflictDoUpdate({
-      target: card.id,
-      set: cardUpsertSet
-    });
+    for (const chunk of chunkRows(cardRows, CONTENT_ROW_WRITE_CHUNK_SIZE)) {
+      await transaction.insert(card).values(chunk).onConflictDoUpdate({
+        target: card.id,
+        set: cardUpsertSet
+      });
+    }
   }
 
   if (currentCardIds.length > 0) {
@@ -707,7 +735,12 @@ async function applyMediaImportPlan(
   const cardEntryLinks = input.plan.cards.flatMap((plan) => plan.termLinks);
 
   if (cardEntryLinks.length > 0) {
-    await transaction.insert(cardEntryLink).values(cardEntryLinks);
+    for (const chunk of chunkRows(
+      cardEntryLinks,
+      CONTENT_ROW_WRITE_CHUNK_SIZE
+    )) {
+      await transaction.insert(cardEntryLink).values(chunk);
+    }
   }
 
   const prunedTermIds = await pruneRemovedTerms(transaction, {

@@ -5,8 +5,10 @@ export {
   gradeReviewCardSessionWorkflow,
   loadReviewPageDataSessionWorkflow,
   prefetchReviewCardSessionWorkflow,
+  prefetchReviewCardsSessionWorkflow,
   runReviewFormMutationWorkflow,
   runReviewSessionMutationWorkflow,
+  type ReviewCardPrefetchResult,
   type ReviewFormGradeWorkflowInput,
   type ReviewFormMutationWorkflowInput,
   type ReviewSessionMutationWorkflowInput

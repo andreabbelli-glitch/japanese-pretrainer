@@ -21,6 +21,13 @@ import type {
   ReviewQueueSubjectSnapshot,
   ReviewSubjectModel
 } from "@/features/review/model/queue-types";
+import type { FsrsOptimizerSeedSnapshot } from "@/features/fsrs-optimizer/model/snapshot";
+import {
+  isIntradayLearningModel,
+  sortDueReviewSubjectModelsEasiestFirst,
+  sortReviewSubjectModelsByDueTime,
+  type ReviewQueueOrderingContext
+} from "@/features/review/model/queue-ordering";
 
 export {
   buildReviewFirstCandidateSelectedCardContext,
@@ -133,48 +140,6 @@ function preferReviewSubjectModelCardForMedia(
       nowIso
     )
   } satisfies ReviewSubjectModel;
-}
-
-function compareReviewSubjectModelsByDue(
-  left: ReviewSubjectModel,
-  right: ReviewSubjectModel
-) {
-  const leftIsIntradayLearning = isIntradayLearningModel(left);
-  const rightIsIntradayLearning = isIntradayLearningModel(right);
-
-  if (leftIsIntradayLearning !== rightIsIntradayLearning) {
-    return leftIsIntradayLearning ? -1 : 1;
-  }
-
-  if (
-    (left.queueStateSnapshot.dueAt ?? "") !==
-    (right.queueStateSnapshot.dueAt ?? "")
-  ) {
-    return (left.queueStateSnapshot.dueAt ?? "9999").localeCompare(
-      right.queueStateSnapshot.dueAt ?? "9999"
-    );
-  }
-
-  const interactionDifference = right.group.lastInteractionAt.localeCompare(
-    left.group.lastInteractionAt
-  );
-
-  if (interactionDifference !== 0) {
-    return interactionDifference;
-  }
-
-  return compareReviewCardsByOrder(left.card, right.card);
-}
-
-function isIntradayLearningModel(model: ReviewSubjectModel) {
-  const subjectState = model.group.subjectState;
-
-  return (
-    (subjectState?.state === "learning" ||
-      subjectState?.state === "relearning") &&
-    (subjectState.scheduledDays ?? 0) === 0 &&
-    model.queueStateSnapshot.dueAt !== null
-  );
 }
 
 function selectLearnAheadModels(input: {
@@ -321,6 +286,7 @@ export function buildReviewOverviewSnapshot(input: {
   buckets?: ReturnType<typeof bucketAndSortReviewSubjectModels>;
   subjectStates?: Map<string, ReviewSubjectStateSnapshot>;
   visibleMediaId?: string;
+  fsrsOptimizerSnapshot?: FsrsOptimizerSeedSnapshot;
 }): ReviewOverviewSnapshot {
   const models =
     input.subjectModels ??
@@ -332,7 +298,11 @@ export function buildReviewOverviewSnapshot(input: {
       subjectStates: input.subjectStates
     });
   const modelBuckets =
-    input.buckets ?? bucketAndSortReviewSubjectModels(models);
+    input.buckets ??
+    bucketAndSortReviewSubjectModels(models, {
+      fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
+      nowIso: input.nowIso
+    });
   const isVisibleInMedia = createReviewSubjectVisibilityResolver(
     input.visibleMediaId
   );
@@ -344,6 +314,10 @@ export function buildReviewOverviewSnapshot(input: {
     modelBuckets,
     isVisibleInMedia,
     resolveModelForDisplay,
+    {
+      fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
+      nowIso: input.nowIso
+    },
     input.visibleMediaId
   );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
@@ -434,6 +408,7 @@ export function buildReviewQueueSubjectSnapshot(input: {
   nowIso: string;
   subjectGroups: ReviewSubjectGroup[];
   visibleMediaId?: string;
+  fsrsOptimizerSnapshot?: FsrsOptimizerSeedSnapshot;
 }): ReviewQueueSubjectSnapshot {
   const allSubjectModels = buildReviewSubjectModels({
     cards: input.cards,
@@ -456,7 +431,10 @@ export function buildReviewQueueSubjectSnapshot(input: {
   const visibleSubjectModels = input.visibleMediaId
     ? subjectModels.filter((model) => isVisibleInMedia(model.group))
     : subjectModels;
-  const buckets = bucketAndSortReviewSubjectModels(subjectModels);
+  const buckets = bucketAndSortReviewSubjectModels(subjectModels, {
+    fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
+    nowIso: input.nowIso
+  });
   const resolveModelForDisplay = createReviewSubjectDisplayResolver({
     nowIso: input.nowIso,
     visibleMediaId: input.visibleMediaId
@@ -465,6 +443,10 @@ export function buildReviewQueueSubjectSnapshot(input: {
     buckets,
     isVisibleInMedia,
     resolveModelForDisplay,
+    {
+      fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
+      nowIso: input.nowIso
+    },
     input.visibleMediaId
   );
   const effectiveDailyLimit = input.dailyLimit + input.extraNewCount;
@@ -563,7 +545,13 @@ function resolveNextIntradayDueAt(models: ReviewSubjectModel[]) {
   return resolveNextDueAt(models.filter(isIntradayLearningModel));
 }
 
-export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
+export function bucketAndSortReviewSubjectModels(
+  models: ReviewSubjectModel[],
+  ordering: {
+    fsrsOptimizerSnapshot?: FsrsOptimizerSeedSnapshot;
+    nowIso: string;
+  }
+) {
   const dueModels: ReviewSubjectModel[] = [];
   const newModels: ReviewSubjectModel[] = [];
   const manualModels: ReviewSubjectModel[] = [];
@@ -590,8 +578,8 @@ export function bucketAndSortReviewSubjectModels(models: ReviewSubjectModel[]) {
     }
   }
 
-  dueModels.sort(compareReviewSubjectModelsByDue);
-  upcomingModels.sort(compareReviewSubjectModelsByDue);
+  sortDueReviewSubjectModelsEasiestFirst(dueModels, ordering);
+  sortReviewSubjectModelsByDueTime(upcomingModels);
   newModels.sort(compareReviewSubjectModelsByOrder);
   manualModels.sort(compareReviewSubjectModelsByOrder);
   suspendedModels.sort(compareReviewSubjectModelsByOrder);
@@ -609,6 +597,7 @@ function classifyReviewSubjectModels(
   buckets: ReturnType<typeof bucketAndSortReviewSubjectModels>,
   isVisibleInMedia: (group: ReviewSubjectGroup) => boolean,
   resolveModelForDisplay: (model: ReviewSubjectModel) => ReviewSubjectModel,
+  ordering: ReviewQueueOrderingContext,
   visibleMediaId?: string
 ) {
   if (!visibleMediaId) {
@@ -633,12 +622,16 @@ function classifyReviewSubjectModels(
   const manualModels: ReviewSubjectModel[] = [];
   const suspendedModels: ReviewSubjectModel[] = [];
   const upcomingModels: ReviewSubjectModel[] = [];
+  const stableOrderBySubjectKey = new Map<string, number>();
+  let stableOrder = 0;
   const reclassifyVisibleModels = (models: ReviewSubjectModel[]) => {
     for (const model of models) {
       if (!isVisibleInMedia(model.group)) {
         continue;
       }
 
+      stableOrderBySubjectKey.set(model.group.identity.subjectKey, stableOrder);
+      stableOrder += 1;
       const displayModel = resolveModelForDisplay(model);
 
       switch (displayModel.queueStateSnapshot.bucket) {
@@ -666,6 +659,12 @@ function classifyReviewSubjectModels(
   reclassifyVisibleModels(buckets.manualModels);
   reclassifyVisibleModels(buckets.suspendedModels);
   reclassifyVisibleModels(buckets.upcomingModels);
+
+  sortDueReviewSubjectModelsEasiestFirst(dueModels, {
+    ...ordering,
+    stableOrderBySubjectKey
+  });
+  sortReviewSubjectModelsByDueTime(upcomingModels, stableOrderBySubjectKey);
 
   return {
     dueModels,

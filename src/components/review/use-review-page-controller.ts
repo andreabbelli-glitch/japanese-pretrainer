@@ -143,7 +143,6 @@ export function useReviewPageController(input: {
     setViewData
   });
   const {
-    getGradedCardIds,
     handleGradeCard: submitGradeCard,
     hasBlockingGradeSubmissionInFlight,
     pendingGradeCardIds,
@@ -251,9 +250,6 @@ export function useReviewPageController(input: {
   });
 
   function handleGradeCard(rating: ReviewGradeValue) {
-    // The first-candidate payload intentionally omits server-derived previews.
-    // Keep pointer and programmatic grading closed until full hydration uses
-    // the same authoritative schedule that persistence will use.
     if (isGradeControlsDisabled) {
       return;
     }
@@ -340,7 +336,6 @@ export function useReviewPageController(input: {
     const actionInput = buildReviewSessionActionInput(
       viewData,
       selectedCard,
-      getGradedCardIds(),
       actionRedirectMode
     );
 
@@ -369,7 +364,6 @@ export function useReviewPageController(input: {
     const actionInput = buildReviewSessionActionInput(
       viewData,
       selectedCard,
-      getGradedCardIds(),
       actionRedirectMode
     );
 

@@ -1,4 +1,5 @@
 import type { ReviewPageData } from "@/features/review/client";
+import { normalizeReviewSearchState } from "@/features/review/model/search-state";
 import { readFirstNonEmptySearchParam } from "@/features/shared/model/search-params";
 
 import {
@@ -65,16 +66,90 @@ export function resolveHydratedFirstCandidateRevealedCardId(input: {
   return getInitiallyRevealedCardId(input.nextData);
 }
 
+export function isReviewFirstCandidateDataConsistentWithSearchParams(input: {
+  data: Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"];
+  searchParams: Record<string, string | string[] | undefined>;
+}) {
+  if (input.data.scope !== "global") {
+    return true;
+  }
+
+  const searchState = normalizeReviewSearchState(input.searchParams);
+  const dataExtraNewAnchorCount =
+    input.data.session.extraNewCount > 0
+      ? (input.data.session.extraNewAnchorCount ?? null)
+      : null;
+  const expectedShowAnswer =
+    searchState.showAnswer || !input.data.selectedCardContext.isQueueCard;
+
+  return (
+    input.data.session.answeredCount === searchState.answeredCount &&
+    input.data.session.extraNewCount === searchState.extraNewCount &&
+    dataExtraNewAnchorCount === searchState.extraNewAnchorCount &&
+    (input.data.session.segmentId ?? null) === searchState.segmentId &&
+    (input.data.mode ?? "review") === searchState.mode &&
+    isReviewFirstCandidateSelectionConsistent({
+      data: input.data,
+      requestedCardId: searchState.selectedCardId
+    }) &&
+    input.data.selectedCardContext.showAnswer === expectedShowAnswer
+  );
+}
+
+function isReviewFirstCandidateSelectionConsistent(input: {
+  data: Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"];
+  requestedCardId: string | null;
+}) {
+  if (input.data.selectedCard?.id === input.requestedCardId) {
+    return true;
+  }
+
+  const canonicalFirstCardId = input.data.queueCardIds[0] ?? null;
+
+  if (input.requestedCardId === null) {
+    return isCanonicalFirstCandidateSelection(input.data, canonicalFirstCardId);
+  }
+
+  const resolution = input.data.requestedCardResolution;
+
+  if (
+    !resolution ||
+    resolution.requestedCardId !== input.requestedCardId ||
+    resolution.resolved
+  ) {
+    return false;
+  }
+
+  return isCanonicalFirstCandidateSelection(input.data, canonicalFirstCardId);
+}
+
+function isCanonicalFirstCandidateSelection(
+  data: Parameters<typeof shouldAdoptServerFirstCandidateData>[0]["nextData"],
+  canonicalFirstCardId: string | null
+) {
+  if (canonicalFirstCardId === null) {
+    return (
+      data.selectedCard === null &&
+      !data.selectedCardContext.isQueueCard &&
+      data.selectedCardContext.position === null
+    );
+  }
+
+  return (
+    data.selectedCard?.id === canonicalFirstCardId &&
+    data.selectedCardContext.isQueueCard &&
+    data.selectedCardContext.position === 1
+  );
+}
+
 export function buildReviewSessionActionInput(
   viewData: ReviewPageData,
   selectedCard: NonNullable<ReviewPageClientData["selectedCard"]>,
-  gradedCardIds: string[],
   redirectMode: {
     answeredCount: number;
     cardId: string;
     cardMediaSlug?: string;
     extraNewCount: number;
-    gradedCardIds?: string[];
     mediaSlug?: string;
     redirectMode: "advance_queue" | "preserve_card";
     segmentId?: string | null;
@@ -87,7 +162,6 @@ export function buildReviewSessionActionInput(
     cardMediaSlug: selectedCard.mediaSlug,
     extraNewAnchorCount: viewData.session.extraNewAnchorCount ?? null,
     extraNewCount: viewData.session.extraNewCount,
-    gradedCardIds,
     mediaSlug: viewData.scope === "media" ? viewData.media.slug : undefined,
     redirectMode,
     segmentId: viewData.session.segmentId,

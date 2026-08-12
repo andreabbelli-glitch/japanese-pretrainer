@@ -271,4 +271,119 @@ describe("resolveReviewPageSelection", () => {
     visibilitySpy.mockRestore();
     representativeSpy.mockRestore();
   });
+
+  it("re-sorts local due cards after a cross-media representative changes bucket", () => {
+    const hardCard = {
+      id: "card-hard",
+      mediaId: "media-a",
+      status: "active",
+      orderIndex: 1,
+      createdAt: "2026-03-01T09:00:00.000Z"
+    } as unknown as ReviewCardListItem;
+    const sharedCards = [
+      {
+        id: "card-global-suspended",
+        mediaId: "media-b",
+        status: "suspended",
+        orderIndex: 2,
+        createdAt: "2026-03-02T09:00:00.000Z"
+      },
+      {
+        id: "card-local-easy",
+        mediaId: "media-a",
+        status: "active",
+        orderIndex: 3,
+        createdAt: "2026-03-03T09:00:00.000Z"
+      }
+    ] as unknown as ReviewCardListItem[];
+    const makeState = (input: {
+      cardId: string;
+      lastReviewedAt: string;
+      stability: number;
+      subjectKey: string;
+    }) => ({
+      cardId: input.cardId,
+      createdAt: "2026-03-01T09:00:00.000Z",
+      crossMediaGroupId: null,
+      dueAt: "2026-03-09T09:00:00.000Z",
+      difficulty: 5,
+      entryId: input.subjectKey,
+      entryType: "term" as const,
+      lapses: 0,
+      lastInteractionAt: input.lastReviewedAt,
+      lastReviewedAt: input.lastReviewedAt,
+      learningSteps: 0,
+      manualOverride: false,
+      reps: 3,
+      scheduledDays: 1,
+      schedulerVersion: "fsrs_v1" as const,
+      stability: input.stability,
+      state: "review" as const,
+      subjectKey: input.subjectKey,
+      subjectType: "group" as const,
+      suspended: false,
+      updatedAt: input.lastReviewedAt
+    });
+    const subjectGroups = [
+      {
+        cards: [hardCard],
+        identity: reviewSubjectModule.buildReviewSubjectIdentityFromCanonical({
+          cardId: hardCard.id,
+          cardType: "recognition",
+          canonicalSubjectKey: "group:hard",
+          crossMediaGroupId: null,
+          entryId: "entry-hard",
+          entryType: "term",
+          subjectKind: "group"
+        }),
+        lastInteractionAt: "2026-03-01T09:00:00.000Z",
+        representativeCard: hardCard,
+        subjectState: makeState({
+          cardId: hardCard.id,
+          lastReviewedAt: "2026-03-01T09:00:00.000Z",
+          stability: 1,
+          subjectKey: "group:hard"
+        })
+      },
+      {
+        cards: sharedCards,
+        identity: reviewSubjectModule.buildReviewSubjectIdentityFromCanonical({
+          cardId: sharedCards[0]!.id,
+          cardType: "recognition",
+          canonicalSubjectKey: "group:easy",
+          crossMediaGroupId: "cross-media-easy",
+          entryId: "entry-easy",
+          entryType: "term",
+          subjectKind: "group"
+        }),
+        lastInteractionAt: "2026-03-09T09:00:00.000Z",
+        representativeCard: sharedCards[0]!,
+        subjectState: {
+          ...makeState({
+            cardId: sharedCards[0]!.id,
+            lastReviewedAt: "2026-03-09T09:00:00.000Z",
+            stability: 100,
+            subjectKey: "group:easy"
+          }),
+          crossMediaGroupId: "cross-media-easy"
+        }
+      }
+    ] satisfies ReviewSubjectGroup[];
+
+    const snapshot = buildReviewQueueSubjectSnapshot({
+      cards: [hardCard, ...sharedCards],
+      dailyLimit: 10,
+      entryLookup: new Map(),
+      extraNewCount: 0,
+      newIntroducedTodayCount: 0,
+      nowIso: "2026-03-10T09:00:00.000Z",
+      subjectGroups,
+      visibleMediaId: "media-a"
+    });
+
+    expect(snapshot.queueModels.map((model) => model.card.id)).toEqual([
+      "card-local-easy",
+      "card-hard"
+    ]);
+  });
 });

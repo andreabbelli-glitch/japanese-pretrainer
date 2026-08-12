@@ -10,7 +10,6 @@ import {
   buildOptimisticGradeResult,
   isReviewPageData,
   resolveOptimisticReviewAdvanceCardForClientData,
-  resolveReviewAdvanceCandidateCardId,
   resolveReviewAdvanceCandidateQueuePosition,
   type ReviewGradeValue
 } from "./review-page-helpers";
@@ -48,7 +47,6 @@ export type ReviewGradeSubmissionPlan =
       optimisticNextQueuePosition: number | null;
       optimisticSourceData: ReviewPageClientData | null;
       optimisticViewData: ReviewPageClientData | null;
-      preferredNextCardId: string | null;
     } & ReviewGradeSubmissionPlanBase);
 
 export function buildReviewGradeSubmissionPlan(input: {
@@ -56,7 +54,6 @@ export function buildReviewGradeSubmissionPlan(input: {
   advanceWindowCardIds: string[];
   forcedContrastSelection: ReviewForcedContrastSelection | null;
   fullViewData: ReviewPageData | null;
-  gradedCardIds: string[];
   isHydratingFullData: boolean;
   isQueueCard: boolean;
   pendingGradeSubmissionCount: number;
@@ -84,7 +81,6 @@ export function buildReviewGradeSubmissionPlan(input: {
     return {
       actionInput: buildPreserveCardGradeActionInput({
         forcedKanjiClashContrast,
-        gradedCardIds: input.gradedCardIds,
         rating: input.rating,
         selectedCard: input.selectedCard,
         sessionViewData: input.sessionViewData
@@ -98,16 +94,11 @@ export function buildReviewGradeSubmissionPlan(input: {
   const nextQueueCardIds = input.activeQueueCardIds.filter(
     (id) => id !== input.selectedCard.id
   );
-  const preferredNextCardId = resolveReviewAdvanceCandidateCardId({
-    candidateCardIds: input.advanceWindowCardIds,
-    prefetchedCardIds: new Set(input.prefetchedCards.keys())
-  });
   const candidateCardIds = input.advanceWindowCardIds;
-  const nextCardId = preferredNextCardId ?? candidateCardIds[0] ?? null;
+  const nextCardId = candidateCardIds[0] ?? null;
   const optimisticNextCard = resolveOptimisticReviewAdvanceCardForClientData({
     candidateCardIds,
     data: input.sessionViewData,
-    preferredCardId: preferredNextCardId,
     prefetchedCards: input.prefetchedCards
   });
   const optimisticNextCardId = optimisticNextCard?.id ?? null;
@@ -140,13 +131,12 @@ export function buildReviewGradeSubmissionPlan(input: {
     actionInput: buildAdvanceQueueGradeActionInput({
       candidateCardIds,
       forcedKanjiClashContrast,
-      gradedCardIds: input.gradedCardIds,
       nextCardId,
       nextQueueCardIds,
+      prefetchedCards: input.prefetchedCards,
       rating: input.rating,
       selectedCard: input.selectedCard,
-      sessionViewData: input.sessionViewData,
-      fullViewData: input.fullViewData
+      sessionViewData: input.sessionViewData
     }),
     canOptimisticallyAdvance,
     candidateCardIds,
@@ -158,8 +148,7 @@ export function buildReviewGradeSubmissionPlan(input: {
     optimisticNextCard,
     optimisticNextQueuePosition,
     optimisticSourceData,
-    optimisticViewData,
-    preferredNextCardId
+    optimisticViewData
   };
 }
 
@@ -179,7 +168,6 @@ function buildForcedContrastPayload(
 
 function buildPreserveCardGradeActionInput(input: {
   forcedKanjiClashContrast?: ReviewForcedContrastPayload;
-  gradedCardIds: string[];
   rating: ReviewGradeValue;
   selectedCard: NonNullable<ReviewPageClientData["selectedCard"]>;
   sessionViewData: ReviewPageClientData;
@@ -196,10 +184,9 @@ function buildPreserveCardGradeActionInput(input: {
 function buildAdvanceQueueGradeActionInput(input: {
   candidateCardIds: string[];
   forcedKanjiClashContrast?: ReviewForcedContrastPayload;
-  fullViewData: ReviewPageData | null;
-  gradedCardIds: string[];
   nextCardId: string | null;
   nextQueueCardIds: string[];
+  prefetchedCards: ReadonlyMap<string, ReviewQueueCard>;
   rating: ReviewGradeValue;
   selectedCard: NonNullable<ReviewPageClientData["selectedCard"]>;
   sessionViewData: ReviewPageClientData;
@@ -207,7 +194,25 @@ function buildAdvanceQueueGradeActionInput(input: {
   const actionInput = buildBaseGradeActionInput(input);
 
   actionInput.candidateCardIds = input.candidateCardIds;
-  actionInput.canonicalCandidateCardIds = input.nextQueueCardIds;
+  actionInput.canonicalCandidateCardIds = input.nextQueueCardIds.slice(0, 4);
+  const canonicalCandidate = resolveOptimisticReviewAdvanceCardForClientData({
+    candidateCardIds: input.nextQueueCardIds,
+    data: input.sessionViewData,
+    prefetchedCards: input.prefetchedCards
+  });
+
+  if (
+    canonicalCandidate &&
+    canonicalCandidate.id === input.nextQueueCardIds[0]
+  ) {
+    actionInput.canonicalCandidateSnapshot = {
+      bucket: canonicalCandidate.bucket,
+      cardId: canonicalCandidate.id,
+      reviewStateUpdatedAt: canonicalCandidate.reviewStateUpdatedAt ?? null,
+      schedulingKey:
+        canonicalCandidate.reviewSeedState.schedulingKey?.trim() || null
+    };
+  }
   actionInput.gradedCardBucket = input.selectedCard.bucket;
   actionInput.gradedCardDueAt = input.selectedCard.dueAt;
   actionInput.gradedCardScheduledDays =
@@ -215,18 +220,21 @@ function buildAdvanceQueueGradeActionInput(input: {
   actionInput.gradedCardState = input.selectedCard.reviewSeedState.state;
   actionInput.nextCardId = input.nextCardId;
   actionInput.sessionMedia = input.sessionViewData.media;
-
-  if (input.fullViewData) {
-    actionInput.sessionQueue = input.fullViewData.queue;
-    actionInput.sessionSettings = input.fullViewData.settings;
-  }
+  actionInput.sessionQueue = {
+    ...input.sessionViewData.queue,
+    advanceCards: [],
+    cards: [],
+    manualCards: [],
+    suspendedCards: [],
+    upcomingCards: []
+  };
+  actionInput.sessionSettings = input.sessionViewData.settings;
 
   return actionInput;
 }
 
 function buildBaseGradeActionInput(input: {
   forcedKanjiClashContrast?: ReviewForcedContrastPayload;
-  gradedCardIds: string[];
   rating: ReviewGradeValue;
   selectedCard: NonNullable<ReviewPageClientData["selectedCard"]>;
   sessionViewData: ReviewPageClientData;
@@ -240,7 +248,6 @@ function buildBaseGradeActionInput(input: {
     extraNewCount: input.sessionViewData.session.extraNewCount,
     expectedUpdatedAt:
       input.sessionViewData.selectedCardContext.reviewStateUpdatedAt ?? null,
-    gradedCardIds: input.gradedCardIds,
     mediaSlug:
       input.sessionViewData.scope === "media"
         ? input.sessionViewData.media.slug

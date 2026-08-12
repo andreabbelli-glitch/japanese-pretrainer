@@ -9,6 +9,7 @@ export const SETTINGS_TAG = "settings";
 export const GLOSSARY_SUMMARY_TAG = "glossary-summary";
 export const REVIEW_SUMMARY_TAG = "review-summary";
 export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
+export const REVIEW_CARD_CONTENT_TAG = "review-card-content";
 export const CONSOLIDATION_SUMMARY_TAG = "consolidation-summary";
 export const TEXTBOOK_LESSON_BODY_TAG = "textbook-lesson-body";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
@@ -103,10 +104,22 @@ export async function runWithTaggedCache<T>(input: {
     return input.loader();
   }
 
-  return nextCache.unstable_cache(async () => input.loader(), input.keyParts, {
-    revalidate: false,
-    tags: dedupeTags(input.tags)
-  })();
+  try {
+    return await nextCache.unstable_cache(
+      async () => input.loader(),
+      input.keyParts,
+      {
+        revalidate: false,
+        tags: dedupeTags(input.tags)
+      }
+    )();
+  } catch (error) {
+    if (!isMissingIncrementalCacheContextError(error)) {
+      throw error;
+    }
+
+    return input.loader();
+  }
 }
 
 export function revalidateDataCacheTags(tags: string[]) {
@@ -245,6 +258,14 @@ export function updateReviewSummaryCache(mediaId?: string | null) {
   }
 }
 
+export function revalidateReviewCardContentCache() {
+  safeRevalidateTag(REVIEW_CARD_CONTENT_TAG);
+}
+
+export function updateReviewCardContentCache() {
+  safeUpdateTag(REVIEW_CARD_CONTENT_TAG);
+}
+
 export function updateConsolidationSummaryCache(mediaId?: string | null) {
   safeUpdateTag(CONSOLIDATION_SUMMARY_TAG);
   safeUpdateTag(REVIEW_FIRST_CANDIDATE_TAG);
@@ -320,5 +341,16 @@ function isMissingNextCacheContextError(error: unknown) {
     error instanceof Error &&
     (error.message.includes("static generation store missing") ||
       error.message.includes("can only be called from within a Server Action"))
+  );
+}
+
+function isMissingIncrementalCacheContextError(error: unknown) {
+  return (
+    error instanceof Error &&
+    ((error as Error & { __NEXT_ERROR_CODE?: string }).__NEXT_ERROR_CODE ===
+      "E469" ||
+      error.message.includes(
+        "Invariant: incrementalCache missing in unstable_cache"
+      ))
   );
 }

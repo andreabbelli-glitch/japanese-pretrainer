@@ -55,6 +55,10 @@ describe("review page state", () => {
     } as ReviewPageClientData;
 
     const nextData = {
+      queue: {
+        advanceCards: []
+      },
+      queueCardIds: [],
       selectedCard: {
         id: "card-b"
       },
@@ -86,6 +90,10 @@ describe("review page state", () => {
     } as ReviewPageClientData;
 
     const nextData = {
+      queue: {
+        advanceCards: []
+      },
+      queueCardIds: [],
       selectedCard: {
         id: "card-a"
       },
@@ -101,6 +109,81 @@ describe("review page state", () => {
     expect(
       mergeReviewPageData(currentData, nextData).selectedCardContext.showAnswer
     ).toBe(false);
+  });
+
+  it("keeps the canonical prefetched window when a compact grade response omits it", () => {
+    const advanceCards = [{ id: "card-c" }, { id: "card-d" }];
+    const currentData = {
+      queue: {
+        advanceCards
+      },
+      selectedCard: {
+        id: "card-b"
+      },
+      selectedCardContext: {
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 1
+      }
+    } as unknown as ReviewPageClientData;
+    const nextData = {
+      queue: {
+        advanceCards: []
+      },
+      queueCardIds: [],
+      selectedCard: {
+        id: "card-b"
+      },
+      selectedCardContext: {
+        gradePreviews: [],
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 1
+      }
+    } as unknown as ReviewPageData;
+
+    expect(mergeReviewPageData(currentData, nextData).queue.advanceCards).toBe(
+      advanceCards
+    );
+  });
+
+  it("drops an old prefetched window when the server selects a different card", () => {
+    const currentData = {
+      queue: {
+        advanceCards: [{ id: "card-c" }]
+      },
+      selectedCard: {
+        id: "card-b"
+      },
+      selectedCardContext: {
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 1
+      }
+    } as unknown as ReviewPageClientData;
+    const nextData = {
+      queue: {
+        advanceCards: []
+      },
+      queueCardIds: [],
+      selectedCard: {
+        id: "card-c"
+      },
+      selectedCardContext: {
+        gradePreviews: [],
+        showAnswer: false
+      },
+      session: {
+        answeredCount: 1
+      }
+    } as unknown as ReviewPageData;
+
+    expect(mergeReviewPageData(currentData, nextData).queue.advanceCards).toEqual(
+      []
+    );
   });
 
   it("accepts same-progress server data so settings and notices can refresh", () => {

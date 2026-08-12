@@ -146,7 +146,8 @@ export function buildReviewQueueSnapshot(input: {
     newIntroducedTodayCount: input.newIntroducedTodayCount,
     nowIso: input.nowIso,
     subjectGroups: input.subjectGroups,
-    visibleMediaId: input.visibleMediaId
+    visibleMediaId: input.visibleMediaId,
+    fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot
   });
   const mapInput: ReviewQueueCardMapInput = {
     contextCache: new Map(),

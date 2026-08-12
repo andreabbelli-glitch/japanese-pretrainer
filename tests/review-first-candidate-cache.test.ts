@@ -5,21 +5,41 @@ import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const {
+  cacheLoadCounts,
   cacheStore,
+  cacheTagsByKey,
   getFsrsOptimizerRuntimeContextMock,
   getFsrsOptimizerRuntimeSnapshotMock,
   getFsrsOptimizerSnapshotMock,
   revalidateTagMock,
   unstableCacheMock
 } = vi.hoisted(() => {
+  const cacheLoadCounts = new Map<string, number>();
   const cacheStore = new Map<string, Promise<unknown>>();
-  const revalidateTagMock = vi.fn();
+  const cacheTagsByKey = new Map<string, string[]>();
+  const revalidateTagMock = vi.fn((tag: string) => {
+    for (const [cacheKey, tags] of cacheTagsByKey) {
+      if (tags.includes(tag)) {
+        cacheStore.delete(cacheKey);
+      }
+    }
+  });
   const unstableCacheMock = vi.fn(
-    (loader: () => Promise<unknown>, keyParts: string[]) => {
+    (
+      loader: () => Promise<unknown>,
+      keyParts: string[],
+      options?: { tags?: string[] }
+    ) => {
       const cacheKey = JSON.stringify(keyParts);
+
+      cacheTagsByKey.set(cacheKey, options?.tags ?? []);
 
       return async () => {
         if (!cacheStore.has(cacheKey)) {
+          cacheLoadCounts.set(
+            cacheKey,
+            (cacheLoadCounts.get(cacheKey) ?? 0) + 1
+          );
           cacheStore.set(cacheKey, loader());
         }
 
@@ -29,7 +49,9 @@ const {
   );
 
   return {
+    cacheLoadCounts,
     cacheStore,
+    cacheTagsByKey,
     getFsrsOptimizerRuntimeContextMock: vi.fn(),
     getFsrsOptimizerRuntimeSnapshotMock: vi.fn(),
     getFsrsOptimizerSnapshotMock: vi.fn(),
@@ -45,10 +67,9 @@ vi.mock("next/cache", () => ({
 }));
 
 vi.mock("@/features/cache/server/data-cache", async () => {
-  const actual =
-    await vi.importActual<typeof import("@/features/cache/server/data-cache")>(
-      "@/features/cache/server/data-cache"
-    );
+  const actual = await vi.importActual<
+    typeof import("@/features/cache/server/data-cache")
+  >("@/features/cache/server/data-cache");
 
   return {
     ...actual,
@@ -57,9 +78,9 @@ vi.mock("@/features/cache/server/data-cache", async () => {
 });
 
 vi.mock("@/features/fsrs-optimizer/server", async () => {
-  const actual = await vi.importActual<typeof import("@/features/fsrs-optimizer/server")>(
-    "@/features/fsrs-optimizer/server"
-  );
+  const actual = await vi.importActual<
+    typeof import("@/features/fsrs-optimizer/server")
+  >("@/features/fsrs-optimizer/server");
 
   getFsrsOptimizerRuntimeContextMock.mockImplementation(
     actual.getFsrsOptimizerRuntimeContext
@@ -88,6 +109,7 @@ import { runMigrations } from "@/db/migrate";
 import { reviewSubjectState } from "@/db/schema";
 import {
   revalidateGlossarySummaryCache,
+  revalidateReviewCardContentCache,
   revalidateReviewSummaryCache,
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
@@ -108,6 +130,10 @@ import {
   hydrateReviewCard
 } from "@/features/review/server";
 import { applyReviewGrade } from "@/features/review/server/service";
+import {
+  resetReviewCardProgress,
+  setReviewCardSuspended
+} from "@/features/review/server/mutations";
 import { reviewSchedulerConfig } from "@/features/review/model/scheduler";
 import {
   buildReviewSubjectStateRow,
@@ -157,7 +183,9 @@ describe("global review first-candidate cache", () => {
   let tempDir = "";
 
   beforeEach(async () => {
+    cacheLoadCounts.clear();
     cacheStore.clear();
+    cacheTagsByKey.clear();
     getFsrsOptimizerRuntimeContextMock.mockClear();
     getFsrsOptimizerRuntimeSnapshotMock.mockClear();
     getFsrsOptimizerSnapshotMock.mockClear();
@@ -244,8 +272,8 @@ describe("global review first-candidate cache", () => {
       );
       expect(firstCacheHits).toHaveLength(2);
       expect(thirdCacheHits).toHaveLength(1);
-      expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
-      expect(getFsrsOptimizerRuntimeSnapshotMock).toHaveBeenCalledTimes(2);
+      expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(3);
+      expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
       expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
       revalidateReviewSummaryCache("media_a");
@@ -259,6 +287,21 @@ describe("global review first-candidate cache", () => {
     } finally {
       vi.useRealTimers();
     }
+  });
+
+  it("batches cold FSRS and study settings into one database read", async () => {
+    await seedSingleReviewCardFixture(database);
+    const settingsReadSpy = vi.spyOn(
+      database.query.userSetting,
+      "findMany"
+    );
+
+    const result = await getGlobalReviewFirstCandidateLoadResult({}, database);
+
+    expect(result.kind).toBe("ready");
+    expect(settingsReadSpy).toHaveBeenCalledTimes(1);
+
+    settingsReadSpy.mockRestore();
   });
 
   it("reuses the time-sensitive review launch cache within a local bucket and refreshes on the next bucket", async () => {
@@ -338,7 +381,81 @@ describe("global review first-candidate cache", () => {
     );
   });
 
-  it("skips FSRS snapshot loading when the global queue has no selected card", async () => {
+  it("keeps static card content warm when a review mutation expires dynamic hydration", async () => {
+    await seedSingleReviewCardFixture(database);
+    const fsrsCacheKeyPart = await getFsrsOptimizerCacheKeyPart(database);
+    const hydrationCacheKey = JSON.stringify([
+      "review",
+      "hydrated-card",
+      "card_a",
+      `fsrs:${fsrsCacheKeyPart}`
+    ]);
+    const contentCacheKey = JSON.stringify([
+      "review",
+      "card-content",
+      "card_a"
+    ]);
+
+    await hydrateReviewCard({ cardId: "card_a", database });
+
+    expect(cacheLoadCounts.get(hydrationCacheKey)).toBe(1);
+    expect(cacheLoadCounts.get(contentCacheKey)).toBe(1);
+
+    revalidateReviewSummaryCache("media_a");
+
+    expect(cacheStore.has(hydrationCacheKey)).toBe(false);
+    expect(cacheStore.has(contentCacheKey)).toBe(true);
+
+    await hydrateReviewCard({ cardId: "card_a", database });
+
+    expect(cacheLoadCounts.get(hydrationCacheKey)).toBe(2);
+    expect(cacheLoadCounts.get(contentCacheKey)).toBe(1);
+  });
+
+  it("recomposes suspended and reset state over warm static card content", async () => {
+    await seedSingleReviewCardFixture(database);
+    const contentCacheKey = JSON.stringify([
+      "review",
+      "card-content",
+      "card_a"
+    ]);
+
+    const initial = await hydrateReviewCard({ cardId: "card_a", database });
+
+    expect(initial?.effectiveState).not.toBe("suspended");
+    expect(cacheLoadCounts.get(contentCacheKey)).toBe(1);
+
+    await setReviewCardSuspended({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-03-10T10:00:00.000Z"),
+      suspended: true
+    });
+    revalidateReviewSummaryCache("media_a");
+
+    const suspended = await hydrateReviewCard({
+      cardId: "card_a",
+      database
+    });
+
+    expect(suspended?.effectiveState).toBe("suspended");
+    expect(cacheLoadCounts.get(contentCacheKey)).toBe(1);
+
+    await resetReviewCardProgress({
+      cardId: "card_a",
+      database,
+      now: new Date("2026-03-10T10:01:00.000Z")
+    });
+    revalidateReviewSummaryCache("media_a");
+
+    const reset = await hydrateReviewCard({ cardId: "card_a", database });
+
+    expect(reset?.effectiveState).toBe("new");
+    expect(reset?.reviewSeedState.reps).toBe(0);
+    expect(cacheLoadCounts.get(contentCacheKey)).toBe(1);
+  });
+
+  it("loads one FSRS ordering context when the global queue has no selected card", async () => {
     await seedSingleReviewCardFixture(database);
 
     await database.insert(reviewSubjectState).values(
@@ -362,7 +479,7 @@ describe("global review first-candidate cache", () => {
     expect(
       result.kind === "ready" ? result.data.selectedCard : null
     ).toBeNull();
-    expect(getFsrsOptimizerRuntimeContextMock).not.toHaveBeenCalled();
+    expect(getFsrsOptimizerRuntimeContextMock).toHaveBeenCalledTimes(1);
     expect(getFsrsOptimizerRuntimeSnapshotMock).not.toHaveBeenCalled();
   });
 
@@ -476,7 +593,7 @@ describe("global review first-candidate cache", () => {
 
       expect(second.kind).toBe("ready");
       expect(updatedFsrsCacheKeyPart).not.toBe(initialFsrsCacheKeyPart);
-      expect(cacheStore.has(firstCacheKey)).toBe(true);
+      expect(cacheStore.has(firstCacheKey)).toBe(false);
       expect(cacheStore.has(secondCacheKey)).toBe(true);
       expect(secondCacheKey).not.toBe(firstCacheKey);
     } finally {
@@ -683,5 +800,41 @@ describe("global review first-candidate cache", () => {
         cacheKey.includes('"review","stable-workspace"')
       )
     ).toBe(true);
+  });
+
+  it("keeps stable workspace content warm across grades and expires it on content changes", async () => {
+    await seedSingleReviewCardFixture(database);
+    const asOf = new Date("2026-03-10T10:00:00.000Z");
+
+    await loadReviewWorkspaceV2({
+      database,
+      mediaIds: ["media_a"],
+      now: asOf
+    });
+
+    const workspaceCacheKey = [...cacheStore.keys()].find((cacheKey) =>
+      cacheKey.includes('"review","stable-workspace"')
+    );
+
+    expect(workspaceCacheKey).toBeDefined();
+    expect(cacheLoadCounts.get(workspaceCacheKey!)).toBe(1);
+
+    revalidateReviewSummaryCache("media_a");
+    await loadReviewWorkspaceV2({
+      database,
+      mediaIds: ["media_a"],
+      now: asOf
+    });
+
+    expect(cacheLoadCounts.get(workspaceCacheKey!)).toBe(1);
+
+    revalidateReviewCardContentCache();
+    await loadReviewWorkspaceV2({
+      database,
+      mediaIds: ["media_a"],
+      now: asOf
+    });
+
+    expect(cacheLoadCounts.get(workspaceCacheKey!)).toBe(2);
   });
 });

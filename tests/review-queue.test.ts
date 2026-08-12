@@ -761,17 +761,17 @@ describe("review queue", () => {
     const explicitQueuePage = await getReviewPageData(
       developmentFixture.mediaSlug,
       {
-        card: "card_fixture_remaining_count"
+        card: developmentFixture.primaryCardId
       },
       database
     );
 
     expect(frontQueuePage?.selectedCard?.id).toBe(
-      developmentFixture.primaryCardId
+      "card_fixture_remaining_count"
     );
     expect(frontQueuePage?.queueCardIds).toEqual([
-      developmentFixture.primaryCardId,
-      "card_fixture_remaining_count"
+      "card_fixture_remaining_count",
+      developmentFixture.primaryCardId
     ]);
     expect(frontQueuePage?.selectedCardContext.position).toBe(1);
     expect(frontQueuePage?.selectedCardContext.remainingCount).toBe(1);
@@ -788,7 +788,7 @@ describe("review queue", () => {
     ).toBe(`/media/${developmentFixture.mediaSlug}/review`);
 
     expect(explicitQueuePage?.selectedCard?.id).toBe(
-      "card_fixture_remaining_count"
+      developmentFixture.primaryCardId
     );
     expect(explicitQueuePage?.selectedCardContext.position).toBe(2);
     expect(explicitQueuePage?.selectedCardContext.remainingCount).toBe(0);
@@ -804,7 +804,7 @@ describe("review queue", () => {
         showAnswer: explicitQueuePage?.selectedCardContext.showAnswer
       })
     ).toBe(
-      `/media/${developmentFixture.mediaSlug}/review?card=card_fixture_remaining_count`
+      `/media/${developmentFixture.mediaSlug}/review?card=${developmentFixture.primaryCardId}`
     );
   });
 
@@ -1009,7 +1009,7 @@ describe("review queue", () => {
     }
   });
 
-  it("skips loading the FSRS runtime snapshot when the review queue has no selected card", async () => {
+  it("loads the FSRS ordering snapshot in parallel even when the queue is empty", async () => {
     await database
       .update(reviewSubjectState)
       .set({
@@ -1023,13 +1023,10 @@ describe("review queue", () => {
       })
       .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
-    const fsrsSnapshotSpy = vi
-      .spyOn(fsrsOptimizer, "getFsrsOptimizerRuntimeSnapshot")
-      .mockImplementation(async () => {
-        throw new Error(
-          "fsrs runtime snapshot should not load without a selected card"
-        );
-      });
+    const fsrsSnapshotSpy = vi.spyOn(
+      fsrsOptimizer,
+      "getFsrsOptimizerRuntimeSnapshot"
+    );
 
     try {
       const pageData = await getReviewPageData(
@@ -1040,7 +1037,7 @@ describe("review queue", () => {
 
       expect(pageData?.queue.queueCount).toBe(0);
       expect(pageData?.selectedCard).toBeNull();
-      expect(fsrsSnapshotSpy).not.toHaveBeenCalled();
+      expect(fsrsSnapshotSpy).toHaveBeenCalledTimes(1);
     } finally {
       fsrsSnapshotSpy.mockRestore();
     }

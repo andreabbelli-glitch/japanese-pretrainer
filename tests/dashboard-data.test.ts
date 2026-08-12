@@ -9,6 +9,7 @@ describe("dashboard data", () => {
     vi.doUnmock("@/db");
     vi.doUnmock("@/db/queries");
     vi.doUnmock("@/features/cache/server/data-cache");
+    vi.doUnmock("@/features/fsrs-optimizer/server");
     vi.doUnmock("@/features/shared/model/local-date");
     vi.doUnmock("@/features/media/server");
     vi.doUnmock("@/features/review/server");
@@ -207,6 +208,9 @@ function mockDashboardDependencies(input: {
   }));
   vi.doMock("@/features/shared/model/local-date", () => ({
     getLocalIsoTimeBucketKey: vi.fn(() => "bucket")
+  }));
+  vi.doMock("@/features/fsrs-optimizer/server", () => ({
+    getFsrsOptimizerRuntimeSnapshot: vi.fn(() => Promise.resolve({}))
   }));
   vi.doMock("@/features/media/server", () => ({
     loadMediaShellSnapshots: vi.fn(() => Promise.resolve(input.mediaSnapshots)),

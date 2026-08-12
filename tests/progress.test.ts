@@ -120,7 +120,7 @@ describe("progress, settings, and study controls", () => {
     mediaFindFirstSpy.mockRestore();
   });
 
-  it("reuses the loaded media list while building progress review snapshots", async () => {
+  it("keeps media references and the eligible review projection to two reads", async () => {
     const mediaFindManySpy = vi.spyOn(database.query.media, "findMany");
 
     const data = await getMediaProgressPageData(
@@ -129,7 +129,7 @@ describe("progress, settings, and study controls", () => {
     );
 
     expect(data).not.toBeNull();
-    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
+    expect(mediaFindManySpy).toHaveBeenCalledTimes(2);
     mediaFindManySpy.mockRestore();
   });
 

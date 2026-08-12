@@ -28,6 +28,7 @@ import {
   CONSOLIDATION_SUMMARY_TAG,
   GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
+  REVIEW_CARD_CONTENT_TAG,
   REVIEW_FIRST_CANDIDATE_TAG,
   REVIEW_SUMMARY_TAG,
   SETTINGS_TAG,
@@ -70,6 +71,7 @@ describe("cache invalidation policy", () => {
     expect(updateTagMock.mock.calls).toEqual([
       [MEDIA_LIST_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
+      [REVIEW_CARD_CONTENT_TAG],
       [CONSOLIDATION_SUMMARY_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
       [`${CONSOLIDATION_SUMMARY_TAG}:media_dm`],
@@ -93,6 +95,16 @@ describe("cache invalidation policy", () => {
       [`${REVIEW_SUMMARY_TAG}:media_dm`]
     ]);
     expect(revalidateTagMock).not.toHaveBeenCalled();
+  });
+
+  it("expires stable card content only for mutations that change card status", () => {
+    invalidateReviewMutationCaches({
+      includeCardContent: true,
+      mediaId: "media_dm",
+      policy: "review"
+    });
+
+    expect(updateTagMock.mock.calls).toContainEqual([REVIEW_CARD_CONTENT_TAG]);
   });
 
   it("updates review and glossary caches for entry-status mutations", () => {
@@ -148,6 +160,7 @@ describe("cache invalidation policy", () => {
 
     expect(revalidateTagMock.mock.calls).toEqual([
       [MEDIA_LIST_TAG, "max"],
+      [REVIEW_CARD_CONTENT_TAG, "max"],
       [REVIEW_FIRST_CANDIDATE_TAG, "max"],
       [GLOSSARY_SUMMARY_TAG, "max"],
       [CONSOLIDATION_SUMMARY_TAG, "max"],

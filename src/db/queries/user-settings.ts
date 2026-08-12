@@ -12,17 +12,100 @@ export type UserSettingStorageRow = Pick<
 export type UserSettingReader = Pick<DatabaseClient, "query">;
 export type UserSettingWriter = Pick<DatabaseClient, "insert">;
 
-export async function listUserSettingsByKeys(
+type PendingUserSettingRead = {
+  keys: Set<UserSettingKey>;
+  reject: (reason?: unknown) => void;
+  resolve: (rows: UserSettingStorageRow[]) => void;
+};
+
+type PendingUserSettingReadBatch = {
+  flushScheduled: boolean;
+  keys: Set<UserSettingKey>;
+  loading: boolean;
+  reads: PendingUserSettingRead[];
+};
+
+const pendingUserSettingReadBatches = new WeakMap<
+  UserSettingReader,
+  PendingUserSettingReadBatch
+>();
+
+export function listUserSettingsByKeys(
   database: UserSettingReader,
   keys: readonly UserSettingKey[]
 ): Promise<UserSettingStorageRow[]> {
   if (keys.length === 0) {
-    return [];
+    return Promise.resolve([]);
   }
 
-  return database.query.userSetting.findMany({
-    where: inArray(userSetting.key, [...keys])
+  const requestedKeys = new Set(keys);
+
+  return new Promise((resolve, reject) => {
+    const pendingBatch = pendingUserSettingReadBatches.get(database);
+    const read = {
+      keys: requestedKeys,
+      reject,
+      resolve
+    } satisfies PendingUserSettingRead;
+
+    if (pendingBatch && !pendingBatch.loading) {
+      for (const key of requestedKeys) {
+        pendingBatch.keys.add(key);
+      }
+      pendingBatch.reads.push(read);
+      scheduleUserSettingReadBatchFlush(database, pendingBatch);
+      return;
+    }
+
+    const nextBatch = {
+      flushScheduled: false,
+      keys: new Set(requestedKeys),
+      loading: false,
+      reads: [read]
+    } satisfies PendingUserSettingReadBatch;
+    pendingUserSettingReadBatches.set(database, nextBatch);
+    scheduleUserSettingReadBatchFlush(database, nextBatch);
   });
+}
+
+function scheduleUserSettingReadBatchFlush(
+  database: UserSettingReader,
+  batch: PendingUserSettingReadBatch
+) {
+  if (batch.flushScheduled) {
+    return;
+  }
+
+  batch.flushScheduled = true;
+  queueMicrotask(() => {
+    void flushUserSettingReadBatch(database, batch);
+  });
+}
+
+async function flushUserSettingReadBatch(
+  database: UserSettingReader,
+  batch: PendingUserSettingReadBatch
+) {
+  batch.flushScheduled = false;
+  batch.loading = true;
+
+  try {
+    const rows = await database.query.userSetting.findMany({
+      where: inArray(userSetting.key, [...batch.keys])
+    });
+
+    for (const read of batch.reads) {
+      read.resolve(rows.filter((row) => read.keys.has(row.key)));
+    }
+  } catch (error) {
+    for (const read of batch.reads) {
+      read.reject(error);
+    }
+  } finally {
+    if (pendingUserSettingReadBatches.get(database) === batch) {
+      pendingUserSettingReadBatches.delete(database);
+    }
+  }
 }
 
 export async function getUserSettingByKey(

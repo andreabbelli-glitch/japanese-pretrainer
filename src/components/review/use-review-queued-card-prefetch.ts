@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef } from "react";
 
-import { prefetchReviewCardSessionAction } from "@/actions/review";
+import { prefetchReviewCardsSessionAction } from "@/actions/review";
 import { preloadAudioSources } from "@/components/ui/audio-preload";
 import type { ReviewQueueCard } from "@/features/review/client";
 
@@ -96,39 +96,50 @@ export function useReviewQueuedCardPrefetch({
       return;
     }
 
-    for (const cardId of cardIdsToFetch) {
-      const requestQueueGeneration = queueGenerationRef.current;
-      prefetchInFlightRef.current.set(cardId, requestQueueGeneration);
+    const requestQueueGeneration = queueGenerationRef.current;
+    const requestedCardIdSet = new Set(cardIdsToFetch);
 
-      void prefetchReviewCardSessionAction({ cardId })
-        .then((card) => {
+    for (const cardId of cardIdsToFetch) {
+      prefetchInFlightRef.current.set(cardId, requestQueueGeneration);
+    }
+
+    void prefetchReviewCardsSessionAction({ cardIds: cardIdsToFetch })
+      .then((results) => {
+        const acceptedCards: ReviewQueueCard[] = [];
+
+        for (const { card, cardId } of results) {
           if (
             !isMountedRef.current ||
             queueGenerationRef.current !== requestQueueGeneration ||
             !card ||
+            card.id !== cardId ||
+            !requestedCardIdSet.has(cardId) ||
             !queueCardIdSetRef.current.has(cardId)
           ) {
-            return;
+            continue;
           }
 
           prefetchBufferRef.current.set(cardId, card);
+          acceptedCards.push(card);
+        }
 
-          const cardAudioSources = collectReviewCardAudioSources([card]);
-          if (cardAudioSources.length > 0) {
-            preloadAudioSources(cardAudioSources, { role: "next" });
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        })
-        .finally(() => {
+        const cardAudioSources = collectReviewCardAudioSources(acceptedCards);
+        if (cardAudioSources.length > 0) {
+          preloadAudioSources(cardAudioSources, { role: "next" });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => {
+        for (const cardId of cardIdsToFetch) {
           if (
             prefetchInFlightRef.current.get(cardId) === requestQueueGeneration
           ) {
             prefetchInFlightRef.current.delete(cardId);
           }
-        });
-    }
+        }
+      });
   }, [
     activeQueueCardIds,
     isQueueCard,

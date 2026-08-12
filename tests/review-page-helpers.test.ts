@@ -6,12 +6,10 @@ import {
   collectQueuedPrefetchCardIds,
   pruneQueuedPrefetchedCardMap,
   pruneQueuedPrefetchingCardIds,
-  prioritizeReviewAdvanceCandidateCardIds,
   resolveReviewQueueRefreshState,
   resolveOptimisticReviewAdvanceCardForClientData,
   resolveOptimisticReviewAdvanceCard,
   resolveReviewQueuePosition,
-  resolveReviewAdvanceCandidateCardId,
   resolveReviewAdvanceCandidateQueuePosition
 } from "@/components/review/review-page-helpers";
 import type { ReviewPageClientData } from "@/components/review/review-page-state";
@@ -133,20 +131,22 @@ describe("resolveReviewQueuePosition", () => {
     expect(resolved.queueIndex).toBe(0);
   });
 
-  it("chooses the first buffered candidate that appears later in queue order", () => {
+  it("does not promote a later prefetched card ahead of the canonical next card", () => {
     expect(
-      resolveReviewAdvanceCandidateCardId({
-        candidateCardIds: ["card-b", "card-c", "card-d"],
-        prefetchedCardIds: new Set(["card-c", "card-d"])
+      resolveOptimisticReviewAdvanceCard({
+        candidateCardIds: ["card-b", "card-c"],
+        prefetchedCards: new Map([
+          ["card-c", { id: "card-c" } as ReviewQueueCard]
+        ]),
+        advanceCards: []
       })
-    ).toBe("card-c");
+    ).toBeNull();
   });
 
   it("falls back to the queued card snapshot when the advance candidate is not prefetched yet", () => {
     expect(
       resolveOptimisticReviewAdvanceCard({
         candidateCardIds: ["card-b", "card-c"],
-        preferredCardId: null,
         prefetchedCards: new Map(),
         advanceCards: [
           {
@@ -199,16 +199,7 @@ describe("resolveReviewQueuePosition", () => {
     ).toEqual(["card-b"]);
   });
 
-  it("moves the preferred buffered candidate to the front of the server hint list", () => {
-    expect(
-      prioritizeReviewAdvanceCandidateCardIds({
-        candidateCardIds: ["card-b", "card-c", "card-d"],
-        preferredCardId: "card-c"
-      })
-    ).toEqual(["card-c", "card-b", "card-d"]);
-  });
-
-  it("keeps the canonical queue position even when hydration prefers a later buffered candidate", () => {
+  it("resolves the canonical queue position when the server skips an unavailable candidate", () => {
     expect(
       resolveReviewAdvanceCandidateQueuePosition({
         candidateCardIds: ["card-b", "card-c", "card-d"],
@@ -435,8 +426,7 @@ describe("resolveReviewQueuePosition", () => {
             id: "card-b"
           } as ReviewQueueCard
         ]
-      ]),
-      preferredCardId: "card-b"
+      ])
     });
 
     expect(resolvedNextCard?.id).toBe("card-b");

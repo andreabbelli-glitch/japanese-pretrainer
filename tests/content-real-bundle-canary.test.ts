@@ -70,6 +70,30 @@ describe("real Duel Masters content canary", () => {
       await rm(tempDir, { recursive: true, force: true });
     }
   }, 60_000);
+
+  it("imports the full real workspace within SQLite parameter limits", async () => {
+    const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-full-canary-"));
+    const database = createDatabaseClient({
+      databaseUrl: path.join(tempDir, "test.sqlite")
+    });
+
+    try {
+      await runMigrations(database);
+
+      const result = await importContentWorkspace({
+        contentRoot: path.join(repositoryRoot, "content"),
+        database,
+        now: new Date("2026-03-10T09:00:00.000Z")
+      });
+
+      expect(result.status).toBe("completed");
+      expect(result.issues).toEqual([]);
+      expect(result.parseResult.data.bundles.length).toBeGreaterThan(1);
+    } finally {
+      closeDatabaseClient(database);
+      await rm(tempDir, { recursive: true, force: true });
+    }
+  }, 60_000);
 });
 
 async function countRows<T>(promise: Promise<T[]>) {

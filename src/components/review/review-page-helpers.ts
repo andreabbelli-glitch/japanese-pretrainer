@@ -131,19 +131,6 @@ export function collectQueuedAdvanceCandidateCardIds(input: {
   return input.queueCardIds.slice(startIndex, endIndex);
 }
 
-export function resolveReviewAdvanceCandidateCardId(input: {
-  candidateCardIds: string[];
-  prefetchedCardIds: ReadonlySet<string>;
-}) {
-  for (const cardId of input.candidateCardIds) {
-    if (input.prefetchedCardIds.has(cardId)) {
-      return cardId;
-    }
-  }
-
-  return null;
-}
-
 export function resolveReviewAdvanceCandidateQueuePosition(input: {
   candidateCardIds: string[];
   selectedCardId: string | null;
@@ -157,62 +144,35 @@ export function resolveReviewAdvanceCandidateQueuePosition(input: {
   return queueIndex >= 0 ? queueIndex + 1 : null;
 }
 
-export function prioritizeReviewAdvanceCandidateCardIds(input: {
-  candidateCardIds: string[];
-  preferredCardId: string | null;
-}) {
-  if (!input.preferredCardId) {
-    return input.candidateCardIds;
-  }
-
-  return [
-    input.preferredCardId,
-    ...input.candidateCardIds.filter(
-      (cardId) => cardId !== input.preferredCardId
-    )
-  ];
-}
-
 export function resolveOptimisticReviewAdvanceCard(input: {
   candidateCardIds: string[];
-  preferredCardId: string | null;
   advanceCards: ReadonlyArray<ReviewQueueCard>;
   prefetchedCards: ReadonlyMap<string, ReviewQueueCard>;
 }) {
+  const canonicalNextCardId = input.candidateCardIds[0];
+
+  if (!canonicalNextCardId) {
+    return null;
+  }
+
   const advanceCardLookup = new Map(
     input.advanceCards.map((card) => [card.id, card] as const)
   );
-  const prioritizedCandidateCardIds = prioritizeReviewAdvanceCandidateCardIds({
-    candidateCardIds: input.candidateCardIds,
-    preferredCardId: input.preferredCardId
-  });
 
-  for (const cardId of prioritizedCandidateCardIds) {
-    const prefetchedCard = input.prefetchedCards.get(cardId);
-
-    if (prefetchedCard) {
-      return prefetchedCard;
-    }
-
-    const advanceCard = advanceCardLookup.get(cardId);
-
-    if (advanceCard) {
-      return advanceCard;
-    }
-  }
-
-  return null;
+  return (
+    input.prefetchedCards.get(canonicalNextCardId) ??
+    advanceCardLookup.get(canonicalNextCardId) ??
+    null
+  );
 }
 
 export function resolveOptimisticReviewAdvanceCardForClientData(input: {
   candidateCardIds: string[];
   data: ReviewPageClientData;
-  preferredCardId: string | null;
   prefetchedCards: ReadonlyMap<string, ReviewQueueCard>;
 }) {
   return resolveOptimisticReviewAdvanceCard({
     candidateCardIds: input.candidateCardIds,
-    preferredCardId: input.preferredCardId,
     advanceCards: input.data.queue.advanceCards,
     prefetchedCards: input.prefetchedCards
   });

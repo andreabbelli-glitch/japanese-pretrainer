@@ -124,6 +124,320 @@ describe("useReviewPageDataSync", () => {
     expect(resetQueuedGradeFailure).not.toHaveBeenCalled();
   });
 
+  it("does not hydrate again when only the live session URL advances after full data is available", async () => {
+    const hydration = createDeferred<ReviewPageData>();
+    const resetQueuedGradeFailure = vi.fn();
+    mocks.loadReviewPageDataSessionAction.mockReturnValue(hydration.promise);
+    const firstCandidateData = buildFirstCandidateReviewPageData({
+      queueCardIds: ["card-a", "card-b", "card-c"],
+      selectedCardId: "card-a"
+    });
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "card-a" },
+      data: firstCandidateData,
+      globalHydrationRequestKey: "answered=0&card=card-a",
+      isGlobalReview: true,
+      requestedSelectedCardId: "card-a",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      hydration.resolve(
+        buildFullReviewPageData({
+          answeredCount: 1,
+          queueCardIds: ["card-b", "card-c"],
+          selectedCardId: "card-b"
+        })
+      );
+      await flushMicrotasks(3);
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "1", card: "card-b" },
+        data: firstCandidateData,
+        globalHydrationRequestKey: "answered=1&card=card-b",
+        isGlobalReview: true,
+        requestedSelectedCardId: "card-b",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledTimes(1);
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-b");
+    expect(harness.snapshot().viewData.session.answeredCount).toBe(1);
+  });
+
+  it("hydrates a new first-candidate payload when it matches the live session URL", async () => {
+    const firstHydration = createDeferred<ReviewPageData>();
+    const secondHydration = createDeferred<ReviewPageData>();
+    const resetQueuedGradeFailure = vi.fn();
+    mocks.loadReviewPageDataSessionAction
+      .mockReturnValueOnce(firstHydration.promise)
+      .mockReturnValueOnce(secondHydration.promise);
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "card-a" },
+      data: buildFirstCandidateReviewPageData({
+        queueCardIds: ["card-a", "card-b", "card-c"],
+        selectedCardId: "card-a"
+      }),
+      globalHydrationRequestKey: "answered=0&card=card-a",
+      isGlobalReview: true,
+      requestedSelectedCardId: "card-a",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      firstHydration.resolve(
+        buildFullReviewPageData({
+          queueCardIds: ["card-a", "card-b", "card-c"],
+          selectedCardId: "card-a"
+        })
+      );
+      await flushMicrotasks(3);
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "1", card: "card-b" },
+        data: buildFirstCandidateReviewPageData({
+          answeredCount: 1,
+          queueCardIds: ["card-b", "card-c"],
+          selectedCardId: "card-b"
+        }),
+        globalHydrationRequestKey: "answered=1&card=card-b",
+        isGlobalReview: true,
+        requestedSelectedCardId: "card-b",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledTimes(2);
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenLastCalledWith({
+      scope: "global",
+      searchParams: { answered: "1", card: "card-b" }
+    });
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-b");
+    expect(harness.snapshot().viewData.session.answeredCount).toBe(1);
+
+    await act(async () => {
+      secondHydration.resolve(
+        buildFullReviewPageData({
+          answeredCount: 1,
+          queueCardIds: ["card-b", "card-c"],
+          selectedCardId: "card-b"
+        })
+      );
+      await flushMicrotasks(3);
+    });
+  });
+
+  it("ignores a stale first-candidate RSC payload that does not match the live session URL", async () => {
+    const hydration = createDeferred<ReviewPageData>();
+    const resetQueuedGradeFailure = vi.fn();
+    mocks.loadReviewPageDataSessionAction.mockReturnValue(hydration.promise);
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "card-a" },
+      data: buildFirstCandidateReviewPageData({
+        queueCardIds: ["card-a", "card-b", "card-c"],
+        selectedCardId: "card-a"
+      }),
+      globalHydrationRequestKey: "answered=0&card=card-a",
+      isGlobalReview: true,
+      requestedSelectedCardId: "card-a",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      hydration.resolve(
+        buildFullReviewPageData({
+          answeredCount: 1,
+          queueCardIds: ["card-b", "card-c"],
+          selectedCardId: "card-b"
+        })
+      );
+      await flushMicrotasks(3);
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "1", card: "card-b" },
+        data: buildFirstCandidateReviewPageData({
+          answeredCount: 0,
+          queueCardIds: ["card-a", "card-b", "card-c"],
+          selectedCardId: "card-a"
+        }),
+        globalHydrationRequestKey: "answered=1&card=card-b",
+        isGlobalReview: true,
+        requestedSelectedCardId: "card-b",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledTimes(1);
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-b");
+    expect(harness.snapshot().viewData.session.answeredCount).toBe(1);
+  });
+
+  it("ignores a stale first-candidate for another card at the same answer count", async () => {
+    const resetQueuedGradeFailure = vi.fn();
+    const fullCardB = buildFullReviewPageData({
+      answeredCount: 0,
+      queueCardIds: ["card-b", "card-c"],
+      selectedCardId: "card-b"
+    });
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "card-b" },
+      data: fullCardB,
+      globalHydrationRequestKey: "answered=0&card=card-b",
+      isGlobalReview: true,
+      requestedSelectedCardId: "card-b",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "0", card: "card-b" },
+        data: buildFirstCandidateReviewPageData({
+          answeredCount: 0,
+          queueCardIds: ["card-a", "card-b", "card-c"],
+          selectedCardId: "card-a"
+        }),
+        globalHydrationRequestKey: "answered=0&card=card-b",
+        isGlobalReview: true,
+        requestedSelectedCardId: "card-b",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(mocks.loadReviewPageDataSessionAction).not.toHaveBeenCalled();
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-b");
+    expect(harness.snapshot().latestViewData.selectedCard?.id).toBe("card-b");
+  });
+
+  it("adopts a support-card payload whose answer is revealed by server normalization", async () => {
+    const hydration = createDeferred<ReviewPageData>();
+    const resetQueuedGradeFailure = vi.fn();
+    mocks.loadReviewPageDataSessionAction.mockReturnValue(hydration.promise);
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "card-a" },
+      data: buildFullReviewPageData({
+        queueCardIds: ["card-a", "card-b"],
+        selectedCardId: "card-a"
+      }),
+      globalHydrationRequestKey: "answered=0&card=card-a",
+      isGlobalReview: true,
+      requestedSelectedCardId: "card-a",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "0", card: "support-card" },
+        data: buildFirstCandidateReviewPageData({
+          isQueueCard: false,
+          queueCardIds: ["card-a", "card-b"],
+          selectedCardId: "support-card",
+          showAnswer: true
+        }),
+        globalHydrationRequestKey: "answered=0&card=support-card",
+        isGlobalReview: true,
+        requestedSelectedCardId: "support-card",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("support-card");
+    expect(harness.snapshot().viewData.selectedCardContext.showAnswer).toBe(
+      true
+    );
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledWith({
+      scope: "global",
+      searchParams: { answered: "0", card: "support-card" }
+    });
+  });
+
+  it("adopts the canonical first card when an explicit selection disappeared", async () => {
+    const hydration = createDeferred<ReviewPageData>();
+    const resetQueuedGradeFailure = vi.fn();
+    mocks.loadReviewPageDataSessionAction.mockReturnValue(hydration.promise);
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "card-b" },
+      data: buildFullReviewPageData({
+        queueCardIds: ["card-b", "card-c"],
+        selectedCardId: "card-b"
+      }),
+      globalHydrationRequestKey: "answered=0&card=card-b",
+      isGlobalReview: true,
+      requestedSelectedCardId: "card-b",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "0", card: "removed-card" },
+        data: buildFirstCandidateReviewPageData({
+          queueCardIds: ["card-a", "card-c"],
+          requestedCardId: "removed-card",
+          requestedCardResolved: false,
+          selectedCardId: "card-a"
+        }),
+        globalHydrationRequestKey: "answered=0&card=removed-card",
+        isGlobalReview: true,
+        requestedSelectedCardId: "removed-card",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("card-a");
+    expect(harness.snapshot().queueCardIds).toEqual(["card-a", "card-c"]);
+    expect(mocks.loadReviewPageDataSessionAction).toHaveBeenCalledWith({
+      scope: "global",
+      searchParams: { answered: "0", card: "removed-card" }
+    });
+  });
+
+  it("does not replace a support card with a stale canonical fallback", async () => {
+    const resetQueuedGradeFailure = vi.fn();
+    const harness = renderDataSync({
+      currentSearchParams: { answered: "0", card: "support-card" },
+      data: buildFullReviewPageData({
+        queueCardIds: ["card-a", "card-b"],
+        selectedCardId: "support-card"
+      }),
+      globalHydrationRequestKey: "answered=0&card=support-card",
+      isGlobalReview: true,
+      requestedSelectedCardId: "support-card",
+      resetQueuedGradeFailure
+    });
+
+    await act(async () => {
+      harness.render({
+        currentSearchParams: { answered: "0", card: "support-card" },
+        data: buildFirstCandidateReviewPageData({
+          queueCardIds: ["card-a", "card-b"],
+          requestedCardId: "support-card",
+          requestedCardResolved: true,
+          selectedCardId: "card-a"
+        }),
+        globalHydrationRequestKey: "answered=0&card=support-card",
+        isGlobalReview: true,
+        requestedSelectedCardId: "support-card",
+        resetQueuedGradeFailure
+      });
+      await flushMicrotasks(3);
+    });
+
+    expect(harness.snapshot().viewData.selectedCard?.id).toBe("support-card");
+    expect(mocks.loadReviewPageDataSessionAction).not.toHaveBeenCalled();
+  });
+
   it("keeps the current stage and surfaces the hydration error message on failure", async () => {
     const consoleErrorSpy = vi
       .spyOn(console, "error")
@@ -325,10 +639,14 @@ function renderDataSync(initialProps: HookProps) {
 
 function buildFirstCandidateReviewPageData(input: {
   answeredCount?: number;
+  isQueueCard?: boolean;
   queueCardIds: string[];
+  requestedCardId?: string | null;
+  requestedCardResolved?: boolean;
   selectedCardId: string;
   showAnswer?: boolean;
 }): ReviewFirstCandidatePageData {
+  const isQueueCard = input.isQueueCard ?? true;
   const selectedCard = buildFirstCandidateCard(input.selectedCardId);
   const advanceCards = input.queueCardIds
     .filter((cardId) => cardId !== input.selectedCardId)
@@ -336,7 +654,7 @@ function buildFirstCandidateReviewPageData(input: {
 
   return {
     media: buildReviewMedia(),
-    nextCardId: advanceCards[0]?.id ?? null,
+    nextCardId: isQueueCard ? (advanceCards[0]?.id ?? null) : undefined,
     queue: {
       advanceCards,
       dailyLimit: 20,
@@ -353,13 +671,19 @@ function buildFirstCandidateReviewPageData(input: {
       upcomingCount: 0
     },
     queueCardIds: input.queueCardIds,
+    requestedCardResolution: {
+      requestedCardId: input.requestedCardId ?? null,
+      resolved: input.requestedCardResolved ?? true
+    },
     scope: "global",
     selectedCard,
     selectedCardContext: {
       bucket: selectedCard.bucket,
-      isQueueCard: true,
-      position: 1,
-      remainingCount: Math.max(0, input.queueCardIds.length - 1),
+      isQueueCard,
+      position: isQueueCard ? 1 : null,
+      remainingCount: isQueueCard
+        ? Math.max(0, input.queueCardIds.length - 1)
+        : 0,
       reviewStateUpdatedAt: "2026-04-02T11:00:00.000Z",
       showAnswer: input.showAnswer ?? false
     },

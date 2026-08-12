@@ -250,6 +250,10 @@ export type ReviewFirstCandidatePageData = {
   nextCardId?: string | null;
   queueCardIds: string[];
   queue: ReviewFirstCandidateQueueSnapshot;
+  requestedCardResolution?: {
+    requestedCardId: string | null;
+    resolved: boolean;
+  };
   scope: ReviewScope;
   selectedCard: ReviewFirstCandidateCard | null;
   selectedCardContext: ReviewFirstCandidateSelectedCardContext;
@@ -316,6 +320,12 @@ export type ReviewSessionInput = {
   cardId: string;
   cardMediaSlug?: string;
   candidateCardIds?: string[];
+  canonicalCandidateSnapshot?: {
+    bucket: ReviewQueueCard["bucket"];
+    cardId: string;
+    reviewStateUpdatedAt: string | null;
+    schedulingKey: string | null;
+  };
   canonicalCandidateCardIds?: string[];
   extraNewAnchorCount?: number | null;
   extraNewCount: number;

@@ -2,6 +2,7 @@
 
 import type { Route } from "next";
 import { redirect } from "next/navigation";
+import { after } from "next/server";
 
 import { readOptionalInternalHref, readRequiredString } from "./form-data.ts";
 import {
@@ -9,8 +10,10 @@ import {
   gradeReviewCardSessionWorkflow,
   loadReviewPageDataSessionWorkflow,
   prefetchReviewCardSessionWorkflow,
+  prefetchReviewCardsSessionWorkflow,
   runReviewFormMutationWorkflow,
   runReviewSessionMutationWorkflow,
+  type ReviewCardPrefetchResult,
   type ReviewMutationKind,
   type ReviewPageData,
   type ReviewQueueCard,
@@ -45,14 +48,16 @@ export async function gradeReviewCardAction(formData: FormData) {
     "expectedUpdatedAt"
   );
 
-  redirect(await gradeReviewCardFormWorkflow({
-    answeredCount,
-    cardId,
-    expectedUpdatedAt,
-    extraNewCount,
-    mediaSlug,
-    rating
-  }));
+  redirect(
+    await gradeReviewCardFormWorkflow({
+      answeredCount,
+      cardId,
+      expectedUpdatedAt,
+      extraNewCount,
+      mediaSlug,
+      rating
+    })
+  );
 }
 
 export async function markLinkedEntryKnownAction(formData: FormData) {
@@ -90,13 +95,21 @@ export async function gradeReviewCardSessionAction(
     rating: "again" | "hard" | "good" | "easy";
   }
 ): Promise<ReviewPageData> {
-  return gradeReviewCardSessionWorkflow(input);
+  return gradeReviewCardSessionWorkflow(input, {
+    scheduleCacheInvalidation: scheduleAfterResponseOrRunNow
+  });
 }
 
 export async function prefetchReviewCardSessionAction(input: {
   cardId: string;
 }): Promise<ReviewQueueCard | null> {
   return prefetchReviewCardSessionWorkflow(input);
+}
+
+export async function prefetchReviewCardsSessionAction(input: {
+  cardIds: string[];
+}): Promise<ReviewCardPrefetchResult[]> {
+  return prefetchReviewCardsSessionWorkflow(input);
 }
 
 export async function loadReviewPageDataSessionAction(input: {
@@ -168,6 +181,22 @@ function readReviewFormMutationInput(
       ? formData.get("suspended") === "true"
       : undefined
   };
+}
+
+function scheduleAfterResponseOrRunNow(task: () => void) {
+  try {
+    after(task);
+  } catch (error) {
+    if (
+      error instanceof Error &&
+      error.message.includes("outside a request scope")
+    ) {
+      task();
+      return;
+    }
+
+    throw error;
+  }
 }
 
 async function runReviewFormMutationAction(

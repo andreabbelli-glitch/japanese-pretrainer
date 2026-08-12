@@ -344,6 +344,26 @@ async function makeReviewSubjectDue(
 async function makePrimaryAndSecondaryCardsDue(database: DatabaseClient) {
   const primaryUpdatedAt = await makePrimaryCardDue(database);
   await makeSecondaryCardDue(database);
+  await database
+    .update(reviewSubjectState)
+    .set({
+      difficulty: 1,
+      lastReviewedAt: "2026-04-01T00:00:00.000Z",
+      scheduledDays: 1,
+      stability: 1_000_000,
+      state: "review"
+    })
+    .where(eq(reviewSubjectState.subjectKey, primarySubjectKey));
+  await database
+    .update(reviewSubjectState)
+    .set({
+      difficulty: 10,
+      lastReviewedAt: "2000-01-01T00:00:00.000Z",
+      scheduledDays: 1,
+      stability: 0.1,
+      state: "review"
+    })
+    .where(eq(reviewSubjectState.subjectKey, secondarySubjectKey));
 
   return primaryUpdatedAt;
 }

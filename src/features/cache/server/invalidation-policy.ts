@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import {
   GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
+  REVIEW_CARD_CONTENT_TAG,
   REVIEW_FIRST_CANDIDATE_TAG,
   CONSOLIDATION_SUMMARY_TAG,
   buildConsolidationSummaryTags,
@@ -14,6 +15,7 @@ import {
   updateConsolidationSummaryCache,
   updateGlossarySummaryCache,
   updateMediaListCache,
+  updateReviewCardContentCache,
   updateReviewSummaryCache,
   updateSettingsCache
 } from "@/features/cache/server/data-cache";
@@ -46,6 +48,7 @@ export function invalidateLessonCompletionChanged(input: {
   mediaId?: string | null;
 }) {
   updateMediaListCache();
+  updateReviewCardContentCache();
   updateConsolidationSummaryCache(input.mediaId);
   updateReviewSummaryCache(input.mediaId);
 }
@@ -62,10 +65,15 @@ export function invalidateConsolidationMutationCaches(input: {
 }
 
 export function invalidateReviewMutationCaches(input: {
+  includeCardContent?: boolean;
   mediaId?: string;
   policy: ReviewMutationCachePolicy;
 }) {
   updateReviewSummaryCache(input.mediaId);
+
+  if (input.includeCardContent) {
+    updateReviewCardContentCache();
+  }
 
   if (input.policy !== "entry-status") {
     return;
@@ -85,6 +93,7 @@ export function invalidateImportedContentCaches(input: {
 }) {
   revalidateDataCacheTags([
     MEDIA_LIST_TAG,
+    REVIEW_CARD_CONTENT_TAG,
     REVIEW_FIRST_CANDIDATE_TAG,
     GLOSSARY_SUMMARY_TAG,
     CONSOLIDATION_SUMMARY_TAG,

@@ -1,3 +1,5 @@
+import { eq } from "drizzle-orm";
+
 import {
   card,
   cardEntryLink,
@@ -183,6 +185,101 @@ export async function createIsolatedNewMediaFixture(
     cardIds: cards.map((item) => item.id),
     mediaSlug: input.mediaSlug,
     termIds: terms.map((item) => item.id)
+  };
+}
+
+export async function prepareChainedBufferedAdvanceFixture(
+  database: DatabaseClient,
+  input: {
+    lessonId: string;
+    mediaId: string;
+    secondarySubjectKey: string;
+    segmentId: string;
+  }
+) {
+  const bufferedCardBId = "card_fixture_buffered_b";
+  const bufferedCardCId = "card_fixture_buffered_c";
+
+  await database
+    .update(reviewSubjectState)
+    .set({
+      dueAt: "2026-03-09T08:03:00.000Z",
+      manualOverride: false,
+      state: "learning"
+    })
+    .where(eq(reviewSubjectState.subjectKey, input.secondarySubjectKey));
+
+  await database.insert(card).values([
+    {
+      back: "B back",
+      cardType: "recognition",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      exampleJp: null,
+      exampleIt: null,
+      front: "B",
+      id: bufferedCardBId,
+      lessonId: input.lessonId,
+      mediaId: input.mediaId,
+      notesIt: null,
+      orderIndex: 2,
+      segmentId: input.segmentId,
+      sourceFile: "tests/review-buffered-advance/card-b.md",
+      status: "active",
+      updatedAt: "2026-03-08T09:00:00.000Z"
+    },
+    {
+      back: "C back",
+      cardType: "recognition",
+      createdAt: "2026-03-08T09:00:00.000Z",
+      exampleJp: null,
+      exampleIt: null,
+      front: "C",
+      id: bufferedCardCId,
+      lessonId: input.lessonId,
+      mediaId: input.mediaId,
+      notesIt: null,
+      orderIndex: 3,
+      segmentId: input.segmentId,
+      sourceFile: "tests/review-buffered-advance/card-c.md",
+      status: "active",
+      updatedAt: "2026-03-08T09:00:00.000Z"
+    }
+  ]);
+
+  await database.insert(reviewSubjectState).values([
+    buildReviewSubjectStateRow({
+      cardId: bufferedCardBId,
+      difficulty: 4,
+      dueAt: "2026-03-09T08:01:00.000Z",
+      lapses: 0,
+      learningSteps: 0,
+      lastInteractionAt: "2026-03-08T09:00:00.000Z",
+      lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      reps: 1,
+      scheduledDays: 0,
+      state: "learning",
+      stability: 1.6,
+      subjectKey: `card:${bufferedCardBId}`
+    }),
+    buildReviewSubjectStateRow({
+      cardId: bufferedCardCId,
+      difficulty: 4,
+      dueAt: "2026-03-09T08:02:00.000Z",
+      lapses: 0,
+      learningSteps: 0,
+      lastInteractionAt: "2026-03-08T09:00:00.000Z",
+      lastReviewedAt: "2026-03-08T09:00:00.000Z",
+      reps: 1,
+      scheduledDays: 0,
+      state: "learning",
+      stability: 1.6,
+      subjectKey: `card:${bufferedCardCId}`
+    })
+  ]);
+
+  return {
+    bufferedCardBId,
+    bufferedCardCId
   };
 }
 

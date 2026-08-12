@@ -173,7 +173,6 @@ export function buildReviewControllerSnapshot(
   const isGradeControlsDisabled =
     selectedCardId !== null &&
     (clientError !== null ||
-      (isQueueCard && gradePreviewLookup.size !== 4) ||
       submittedGradeCardIds.has(selectedCardId) ||
       hasBlockingGradeSubmissionInFlight ||
       (forcedContrastSelection !== null && pendingGradeCardIds.size > 0));

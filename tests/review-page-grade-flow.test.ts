@@ -10,7 +10,7 @@ import type {
 } from "@/features/review/types";
 
 describe("buildReviewGradeSubmissionPlan", () => {
-  it("builds queued grade payloads with canonical ids and a preferred prefetched next card", () => {
+  it("keeps the canonical next card ahead of a later prefetched card", () => {
     const currentData = buildFullReviewPageData("card-a");
     const prefetchedCard = buildQueueCard("card-c");
 
@@ -19,7 +19,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: ["card-b", "card-c"],
       forcedContrastSelection: null,
       fullViewData: currentData,
-      gradedCardIds: ["card-a"],
       isHydratingFullData: false,
       isQueueCard: true,
       pendingGradeSubmissionCount: 0,
@@ -36,21 +35,32 @@ describe("buildReviewGradeSubmissionPlan", () => {
 
     expect(plan.candidateCardIds).toEqual(["card-b", "card-c"]);
     expect(plan.nextQueueCardIds).toEqual(["card-b", "card-c"]);
-    expect(plan.preferredNextCardId).toBe("card-c");
-    expect(plan.nextCardId).toBe("card-c");
-    expect(plan.optimisticNextCard?.id).toBe("card-c");
-    expect(plan.optimisticNextQueuePosition).toBe(2);
+    expect(plan.nextCardId).toBe("card-b");
+    expect(plan.optimisticNextCard?.id).toBe("card-b");
+    expect(plan.optimisticNextQueuePosition).toBe(1);
     expect(plan.canOptimisticallyAdvance).toBe(true);
     expect(plan.actionInput).toEqual(
       expect.objectContaining({
         candidateCardIds: ["card-b", "card-c"],
         canonicalCandidateCardIds: ["card-b", "card-c"],
+        canonicalCandidateSnapshot: {
+          bucket: "due",
+          cardId: "card-b",
+          reviewStateUpdatedAt: "2026-04-02T11:30:00.000Z",
+          schedulingKey: null
+        },
         expectedUpdatedAt: "2026-04-02T11:00:00.000Z",
         gradedCardBucket: "due",
-        gradedCardIds: ["card-a"],
-        nextCardId: "card-c",
+        nextCardId: "card-b",
         rating: "good",
-        sessionQueue: currentData.queue,
+        sessionQueue: {
+          ...currentData.queue,
+          advanceCards: [],
+          cards: [],
+          manualCards: [],
+          suspendedCards: [],
+          upcomingCards: []
+        },
         sessionSettings: currentData.settings
       })
     );
@@ -64,7 +74,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: ["card-b"],
       forcedContrastSelection: null,
       fullViewData: currentData,
-      gradedCardIds: ["card-new"],
       isHydratingFullData: false,
       isQueueCard: true,
       pendingGradeSubmissionCount: 0,
@@ -82,7 +91,7 @@ describe("buildReviewGradeSubmissionPlan", () => {
     expect(plan.actionInput).toHaveProperty("expectedUpdatedAt", null);
   });
 
-  it("allows optimistic first-candidate advance without full session queue snapshots", () => {
+  it("uses a compact first-candidate snapshot for incremental advance", () => {
     const currentData = buildFirstCandidateReviewPageData("card-a");
 
     const plan = buildReviewGradeSubmissionPlan({
@@ -90,7 +99,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: ["card-b"],
       forcedContrastSelection: null,
       fullViewData: null,
-      gradedCardIds: ["card-a"],
       isHydratingFullData: true,
       isQueueCard: true,
       pendingGradeSubmissionCount: 0,
@@ -107,8 +115,15 @@ describe("buildReviewGradeSubmissionPlan", () => {
 
     expect(plan.canOptimisticallyAdvance).toBe(true);
     expect(plan.optimisticViewData?.selectedCard?.id).toBe("card-b");
-    expect(plan.actionInput).not.toHaveProperty("sessionQueue");
-    expect(plan.actionInput).not.toHaveProperty("sessionSettings");
+    expect(plan.actionInput.sessionQueue).toEqual({
+      ...currentData.queue,
+      advanceCards: [],
+      cards: [],
+      manualCards: [],
+      suspendedCards: [],
+      upcomingCards: []
+    });
+    expect(plan.actionInput.sessionSettings).toBe(currentData.settings);
   });
 
   it("includes full queue snapshots when full page data is available", () => {
@@ -119,7 +134,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: ["card-b"],
       forcedContrastSelection: null,
       fullViewData: currentData,
-      gradedCardIds: ["card-a"],
       isHydratingFullData: false,
       isQueueCard: true,
       pendingGradeSubmissionCount: 0,
@@ -134,7 +148,14 @@ describe("buildReviewGradeSubmissionPlan", () => {
       throw new Error("Expected an advance-queue plan.");
     }
 
-    expect(plan.actionInput.sessionQueue).toBe(currentData.queue);
+    expect(plan.actionInput.sessionQueue).toEqual({
+      ...currentData.queue,
+      advanceCards: [],
+      cards: [],
+      manualCards: [],
+      suspendedCards: [],
+      upcomingCards: []
+    });
     expect(plan.actionInput.sessionSettings).toBe(currentData.settings);
   });
 
@@ -148,7 +169,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: [],
       forcedContrastSelection: null,
       fullViewData: currentData,
-      gradedCardIds: ["card-a"],
       isHydratingFullData: false,
       isQueueCard: true,
       pendingGradeSubmissionCount: 0,
@@ -187,7 +207,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: ["card-b"],
       forcedContrastSelection,
       fullViewData: currentData,
-      gradedCardIds: ["card-a"],
       isHydratingFullData: false,
       isQueueCard: true,
       pendingGradeSubmissionCount: 0,
@@ -224,7 +243,6 @@ describe("buildReviewGradeSubmissionPlan", () => {
       advanceWindowCardIds: ["card-b"],
       forcedContrastSelection: null,
       fullViewData: currentData,
-      gradedCardIds: ["card-a"],
       isHydratingFullData: false,
       isQueueCard: false,
       pendingGradeSubmissionCount: 0,
@@ -250,6 +268,7 @@ describe("buildReviewGradeSubmissionPlan", () => {
     );
     expect(plan.actionInput).not.toHaveProperty("candidateCardIds");
     expect(plan.actionInput).not.toHaveProperty("canonicalCandidateCardIds");
+    expect(plan.actionInput).not.toHaveProperty("canonicalCandidateSnapshot");
     expect(plan.actionInput).not.toHaveProperty("nextCardId");
     expect(plan.actionInput).not.toHaveProperty("sessionQueue");
     expect(plan.actionInput).not.toHaveProperty("sessionSettings");

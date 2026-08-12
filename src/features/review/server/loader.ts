@@ -2,6 +2,7 @@ import { db, type DatabaseClient } from "@/db";
 import {
   getReviewLaunchCandidateByMediaId,
   listGrammarEntryReviewSummariesByIds,
+  listEligibleReviewWorkspaceCardsByMediaIds,
   listReviewLaunchCandidates,
   listReviewCardsByMediaId,
   listReviewCardsByMediaIds,
@@ -14,11 +15,15 @@ import {
   buildReviewSummaryTags,
   canUseDataCache,
   listMediaCached,
+  REVIEW_CARD_CONTENT_TAG,
   runWithTaggedCache,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/features/cache/server/data-cache";
 import { getLocalIsoTimeBucketKey } from "@/features/shared/model/local-date";
-import { getStudySettings } from "@/features/settings/server";
+import {
+  getStudySettings,
+  type StudySettings
+} from "@/features/settings/server";
 import {
   measureWith,
   type ReviewProfiler
@@ -44,6 +49,7 @@ export type ReviewPageLoadOptions = {
   profiler?: ReviewProfiler | null;
   resolvedMedia?: Pick<MediaListItem, "id" | "slug" | "title">;
   resolvedMediaRows?: MediaListItem[];
+  resolvedStudySettings?: Promise<StudySettings> | StudySettings;
 };
 
 export type LoadedReviewWorkspaceV2 = {
@@ -98,17 +104,17 @@ export async function loadStableReviewWorkspaceV2(input: {
   mediaIds: string[];
   profiler?: ReviewProfiler | null;
 }): Promise<CachedReviewWorkspaceV2> {
-  const reviewCards = await (input.mediaIds.length > 0
-    ? measureWith(input.profiler, "listReviewCardsByMediaIds", () =>
-        listReviewCardsByMediaIds(input.database, input.mediaIds)
-      )
-    : Promise.resolve([]));
-  const cards = await measureWith(
+  const { cards, rawCardCount } = await measureWith(
     input.profiler,
-    "filterEligibleReviewCards",
-    () => filterEligibleReviewCards(reviewCards),
+    "listEligibleReviewWorkspaceCardsByMediaIds",
+    () =>
+      listEligibleReviewWorkspaceCardsByMediaIds(
+        input.database,
+        input.mediaIds
+      ),
     (value) => ({
-      cards: value.length
+      cards: value.cards.length,
+      rawCardCount: value.rawCardCount
     })
   );
 
@@ -116,7 +122,7 @@ export async function loadStableReviewWorkspaceV2(input: {
     return {
       cards,
       grammar: [],
-      rawCardCount: reviewCards.length,
+      rawCardCount,
       terms: []
     };
   }
@@ -136,7 +142,7 @@ export async function loadStableReviewWorkspaceV2(input: {
   return {
     cards,
     grammar,
-    rawCardCount: reviewCards.length,
+    rawCardCount,
     terms
   };
 }
@@ -166,7 +172,7 @@ export async function loadStableReviewWorkspaceV2Cached(input: {
             ...input,
             mediaIds: orderedMediaIds
           }),
-        tags: buildReviewSummaryTags(orderedMediaIds)
+        tags: [REVIEW_CARD_CONTENT_TAG]
       }),
     { cacheEligible, mediaIds: orderedMediaIds.length }
   );
@@ -284,11 +290,11 @@ export async function loadGlobalReviewPageWorkspace(
     : measureWith(options.profiler, "listMediaCached", () =>
         listMediaCached(database)
       );
-  const settingsPromise = measureWith(
-    options.profiler,
-    "getStudySettings",
-    () => getStudySettings(database)
-  );
+  const settingsPromise = options.resolvedStudySettings
+    ? Promise.resolve(options.resolvedStudySettings)
+    : measureWith(options.profiler, "getStudySettings", () =>
+        getStudySettings(database)
+      );
   const mediaRows = await mediaRowsPromise;
   const workspacePromise = loadGlobalReviewWorkspace(
     searchState,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import { gradeReviewCardSessionAction } from "@/actions/review";
 import {
@@ -48,18 +48,12 @@ export function useReviewGradeSubmissionController(input: {
   const submittedGradeAttemptByCardRef = useRef<Map<string, string>>(new Map());
   const pendingGradeAttemptKeysRef = useRef<Set<string>>(new Set());
   const blockingGradeSubmissionInFlightRef = useRef(false);
-  const gradedCardIdsRef = useRef<Set<string>>(new Set());
   const [submittedGradeCardIds, setSubmittedGradeCardIds] = useState<
     ReadonlySet<string>
   >(() => new Set());
   const [pendingGradeCardIds, setPendingGradeCardIds] = useState<
     ReadonlySet<string>
   >(() => new Set());
-
-  const getGradedCardIds = useCallback(
-    () => Array.from(gradedCardIdsRef.current),
-    []
-  );
 
   function handleGradeCard(
     rating: ReviewGradeValue,
@@ -95,9 +89,6 @@ export function useReviewGradeSubmissionController(input: {
       advanceWindowCardIds: context.advanceWindowCardIds,
       forcedContrastSelection: input.forcedContrastSelection,
       fullViewData,
-      gradedCardIds: Array.from(
-        new Set([...gradedCardIdsRef.current, selectedCard.id])
-      ),
       isHydratingFullData: context.isHydratingFullData,
       isQueueCard: context.isQueueCard,
       pendingGradeSubmissionCount: pendingGradeAttemptKeysRef.current.size,
@@ -111,7 +102,6 @@ export function useReviewGradeSubmissionController(input: {
       return;
     }
 
-    gradedCardIdsRef.current.add(selectedCard.id);
     submittedGradeAttemptByCardRef.current.set(
       selectedCard.id,
       gradeAttemptKey
@@ -192,6 +182,7 @@ export function useReviewGradeSubmissionController(input: {
       () => gradeReviewCardSessionAction(gradeSubmissionPlan.actionInput),
       {
         ...forcedContrastUpdateOptions,
+        acceptSameProgressSelectionChange: true,
         onError: () => {
           releaseGradeSubmission({ allowRetry: true });
           input.setPendingAnsweredCountScroll(null);
@@ -244,7 +235,6 @@ export function useReviewGradeSubmissionController(input: {
   }
 
   return {
-    getGradedCardIds,
     handleGradeCard,
     hasBlockingGradeSubmissionInFlight,
     pendingGradeCardIds,

@@ -17,6 +17,7 @@ export type LoadReviewActionsOptions = {
     searchParams: Record<string, string>;
   }) => Promise<ReviewPageData> | ReviewPageData;
   hydrateReviewCard?: (input: {
+    bypassCache?: boolean;
     cardId: string;
   }) =>
     | Promise<ReviewQueueCard | null | undefined>
@@ -52,21 +53,23 @@ export async function loadReviewActionsForDatabase(
         updateReviewSummaryCache: mocks.updateReviewSummaryCacheMock
       };
     });
-    const hydrateReviewCardMock = vi.fn(async (input: { cardId: string }) => {
-      if (options.hydrateReviewCard) {
-        const hydratedCard = await options.hydrateReviewCard(input);
+    const hydrateReviewCardMock = vi.fn(
+      async (input: { bypassCache?: boolean; cardId: string }) => {
+        if (options.hydrateReviewCard) {
+          const hydratedCard = await options.hydrateReviewCard(input);
 
-        if (hydratedCard !== undefined) {
-          return hydratedCard;
+          if (hydratedCard !== undefined) {
+            return hydratedCard;
+          }
         }
+
+        const actual = await vi.importActual<
+          typeof import("@/features/review/server/card-hydration")
+        >("@/features/review/server/card-hydration");
+
+        return actual.hydrateReviewCard(input);
       }
-
-      const actual = await vi.importActual<
-        typeof import("@/features/review/server/card-hydration")
-      >("@/features/review/server/card-hydration");
-
-      return actual.hydrateReviewCard(input);
-    });
+    );
     const getGlobalReviewPageDataMock = vi.fn(
       async (
         searchParams: Record<string, string>,

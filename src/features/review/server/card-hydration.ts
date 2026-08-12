@@ -18,6 +18,7 @@ import {
   canUseDataCache,
   listMediaCached,
   runWithTaggedCache,
+  REVIEW_CARD_CONTENT_TAG,
   REVIEW_FIRST_CANDIDATE_TAG
 } from "@/features/cache/server/data-cache";
 import {
@@ -93,14 +94,25 @@ type ReviewCardWithOptionalMedia = ReviewCardSource & {
   } | null;
 };
 
+type ReviewCardStaticHydrationData = {
+  grammar: ReviewGrammarLookupEntry[];
+  groupGrammar: ReviewGrammarLookupEntry[];
+  groupTerms: ReviewTermLookupEntry[];
+  mediaRows: Awaited<ReturnType<typeof listMediaCached>>;
+  subjectCards: ReviewCardSource[];
+  subjectIdentity: ReviewSubjectIdentity;
+  terms: ReviewTermLookupEntry[];
+};
+
 export async function hydrateReviewCard(input: {
+  bypassCache?: boolean;
   cardId: string;
   database?: DatabaseClient;
   now?: Date;
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewQueueCard | null> {
   const database = input.database ?? db;
-  const cacheEligible = canUseDataCache(database);
+  const cacheEligible = !input.bypassCache && canUseDataCache(database);
 
   if (!cacheEligible) {
     return hydrateReviewCardUncached(input);
@@ -160,23 +172,15 @@ export async function hydrateReviewCardUncached(input: {
     return null;
   }
 
-  const { termIds, grammarIds } = collectReviewLinkedEntryIds([card]);
-  const [fsrsOptimizerSnapshot, terms, grammar] = await Promise.all([
+  const [fsrsOptimizerSnapshot, staticHydrationData] = await Promise.all([
     fsrsOptimizerSnapshotPromise,
-    measureWith(input.profiler, "getGlossaryEntriesByIds.term", () =>
-      getGlossaryEntriesByIds(database, "term", termIds)
-    ),
-    measureWith(input.profiler, "getGlossaryEntriesByIds.grammar", () =>
-      getGlossaryEntriesByIds(database, "grammar", grammarIds)
-    )
+    loadReviewCardStaticHydrationData({
+      card,
+      database,
+      profiler: input.profiler
+    })
   ]);
-  const subjectIdentity = deriveReviewSubjectIdentity({
-    cardId: card.id,
-    cardType: card.cardType,
-    front: card.front,
-    entryLinks: card.entryLinks,
-    entryLookup: buildReviewSubjectEntryLookup({ grammar, terms })
-  });
+  const subjectIdentity = staticHydrationData.subjectIdentity;
   const pendingConsolidationSubjectKeys =
     await getPendingConsolidationSubjectKeySet(database, [
       subjectIdentity.subjectKey
@@ -193,14 +197,11 @@ export async function hydrateReviewCardUncached(input: {
   );
   const subjectContext = await measureWith(
     input.profiler,
-    "loadReviewSubjectCardContext",
+    "buildReviewSubjectCardContext",
     () =>
-      loadReviewSubjectCardContext({
+      buildReviewSubjectCardContext({
         card,
-        database,
-        grammar,
-        subjectIdentity,
-        terms
+        staticHydrationData
       })
   );
   const queueStateSnapshot = resolveReviewQueueState(
@@ -406,6 +407,161 @@ export async function getReviewCardDetailData(
       slug: cardMedia.slug,
       title: cardMedia.title
     }
+  };
+}
+
+async function loadReviewCardStaticHydrationData(input: {
+  card: ReviewCardWithOptionalMedia;
+  database: DatabaseClient;
+  profiler?: ReviewProfiler | null;
+}): Promise<ReviewCardStaticHydrationData> {
+  return measureWith(input.profiler, "reviewCardStaticHydration.cached", () =>
+    runWithTaggedCache({
+      enabled: canUseDataCache(input.database),
+      keyParts: ["review", "card-content", input.card.id],
+      loader: () => loadReviewCardStaticHydrationDataUncached(input),
+      tags: [REVIEW_CARD_CONTENT_TAG]
+    })
+  );
+}
+
+async function loadReviewCardStaticHydrationDataUncached(input: {
+  card: ReviewCardWithOptionalMedia;
+  database: DatabaseClient;
+  profiler?: ReviewProfiler | null;
+}): Promise<ReviewCardStaticHydrationData> {
+  const { termIds, grammarIds } = collectReviewLinkedEntryIds([input.card]);
+  const [terms, grammar] = await Promise.all([
+    measureWith(input.profiler, "getGlossaryEntriesByIds.term", () =>
+      getGlossaryEntriesByIds(input.database, "term", termIds)
+    ),
+    measureWith(input.profiler, "getGlossaryEntriesByIds.grammar", () =>
+      getGlossaryEntriesByIds(input.database, "grammar", grammarIds)
+    )
+  ]);
+  const subjectIdentity = deriveReviewSubjectIdentity({
+    cardId: input.card.id,
+    cardType: input.card.cardType,
+    front: input.card.front,
+    entryLinks: input.card.entryLinks,
+    entryLookup: buildReviewSubjectEntryLookup({ grammar, terms })
+  });
+
+  if (
+    subjectIdentity.subjectKind !== "group" ||
+    !subjectIdentity.crossMediaGroupId ||
+    !subjectIdentity.entryType
+  ) {
+    return {
+      grammar,
+      groupGrammar: [],
+      groupTerms: [],
+      mediaRows: [],
+      subjectCards: [],
+      subjectIdentity,
+      terms
+    };
+  }
+
+  const mediaRowsPromise = listMediaCached(input.database);
+  const groupEntries =
+    subjectIdentity.entryType === "term"
+      ? await getGlossaryEntriesByCrossMediaGroupIds(input.database, "term", [
+          subjectIdentity.crossMediaGroupId
+        ])
+      : await getGlossaryEntriesByCrossMediaGroupIds(
+          input.database,
+          "grammar",
+          [subjectIdentity.crossMediaGroupId]
+        );
+  const cardConnections = await listEntryCardConnections(
+    input.database,
+    groupEntries.map((entry) => ({
+      entryId: entry.id,
+      entryType: subjectIdentity.entryType!
+    }))
+  );
+  const subjectCardIds = dedupeStable(
+    cardConnections.map((connection) => connection.cardId)
+  );
+  const [subjectCards, mediaRows] = await Promise.all([
+    subjectCardIds.length > 0
+      ? listReviewCardsByIds(input.database, subjectCardIds)
+      : Promise.resolve([]),
+    mediaRowsPromise
+  ]);
+
+  return {
+    grammar,
+    groupGrammar:
+      subjectIdentity.entryType === "grammar"
+        ? (groupEntries as ReviewGrammarLookupEntry[])
+        : [],
+    groupTerms:
+      subjectIdentity.entryType === "term"
+        ? (groupEntries as ReviewTermLookupEntry[])
+        : [],
+    mediaRows,
+    subjectCards,
+    subjectIdentity,
+    terms
+  };
+}
+
+function buildReviewSubjectCardContext(input: {
+  card: ReviewCardWithOptionalMedia;
+  staticHydrationData: ReviewCardStaticHydrationData;
+}) {
+  const { staticHydrationData } = input;
+  const { subjectIdentity } = staticHydrationData;
+
+  if (
+    subjectIdentity.subjectKind !== "group" ||
+    !subjectIdentity.crossMediaGroupId ||
+    !subjectIdentity.entryType
+  ) {
+    return buildSingleReviewSubjectCardContext({
+      card: input.card,
+      grammar: staticHydrationData.grammar,
+      terms: staticHydrationData.terms
+    });
+  }
+
+  const subjectCards = mergeReviewSubjectCards(
+    [...staticHydrationData.subjectCards, input.card].filter(
+      hasCompletedReviewLesson
+    )
+  );
+  const mediaById = buildReviewMediaLookup(staticHydrationData.mediaRows);
+  const mergedTerms = mergeGlossaryEntries(
+    staticHydrationData.terms,
+    staticHydrationData.groupTerms
+  );
+  const mergedGrammar = mergeGlossaryEntries(
+    staticHydrationData.grammar,
+    staticHydrationData.groupGrammar
+  );
+  const subjectEntryLookup = buildReviewSubjectEntryLookup({
+    grammar: mergedGrammar,
+    terms: mergedTerms
+  });
+  const subjectGroupCards = subjectCards.filter((card) => {
+    const identity = deriveReviewSubjectIdentity({
+      cardId: card.id,
+      cardType: card.cardType,
+      front: card.front,
+      entryLinks: card.entryLinks,
+      entryLookup: subjectEntryLookup
+    });
+
+    return identity.subjectKey === subjectIdentity.subjectKey;
+  });
+
+  return {
+    contextCards: subjectCards,
+    entryLookup: buildEntryLookup(mergedTerms, mergedGrammar),
+    mediaById,
+    subjectCards: subjectGroupCards
   };
 }
 

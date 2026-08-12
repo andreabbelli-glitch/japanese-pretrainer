@@ -139,6 +139,45 @@ describe("review session mutation actions", () => {
     expect(revalidatePathMock).not.toHaveBeenCalled();
   });
 
+  it("prefetches a canonical window in one bounded batch and isolates card failures", async () => {
+    const hydratedCardIds: string[] = [];
+    const hydrationFailure = new Error("card-c hydration failed");
+    const consoleErrorSpy = vi
+      .spyOn(console, "error")
+      .mockImplementation(() => undefined);
+
+    try {
+      const { prefetchReviewCardsSessionAction, reviewPageCalls } =
+        await loadReviewActionsForDatabase(database, {
+          hydrateReviewCard: ({ cardId }) => {
+            hydratedCardIds.push(cardId);
+
+            if (cardId === "card-c") {
+              throw hydrationFailure;
+            }
+
+            return null;
+          }
+        });
+
+      const result = await prefetchReviewCardsSessionAction({
+        cardIds: [" card-b ", "card-b", "card-c", "card-d", "card-e"]
+      });
+
+      expect(hydratedCardIds).toEqual(["card-b", "card-c", "card-d"]);
+      expect(result).toEqual([
+        { card: null, cardId: "card-b" },
+        { card: null, cardId: "card-c" },
+        { card: null, cardId: "card-d" }
+      ]);
+      expect(consoleErrorSpy).toHaveBeenCalledWith(hydrationFailure);
+      expect(reviewPageCalls).toEqual([]);
+      expect(revalidatePathMock).not.toHaveBeenCalled();
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
+  });
+
   it("advances to the next queue card after suspending a manual card when redirectMode advances queue", async () => {
     const { targetCardId } =
       await prepareReviewSessionRedirectFixture(database);

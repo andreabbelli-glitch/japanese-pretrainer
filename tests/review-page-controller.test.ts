@@ -26,6 +26,7 @@ const mocks = vi.hoisted(() => ({
   playPreloadedAudioSource: vi.fn(),
   preloadAudioSources: vi.fn(),
   prefetchReviewCardSessionAction: vi.fn(),
+  prefetchReviewCardsSessionAction: vi.fn(),
   resetReviewCardSessionAction: vi.fn(),
   setLinkedEntryLearningSessionAction: vi.fn(),
   setReviewCardSuspendedSessionAction: vi.fn(),
@@ -42,6 +43,7 @@ vi.mock("@/actions/review", () => ({
   loadReviewPageDataSessionAction: mocks.loadReviewPageDataSessionAction,
   markLinkedEntryKnownSessionAction: mocks.markLinkedEntryKnownSessionAction,
   prefetchReviewCardSessionAction: mocks.prefetchReviewCardSessionAction,
+  prefetchReviewCardsSessionAction: mocks.prefetchReviewCardsSessionAction,
   resetReviewCardSessionAction: mocks.resetReviewCardSessionAction,
   setLinkedEntryLearningSessionAction:
     mocks.setLinkedEntryLearningSessionAction,
@@ -101,6 +103,8 @@ describe("useReviewPageController first-candidate grading", () => {
     mocks.playPreloadedAudioSource.mockReset();
     mocks.preloadAudioSources.mockReset();
     mocks.prefetchReviewCardSessionAction.mockReset();
+    mocks.prefetchReviewCardsSessionAction.mockReset();
+    mocks.prefetchReviewCardsSessionAction.mockResolvedValue([]);
     mocks.resetReviewCardSessionAction.mockReset();
     mocks.setLinkedEntryLearningSessionAction.mockReset();
     mocks.setReviewCardSuspendedSessionAction.mockReset();
@@ -125,7 +129,7 @@ describe("useReviewPageController first-candidate grading", () => {
     uninstallMinimalDom();
   });
 
-  it("gates a reveal/grade race until authoritative previews hydrate", async () => {
+  it("grades immediately while previews hydrate and ignores the stale hydration result", async () => {
     const hydration = createDeferred<ReviewPageData>();
     mocks.loadReviewPageDataSessionAction.mockReturnValue(hydration.promise);
     mocks.gradeReviewCardSessionAction.mockImplementation(
@@ -173,6 +177,7 @@ describe("useReviewPageController first-candidate grading", () => {
       }
     });
     expect(mocks.prefetchReviewCardSessionAction).not.toHaveBeenCalled();
+    expect(mocks.prefetchReviewCardsSessionAction).not.toHaveBeenCalled();
 
     const controller = () => {
       if (!latestController) {
@@ -185,7 +190,7 @@ describe("useReviewPageController first-candidate grading", () => {
     expect(controller().isFullReviewPageData).toBe(false);
     expect(controller().isHydratingFullData).toBe(true);
     expect(controller().isAnswerRevealed).toBe(false);
-    expect(controller().isGradeControlsDisabled).toBe(true);
+    expect(controller().isGradeControlsDisabled).toBe(false);
     expect(controller().gradePreviewLookup.size).toBe(0);
 
     act(() => {
@@ -202,24 +207,6 @@ describe("useReviewPageController first-candidate grading", () => {
       controller().handleGradeCard("good");
     });
 
-    expect(mocks.gradeReviewCardSessionAction).not.toHaveBeenCalled();
-
-    await act(async () => {
-      hydration.resolve(buildFullReviewPageData("card-a"));
-      await hydration.promise;
-      await flushMicrotasks();
-    });
-
-    expect(controller().isFullReviewPageData).toBe(true);
-    expect(controller().isHydratingFullData).toBe(false);
-    expect(controller().isAnswerRevealed).toBe(true);
-    expect(controller().isGradeControlsDisabled).toBe(false);
-    expect(controller().gradePreviewLookup.size).toBe(4);
-
-    act(() => {
-      controller().handleGradeCard("good");
-    });
-
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledTimes(1);
     expect(mocks.gradeReviewCardSessionAction).toHaveBeenCalledWith(
       expect.objectContaining({
@@ -231,7 +218,6 @@ describe("useReviewPageController first-candidate grading", () => {
         extraNewCount: 0,
         expectedUpdatedAt: "2026-04-02T11:00:00.000Z",
         gradedCardBucket: "due",
-        gradedCardIds: ["card-a"],
         mediaSlug: undefined,
         nextCardId: "card-b",
         rating: "good",
@@ -239,10 +225,22 @@ describe("useReviewPageController first-candidate grading", () => {
         segmentId: null
       })
     );
-
-    expect(controller().isFullReviewPageData).toBe(true);
-    expect(controller().isHydratingFullData).toBe(false);
+    expect(controller().viewData.selectedCard?.id).toBe("card-b");
+    expect(controller().viewData.session.answeredCount).toBe(1);
     expect(controller().isAnswerRevealed).toBe(false);
+    expect(controller().isGradeControlsDisabled).toBe(false);
+
+    await act(async () => {
+      hydration.resolve(buildFullReviewPageData("card-a"));
+      await hydration.promise;
+      await flushMicrotasks();
+    });
+
+    expect(controller().isFullReviewPageData).toBe(false);
+    expect(controller().isHydratingFullData).toBe(true);
+    expect(controller().isAnswerRevealed).toBe(false);
+    expect(controller().isGradeControlsDisabled).toBe(false);
+    expect(controller().gradePreviewLookup.size).toBe(0);
     expect(controller().viewData.selectedCard?.id).toBe("card-b");
     expect(controller().viewData.session.answeredCount).toBe(1);
     expect(controller().viewData.selectedCardContext.position).toBe(1);
@@ -346,7 +344,6 @@ describe("useReviewPageController first-candidate grading", () => {
         candidateCardIds: ["card-c"],
         canonicalCandidateCardIds: ["card-c"],
         expectedUpdatedAt: "2026-04-02T11:30:00.000Z",
-        gradedCardIds: ["card-a", "card-b"],
         nextCardId: "card-c",
         rating: "good",
         scope: "global"

@@ -50,6 +50,15 @@ export type ReviewSessionMutationWorkflowInput = ReviewSessionInput & {
   suspended?: boolean;
 };
 
+type ReviewCacheInvalidationScheduler = (task: () => void) => void;
+
+export type ReviewCardPrefetchResult = {
+  card: ReviewQueueCard | null;
+  cardId: string;
+};
+
+const REVIEW_CARD_PREFETCH_BATCH_SIZE = 3;
+
 export async function gradeReviewCardFormWorkflow(
   input: ReviewFormGradeWorkflowInput
 ): Promise<Route> {
@@ -99,6 +108,7 @@ export async function runReviewFormMutationWorkflow(
   });
 
   applyReviewActionCachePolicy({
+    includeCardContent: isReviewCardContentMutation(input.kind),
     mediaId: mutationResult.mediaId,
     policy: mutationResult.cachePolicy
   });
@@ -117,7 +127,10 @@ export async function runReviewFormMutationWorkflow(
 export async function gradeReviewCardSessionWorkflow(
   input: ReviewSessionInput & {
     rating: "again" | "hard" | "good" | "easy";
-  }
+  },
+  options: {
+    scheduleCacheInvalidation?: ReviewCacheInvalidationScheduler;
+  } = {}
 ): Promise<ReviewPageData> {
   const media = await resolveReviewSessionMedia(input);
   const forcedContrast = input.forcedKanjiClashContrast ?? input.forcedContrast;
@@ -130,18 +143,28 @@ export async function gradeReviewCardSessionWorkflow(
     forcedContrastScope: input.scope === "media" ? "media" : "global",
     rating: input.rating
   });
+  const invalidateCaches = () =>
+    applyReviewActionCachePolicy({
+      includeConsolidation: gradeResult.consolidationChanged,
+      mediaId: gradeResult.mediaId,
+      policy: "review"
+    });
 
-  applyReviewActionCachePolicy({
-    includeConsolidation: gradeResult.consolidationChanged,
-    mediaId: gradeResult.mediaId,
-    policy: "review"
-  });
+  if (options.scheduleCacheInvalidation) {
+    options.scheduleCacheInvalidation(invalidateCaches);
+  }
 
-  return resolvePostGradeReviewSessionPageData({
-    gradeResult,
-    resolvedMedia: media,
-    sessionInput: input
-  });
+  try {
+    return await resolvePostGradeReviewSessionPageData({
+      gradeResult,
+      resolvedMedia: media,
+      sessionInput: input
+    });
+  } finally {
+    if (!options.scheduleCacheInvalidation) {
+      invalidateCaches();
+    }
+  }
 }
 
 export function prefetchReviewCardSessionWorkflow(input: {
@@ -150,6 +173,52 @@ export function prefetchReviewCardSessionWorkflow(input: {
   return hydrateReviewCard({
     cardId: input.cardId
   });
+}
+
+export async function prefetchReviewCardsSessionWorkflow(input: {
+  cardIds: string[];
+}): Promise<ReviewCardPrefetchResult[]> {
+  const cardIds = collectReviewCardPrefetchIds(input.cardIds);
+
+  return Promise.all(
+    cardIds.map(async (cardId) => {
+      try {
+        return {
+          card: await hydrateReviewCard({ cardId }),
+          cardId
+        };
+      } catch (error) {
+        console.error(error);
+
+        return {
+          card: null,
+          cardId
+        };
+      }
+    })
+  );
+}
+
+function collectReviewCardPrefetchIds(cardIds: string[]) {
+  const normalizedCardIds: string[] = [];
+  const seenCardIds = new Set<string>();
+
+  for (const rawCardId of cardIds) {
+    const cardId = rawCardId.trim();
+
+    if (!cardId || seenCardIds.has(cardId)) {
+      continue;
+    }
+
+    normalizedCardIds.push(cardId);
+    seenCardIds.add(cardId);
+
+    if (normalizedCardIds.length === REVIEW_CARD_PREFETCH_BATCH_SIZE) {
+      break;
+    }
+  }
+
+  return normalizedCardIds;
 }
 
 export function loadReviewPageDataSessionWorkflow(input: {
@@ -174,6 +243,7 @@ export async function runReviewSessionMutationWorkflow(
   });
 
   applyReviewActionCachePolicy({
+    includeCardContent: isReviewCardContentMutation(input.kind),
     mediaId: mutationResult.mediaId,
     policy: mutationResult.cachePolicy
   });
@@ -195,4 +265,8 @@ export async function runReviewSessionMutationWorkflow(
       resolvedMediaRows: await mediaRowsPromise
     }
   );
+}
+
+function isReviewCardContentMutation(kind: ReviewMutationKind) {
+  return kind === "reset" || kind === "suspended";
 }
