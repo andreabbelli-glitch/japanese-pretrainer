@@ -7,7 +7,7 @@ PROJECT="$ROOT/DailyKanji.xcodeproj"
 DERIVED_DATA="${DERIVED_DATA:-$ROOT/build/WifiRenewDerivedData}"
 STATE_DIR="${STATE_DIR:-$HOME/Library/Application Support/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
-PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
+PROFILE_STATE_FILE="${PROFILE_STATE_FILE:-$STATE_DIR/profile-state.env}"
 SCHEME="${SCHEME:-DailyKanji}"
 CONFIGURATION="${CONFIGURATION:-Release}"
 COREDEVICE_INFO_TIMEOUT_SECONDS="${COREDEVICE_INFO_TIMEOUT_SECONDS:-60}"
@@ -164,11 +164,12 @@ HINT
   fi
 }
 
-profile_expiry_epoch_for_file() {
+embedded_profile_metadata_for_file() {
   local profile_path="$1"
   local profile_plist
   local expiry_iso
   local expiry_epoch
+  local profile_uuid
   local status
 
   if profile_plist="$(mktemp "${TMPDIR:-/tmp}/daily-kanji-profile.XXXXXX")"; then
@@ -198,7 +199,22 @@ profile_expiry_epoch_for_file() {
     printf "Impossibile leggere ExpirationDate dal provisioning profile (exit %s): %s\n" "$status" "$profile_path" >&2
     return "$status"
   fi
+
+  set +e
+  profile_uuid="$(plutil -extract UUID raw -o - "$profile_plist")"
+  status=$?
+  set -e
   rm -f "$profile_plist"
+  if [ "$status" -ne 0 ]; then
+    printf "Impossibile leggere UUID dal provisioning profile (exit %s): %s\n" "$status" "$profile_path" >&2
+    return "$status"
+  fi
+
+  if [[ ! "$profile_uuid" =~ ^[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}$ ]]; then
+    printf "UUID provisioning profile non valido per %s: %s\n" "$profile_path" "$profile_uuid" >&2
+    return 65
+  fi
+  profile_uuid="$(printf "%s" "$profile_uuid" | tr '[:upper:]' '[:lower:]')"
 
   set +e
   expiry_epoch="$(date -u -j -f "%Y-%m-%dT%H:%M:%SZ" "$expiry_iso" +%s)"
@@ -209,27 +225,48 @@ profile_expiry_epoch_for_file() {
     return "$status"
   fi
 
-  printf "%s\n" "$expiry_epoch"
+  printf "%s\t%s\n" "$expiry_epoch" "$profile_uuid"
 }
 
-record_embedded_profile_expiry() {
+record_embedded_profile_state() {
   local app_path="$1"
   local profile_count=0
   local min_expiry=""
+  local -a profile_uuids=()
   local profile_path
+  local metadata
   local expiry_epoch
+  local profile_uuid
+  local existing_uuid
   local expiry_label
-  local expiry_temp
+  local state_temp
   local status
 
   while IFS= read -r -d '' profile_path; do
     set +e
-    expiry_epoch="$(profile_expiry_epoch_for_file "$profile_path")"
+    metadata="$(embedded_profile_metadata_for_file "$profile_path")"
     status=$?
     set -e
     if [ "$status" -ne 0 ]; then
       return "$status"
     fi
+
+    expiry_epoch="${metadata%%$'\t'*}"
+    profile_uuid="${metadata#*$'\t'}"
+    if [ "$expiry_epoch" = "$metadata" ] || [ -z "$profile_uuid" ]; then
+      printf "Metadata provisioning profile incompleti: %s\n" "$profile_path" >&2
+      return 65
+    fi
+
+    if [ "$profile_count" -gt 0 ]; then
+      for existing_uuid in "${profile_uuids[@]}"; do
+        if [ "$existing_uuid" = "$profile_uuid" ]; then
+          printf "UUID provisioning profile duplicato in app e widget: %s\n" "$profile_uuid" >&2
+          return 65
+        fi
+      done
+    fi
+    profile_uuids+=("$profile_uuid")
 
     if [ -z "$min_expiry" ] || [ "$expiry_epoch" -lt "$min_expiry" ]; then
       min_expiry="$expiry_epoch"
@@ -238,51 +275,62 @@ record_embedded_profile_expiry() {
     profile_count=$(( profile_count + 1 ))
   done < <(find "$app_path" -name embedded.mobileprovision -print0)
 
-  if [ "$profile_count" -lt 2 ]; then
-    printf "Profili embedded incompleti: trovati %s, attesi app e widget in %s\n" "$profile_count" "$app_path" >&2
+  if [ "$profile_count" -ne 2 ]; then
+    printf "Profili embedded non validi: trovati %s, attesi esattamente app e widget in %s\n" "$profile_count" "$app_path" >&2
     return 1
   fi
 
-  if mkdir -p "$STATE_DIR"; then
+  if mkdir -p "$STATE_DIR" "$(dirname "$PROFILE_STATE_FILE")"; then
     :
   else
     status="$?"
     printf "Impossibile creare la directory stato Daily Kanji (exit %s): %s\n" "$status" "$STATE_DIR" >&2
     return "$status"
   fi
-  if expiry_temp="$(mktemp "$PROFILE_EXPIRY_FILE.XXXXXX")"; then
+  if state_temp="$(mktemp "$PROFILE_STATE_FILE.XXXXXX")"; then
     :
   else
     status="$?"
-    printf "Impossibile creare il file temporaneo della scadenza (exit %s).\n" "$status" >&2
+    printf "Impossibile creare il file temporaneo dello stato profili (exit %s).\n" "$status" >&2
     return "$status"
   fi
-  if printf "%s\n" "$min_expiry" > "$expiry_temp"; then
+
+  if {
+    printf "VERSION=1\n"
+    printf "EXPIRY_EPOCH=%s\n" "$min_expiry"
+    printf "%s\n" "${profile_uuids[@]}" | LC_ALL=C sort | sed 's/^/PROFILE_UUID=/'
+  } > "$state_temp"; then
     :
   else
     status="$?"
-    rm -f "$expiry_temp"
-    printf "Impossibile scrivere la scadenza profili (exit %s).\n" "$status" >&2
+    rm -f "$state_temp"
+    printf "Impossibile scrivere lo stato profili (exit %s).\n" "$status" >&2
     return "$status"
   fi
-  if chmod 600 "$expiry_temp"; then
+
+  if chmod 600 "$state_temp"; then
     :
   else
     status="$?"
-    rm -f "$expiry_temp"
-    printf "Impossibile proteggere la scadenza profili (exit %s).\n" "$status" >&2
+    rm -f "$state_temp"
+    printf "Impossibile proteggere lo stato profili (exit %s).\n" "$status" >&2
     return "$status"
   fi
-  if mv "$expiry_temp" "$PROFILE_EXPIRY_FILE"; then
+
+  # Scadenza e UUID diventano visibili insieme: il rename di un singolo file
+  # sostituisce lo snapshot precedente senza coppie di file intermedie.
+  if mv "$state_temp" "$PROFILE_STATE_FILE"; then
     :
   else
     status="$?"
-    rm -f "$expiry_temp"
-    printf "Impossibile registrare atomicamente la scadenza profili (exit %s).\n" "$status" >&2
+    rm -f "$state_temp"
+    printf "Impossibile registrare atomicamente lo stato profili (exit %s).\n" "$status" >&2
     return "$status"
   fi
+
   expiry_label="$(date -r "$min_expiry" "+%Y-%m-%d %H:%M:%S %Z" 2>/dev/null || printf "%s" "$min_expiry")"
   printf "Daily Kanji profile expiry recorded: %s (%s)\n" "$min_expiry" "$expiry_label"
+  printf "Daily Kanji embedded profile UUIDs recorded: %s\n" "${#profile_uuids[@]}"
 }
 
 developer_disk_image_ready() {
@@ -420,7 +468,7 @@ else
   printf "Daily Kanji device install failed with exit %s.\n" "$install_status" >&2
   exit "$install_status"
 fi
-if record_embedded_profile_expiry "$APP_PATH"; then
+if record_embedded_profile_state "$APP_PATH"; then
   :
 else
   profile_status="$?"

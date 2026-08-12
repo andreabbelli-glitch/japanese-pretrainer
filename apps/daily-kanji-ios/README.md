@@ -125,8 +125,10 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
 `install-renew-launchd.sh` installa un LaunchAgent persistente con `RunAtLoad`
 e `StartInterval`: il check avviene al caricamento/login e ogni 4 ore
 (`RENEW_CHECK_INTERVAL_SECONDS=14400`). Il check legge la scadenza reale minima
-dei provisioning profile embedded registrata in
-`~/Library/Application Support/DailyKanji/profile-expiry.epoch`. Prima delle
+dei provisioning profile embedded registrata nello snapshot atomico
+`~/Library/Application Support/DailyKanji/profile-state.env`. Il precedente
+`profile-expiry.epoch` e' letto solo come fallback finche lo snapshot non e'
+stato ancora creato. Prima delle
 ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce subito senza lock,
 CoreDevice, package o Xcode. Nella finestra preventiva prova package +
 build/install; se il device, DDI, signing, package, build o install non sono
@@ -147,9 +149,16 @@ endpoint/token di sync gia' presenti nello stesso file. Le opzioni legacy
 non creano marker sintetici: `last-renew-success.epoch` cambia soltanto dopo un
 install riuscito e una nuova scadenza embedded valida, successiva alla
 precedente e oltre la finestra preventiva. `xcode-renew.sh` registra
-atomicamente la scadenza minima tra app e widget e usa una build fisica
-`Release` di default, piu adatta all'uso quotidiano e ai consumi; per una
-diagnosi intenzionale si puo usare `CONFIGURATION=Debug ./scripts/xcode-renew.sh`.
+in un unico file atomico la scadenza minima e i due UUID esatti dei profili
+embedded di app e widget. Solo durante un tentativo dovuto o `--force`, il
+wrapper sposta dalla
+cache Xcode esclusivamente i file di quegli UUID in un backup temporaneo sotto
+lo state directory: questo costringe il Personal Team a emettere profili nuovi,
+senza toccare altri progetti. Un errore ripristina i vecchi file e conserva
+l'exit code originale; il backup viene eliminato solo dopo che la scadenza e'
+realmente avanzata. La build fisica usa `Release` di default, piu adatta all'uso
+quotidiano e ai consumi; per una diagnosi intenzionale si puo usare
+`CONFIGURATION=Debug ./scripts/xcode-renew.sh`.
 Per rimuovere l'automazione:
 
 ```sh

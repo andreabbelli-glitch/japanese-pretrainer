@@ -74,8 +74,8 @@ DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
 
 Il LaunchAgent utente e' persistente: usa `RunAtLoad` e `StartInterval` ogni 4
 ore (`RENEW_CHECK_INTERVAL_SECONDS=14400`). Ogni attivazione legge soltanto la
-scadenza minima dei provisioning profile registrata in
-`~/Library/Application Support/DailyKanji/profile-expiry.epoch`; prima delle
+scadenza minima dei provisioning profile registrata nello snapshot atomico
+`~/Library/Application Support/DailyKanji/profile-state.env`; prima delle
 ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce subito, senza lock,
 CoreDevice, package o Xcode. Nella finestra preventiva tenta il rinnovo a ogni
 intervallo finche app e widget non sono realmente reinstallati con una scadenza
@@ -106,8 +106,13 @@ il rinnovo e' dovuto, il wrapper preflighta CoreDevice/DDI, poi esegue
 il verifier non blocca risorse packaged stale. La build fisica usa `Release` di
 default per ridurre overhead e consumo sul telefono; `CONFIGURATION=Debug`
 resta disponibile solo per diagnosi esplicite. Dopo l'install,
-`xcode-renew.sh` registra atomicamente la scadenza minima tra app e widget
-leggendo gli `embedded.mobileprovision`. I log sono in
+`xcode-renew.sh` registra in un unico file atomico scadenza minima e due UUID
+esatti
+leggendo gli `embedded.mobileprovision` di app e widget. Nella finestra dovuta
+il wrapper sposta temporaneamente dalla cache Xcode solo i file di quegli UUID,
+forzando il refresh Personal Team: un errore li ripristina dal backup mirato
+sotto `STATE_DIR`, mentre una nuova scadenza verificata elimina il backup.
+Profili estranei non vengono cercati per bundle id ne' modificati. I log sono in
 `~/Library/Logs/DailyKanji/xcode-renew.out.log` e
 `~/Library/Logs/DailyKanji/xcode-renew.err.log`. Per rimuoverlo:
 

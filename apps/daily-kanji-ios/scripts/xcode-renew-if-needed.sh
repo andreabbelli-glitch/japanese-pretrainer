@@ -14,6 +14,12 @@ DDI_MOUNT_TIMEOUT_SECONDS="${DDI_MOUNT_TIMEOUT_SECONDS:-120}"
 LOCK_DIR="$STATE_DIR/renew.lock"
 LAST_SUCCESS_FILE="$STATE_DIR/last-renew-success.epoch"
 PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
+PROFILE_STATE_FILE="${PROFILE_STATE_FILE:-$STATE_DIR/profile-state.env}"
+PROFILE_CACHE_DIR="${PROFILE_CACHE_DIR:-$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles}"
+PROFILE_REFRESH_BACKUP_DIR=""
+PROFILE_REFRESH_VERIFIED=0
+PROFILE_STATE_EXPIRY=""
+PROFILE_UUIDS=()
 FORCE=0
 
 if [ -z "${DEVELOPER_DIR:-}" ] && [ -d /Applications/Xcode.app/Contents/Developer ]; then
@@ -39,6 +45,9 @@ Environment:
   DDI_MOUNT_TIMEOUT_SECONDS         Default: 120.
   STATE_DIR                         Default: ~/Library/Application Support/DailyKanji.
   LOG_DIR                           Default: ~/Library/Logs/DailyKanji.
+  PROFILE_STATE_FILE                Default: STATE_DIR/profile-state.env.
+  PROFILE_EXPIRY_FILE               Legacy fallback used only before state migration.
+  PROFILE_CACHE_DIR                 Default: Xcode UserData Provisioning Profiles.
 USAGE
 }
 
@@ -105,7 +114,93 @@ file_epoch() {
   printf "%s\n" "$value"
 }
 
+load_profile_state() {
+  local line
+  local key
+  local value
+  local version_count=0
+  local expiry_count=0
+  local uuid_count=0
+  local existing_uuid
+
+  PROFILE_STATE_EXPIRY=""
+  PROFILE_UUIDS=()
+  if [ ! -f "$PROFILE_STATE_FILE" ]; then
+    return 1
+  fi
+
+  while IFS= read -r line || [ -n "$line" ]; do
+    if [[ "$line" != *=* ]]; then
+      PROFILE_STATE_EXPIRY=""
+      PROFILE_UUIDS=()
+      return 1
+    fi
+    key="${line%%=*}"
+    value="${line#*=}"
+
+    case "$key" in
+      VERSION)
+        version_count=$(( version_count + 1 ))
+        if [ "$version_count" -ne 1 ] || [ "$value" != "1" ]; then
+          PROFILE_STATE_EXPIRY=""
+          PROFILE_UUIDS=()
+          return 1
+        fi
+        ;;
+      EXPIRY_EPOCH)
+        expiry_count=$(( expiry_count + 1 ))
+        if [ "$expiry_count" -ne 1 ] || [[ ! "$value" =~ ^[0-9]+$ ]]; then
+          PROFILE_STATE_EXPIRY=""
+          PROFILE_UUIDS=()
+          return 1
+        fi
+        PROFILE_STATE_EXPIRY="$value"
+        ;;
+      PROFILE_UUID)
+        if [[ ! "$value" =~ ^[[:xdigit:]]{8}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{4}-[[:xdigit:]]{12}$ ]]; then
+          PROFILE_STATE_EXPIRY=""
+          PROFILE_UUIDS=()
+          return 1
+        fi
+        value="$(printf "%s" "$value" | tr '[:upper:]' '[:lower:]')"
+        if [ "$uuid_count" -gt 0 ]; then
+          for existing_uuid in "${PROFILE_UUIDS[@]}"; do
+            if [ "$existing_uuid" = "$value" ]; then
+              PROFILE_STATE_EXPIRY=""
+              PROFILE_UUIDS=()
+              return 1
+            fi
+          done
+        fi
+        PROFILE_UUIDS+=("$value")
+        uuid_count=$(( uuid_count + 1 ))
+        ;;
+      *)
+        PROFILE_STATE_EXPIRY=""
+        PROFILE_UUIDS=()
+        return 1
+        ;;
+    esac
+  done < "$PROFILE_STATE_FILE"
+
+  if [ "$version_count" -ne 1 ] || [ "$expiry_count" -ne 1 ] || [ "$uuid_count" -ne 2 ]; then
+    PROFILE_STATE_EXPIRY=""
+    PROFILE_UUIDS=()
+    return 1
+  fi
+}
+
 profile_expiry_epoch() {
+  if [ -f "$PROFILE_STATE_FILE" ]; then
+    if load_profile_state; then
+      printf "%s\n" "$PROFILE_STATE_EXPIRY"
+      return 0
+    fi
+    return 1
+  fi
+
+  # One-way compatibility for installations created before profile-state.env.
+  # A malformed new state never falls back to a potentially stale legacy file.
   file_epoch "$PROFILE_EXPIRY_FILE"
 }
 
@@ -152,7 +247,9 @@ print_status() {
   printf "Daily Kanji automatic renew status\n"
   printf "Device ID: %s\n" "${DEVICE_ID:-not configured}"
   printf "Config file: %s\n" "$CONFIG_FILE"
-  printf "Profile expiry file: %s\n" "$PROFILE_EXPIRY_FILE"
+  printf "Atomic profile state: %s\n" "$PROFILE_STATE_FILE"
+  printf "Legacy profile expiry fallback: %s\n" "$PROFILE_EXPIRY_FILE"
+  printf "Xcode profile cache: %s\n" "$PROFILE_CACHE_DIR"
   printf "Last success file: %s\n" "$LAST_SUCCESS_FILE"
   printf "Preventive window: %ss before expiry\n" "$RENEW_BEFORE_EXPIRY_SECONDS"
   printf "LaunchAgent check interval: %ss\n" "$RENEW_CHECK_INTERVAL_SECONDS"
@@ -277,11 +374,170 @@ remove_lock_dir() {
   rmdir "$LOCK_DIR" 2>/dev/null || true
 }
 
+load_recorded_profile_uuids() {
+  if ! load_profile_state; then
+    printf "Daily Kanji atomic profile state missing or invalid; no cached profile will be moved on this attempt: %s\n" \
+      "$PROFILE_STATE_FILE" >&2
+    return 1
+  fi
+}
+
+cached_profile_path_for_uuid() {
+  local profile_uuid="$1"
+  local lowercase_uuid
+  local uppercase_uuid
+  local candidate
+
+  lowercase_uuid="$(printf "%s" "$profile_uuid" | tr '[:upper:]' '[:lower:]')"
+  uppercase_uuid="$(printf "%s" "$profile_uuid" | tr '[:lower:]' '[:upper:]')"
+  for candidate in \
+    "$PROFILE_CACHE_DIR/$profile_uuid.mobileprovision" \
+    "$PROFILE_CACHE_DIR/$lowercase_uuid.mobileprovision" \
+    "$PROFILE_CACHE_DIR/$uppercase_uuid.mobileprovision"; do
+    if [ -f "$candidate" ]; then
+      printf "%s\n" "$candidate"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
+prepare_profile_cache_refresh() {
+  local profile_uuid
+  local cached_profile
+  local moved_count=0
+  local status
+
+  if ! load_recorded_profile_uuids; then
+    return 0
+  fi
+
+  if [ ! -d "$PROFILE_CACHE_DIR" ]; then
+    printf "Daily Kanji Xcode provisioning profile cache is absent; continuing without cached profile removal: %s\n" \
+      "$PROFILE_CACHE_DIR" >&2
+    return 0
+  fi
+
+  if PROFILE_REFRESH_BACKUP_DIR="$(mktemp -d "$STATE_DIR/profile-refresh-backup.XXXXXX")"; then
+    if chmod 700 "$PROFILE_REFRESH_BACKUP_DIR"; then
+      :
+    else
+      status="$?"
+      rmdir "$PROFILE_REFRESH_BACKUP_DIR" 2>/dev/null || true
+      PROFILE_REFRESH_BACKUP_DIR=""
+      printf "Daily Kanji could not protect targeted profile backup (exit %s).\n" "$status" >&2
+      return "$status"
+    fi
+  else
+    status="$?"
+    printf "Daily Kanji could not create targeted profile backup (exit %s).\n" "$status" >&2
+    return "$status"
+  fi
+
+  for profile_uuid in "${PROFILE_UUIDS[@]}"; do
+    if ! cached_profile="$(cached_profile_path_for_uuid "$profile_uuid")"; then
+      printf "Daily Kanji cached profile already absent for recorded UUID %s.\n" "$profile_uuid"
+      continue
+    fi
+
+    if mv "$cached_profile" "$PROFILE_REFRESH_BACKUP_DIR/$(basename "$cached_profile")"; then
+      moved_count=$(( moved_count + 1 ))
+      printf "Daily Kanji temporarily removed cached profile UUID %s to force Xcode provisioning refresh.\n" \
+        "$profile_uuid"
+    else
+      status="$?"
+      printf "Daily Kanji could not back up cached profile UUID %s (exit %s).\n" \
+        "$profile_uuid" "$status" >&2
+      return "$status"
+    fi
+  done
+
+  if [ "$moved_count" -eq 0 ]; then
+    rmdir "$PROFILE_REFRESH_BACKUP_DIR" 2>/dev/null || true
+    PROFILE_REFRESH_BACKUP_DIR=""
+  fi
+}
+
+restore_profile_cache_backup() {
+  local backup_profile
+  local cached_profile
+  local restore_failed=0
+
+  if [ -z "$PROFILE_REFRESH_BACKUP_DIR" ] || [ ! -d "$PROFILE_REFRESH_BACKUP_DIR" ]; then
+    return 0
+  fi
+
+  mkdir -p "$PROFILE_CACHE_DIR" || restore_failed=1
+  for backup_profile in "$PROFILE_REFRESH_BACKUP_DIR"/*.mobileprovision; do
+    if [ ! -f "$backup_profile" ]; then
+      continue
+    fi
+    cached_profile="$PROFILE_CACHE_DIR/$(basename "$backup_profile")"
+    if [ -f "$cached_profile" ]; then
+      # A profile UUID identifies immutable provisioning content. If Xcode
+      # recreated the same UUID, retaining its copy is equivalent to restore.
+      rm -f "$backup_profile" || restore_failed=1
+    elif mv "$backup_profile" "$cached_profile"; then
+      printf "Daily Kanji restored cached profile after failed renewal: %s\n" \
+        "$(basename "$cached_profile")" >&2
+    else
+      restore_failed=1
+    fi
+  done
+
+  if ! rmdir "$PROFILE_REFRESH_BACKUP_DIR" 2>/dev/null; then
+    restore_failed=1
+  fi
+  if [ "$restore_failed" -ne 0 ]; then
+    printf "Daily Kanji could not fully restore the targeted profile backup; preserved at %s.\n" \
+      "$PROFILE_REFRESH_BACKUP_DIR" >&2
+    return 1
+  fi
+  PROFILE_REFRESH_BACKUP_DIR=""
+}
+
+discard_profile_cache_backup() {
+  local backup_profile
+  local discard_failed=0
+
+  if [ -z "$PROFILE_REFRESH_BACKUP_DIR" ] || [ ! -d "$PROFILE_REFRESH_BACKUP_DIR" ]; then
+    return 0
+  fi
+
+  for backup_profile in "$PROFILE_REFRESH_BACKUP_DIR"/*.mobileprovision; do
+    if [ ! -f "$backup_profile" ]; then
+      continue
+    fi
+    rm -f "$backup_profile" || discard_failed=1
+  done
+  if ! rmdir "$PROFILE_REFRESH_BACKUP_DIR" 2>/dev/null; then
+    discard_failed=1
+  fi
+  if [ "$discard_failed" -ne 0 ]; then
+    printf "Daily Kanji refreshed successfully but could not discard targeted profile backup: %s\n" \
+      "$PROFILE_REFRESH_BACKUP_DIR" >&2
+    return 1
+  fi
+  PROFILE_REFRESH_BACKUP_DIR=""
+}
+
 cleanup_after_renew() {
   local exit_code="$?"
+  local cleanup_status=0
   trap - EXIT
   set +e
+  if [ "$PROFILE_REFRESH_VERIFIED" -eq 1 ]; then
+    discard_profile_cache_backup
+    cleanup_status="$?"
+  else
+    restore_profile_cache_backup
+    cleanup_status="$?"
+  fi
   remove_lock_dir
+  if [ "$exit_code" -eq 0 ] && [ "$cleanup_status" -ne 0 ]; then
+    exit "$cleanup_status"
+  fi
   exit "$exit_code"
 }
 
@@ -510,7 +766,16 @@ else
   exit "$?"
 fi
 
-if DEVICE_ID="$DEVICE_ID" run_and_report "Release build/install" \
+if prepare_profile_cache_refresh; then
+  :
+else
+  exit "$?"
+fi
+
+if DEVICE_ID="$DEVICE_ID" \
+  PROFILE_EXPIRY_FILE="$PROFILE_EXPIRY_FILE" \
+  PROFILE_STATE_FILE="$PROFILE_STATE_FILE" \
+  run_and_report "Release build/install" \
   "$ROOT/scripts/xcode-renew.sh"; then
   :
 else
@@ -518,7 +783,7 @@ else
 fi
 
 if validate_refreshed_expiry "$previous_expiry"; then
-  :
+  PROFILE_REFRESH_VERIFIED=1
 else
   exit "$?"
 fi

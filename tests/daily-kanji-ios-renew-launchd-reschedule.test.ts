@@ -4,6 +4,7 @@ import {
   mkdir,
   mkdtemp,
   readFile,
+  readdir,
   rm,
   writeFile
 } from "node:fs/promises";
@@ -200,6 +201,338 @@ describe("Daily Kanji iOS persistent renew retry safety", () => {
     await expect(
       readFile(path.join(fixture.stateDir, "last-renew-success.epoch"), "utf8")
     ).rejects.toThrow(/ENOENT/);
+  });
+
+  it("removes only the recorded app and widget profiles during a due refresh", async () => {
+    const fixture = await createWrapperFixture(
+      "targeted-profile-success",
+      tempDirs
+    );
+    const profileCacheDir = path.join(fixture.tempRoot, "profile-cache");
+    const appUuid = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+    const widgetUuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+    const unrelatedUuid = "cccccccc-cccc-4ccc-8ccc-cccccccccccc";
+    await mkdir(profileCacheDir, { recursive: true });
+    await writeFile(
+      path.join(fixture.stateDir, "profile-state.env"),
+      profileStateContents(
+        Math.floor(Date.now() / 1000) - 60,
+        appUuid,
+        widgetUuid
+      )
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${appUuid}.mobileprovision`),
+      "old-app\n"
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${widgetUuid}.mobileprovision`),
+      "old-widget\n"
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${unrelatedUuid}.mobileprovision`),
+      "unrelated\n"
+    );
+    await writeExecutable(
+      path.join(fixture.binDir, "xcrun"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.repoScriptsRoot, "with-node.sh"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.iosScriptsRoot, "xcode-renew.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        `for uuid in ${appUuid} ${widgetUuid}; do`,
+        '  if [ -e "$PROFILE_CACHE_DIR/$uuid.mobileprovision" ]; then',
+        '    echo "recorded profile still cached during renew: $uuid" >&2',
+        "    exit 51",
+        "  fi",
+        "done",
+        'renewed_expiry="$(( $(date +%s) + 604800 ))"',
+        'cat > "$PROFILE_STATE_FILE" <<STATE',
+        "VERSION=1",
+        "EXPIRY_EPOCH=$renewed_expiry",
+        "PROFILE_UUID=dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+        "PROFILE_UUID=eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+        "STATE"
+      ].join("\n") + "\n"
+    );
+
+    await execFileAsync("bash", [fixture.wrapperPath], {
+      cwd: "/",
+      env: {
+        ...process.env,
+        PATH: `${fixture.binDir}:${process.env.PATH ?? ""}`,
+        PROFILE_CACHE_DIR: profileCacheDir,
+        STATE_DIR: fixture.stateDir
+      }
+    });
+
+    await expect(
+      readFile(path.join(profileCacheDir, `${appUuid}.mobileprovision`), "utf8")
+    ).rejects.toThrow(/ENOENT/);
+    await expect(
+      readFile(
+        path.join(profileCacheDir, `${widgetUuid}.mobileprovision`),
+        "utf8"
+      )
+    ).rejects.toThrow(/ENOENT/);
+    expect(
+      await readFile(
+        path.join(profileCacheDir, `${unrelatedUuid}.mobileprovision`),
+        "utf8"
+      )
+    ).toBe("unrelated\n");
+    expect(
+      (await readdir(fixture.stateDir)).filter((entry) =>
+        entry.startsWith("profile-refresh-backup.")
+      )
+    ).toEqual([]);
+    const renewedState = await readFile(
+      path.join(fixture.stateDir, "profile-state.env"),
+      "utf8"
+    );
+    const renewedExpiry = Number(
+      renewedState.match(/^EXPIRY_EPOCH=(\d+)$/m)?.[1]
+    );
+    expect(renewedExpiry).toBeGreaterThan(
+      Math.floor(Date.now() / 1000) + 172800
+    );
+  });
+
+  it("restores the exact cached profiles and original exit after a failed refresh", async () => {
+    const fixture = await createWrapperFixture(
+      "targeted-profile-failure",
+      tempDirs
+    );
+    const profileCacheDir = path.join(fixture.tempRoot, "profile-cache");
+    const appUuid = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+    const widgetUuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+    await mkdir(profileCacheDir, { recursive: true });
+    await writeFile(
+      path.join(fixture.stateDir, "profile-state.env"),
+      profileStateContents(
+        Math.floor(Date.now() / 1000) - 60,
+        appUuid,
+        widgetUuid
+      )
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${appUuid}.mobileprovision`),
+      "old-app\n"
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${widgetUuid}.mobileprovision`),
+      "old-widget\n"
+    );
+    await writeExecutable(
+      path.join(fixture.binDir, "xcrun"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.repoScriptsRoot, "with-node.sh"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.iosScriptsRoot, "xcode-renew.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        `for uuid in ${appUuid} ${widgetUuid}; do`,
+        '  if [ -e "$PROFILE_CACHE_DIR/$uuid.mobileprovision" ]; then',
+        '    echo "recorded profile still cached during renew: $uuid" >&2',
+        "    exit 51",
+        "  fi",
+        "done",
+        "exit 47"
+      ].join("\n") + "\n"
+    );
+
+    await expect(
+      execFileAsync("bash", [fixture.wrapperPath], {
+        cwd: "/",
+        env: {
+          ...process.env,
+          PATH: `${fixture.binDir}:${process.env.PATH ?? ""}`,
+          PROFILE_CACHE_DIR: profileCacheDir,
+          STATE_DIR: fixture.stateDir
+        }
+      })
+    ).rejects.toMatchObject({
+      code: 47,
+      stderr: expect.stringContaining(
+        "Release build/install failed with exit 47"
+      )
+    });
+
+    expect(
+      await readFile(
+        path.join(profileCacheDir, `${appUuid}.mobileprovision`),
+        "utf8"
+      )
+    ).toBe("old-app\n");
+    expect(
+      await readFile(
+        path.join(profileCacheDir, `${widgetUuid}.mobileprovision`),
+        "utf8"
+      )
+    ).toBe("old-widget\n");
+    expect(
+      (await readdir(fixture.stateDir)).filter((entry) =>
+        entry.startsWith("profile-refresh-backup.")
+      )
+    ).toEqual([]);
+    await expect(
+      readFile(path.join(fixture.stateDir, "last-renew-success.epoch"), "utf8")
+    ).rejects.toThrow(/ENOENT/);
+  });
+
+  it("returns a cleanup error when a verified refresh backup cannot be discarded", async () => {
+    const fixture = await createWrapperFixture(
+      "discard-cleanup-failure",
+      tempDirs
+    );
+    const profileCacheDir = path.join(fixture.tempRoot, "profile-cache");
+    const appUuid = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+    const widgetUuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+    await mkdir(profileCacheDir, { recursive: true });
+    await writeFile(
+      path.join(fixture.stateDir, "profile-state.env"),
+      profileStateContents(
+        Math.floor(Date.now() / 1000) - 60,
+        appUuid,
+        widgetUuid
+      )
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${appUuid}.mobileprovision`),
+      "old-app\n"
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${widgetUuid}.mobileprovision`),
+      "old-widget\n"
+    );
+    await writeExecutable(
+      path.join(fixture.binDir, "xcrun"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.repoScriptsRoot, "with-node.sh"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.iosScriptsRoot, "xcode-renew.sh"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'for backup in "$STATE_DIR"/profile-refresh-backup.*; do',
+        '  [ -d "$backup" ] && touch "$backup/cleanup-blocker"',
+        "done",
+        'renewed_expiry="$(( $(date +%s) + 604800 ))"',
+        'cat > "$PROFILE_STATE_FILE" <<STATE',
+        "VERSION=1",
+        "EXPIRY_EPOCH=$renewed_expiry",
+        "PROFILE_UUID=dddddddd-dddd-4ddd-8ddd-dddddddddddd",
+        "PROFILE_UUID=eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee",
+        "STATE"
+      ].join("\n") + "\n"
+    );
+
+    await expect(
+      execFileAsync("bash", [fixture.wrapperPath], {
+        cwd: "/",
+        env: {
+          ...process.env,
+          PATH: `${fixture.binDir}:${process.env.PATH ?? ""}`,
+          PROFILE_CACHE_DIR: profileCacheDir,
+          STATE_DIR: fixture.stateDir
+        }
+      })
+    ).rejects.toMatchObject({
+      code: 1,
+      stderr: expect.stringContaining(
+        "could not discard targeted profile backup"
+      )
+    });
+    expect(
+      await readFile(
+        path.join(fixture.stateDir, "last-renew-success.epoch"),
+        "utf8"
+      )
+    ).toMatch(/^\d+\n$/);
+  });
+
+  it("preserves the original failure when profile restore cleanup also fails", async () => {
+    const fixture = await createWrapperFixture(
+      "restore-cleanup-failure",
+      tempDirs
+    );
+    const profileCacheDir = path.join(fixture.tempRoot, "profile-cache");
+    const appUuid = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
+    const widgetUuid = "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb";
+    await mkdir(profileCacheDir, { recursive: true });
+    await writeFile(
+      path.join(fixture.stateDir, "profile-state.env"),
+      profileStateContents(
+        Math.floor(Date.now() / 1000) - 60,
+        appUuid,
+        widgetUuid
+      )
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${appUuid}.mobileprovision`),
+      "old-app\n"
+    );
+    await writeFile(
+      path.join(profileCacheDir, `${widgetUuid}.mobileprovision`),
+      "old-widget\n"
+    );
+    await writeExecutable(
+      path.join(fixture.binDir, "xcrun"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.binDir, "mv"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'case "${1:-}" in',
+        '  "$STATE_DIR"/profile-refresh-backup.*/*.mobileprovision)',
+        '    case "${2:-}" in "$PROFILE_CACHE_DIR"/*.mobileprovision) exit 55 ;; esac',
+        "    ;;",
+        "esac",
+        'exec /bin/mv "$@"'
+      ].join("\n") + "\n"
+    );
+    await writeExecutable(
+      path.join(fixture.repoScriptsRoot, "with-node.sh"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+    );
+    await writeExecutable(
+      path.join(fixture.iosScriptsRoot, "xcode-renew.sh"),
+      "#!/usr/bin/env bash\nset -euo pipefail\nexit 47\n"
+    );
+
+    await expect(
+      execFileAsync("bash", [fixture.wrapperPath], {
+        cwd: "/",
+        env: {
+          ...process.env,
+          PATH: `${fixture.binDir}:${process.env.PATH ?? ""}`,
+          PROFILE_CACHE_DIR: profileCacheDir,
+          STATE_DIR: fixture.stateDir
+        }
+      })
+    ).rejects.toMatchObject({
+      code: 47,
+      stderr: expect.stringContaining(
+        "could not fully restore the targeted profile backup"
+      )
+    });
   });
 
   it("propagates launchctl bootstrap failures with their actual code", async () => {
@@ -410,4 +743,18 @@ async function createWrapperFixture(label: string, tempDirs: string[]) {
 async function writeExecutable(filePath: string, contents: string) {
   await writeFile(filePath, contents);
   await chmod(filePath, 0o755);
+}
+
+function profileStateContents(
+  expiryEpoch: number,
+  appUuid: string,
+  widgetUuid: string
+) {
+  return [
+    "VERSION=1",
+    `EXPIRY_EPOCH=${expiryEpoch}`,
+    `PROFILE_UUID=${appUuid}`,
+    `PROFILE_UUID=${widgetUuid}`,
+    ""
+  ].join("\n");
 }

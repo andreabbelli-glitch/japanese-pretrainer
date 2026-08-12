@@ -9,6 +9,8 @@ LOG_DIR="${LOG_DIR:-$HOME/Library/Logs/DailyKanji}"
 CONFIG_FILE="${CONFIG_FILE:-$STATE_DIR/renew.env}"
 DEVICE_ID="${DEVICE_ID:-}"
 PROFILE_EXPIRY_FILE="${PROFILE_EXPIRY_FILE:-$STATE_DIR/profile-expiry.epoch}"
+PROFILE_STATE_FILE="${PROFILE_STATE_FILE:-$STATE_DIR/profile-state.env}"
+PROFILE_CACHE_DIR="${PROFILE_CACHE_DIR:-$HOME/Library/Developer/Xcode/UserData/Provisioning Profiles}"
 RENEW_BEFORE_EXPIRY_SECONDS="${RENEW_BEFORE_EXPIRY_SECONDS:-172800}"
 RENEW_CHECK_INTERVAL_SECONDS="${RENEW_CHECK_INTERVAL_SECONDS:-${START_INTERVAL_SECONDS:-14400}}"
 LOCK_MAX_AGE_SECONDS="${LOCK_MAX_AGE_SECONDS:-21600}"
@@ -37,6 +39,8 @@ Environment:
   DEVICE_ID                         CoreDevice identifier of the target iPhone.
   CONFIG_FILE                       Default: ~/Library/Application Support/DailyKanji/renew.env.
   PROFILE_EXPIRY_FILE               Default: ~/Library/Application Support/DailyKanji/profile-expiry.epoch.
+  PROFILE_STATE_FILE                Default: ~/Library/Application Support/DailyKanji/profile-state.env.
+  PROFILE_CACHE_DIR                 Default: Xcode UserData Provisioning Profiles.
   RENEW_BEFORE_EXPIRY_SECONDS       Default: 172800 (48 hours).
   RENEW_CHECK_INTERVAL_SECONDS      Default: 14400 (4 hours).
   START_INTERVAL_SECONDS            Legacy fallback for the check interval.
@@ -223,6 +227,8 @@ STDERR_LOG="$(escaped "$LOG_DIR/xcode-renew.err.log")"
 CONFIG_FILE_XML="$(escaped "$CONFIG_FILE")"
 DEVELOPER_DIR_XML="$(escaped "${DEVELOPER_DIR:-/Applications/Xcode.app/Contents/Developer}")"
 PROFILE_EXPIRY_FILE_XML="$(escaped "$PROFILE_EXPIRY_FILE")"
+PROFILE_STATE_FILE_XML="$(escaped "$PROFILE_STATE_FILE")"
+PROFILE_CACHE_DIR_XML="$(escaped "$PROFILE_CACHE_DIR")"
 STATE_DIR_XML="$(escaped "$STATE_DIR")"
 LOG_DIR_XML="$(escaped "$LOG_DIR")"
 
@@ -250,6 +256,10 @@ cat > "$PLIST_TEMP" <<PLIST
     <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     <key>PROFILE_EXPIRY_FILE</key>
     <string>$PROFILE_EXPIRY_FILE_XML</string>
+    <key>PROFILE_STATE_FILE</key>
+    <string>$PROFILE_STATE_FILE_XML</string>
+    <key>PROFILE_CACHE_DIR</key>
+    <string>$PROFILE_CACHE_DIR_XML</string>
     <key>RENEW_BEFORE_EXPIRY_SECONDS</key>
     <string>$RENEW_BEFORE_EXPIRY_SECONDS</string>
     <key>RENEW_CHECK_INTERVAL_SECONDS</key>

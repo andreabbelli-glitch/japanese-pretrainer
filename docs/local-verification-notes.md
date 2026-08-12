@@ -262,8 +262,11 @@ devono mai essere committati.
 
 Il rinnovo automatico launchd usa un plist persistente con `RunAtLoad` e
 `StartInterval=14400`: esegue un check al caricamento/login e ogni 4 ore. Il
-wrapper legge la scadenza minima dei provisioning profile embedded registrata
-in `~/Library/Application Support/DailyKanji/profile-expiry.epoch`. Prima delle
+wrapper legge scadenza minima e UUID dei provisioning profile embedded dallo
+snapshot atomico
+`~/Library/Application Support/DailyKanji/profile-state.env`; il precedente
+`profile-expiry.epoch` resta solo un fallback di migrazione finche lo snapshot
+non esiste. Prima delle
 ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce senza lock,
 CoreDevice, package o Xcode; una scadenza mancante o corrotta richiede invece un
 tentativo.
@@ -274,9 +277,14 @@ fisica `Release` di default. Device offline/bloccato, DDI, package, signing,
 build, install o profili invalidi producono exit non-zero. Il job non riscrive
 il proprio plist e non crea child process: il successivo `StartInterval`
 fornisce il retry. Dopo un install riuscito, `xcode-renew.sh` registra
-atomicamente la scadenza minima tra app e widget leggendo gli
-`embedded.mobileprovision`. Solo una scadenza valida, successiva alla precedente
-e oltre la finestra preventiva aggiorna
+in un unico file atomico scadenza minima e due UUID esatti leggendo gli
+`embedded.mobileprovision` di app e widget. Su un tentativo dovuto/forzato, il
+wrapper sposta temporaneamente dalla cache Xcode solo i file di quegli UUID: se
+build, install o validazione falliscono li ripristina dal backup mirato e
+mantiene l'exit code reale; dopo una scadenza realmente avanzata elimina il
+backup. Nessun profilo di altri progetti viene selezionato per bundle id. Solo
+una scadenza valida, successiva alla precedente e oltre la finestra preventiva
+aggiorna
 `~/Library/Application Support/DailyKanji/last-renew-success.epoch`; le opzioni
 legacy `--mark-success-now` e `--reschedule-only` non creano successi sintetici.
 L'installer mantiene un backup del plist precedente fino al bootstrap del nuovo:

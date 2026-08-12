@@ -77,6 +77,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     );
     expect(source).toContain("<key>RunAtLoad</key>");
     expect(source).toContain("PROFILE_EXPIRY_FILE");
+    expect(source).toContain("PROFILE_STATE_FILE");
+    expect(source).toContain("PROFILE_CACHE_DIR");
     expect(source).toContain("RENEW_BEFORE_EXPIRY_SECONDS");
     expect(source).toContain("RENEW_CHECK_INTERVAL_SECONDS");
     expect(source).toContain("--reschedule-only");
@@ -1012,8 +1014,12 @@ describe("Daily Kanji iOS launchd renew automation", () => {
         "  shift || true",
         "done",
         'expiry="2026-07-12T08:00:00Z"',
+        'uuid="aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"',
         'case "$input" in',
-        '  *".appex/embedded.mobileprovision") expiry="2026-07-10T08:00:00Z" ;;',
+        '  *".appex/embedded.mobileprovision")',
+        '    expiry="2026-07-10T08:00:00Z"',
+        '    uuid="bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"',
+        "    ;;",
         "esac",
         "cat <<PLIST",
         '<?xml version="1.0" encoding="UTF-8"?>',
@@ -1022,6 +1028,8 @@ describe("Daily Kanji iOS launchd renew automation", () => {
         "<dict>",
         "  <key>ExpirationDate</key>",
         "  <date>$expiry</date>",
+        "  <key>UUID</key>",
+        "  <string>$uuid</string>",
         "</dict>",
         "</plist>",
         "PLIST"
@@ -1044,8 +1052,64 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     );
 
     expect(
-      await readFile(path.join(stateDir, "profile-expiry.epoch"), "utf8")
-    ).toBe(`${expectedMinExpiry}\n`);
+      await readFile(path.join(stateDir, "profile-state.env"), "utf8")
+    ).toBe(
+      [
+        "VERSION=1",
+        `EXPIRY_EPOCH=${expectedMinExpiry}`,
+        "PROFILE_UUID=aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+        "PROFILE_UUID=bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+        ""
+      ].join("\n")
+    );
+  });
+
+  it("preserves the previous atomic profile state when its rename fails", async () => {
+    const fixture = await createStandaloneRenewFixture(
+      "profile-state-rename-failure",
+      tempDirs
+    );
+    const profileStatePath = path.join(fixture.stateDir, "profile-state.env");
+    const previousState = [
+      "VERSION=1",
+      "EXPIRY_EPOCH=1111111111",
+      "PROFILE_UUID=11111111-1111-4111-8111-111111111111",
+      "PROFILE_UUID=22222222-2222-4222-8222-222222222222",
+      ""
+    ].join("\n");
+    await writeFile(profileStatePath, previousState, { mode: 0o600 });
+    await writeExecutable(
+      path.join(fixture.binDir, "mv"),
+      [
+        "#!/usr/bin/env bash",
+        "set -euo pipefail",
+        'if [ "${2:-}" = "$PROFILE_STATE_FILE" ]; then',
+        "  exit 46",
+        "fi",
+        'exec /bin/mv "$@"'
+      ].join("\n") + "\n"
+    );
+
+    await expect(
+      execFileAsync("bash", [fixture.renewPath], {
+        env: {
+          ...process.env,
+          CALL_LOG: fixture.callLogPath,
+          CONFIG_FILE: path.join(fixture.stateDir, "renew.env"),
+          DERIVED_DATA: fixture.derivedData,
+          PATH: `${fixture.binDir}:${process.env.PATH ?? ""}`,
+          PROFILE_STATE_FILE: profileStatePath,
+          STATE_DIR: fixture.stateDir
+        }
+      })
+    ).rejects.toMatchObject({
+      code: 46,
+      stderr: expect.stringContaining(
+        "Impossibile registrare atomicamente lo stato profili"
+      )
+    });
+
+    expect(await readFile(profileStatePath, "utf8")).toBe(previousState);
   });
 
   it("documents install, status, and force-run commands for the agent", async () => {
@@ -1439,6 +1503,89 @@ describe("Daily Kanji iOS launchd renew automation", () => {
     expect(developerDirIndex).toBeLessThan(devicectlIndex);
   });
 });
+
+async function createStandaloneRenewFixture(label: string, tempDirs: string[]) {
+  const tempRoot = await mkdtemp(
+    path.join(tmpdir(), `jcs-daily-kanji-${label}-`)
+  );
+  const repoRoot = path.join(tempRoot, "repo");
+  const iosRoot = path.join(repoRoot, "apps", "daily-kanji-ios");
+  const iosScriptsRoot = path.join(iosRoot, "scripts");
+  const repoScriptsRoot = path.join(repoRoot, "scripts");
+  const stateDir = path.join(tempRoot, "state");
+  const binDir = path.join(tempRoot, "bin");
+  const derivedData = path.join(tempRoot, "DerivedData");
+  const callLogPath = path.join(tempRoot, "calls.log");
+  const renewPath = path.join(iosScriptsRoot, "xcode-renew.sh");
+  tempDirs.push(tempRoot);
+  await mkdir(iosScriptsRoot, { recursive: true });
+  await mkdir(repoScriptsRoot, { recursive: true });
+  await mkdir(stateDir, { recursive: true });
+  await mkdir(binDir, { recursive: true });
+  await writeFile(path.join(stateDir, "renew.env"), "DEVICE_ID=TEST_DEVICE\n");
+  await writeFile(renewPath, await readFile(renewScriptPath, "utf8"));
+  await chmod(renewPath, 0o755);
+  await writeExecutable(
+    path.join(repoScriptsRoot, "with-node.sh"),
+    "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+  );
+  await writeExecutable(
+    path.join(binDir, "xcodegen"),
+    "#!/usr/bin/env bash\nset -euo pipefail\nexit 0\n"
+  );
+  await writeExecutable(
+    path.join(binDir, "xcrun"),
+    [
+      "#!/usr/bin/env bash",
+      "set -euo pipefail",
+      'case "$*" in',
+      '  *"device info details"*) printf "    • transportType: localNetwork\\n"; exit 0 ;;',
+      '  *"device info ddiServices"*|*"device install app"*) exit 0 ;;',
+      "esac",
+      "exit 1"
+    ].join("\n") + "\n"
+  );
+  await writeExecutable(
+    path.join(binDir, "xcodebuild"),
+    [
+      "#!/usr/bin/env bash",
+      "set -euo pipefail",
+      'app="$DERIVED_DATA/Build/Products/Release-iphoneos/Daily Kanji.app"',
+      'mkdir -p "$app/PlugIns/Daily Kanji Widget.appex"',
+      'touch "$app/embedded.mobileprovision"',
+      'touch "$app/PlugIns/Daily Kanji Widget.appex/embedded.mobileprovision"'
+    ].join("\n") + "\n"
+  );
+  await writeExecutable(
+    path.join(binDir, "security"),
+    [
+      "#!/usr/bin/env bash",
+      "set -euo pipefail",
+      'input=""',
+      'while [ "$#" -gt 0 ]; do',
+      '  if [ "$1" = "-i" ]; then shift; input="${1:-}"; fi',
+      "  shift || true",
+      "done",
+      'uuid="aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa"',
+      'case "$input" in *.appex/embedded.mobileprovision) uuid="bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb" ;; esac',
+      "cat <<PLIST",
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<plist version="1.0"><dict>',
+      "<key>ExpirationDate</key><date>2026-12-10T08:00:00Z</date>",
+      "<key>UUID</key><string>$uuid</string>",
+      "</dict></plist>",
+      "PLIST"
+    ].join("\n") + "\n"
+  );
+
+  return {
+    binDir,
+    callLogPath,
+    derivedData,
+    renewPath,
+    stateDir
+  };
+}
 
 async function writeExecutable(filePath: string, contents: string) {
   await writeFile(filePath, contents);
