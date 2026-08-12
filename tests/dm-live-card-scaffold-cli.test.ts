@@ -1,4 +1,11 @@
-import { access, cp, mkdtemp, readFile, rm } from "node:fs/promises";
+import {
+  access,
+  mkdir,
+  mkdtemp,
+  readFile,
+  rm,
+  writeFile
+} from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 
@@ -6,7 +13,6 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { parseMediaDirectory } from "@/features/content";
 
-import { validContentRoot } from "./helpers/content-fixtures";
 import { runNodeCli } from "./helpers/run-cli";
 
 const scaffoldScriptPath = path.join(
@@ -26,7 +32,7 @@ describe("dm live card scaffold CLI", () => {
   });
 
   it("prints a Duel Masters live-card plan without writing files", async () => {
-    const tempContentRoot = await copyDmContentFixture(tempDirs);
+    const tempContentRoot = await writeDmContentFixture(tempDirs);
     const { stdout } = await runNodeCli(
       [
         "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
@@ -107,7 +113,7 @@ describe("dm live card scaffold CLI", () => {
   });
 
   it("quotes URL card-fetch hints so they are copyable in zsh", async () => {
-    const tempContentRoot = await copyDmContentFixture(tempDirs);
+    const tempContentRoot = await writeDmContentFixture(tempDirs);
     const { stdout } = await runNodeCli(
       [
         "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
@@ -131,7 +137,7 @@ describe("dm live card scaffold CLI", () => {
   });
 
   it("writes only a valid textbook scaffold when --write is passed", async () => {
-    const tempContentRoot = await copyDmContentFixture(tempDirs);
+    const tempContentRoot = await writeDmContentFixture(tempDirs);
     const { stdout } = await runNodeCli(
       [
         "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
@@ -182,7 +188,7 @@ describe("dm live card scaffold CLI", () => {
   });
 
   it("emits stable JSON for automation", async () => {
-    const tempContentRoot = await copyDmContentFixture(tempDirs);
+    const tempContentRoot = await writeDmContentFixture(tempDirs);
     const { stdout } = await runNodeCli(
       [
         "--disable-warning=MODULE_TYPELESS_PACKAGE_JSON",
@@ -233,7 +239,7 @@ describe("dm live card scaffold CLI", () => {
   });
 
   it("refuses unsafe slugs and duplicate live encounter slugs", async () => {
-    const tempContentRoot = await copyDmContentFixture(tempDirs);
+    const tempContentRoot = await writeDmContentFixture(tempDirs);
 
     await expect(
       runNodeCli(
@@ -299,7 +305,7 @@ describe("dm live card scaffold CLI", () => {
   });
 
   it("validates summary through the existing content scaffold rules", async () => {
-    const tempContentRoot = await copyDmContentFixture(tempDirs);
+    const tempContentRoot = await writeDmContentFixture(tempDirs);
 
     await expect(
       runNodeCli(
@@ -324,17 +330,96 @@ describe("dm live card scaffold CLI", () => {
   });
 });
 
-async function copyDmContentFixture(tempDirs: string[]) {
+async function writeDmContentFixture(tempDirs: string[]) {
   const tempDir = await mkdtemp(path.join(tmpdir(), "jcs-dm-live-scaffold-"));
   const tempContentRoot = path.join(tempDir, "content");
+  const mediaDirectory = path.join(
+    tempContentRoot,
+    "media",
+    "duel-masters-dm25"
+  );
+  const textbookDirectory = path.join(mediaDirectory, "textbook");
+  const cardsDirectory = path.join(mediaDirectory, "cards");
 
   tempDirs.push(tempDir);
-  await cp(validContentRoot, tempContentRoot, { recursive: true });
-  await cp(
-    path.join(process.cwd(), "content", "media", "duel-masters-dm25"),
-    path.join(tempContentRoot, "media", "duel-masters-dm25"),
-    { recursive: true }
-  );
+  await Promise.all([
+    mkdir(textbookDirectory, { recursive: true }),
+    mkdir(cardsDirectory, { recursive: true })
+  ]);
+  await Promise.all([
+    writeFile(
+      path.join(mediaDirectory, "media.md"),
+      `---
+id: media-duel-masters-dm25
+slug: duel-masters-dm25
+title: Duel Masters scaffold fixture
+media_type: tcg
+segment_kind: deck
+language: ja
+base_explanation_language: it
+status: active
+tags: [duel-masters, fixture]
+---
+
+# Duel Masters scaffold fixture
+
+Bundle sintetico per il test dello scaffold live-card.
+`
+    ),
+    writeFile(
+      path.join(textbookDirectory, "085-live-duel-encounters-baby-baki.md"),
+      `---
+id: lesson-duel-masters-dm25-live-duel-encounters-baby-baki
+media_id: media-duel-masters-dm25
+slug: live-duel-encounters-baby-baki
+title: Baby Baki scaffold fixture
+order: 114
+segment_ref: live-duel-encounters
+difficulty: n4
+status: active
+tags: [live-duel, card, fixture]
+prerequisites: []
+summary: >-
+  Riconoscere il nome Baby Baki durante un incontro dal vivo.
+---
+
+# Baby Baki scaffold fixture
+
+Baby Baki compare durante un incontro dal vivo.
+`
+    ),
+    writeFile(
+      path.join(cardsDirectory, "085-live-duel-encounters-baby-baki.md"),
+      `---
+id: cards-duel-masters-dm25-live-duel-encounters-baby-baki
+media_id: media-duel-masters-dm25
+slug: live-duel-encounters-baby-baki
+title: Baby Baki scaffold fixture cards
+order: 114
+segment_ref: live-duel-encounters
+---
+
+:::term
+id: term-dm-scaffold-card
+lemma: カード
+reading: カード
+romaji: kaado
+meaning_it: carta
+:::
+
+:::card
+id: card-dm-scaffold-card-recognition
+lesson_id: lesson-duel-masters-dm25-live-duel-encounters-baby-baki
+entry_type: term
+entry_id: term-dm-scaffold-card
+card_type: recognition
+front: カード
+back: carta
+tags: [fixture]
+:::
+`
+    )
+  ]);
 
   return tempContentRoot;
 }
