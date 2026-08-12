@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-test("returns not found for the legacy local glossary route", async ({
+test("renders a recoverable not-found page for the legacy local glossary route", async ({
   page
 }) => {
   await page.goto(
@@ -15,8 +15,13 @@ test("returns not found for the legacy local glossary route", async ({
       name: "Questa pagina non è disponibile nel workspace attuale."
     })
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: "Torna ai media" })).toHaveAttribute(
-    "href",
-    "/media"
-  );
+  const mediaLibraryLink = page.getByRole("link", { name: "Torna ai media" });
+
+  await expect(mediaLibraryLink).toHaveAttribute("href", "/media");
+  await mediaLibraryLink.click();
+
+  await expect(page).toHaveURL("/media");
+  await expect(
+    page.locator('.library-card__overlay-link[href="/media/duel-masters-dm25"]')
+  ).toBeVisible();
 });

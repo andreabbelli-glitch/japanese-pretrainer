@@ -4,17 +4,31 @@ import { expectReviewReady } from "./helpers/review-page";
 import { testIds } from "./helpers/selectors";
 
 const canonicalMediaSlug = "duel-masters-dm25";
+const activeMediaSlugs = [
+  "crystal-hunters",
+  canonicalMediaSlug,
+  "gundam-arsenal-base",
+  "kaishi-15k",
+  "migaku-grammar",
+  "pokemon-scarlet-violet",
+  "tcg-generale",
+  "web-giapponese"
+] as const;
 
-test("smokes core study routes for duel-masters-dm25", async ({ page }) => {
+test("lists every active media and smokes one canonical study flow", async ({
+  page
+}) => {
   await page.goto("/media");
 
-  await expect(
-    page
-      .locator(
-        `.library-card__overlay-link[href="/media/${canonicalMediaSlug}"]`
-      )
-      .first()
-  ).toBeVisible();
+  const mediaLinks = page.locator(".library-card__overlay-link");
+
+  await expect(mediaLinks).toHaveCount(activeMediaSlugs.length);
+
+  for (const mediaSlug of activeMediaSlugs) {
+    await expect(
+      page.locator(`.library-card__overlay-link[href="/media/${mediaSlug}"]`)
+    ).toBeVisible();
+  }
 
   await page.goto(`/media/${canonicalMediaSlug}`);
 
