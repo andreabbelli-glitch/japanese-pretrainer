@@ -218,124 +218,6 @@ enum DailyKanjiLiveReviewState: Equatable {
     }
 }
 
-enum DailyKanjiReviewTextFormatter {
-    static func displayText(_ value: String) -> String {
-        var output = value.trimmingCharacters(in: .whitespacesAndNewlines)
-        let patterns = [
-            #"\{\{([^{}|]+)\|([^{}]+)\}\}"#,
-            #"\{([^{}|]+)\|([^{}]+)\}"#
-        ]
-
-        for _ in 0..<4 {
-            let previous = output
-
-            for pattern in patterns {
-                output = output.replacingOccurrences(
-                    of: pattern,
-                    with: "$1",
-                    options: .regularExpression
-                )
-            }
-
-            if output == previous {
-                break
-            }
-        }
-
-        return output
-            .replacingOccurrences(of: "{{", with: "")
-            .replacingOccurrences(of: "}}", with: "")
-            .replacingOccurrences(of: "{", with: "")
-            .replacingOccurrences(of: "}", with: "")
-    }
-}
-
-struct DailyKanjiLiveReviewCardPresentation: Equatable {
-    let card: DailyKanjiLiveReviewCard
-    let isAnswerRevealed: Bool
-
-    var frontText: String {
-        DailyKanjiReviewTextFormatter.displayText(card.front)
-    }
-
-    var backText: String {
-        DailyKanjiReviewTextFormatter.displayText(card.back)
-    }
-
-    var shouldShowAnswer: Bool {
-        isAnswerRevealed
-    }
-
-    var canGrade: Bool {
-        isAnswerRevealed
-    }
-
-    var readingText: String? {
-        nonEmpty(card.reading)
-            ?? card.pronunciations?.compactMap { nonEmpty($0.resolvedReading) }.first
-            ?? card.entries?.compactMap { nonEmpty($0.reading) }.first
-    }
-
-    var pitchAccent: DailyKanjiLiveReviewCard.Pronunciation.Audio.PitchAccent? {
-        card.pronunciations?.compactMap(\.resolvedPitchAccent).first
-    }
-
-    var pitchAccentText: String? {
-        guard let pitchAccent else {
-            return nil
-        }
-
-        let shape = pitchAccent.shape.map(Self.formatPitchAccentShape) ?? "Pitch"
-        return "\(shape) (\(pitchAccent.downstep))"
-    }
-
-    var primaryAudioSource: String? {
-        guard isAnswerRevealed else {
-            return nil
-        }
-
-        return card.pronunciations?.compactMap { nonEmpty($0.resolvedAudioSource) }.first
-    }
-
-    var answerDetailRows: [String] {
-        guard isAnswerRevealed else {
-            return []
-        }
-
-        return [
-            readingText,
-            pitchAccentText,
-            nonEmpty(card.mediaTitle)
-        ].compactMap { $0 }
-    }
-
-    func nextReviewLabel(for rating: DailyKanjiLiveReviewRating) -> String? {
-        card.gradePreviews?.first { $0.rating == rating }?.nextReviewLabel
-    }
-
-    func primaryAudioURL(baseURL: URL?) -> URL? {
-        DailyKanjiLiveReviewAudioSource.remoteURL(
-            for: primaryAudioSource,
-            baseURL: baseURL
-        )
-    }
-
-    private static func formatPitchAccentShape(_ shape: String) -> String {
-        switch shape {
-        case "heiban":
-            return "Heiban"
-        case "atamadaka":
-            return "Atamadaka"
-        case "nakadaka":
-            return "Nakadaka"
-        case "odaka":
-            return "Odaka"
-        default:
-            return "Pitch"
-        }
-    }
-}
-
 enum DailyKanjiLiveReviewAudioSource {
     static func configuredRemoteURL(for source: String?) -> URL? {
         remoteURL(
@@ -363,7 +245,7 @@ enum DailyKanjiLiveReviewAudioSource {
     }
 }
 
-private func nonEmpty(_ value: String?) -> String? {
+func nonEmpty(_ value: String?) -> String? {
     let trimmed = value?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 
     return trimmed.isEmpty ? nil : trimmed

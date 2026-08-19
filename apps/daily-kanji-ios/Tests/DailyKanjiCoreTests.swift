@@ -5,6 +5,31 @@ import XCTest
 final class DailyKanjiCoreTests: XCTestCase {
     private let now = Date(timeIntervalSince1970: 1_800_000_000)
 
+    func testAppTabsUseApprovedItalianVocabulary() {
+        XCTAssertEqual(DailyKanjiAppTab.allCases.map(\.label), ["Widget", "Ripasso", "Cerca"])
+        XCTAssertEqual(
+            DailyKanjiStudyMode.allCases.map(\.label),
+            ["Giornaliero", "Prestudio", "Ultime 3"]
+        )
+        XCTAssertEqual(
+            DailyKanjiLiveReviewRating.reviewDisplayOrder.map(\.label),
+            ["Facile", "Bene", "Difficile", "Di nuovo"]
+        )
+    }
+
+    @MainActor
+    func testCardDeepLinkSelectsWidgetTab() throws {
+        let card = try XCTUnwrap(
+            try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards.first
+        )
+        let model = DailyKanjiAppModel(cards: [card])
+
+        model.selectTab(.search)
+        model.openDeepLink(DailyKanjiDeepLink.cardURL(cardId: card.cardId))
+
+        XCTAssertEqual(model.selectedTab, .widget)
+    }
+
     func testDecodesExporterDatasetShape() throws {
         let dataset = try DailyKanjiDataset.decode(jsonData: Self.datasetJSON)
 
@@ -1207,14 +1232,14 @@ final class DailyKanjiCoreTests: XCTestCase {
             now: now
         )
 
-        model.selectAppSection(.glossary, now: now)
+        model.selectTab(.search, now: now)
         await model.syncNow(now: now.addingTimeInterval(10), force: true)
 
         XCTAssertEqual(model.selectedCard?.cardId, "prestudy-one")
         XCTAssertTrue(historyStore.allItems().isEmpty)
 
         let dailyEntryTime = now.addingTimeInterval(11)
-        model.selectAppSection(.daily, now: dailyEntryTime)
+        model.selectTab(.widget, now: dailyEntryTime)
 
         XCTAssertEqual(historyStore.allItems().map(\.cardId), ["prestudy-one"])
         XCTAssertEqual(historyStore.allItems().map(\.shownAt), [dailyEntryTime])
@@ -1757,14 +1782,14 @@ final class DailyKanjiCoreTests: XCTestCase {
         await Task.yield()
         XCTAssertEqual(liveClient.fetchCount, 1)
 
-        model.selectAppSection(.glossary, now: clock)
+        model.selectTab(.search, now: clock)
         clock = now.addingTimeInterval(6 * 60)
         model.activate(now: clock)
         model.refreshLiveReviewNow()
         await Task.yield()
         XCTAssertEqual(liveClient.fetchCount, 1)
 
-        model.selectAppSection(.review, now: clock)
+        model.selectTab(.review, now: clock)
         await Self.waitUntil { liveClient.fetchCount == 2 }
         XCTAssertEqual(model.liveReviewState, .ready(session: session))
     }
@@ -3317,17 +3342,17 @@ final class DailyKanjiCoreTests: XCTestCase {
             now: now
         )
 
-        model.selectAppSection(.review, now: now)
+        model.selectTab(.review, now: now)
         model.activate(now: now.addingTimeInterval(1))
-        model.selectAppSection(.glossary, now: now.addingTimeInterval(2))
+        model.selectTab(.search, now: now.addingTimeInterval(2))
         model.activate(now: now.addingTimeInterval(3))
         XCTAssertTrue(historyStore.allItems().isEmpty)
 
         let firstDailyEntry = now.addingTimeInterval(4)
-        model.selectAppSection(.daily, now: firstDailyEntry)
-        model.selectAppSection(.review, now: now.addingTimeInterval(5))
+        model.selectTab(.widget, now: firstDailyEntry)
+        model.selectTab(.review, now: now.addingTimeInterval(5))
         let secondDailyEntry = now.addingTimeInterval(6)
-        model.selectAppSection(.daily, now: secondDailyEntry)
+        model.selectTab(.widget, now: secondDailyEntry)
 
         XCTAssertEqual(historyStore.allItems().map(\.cardId), ["card-0", "card-0"])
         XCTAssertEqual(
@@ -4084,18 +4109,16 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
     }
 
-    func testLeavingGlossaryDismissesThePresentedEntry() throws {
-        let source = try Self.appSourceFileContents()
-
-        XCTAssertTrue(
-            source.contains(
-                """
-                if section != .glossary {
-                                    selectedGlossaryEntry = nil
-                                }
-                """
-            )
+    @MainActor
+    func testSelectingSearchTabChangesTheActiveTab() throws {
+        let card = try XCTUnwrap(
+            try DailyKanjiDataset.decode(jsonData: Self.datasetJSON).cards.first
         )
+        let model = DailyKanjiAppModel(cards: [card])
+
+        model.selectTab(.search)
+
+        XCTAssertEqual(model.selectedTab, .search)
     }
 
     func testAppBootstrapLoadsRepositoryBeforeConstructingTheModel() throws {
@@ -4243,8 +4266,8 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
 
         model.activate(now: now)
-        model.selectAppSection(.glossary, now: now.addingTimeInterval(1))
-        model.selectAppSection(.daily, now: now.addingTimeInterval(2))
+        model.selectTab(.search, now: now.addingTimeInterval(1))
+        model.selectTab(.widget, now: now.addingTimeInterval(2))
         model.selectHistoryItem(
             DailyKanjiPresentationHistoryItem(
                 cardId: "stable",
@@ -4324,16 +4347,16 @@ final class DailyKanjiCoreTests: XCTestCase {
             now: now
         )
 
-        XCTAssertEqual(offlineModel.selectedAppSection, .daily)
-        XCTAssertEqual(liveModel.selectedAppSection, .review)
+        XCTAssertEqual(offlineModel.selectedTab, .widget)
+        XCTAssertEqual(liveModel.selectedTab, .review)
 
-        liveModel.selectAppSection(.glossary)
+        liveModel.selectTab(.search)
         liveModel.openDeepLink(
             DailyKanjiDeepLink.cardURL(cardId: "card-2"),
             now: now.addingTimeInterval(1)
         )
 
-        XCTAssertEqual(liveModel.selectedAppSection, .daily)
+        XCTAssertEqual(liveModel.selectedTab, .widget)
         XCTAssertEqual(liveModel.selectedCard?.cardId, "card-2")
     }
 
@@ -4352,14 +4375,14 @@ final class DailyKanjiCoreTests: XCTestCase {
             now: now
         )
 
-        model.selectAppSection(.glossary)
+        model.selectTab(.search)
         let deepLinkTime = now.addingTimeInterval(1)
         model.openDeepLink(
             DailyKanjiDeepLink.cardURL(cardId: "removed-card"),
             now: deepLinkTime
         )
 
-        XCTAssertEqual(model.selectedAppSection, .daily)
+        XCTAssertEqual(model.selectedTab, .widget)
         XCTAssertEqual(model.selectedCard?.cardId, "card-0")
         XCTAssertEqual(historyStore.allItems().map(\.cardId), ["card-0"])
         XCTAssertEqual(historyStore.allItems().map(\.shownAt), [deepLinkTime])
@@ -4386,7 +4409,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         model.activate(now: deepLinkTime.addingTimeInterval(1))
 
-        XCTAssertEqual(model.selectedAppSection, .daily)
+        XCTAssertEqual(model.selectedTab, .widget)
         XCTAssertEqual(model.selectedCard?.cardId, "card-0")
         XCTAssertEqual(historyStore.allItems().map(\.cardId), ["card-0"])
         XCTAssertEqual(historyStore.allItems().map(\.shownAt), [deepLinkTime])
@@ -4685,7 +4708,6 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(source.contains("if phase == .active"))
         XCTAssertTrue(source.contains("audioPlayer.suspend()"))
         XCTAssertTrue(source.contains("guard scenePhase == .active,"))
-        XCTAssertTrue(source.contains("model.selectedAppSection == .review"))
         XCTAssertTrue(source.contains("audioPlayer.preload(url: nil)"))
     }
 

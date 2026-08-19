@@ -23,12 +23,12 @@ struct ContentView: View {
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    switch model.selectedAppSection {
-                    case .daily:
+                    switch model.selectedTab {
+                    case .widget:
                         dailyStudyView
                     case .review:
                         liveReviewView
-                    case .glossary:
+                    case .search:
                         glossaryView
                     }
                 }
@@ -43,12 +43,12 @@ struct ContentView: View {
                     Picker(
                         "Modalità",
                         selection: Binding(
-                            get: { model.selectedAppSection },
-                            set: { model.selectAppSection($0) }
+                            get: { model.selectedTab },
+                            set: { model.selectTab($0) }
                         )
                     ) {
-                        ForEach(DailyKanjiAppSection.allCases) { section in
-                            Text(section.label).tag(section)
+                        ForEach(DailyKanjiAppTab.allCases) { tab in
+                            Label(tab.label, systemImage: tab.systemImage).tag(tab)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -56,8 +56,8 @@ struct ContentView: View {
                 }
             }
             .background(Color(.systemBackground))
-            .onChange(of: model.selectedAppSection) { _, section in
-                if section != .glossary {
+            .onChange(of: model.selectedTab) { _, tab in
+                if tab != .search {
                     selectedGlossaryEntry = nil
                 } else {
                     glossarySearch.prepareIndex()
@@ -66,7 +66,7 @@ struct ContentView: View {
             }
             .onChange(of: currentLiveReviewCardKey) { _, _ in
                 liveReviewAnswerRevealed = false
-                guard model.selectedAppSection == .review else {
+                guard model.selectedTab == .review else {
                     return
                 }
                 resetAndPreloadCurrentLiveReviewAudio()
@@ -805,7 +805,7 @@ struct ContentView: View {
     private func resetAndPreloadCurrentLiveReviewAudio() {
         audioPlayer.stopPlayback()
         guard scenePhase == .active,
-              model.selectedAppSection == .review,
+              model.selectedTab == .review,
               let card = model.liveReviewState.session?.selectedCard
         else {
             audioPlayer.preload(url: nil)
@@ -1106,114 +1106,6 @@ struct ContentView: View {
     ContentView(model: DailyKanjiAppModel())
 }
 
-enum DailyKanjiAppSection: String, CaseIterable, Identifiable {
-    case daily
-    case review
-    case glossary
-
-    var id: String { rawValue }
-
-    var label: String {
-        switch self {
-        case .daily:
-            return "Daily"
-        case .review:
-            return "Review"
-        case .glossary:
-            return "Glossario"
-        }
-    }
-}
-
-private extension DailyKanjiEntryKind {
-    var glossaryLabel: String {
-        switch self {
-        case .term:
-            return "Termine"
-        case .grammar:
-            return "Grammar"
-        }
-    }
-}
-
-private extension DailyKanjiGlossaryEntry {
-    var readingLine: String? {
-        let parts = [reading, romaji].compactMap { value -> String? in
-            guard let value, !value.isEmpty else {
-                return nil
-            }
-            return value
-        }
-
-        guard !parts.isEmpty else {
-            return nil
-        }
-
-        return parts.joined(separator: " / ")
-    }
-
-    var primaryAudioMedia: MediaRef? {
-        media.first { media in
-            guard let audioSrc = media.audioSrc else {
-                return false
-            }
-
-            return !audioSrc.isEmpty
-        }
-    }
-
-    var pitchAccentText: String? {
-        guard let pitchAccent else {
-            return nil
-        }
-
-        return "Pitch \(pitchAccent)"
-    }
-
-    var pitchAccentSourceText: String? {
-        guard let pitchAccentSource, !pitchAccentSource.isEmpty else {
-            return nil
-        }
-
-        return pitchAccentSource
-    }
-
-    var pitchAccentPattern: DailyKanjiPitchAccentPattern? {
-        DailyKanjiPitchAccentPattern(
-            reading: reading,
-            pitchAccent: pitchAccent
-        )
-    }
-}
-
-private extension DailyKanjiGlossaryEntry.Alias {
-    var stableId: String {
-        "\(text):\(type ?? "")"
-    }
-
-    var displayText: String {
-        guard let type, !type.isEmpty else {
-            return text
-        }
-
-        return "\(text) - \(type)"
-    }
-}
-
-private extension DailyKanjiGlossaryEntry.MediaRef {
-    var stableId: String {
-        "\(entryId):\(sourceId):\(mediaSlug):\(segmentTitle ?? "")"
-    }
-
-    var displayText: String {
-        guard let segmentTitle, !segmentTitle.isEmpty else {
-            return mediaTitle
-        }
-
-        return "\(mediaTitle) - \(segmentTitle)"
-    }
-}
-
 private struct DailyKanjiGlossaryPitchAccentView: View {
     let pattern: DailyKanjiPitchAccentPattern
 
@@ -1234,41 +1126,6 @@ private struct DailyKanjiGlossaryPitchAccentView: View {
             }
         }
         .padding(.top, 8)
-    }
-}
-
-private extension DailyKanjiLiveReviewRating {
-    static let reviewDisplayOrder: [DailyKanjiLiveReviewRating] = [
-        .easy,
-        .good,
-        .hard,
-        .again
-    ]
-
-    var label: String {
-        switch self {
-        case .again:
-            return "Again"
-        case .hard:
-            return "Hard"
-        case .good:
-            return "Good"
-        case .easy:
-            return "Easy"
-        }
-    }
-
-    var detail: String {
-        switch self {
-        case .again:
-            return "Torna subito"
-        case .hard:
-            return "Fragile"
-        case .good:
-            return "Avanza"
-        case .easy:
-            return "Intervallo lungo"
-        }
     }
 }
 
@@ -1329,181 +1186,8 @@ private struct DailyKanjiLiveReviewPitchAccentView: View {
     }
 }
 
-struct DailyKanjiLiveReviewStatusPresentation: Equatable {
-    let title: String
-    let subtitle: String
-    let emptyText: String
-    let systemImage: String
-    let isRefreshing: Bool
-    let canRefresh: Bool
-
-    init(state: DailyKanjiLiveReviewState) {
-        let session = state.session
-
-        switch state {
-        case .unavailable:
-            self.title = "Live review non configurata"
-            self.subtitle = "Uso solo dataset locale"
-            self.emptyText = "Configura endpoint e token per la review live."
-            self.systemImage = "wifi.slash"
-            self.isRefreshing = false
-            self.canRefresh = false
-        case .loading:
-            self.title = "Carico review live"
-            self.subtitle = Self.queueSubtitle(for: session)
-            self.emptyText = "Caricamento..."
-            self.systemImage = "arrow.clockwise"
-            self.isRefreshing = true
-            self.canRefresh = false
-        case .submitting(let session, let rating):
-            self.title = "Invio \(rating.label)"
-            self.subtitle = Self.queueSubtitle(for: session)
-            self.emptyText = "Invio voto..."
-            self.systemImage = "paperplane"
-            self.isRefreshing = true
-            self.canRefresh = false
-        case .ready(let session):
-            self.title = "Review live"
-            self.subtitle = Self.queueSubtitle(for: session)
-            self.emptyText = "Nessuna card live in coda."
-            self.systemImage = "checkmark.circle"
-            self.isRefreshing = false
-            self.canRefresh = true
-        case .failed(let message, let staleSession):
-            self.title = "Review live offline"
-            self.subtitle = staleSession == nil ? message : "\(message) - sola lettura"
-            self.emptyText = "Review live non disponibile."
-            self.systemImage = "exclamationmark.triangle"
-            self.isRefreshing = false
-            self.canRefresh = true
-        }
-    }
-
-    private static func queueSubtitle(for session: DailyKanjiLiveReviewSession?) -> String {
-        guard let session else {
-            return "Connessione al server"
-        }
-
-        if session.queue.queueCount > 0 {
-            return "\(session.queue.queueCount) in coda - \(session.queue.dueCount) due"
-        }
-
-        if let nextDueAt = session.queue.nextDueAt, !nextDueAt.isEmpty {
-            return "Prossima due \(nextDueAt)"
-        }
-
-        return "Coda vuota"
-    }
-}
-
-struct DailyKanjiSyncStatusPresentation: Equatable {
-    let title: String
-    let subtitle: String
-    let lastSyncAt: Date?
-    let systemImage: String
-    let isRefreshing: Bool
-    let canRefresh: Bool
-
-    init(syncState: DailyKanjiSyncState) {
-        switch syncState {
-        case .unavailable:
-            self.title = "Sync non configurato"
-            self.subtitle = "Uso cache o bundle locale"
-            self.lastSyncAt = nil
-            self.systemImage = "wifi.slash"
-            self.isRefreshing = false
-            self.canRefresh = false
-        case .idle(let source):
-            self.title = Self.title(for: source)
-            self.subtitle = Self.subtitle(for: source)
-            self.lastSyncAt = Self.lastSyncAt(for: source)
-            self.systemImage = Self.systemImage(for: source)
-            self.isRefreshing = false
-            self.canRefresh = true
-        case .syncing(let source):
-            self.title = "Sincronizzo"
-            self.subtitle = Self.subtitle(for: source)
-            self.lastSyncAt = Self.lastSyncAt(for: source)
-            self.systemImage = "arrow.clockwise"
-            self.isRefreshing = true
-            self.canRefresh = false
-        case .failed(let message, let source):
-            self.title = "Cache non aggiornata"
-            self.subtitle = message
-            self.lastSyncAt = Self.lastSyncAt(for: source)
-            self.systemImage = "exclamationmark.triangle"
-            self.isRefreshing = false
-            self.canRefresh = true
-        }
-    }
-
-    private static func title(for source: DailyKanjiDatasetSource) -> String {
-        switch source {
-        case .cache(let metadata):
-            return metadata == nil ? "Cache da verificare" : "Sincronizzato"
-        case .bundle:
-            return "Bundle"
-        case .sample:
-            return "Sample"
-        }
-    }
-
-    private static func subtitle(for source: DailyKanjiDatasetSource) -> String {
-        switch source {
-        case .cache(let metadata):
-            guard let metadata else {
-                return "Cache condivisa - aggiornamento richiesto"
-            }
-
-            return "Cache condivisa - \(metadata.cardCount) card"
-        case .bundle:
-            return "Snapshot incluso"
-        case .sample:
-            return "Dataset non esportato"
-        }
-    }
-
-    private static func lastSyncAt(for source: DailyKanjiDatasetSource) -> Date? {
-        switch source {
-        case .cache(let metadata):
-            return metadata?.cachedAt
-        case .bundle, .sample:
-            return nil
-        }
-    }
-
-    private static func systemImage(for source: DailyKanjiDatasetSource) -> String {
-        switch source {
-        case .cache(let metadata):
-            return metadata == nil ? "exclamationmark.triangle" : "checkmark.icloud"
-        case .bundle:
-            return "shippingbox"
-        case .sample:
-            return "exclamationmark.circle"
-        }
-    }
-}
-
 private extension Array {
     subscript(safe index: Index) -> Element? {
         indices.contains(index) ? self[index] : nil
-    }
-}
-
-private extension DailyKanjiCard.SRS {
-    var difficultyText: String {
-        guard let difficulty else {
-            return "-"
-        }
-
-        return String(format: "%.1f", difficulty)
-    }
-
-    var stabilityText: String {
-        guard let stability else {
-            return "-"
-        }
-
-        return String(format: "%.1fd", stability)
     }
 }

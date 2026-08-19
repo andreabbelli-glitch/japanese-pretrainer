@@ -69,7 +69,7 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var recentHistory: [DailyKanjiPresentationHistoryItem] = []
     @Published private(set) var syncState: DailyKanjiSyncState
     @Published private(set) var liveReviewState: DailyKanjiLiveReviewState
-    @Published private(set) var selectedAppSection: DailyKanjiAppSection
+    @Published private(set) var selectedTab: DailyKanjiAppTab
 
     private let cacheWriter: any DailyKanjiCacheWriting
     private let historyStore: DailyKanjiHistoryStore
@@ -180,7 +180,7 @@ final class DailyKanjiAppModel: ObservableObject {
             source: repositorySnapshot.source
         )
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
-        self.selectedAppSection = liveReviewClient == nil ? .daily : .review
+        self.selectedTab = liveReviewClient == nil ? .widget : .review
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -229,7 +229,7 @@ final class DailyKanjiAppModel: ObservableObject {
         }
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
-        self.selectedAppSection = liveReviewClient == nil ? .daily : .review
+        self.selectedTab = liveReviewClient == nil ? .widget : .review
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -281,7 +281,7 @@ final class DailyKanjiAppModel: ObservableObject {
             startSyncTask(now: now, force: false)
         }
 
-        guard selectedAppSection == .daily else {
+        guard selectedTab == .widget else {
             return
         }
 
@@ -321,19 +321,19 @@ final class DailyKanjiAppModel: ObservableObject {
         startLiveReviewFetchTask(now: liveReviewNow(), force: true)
     }
 
-    func selectAppSection(_ section: DailyKanjiAppSection, now: Date = .now) {
-        let previousSection = selectedAppSection
-        selectedAppSection = section
+    func selectTab(_ tab: DailyKanjiAppTab, now: Date = .now) {
+        let previousTab = selectedTab
+        selectedTab = tab
 
-        if section == .review {
+        if tab == .review {
             startLiveReviewFetchTask(now: now)
         } else {
             cancelLiveReviewFetch()
         }
 
         guard
-            previousSection != .daily,
-            section == .daily,
+            previousTab != .widget,
+            tab == .widget,
             let selectedCard
         else {
             return
@@ -421,7 +421,7 @@ final class DailyKanjiAppModel: ObservableObject {
             updateVisibleSelection(
                 preferredCardId: visibleCardId,
                 now: now,
-                recordsReplacement: selectedAppSection == .daily,
+                recordsReplacement: selectedTab == .widget,
                 recordsPreparedSelection: false
             )
             syncState = .idle(source: datasetSource)
@@ -558,7 +558,7 @@ final class DailyKanjiAppModel: ObservableObject {
         cancelLiveReviewFetch()
 
         guard let card = cards.first(where: { $0.cardId == cardId }) else {
-            selectedAppSection = .daily
+            selectedTab = .widget
             pendingPreparedSelectionCardId = nil
             removeTransientInitialActivationIfNeeded(now: now)
             if let selectedCard {
@@ -568,7 +568,7 @@ final class DailyKanjiAppModel: ObservableObject {
             return
         }
 
-        selectedAppSection = .daily
+        selectedTab = .widget
         pendingPreparedSelectionCardId = nil
         removeTransientInitialActivationIfNeeded(now: now)
         select(
@@ -713,7 +713,7 @@ final class DailyKanjiAppModel: ObservableObject {
         now: Date,
         force: Bool = false
     ) -> Task<Void, Never>? {
-        guard selectedAppSection == .review else {
+        guard selectedTab == .review else {
             return nil
         }
         guard liveReviewClient != nil else {

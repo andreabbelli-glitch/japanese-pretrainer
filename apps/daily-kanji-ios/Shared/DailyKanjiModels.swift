@@ -338,17 +338,6 @@ enum DailyKanjiStudyMode: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var label: String {
-        switch self {
-        case .daily:
-            return "Daily"
-        case .prestudy:
-            return "Prestudy"
-        case .lastLessonsHardAgain:
-            return "Last 3"
-        }
-    }
-
     var usesMediaSelection: Bool {
         self == .prestudy
     }
