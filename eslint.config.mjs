@@ -200,12 +200,7 @@ const eslintConfig = [
     }
   },
   {
-    files: [
-      "src/components/glossary/**/*.{ts,tsx}",
-      "src/components/review/review-page-stage.tsx",
-      "src/components/review/review-page-state.ts",
-      "src/components/review/use-review-page-controller.ts"
-    ],
+    files: ["src/components/glossary/**/*.{ts,tsx}"],
     rules: {
       "no-restricted-imports": [
         "error",
@@ -238,7 +233,10 @@ const eslintConfig = [
       "no-restricted-imports": [
         "error",
         {
-          patterns: reviewClientImportRestrictionPatterns
+          patterns: [
+            ...reviewClientImportRestrictionPatterns,
+            ...glossaryClientImportRestrictionPatterns
+          ]
         }
       ]
     }

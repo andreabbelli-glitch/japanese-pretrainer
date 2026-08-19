@@ -1,6 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
+import { ESLint } from "eslint";
 import { describe, expect, it } from "vitest";
 
 const PROJECT_ROOT = process.cwd();
@@ -8,30 +9,44 @@ const productionGlossaryRoots = [
   "src/app/api/glossary",
   "src/app/glossary",
   "src/app/media/[mediaSlug]/glossary",
-  "src/components/glossary"
+  "src/components/glossary",
+  "src/components/review"
 ] as const;
-const productionGlossaryFiles = [
-  "src/components/review/review-page-stage.tsx",
-  "src/components/review/review-page-state.ts",
-  "src/components/review/use-review-forced-contrast-controller.ts",
-  "src/components/review/use-review-page-controller.ts"
+const clientTypeConsumerRoots = [
+  "src/components/glossary",
+  "src/components/review"
 ] as const;
-const clientTypeConsumerRoots = ["src/components/glossary"] as const;
 const clientTypeConsumerFiles = [
   "src/features/glossary/ui/client/glossary-autocomplete-dropdown.tsx",
-  "src/features/glossary/ui/client/use-glossary-autocomplete.ts",
-  "src/components/review/review-page-stage.tsx",
-  "src/components/review/review-page-state.ts",
-  "src/components/review/use-review-forced-contrast-controller.ts",
-  "src/components/review/use-review-page-controller.ts"
+  "src/features/glossary/ui/client/use-glossary-autocomplete.ts"
 ] as const;
 
 describe("glossary feature boundary", () => {
+  it("lints every review component against glossary client boundaries", async () => {
+    const eslint = new ESLint({ cwd: PROJECT_ROOT });
+    const probePath = path.join(
+      PROJECT_ROOT,
+      "src/components/review/__glossary-boundary-probe.tsx"
+    );
+
+    for (const forbiddenImport of [
+      "@/features/glossary/server",
+      "@/lib/glossary"
+    ]) {
+      const [result] = await eslint.lintText(`import "${forbiddenImport}";\n`, {
+        filePath: probePath
+      });
+
+      expect(
+        result?.messages.some(
+          (message) => message.ruleId === "no-restricted-imports"
+        )
+      ).toBe(true);
+    }
+  });
+
   it("keeps production glossary consumers off legacy lib glossary modules", async () => {
-    const files = [
-      ...(await listSourceFiles(productionGlossaryRoots)),
-      ...productionGlossaryFiles
-    ];
+    const files = await listSourceFiles(productionGlossaryRoots);
     const violations = await findImportViolations(
       files,
       /(?:from\s+|import\s*\(|import\s+type\s+[^;]*?\s+from\s+)["']@\/lib\/glossary(?:["']|[-/])/u
