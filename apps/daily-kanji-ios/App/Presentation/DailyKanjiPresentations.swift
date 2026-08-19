@@ -474,6 +474,72 @@ struct DailyKanjiSettingsDataPresentation: Equatable {
     }
 }
 
+struct DailyKanjiSettingsAboutPresentation: Equatable {
+    let versionText: String
+
+    let offlineDescription =
+        "Le schede scaricate restano disponibili sul dispositivo anche senza connessione."
+
+    init(bundle: Bundle = .main) {
+        let version = Self.bundleString("CFBundleShortVersionString", in: bundle) ?? "—"
+        let build = Self.bundleString("CFBundleVersion", in: bundle) ?? "—"
+        self.versionText = "Versione \(version) (build \(build))"
+    }
+
+    private static func bundleString(_ key: String, in bundle: Bundle) -> String? {
+        guard let value = bundle.object(forInfoDictionaryKey: key) as? String else {
+            return nil
+        }
+
+        let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
+    }
+}
+
+struct DailyKanjiSettingsNotificationPresentation: Equatable {
+    let isEnabled: Bool
+
+    init(bundle: Bundle = .main) {
+        self.isEnabled = DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured(
+            bundle: bundle
+        )
+    }
+
+    var title: String {
+        isEnabled ? "Notifiche di ripasso" : "Notifiche di ripasso non incluse"
+    }
+
+    var subtitle: String {
+        isEnabled
+            ? "I promemoria di ripasso possono essere gestiti nelle impostazioni di sistema."
+            : "Questa installazione non invia promemoria di ripasso."
+    }
+
+    var settingsActionTitle: String? {
+        isEnabled ? "Gestisci notifiche" : nil
+    }
+}
+
+struct DailyKanjiSettingsWidgetPresentation: Equatable {
+    let scope: DailyKanjiWidgetScopePresentation
+
+    var scopeSummary: String {
+        scope.summary
+    }
+
+    var cadenceText: String {
+        let slotMinutes = Int(DailyKanjiSelector.widgetSlotDuration / 60)
+        let cadence = slotMinutes == 60
+            ? "ogni ora"
+            : "ogni \(slotMinutes) minuti"
+        let plannedHours = Int(
+            Double(DailyKanjiSelector.defaultWidgetTimelineEntryCount)
+                * DailyKanjiSelector.widgetSlotDuration / 3_600
+        )
+        return "Una nuova scheda \(cadence) · \(plannedHours) ore programmate"
+    }
+}
+
 extension DailyKanjiCard.SRS {
     var difficultyText: String {
         guard let difficulty else {

@@ -88,6 +88,70 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testSettingsAboutPresentationUsesBundleVersionAndExplainsOfflineData() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let bundle = try Self.makeSettingsBundle(
+            in: temporaryDirectory,
+            infoValues: [
+                "CFBundleShortVersionString": "2.4.1",
+                "CFBundleVersion": "73"
+            ]
+        )
+
+        let presentation = DailyKanjiSettingsAboutPresentation(bundle: bundle)
+
+        XCTAssertEqual(presentation.versionText, "Versione 2.4.1 (build 73)")
+        XCTAssertEqual(
+            presentation.offlineDescription,
+            "Le schede scaricate restano disponibili sul dispositivo anche senza connessione."
+        )
+    }
+
+    func testSettingsNotificationPresentationFollowsTheBuildCapabilityWithoutCredentials() throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let enabledBundle = try Self.makeSettingsBundle(
+            in: temporaryDirectory,
+            infoValues: [
+                "DAILY_KANJI_ENABLE_APNS": "true",
+                "MOBILE_API_ENDPOINT": "https://private.example.test",
+                "MOBILE_API_TOKEN": "private-token"
+            ]
+        )
+        let disabledBundle = try Self.makeSettingsBundle(in: temporaryDirectory, infoValues: [:])
+
+        let enabled = DailyKanjiSettingsNotificationPresentation(bundle: enabledBundle)
+        let disabled = DailyKanjiSettingsNotificationPresentation(bundle: disabledBundle)
+
+        XCTAssertEqual(enabled.title, "Notifiche di ripasso")
+        XCTAssertEqual(
+            enabled.subtitle,
+            "I promemoria di ripasso possono essere gestiti nelle impostazioni di sistema."
+        )
+        XCTAssertEqual(enabled.settingsActionTitle, "Gestisci notifiche")
+        XCTAssertFalse(enabled.subtitle.contains("private-token"))
+        XCTAssertEqual(disabled.title, "Notifiche di ripasso non incluse")
+        XCTAssertEqual(
+            disabled.subtitle,
+            "Questa installazione non invia promemoria di ripasso."
+        )
+        XCTAssertNil(disabled.settingsActionTitle)
+    }
+
+    func testSettingsWidgetPresentationUsesTheCurrentHourlyRotationWindow() {
+        let presentation = DailyKanjiSettingsWidgetPresentation(
+            scope: DailyKanjiWidgetScopePresentation(
+                studyMode: .daily,
+                selectedMediaTitle: nil,
+                availableCardCount: 250
+            )
+        )
+
+        XCTAssertEqual(presentation.scopeSummary, "Giornaliero · Tutti i media · 250 schede disponibili")
+        XCTAssertEqual(presentation.cadenceText, "Una nuova scheda ogni ora · 24 ore programmate")
+    }
+
     func testWidgetCardStudyPresentationGroupsFieldsInStudyOrder() {
         let presentation = DailyKanjiWidgetCardStudyPresentation(
             front: "語",
@@ -5828,6 +5892,43 @@ final class DailyKanjiCoreTests: XCTestCase {
                 domain: "DailyKanjiTests",
                 code: 1,
                 userInfo: [NSLocalizedDescriptionKey: "Could not create test bundle."]
+            )
+        }
+
+        return bundle
+    }
+
+    private static func makeSettingsBundle(
+        in directoryURL: URL,
+        infoValues: [String: String]
+    ) throws -> Bundle {
+        let bundleURL = directoryURL.appendingPathComponent(
+            "DailyKanjiSettings-\(UUID().uuidString).bundle",
+            isDirectory: true
+        )
+        try FileManager.default.createDirectory(
+            at: bundleURL,
+            withIntermediateDirectories: true
+        )
+
+        var info: [String: String] = [
+            "CFBundleIdentifier": "dev.local.daily-kanji.tests.\(UUID().uuidString)",
+            "CFBundleName": "DailyKanjiSettingsTest",
+            "CFBundlePackageType": "BNDL"
+        ]
+        info.merge(infoValues) { _, value in value }
+        let infoPlist = try PropertyListSerialization.data(
+            fromPropertyList: info,
+            format: .xml,
+            options: 0
+        )
+        try infoPlist.write(to: bundleURL.appendingPathComponent("Info.plist"))
+
+        guard let bundle = Bundle(url: bundleURL) else {
+            throw NSError(
+                domain: "DailyKanjiTests",
+                code: 1,
+                userInfo: [NSLocalizedDescriptionKey: "Could not create settings test bundle."]
             )
         }
 

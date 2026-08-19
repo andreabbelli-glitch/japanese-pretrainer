@@ -505,7 +505,9 @@ protocol DailyKanjiNotificationRegistering {
 }
 
 struct DailyKanjiPushNotificationRegistrar: DailyKanjiNotificationRegistering {
-    var isRemoteNotificationEnabled: () -> Bool = Self.defaultRemoteNotificationConfigurationCheck
+    var isRemoteNotificationEnabled: () -> Bool = {
+        DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured()
+    }
 
     func requestAuthorizationAndRegister() async {
         guard isRemoteNotificationEnabled() else {
@@ -528,8 +530,8 @@ struct DailyKanjiPushNotificationRegistrar: DailyKanjiNotificationRegistering {
         }
     }
 
-    private static func defaultRemoteNotificationConfigurationCheck() -> Bool {
-        guard let value = Bundle.main.object(forInfoDictionaryKey: "DAILY_KANJI_ENABLE_APNS") as? String else {
+    static func isRemoteNotificationConfigured(bundle: Bundle = .main) -> Bool {
+        guard let value = bundle.object(forInfoDictionaryKey: "DAILY_KANJI_ENABLE_APNS") as? String else {
             return false
         }
 

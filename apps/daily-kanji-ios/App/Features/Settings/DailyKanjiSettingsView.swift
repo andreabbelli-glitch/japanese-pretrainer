@@ -1,8 +1,10 @@
 import SwiftUI
+import UIKit
 
 struct DailyKanjiSettingsView: View {
     @ObservedObject var model: DailyKanjiAppModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.openURL) private var openURL
     @State private var showsScope = false
 
     var body: some View {
@@ -61,6 +63,7 @@ struct DailyKanjiSettingsView: View {
 
     private var reviewSection: some View {
         let presentation = DailyKanjiLiveReviewStatusPresentation(state: model.liveReviewState)
+        let notificationPresentation = DailyKanjiSettingsNotificationPresentation()
 
         return Section("Ripasso") {
             Label(presentation.title, systemImage: presentation.systemImage)
@@ -72,36 +75,65 @@ struct DailyKanjiSettingsView: View {
                 Button("Aggiorna ripasso", action: model.refreshLiveReviewNow)
                     .disabled(presentation.isRefreshing)
             }
-        }
-    }
 
-    private var widgetSection: some View {
-        Section("Widget") {
-            Text(widgetScopeSummary)
+            Label(
+                notificationPresentation.title,
+                systemImage: notificationPresentation.isEnabled ? "bell" : "bell.slash"
+            )
+            Text(notificationPresentation.subtitle)
+                .font(.callout)
                 .foregroundStyle(.secondary)
-            Button("Modifica percorso") {
-                showsScope = true
+
+            if let settingsActionTitle = notificationPresentation.settingsActionTitle {
+                Button(settingsActionTitle) {
+                    openURL(URL(string: UIApplication.openNotificationSettingsURLString)!)
+                }
+                .frame(minHeight: 44)
             }
         }
     }
 
+    private var widgetSection: some View {
+        let presentation = DailyKanjiSettingsWidgetPresentation(
+            scope: DailyKanjiWidgetScopePresentation(
+                studyMode: model.selectedStudyMode,
+                selectedMediaTitle: selectedMediaTitle,
+                availableCardCount: model.scopedCardCount
+            )
+        )
+
+        return Section("Widget") {
+            LabeledContent("Percorso attivo") {
+                Text(presentation.scopeSummary)
+                    .multilineTextAlignment(.trailing)
+            }
+            Text(presentation.cadenceText)
+                .font(.callout)
+                .foregroundStyle(.secondary)
+            Button("Modifica percorso") {
+                showsScope = true
+            }
+            .frame(minHeight: 44)
+        }
+    }
+
     private var aboutSection: some View {
-        Section("Informazioni") {
+        let presentation = DailyKanjiSettingsAboutPresentation()
+
+        return Section("Informazioni") {
             Text("Daily Kanji")
-            Text("Companion locale per il ripasso e il widget.")
+            Text(presentation.versionText)
+                .font(.callout)
+                .foregroundStyle(.secondary)
+            Text(presentation.offlineDescription)
                 .font(.callout)
                 .foregroundStyle(.secondary)
         }
     }
 
-    private var widgetScopeSummary: String {
-        let mediaTitle = model.selectedMediaSlug.flatMap { slug in
+    private var selectedMediaTitle: String? {
+        model.selectedMediaSlug.flatMap { slug in
             model.availableMediaForCurrentMode.first { $0.slug == slug }?.title
         }
-        return DailyKanjiWidgetScopePresentation(
-            studyMode: model.selectedStudyMode,
-            selectedMediaTitle: mediaTitle,
-            availableCardCount: model.scopedCardCount
-        ).summary
     }
 }
