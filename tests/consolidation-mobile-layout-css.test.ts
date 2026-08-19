@@ -48,10 +48,19 @@ describe("consolidation mobile layout css", () => {
   });
 
   it("keeps touched global css off the legacy soft shadow token", async () => {
-    const css = await readFile(
-      path.join(PROJECT_ROOT, "src/styles/base.css"),
-      "utf8"
-    );
+    const css = (
+      await Promise.all(
+        [
+          "base-shell-drills.css",
+          "base-katakana-loading.css",
+          "base-reader.css",
+          "base-review-glossary.css",
+          "base-responsive.css"
+        ].map((file) =>
+          readFile(path.join(PROJECT_ROOT, "src/styles", file), "utf8")
+        )
+      )
+    ).join("\n");
 
     expect(css).not.toContain("--shadow-soft");
   });

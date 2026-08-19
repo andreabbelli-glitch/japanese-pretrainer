@@ -8,7 +8,10 @@ const PROJECT_ROOT = process.cwd();
 describe("pitch accent css", () => {
   it("uses the canonical Japanese font token on pitch accent surfaces", async () => {
     const [baseCss, tokensCss] = await Promise.all([
-      readFile(path.join(PROJECT_ROOT, "src/styles/base.css"), "utf8"),
+      readFile(
+        path.join(PROJECT_ROOT, "src/styles/base-review-glossary.css"),
+        "utf8"
+      ),
       readFile(path.join(PROJECT_ROOT, "src/styles/tokens.css"), "utf8")
     ]);
 

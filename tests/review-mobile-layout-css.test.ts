@@ -8,7 +8,7 @@ const PROJECT_ROOT = process.cwd();
 describe("review mobile layout css", () => {
   it("keeps long review phrases on natural mobile wrap points", async () => {
     const css = await readFile(
-      path.join(PROJECT_ROOT, "src/styles/base.css"),
+      path.join(PROJECT_ROOT, "src/styles/base-review-glossary.css"),
       "utf8"
     );
     const responsiveCss = await readFile(

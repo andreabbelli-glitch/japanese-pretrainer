@@ -7,10 +7,17 @@ const PROJECT_ROOT = process.cwd();
 
 describe("site shell layout css", () => {
   it("keeps the desktop brand column from collapsing under the primary nav", async () => {
-    const css = await readFile(
-      path.join(PROJECT_ROOT, "src/styles/base.css"),
-      "utf8"
-    );
+    const [shellCss, responsiveCss] = await Promise.all([
+      readFile(
+        path.join(PROJECT_ROOT, "src/styles/base-shell-drills.css"),
+        "utf8"
+      ),
+      readFile(
+        path.join(PROJECT_ROOT, "src/styles/base-responsive.css"),
+        "utf8"
+      )
+    ]);
+    const css = [shellCss, responsiveCss].join("\n");
     const headerInnerRule = readRule(css, ".site-header__inner");
     const brandRule = readRule(css, ".brand");
     const navRule = readRule(css, ".site-nav");
@@ -38,7 +45,9 @@ describe("site shell layout css", () => {
     const mobileNavRule = readRule(mobileCss, ".site-nav");
     const mobileNavLinkRule = readRule(mobileCss, ".site-nav__link");
 
-    expect(css).not.toContain("grid-template-columns: minmax(0, auto) 1fr auto");
+    expect(css).not.toContain(
+      "grid-template-columns: minmax(0, auto) 1fr auto"
+    );
     expect(headerInnerRule).toContain(
       "grid-template-columns: max-content minmax(0, 1fr)"
     );
@@ -69,9 +78,10 @@ describe("site shell layout css", () => {
 
 function readRule(css: string, selector: string) {
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const match = new RegExp(`${escapedSelector}\\s*\\{(?<body>[^}]*)\\}`, "s").exec(
-    css
-  );
+  const match = new RegExp(
+    `${escapedSelector}\\s*\\{(?<body>[^}]*)\\}`,
+    "s"
+  ).exec(css);
 
   expect(match?.groups?.body).toBeDefined();
   return normalizeDeclarations(match?.groups?.body ?? "");
