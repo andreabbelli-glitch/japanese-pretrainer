@@ -185,6 +185,25 @@
   .consolidation-card--retraining > .button {
     width: 100%;
   }
+
+  .consolidation-path {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) auto minmax(0, 0.85fr) auto minmax(
+        0,
+        0.65fr
+      );
+    width: 100%;
+    gap: 0.125rem;
+    font-size: clamp(var(--text-label), 3.8vw, var(--text-small));
+    overflow-x: visible;
+    white-space: normal;
+  }
+
+  .consolidation-path [role="listitem"] {
+    min-width: 0;
+    padding: var(--space-2) var(--space-1);
+    text-align: center;
+  }
 }
 
 @media (forced-colors: active) {

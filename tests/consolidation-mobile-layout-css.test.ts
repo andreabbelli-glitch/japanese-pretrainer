@@ -6,6 +6,21 @@ import { describe, expect, it } from "vitest";
 const PROJECT_ROOT = process.cwd();
 
 describe("consolidation mobile layout css", () => {
+  it("keeps the hub study path inside narrow phone viewports", async () => {
+    const css = await readFile(
+      path.join(PROJECT_ROOT, "src/styles/ui-reader-consolidation.css"),
+      "utf8"
+    );
+
+    expect(css).toContain("@media (max-width: 639px)");
+    expect(css).toMatch(
+      /\.consolidation-path\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:[^}]*minmax\(0,\s*1\.7fr\)[^}]*width:\s*100%;[^}]*overflow-x:\s*visible;[^}]*white-space:\s*normal;/s
+    );
+    expect(css).toMatch(
+      /\.consolidation-path \[role="listitem"\]\s*\{[^}]*min-width:\s*0;[^}]*text-align:\s*center;/s
+    );
+  });
+
   it("keeps option buttons stable, readable, and motion-reduced friendly", async () => {
     const css = await readFile(
       path.join(

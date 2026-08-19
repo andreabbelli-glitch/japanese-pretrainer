@@ -44,6 +44,49 @@
   justify-content: flex-end;
 }
 
+.review-stage,
+.review-sidebar,
+.review-entry-card {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.review-stage__card,
+.review-stage__veil,
+.review-stage__answer,
+.review-sidebar__notice {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.review-stage__back {
+  overflow-wrap: anywhere;
+}
+
+.pronunciation-audio,
+.reader-example-sentence,
+.reader-example-sentence__translation {
+  grid-template-columns: minmax(0, 1fr);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pronunciation-audio__player {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+.reader-example-sentence__jp,
+.reader-example-sentence__translation summary {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.reader-example-sentence__translation summary {
+  flex-wrap: wrap;
+}
+
 .review-stage__reference-actions {
   padding-top: var(--space-1);
 }
@@ -188,6 +231,25 @@
 
   .glossary-search-form__filter-summary small {
     display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .review-stage {
+    padding: var(--space-4);
+  }
+
+  .review-stage__card {
+    padding: var(--space-4);
+  }
+
+  .review-stage__veil,
+  .review-stage__answer {
+    padding: var(--space-3);
+  }
+
+  .review-stage__answer .reader-example-sentence {
+    padding: var(--space-4);
   }
 }
 
