@@ -7,8 +7,7 @@ struct ContentView: View {
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
     @StateObject private var glossarySearch: DailyKanjiGlossarySearchModel
     @State private var selectedGlossaryEntry: DailyKanjiGlossaryEntry?
-    @State private var liveReviewAnswerRevealed = false
-    private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
+    @State private var showsSettings = false
 
     @MainActor
     init(model: DailyKanjiAppModel) {
@@ -19,96 +18,80 @@ struct ContentView: View {
     }
 
     var body: some View {
-        NavigationStack {
-            Group {
-                switch model.selectedTab {
-                case .widget:
-                    DailyKanjiWidgetHomeView(model: model, openSettings: openSettings)
-                case .review, .search:
-                    legacyContent
-                }
+        TabView(selection: tabBinding) {
+            NavigationStack {
+                DailyKanjiWidgetHomeView(model: model, openSettings: showSettings)
             }
-            .onChange(of: model.selectedTab) { _, tab in
-                if tab != .search {
-                    selectedGlossaryEntry = nil
-                } else {
-                    glossarySearch.prepareIndex()
-                }
-                resetAndPreloadCurrentLiveReviewAudio()
+            .tabItem {
+                Label(DailyKanjiAppTab.widget.label, systemImage: DailyKanjiAppTab.widget.systemImage)
             }
-            .onChange(of: currentLiveReviewCardKey) { _, _ in
-                liveReviewAnswerRevealed = false
-                guard model.selectedTab == .review else {
-                    return
-                }
-                resetAndPreloadCurrentLiveReviewAudio()
+            .tag(DailyKanjiAppTab.widget)
+
+            NavigationStack {
+                DailyKanjiReviewHomeView(model: model, openSettings: showSettings)
             }
-            .onAppear {
-                resetAndPreloadCurrentLiveReviewAudio()
+            .tabItem {
+                Label(DailyKanjiAppTab.review.label, systemImage: DailyKanjiAppTab.review.systemImage)
             }
-            .onDisappear {
+            .tag(DailyKanjiAppTab.review)
+
+            NavigationStack {
+                legacyContent
+            }
+            .tabItem {
+                Label(DailyKanjiAppTab.search.label, systemImage: DailyKanjiAppTab.search.systemImage)
+            }
+            .tag(DailyKanjiAppTab.search)
+        }
+        .tint(.accentColor)
+        .onChange(of: model.selectedTab) { _, tab in
+            if tab != .search {
+                selectedGlossaryEntry = nil
+                audioPlayer.suspend()
+            } else {
+                glossarySearch.prepareIndex()
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active {
                 audioPlayer.suspend()
             }
-            .onChange(of: scenePhase) { _, phase in
-                if phase == .active {
-                    resetAndPreloadCurrentLiveReviewAudio()
-                } else {
-                    audioPlayer.suspend()
-                }
-            }
-            .onReceive(model.$glossaryEntries.dropFirst()) { entries in
-                glossarySearch.replaceEntries(entries)
-            }
-            .sheet(item: $selectedGlossaryEntry) { entry in
-                NavigationStack {
-                    glossaryDetailView(entry)
-                        .navigationTitle("Glossario")
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .confirmationAction) {
-                                Button("Chiudi") {
-                                    selectedGlossaryEntry = nil
-                                }
+        }
+        .onReceive(model.$glossaryEntries.dropFirst()) { entries in
+            glossarySearch.replaceEntries(entries)
+        }
+        .sheet(item: $selectedGlossaryEntry) { entry in
+            NavigationStack {
+                glossaryDetailView(entry)
+                    .navigationTitle("Glossario")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Chiudi") {
+                                selectedGlossaryEntry = nil
                             }
                         }
-                }
+                    }
             }
+        }
+        .sheet(isPresented: $showsSettings) {
+            DailyKanjiSettingsView(model: model)
         }
     }
 
     private var legacyContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                switch model.selectedTab {
-                case .review:
-                    liveReviewView
-                case .search:
-                    glossaryView
-                case .widget:
-                    EmptyView()
-                }
+                glossaryView
             }
             .padding(.horizontal, 20)
             .padding(.top, 14)
             .padding(.bottom, 36)
         }
-        .navigationTitle("Daily Kanji")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Cerca")
         .toolbar {
-            ToolbarItem(placement: .principal) {
-                Picker(
-                    "Modalità",
-                    selection: Binding(
-                        get: { model.selectedTab },
-                        set: { model.selectTab($0) }
-                    )
-                ) {
-                    ForEach(DailyKanjiAppTab.allCases) { tab in
-                        Label(tab.label, systemImage: tab.systemImage).tag(tab)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .frame(maxWidth: 320)
+            ToolbarItem(placement: .topBarTrailing) {
+                DailyKanjiSettingsToolbarButton(action: showSettings)
             }
         }
         .background(Color(.systemBackground))
@@ -465,282 +448,16 @@ struct ContentView: View {
         audioPlayer.play(mediaSlug: media.mediaSlug, audioSrc: audioSrc)
     }
 
-    private var liveReviewView: some View {
-        let presentation = DailyKanjiLiveReviewStatusPresentation(
-            state: model.liveReviewState
+    private var tabBinding: Binding<DailyKanjiAppTab> {
+        Binding(
+            get: { model.selectedTab },
+            set: { model.selectTab($0) }
         )
-
-        return VStack(alignment: .leading, spacing: 14) {
-            HStack(alignment: .center, spacing: 12) {
-                Image(systemName: presentation.systemImage)
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .frame(width: 22)
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(presentation.title)
-                        .font(.subheadline.weight(.semibold))
-
-                    Text(presentation.subtitle)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 12)
-
-                Button {
-                    model.refreshLiveReviewNow()
-                } label: {
-                    if presentation.isRefreshing {
-                        ProgressView()
-                            .controlSize(.small)
-                    } else {
-                        Label("Aggiorna review", systemImage: "arrow.clockwise")
-                            .labelStyle(.iconOnly)
-                    }
-                }
-                .buttonStyle(.bordered)
-                .disabled(!presentation.canRefresh)
-                .accessibilityLabel("Aggiorna review")
-            }
-
-            if let card = model.liveReviewState.session?.selectedCard {
-                liveReviewCardView(card)
-            } else {
-                Text(presentation.emptyText)
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
     }
 
-    private func liveReviewCardView(_ card: DailyKanjiLiveReviewCard) -> some View {
-        let presentation = DailyKanjiLiveReviewCardPresentation(
-            card: card,
-            isAnswerRevealed: liveReviewAnswerRevealed
-        )
-
-        return VStack(alignment: .leading, spacing: 18) {
-            HStack(spacing: 8) {
-                Text(card.mediaTitle)
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-
-                Spacer(minLength: 0)
-
-                Text("\(model.liveReviewState.session?.queue.queueCount ?? 0) in coda")
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(.secondary)
-            }
-
-            Text(presentation.frontText)
-                .font(.system(size: 78, weight: .semibold))
-                .minimumScaleFactor(0.32)
-                .lineLimit(2)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            if presentation.shouldShowAnswer {
-                liveReviewAnswerView(presentation)
-                liveReviewGradeGrid(presentation)
-            } else {
-                Button {
-                    revealLiveReviewAnswer(for: card)
-                } label: {
-                    Label("Rivela", systemImage: "eye.fill")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-                .disabled(!model.liveReviewState.canReveal)
-            }
-        }
-        .opacity(model.liveReviewState.canGrade || model.liveReviewState.isSubmitting ? 1 : 0.72)
+    private func showSettings() {
+        showsSettings = true
     }
-
-    @ViewBuilder
-    private func liveReviewAnswerView(
-        _ presentation: DailyKanjiLiveReviewCardPresentation
-    ) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(alignment: .firstTextBaseline, spacing: 10) {
-                if let readingText = presentation.readingText {
-                    Text(readingText)
-                        .font(.title3.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                }
-
-                if let pitchAccentText = presentation.pitchAccentText {
-                    Text(pitchAccentText)
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 0)
-
-                Button {
-                    playLiveReviewAudio(presentation)
-                } label: {
-                    Label("Audio", systemImage: "speaker.wave.2.fill")
-                        .labelStyle(.iconOnly)
-                }
-                .buttonStyle(.bordered)
-                .disabled(presentation.primaryAudioURL(baseURL: liveReviewBaseURL) == nil)
-                .accessibilityLabel("Audio")
-            }
-
-            if let pitchAccent = presentation.pitchAccent {
-                DailyKanjiLiveReviewPitchAccentView(pitchAccent: pitchAccent)
-            }
-
-            Text(presentation.backText)
-                .font(.title3.weight(.semibold))
-                .fixedSize(horizontal: false, vertical: true)
-
-            if let exampleJp = presentation.card.exampleJp, !exampleJp.isEmpty {
-                Text(DailyKanjiReviewTextFormatter.displayText(exampleJp))
-                    .font(.body)
-            }
-
-            if let exampleIt = presentation.card.exampleIt, !exampleIt.isEmpty {
-                Text(DailyKanjiReviewTextFormatter.displayText(exampleIt))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-
-            if let notes = presentation.card.notes, !notes.isEmpty {
-                Text(DailyKanjiReviewTextFormatter.displayText(notes))
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-        }
-    }
-
-    private func liveReviewGradeGrid(
-        _ presentation: DailyKanjiLiveReviewCardPresentation
-    ) -> some View {
-        LazyVGrid(
-            columns: [
-                GridItem(.flexible(), spacing: 8),
-                GridItem(.flexible(), spacing: 8)
-            ],
-            spacing: 8
-        ) {
-            ForEach(DailyKanjiLiveReviewRating.reviewDisplayOrder, id: \.self) { rating in
-                liveReviewGradeButton(rating, presentation: presentation)
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func liveReviewGradeButton(
-        _ rating: DailyKanjiLiveReviewRating,
-        presentation: DailyKanjiLiveReviewCardPresentation
-    ) -> some View {
-        let isSubmitting = model.liveReviewState.submittingRating == rating
-
-        if rating == .good || rating == .easy {
-            Button {
-                model.gradeLiveReview(rating)
-            } label: {
-                liveReviewGradeButtonLabel(
-                    rating,
-                    nextReviewLabel: presentation.nextReviewLabel(for: rating),
-                    isSubmitting: isSubmitting
-                )
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(!model.liveReviewState.canGrade || !liveReviewAnswerRevealed)
-        } else {
-            Button {
-                model.gradeLiveReview(rating)
-            } label: {
-                liveReviewGradeButtonLabel(
-                    rating,
-                    nextReviewLabel: presentation.nextReviewLabel(for: rating),
-                    isSubmitting: isSubmitting
-                )
-            }
-            .buttonStyle(.bordered)
-            .disabled(!model.liveReviewState.canGrade || !liveReviewAnswerRevealed)
-        }
-    }
-
-    private func liveReviewGradeButtonLabel(
-        _ rating: DailyKanjiLiveReviewRating,
-        nextReviewLabel: String?,
-        isSubmitting: Bool
-    ) -> some View {
-        VStack(spacing: 3) {
-            if isSubmitting {
-                ProgressView()
-                    .controlSize(.small)
-            } else {
-                Text(rating.label)
-                    .font(.headline)
-                    .lineLimit(1)
-            }
-
-            Text(rating.detail)
-                .font(.caption2)
-                .foregroundStyle(.secondary)
-                .lineLimit(2)
-                .multilineTextAlignment(.center)
-
-            if let nextReviewLabel {
-                Text(nextReviewLabel)
-                    .font(.caption2.weight(.medium))
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
-            }
-        }
-        .frame(maxWidth: .infinity, minHeight: 72)
-    }
-
-    private var currentLiveReviewCardKey: String? {
-        guard let card = model.liveReviewState.session?.selectedCard else {
-            return nil
-        }
-
-        return "\(card.cardId):\(card.reviewStateUpdatedAt ?? "")"
-    }
-
-    private func revealLiveReviewAnswer(for card: DailyKanjiLiveReviewCard) {
-        liveReviewAnswerRevealed = true
-        let presentation = DailyKanjiLiveReviewCardPresentation(
-            card: card,
-            isAnswerRevealed: true
-        )
-        playLiveReviewAudio(presentation)
-    }
-
-    private func playLiveReviewAudio(_ presentation: DailyKanjiLiveReviewCardPresentation) {
-        guard let url = presentation.primaryAudioURL(baseURL: liveReviewBaseURL) else {
-            return
-        }
-
-        audioPlayer.play(url: url)
-    }
-
-    private func resetAndPreloadCurrentLiveReviewAudio() {
-        audioPlayer.stopPlayback()
-        guard scenePhase == .active,
-              model.selectedTab == .review,
-              let card = model.liveReviewState.session?.selectedCard
-        else {
-            audioPlayer.preload(url: nil)
-            return
-        }
-
-        let presentation = DailyKanjiLiveReviewCardPresentation(
-            card: card,
-            isAnswerRevealed: true
-        )
-        audioPlayer.preload(url: presentation.primaryAudioURL(baseURL: liveReviewBaseURL))
-    }
-
-    private func openSettings() {}
 }
 
 #Preview {
@@ -767,68 +484,5 @@ private struct DailyKanjiGlossaryPitchAccentView: View {
             }
         }
         .padding(.top, 8)
-    }
-}
-
-private struct DailyKanjiLiveReviewPitchAccentView: View {
-    let pitchAccent: DailyKanjiLiveReviewCard.Pronunciation.Audio.PitchAccent
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(alignment: .bottom, spacing: 6) {
-                ForEach(Array(pitchAccent.morae.enumerated()), id: \.offset) { index, mora in
-                    VStack(spacing: 4) {
-                        Circle()
-                            .fill(isHigh(index: index) ? Color.accentColor : Color.secondary)
-                            .frame(width: 7, height: 7)
-                            .offset(y: isHigh(index: index) ? -9 : 0)
-
-                        Text(mora)
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(minWidth: 20)
-                }
-            }
-            .padding(.top, 8)
-
-            if let source = pitchAccentSourceText {
-                Text(source)
-                    .font(.caption2)
-                    .foregroundStyle(.tertiary)
-            }
-        }
-    }
-
-    private var pitchAccentSourceText: String? {
-        guard let shape = pitchAccent.shape else {
-            return nil
-        }
-
-        return "\(shape.capitalized) pattern"
-    }
-
-    private func isHigh(index: Int) -> Bool {
-        if let level = pitchAccent.levels?[safe: index] {
-            return level == "high"
-        }
-
-        let moraIndex = index + 1
-
-        if pitchAccent.downstep == 0 {
-            return moraIndex > 1
-        }
-
-        if pitchAccent.downstep == 1 {
-            return moraIndex == 1
-        }
-
-        return moraIndex > 1 && moraIndex <= pitchAccent.downstep
-    }
-}
-
-private extension Array {
-    subscript(safe index: Index) -> Element? {
-        indices.contains(index) ? self[index] : nil
     }
 }

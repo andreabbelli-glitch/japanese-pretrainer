@@ -204,6 +204,20 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
         DailyKanjiReviewTextFormatter.displayText(card.back)
     }
 
+    var studyAccessibilityLabel: String {
+        var parts = [frontText]
+
+        guard isAnswerRevealed else {
+            return parts.joined(separator: ", ")
+        }
+
+        if let readingText {
+            parts.append("lettura \(readingText)")
+        }
+        parts.append("significato \(backText)")
+        return parts.joined(separator: ", ")
+    }
+
     var shouldShowAnswer: Bool {
         isAnswerRevealed
     }
@@ -283,37 +297,39 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
 
         switch state {
         case .unavailable:
-            self.title = "Live review non configurata"
-            self.subtitle = "Uso solo dataset locale"
-            self.emptyText = "Configura endpoint e token per la review live."
+            self.title = "Ripasso non disponibile"
+            self.subtitle = "Disponibilità da impostare"
+            self.emptyText = "Questa installazione non include il ripasso live."
             self.systemImage = "wifi.slash"
             self.isRefreshing = false
             self.canRefresh = false
         case .loading:
-            self.title = "Carico review live"
+            self.title = "Aggiorno il ripasso"
             self.subtitle = Self.queueSubtitle(for: session)
-            self.emptyText = "Caricamento..."
+            self.emptyText = "Preparazione del ripasso..."
             self.systemImage = "arrow.clockwise"
             self.isRefreshing = true
             self.canRefresh = false
         case .submitting(let session, let rating):
             self.title = "Invio \(rating.label)"
             self.subtitle = Self.queueSubtitle(for: session)
-            self.emptyText = "Invio voto..."
+            self.emptyText = "Invio della valutazione..."
             self.systemImage = "paperplane"
             self.isRefreshing = true
             self.canRefresh = false
         case .ready(let session):
-            self.title = "Review live"
+            self.title = "Ripasso"
             self.subtitle = Self.queueSubtitle(for: session)
-            self.emptyText = "Nessuna card live in coda."
+            self.emptyText = "Non ci sono schede da ripassare."
             self.systemImage = "checkmark.circle"
             self.isRefreshing = false
             self.canRefresh = true
-        case .failed(let message, let staleSession):
-            self.title = "Review live offline"
-            self.subtitle = staleSession == nil ? message : "\(message) - sola lettura"
-            self.emptyText = "Review live non disponibile."
+        case .failed(_, let staleSession):
+            self.title = "Ripasso non disponibile"
+            self.subtitle = staleSession == nil
+                ? "Riprova tra poco."
+                : "L'ultima sessione è disponibile in sola lettura."
+            self.emptyText = "Non è possibile aggiornare il ripasso in questo momento."
             self.systemImage = "exclamationmark.triangle"
             self.isRefreshing = false
             self.canRefresh = true
@@ -322,7 +338,7 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
 
     private static func queueSubtitle(for session: DailyKanjiLiveReviewSession?) -> String {
         guard let session else {
-            return "Connessione al server"
+            return "Preparazione della sessione"
         }
 
         if session.queue.queueCount > 0 {
@@ -330,7 +346,7 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
         }
 
         if let nextDueAt = session.queue.nextDueAt, !nextDueAt.isEmpty {
-            return "Prossima due \(nextDueAt)"
+            return "Prossimo ripasso \(nextDueAt)"
         }
 
         return "Coda vuota"
@@ -419,6 +435,18 @@ struct DailyKanjiSyncStatusPresentation: Equatable {
         case .sample:
             return "exclamationmark.circle"
         }
+    }
+}
+
+struct DailyKanjiSettingsDataPresentation: Equatable {
+    let syncStatus: DailyKanjiSyncStatusPresentation
+
+    var lastSyncAt: Date? {
+        syncStatus.lastSyncAt
+    }
+
+    var lastSyncLabel: String? {
+        lastSyncAt == nil ? nil : "Ultimo aggiornamento"
     }
 }
 

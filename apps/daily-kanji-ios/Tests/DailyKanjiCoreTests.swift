@@ -17,6 +17,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testUnconfiguredReviewUsesProductCopy() {
+        let presentation = DailyKanjiLiveReviewStatusPresentation(state: .unavailable)
+
+        XCTAssertEqual(presentation.title, "Ripasso non disponibile")
+        XCTAssertEqual(
+            presentation.emptyText,
+            "Questa installazione non include il ripasso live."
+        )
+        XCTAssertFalse(presentation.subtitle.localizedCaseInsensitiveContains("server"))
+    }
+
     func testWidgetScopePresentationUsesTheActualScopeAndAvailableCardCount() {
         let presentation = DailyKanjiWidgetScopePresentation(
             studyMode: .prestudy,
@@ -1484,6 +1495,30 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(presentation.canRefresh)
     }
 
+    func testSettingsDataPresentationShowsLastSyncRowOnlyWhenAvailable() {
+        let synced = DailyKanjiSettingsDataPresentation(
+            syncStatus: DailyKanjiSyncStatusPresentation(
+                syncState: .idle(
+                    source: .cache(
+                        metadata: DailyKanjiCachedDatasetMetadata(
+                            cachedAt: now,
+                            generatedAt: "2026-06-11T08:00:00.000Z",
+                            cardCount: 42
+                        )
+                    )
+                )
+            )
+        )
+        let unavailable = DailyKanjiSettingsDataPresentation(
+            syncStatus: DailyKanjiSyncStatusPresentation(syncState: .unavailable)
+        )
+
+        XCTAssertEqual(synced.lastSyncLabel, "Ultimo aggiornamento")
+        XCTAssertEqual(synced.lastSyncAt, now)
+        XCTAssertNil(unavailable.lastSyncLabel)
+        XCTAssertNil(unavailable.lastSyncAt)
+    }
+
     func testSyncStatusPresentationMarksCacheWithoutMetadataAsUnverified() {
         let presentation = DailyKanjiSyncStatusPresentation(
             syncState: .idle(source: .cache(metadata: nil))
@@ -1710,6 +1745,23 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         XCTAssertTrue(revealed.shouldShowAnswer)
         XCTAssertTrue(revealed.canGrade)
+    }
+
+    func testLiveReviewPresentationGroupsStudyFieldsForVoiceOver() throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let card = try XCTUnwrap(session.selectedCard)
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: true
+        )
+
+        XCTAssertEqual(
+            presentation.studyAccessibilityLabel,
+            "観測, lettura かんそく, significato osservazione / rilevamento"
+        )
     }
 
     @MainActor
@@ -4687,15 +4739,15 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(source.contains("remoteAudioCache.removeData(for: url)"))
     }
 
-    func testLiveReviewPreloadCancelsWhenTheReviewIsNotVisible() throws {
-        let source = try Self.appSourceFileContents()
+    @MainActor
+    func testReviewTabSelectionChangesReviewVisibilityState() {
+        let model = DailyKanjiAppModel(cards: [])
 
-        XCTAssertTrue(source.contains("@Environment(\\.scenePhase) private var scenePhase"))
-        XCTAssertTrue(source.contains(".onChange(of: scenePhase) { _, phase in"))
-        XCTAssertTrue(source.contains("if phase == .active"))
-        XCTAssertTrue(source.contains("audioPlayer.suspend()"))
-        XCTAssertTrue(source.contains("guard scenePhase == .active,"))
-        XCTAssertTrue(source.contains("audioPlayer.preload(url: nil)"))
+        model.selectTab(.review)
+        XCTAssertEqual(model.selectedTab, .review)
+
+        model.selectTab(.widget)
+        XCTAssertEqual(model.selectedTab, .widget)
     }
 
     private static let liveReviewSessionJSON = """
@@ -5654,12 +5706,16 @@ final class DailyKanjiCoreTests: XCTestCase {
         return try String(contentsOf: widgetSourceURL, encoding: .utf8)
     }
 
-    private static func appSourceFileContents() throws -> String {
+    private static func appSourceFileContents(
+        relativePath: String = "ContentView.swift"
+    ) throws -> String {
         let testFileURL = URL(fileURLWithPath: #filePath)
         let projectURL = testFileURL
             .deletingLastPathComponent()
             .deletingLastPathComponent()
-        let appSourceURL = projectURL.appendingPathComponent("App/ContentView.swift")
+        let appSourceURL = projectURL
+            .appendingPathComponent("App")
+            .appendingPathComponent(relativePath)
         return try String(contentsOf: appSourceURL, encoding: .utf8)
     }
 
