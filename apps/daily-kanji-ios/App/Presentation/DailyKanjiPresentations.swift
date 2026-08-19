@@ -28,12 +28,36 @@ extension DailyKanjiEntryKind {
     var glossaryLabel: String {
         switch self {
         case .term: "Termine"
-        case .grammar: "Grammar"
+        case .grammar: "Grammatica"
         }
     }
 }
 
 extension DailyKanjiGlossaryEntry {
+    var rowSummary: String {
+        let trimmedMeaning = meaning.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard trimmedMeaning.count > 110 else {
+            return trimmedMeaning
+        }
+
+        return "\(trimmedMeaning.prefix(107))…"
+    }
+
+    var rowAccessibilityLabel: String {
+        [
+            label,
+            readingLine.map { "lettura \($0)" },
+            "significato \(rowSummary)",
+            kind.glossaryLabel
+        ]
+        .compactMap { $0 }
+        .joined(separator: ", ")
+    }
+
+    var rowAccessibilityHint: String {
+        "Apri dettaglio"
+    }
+
     var readingLine: String? {
         let parts = [reading, romaji].compactMap { value -> String? in
             guard let value, !value.isEmpty else {

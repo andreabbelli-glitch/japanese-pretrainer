@@ -17,6 +17,53 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testGrammarEntriesUseItalianKindLabel() {
+        XCTAssertEqual(DailyKanjiEntryKind.grammar.glossaryLabel, "Grammatica")
+    }
+
+    func testGlossaryRowSummaryDoesNotExposeLongNotes() {
+        let entry = DailyKanjiGlossaryEntry(
+            aliases: [],
+            id: "term:compact-row",
+            kind: .term,
+            label: "行く",
+            meaning: "andare",
+            media: [],
+            notes: String(repeating: "nota ", count: 80),
+            pitchAccent: nil,
+            pitchAccentSource: nil,
+            reading: "いく",
+            romaji: "iku",
+            searchText: "行く いく iku andare",
+            title: nil
+        )
+
+        XCTAssertFalse(entry.rowSummary.contains("nota nota nota nota"))
+    }
+
+    func testGlossaryRowAccessibilityLabelIncludesStudyMetadata() {
+        let entry = DailyKanjiGlossaryEntry(
+            aliases: [],
+            id: "grammar:accessibility-row",
+            kind: .grammar,
+            label: "〜ている",
+            meaning: "stato risultante",
+            media: [],
+            notes: nil,
+            pitchAccent: nil,
+            pitchAccentSource: nil,
+            reading: "ている",
+            romaji: "te iru",
+            searchText: "〜ている ている te iru stato risultante",
+            title: nil
+        )
+
+        XCTAssertEqual(
+            entry.rowAccessibilityLabel,
+            "〜ている, lettura ている / te iru, significato stato risultante, Grammatica"
+        )
+    }
+
     func testUnconfiguredReviewUsesProductCopy() {
         let presentation = DailyKanjiLiveReviewStatusPresentation(state: .unavailable)
 
