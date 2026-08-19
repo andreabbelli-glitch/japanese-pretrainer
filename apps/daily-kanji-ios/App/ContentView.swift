@@ -8,7 +8,6 @@ struct ContentView: View {
     @StateObject private var glossarySearch: DailyKanjiGlossarySearchModel
     @State private var selectedGlossaryEntry: DailyKanjiGlossaryEntry?
     @State private var liveReviewAnswerRevealed = false
-    @ScaledMetric(relativeTo: .largeTitle) private var featuredKanjiSize = 104
     private let liveReviewBaseURL = DailyKanjiMobileReviewConfiguration.load().endpointURL
 
     @MainActor
@@ -21,41 +20,14 @@ struct ContentView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    switch model.selectedTab {
-                    case .widget:
-                        dailyStudyView
-                    case .review:
-                        liveReviewView
-                    case .search:
-                        glossaryView
-                    }
-                }
-                .padding(.horizontal, 20)
-                .padding(.top, 14)
-                .padding(.bottom, 36)
-            }
-            .navigationTitle("Daily Kanji")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Picker(
-                        "Modalità",
-                        selection: Binding(
-                            get: { model.selectedTab },
-                            set: { model.selectTab($0) }
-                        )
-                    ) {
-                        ForEach(DailyKanjiAppTab.allCases) { tab in
-                            Label(tab.label, systemImage: tab.systemImage).tag(tab)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    .frame(maxWidth: 320)
+            Group {
+                switch model.selectedTab {
+                case .widget:
+                    DailyKanjiWidgetHomeView(model: model, openSettings: openSettings)
+                case .review, .search:
+                    legacyContent
                 }
             }
-            .background(Color(.systemBackground))
             .onChange(of: model.selectedTab) { _, tab in
                 if tab != .search {
                     selectedGlossaryEntry = nil
@@ -102,6 +74,44 @@ struct ContentView: View {
                 }
             }
         }
+    }
+
+    private var legacyContent: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                switch model.selectedTab {
+                case .review:
+                    liveReviewView
+                case .search:
+                    glossaryView
+                case .widget:
+                    EmptyView()
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 14)
+            .padding(.bottom, 36)
+        }
+        .navigationTitle("Daily Kanji")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Picker(
+                    "Modalità",
+                    selection: Binding(
+                        get: { model.selectedTab },
+                        set: { model.selectTab($0) }
+                    )
+                ) {
+                    ForEach(DailyKanjiAppTab.allCases) { tab in
+                        Label(tab.label, systemImage: tab.systemImage).tag(tab)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .frame(maxWidth: 320)
+            }
+        }
+        .background(Color(.systemBackground))
     }
 
     private var glossaryView: some View {
@@ -455,95 +465,6 @@ struct ContentView: View {
         audioPlayer.play(mediaSlug: media.mediaSlug, audioSrc: audioSrc)
     }
 
-    private var dailyStudyView: some View {
-        VStack(alignment: .leading, spacing: 32) {
-            dailyHeaderView
-
-            if let card = model.selectedCard {
-                selectedCardView(card)
-                    .id(card.cardId)
-                    .transition(.opacity.combined(with: .move(edge: .trailing)))
-            } else {
-                emptyScopeView
-            }
-
-            studyScopeView
-            historyView
-        }
-        .animation(.snappy(duration: 0.34), value: model.selectedCard?.cardId)
-    }
-
-    private var dailyHeaderView: some View {
-        let presentation = DailyKanjiSyncStatusPresentation(syncState: model.syncState)
-
-        return VStack(alignment: .leading, spacing: 12) {
-            HStack(alignment: .center, spacing: 16) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Oggi")
-                        .font(.largeTitle.bold())
-
-                    Text(activeStudyScopeSummary)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 0)
-
-                Button {
-                    model.refreshNow()
-                } label: {
-                    if presentation.isRefreshing {
-                        ProgressView()
-                            .controlSize(.small)
-                            .frame(width: 20, height: 20)
-                    } else {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.body.weight(.semibold))
-                            .frame(width: 20, height: 20)
-                    }
-                }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.circle)
-                .disabled(!presentation.canRefresh)
-                .accessibilityLabel("Aggiorna ora")
-            }
-
-            VStack(alignment: .leading, spacing: 3) {
-                HStack(spacing: 8) {
-                    Label(presentation.title, systemImage: presentation.systemImage)
-                        .fontWeight(.medium)
-
-                    if let lastSyncAt = presentation.lastSyncAt {
-                        Text("· \(lastSyncAt, style: .relative)")
-                            .foregroundStyle(.tertiary)
-                    }
-                }
-
-                Text(presentation.subtitle)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            .font(.caption)
-            .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var activeStudyScopeSummary: String {
-        var parts = [model.selectedStudyMode.label]
-
-        if let selectedMediaSlug = model.selectedMediaSlug,
-           let media = model.availableMediaForCurrentMode.first(where: {
-               $0.slug == selectedMediaSlug
-           }) {
-            parts.append(media.title)
-        } else {
-            parts.append("Tutti i media")
-        }
-
-        parts.append("\(model.scopedCardCount) card")
-        return parts.joined(separator: " · ")
-    }
-
     private var liveReviewView: some View {
         let presentation = DailyKanjiLiveReviewStatusPresentation(
             state: model.liveReviewState
@@ -819,287 +740,7 @@ struct ContentView: View {
         audioPlayer.preload(url: presentation.primaryAudioURL(baseURL: liveReviewBaseURL))
     }
 
-    private var studyScopeView: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 3) {
-                Text("Percorso")
-                    .font(.headline)
-
-                Text("Scegli da quale gruppo estrarre il prossimo kanji.")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-
-            Picker(
-                "Modalità",
-                selection: Binding(
-                    get: { model.draftStudyMode },
-                    set: { model.setDraftStudyMode($0) }
-                )
-            ) {
-                ForEach(DailyKanjiStudyMode.allCases) { mode in
-                    Text(mode.label).tag(mode)
-                }
-            }
-            .pickerStyle(.segmented)
-
-            Divider()
-
-            HStack(spacing: 12) {
-                if model.draftStudyModeUsesMediaSelection {
-                    Picker(
-                        "Media",
-                        selection: Binding<String?>(
-                            get: { model.draftMediaSlug },
-                            set: { model.setDraftSelectedMediaSlug($0) }
-                        )
-                    ) {
-                        ForEach(model.mediaPickerOptions) { option in
-                            Text(option.title).tag(Optional(option.slug))
-                        }
-                    }
-                    .pickerStyle(.menu)
-                } else {
-                    Label("All media", systemImage: "rectangle.stack")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(.secondary)
-                }
-
-                Spacer(minLength: 0)
-
-                Text("\(model.draftScopedCardCount) card disponibili")
-                    .font(.caption.weight(.medium))
-                    .foregroundStyle(.secondary)
-            }
-
-            if model.hasStudyScopeDraftChanges {
-                HStack(spacing: 10) {
-                    Spacer(minLength: 0)
-
-                    Button {
-                        model.resetStudyScopeDraft()
-                    } label: {
-                        Text("Annulla")
-                    }
-                    .buttonStyle(.bordered)
-
-                    Button {
-                        model.applyStudyScope()
-                    } label: {
-                        Label("Applica", systemImage: "checkmark")
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(18)
-        .background(Color(.secondarySystemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .animation(.easeInOut(duration: 0.18), value: model.hasStudyScopeDraftChanges)
-    }
-
-    private func selectedCardView(_ card: DailyKanjiCard) -> some View {
-        VStack(alignment: .leading, spacing: 26) {
-            VStack(alignment: .leading, spacing: 14) {
-                Text(card.priorityText.uppercased())
-                    .font(.caption2.weight(.bold))
-                    .tracking(0.8)
-                    .foregroundStyle(.tint)
-
-                Text(card.displayFront)
-                    .font(.system(size: featuredKanjiSize, weight: .semibold))
-                    .minimumScaleFactor(0.28)
-                    .lineLimit(1)
-                    .allowsTightening(true)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-
-                Text(card.back)
-                    .font(.title2.weight(.semibold))
-                    .fixedSize(horizontal: false, vertical: true)
-
-                HStack(alignment: .center, spacing: 10) {
-                    Text(card.readingText)
-                        .font(.title3.weight(.medium))
-                        .foregroundStyle(.secondary)
-
-                    Text(card.pitchAccentText)
-                        .font(.caption.weight(.medium))
-                        .foregroundStyle(.secondary)
-
-                    Spacer(minLength: 0)
-
-                    Button {
-                        audioPlayer.play(card: card)
-                    } label: {
-                        Label("Audio", systemImage: "speaker.wave.2.fill")
-                            .labelStyle(.iconOnly)
-                            .frame(width: 20, height: 20)
-                    }
-                    .buttonStyle(.bordered)
-                    .buttonBorderShape(.circle)
-                    .disabled(!audioPlayer.hasBundledAudio(card: card))
-                    .accessibilityLabel("Riproduci \(card.readingText)")
-                }
-            }
-
-            if let selectedHistoryContext = model.selectedHistoryContext {
-                Label(selectedHistoryContext.metadataText(), systemImage: "clock")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
-
-            if !card.detailExampleLines.isEmpty {
-                HStack(alignment: .top, spacing: 14) {
-                    Capsule()
-                        .fill(.tint)
-                        .frame(width: 3)
-
-                    VStack(alignment: .leading, spacing: 7) {
-                        ForEach(
-                            Array(card.detailExampleLines.enumerated()),
-                            id: \.offset
-                        ) { index, line in
-                            Text(line)
-                                .font(index == 0 ? .body : .callout)
-                                .foregroundStyle(index == 0 ? .primary : .secondary)
-                        }
-                    }
-                }
-                .fixedSize(horizontal: false, vertical: true)
-            }
-
-            if let notes = card.notes {
-                Text(notes)
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-
-            studySignalsView(card)
-
-            Text(card.sourceText)
-                .font(.caption)
-                .foregroundStyle(.tertiary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var emptyScopeView: some View {
-        ContentUnavailableView(
-            "Nessuna card",
-            systemImage: "rectangle.stack.badge.minus",
-            description: Text("Cambia percorso per continuare lo studio.")
-        )
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 28)
-    }
-
-    private func studySignalsView(_ card: DailyKanjiCard) -> some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Divider()
-
-            Text("SEGNALI DI STUDIO")
-                .font(.caption2.weight(.bold))
-                .tracking(0.7)
-                .foregroundStyle(.secondary)
-
-            LazyVGrid(
-                columns: [
-                    GridItem(.flexible(), alignment: .leading),
-                    GridItem(.flexible(), alignment: .leading)
-                ],
-                alignment: .leading,
-                spacing: 16
-            ) {
-                metricItem("Difficoltà", value: card.srs.difficultyText)
-                metricItem("Stabilità", value: card.srs.stabilityText)
-                metricItem("Hard / again", value: "\(card.srs.recentHardAgainCount)")
-                metricItem("Errori", value: "\(card.srs.lapses)")
-            }
-        }
-    }
-
-    private func metricItem(_ label: String, value: String) -> some View {
-        VStack(alignment: .leading, spacing: 3) {
-            Text(value)
-                .font(.title3.weight(.semibold))
-
-            Text(label)
-                .font(.caption)
-                .foregroundStyle(.secondary)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
-
-    private var historyView: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack(alignment: .firstTextBaseline) {
-                Text("Recenti")
-                    .font(.headline)
-
-                Spacer(minLength: 0)
-
-                if !model.recentHistory.isEmpty {
-                    Text("\(model.recentHistory.count)")
-                        .font(.caption.weight(.medium))
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .padding(.bottom, 8)
-
-            if model.recentHistory.isEmpty {
-                Text("Nessuna card recente.")
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-                    .padding(.vertical, 12)
-            } else {
-                VStack(spacing: 0) {
-                    ForEach(model.recentHistory) { item in
-                        if let card = model.card(for: item) {
-                            Button {
-                                model.selectHistoryItem(item)
-                            } label: {
-                                HStack(alignment: .center, spacing: 14) {
-                                    Text(card.displayFront)
-                                        .font(.system(size: 34, weight: .semibold))
-                                        .lineLimit(1)
-                                        .minimumScaleFactor(0.45)
-                                        .allowsTightening(true)
-                                        .frame(width: 96, alignment: .leading)
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text(card.back)
-                                            .font(.subheadline.weight(.medium))
-                                            .lineLimit(1)
-
-                                        Text(card.readingText)
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                            .lineLimit(1)
-
-                                        Text(item.metadataText())
-                                            .font(.caption2)
-                                            .foregroundStyle(.tertiary)
-                                            .lineLimit(1)
-                                    }
-                                    Spacer(minLength: 0)
-
-                                    Image(systemName: "chevron.right")
-                                        .font(.caption.weight(.semibold))
-                                        .foregroundStyle(.tertiary)
-                                }
-                                .contentShape(Rectangle())
-                            }
-                            .buttonStyle(.plain)
-                            .padding(.vertical, 12)
-
-                            Divider()
-                        }
-                    }
-                }
-            }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-    }
+    private func openSettings() {}
 }
 
 #Preview {

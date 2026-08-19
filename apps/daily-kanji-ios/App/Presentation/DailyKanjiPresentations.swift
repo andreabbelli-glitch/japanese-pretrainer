@@ -118,6 +118,26 @@ extension DailyKanjiStudyMode {
     }
 }
 
+struct DailyKanjiWidgetScopePresentation: Equatable {
+    let studyMode: DailyKanjiStudyMode
+    let selectedMediaTitle: String?
+    let availableCardCount: Int
+
+    var summary: String {
+        [
+            studyMode.label,
+            selectedMediaTitle ?? "Tutti i media",
+            cardCountText
+        ].joined(separator: " · ")
+    }
+
+    private var cardCountText: String {
+        let noun = availableCardCount == 1 ? "scheda" : "schede"
+        let availability = availableCardCount == 1 ? "disponibile" : "disponibili"
+        return "\(availableCardCount) \(noun) \(availability)"
+    }
+}
+
 extension DailyKanjiLiveReviewRating {
     static let reviewDisplayOrder: [Self] = [.easy, .good, .hard, .again]
 

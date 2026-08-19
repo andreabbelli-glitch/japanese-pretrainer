@@ -17,6 +17,32 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testWidgetScopePresentationUsesTheActualScopeAndAvailableCardCount() {
+        let presentation = DailyKanjiWidgetScopePresentation(
+            studyMode: .prestudy,
+            selectedMediaTitle: "Crystal Hunters",
+            availableCardCount: 250
+        )
+
+        XCTAssertEqual(
+            presentation.summary,
+            "Prestudio · Crystal Hunters · 250 schede disponibili"
+        )
+    }
+
+    func testWidgetCardStudyPresentationGroupsFieldsInStudyOrder() {
+        let presentation = DailyKanjiWidgetCardStudyPresentation(
+            front: "語",
+            reading: "ご",
+            meaning: "parola"
+        )
+
+        XCTAssertEqual(
+            presentation.accessibilityLabel,
+            "語, lettura ご, significato parola"
+        )
+    }
+
     @MainActor
     func testCardDeepLinkSelectsWidgetTab() throws {
         let card = try XCTUnwrap(
@@ -4081,32 +4107,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
     }
 
-    func testRecentHistoryRowsKeepFrontOnOneLine() throws {
-        let source = try Self.appSourceFileContents()
-        guard let viewStart = source.range(of: "private var historyView") else {
-            XCTFail("Could not find historyView.")
-            return
-        }
+    func testWidgetScopePresentationUsesAllMediaWhenNoMediaIsSelected() {
+        let presentation = DailyKanjiWidgetScopePresentation(
+            studyMode: .daily,
+            selectedMediaTitle: nil,
+            availableCardCount: 1
+        )
 
-        let viewSource = source[viewStart.lowerBound...]
-        guard let viewEnd = viewSource.range(of: "\n}\n\n#Preview") else {
-            XCTFail("Could not isolate historyView.")
-            return
-        }
-
-        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
-        guard
-            let frontStart = viewBlock.range(of: "Text(card.displayFront)"),
-            let detailsStart = viewBlock.range(of: "VStack(alignment: .leading, spacing: 2)")
-        else {
-            XCTFail("Could not find the recent row front and details column.")
-            return
-        }
-
-        let frontBlock = String(viewBlock[frontStart.lowerBound..<detailsStart.lowerBound])
-        XCTAssertTrue(frontBlock.contains(".lineLimit(1)"))
-        XCTAssertTrue(frontBlock.contains(".minimumScaleFactor"))
-        XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
+        XCTAssertEqual(
+            presentation.summary,
+            "Giornaliero · Tutti i media · 1 scheda disponibile"
+        )
     }
 
     @MainActor
@@ -4181,41 +4192,17 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(card.detailExampleLines, ["Solo esempio italiano."])
     }
 
-    func testSelectedCardViewStacksFrontAboveDetailsAndAudio() throws {
-        let source = try Self.appSourceFileContents()
-        guard let viewStart = source.range(of: "private func selectedCardView") else {
-            XCTFail("Could not find selectedCardView.")
-            return
-        }
+    func testWidgetScopePresentationKeepsTheSelectedModeWithoutInventingProgress() {
+        let presentation = DailyKanjiWidgetScopePresentation(
+            studyMode: .lastLessonsHardAgain,
+            selectedMediaTitle: nil,
+            availableCardCount: 0
+        )
 
-        let viewSource = source[viewStart.lowerBound...]
-        guard let viewEnd = viewSource.range(of: "\n    private func studySignalsView") else {
-            XCTFail("Could not isolate selectedCardView.")
-            return
-        }
-
-        let viewBlock = String(viewSource[..<viewEnd.lowerBound])
-        XCTAssertFalse(viewBlock.contains("HStack(alignment: .firstTextBaseline"))
-
-        guard
-            let frontStart = viewBlock.range(of: "Text(card.displayFront)"),
-            let detailsStart = viewBlock.range(of: "Text(card.back)"),
-            let audioStart = viewBlock.range(
-                of: "Label(\"Audio\", systemImage: \"speaker.wave.2.fill\")"
-            )
-        else {
-            XCTFail("Could not find the selected card front, detail text, and audio button.")
-            return
-        }
-
-        XCTAssertLessThan(frontStart.lowerBound, detailsStart.lowerBound)
-        XCTAssertLessThan(detailsStart.lowerBound, audioStart.lowerBound)
-
-        let frontBlock = String(viewBlock[frontStart.lowerBound..<detailsStart.lowerBound])
-        XCTAssertTrue(frontBlock.contains(".lineLimit(1)"))
-        XCTAssertFalse(frontBlock.contains(".lineLimit(2)"))
-        XCTAssertFalse(frontBlock.contains("Label(\"Audio\""))
-        XCTAssertTrue(frontBlock.contains(".frame(maxWidth: .infinity, alignment: .leading)"))
+        XCTAssertEqual(
+            presentation.summary,
+            "Ultime 3 · Tutti i media · 0 schede disponibili"
+        )
     }
 
     func testPriorityTextLabelsHighDifficultySignal() throws {
