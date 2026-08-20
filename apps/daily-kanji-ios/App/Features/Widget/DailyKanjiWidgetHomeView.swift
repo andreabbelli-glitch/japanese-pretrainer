@@ -9,6 +9,7 @@ struct DailyKanjiWidgetHomeView: View {
     }
 
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ObservedObject var model: DailyKanjiAppModel
     let openSettings: () -> Void
     @StateObject private var audioPlayer = DailyKanjiAudioPlayer()
@@ -62,33 +63,11 @@ struct DailyKanjiWidgetHomeView: View {
     private var scopeButton: some View {
         let presentation = scopePresentation
 
-        return Button(action: showScope) {
-            HStack(spacing: 12) {
-                Image(systemName: "rectangle.stack")
-                    .font(.body.weight(.semibold))
-                    .foregroundStyle(.tint)
-                    .frame(width: 28)
-
-                VStack(alignment: .leading, spacing: 2) {
-                    Text("Percorso widget")
-                        .font(.headline)
-                    Text(presentation.summary)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-
-                Spacer(minLength: 8)
-                Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
-            .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel("Percorso widget, \(presentation.summary)")
-        .accessibilityHint("Apre la scelta del percorso")
+        return DailyKanjiWidgetScopeButton(
+            presentation: presentation,
+            layout: presentation.rowLayout(for: dynamicTypeSize),
+            action: showScope
+        )
     }
 
     private var emptyScope: some View {
@@ -164,5 +143,74 @@ struct DailyKanjiWidgetHomeView: View {
 
     private func selectHistoryItem(_ item: DailyKanjiPresentationHistoryItem) {
         model.selectHistoryItem(item)
+    }
+}
+
+private struct DailyKanjiWidgetScopeButton: View {
+    let presentation: DailyKanjiWidgetScopePresentation
+    let layout: DailyKanjiWidgetScopeRowLayout
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            Group {
+                if layout == .stacked {
+                    VStack(alignment: .leading, spacing: 4) {
+                        titleRow
+                        summary
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                } else {
+                    HStack(spacing: 12) {
+                        Image(systemName: "rectangle.stack")
+                            .font(.body.weight(.semibold))
+                            .foregroundStyle(.tint)
+                            .frame(width: 28)
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Percorso widget")
+                                .font(.headline)
+                            summary
+                        }
+
+                        Spacer(minLength: 8)
+                        chevron
+                    }
+                }
+            }
+            .frame(maxWidth: .infinity, minHeight: 44, alignment: .leading)
+            .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Percorso widget, \(presentation.summary)")
+        .accessibilityHint("Apre la scelta del percorso")
+    }
+
+    private var titleRow: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "rectangle.stack")
+                .font(.body.weight(.semibold))
+                .foregroundStyle(.tint)
+                .frame(width: 28)
+
+            Text("Percorso widget")
+                .font(.headline)
+
+            Spacer(minLength: 8)
+            chevron
+        }
+    }
+
+    private var summary: some View {
+        Text(presentation.summary)
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+    }
+
+    private var chevron: some View {
+        Image(systemName: "chevron.right")
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.tertiary)
     }
 }

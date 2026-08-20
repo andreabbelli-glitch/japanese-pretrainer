@@ -1,3 +1,4 @@
+import SwiftUI
 import WidgetKit
 import XCTest
 @testable import DailyKanji
@@ -75,6 +76,89 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(presentation.subtitle.localizedCaseInsensitiveContains("server"))
     }
 
+    func testLiveReviewQueueSubtitleUsesNaturalItalianSingularAndPlural() {
+        let singularSession = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(
+                dueCount: 1,
+                queueCount: 1,
+                nextDueAt: nil
+            ),
+            selectedCard: nil
+        )
+        let pluralSession = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(
+                dueCount: 2,
+                queueCount: 3,
+                nextDueAt: nil
+            ),
+            selectedCard: nil
+        )
+
+        XCTAssertEqual(
+            DailyKanjiLiveReviewStatusPresentation(state: .ready(session: singularSession)).subtitle,
+            "1 scheda in coda · 1 scheda da ripassare"
+        )
+        XCTAssertEqual(
+            DailyKanjiLiveReviewStatusPresentation(state: .ready(session: pluralSession)).subtitle,
+            "3 schede in coda · 2 schede da ripassare"
+        )
+    }
+
+    func testLiveReviewNextDueSubtitleFormatsISO8601WithAndWithoutFractionalSeconds() throws {
+        let locale = Locale(identifier: "it_IT")
+        let timeZone = try XCTUnwrap(TimeZone(identifier: "Europe/Rome"))
+
+        for timestamp in [
+            "2026-06-28T09:00:00.000Z",
+            "2026-06-28T09:00:00Z"
+        ] {
+            let session = DailyKanjiLiveReviewSession(
+                source: "live",
+                queue: DailyKanjiLiveReviewQueue(
+                    dueCount: 0,
+                    queueCount: 0,
+                    nextDueAt: timestamp
+                ),
+                selectedCard: nil
+            )
+            let presentation = DailyKanjiLiveReviewStatusPresentation(
+                state: .ready(session: session),
+                locale: locale,
+                timeZone: timeZone
+            )
+
+            XCTAssertEqual(
+                presentation.subtitle,
+                "Prossimo ripasso 28 giugno 2026 alle 11:00",
+                timestamp
+            )
+            XCTAssertFalse(presentation.subtitle.contains(timestamp), timestamp)
+        }
+    }
+
+    func testLiveReviewNextDueSubtitleUsesItalianFallbackWithoutExposingMalformedTimestamp() throws {
+        let timestamp = "timestamp-non-valido"
+        let session = DailyKanjiLiveReviewSession(
+            source: "live",
+            queue: DailyKanjiLiveReviewQueue(
+                dueCount: 0,
+                queueCount: 0,
+                nextDueAt: timestamp
+            ),
+            selectedCard: nil
+        )
+        let presentation = DailyKanjiLiveReviewStatusPresentation(
+            state: .ready(session: session),
+            locale: Locale(identifier: "it_IT"),
+            timeZone: try XCTUnwrap(TimeZone(identifier: "Europe/Rome"))
+        )
+
+        XCTAssertEqual(presentation.subtitle, "Data del prossimo ripasso non disponibile")
+        XCTAssertFalse(presentation.subtitle.contains(timestamp))
+    }
+
     func testWidgetScopePresentationUsesTheActualScopeAndAvailableCardCount() {
         let presentation = DailyKanjiWidgetScopePresentation(
             studyMode: .prestudy,
@@ -85,6 +169,62 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(
             presentation.summary,
             "Prestudio · Crystal Hunters · 250 schede disponibili"
+        )
+    }
+
+    func testWidgetScopePresentationUsesAStackedSummaryAtAccessibilitySizes() {
+        let presentation = DailyKanjiWidgetScopePresentation(
+            studyMode: .prestudy,
+            selectedMediaTitle: "Crystal Hunters",
+            availableCardCount: 250
+        )
+
+        XCTAssertEqual(presentation.rowLayout(for: .large), .compact)
+        XCTAssertEqual(presentation.rowLayout(for: .accessibility5), .stacked)
+    }
+
+    func testGlossaryRowPresentationStacksAudioAtAccessibilitySizes() {
+        let presentation = DailyKanjiGlossaryRowPresentation()
+
+        XCTAssertEqual(presentation.rowLayout(for: .large), .compact)
+        XCTAssertEqual(presentation.rowLayout(for: .accessibility5), .stacked)
+    }
+
+    func testGlossarySearchEmptyStateUsesCompactItalianCopyAtAccessibilitySizes() {
+        let presentation = DailyKanjiGlossarySearchPresentation(query: "zzzznotfound")
+
+        XCTAssertEqual(presentation.emptyResultsTitle, "Nessun risultato")
+        XCTAssertEqual(
+            presentation.emptyResultsDescription(for: .accessibility5),
+            "Controlla l'ortografia o prova un altro termine."
+        )
+    }
+
+    func testGlossarySearchEmptyStateBoundsUnicodeQueryWithoutSplittingGraphemes() {
+        let presentation = DailyKanjiGlossarySearchPresentation(
+            query: "12345678901234567890123👨‍👩‍👧‍👦fine"
+        )
+
+        XCTAssertEqual(
+            presentation.emptyResultsDescription(for: .large),
+            "Nessuna corrispondenza per “12345678901234567890123👨‍👩‍👧‍👦…”. Prova un altro termine."
+        )
+    }
+
+    func testGlossarySearchPresentationUsesAnInlineFieldAtAccessibilitySizes() {
+        let presentation = DailyKanjiGlossarySearchPresentation(query: "")
+
+        XCTAssertEqual(presentation.fieldLayout(for: .large), .system)
+        XCTAssertEqual(presentation.fieldLayout(for: .accessibility5), .inline)
+    }
+
+    func testGlossarySearchEmptyResultsUsesDedicatedLayoutOnlyAtAccessibilitySizes() {
+        let presentation = DailyKanjiGlossarySearchPresentation(query: "zzzznotfound")
+
+        XCTAssertEqual(presentation.emptyResultsLayout(for: .large), .system)
+        XCTAssertEqual(
+            presentation.emptyResultsLayout(for: .accessibility5),
+            .accessibility
         )
     }
 
@@ -163,6 +303,21 @@ final class DailyKanjiCoreTests: XCTestCase {
             presentation.accessibilityLabel,
             "語, lettura ご, significato parola"
         )
+    }
+
+    func testWidgetCardStudyPresentationUsesAvailableWidthForVerticalStudyText() {
+        let presentation = DailyKanjiWidgetCardStudyPresentation(
+            front: "追いつく",
+            reading: "おいつく",
+            meaning: "raggiungere"
+        )
+
+        XCTAssertFalse(presentation.studyTextUsesAvailableWidth(for: .horizontal))
+        XCTAssertTrue(presentation.studyTextUsesAvailableWidth(for: .vertical))
+    }
+
+    func testWidgetCardStudyPresentationUsesTheApprovedBaseFrontSize() {
+        XCTAssertEqual(DailyKanjiWidgetCardStudyPresentation.frontBaseSize, 64)
     }
 
     @MainActor
@@ -1856,6 +2011,81 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         XCTAssertTrue(revealed.shouldShowAnswer)
         XCTAssertTrue(revealed.canGrade)
+    }
+
+    func testLiveReviewPresentationLocalizesISODatePreviewAndPreservesRelativeLabels() throws {
+        let card = DailyKanjiLiveReviewCard(
+            cardId: "localized-preview",
+            front: "予定",
+            back: "programma",
+            mediaSlug: "media-one",
+            mediaTitle: "Media One",
+            reviewStateUpdatedAt: nil,
+            entries: nil,
+            pronunciations: nil,
+            reading: nil,
+            gradePreviews: [
+                DailyKanjiLiveReviewCard.GradePreview(
+                    nextReviewLabel: "Il 2026-08-28",
+                    rating: .easy
+                ),
+                DailyKanjiLiveReviewCard.GradePreview(
+                    nextReviewLabel: "Domani alle 04:07",
+                    rating: .good
+                )
+            ],
+            exampleJp: nil,
+            exampleIt: nil,
+            notes: nil
+        )
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: true
+        )
+        let locale = Locale(identifier: "it_IT")
+        let timeZone = try XCTUnwrap(TimeZone(identifier: "Europe/Rome"))
+        let localizedDate = presentation.nextReviewLabel(
+            for: .easy,
+            locale: locale,
+            timeZone: timeZone
+        )
+
+        XCTAssertEqual(localizedDate, "Il 28 agosto 2026")
+        XCTAssertFalse(localizedDate?.contains("2026-08-28") ?? true)
+        XCTAssertEqual(
+            presentation.nextReviewLabel(
+                for: .good,
+                locale: locale,
+                timeZone: timeZone
+            ),
+            "Domani alle 04:07"
+        )
+    }
+
+    func testReviewGradeIntervalLayoutExpandsOnlyAtAccessibilitySizes() {
+        let large = DailyKanjiReviewGradeIntervalPresentation(dynamicTypeSize: .large)
+        let accessibility = DailyKanjiReviewGradeIntervalPresentation(
+            dynamicTypeSize: .accessibility5
+        )
+
+        XCTAssertEqual(large.lineLimit, 1)
+        XCTAssertFalse(large.allowsVerticalExpansion)
+        XCTAssertEqual(accessibility.lineLimit, 2)
+        XCTAssertTrue(accessibility.allowsVerticalExpansion)
+    }
+
+    func testReviewHeaderPresentationStacksAndExpandsTextAtAccessibilitySizes() {
+        let large = DailyKanjiReviewHeaderPresentation(dynamicTypeSize: .large)
+        let accessibility = DailyKanjiReviewHeaderPresentation(
+            dynamicTypeSize: .accessibility5
+        )
+
+        XCTAssertEqual(large.layout, .compact)
+        XCTAssertEqual(large.textLineLimit, 1)
+        XCTAssertFalse(large.allowsVerticalExpansion)
+        XCTAssertEqual(accessibility.layout, .stacked)
+        XCTAssertNil(accessibility.textLineLimit)
+        XCTAssertTrue(accessibility.allowsVerticalExpansion)
     }
 
     func testLiveReviewPresentationGroupsStudyFieldsForVoiceOver() throws {

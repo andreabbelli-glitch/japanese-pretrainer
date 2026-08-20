@@ -36,15 +36,29 @@ dataset scaricato dall'app senza fare sync di rete separati. La scrittura della
 cache aggiorna sia il dataset completo dell'app sia la proiezione ridotta letta
 dal widget.
 
-La schermata principale dell'app ha selettori locali per media e modalita':
-`Daily` usa il ranking globale Hard/Again/low-stability, `Prestudy` mostra le
-card della prossima lesson non completata del media selezionato, `Last 3` mostra
-le card valutate Hard/Again nelle ultime 3 lesson completate di quel media. Il
-cambio di modalita/media resta in bozza finche l'utente non preme `Applica`;
-solo allora viene salvato nell'App Group e ricarica subito le timeline WidgetKit,
-cosi i widget usano lo stesso scope confermato nell'app. Quando si cambia
-modalita, la bozza media viene riportata al default coerente con quella modalita:
-`All media` per `Daily`, primo media disponibile per le modalita media-scoped.
+## Esperienza app
+
+La root usa tre tab native, ciascuna con navigazione indipendente:
+`Widget`, `Ripasso` e `Cerca`. `Widget` e la superficie companion: mostra il
+percorso attivo, una card contestuale e le esposizioni recenti. `Ripasso`
+mantiene la sessione FSRS live; quando la capability non e inclusa, mostra
+`Ripasso non disponibile` con il percorso verso `Impostazioni`, senza esporre
+endpoint o token. `Cerca` offre il glossario con ricerca per termine, lettura o
+significato e apre i dettagli nello stesso stack di navigazione.
+
+Le informazioni operative vivono in una sola sheet `Impostazioni`: dati,
+disponibilita del ripasso, notifiche, percorso widget e informazioni app. Non
+ci sono selettori o blocchi di stato tecnico inline nella schermata principale.
+
+`Percorso widget`, disponibile dalla tab Widget e da Impostazioni, apre una
+sheet nativa con la bozza di modalita e media. Le modalita sono `Giornaliero`,
+`Prestudio` e `Ultime 3`: Giornaliero usa il ranking globale
+Hard/Again/bassa-stabilita, Prestudio usa le card della prossima lesson non
+completata del media scelto, Ultime 3 quelle valutate Hard/Again nelle ultime
+tre lesson completate. `Annulla` scarta la bozza; `Applica` la salva
+atomicamente nell'App Group e ricarica una sola volta le timeline WidgetKit.
+Il default del media resta coerente con la modalita: tutti i media per
+Giornaliero, primo media disponibile per le modalita legate a un media.
 
 ## Obiettivo v1
 
@@ -299,10 +313,11 @@ rispetta l'Xcode selezionato dal sistema.
   quindi puntano alla stessa card quando WidgetKit li aggiorna per lo stesso
   slot. iOS non consente a un widget singolo di espandersi oltre le dimensioni
   del family selezionato.
-- La rotazione widget usa slot di 15 minuti. Il widget legge prima la cache
-  cards-only condivisa App Group scritta dall'app, poi il bundle cards-only
-  packaged, poi il sample di sviluppo. Non carica il glossary o gli audio
-  dell'app. WidgetKit non garantisce un cambio card a ogni singolo
+- La rotazione widget usa slot orari e programma 24 entrate, quindi espone una
+  nuova scheda ogni ora quando WidgetKit puo aggiornare la timeline. Il widget
+  legge prima la cache cards-only condivisa App Group scritta dall'app, poi il
+  bundle cards-only packaged, poi il sample di sviluppo. Non carica il glossary
+  o gli audio dell'app. WidgetKit non garantisce un cambio card a ogni singolo
   wake/sblocco del telefono.
 - Il widget usa deep link `dailykanji://card/<card-id>` per aprire la card
   completa nell'app.

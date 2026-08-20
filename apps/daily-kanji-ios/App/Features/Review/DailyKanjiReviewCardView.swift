@@ -16,6 +16,14 @@ struct DailyKanjiReviewCardView: View {
         )
     }
 
+    private var gradeIntervalPresentation: DailyKanjiReviewGradeIntervalPresentation {
+        DailyKanjiReviewGradeIntervalPresentation(dynamicTypeSize: dynamicTypeSize)
+    }
+
+    private var headerPresentation: DailyKanjiReviewHeaderPresentation {
+        DailyKanjiReviewHeaderPresentation(dynamicTypeSize: dynamicTypeSize)
+    }
+
     var body: some View {
         DailyKanjiCardSurface {
             VStack(alignment: .leading, spacing: 20) {
@@ -32,19 +40,47 @@ struct DailyKanjiReviewCardView: View {
         }
     }
 
+    @ViewBuilder
     private var header: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
-            Text(card.mediaTitle)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-
-            Spacer(minLength: 0)
-
-            Text(queueText)
-                .font(.caption.weight(.medium))
-                .foregroundStyle(.secondary)
+        switch headerPresentation.layout {
+        case .compact:
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                mediaTitle(fullWidth: false)
+                Spacer(minLength: 0)
+                queueLabel(fullWidth: false)
+                    .fixedSize(horizontal: true, vertical: false)
+            }
+        case .stacked:
+            VStack(alignment: .leading, spacing: 4) {
+                mediaTitle(fullWidth: true)
+                queueLabel(fullWidth: true)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
+    }
+
+    private func mediaTitle(fullWidth: Bool) -> some View {
+        Text(card.mediaTitle)
+            .font(.caption.weight(.semibold))
+            .foregroundStyle(.secondary)
+            .lineLimit(headerPresentation.textLineLimit)
+            .fixedSize(
+                horizontal: false,
+                vertical: headerPresentation.allowsVerticalExpansion
+            )
+            .frame(maxWidth: fullWidth ? .infinity : nil, alignment: .leading)
+    }
+
+    private func queueLabel(fullWidth: Bool) -> some View {
+        Text(queueText)
+            .font(.caption.weight(.medium))
+            .foregroundStyle(.secondary)
+            .lineLimit(headerPresentation.textLineLimit)
+            .fixedSize(
+                horizontal: false,
+                vertical: headerPresentation.allowsVerticalExpansion
+            )
+            .frame(maxWidth: fullWidth ? .infinity : nil, alignment: .leading)
     }
 
     private var studyContent: some View {
@@ -246,7 +282,12 @@ struct DailyKanjiReviewCardView: View {
                 Text(nextReviewLabel)
                     .font(.caption2.weight(.medium))
                     .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                    .lineLimit(gradeIntervalPresentation.lineLimit)
+                    .multilineTextAlignment(.center)
+                    .fixedSize(
+                        horizontal: false,
+                        vertical: gradeIntervalPresentation.allowsVerticalExpansion
+                    )
             }
         }
         .frame(maxWidth: .infinity, minHeight: 72)

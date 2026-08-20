@@ -1,10 +1,16 @@
 import SwiftUI
 
+enum DailyKanjiWidgetCardStudyLayout {
+    case horizontal
+    case vertical
+}
+
 struct DailyKanjiWidgetCardView: View {
     let card: DailyKanjiCard
     let historyContext: DailyKanjiPresentationHistoryItem?
     @ObservedObject var audioPlayer: DailyKanjiAudioPlayer
-    @ScaledMetric(relativeTo: .largeTitle) private var frontSize = 92
+    @ScaledMetric(relativeTo: .largeTitle)
+    private var frontSize = DailyKanjiWidgetCardStudyPresentation.frontBaseSize
 
     var body: some View {
         DailyKanjiCardSurface {
@@ -24,32 +30,33 @@ struct DailyKanjiWidgetCardView: View {
         )
 
         return ViewThatFits(in: .horizontal) {
-            studyContentLayout(presentation, horizontal: true)
-            studyContentLayout(presentation, horizontal: false)
+            studyContentLayout(presentation, layout: .horizontal)
+            studyContentLayout(presentation, layout: .vertical)
         }
     }
 
     @ViewBuilder
     private func studyContentLayout(
         _ presentation: DailyKanjiWidgetCardStudyPresentation,
-        horizontal: Bool
+        layout: DailyKanjiWidgetCardStudyLayout
     ) -> some View {
-        if horizontal {
+        if layout == .horizontal {
             HStack(alignment: .center, spacing: 10) {
-                studyTextGroup(presentation)
+                studyTextGroup(presentation, layout: layout)
                 Spacer(minLength: 8)
                 audioButton
             }
         } else {
             VStack(alignment: .leading, spacing: 10) {
-                studyTextGroup(presentation)
+                studyTextGroup(presentation, layout: layout)
                 audioButton
             }
         }
     }
 
     private func studyTextGroup(
-        _ presentation: DailyKanjiWidgetCardStudyPresentation
+        _ presentation: DailyKanjiWidgetCardStudyPresentation,
+        layout: DailyKanjiWidgetCardStudyLayout
     ) -> some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(presentation.front)
@@ -71,6 +78,10 @@ struct DailyKanjiWidgetCardView: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(presentation.accessibilityLabel)
+        .frame(
+            maxWidth: presentation.studyTextUsesAvailableWidth(for: layout) ? .infinity : nil,
+            alignment: .leading
+        )
     }
 
     private var audioButton: some View {
@@ -202,12 +213,18 @@ struct DailyKanjiWidgetCardView: View {
 }
 
 struct DailyKanjiWidgetCardStudyPresentation: Equatable {
+    static let frontBaseSize: CGFloat = 64
+
     let front: String
     let reading: String
     let meaning: String
 
     var accessibilityLabel: String {
         "\(front), lettura \(reading), significato \(meaning)"
+    }
+
+    func studyTextUsesAvailableWidth(for layout: DailyKanjiWidgetCardStudyLayout) -> Bool {
+        layout == .vertical
     }
 }
 

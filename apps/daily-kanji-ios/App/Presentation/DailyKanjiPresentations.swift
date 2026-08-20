@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 enum DailyKanjiAppTab: String, CaseIterable, Identifiable {
     case widget
@@ -142,6 +143,74 @@ extension DailyKanjiStudyMode {
     }
 }
 
+enum DailyKanjiWidgetScopeRowLayout: Equatable {
+    case compact
+    case stacked
+}
+
+enum DailyKanjiGlossaryRowLayout: Equatable {
+    case compact
+    case stacked
+}
+
+struct DailyKanjiGlossaryRowPresentation {
+    func rowLayout(for dynamicTypeSize: DynamicTypeSize) -> DailyKanjiGlossaryRowLayout {
+        dynamicTypeSize.isAccessibilitySize ? .stacked : .compact
+    }
+}
+
+struct DailyKanjiGlossarySearchPresentation {
+    let query: String
+
+    private static let maximumDisplayedQueryLength = 24
+
+    func fieldLayout(for dynamicTypeSize: DynamicTypeSize) -> DailyKanjiGlossarySearchFieldLayout {
+        dynamicTypeSize.isAccessibilitySize ? .inline : .system
+    }
+
+    func emptyResultsLayout(
+        for dynamicTypeSize: DynamicTypeSize
+    ) -> DailyKanjiGlossaryEmptyResultsLayout {
+        dynamicTypeSize.isAccessibilitySize ? .accessibility : .system
+    }
+
+    var emptyResultsTitle: String {
+        "Nessun risultato"
+    }
+
+    func emptyResultsDescription(for dynamicTypeSize: DynamicTypeSize) -> String {
+        let compactCopy = "Controlla l'ortografia o prova un altro termine."
+        guard !dynamicTypeSize.isAccessibilitySize, let displayedQuery else {
+            return compactCopy
+        }
+
+        return "Nessuna corrispondenza per “\(displayedQuery)”. Prova un altro termine."
+    }
+
+    private var displayedQuery: String? {
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedQuery.isEmpty else {
+            return nil
+        }
+
+        guard trimmedQuery.count > Self.maximumDisplayedQueryLength else {
+            return trimmedQuery
+        }
+
+        return "\(trimmedQuery.prefix(Self.maximumDisplayedQueryLength))…"
+    }
+}
+
+enum DailyKanjiGlossarySearchFieldLayout: Equatable {
+    case system
+    case inline
+}
+
+enum DailyKanjiGlossaryEmptyResultsLayout: Equatable {
+    case system
+    case accessibility
+}
+
 struct DailyKanjiWidgetScopePresentation: Equatable {
     let studyMode: DailyKanjiStudyMode
     let selectedMediaTitle: String?
@@ -153,6 +222,10 @@ struct DailyKanjiWidgetScopePresentation: Equatable {
             selectedMediaTitle ?? "Tutti i media",
             cardCountText
         ].joined(separator: " · ")
+    }
+
+    func rowLayout(for dynamicTypeSize: DynamicTypeSize) -> DailyKanjiWidgetScopeRowLayout {
+        dynamicTypeSize.isAccessibilitySize ? .stacked : .compact
     }
 
     private var cardCountText: String {
@@ -213,6 +286,35 @@ enum DailyKanjiReviewTextFormatter {
             .replacingOccurrences(of: "}}", with: "")
             .replacingOccurrences(of: "{", with: "")
             .replacingOccurrences(of: "}", with: "")
+    }
+}
+
+struct DailyKanjiReviewGradeIntervalPresentation: Equatable {
+    let lineLimit: Int
+    let allowsVerticalExpansion: Bool
+
+    init(dynamicTypeSize: DynamicTypeSize) {
+        let isAccessibilitySize = dynamicTypeSize.isAccessibilitySize
+        self.lineLimit = isAccessibilitySize ? 2 : 1
+        self.allowsVerticalExpansion = isAccessibilitySize
+    }
+}
+
+enum DailyKanjiReviewHeaderLayout: Equatable {
+    case compact
+    case stacked
+}
+
+struct DailyKanjiReviewHeaderPresentation: Equatable {
+    let layout: DailyKanjiReviewHeaderLayout
+    let textLineLimit: Int?
+    let allowsVerticalExpansion: Bool
+
+    init(dynamicTypeSize: DynamicTypeSize) {
+        let isAccessibilitySize = dynamicTypeSize.isAccessibilitySize
+        self.layout = isAccessibilitySize ? .stacked : .compact
+        self.textLineLimit = isAccessibilitySize ? nil : 1
+        self.allowsVerticalExpansion = isAccessibilitySize
     }
 }
 
@@ -289,8 +391,21 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
         ].compactMap { $0 }
     }
 
-    func nextReviewLabel(for rating: DailyKanjiLiveReviewRating) -> String? {
-        card.gradePreviews?.first { $0.rating == rating }?.nextReviewLabel
+    func nextReviewLabel(
+        for rating: DailyKanjiLiveReviewRating,
+        locale: Locale = Locale(identifier: "it_IT"),
+        timeZone: TimeZone = .autoupdatingCurrent
+    ) -> String? {
+        guard let label = card.gradePreviews?.first(where: { $0.rating == rating })?.nextReviewLabel
+        else {
+            return nil
+        }
+
+        return Self.localizedNextReviewLabel(
+            label,
+            locale: locale,
+            timeZone: timeZone
+        )
     }
 
     func primaryAudioURL(baseURL: URL?) -> URL? {
@@ -306,6 +421,42 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
         default: "Pitch"
         }
     }
+
+    private static func localizedNextReviewLabel(
+        _ label: String,
+        locale: Locale,
+        timeZone: TimeZone
+    ) -> String {
+        let prefix = "Il "
+        guard label.hasPrefix(prefix) else {
+            return label
+        }
+
+        let isoDate = String(label.dropFirst(prefix.count))
+        guard isoDate.range(of: #"^\d{4}-\d{2}-\d{2}$"#, options: .regularExpression) != nil
+        else {
+            return label
+        }
+
+        let parser = DateFormatter()
+        parser.calendar = Calendar(identifier: .gregorian)
+        parser.locale = Locale(identifier: "en_US_POSIX")
+        parser.timeZone = timeZone
+        parser.dateFormat = "yyyy-MM-dd"
+        parser.isLenient = false
+
+        guard let date = parser.date(from: isoDate), parser.string(from: date) == isoDate else {
+            return "Data non disponibile"
+        }
+
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = locale
+        formatter.timeZone = timeZone
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return "Il \(formatter.string(from: date))"
+    }
 }
 
 struct DailyKanjiLiveReviewStatusPresentation: Equatable {
@@ -316,7 +467,11 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
     let isRefreshing: Bool
     let canRefresh: Bool
 
-    init(state: DailyKanjiLiveReviewState) {
+    init(
+        state: DailyKanjiLiveReviewState,
+        locale: Locale = Locale(identifier: "it_IT"),
+        timeZone: TimeZone = .autoupdatingCurrent
+    ) {
         let session = state.session
 
         switch state {
@@ -329,21 +484,33 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
             self.canRefresh = false
         case .loading:
             self.title = "Aggiorno il ripasso"
-            self.subtitle = Self.queueSubtitle(for: session)
+            self.subtitle = Self.queueSubtitle(
+                for: session,
+                locale: locale,
+                timeZone: timeZone
+            )
             self.emptyText = "Preparazione del ripasso..."
             self.systemImage = "arrow.clockwise"
             self.isRefreshing = true
             self.canRefresh = false
         case .submitting(let session, let rating):
             self.title = "Invio \(rating.label)"
-            self.subtitle = Self.queueSubtitle(for: session)
+            self.subtitle = Self.queueSubtitle(
+                for: session,
+                locale: locale,
+                timeZone: timeZone
+            )
             self.emptyText = "Invio della valutazione..."
             self.systemImage = "paperplane"
             self.isRefreshing = true
             self.canRefresh = false
         case .ready(let session):
             self.title = "Ripasso"
-            self.subtitle = Self.queueSubtitle(for: session)
+            self.subtitle = Self.queueSubtitle(
+                for: session,
+                locale: locale,
+                timeZone: timeZone
+            )
             self.emptyText = "Non ci sono schede da ripassare."
             self.systemImage = "checkmark.circle"
             self.isRefreshing = false
@@ -360,20 +527,74 @@ struct DailyKanjiLiveReviewStatusPresentation: Equatable {
         }
     }
 
-    private static func queueSubtitle(for session: DailyKanjiLiveReviewSession?) -> String {
+    private static func queueSubtitle(
+        for session: DailyKanjiLiveReviewSession?,
+        locale: Locale,
+        timeZone: TimeZone
+    ) -> String {
         guard let session else {
             return "Preparazione della sessione"
         }
 
         if session.queue.queueCount > 0 {
-            return "\(session.queue.queueCount) in coda - \(session.queue.dueCount) due"
+            let queuedCardNoun = session.queue.queueCount == 1 ? "scheda" : "schede"
+            let dueCardNoun = session.queue.dueCount == 1 ? "scheda" : "schede"
+            return "\(session.queue.queueCount) \(queuedCardNoun) in coda · "
+                + "\(session.queue.dueCount) \(dueCardNoun) da ripassare"
         }
 
         if let nextDueAt = session.queue.nextDueAt, !nextDueAt.isEmpty {
-            return "Prossimo ripasso \(nextDueAt)"
+            guard let formattedNextDueAt = formattedNextDueAt(
+                nextDueAt,
+                locale: locale,
+                timeZone: timeZone
+            ) else {
+                return "Data del prossimo ripasso non disponibile"
+            }
+
+            return "Prossimo ripasso \(formattedNextDueAt)"
         }
 
         return "Coda vuota"
+    }
+
+    private static func formattedNextDueAt(
+        _ value: String,
+        locale: Locale,
+        timeZone: TimeZone
+    ) -> String? {
+        guard let date = iso8601Date(from: value) else {
+            return nil
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.locale = locale
+        dateFormatter.timeZone = timeZone
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+
+        let timeFormatter = DateFormatter()
+        timeFormatter.calendar = Calendar(identifier: .gregorian)
+        timeFormatter.locale = locale
+        timeFormatter.timeZone = timeZone
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+
+        return "\(dateFormatter.string(from: date)) alle \(timeFormatter.string(from: date))"
+    }
+
+    private static func iso8601Date(from value: String) -> Date? {
+        let value = value.trimmingCharacters(in: .whitespacesAndNewlines)
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+
+        if let date = formatter.date(from: value) {
+            return date
+        }
+
+        formatter.formatOptions = [.withInternetDateTime]
+        return formatter.date(from: value)
     }
 }
 
