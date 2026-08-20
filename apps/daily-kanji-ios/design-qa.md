@@ -38,6 +38,10 @@ generation) simulator and are 750×1334.
 | Ripasso | unavailable, Light/Dark/Accessibility XXL | `review-unavailable-light-large-final.png`, `review-unavailable-dark-large.png`, `review-unavailable-accessibility-xxl-final.png` |
 | Ripasso | configured front, Light/Large | `review-configured-front-light-large-final.png` |
 | Ripasso | configured answer, enabled audio and all ratings before details, Light/Large | `review-ratings-prioritized-rich-light-large.png` |
+| Ripasso | exact `5枚以下なら` front, adaptive one-line type, Dark/Large | `review-front-word-safe-dark-large.png` |
+| Ripasso | exact `5枚以下なら` front, word-safe fallback, Dark/Accessibility XXL | `review-front-word-safe-dark-accessibility-xxl.png` |
+| Ripasso layout harness, 310 pt | exact `5枚以下なら`, full hosted render, Dark/Large and Accessibility XXL | `review-front-exact-full-dark-large.png`, `review-front-exact-full-dark-accessibility-xxl.png` |
+| Ripasso layout harness, 310 pt | long real Vanguard front, full hosted render without ellipsis, Dark/Large and Accessibility XXL | `review-front-long-full-dark-large.png`, `review-front-long-full-dark-accessibility-xxl.png` |
 | Ripasso | configured front, Light/Accessibility XXL | `review-configured-front-accessibility-xxl-final.png` |
 | Ripasso | configured answer, enabled audio and vertical rating order, Light/Accessibility XXL | `review-ratings-prioritized-accessibility-xxl.png` plus semantic hierarchy verification |
 | Cerca | results, Light/Dark | `search-root-light-large-final.png`, `search-root-dark-large.png` |
@@ -55,6 +59,11 @@ Evidence directory:
 
 Change-specific Ripasso evidence directory:
 `/Users/abelli/.codex/visualizations/2026/08/20/daily-kanji-review-priority/`.
+
+Word-safe front evidence directory:
+`/Users/abelli/.codex/visualizations/2026/08/20/daily-kanji-review-word-safe/`.
+The same-input before/after comparison is
+`reference-vs-word-safe-dark-large-final.png`.
 
 ## Iterations and findings
 
@@ -75,6 +84,8 @@ Change-specific Ripasso evidence directory:
 | 13 | P1: notification permission was requested during bootstrap, before a user decision, and Settings inferred only build capability instead of the real authorization state. | Query authorization read-only on activation, prompt only after explicit `Attiva notifiche`, route denied/authorized states to system settings, re-register already-authorized installs with APNs without prompting, and leave unconfigured builds actionless. The refreshed Settings capture confirms the unconfigured state has no CTA; lifecycle and status matrices are unit-tested. | passed |
 | 14 | P2: the Widget history source still rendered the English product copy `Widget slot`; the prior history capture contained only App-origin rows and could not expose it. | Localize the shared source label to `Widget`, cover the real metadata presentation with a regression test, and recapture a clean Light/Large history containing both an App row and a real Widget-origin row. | passed |
 | 15 | P1: examples, translation and notes appeared before the FSRS controls, forcing a scroll before every rating. | Make revealed-answer order an explicit tested presentation contract: reading/meaning, pitch and audio, all four ratings, then supplemental details. The rich `山札` Light/Large capture shows every rating fully visible above the first example. At Accessibility XXL the controls remain vertical; the semantic hierarchy places ratings before every detail node and the enclosing review surface remains scrollable. | independent review passed |
+| 16 | P1: the review front could wrap CJK at an arbitrary character boundary, rendering `5枚以下なら` as `5枚以` / `下なら`. | Protect Natural Language word tokens from internal line breaks and choose the largest fitting single-line font tier before a multiline fallback. The exact card stays on one line at Large; at Accessibility XXL it wraps only between `以下` and `なら`, leaving `以下` intact. | independent review passed |
+| 17 | P2: the first fallback capped real long fronts at two or three lines, while its tokenizer-only regression did not exercise the live SwiftUI layout. | Remove the fallback line cap and render the exact plus a long real front through the production component at 310 pt in XCTest for Large and Accessibility XXL. Keep the four full render attachments, assert vertical expansion, and render the complete card so reverting the production wiring makes the test fail. | independent review passed |
 
 No P0, P1, P2 or P3 findings remain after the independent review, configured
 review session, notification lifecycle matrix and refreshed Light/Large

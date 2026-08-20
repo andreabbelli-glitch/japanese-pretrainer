@@ -54,6 +54,15 @@ verificare ogni riga della matrice:
   conteggi visibili devono essere localizzati, mai timestamp o label tecniche.
   Nelle capture accessibility, il titolo media deve essere completo e la coda
   leggibile su una riga separata, senza troncamenti.
+- Verificare anche un fronte giapponese medio-lungo come `5枚以下なら`: a
+  Dynamic Type Large deve ridimensionarsi per restare su una sola riga quando
+  la larghezza lo consente; se a Accessibility XXL va a capo, `以下` deve
+  restare unito e l'intero testo deve rimanere leggibile senza troncamento.
+- Verificare anche un fronte realmente lungo, per esempio
+  `いらないカードがあったらファイト開始前に一度だけ引き直しができるよ`,
+  alla larghezza contenuto di 310 pt: a Large e Accessibility XXL tutte le
+  righe devono essere raggiungibili nello scroll, senza ellissi né overflow
+  orizzontale.
 - Il widget usa una cadenza oraria e pianifica 24 ore; l'app documenta e mostra
   questa cadenza senza promettere un refresh garantito da WidgetKit.
 - Al cold launch e a ogni ritorno in foreground, l'app puo leggere lo stato

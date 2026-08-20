@@ -1,4 +1,5 @@
 import Foundation
+import NaturalLanguage
 import SwiftUI
 
 enum DailyKanjiAppTab: String, CaseIterable, Identifiable {
@@ -351,6 +352,10 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
         DailyKanjiReviewTextFormatter.displayText(card.front)
     }
 
+    var lineBreakProtectedFrontText: String {
+        Self.protectJapaneseWordLineBreaks(in: frontText)
+    }
+
     var backText: String {
         DailyKanjiReviewTextFormatter.displayText(card.back)
     }
@@ -453,6 +458,34 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
         case "odaka": "Odaka"
         default: "Pitch"
         }
+    }
+
+    private static func protectJapaneseWordLineBreaks(in text: String) -> String {
+        guard !text.isEmpty else {
+            return text
+        }
+
+        let tokenizer = NLTokenizer(unit: .word)
+        tokenizer.string = text
+        tokenizer.setLanguage(.japanese)
+
+        let wordJoiner = "\u{2060}"
+        var protectedText = ""
+        var cursor = text.startIndex
+
+        tokenizer.enumerateTokens(in: text.startIndex ..< text.endIndex) { range, _ in
+            protectedText.append(contentsOf: text[cursor ..< range.lowerBound])
+            protectedText.append(
+                contentsOf: text[range]
+                    .map(String.init)
+                    .joined(separator: wordJoiner)
+            )
+            cursor = range.upperBound
+            return true
+        }
+
+        protectedText.append(contentsOf: text[cursor ..< text.endIndex])
+        return protectedText
     }
 
     private static func localizedNextReviewLabel(

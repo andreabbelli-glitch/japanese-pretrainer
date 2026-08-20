@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import UserNotifications
 import WidgetKit
 import XCTest
@@ -2216,6 +2217,191 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(
             revealed.answerSections,
             [.pronunciation, .ratings, .supplementalDetails]
+        )
+    }
+
+    func testLiveReviewFrontProtectsJapaneseWordsWithoutChangingVisibleText() {
+        let card = DailyKanjiLiveReviewCard(
+            cardId: "word-safe-front",
+            front: "5枚以下なら",
+            back: "se sono cinque o meno",
+            mediaSlug: "duel-masters",
+            mediaTitle: "Duel Masters",
+            reviewStateUpdatedAt: nil,
+            entries: nil,
+            pronunciations: nil,
+            reading: nil,
+            gradePreviews: nil,
+            exampleJp: nil,
+            exampleIt: nil,
+            notes: nil
+        )
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: false
+        )
+
+        XCTAssertEqual(
+            presentation.lineBreakProtectedFrontText,
+            "5枚以\u{2060}下な\u{2060}ら"
+        )
+        XCTAssertEqual(
+            presentation.lineBreakProtectedFrontText
+                .replacingOccurrences(of: "\u{2060}", with: ""),
+            "5枚以下なら"
+        )
+        XCTAssertFalse(presentation.studyAccessibilityLabel.contains("\u{2060}"))
+    }
+
+    @MainActor
+    func testLiveReviewFrontLayoutUsesWordSafeSingleLineAndUncappedFallback() throws {
+        let exactCard = makeLiveReviewLayoutCard(
+            cardId: "word-safe-layout",
+            front: "5枚以下なら"
+        )
+        let longCard = makeLiveReviewLayoutCard(
+            cardId: "long-layout",
+            front: "いらないカードがあったらファイト開始前に一度だけ引き直しができるよ"
+        )
+        let exactPresentation = DailyKanjiLiveReviewCardPresentation(
+            card: exactCard,
+            isAnswerRevealed: false
+        )
+        let longPresentation = DailyKanjiLiveReviewCardPresentation(
+            card: longCard,
+            isAnswerRevealed: false
+        )
+
+        XCTAssertEqual(
+            DailyKanjiReviewFrontText(presentation: exactPresentation).renderedText,
+            "5枚以\u{2060}下な\u{2060}ら"
+        )
+        XCTAssertNil(DailyKanjiReviewFrontText.fallbackLineLimit)
+
+        let contentWidth: CGFloat = 310
+        let exactLargeImage = try renderedFrontImage(
+            presentation: exactPresentation,
+            dynamicTypeSize: .large,
+            width: contentWidth
+        )
+        let exactAccessibilityXXLImage = try renderedFrontImage(
+            presentation: exactPresentation,
+            dynamicTypeSize: .accessibility3,
+            width: contentWidth
+        )
+        let longLargeImage = try renderedFrontImage(
+            presentation: longPresentation,
+            dynamicTypeSize: .large,
+            width: contentWidth
+        )
+        let longAccessibilityXXLImage = try renderedFrontImage(
+            presentation: longPresentation,
+            dynamicTypeSize: .accessibility3,
+            width: contentWidth
+        )
+        let exactLarge = exactLargeImage.size
+        let exactAccessibilityXXL = exactAccessibilityXXLImage.size
+        let longLarge = longLargeImage.size
+        let longAccessibilityXXL = longAccessibilityXXLImage.size
+
+        addSnapshotAttachment(exactLargeImage, name: "review-front-exact-large")
+        addSnapshotAttachment(
+            exactAccessibilityXXLImage,
+            name: "review-front-exact-accessibility-xxl"
+        )
+        addSnapshotAttachment(longLargeImage, name: "review-front-long-large")
+        addSnapshotAttachment(
+            longAccessibilityXXLImage,
+            name: "review-front-long-accessibility-xxl"
+        )
+
+        XCTAssertLessThan(exactLarge.height, 70)
+        XCTAssertGreaterThan(exactAccessibilityXXL.height, exactLarge.height)
+        XCTAssertGreaterThan(longLarge.height, exactLarge.height * 3)
+        XCTAssertGreaterThan(longAccessibilityXXL.height, longLarge.height)
+
+        let exactCardLarge = try renderedReviewCardSize(
+            card: exactCard,
+            dynamicTypeSize: .large,
+            width: 358
+        )
+        let longCardLarge = try renderedReviewCardSize(
+            card: longCard,
+            dynamicTypeSize: .large,
+            width: 358
+        )
+
+        XCTAssertGreaterThan(longCardLarge.height - exactCardLarge.height, 150)
+    }
+
+    @MainActor
+    private func renderedFrontImage(
+        presentation: DailyKanjiLiveReviewCardPresentation,
+        dynamicTypeSize: DynamicTypeSize,
+        width: CGFloat
+    ) throws -> UIImage {
+        let renderer = ImageRenderer(
+            content: DailyKanjiReviewFrontText(presentation: presentation)
+                .frame(width: width, alignment: .leading)
+                .background(Color(.systemBackground))
+                .environment(\.colorScheme, .dark)
+                .environment(\.dynamicTypeSize, dynamicTypeSize)
+        )
+        renderer.scale = 1
+        renderer.proposedSize = ProposedViewSize(width: width, height: nil)
+
+        return try XCTUnwrap(renderer.uiImage)
+    }
+
+    private func addSnapshotAttachment(_ image: UIImage, name: String) {
+        let attachment = XCTAttachment(image: image)
+        attachment.name = name
+        attachment.lifetime = .keepAlways
+        add(attachment)
+    }
+
+    @MainActor
+    private func renderedReviewCardSize(
+        card: DailyKanjiLiveReviewCard,
+        dynamicTypeSize: DynamicTypeSize,
+        width: CGFloat
+    ) throws -> CGSize {
+        let model = DailyKanjiAppModel(cards: [], reloadTimelines: {})
+        let renderer = ImageRenderer(
+            content: DailyKanjiReviewCardView(
+                model: model,
+                card: card,
+                answerRevealed: .constant(false),
+                audioPlayer: DailyKanjiAudioPlayer(),
+                liveReviewBaseURL: nil
+            )
+            .frame(width: width, alignment: .leading)
+            .environment(\.dynamicTypeSize, dynamicTypeSize)
+        )
+        renderer.scale = 1
+        renderer.proposedSize = ProposedViewSize(width: width, height: nil)
+
+        return try XCTUnwrap(renderer.uiImage).size
+    }
+
+    private func makeLiveReviewLayoutCard(
+        cardId: String,
+        front: String
+    ) -> DailyKanjiLiveReviewCard {
+        DailyKanjiLiveReviewCard(
+            cardId: cardId,
+            front: front,
+            back: "significato",
+            mediaSlug: "duel-masters",
+            mediaTitle: "Duel Masters",
+            reviewStateUpdatedAt: nil,
+            entries: nil,
+            pronunciations: nil,
+            reading: nil,
+            gradePreviews: nil,
+            exampleJp: nil,
+            exampleIt: nil,
+            notes: nil
         )
     }
 

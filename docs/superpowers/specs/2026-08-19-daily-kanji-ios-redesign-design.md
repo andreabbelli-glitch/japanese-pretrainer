@@ -142,7 +142,14 @@ La selezione della tab viene rinominata da `DailyKanjiAppSection` a `DailyKanjiA
 - Tipografia semantica (`largeTitle`, `title`, `title3`, `body`, `callout`, `caption`) con `@ScaledMetric` solo per il fronte giapponese.
 - Target interattivi minimi 44×44 pt.
 
-Il fronte giapponese può occupare due righe e usa una scala dinamica controllata; non viene forzato in una riga con riduzione estrema. A dimensioni Accessibility, le righe lettura/audio e i rating passano a layout verticali tramite `ViewThatFits` o controllo della Dynamic Type size.
+Il fronte giapponese usa una scala dinamica controllata: alle dimensioni testo
+standard prova prima la riga singola con più taglie leggibili scelte in base
+alla larghezza reale. Se il contenuto è davvero lungo, si espande verticalmente
+su tutte le righe necessarie dentro lo scroll esistente, senza ellissi o un
+limite arbitrario; gli a capo rispettano i confini lessicali giapponesi e non
+separano parole come `以下`. La stessa regola resta valida alle dimensioni
+Accessibility; lettura/audio e rating passano a layout verticali tramite
+`ViewThatFits` o controllo della Dynamic Type size.
 
 ## Accessibilità e comportamento
 

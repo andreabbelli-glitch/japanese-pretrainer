@@ -7,7 +7,6 @@ struct DailyKanjiReviewCardView: View {
     @Binding var answerRevealed: Bool
     @ObservedObject var audioPlayer: DailyKanjiAudioPlayer
     let liveReviewBaseURL: URL?
-    @ScaledMetric(relativeTo: .largeTitle) private var frontSize = 78
 
     private var presentation: DailyKanjiLiveReviewCardPresentation {
         DailyKanjiLiveReviewCardPresentation(
@@ -84,12 +83,9 @@ struct DailyKanjiReviewCardView: View {
 
     private var studyContent: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text(presentation.frontText)
-                .font(.system(size: frontSize, weight: .semibold))
-                .lineLimit(2)
-                .minimumScaleFactor(0.45)
-                .fixedSize(horizontal: false, vertical: true)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            DailyKanjiReviewFrontText(
+                presentation: presentation
+            )
 
             if presentation.shouldShowAnswer {
                 if let readingText = presentation.readingText {
@@ -348,6 +344,46 @@ struct DailyKanjiReviewCardView: View {
         }
 
         return value
+    }
+}
+
+struct DailyKanjiReviewFrontText: View {
+    static let fallbackLineLimit: Int? = nil
+
+    @ScaledMetric(relativeTo: .largeTitle) private var baseSize = 78
+
+    let presentation: DailyKanjiLiveReviewCardPresentation
+
+    var renderedText: String {
+        presentation.lineBreakProtectedFrontText
+    }
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            singleLine(scale: 1)
+            singleLine(scale: 0.88)
+            singleLine(scale: 0.76)
+            singleLine(scale: 0.64)
+            singleLine(scale: 0.52)
+            fallbackText
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    private func singleLine(scale: CGFloat) -> some View {
+        Text(renderedText)
+            .font(.system(size: baseSize * scale, weight: .semibold))
+            .lineLimit(1)
+            .allowsTightening(true)
+            .fixedSize(horizontal: true, vertical: true)
+    }
+
+    private var fallbackText: some View {
+        Text(renderedText)
+            .font(.system(size: baseSize * 0.64, weight: .semibold))
+            .lineLimit(Self.fallbackLineLimit)
+            .allowsTightening(true)
+            .fixedSize(horizontal: false, vertical: true)
     }
 }
 
