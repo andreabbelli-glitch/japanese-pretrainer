@@ -2197,6 +2197,28 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(revealed.canGrade)
     }
 
+    func testLiveReviewAnswerPlacesRatingsBeforeSupplementalDetails() throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let card = try XCTUnwrap(session.selectedCard)
+        let hidden = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: false
+        )
+        let revealed = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: true
+        )
+
+        XCTAssertEqual(hidden.answerSections, [])
+        XCTAssertEqual(
+            revealed.answerSections,
+            [.pronunciation, .ratings, .supplementalDetails]
+        )
+    }
+
     func testLiveReviewPresentationLocalizesISODatePreviewAndPreservesRelativeLabels() throws {
         let card = DailyKanjiLiveReviewCard(
             cardId: "localized-preview",

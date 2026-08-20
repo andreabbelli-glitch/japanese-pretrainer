@@ -37,7 +37,7 @@ verificare ogni riga della matrice:
 | Superficie | Light Large | Dark Large | Accessibility XXL | Interazioni/stati richiesti |
 | --- | --- | --- | --- | --- |
 | `Widget` | card, disclosure e Recenti leggibili; Cronologia distingue `App` e `Widget` con copy italiano | contrasto semantico della card e dei separatori | fronte, lettura/audio e percorso senza clipping | `Percorso widget` apre la sheet; Annulla scarta, Applica salva e ricarica una sola volta le timeline |
-| `Ripasso` | fronte, risposta e rating leggibili | empty state e toolbar distinguibili | fronte, risposta, audio e tutti i rating raggiungibili con scroll | in build senza capability mostra `Ripasso non disponibile` e `Apri Impostazioni`, mai endpoint/token; in build configurata reveal, audio e invio rating devono funzionare e avanzare la coda |
+| `Ripasso` | fronte e risposta leggibili; sulle card ordinarie i rating seguono subito pronuncia/pitch senza scroll attraverso i dettagli | empty state e toolbar distinguibili | fronte, risposta, audio e tutti i rating raggiungibili con scroll | in build senza capability mostra `Ripasso non disponibile` e `Apri Impostazioni`, mai endpoint/token; in build configurata reveal, audio e invio rating devono funzionare e avanzare la coda |
 | `Cerca` | lista e campo `.searchable` leggibili | risultati e separatori con contrasto adeguato | righe e dettaglio raggiungibili senza troncamenti critici | ricerca per termine/lettura/significato, nessun risultato e push del dettaglio nello stesso stack |
 | `Impostazioni` | Form con Dati, Ripasso, Widget e Informazioni | testo secondario leggibile | tutte le righe raggiungibili e target almeno 44 pt | `Aggiorna ripasso` apre `Ripasso` e forza il fetch da Widget/Cerca; la CTA notifiche segue lo stato reale; nessun dato sensibile mostrato |
 
@@ -45,8 +45,11 @@ verificare ogni riga della matrice:
   controlli sovrapposti o sezioni non raggiungibili.
 - Verificare un deep link `dailykanji://card/<card-id>`: apre/seleziona la tab
   `Widget` e non ricarica le timeline solo per la navigazione.
-- Per `Ripasso`, acquisire separatamente fronte, risposta/audio e rating dopo
-  scroll sia a Large sia ad Accessibility XXL. Verificare che l'audio abilitato
+- Per `Ripasso`, acquisire separatamente fronte e risposta con audio e rating.
+  A Large, su una card ordinaria i rating devono comparire subito dopo pronuncia
+  e pitch, prima di esempio/traduzione/note e senza richiedere lo scroll attraverso
+  questi dettagli; ad Accessibility XXL tutti i rating devono restare raggiungibili
+  con scroll. Verificare che l'audio abilitato
   risponda a una risorsa reale e che un rating avanzi la card/coda; le date e i
   conteggi visibili devono essere localizzati, mai timestamp o label tecniche.
   Nelle capture accessibility, il titolo media deve essere completo e la coda

@@ -337,6 +337,12 @@ struct DailyKanjiReviewHeaderPresentation: Equatable {
     }
 }
 
+enum DailyKanjiReviewAnswerSection: Hashable {
+    case pronunciation
+    case ratings
+    case supplementalDetails
+}
+
 struct DailyKanjiLiveReviewCardPresentation: Equatable {
     let card: DailyKanjiLiveReviewCard
     let isAnswerRevealed: Bool
@@ -369,6 +375,14 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
 
     var canGrade: Bool {
         isAnswerRevealed
+    }
+
+    var answerSections: [DailyKanjiReviewAnswerSection] {
+        guard isAnswerRevealed else {
+            return []
+        }
+
+        return [.pronunciation, .ratings, .supplementalDetails]
     }
 
     var readingText: String? {

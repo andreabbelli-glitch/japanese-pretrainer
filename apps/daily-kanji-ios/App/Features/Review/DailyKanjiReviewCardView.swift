@@ -31,8 +31,7 @@ struct DailyKanjiReviewCardView: View {
                 studyContent
 
                 if presentation.shouldShowAnswer {
-                    answer
-                    gradeControls
+                    revealedAnswerSections
                 } else {
                     revealButton
                 }
@@ -118,15 +117,31 @@ struct DailyKanjiReviewCardView: View {
         .disabled(!canReveal)
     }
 
-    private var answer: some View {
+    private var revealedAnswerSections: some View {
+        ForEach(presentation.answerSections, id: \.self) { section in
+            answerSection(section)
+        }
+    }
+
+    @ViewBuilder
+    private func answerSection(_ section: DailyKanjiReviewAnswerSection) -> some View {
+        switch section {
+        case .pronunciation:
+            pronunciation
+        case .ratings:
+            gradeControls
+        case .supplementalDetails:
+            details
+        }
+    }
+
+    private var pronunciation: some View {
         VStack(alignment: .leading, spacing: 16) {
             supplementalAnswerControls
 
             if let pitchAccent = presentation.pitchAccent {
                 DailyKanjiReviewPitchAccentView(pitchAccent: pitchAccent)
             }
-
-            details
         }
     }
 

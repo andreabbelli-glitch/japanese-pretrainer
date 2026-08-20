@@ -57,8 +57,14 @@ Il progress bar `1 di 12` del mock non viene riprodotto: il selettore non ha una
 
 1. fronte della scheda;
 2. azione primaria `Mostra risposta`;
-3. lettura, significato, pitch, audio, esempio e note;
-4. quattro rating FSRS con intervallo successivo.
+3. lettura, significato, pitch e audio;
+4. quattro rating FSRS con intervallo successivo, prima dei dettagli supplementari;
+5. esempio giapponese, traduzione e note.
+
+Alle dimensioni testo standard i rating devono restare immediatamente raggiungibili
+dopo la pronuncia, senza obbligare a scorrere attraverso esempio e note. Con le
+dimensioni Accessibility conservano invece il layout verticale e rimangono
+raggiungibili tramite scroll.
 
 La coda è mostrata come informazione secondaria nella testata. In assenza di configurazione la tab mostra uno stato vuoto prodotto (`Ripasso non disponibile`) con accesso a `Impostazioni`, senza endpoint, token o copy da sviluppatore. Un errore temporaneo conserva l'ultima sessione come sola lettura e offre `Riprova`.
 
