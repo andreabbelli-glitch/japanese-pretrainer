@@ -37,7 +37,7 @@ enum DailyKanjiPresentationSource: String, Equatable {
         case .app:
             return "App"
         case .widget:
-            return "Widget slot"
+            return "Widget"
         }
     }
 }
@@ -72,22 +72,42 @@ struct DailyKanjiPresentationHistoryItem: Equatable, Identifiable {
         let elapsedSeconds = max(0, now.timeIntervalSince(shownAt))
 
         if elapsedSeconds < 60 {
-            return "Just now"
+            return "Adesso"
         }
 
         if elapsedSeconds < 60 * 60 {
-            return "\(Int(elapsedSeconds / 60))m ago"
+            return Self.relativeText(
+                Int(elapsedSeconds / 60),
+                singular: "minuto",
+                plural: "minuti"
+            )
         }
 
         if elapsedSeconds < 24 * 60 * 60 {
-            return "\(Int(elapsedSeconds / (60 * 60)))h ago"
+            return Self.relativeText(
+                Int(elapsedSeconds / (60 * 60)),
+                singular: "ora",
+                plural: "ore"
+            )
         }
 
-        return "\(Int(elapsedSeconds / (24 * 60 * 60)))d ago"
+        return Self.relativeText(
+            Int(elapsedSeconds / (24 * 60 * 60)),
+            singular: "giorno",
+            plural: "giorni"
+        )
     }
 
     func metadataText(now: Date = .now) -> String {
         "\(source.label) - \(shownAtText(now: now))"
+    }
+
+    private static func relativeText(
+        _ value: Int,
+        singular: String,
+        plural: String
+    ) -> String {
+        "\(value) \(value == 1 ? singular : plural) fa"
     }
 }
 

@@ -111,11 +111,30 @@ extension DailyKanjiGlossaryEntry.Alias {
     }
 
     var displayText: String {
-        guard let type, !type.isEmpty else {
+        guard let typeLabel else {
             return text
         }
 
-        return "\(text) - \(type)"
+        return "\(text) - \(typeLabel)"
+    }
+
+    private var typeLabel: String? {
+        guard let type else {
+            return nil
+        }
+
+        switch type.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
+        case "":
+            return nil
+        case "reading":
+            return "lettura"
+        case "alt":
+            return "alternativa"
+        case "romaji":
+            return "rōmaji"
+        default:
+            return "altra forma"
+        }
     }
 }
 
@@ -629,9 +648,9 @@ struct DailyKanjiSyncStatusPresentation: Equatable {
             self.systemImage = "arrow.clockwise"
             self.isRefreshing = true
             self.canRefresh = false
-        case .failed(let message, let source):
-            self.title = "Cache non aggiornata"
-            self.subtitle = message
+        case .failed(_, let source):
+            self.title = "Aggiornamento non riuscito"
+            self.subtitle = "I dati salvati restano disponibili. Riprova."
             self.lastSyncAt = Self.lastSyncAt(for: source)
             self.systemImage = "exclamationmark.triangle"
             self.isRefreshing = false
@@ -717,28 +736,68 @@ struct DailyKanjiSettingsAboutPresentation: Equatable {
     }
 }
 
-struct DailyKanjiSettingsNotificationPresentation: Equatable {
-    let isEnabled: Bool
+enum DailyKanjiSettingsNotificationAction: Equatable {
+    case requestAuthorization
+    case openSettings
+}
 
-    init(bundle: Bundle = .main) {
-        self.isEnabled = DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured(
-            bundle: bundle
-        )
+struct DailyKanjiSettingsNotificationPresentation: Equatable {
+    let authorizationState: DailyKanjiNotificationAuthorizationState
+
+    init(authorizationState: DailyKanjiNotificationAuthorizationState) {
+        self.authorizationState = authorizationState
     }
 
     var title: String {
-        isEnabled ? "Notifiche di ripasso" : "Notifiche di ripasso non incluse"
+        switch authorizationState {
+        case .unavailable:
+            return "Notifiche di ripasso non incluse"
+        case .notDetermined:
+            return "Notifiche di ripasso"
+        case .denied:
+            return "Notifiche disattivate"
+        case .authorized:
+            return "Notifiche attive"
+        }
     }
 
     var subtitle: String {
-        isEnabled
-            ? "I promemoria di ripasso possono essere gestiti nelle impostazioni di sistema."
-            : "Questa installazione non invia promemoria di ripasso."
+        switch authorizationState {
+        case .unavailable:
+            return "Questa installazione non invia promemoria di ripasso."
+        case .notDetermined:
+            return "Attivale per ricevere i promemoria di ripasso."
+        case .denied:
+            return "Puoi riattivarle dalle impostazioni di sistema."
+        case .authorized:
+            return "I promemoria possono essere gestiti nelle impostazioni di sistema."
+        }
     }
 
-    var settingsActionTitle: String? {
-        isEnabled ? "Gestisci notifiche" : nil
+    var action: DailyKanjiSettingsNotificationAction? {
+        switch authorizationState {
+        case .unavailable:
+            return nil
+        case .notDetermined:
+            return .requestAuthorization
+        case .denied, .authorized:
+            return .openSettings
+        }
     }
+
+    var actionTitle: String? {
+        switch authorizationState {
+        case .unavailable:
+            return nil
+        case .notDetermined:
+            return "Attiva notifiche"
+        case .denied:
+            return "Apri impostazioni"
+        case .authorized:
+            return "Gestisci notifiche"
+        }
+    }
+
 }
 
 struct DailyKanjiSettingsWidgetPresentation: Equatable {

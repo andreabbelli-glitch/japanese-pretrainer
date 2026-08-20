@@ -25,6 +25,9 @@ struct DailyKanjiSettingsView: View {
         .sheet(isPresented: $showsScope) {
             DailyKanjiWidgetScopeSheet(model: model)
         }
+        .task {
+            model.refreshNotificationAuthorizationState()
+        }
     }
 
     private var dataSection: some View {
@@ -63,7 +66,9 @@ struct DailyKanjiSettingsView: View {
 
     private var reviewSection: some View {
         let presentation = DailyKanjiLiveReviewStatusPresentation(state: model.liveReviewState)
-        let notificationPresentation = DailyKanjiSettingsNotificationPresentation()
+        let notificationPresentation = DailyKanjiSettingsNotificationPresentation(
+            authorizationState: model.notificationAuthorizationState
+        )
 
         return Section("Ripasso") {
             Label(presentation.title, systemImage: presentation.systemImage)
@@ -72,21 +77,24 @@ struct DailyKanjiSettingsView: View {
                 .foregroundStyle(.secondary)
 
             if presentation.canRefresh {
-                Button("Aggiorna ripasso", action: model.refreshLiveReviewNow)
+                Button("Aggiorna ripasso", action: model.openAndRefreshLiveReview)
                     .disabled(presentation.isRefreshing)
             }
 
             Label(
                 notificationPresentation.title,
-                systemImage: notificationPresentation.isEnabled ? "bell" : "bell.slash"
+                systemImage: notificationSystemImage(
+                    for: notificationPresentation.authorizationState
+                )
             )
             Text(notificationPresentation.subtitle)
                 .font(.callout)
                 .foregroundStyle(.secondary)
 
-            if let settingsActionTitle = notificationPresentation.settingsActionTitle {
-                Button(settingsActionTitle) {
-                    openURL(URL(string: UIApplication.openNotificationSettingsURLString)!)
+            if let actionTitle = notificationPresentation.actionTitle,
+               let action = notificationPresentation.action {
+                Button(actionTitle) {
+                    performNotificationAction(action)
                 }
                 .frame(minHeight: 44)
             }
@@ -134,6 +142,33 @@ struct DailyKanjiSettingsView: View {
     private var selectedMediaTitle: String? {
         model.selectedMediaSlug.flatMap { slug in
             model.availableMediaForCurrentMode.first { $0.slug == slug }?.title
+        }
+    }
+
+    private func notificationSystemImage(
+        for state: DailyKanjiNotificationAuthorizationState
+    ) -> String {
+        switch state {
+        case .unavailable, .denied:
+            return "bell.slash"
+        case .notDetermined:
+            return "bell.badge"
+        case .authorized:
+            return "bell"
+        }
+    }
+
+    private func performNotificationAction(_ action: DailyKanjiSettingsNotificationAction) {
+        switch action {
+        case .requestAuthorization:
+            model.requestNotificationRegistration()
+        case .openSettings:
+            guard let settingsURL = URL(
+                string: UIApplication.openNotificationSettingsURLString
+            ) else {
+                return
+            }
+            openURL(settingsURL)
         }
     }
 }

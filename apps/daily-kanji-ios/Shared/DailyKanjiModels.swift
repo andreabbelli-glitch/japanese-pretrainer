@@ -383,12 +383,12 @@ extension DailyKanjiCard {
     }
 
     var readingText: String {
-        entry.reading ?? "Reading unavailable"
+        entry.reading ?? "Lettura non disponibile"
     }
 
     var pitchAccentText: String {
         guard let pitchAccent = entry.pitchAccent else {
-            return "Pitch accent unavailable"
+            return "Accento non disponibile"
         }
 
         return "Pitch \(pitchAccent)"

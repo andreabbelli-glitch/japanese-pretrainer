@@ -5,6 +5,10 @@ enum DailyKanjiWidgetCardStudyLayout {
     case vertical
 }
 
+enum DailyKanjiWidgetRationalePresentation {
+    static let recentHardAgainTitle = "Difficile / Di nuovo"
+}
+
 struct DailyKanjiWidgetCardView: View {
     let card: DailyKanjiCard
     let historyContext: DailyKanjiPresentationHistoryItem?
@@ -141,7 +145,7 @@ struct DailyKanjiWidgetCardView: View {
                     value: card.srs.stabilityText
                 )
                 DailyKanjiWidgetMetricRow(
-                    title: "Hard / again",
+                    title: DailyKanjiWidgetRationalePresentation.recentHardAgainTitle,
                     value: "\(card.srs.recentHardAgainCount)"
                 )
                 DailyKanjiWidgetMetricRow(

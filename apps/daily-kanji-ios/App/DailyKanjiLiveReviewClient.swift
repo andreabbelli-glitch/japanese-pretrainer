@@ -500,34 +500,88 @@ enum DailyKanjiLiveReviewClientError: LocalizedError, Equatable {
     }
 }
 
+enum DailyKanjiNotificationAuthorizationState: Equatable {
+    case unavailable
+    case notDetermined
+    case denied
+    case authorized
+}
+
 protocol DailyKanjiNotificationRegistering {
-    func requestAuthorizationAndRegister() async
+    var isAvailable: Bool { get }
+
+    func authorizationState() async -> DailyKanjiNotificationAuthorizationState
+    func requestAuthorizationAndRegister() async -> DailyKanjiNotificationAuthorizationState
+    func registerForRemoteNotifications() async
 }
 
 struct DailyKanjiPushNotificationRegistrar: DailyKanjiNotificationRegistering {
-    var isRemoteNotificationEnabled: () -> Bool = {
-        DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured()
-    }
+    private let isRemoteNotificationEnabled: () -> Bool
+    private let readAuthorizationStatus: () async -> UNAuthorizationStatus
+    private let requestSystemAuthorization: () async throws -> Bool
+    private let performRemoteNotificationRegistration: () async -> Void
 
-    func requestAuthorizationAndRegister() async {
-        guard isRemoteNotificationEnabled() else {
-            return
-        }
-
-        do {
-            let granted = try await UNUserNotificationCenter.current().requestAuthorization(
+    init(
+        isRemoteNotificationEnabled: @escaping () -> Bool = {
+            DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured()
+        },
+        readAuthorizationStatus: @escaping () async -> UNAuthorizationStatus = {
+            await UNUserNotificationCenter.current().notificationSettings().authorizationStatus
+        },
+        requestSystemAuthorization: @escaping () async throws -> Bool = {
+            try await UNUserNotificationCenter.current().requestAuthorization(
                 options: [.alert, .badge, .sound]
             )
-            guard granted else {
-                return
-            }
-
+        },
+        registerForRemoteNotifications: @escaping () async -> Void = {
             await MainActor.run {
                 UIApplication.shared.registerForRemoteNotifications()
             }
+        }
+    ) {
+        self.isRemoteNotificationEnabled = isRemoteNotificationEnabled
+        self.readAuthorizationStatus = readAuthorizationStatus
+        self.requestSystemAuthorization = requestSystemAuthorization
+        self.performRemoteNotificationRegistration = registerForRemoteNotifications
+    }
+
+    var isAvailable: Bool {
+        isRemoteNotificationEnabled()
+    }
+
+    func authorizationState() async -> DailyKanjiNotificationAuthorizationState {
+        guard isAvailable else {
+            return .unavailable
+        }
+
+        return Self.authorizationState(for: await readAuthorizationStatus())
+    }
+
+    func requestAuthorizationAndRegister() async -> DailyKanjiNotificationAuthorizationState {
+        let currentState = await authorizationState()
+        guard currentState == .notDetermined else {
+            return currentState
+        }
+
+        do {
+            let granted = try await requestSystemAuthorization()
+            guard granted else {
+                return .denied
+            }
+
+            await registerForRemoteNotifications()
+            return .authorized
         } catch {
+            return await authorizationState()
+        }
+    }
+
+    func registerForRemoteNotifications() async {
+        guard isAvailable else {
             return
         }
+
+        await performRemoteNotificationRegistration()
     }
 
     static func isRemoteNotificationConfigured(bundle: Bundle = .main) -> Bool {
@@ -540,6 +594,21 @@ struct DailyKanjiPushNotificationRegistrar: DailyKanjiNotificationRegistering {
             return true
         default:
             return false
+        }
+    }
+
+    static func authorizationState(
+        for status: UNAuthorizationStatus
+    ) -> DailyKanjiNotificationAuthorizationState {
+        switch status {
+        case .notDetermined:
+            return .notDetermined
+        case .denied:
+            return .denied
+        case .authorized, .provisional, .ephemeral:
+            return .authorized
+        @unknown default:
+            return .denied
         }
     }
 }

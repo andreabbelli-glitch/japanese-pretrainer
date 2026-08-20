@@ -1,4 +1,5 @@
 import SwiftUI
+import UserNotifications
 import WidgetKit
 import XCTest
 @testable import DailyKanji
@@ -62,6 +63,27 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(
             entry.rowAccessibilityLabel,
             "〜ている, lettura ている / te iru, significato stato risultante, Grammatica"
+        )
+    }
+
+    func testGlossaryAliasTypesUseItalianProductLabels() {
+        let aliases = [
+            DailyKanjiGlossaryEntry.Alias(text: "よみ", type: "reading"),
+            DailyKanjiGlossaryEntry.Alias(text: "別形", type: "alt"),
+            DailyKanjiGlossaryEntry.Alias(text: "yomi", type: "romaji"),
+            DailyKanjiGlossaryEntry.Alias(text: "内部値", type: "legacy_internal_slug"),
+            DailyKanjiGlossaryEntry.Alias(text: "表記", type: nil)
+        ]
+
+        XCTAssertEqual(
+            aliases.map(\.displayText),
+            [
+                "よみ - lettura",
+                "別形 - alternativa",
+                "yomi - rōmaji",
+                "内部値 - altra forma",
+                "表記"
+            ]
         )
     }
 
@@ -248,7 +270,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
-    func testSettingsNotificationPresentationFollowsTheBuildCapabilityWithoutCredentials() throws {
+    func testNotificationBuildCapabilityDoesNotDependOnCredentials() throws {
         let temporaryDirectory = try Self.makeTemporaryDirectory()
         defer { Self.removeTemporaryDirectory(temporaryDirectory) }
         let enabledBundle = try Self.makeSettingsBundle(
@@ -261,22 +283,147 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         let disabledBundle = try Self.makeSettingsBundle(in: temporaryDirectory, infoValues: [:])
 
-        let enabled = DailyKanjiSettingsNotificationPresentation(bundle: enabledBundle)
-        let disabled = DailyKanjiSettingsNotificationPresentation(bundle: disabledBundle)
-
-        XCTAssertEqual(enabled.title, "Notifiche di ripasso")
-        XCTAssertEqual(
-            enabled.subtitle,
-            "I promemoria di ripasso possono essere gestiti nelle impostazioni di sistema."
+        XCTAssertTrue(
+            DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured(
+                bundle: enabledBundle
+            )
         )
-        XCTAssertEqual(enabled.settingsActionTitle, "Gestisci notifiche")
-        XCTAssertFalse(enabled.subtitle.contains("private-token"))
-        XCTAssertEqual(disabled.title, "Notifiche di ripasso non incluse")
+        XCTAssertFalse(
+            DailyKanjiPushNotificationRegistrar.isRemoteNotificationConfigured(
+                bundle: disabledBundle
+            )
+        )
+    }
+
+    func testSettingsNotificationPresentationUsesAuthorizationState() {
+        let unavailable = DailyKanjiSettingsNotificationPresentation(
+            authorizationState: .unavailable
+        )
+        let notDetermined = DailyKanjiSettingsNotificationPresentation(
+            authorizationState: .notDetermined
+        )
+        let denied = DailyKanjiSettingsNotificationPresentation(
+            authorizationState: .denied
+        )
+        let authorized = DailyKanjiSettingsNotificationPresentation(
+            authorizationState: .authorized
+        )
+
+        XCTAssertEqual(unavailable.title, "Notifiche di ripasso non incluse")
         XCTAssertEqual(
-            disabled.subtitle,
+            unavailable.subtitle,
             "Questa installazione non invia promemoria di ripasso."
         )
-        XCTAssertNil(disabled.settingsActionTitle)
+        XCTAssertNil(unavailable.action)
+
+        XCTAssertEqual(notDetermined.title, "Notifiche di ripasso")
+        XCTAssertEqual(notDetermined.actionTitle, "Attiva notifiche")
+        XCTAssertEqual(notDetermined.action, .requestAuthorization)
+
+        XCTAssertEqual(denied.title, "Notifiche disattivate")
+        XCTAssertEqual(denied.actionTitle, "Apri impostazioni")
+        XCTAssertEqual(denied.action, .openSettings)
+
+        XCTAssertEqual(authorized.title, "Notifiche attive")
+        XCTAssertEqual(authorized.actionTitle, "Gestisci notifiche")
+        XCTAssertEqual(authorized.action, .openSettings)
+    }
+
+    func testSystemNotificationAuthorizationMappingTreatsProvisionalAndEphemeralAsAuthorized() {
+        XCTAssertEqual(
+            DailyKanjiPushNotificationRegistrar.authorizationState(for: .notDetermined),
+            .notDetermined
+        )
+        XCTAssertEqual(
+            DailyKanjiPushNotificationRegistrar.authorizationState(for: .denied),
+            .denied
+        )
+        XCTAssertEqual(
+            DailyKanjiPushNotificationRegistrar.authorizationState(for: .authorized),
+            .authorized
+        )
+        XCTAssertEqual(
+            DailyKanjiPushNotificationRegistrar.authorizationState(for: .provisional),
+            .authorized
+        )
+        XCTAssertEqual(
+            DailyKanjiPushNotificationRegistrar.authorizationState(for: .ephemeral),
+            .authorized
+        )
+    }
+
+    func testPushRegistrarReadsAuthorizationWithoutRequestingPermission() async {
+        let queryCount = LockedBox(0)
+        let requestCount = LockedBox(0)
+        let registrationCount = LockedBox(0)
+        let registrar = DailyKanjiPushNotificationRegistrar(
+            isRemoteNotificationEnabled: { true },
+            readAuthorizationStatus: {
+                queryCount.value += 1
+                return .provisional
+            },
+            requestSystemAuthorization: {
+                requestCount.value += 1
+                return true
+            },
+            registerForRemoteNotifications: {
+                registrationCount.value += 1
+            }
+        )
+
+        let state = await registrar.authorizationState()
+
+        XCTAssertEqual(state, .authorized)
+        XCTAssertEqual(queryCount.value, 1)
+        XCTAssertEqual(requestCount.value, 0)
+        XCTAssertEqual(registrationCount.value, 0)
+    }
+
+    func testPushRegistrarRequestsAndRegistersOnlyAfterExplicitOptIn() async {
+        let requestCount = LockedBox(0)
+        let registrationCount = LockedBox(0)
+        let registrar = DailyKanjiPushNotificationRegistrar(
+            isRemoteNotificationEnabled: { true },
+            readAuthorizationStatus: { .notDetermined },
+            requestSystemAuthorization: {
+                requestCount.value += 1
+                return true
+            },
+            registerForRemoteNotifications: {
+                registrationCount.value += 1
+            }
+        )
+
+        let state = await registrar.requestAuthorizationAndRegister()
+
+        XCTAssertEqual(state, .authorized)
+        XCTAssertEqual(requestCount.value, 1)
+        XCTAssertEqual(registrationCount.value, 1)
+    }
+
+    func testPushRegistrarNeverQueriesOrRequestsWhenBuildIsUnconfigured() async {
+        let queryCount = LockedBox(0)
+        let requestCount = LockedBox(0)
+        let registrar = DailyKanjiPushNotificationRegistrar(
+            isRemoteNotificationEnabled: { false },
+            readAuthorizationStatus: {
+                queryCount.value += 1
+                return .notDetermined
+            },
+            requestSystemAuthorization: {
+                requestCount.value += 1
+                return true
+            },
+            registerForRemoteNotifications: {}
+        )
+
+        let queriedState = await registrar.authorizationState()
+        let requestedState = await registrar.requestAuthorizationAndRegister()
+
+        XCTAssertEqual(queriedState, .unavailable)
+        XCTAssertEqual(requestedState, .unavailable)
+        XCTAssertEqual(queryCount.value, 0)
+        XCTAssertEqual(requestCount.value, 0)
     }
 
     func testSettingsWidgetPresentationUsesTheCurrentHourlyRotationWindow() {
@@ -1820,11 +1967,31 @@ final class DailyKanjiCoreTests: XCTestCase {
             )
         )
 
-        XCTAssertEqual(presentation.title, "Cache non aggiornata")
-        XCTAssertEqual(presentation.subtitle, "Sync server returned HTTP 401.")
+        XCTAssertEqual(presentation.title, "Aggiornamento non riuscito")
+        XCTAssertEqual(
+            presentation.subtitle,
+            "I dati salvati restano disponibili. Riprova."
+        )
+        XCTAssertFalse(presentation.subtitle.contains("401"))
         XCTAssertEqual(presentation.systemImage, "exclamationmark.triangle")
         XCTAssertFalse(presentation.isRefreshing)
         XCTAssertTrue(presentation.canRefresh)
+    }
+
+    func testSyncStatusPresentationNeverExposesArbitraryFailureDetails() {
+        let presentation = DailyKanjiSyncStatusPresentation(
+            syncState: .failed(
+                message: "Bearer secret-token rejected by https://private.example/sync",
+                source: .sample
+            )
+        )
+
+        XCTAssertEqual(
+            presentation.subtitle,
+            "I dati salvati restano disponibili. Riprova."
+        )
+        XCTAssertFalse(presentation.subtitle.localizedCaseInsensitiveContains("token"))
+        XCTAssertFalse(presentation.subtitle.localizedCaseInsensitiveContains("https"))
     }
 
     func testSyncStatusPresentationDisablesRefreshWhenSyncIsUnavailable() {
@@ -1975,6 +2142,23 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(
             DailyKanjiReviewTextFormatter.displayText("{古い|ふるい}表記"),
             "古い表記"
+        )
+    }
+
+    func testOfflineCardFallbackStudyTextUsesItalianCopy() throws {
+        let card = try Self.cardReplacingReadingAndPitchAccent(
+            reading: nil,
+            pitchAccent: nil
+        )
+
+        XCTAssertEqual(card.readingText, "Lettura non disponibile")
+        XCTAssertEqual(card.pitchAccentText, "Accento non disponibile")
+    }
+
+    func testWidgetRationaleUsesItalianReviewMetricLabel() {
+        XCTAssertEqual(
+            DailyKanjiWidgetRationalePresentation.recentHardAgainTitle,
+            "Difficile / Di nuovo"
         )
     }
 
@@ -2204,12 +2388,53 @@ final class DailyKanjiCoreTests: XCTestCase {
         model.selectTab(.search, now: clock)
         clock = now.addingTimeInterval(6 * 60)
         model.activate(now: clock)
-        model.refreshLiveReviewNow()
         await Task.yield()
         XCTAssertEqual(liveClient.fetchCount, 1)
 
         model.selectTab(.review, now: clock)
         await Self.waitUntil { liveClient.fetchCount == 2 }
+        XCTAssertEqual(model.liveReviewState, .ready(session: session))
+    }
+
+    @MainActor
+    func testSettingsReviewRefreshOpensReviewAndFetchesFromWidget() async throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(fetchResults: [.success(session)])
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            now: now
+        )
+        model.selectTab(.widget, now: now)
+
+        model.openAndRefreshLiveReview()
+        await Self.waitUntil { liveClient.fetchCount == 1 }
+
+        XCTAssertEqual(model.selectedTab, .review)
+        XCTAssertEqual(model.liveReviewState, .ready(session: session))
+    }
+
+    @MainActor
+    func testSettingsReviewRefreshOpensReviewAndFetchesFromSearch() async throws {
+        let session = try JSONDecoder().decode(
+            DailyKanjiLiveReviewSession.self,
+            from: Self.liveReviewSessionJSON
+        )
+        let liveClient = MockDailyKanjiLiveReviewClient(fetchResults: [.success(session)])
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: liveClient,
+            now: now
+        )
+        model.selectTab(.search, now: now)
+
+        model.openAndRefreshLiveReview()
+        await Self.waitUntil { liveClient.fetchCount == 1 }
+
+        XCTAssertEqual(model.selectedTab, .review)
         XCTAssertEqual(model.liveReviewState, .ready(session: session))
     }
 
@@ -2807,35 +3032,135 @@ final class DailyKanjiCoreTests: XCTestCase {
     }
 
     @MainActor
-    func testNotificationRegistrationRequiresConfiguredLiveReviewClient() async throws {
+    func testAppLaunchAndActivationQueryNotificationsWithoutPrompting() async throws {
         let cards = try Self.rankedCards(count: 1)
-        let unconfiguredRegistrar = MockDailyKanjiNotificationRegistrar()
-        let unconfiguredModel = DailyKanjiAppModel(
-            cards: cards,
-            liveReviewClient: nil,
-            notificationRegistrar: unconfiguredRegistrar,
-            now: now
+        let registrar = MockDailyKanjiNotificationRegistrar(
+            authorizationState: .notDetermined
         )
-
-        unconfiguredModel.requestNotificationRegistration()
-        await Task.yield()
-
-        XCTAssertEqual(unconfiguredRegistrar.requestCount, 0)
-
-        let configuredRegistrar = MockDailyKanjiNotificationRegistrar()
-        let configuredModel = DailyKanjiAppModel(
+        let model = DailyKanjiAppModel(
             cards: cards,
             liveReviewClient: MockDailyKanjiLiveReviewClient(),
-            notificationRegistrar: configuredRegistrar,
+            notificationRegistrar: registrar,
             now: now
         )
+        model.selectTab(.widget, now: now)
 
-        configuredModel.requestNotificationRegistration()
+        XCTAssertEqual(registrar.queryCount, 0)
+        XCTAssertEqual(registrar.requestCount, 0)
+
+        model.activate(now: now)
         await Self.waitUntil {
-            configuredRegistrar.requestCount == 1
+            registrar.queryCount == 1
         }
 
-        XCTAssertEqual(configuredRegistrar.requestCount, 1)
+        XCTAssertEqual(model.notificationAuthorizationState, .notDetermined)
+        XCTAssertEqual(registrar.requestCount, 0)
+    }
+
+    @MainActor
+    func testExplicitNotificationOptInRequestsOnceAndPublishesAuthorization() async throws {
+        let registrar = MockDailyKanjiNotificationRegistrar(
+            authorizationState: .notDetermined,
+            requestResult: .authorized
+        )
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            notificationRegistrar: registrar,
+            now: now
+        )
+        model.selectTab(.widget, now: now)
+        model.activate(now: now)
+        await Self.waitUntil { registrar.queryCount == 1 }
+
+        model.requestNotificationRegistration()
+        await Self.waitUntil {
+            registrar.requestCount == 1
+                && model.notificationAuthorizationState == .authorized
+        }
+
+        XCTAssertEqual(model.notificationAuthorizationState, .authorized)
+        XCTAssertEqual(registrar.requestCount, 1)
+    }
+
+    @MainActor
+    func testNotificationOptInIsUnavailableWithoutCapabilityOrLiveReview() async throws {
+        let unavailableRegistrar = MockDailyKanjiNotificationRegistrar(
+            isAvailable: false,
+            authorizationState: .notDetermined
+        )
+        let unavailableModel = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            notificationRegistrar: unavailableRegistrar,
+            now: now
+        )
+        unavailableModel.requestNotificationRegistration()
+        await Task.yield()
+
+        let noReviewRegistrar = MockDailyKanjiNotificationRegistrar(
+            authorizationState: .notDetermined
+        )
+        let noReviewModel = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: nil,
+            notificationRegistrar: noReviewRegistrar,
+            now: now
+        )
+        noReviewModel.requestNotificationRegistration()
+        await Task.yield()
+
+        XCTAssertEqual(unavailableModel.notificationAuthorizationState, .unavailable)
+        XCTAssertEqual(unavailableRegistrar.queryCount, 0)
+        XCTAssertEqual(unavailableRegistrar.requestCount, 0)
+        XCTAssertEqual(noReviewModel.notificationAuthorizationState, .unavailable)
+        XCTAssertEqual(noReviewRegistrar.queryCount, 0)
+        XCTAssertEqual(noReviewRegistrar.requestCount, 0)
+    }
+
+    @MainActor
+    func testDeniedNotificationStateNeverPromptsAgain() async throws {
+        let registrar = MockDailyKanjiNotificationRegistrar(
+            authorizationState: .denied
+        )
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            notificationRegistrar: registrar,
+            now: now
+        )
+        model.selectTab(.widget, now: now)
+        model.activate(now: now)
+        await Self.waitUntil { registrar.queryCount == 1 }
+
+        model.requestNotificationRegistration()
+        await Task.yield()
+
+        XCTAssertEqual(model.notificationAuthorizationState, .denied)
+        XCTAssertEqual(registrar.requestCount, 0)
+    }
+
+    @MainActor
+    func testAuthorizedActivationRegistersForAPNsWithoutPrompting() async throws {
+        let registrar = MockDailyKanjiNotificationRegistrar(
+            authorizationState: .authorized
+        )
+        let model = DailyKanjiAppModel(
+            cards: try Self.rankedCards(count: 1),
+            liveReviewClient: MockDailyKanjiLiveReviewClient(),
+            notificationRegistrar: registrar,
+            now: now
+        )
+        model.selectTab(.widget, now: now)
+
+        model.activate(now: now)
+        await Self.waitUntil {
+            registrar.queryCount == 1 && registrar.registrationCount == 1
+        }
+
+        XCTAssertEqual(model.notificationAuthorizationState, .authorized)
+        XCTAssertEqual(registrar.requestCount, 0)
+        XCTAssertEqual(registrar.registrationCount, 1)
     }
 
     func testAppSelectionAvoidsCardsSeenInTheLastThreeDays() throws {
@@ -4034,7 +4359,15 @@ final class DailyKanjiCoreTests: XCTestCase {
                 shownAt: now.addingTimeInterval(-42),
                 source: .app
             ).shownAtText(now: now),
-            "Just now"
+            "Adesso"
+        )
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "one-minute",
+                shownAt: now.addingTimeInterval(-60),
+                source: .app
+            ).shownAtText(now: now),
+            "1 minuto fa"
         )
         XCTAssertEqual(
             DailyKanjiPresentationHistoryItem(
@@ -4042,7 +4375,15 @@ final class DailyKanjiCoreTests: XCTestCase {
                 shownAt: now.addingTimeInterval(-(12 * 60)),
                 source: .app
             ).shownAtText(now: now),
-            "12m ago"
+            "12 minuti fa"
+        )
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "one-hour",
+                shownAt: now.addingTimeInterval(-(60 * 60)),
+                source: .widget
+            ).shownAtText(now: now),
+            "1 ora fa"
         )
         XCTAssertEqual(
             DailyKanjiPresentationHistoryItem(
@@ -4050,7 +4391,15 @@ final class DailyKanjiCoreTests: XCTestCase {
                 shownAt: now.addingTimeInterval(-(3 * 60 * 60)),
                 source: .widget
             ).shownAtText(now: now),
-            "3h ago"
+            "3 ore fa"
+        )
+        XCTAssertEqual(
+            DailyKanjiPresentationHistoryItem(
+                cardId: "one-day",
+                shownAt: now.addingTimeInterval(-(24 * 60 * 60)),
+                source: .widget
+            ).shownAtText(now: now),
+            "1 giorno fa"
         )
         XCTAssertEqual(
             DailyKanjiPresentationHistoryItem(
@@ -4058,7 +4407,7 @@ final class DailyKanjiCoreTests: XCTestCase {
                 shownAt: now.addingTimeInterval(-(2 * 24 * 60 * 60)),
                 source: .widget
             ).shownAtText(now: now),
-            "2d ago"
+            "2 giorni fa"
         )
     }
 
@@ -4070,7 +4419,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             source: .widget
         )
 
-        XCTAssertEqual(item.metadataText(now: now), "Widget slot - 12m ago")
+        XCTAssertEqual(item.metadataText(now: now), "Widget - 12 minuti fa")
     }
 
     func testAppSelectionUsesTheLastTwentyFourHoursOfWidgetHistory() throws {
@@ -6564,16 +6913,16 @@ private actor ControllableGlossaryDebounceSleeper {
     }
 
     func waitForPendingCount(_ expectedCount: Int) async {
-        for _ in 0..<1_000 {
-            if continuations.count >= expectedCount {
-                return
-            }
-            await Task.yield()
+        let deadline = Date().addingTimeInterval(1)
+        while continuations.count < expectedCount, Date() < deadline {
+            try? await Task.sleep(nanoseconds: 1_000_000)
         }
 
-        XCTFail(
-            "Expected \(expectedCount) pending glossary searches, found \(continuations.count)"
-        )
+        if continuations.count < expectedCount {
+            XCTFail(
+                "Expected \(expectedCount) pending glossary searches, found \(continuations.count)"
+            )
+        }
     }
 
     func resumeNext() {
@@ -6630,7 +6979,28 @@ private actor ControllableDailyKanjiAudioLoader {
 
 private final class MockDailyKanjiNotificationRegistrar: DailyKanjiNotificationRegistering {
     private let lock = NSLock()
+    private let storedIsAvailable: Bool
+    private let requestResult: DailyKanjiNotificationAuthorizationState
+    private var storedAuthorizationState: DailyKanjiNotificationAuthorizationState
+    private var storedQueryCount = 0
     private var storedRequestCount = 0
+    private var storedRegistrationCount = 0
+
+    init(
+        isAvailable: Bool = true,
+        authorizationState: DailyKanjiNotificationAuthorizationState = .notDetermined,
+        requestResult: DailyKanjiNotificationAuthorizationState = .authorized
+    ) {
+        self.storedIsAvailable = isAvailable
+        self.storedAuthorizationState = authorizationState
+        self.requestResult = requestResult
+    }
+
+    var queryCount: Int {
+        lock.withLock {
+            storedQueryCount
+        }
+    }
 
     var requestCount: Int {
         lock.withLock {
@@ -6638,9 +7008,34 @@ private final class MockDailyKanjiNotificationRegistrar: DailyKanjiNotificationR
         }
     }
 
-    func requestAuthorizationAndRegister() async {
+    var registrationCount: Int {
+        lock.withLock {
+            storedRegistrationCount
+        }
+    }
+
+    var isAvailable: Bool {
+        storedIsAvailable
+    }
+
+    func authorizationState() async -> DailyKanjiNotificationAuthorizationState {
+        lock.withLock {
+            storedQueryCount += 1
+            return storedAuthorizationState
+        }
+    }
+
+    func requestAuthorizationAndRegister() async -> DailyKanjiNotificationAuthorizationState {
         lock.withLock {
             storedRequestCount += 1
+            storedAuthorizationState = requestResult
+        }
+        return requestResult
+    }
+
+    func registerForRemoteNotifications() async {
+        lock.withLock {
+            storedRegistrationCount += 1
         }
     }
 }

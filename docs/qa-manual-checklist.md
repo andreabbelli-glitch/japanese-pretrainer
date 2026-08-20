@@ -36,10 +36,10 @@ verificare ogni riga della matrice:
 
 | Superficie | Light Large | Dark Large | Accessibility XXL | Interazioni/stati richiesti |
 | --- | --- | --- | --- | --- |
-| `Widget` | card, disclosure e Recenti leggibili | contrasto semantico della card e dei separatori | fronte, lettura/audio e percorso senza clipping | `Percorso widget` apre la sheet; Annulla scarta, Applica salva e ricarica una sola volta le timeline |
+| `Widget` | card, disclosure e Recenti leggibili; Cronologia distingue `App` e `Widget` con copy italiano | contrasto semantico della card e dei separatori | fronte, lettura/audio e percorso senza clipping | `Percorso widget` apre la sheet; Annulla scarta, Applica salva e ricarica una sola volta le timeline |
 | `Ripasso` | fronte, risposta e rating leggibili | empty state e toolbar distinguibili | fronte, risposta, audio e tutti i rating raggiungibili con scroll | in build senza capability mostra `Ripasso non disponibile` e `Apri Impostazioni`, mai endpoint/token; in build configurata reveal, audio e invio rating devono funzionare e avanzare la coda |
 | `Cerca` | lista e campo `.searchable` leggibili | risultati e separatori con contrasto adeguato | righe e dettaglio raggiungibili senza troncamenti critici | ricerca per termine/lettura/significato, nessun risultato e push del dettaglio nello stesso stack |
-| `Impostazioni` | Form con Dati, Ripasso, Widget e Informazioni | testo secondario leggibile | tutte le righe raggiungibili e target almeno 44 pt | modifica percorso riusa la stessa sheet; nessun dato sensibile mostrato |
+| `Impostazioni` | Form con Dati, Ripasso, Widget e Informazioni | testo secondario leggibile | tutte le righe raggiungibili e target almeno 44 pt | `Aggiorna ripasso` apre `Ripasso` e forza il fetch da Widget/Cerca; la CTA notifiche segue lo stato reale; nessun dato sensibile mostrato |
 
 - Eseguire anche un viewport compatto: non devono comparire overflow orizzontale,
   controlli sovrapposti o sezioni non raggiungibili.
@@ -53,6 +53,17 @@ verificare ogni riga della matrice:
   leggibile su una riga separata, senza troncamenti.
 - Il widget usa una cadenza oraria e pianifica 24 ore; l'app documenta e mostra
   questa cadenza senza promettere un refresh garantito da WidgetKit.
+- Al cold launch e a ogni ritorno in foreground, l'app puo leggere lo stato
+  notifiche ma non deve mostrare il prompt di sistema.
+- Con autorizzazione `notDetermined`, soltanto il tap esplicito su `Attiva
+  notifiche` deve richiedere il permesso; con stato negato o autorizzato la CTA
+  apre invece le impostazioni notifiche dell'app. Una build senza capability
+  non mostra CTA e non interroga o richiede l'autorizzazione.
+- Nei fallimenti di sync, il sottotitolo resta sintetico e in italiano: non
+  deve mostrare HTTP status, endpoint, token o messaggi tecnici arbitrari.
+- Cronologia, metrica delle valutazioni, fallback lettura/accento e tipi alias
+  del dettaglio glossario devono essere in italiano. Verificare almeno
+  `lettura`, `alternativa`, `rōmaji` e il fallback `altra forma`.
 - Dopo la cattura, ripristinare simulatore in Light Mode e Dynamic Type Large.
 
 ## Flussi principali

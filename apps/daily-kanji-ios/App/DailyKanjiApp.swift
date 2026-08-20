@@ -45,7 +45,6 @@ private struct DailyKanjiBootstrapView: View {
                         DailyKanjiPushTokenDispatcher.shared.onDeviceToken = { token in
                             model.registerDeviceToken(token)
                         }
-                        model.requestNotificationRegistration()
                         activateIfNeeded(model, phase: scenePhase)
                     }
             } else {

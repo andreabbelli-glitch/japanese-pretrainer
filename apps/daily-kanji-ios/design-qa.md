@@ -31,8 +31,9 @@ generation) simulator and are 750×1334.
 | Widget | Light, Large, approved deep-linked card | `widget-light-large-restored-final.png` |
 | Widget | Dark, Large | `widget-dark-large-final-approved.png` |
 | Widget | Light, Accessibility XXL | `widget-accessibility-xxl-final.png` |
-| Widget | disclosure expanded | `widget-disclosure-light-large.png` |
-| Widget | history sheet | `widget-history-light-large.png` |
+| Widget | disclosure expanded, localized reviewer fix | `widget-disclosure-light-large-review-fixes.png` |
+| Widget | history sheet, localized reviewer fix | `widget-history-light-large-review-fixes.png` |
+| Widget | history sheet with real Widget-origin row | `widget-history-widget-source-light-large-final.png` |
 | Widget | scope draft sheet | `widget-scope-sheet-light-large.png` |
 | Ripasso | unavailable, Light/Dark/Accessibility XXL | `review-unavailable-light-large-final.png`, `review-unavailable-dark-large.png`, `review-unavailable-accessibility-xxl-final.png` |
 | Ripasso | configured front, Light/Large | `review-configured-front-light-large-final.png` |
@@ -44,8 +45,10 @@ generation) simulator and are 750×1334.
 | Cerca | results, Light/Dark | `search-root-light-large-final.png`, `search-root-dark-large.png` |
 | Cerca | Accessibility XXL with inline search field | `search-root-accessibility-xxl-inline-final.png` |
 | Cerca | pushed detail | `search-detail-light-large-final.png`, `search-detail-accessibility-xxl.png` |
+| Cerca | localized alias taxonomy | `search-detail-alias-light-large-review-fixes.png` |
 | Cerca | localized no-results state | `search-no-results-light-large-final.png`, `search-no-results-accessibility-xxl-final-passed.png` |
 | Impostazioni | Light/Dark/Accessibility XXL | `settings-light-large-final.png`, `settings-dark-large.png`, `settings-accessibility-xxl-final.png` |
+| Impostazioni | unconfigured notification state, no CTA | `settings-light-large-review-fixes.png` |
 | Deep link | selected-card result after confirmation | `deep-link-card-widget-opened-final.png` |
 | Compact viewport | Widget, Cerca, Ripasso and Impostazioni | `widget-compact-se-light-large-final-clean.png`, `search-compact-se-light-large-final.png`, `review-compact-se-light-large-final.png`, `settings-compact-se-light-large-final.png` |
 
@@ -66,9 +69,14 @@ Evidence directory:
 | 8 | P2: the live queue subtitle mixed Italian with English `due` and could expose a raw ISO timestamp. | Add Italian singular/plural copy, ISO-8601 parsing with and without fractional seconds, locale-aware date/time formatting and a non-raw fallback. | passed |
 | 9 | P2: the `Facile` preview exposed `Il 2026-08-28`, while long intervals truncated at accessibility sizes. | Localize absolute preview dates and allow interval labels two lines with vertical expansion only at accessibility sizes. | passed |
 | 10 | P1: the compact review header and one-line media title truncated `Duel Masters` at Accessibility XXL. | Add a tested compact/stacked header policy; at accessibility sizes, give the multiline media title and readable queue separate full-width rows with vertical expansion. The refreshed unscrolled front shows both `Duel Masters` and `17 in coda` in full; the separate answer capture is intentionally scrolled to document revealed content and enabled audio. | passed |
+| 11 | P1: `Aggiorna ripasso` in Settings was a no-op when the sheet originated from Widget or Cerca because live fetching was tab-scoped. | Give the manual action an explicit model contract that selects Ripasso and forces a fetch from either origin; retain tab-scoped automatic foreground refresh. Two cross-tab model tests cover the real starts. | passed |
+| 12 | P2: residual English copy and raw taxonomy remained in history, rationale metrics, unavailable study fields and glossary aliases; sync failures could also expose arbitrary technical text. | Localize relative-time thresholds and singular/plural forms, offline fallbacks, `Difficile / Di nuovo`, and all current alias types; map unknown aliases to `altra forma` and render only stable Italian sync-failure copy. Refreshed disclosure, history and alias-detail captures were visually checked at Light/Large. | passed |
+| 13 | P1: notification permission was requested during bootstrap, before a user decision, and Settings inferred only build capability instead of the real authorization state. | Query authorization read-only on activation, prompt only after explicit `Attiva notifiche`, route denied/authorized states to system settings, re-register already-authorized installs with APNs without prompting, and leave unconfigured builds actionless. The refreshed Settings capture confirms the unconfigured state has no CTA; lifecycle and status matrices are unit-tested. | passed |
+| 14 | P2: the Widget history source still rendered the English product copy `Widget slot`; the prior history capture contained only App-origin rows and could not expose it. | Localize the shared source label to `Widget`, cover the real metadata presentation with a regression test, and recapture a clean Light/Large history containing both an App row and a real Widget-origin row. | passed |
 
 No P0, P1, P2 or P3 findings remain after the final comparison, configured
-review session and state matrix. The temporary QA API used only the disposable
+review session, notification lifecycle matrix and refreshed Light/Large
+self-check. The temporary QA API used only the disposable
 E2E database; its selected `山札` card exposed one real `audio/mpeg` resource,
 the app audio control was enabled and the simulator event log recorded the tap.
 The WidgetKit extension was not changed by the redesign.

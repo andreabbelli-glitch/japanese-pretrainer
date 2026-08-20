@@ -49,6 +49,14 @@ significato e apre i dettagli nello stesso stack di navigazione.
 Le informazioni operative vivono in una sola sheet `Impostazioni`: dati,
 disponibilita del ripasso, notifiche, percorso widget e informazioni app. Non
 ci sono selettori o blocchi di stato tecnico inline nella schermata principale.
+`Aggiorna ripasso` porta sempre alla tab `Ripasso` e forza una nuova richiesta,
+anche quando la sheet e stata aperta da `Widget` o `Cerca`; gli aggiornamenti
+automatici al foreground restano invece limitati alla tab `Ripasso`.
+
+La riga notifiche riflette lo stato di autorizzazione reale. Una build senza
+capability non propone azioni; lo stato non ancora deciso mostra `Attiva
+notifiche`, mentre gli stati negato e autorizzato portano alle impostazioni di
+sistema senza riproporre il prompt.
 
 `Percorso widget`, disponibile dalla tab Widget e da Impostazioni, apre una
 sheet nativa con la bozza di modalita e media. Le modalita sono `Giornaliero`,
@@ -272,7 +280,12 @@ richiede rete. Le notifiche push usano APNs solo nelle build firmate con un
 Apple Developer team che supporta Push Notifications: le build Personal Team
 restano installabili senza `aps-environment`, mentre `DAILY_KANJI_ENABLE_APNS=1`
 fa usare `DailyKanjiPush.entitlements` quando il provisioning lo supporta. Il
-widget resta senza push e senza rete. Dopo una
+processo di avvio e ogni ritorno in foreground leggono lo stato notifiche senza
+mostrare richieste di permesso. Il prompt di sistema viene avviato soltanto dal
+tap esplicito su `Attiva notifiche`; se l'autorizzazione e gia presente, l'app
+si registra nuovamente con APNs senza richiedere il permesso. Se la capability
+non e configurata non viene effettuata alcuna richiesta. Il widget resta senza
+push e senza rete. Dopo una
 build installata con `DAILY_KANJI_IOS_SYNC_*`, l'app prova il sync dataset al
 massimo ogni 4 ore nello stesso giorno, sempre al cambio del giorno locale del
 dispositivo, oppure subito quando l'utente preme "Aggiorna ora". Il widget non

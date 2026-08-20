@@ -70,6 +70,8 @@ final class DailyKanjiAppModel: ObservableObject {
     @Published private(set) var syncState: DailyKanjiSyncState
     @Published private(set) var liveReviewState: DailyKanjiLiveReviewState
     @Published private(set) var selectedTab: DailyKanjiAppTab
+    @Published private(set) var notificationAuthorizationState:
+        DailyKanjiNotificationAuthorizationState
 
     private let cacheWriter: any DailyKanjiCacheWriting
     private let historyStore: DailyKanjiHistoryStore
@@ -92,6 +94,7 @@ final class DailyKanjiAppModel: ObservableObject {
     private var liveReviewGradeTask: Task<Void, Never>?
     private var activeLiveReviewGradeId: UUID?
     private var pendingForcedLiveReviewFetch = false
+    private var notificationAuthorizationRefreshTask: Task<Void, Never>?
     private var notificationRegistrationTask: Task<Void, Never>?
     private var deviceTokenTask: Task<Void, Never>?
     private var lastFailureAt: Date?
@@ -181,6 +184,10 @@ final class DailyKanjiAppModel: ObservableObject {
         )
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         self.selectedTab = liveReviewClient == nil ? .widget : .review
+        self.notificationAuthorizationState = Self.initialNotificationAuthorizationState(
+            liveReviewClient: liveReviewClient,
+            notificationRegistrar: notificationRegistrar
+        )
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -230,6 +237,10 @@ final class DailyKanjiAppModel: ObservableObject {
         self.syncState = Self.initialSyncState(syncer: syncer, source: .sample)
         self.liveReviewState = Self.initialLiveReviewState(liveReviewClient: liveReviewClient)
         self.selectedTab = liveReviewClient == nil ? .widget : .review
+        self.notificationAuthorizationState = Self.initialNotificationAuthorizationState(
+            liveReviewClient: liveReviewClient,
+            notificationRegistrar: notificationRegistrar
+        )
         let restoredScopeWasCorrected = restoreSavedScope()
         resetStudyScopeDraft()
         persistCurrentScope()
@@ -276,6 +287,7 @@ final class DailyKanjiAppModel: ObservableObject {
 
     func activate(now: Date = .now) {
         refreshHistory(now: now)
+        refreshNotificationAuthorizationState()
         startLiveReviewFetchTask(now: now)
         defer {
             startSyncTask(now: now, force: false)
@@ -318,6 +330,11 @@ final class DailyKanjiAppModel: ObservableObject {
     }
 
     func refreshLiveReviewNow() {
+        startLiveReviewFetchTask(now: liveReviewNow(), force: true)
+    }
+
+    func openAndRefreshLiveReview() {
+        selectedTab = .review
         startLiveReviewFetchTask(now: liveReviewNow(), force: true)
     }
 
@@ -467,20 +484,60 @@ final class DailyKanjiAppModel: ObservableObject {
         guard notificationRegistrationTask == nil else {
             return
         }
-        guard liveReviewClient != nil else {
+        guard notificationAuthorizationState == .notDetermined else {
             return
         }
-        guard let notificationRegistrar else {
+        guard liveReviewClient != nil,
+              let notificationRegistrar,
+              notificationRegistrar.isAvailable else {
+            notificationAuthorizationState = .unavailable
             return
         }
 
+        notificationAuthorizationRefreshTask?.cancel()
+        notificationAuthorizationRefreshTask = nil
         notificationRegistrationTask = Task { @MainActor [weak self] in
             guard let self else {
                 return
             }
 
-            await notificationRegistrar.requestAuthorizationAndRegister()
+            let state = await notificationRegistrar.requestAuthorizationAndRegister()
+            guard !Task.isCancelled else {
+                return
+            }
+
+            self.notificationAuthorizationState = state
             self.notificationRegistrationTask = nil
+        }
+    }
+
+    func refreshNotificationAuthorizationState() {
+        guard notificationAuthorizationRefreshTask == nil,
+              notificationRegistrationTask == nil else {
+            return
+        }
+        guard liveReviewClient != nil,
+              let notificationRegistrar,
+              notificationRegistrar.isAvailable else {
+            notificationAuthorizationState = .unavailable
+            return
+        }
+
+        notificationAuthorizationRefreshTask = Task { @MainActor [weak self] in
+            guard let self else {
+                return
+            }
+
+            let state = await notificationRegistrar.authorizationState()
+            guard !Task.isCancelled else {
+                return
+            }
+
+            self.notificationAuthorizationState = state
+            if state == .authorized {
+                await notificationRegistrar.registerForRemoteNotifications()
+            }
+            self.notificationAuthorizationRefreshTask = nil
         }
     }
 
@@ -1169,6 +1226,18 @@ final class DailyKanjiAppModel: ObservableObject {
         }
 
         return .loading(staleSession: nil)
+    }
+
+    private static func initialNotificationAuthorizationState(
+        liveReviewClient: DailyKanjiLiveReviewing?,
+        notificationRegistrar: DailyKanjiNotificationRegistering?
+    ) -> DailyKanjiNotificationAuthorizationState {
+        guard liveReviewClient != nil,
+              notificationRegistrar?.isAvailable == true else {
+            return .unavailable
+        }
+
+        return .notDetermined
     }
 
     private static func syncFailureMessage(for error: Error) -> String {
