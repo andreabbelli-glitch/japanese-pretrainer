@@ -279,6 +279,34 @@ extension DailyKanjiLiveReviewRating {
 
 enum DailyKanjiReviewTextFormatter {
     static func displayText(_ value: String) -> String {
+        let text = textWithoutFurigana(value)
+
+        guard let attributedText = inlineAttributedText(text) else {
+            return text
+        }
+
+        return String(attributedText.characters)
+    }
+
+    static func lineBreakProtectedDisplayText(_ value: String) -> String {
+        let text = textWithoutFurigana(value)
+
+        guard let attributedText = inlineAttributedText(text) else {
+            return text
+        }
+
+        let wordJoiner = "\u{2060}"
+        return attributedText.runs.map { run in
+            let runText = String(attributedText[run.range].characters)
+            guard run.link != nil else {
+                return runText
+            }
+
+            return runText.map(String.init).joined(separator: wordJoiner)
+        }.joined()
+    }
+
+    private static func textWithoutFurigana(_ value: String) -> String {
         var output = value.trimmingCharacters(in: .whitespacesAndNewlines)
         let patterns = [
             #"\{\{([^{}|]+)\|([^{}]+)\}\}"#,
@@ -306,6 +334,13 @@ enum DailyKanjiReviewTextFormatter {
             .replacingOccurrences(of: "}}", with: "")
             .replacingOccurrences(of: "{", with: "")
             .replacingOccurrences(of: "}", with: "")
+    }
+
+    private static func inlineAttributedText(_ text: String) -> AttributedString? {
+        try? AttributedString(
+            markdown: text,
+            options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+        )
     }
 }
 
@@ -353,7 +388,9 @@ struct DailyKanjiLiveReviewCardPresentation: Equatable {
     }
 
     var lineBreakProtectedFrontText: String {
-        Self.protectJapaneseWordLineBreaks(in: frontText)
+        Self.protectJapaneseWordLineBreaks(
+            in: DailyKanjiReviewTextFormatter.lineBreakProtectedDisplayText(card.front)
+        )
     }
 
     var backText: String {

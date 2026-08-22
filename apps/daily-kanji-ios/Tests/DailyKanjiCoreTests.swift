@@ -2146,6 +2146,59 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
+    func testLiveReviewFormatterStripsSemanticLinksFromStudyText() {
+        XCTAssertEqual(
+            DailyKanjiReviewTextFormatter.displayText(
+                "そうでなければ、[タップ](term:term-tap)して"
+                    + "[マナゾーン](term:term-mana-zone)に{{置|お}}く"
+            ),
+            "そうでなければ、タップしてマナゾーンに置く"
+        )
+    }
+
+    func testLiveReviewFrontKeepsSemanticLinkLabelsTogetherAcrossLineBreaks() {
+        let card = makeLiveReviewLayoutCard(
+            cardId: "semantic-link-word-safe",
+            front: "そうでなければ、[タップ](term:term-tap)して"
+                + "[マナゾーン](term:term-mana-zone)に置く"
+        )
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: false
+        )
+        let protectedText = presentation.lineBreakProtectedFrontText
+
+        XCTAssertTrue(
+            protectedText.contains("マ\u{2060}ナ\u{2060}ゾ\u{2060}ー\u{2060}ン")
+        )
+        XCTAssertEqual(
+            protectedText.replacingOccurrences(of: "\u{2060}", with: ""),
+            presentation.frontText
+        )
+    }
+
+    @MainActor
+    func testLiveReviewSentenceFrontUsesReadableMultilineDensity() throws {
+        let card = makeLiveReviewLayoutCard(
+            cardId: "sentence-density",
+            front: "そうでなければ、[タップ](term:term-tap)して"
+                + "[マナゾーン](term:term-mana-zone)に{{置|お}}く"
+        )
+        let presentation = DailyKanjiLiveReviewCardPresentation(
+            card: card,
+            isAnswerRevealed: false
+        )
+        let image = try renderedFrontImage(
+            presentation: presentation,
+            dynamicTypeSize: .large,
+            width: 310
+        )
+
+        addSnapshotAttachment(image, name: "review-front-sentence-density-large")
+        XCTAssertGreaterThan(image.size.height, 90)
+        XCTAssertLessThanOrEqual(image.size.height, 170)
+    }
+
     func testOfflineCardFallbackStudyTextUsesItalianCopy() throws {
         let card = try Self.cardReplacingReadingAndPitchAccent(
             reading: nil,

@@ -65,6 +65,12 @@ Word-safe front evidence directory:
 The same-input before/after comparison is
 `reference-vs-word-safe-dark-large-final.png`.
 
+Semantic sentence evidence directory:
+`/Users/abelli/.codex/visualizations/2026/08/22/daily-kanji-review-sentence-density/`.
+The exact 310 pt production-component renders are
+`review-front-semantic-sentence-before-large.png` and
+`review-front-semantic-sentence-after-large.png`.
+
 ## Iterations and findings
 
 | Iteration | Finding | Resolution | Result |
@@ -86,6 +92,7 @@ The same-input before/after comparison is
 | 15 | P1: examples, translation and notes appeared before the FSRS controls, forcing a scroll before every rating. | Make revealed-answer order an explicit tested presentation contract: reading/meaning, pitch and audio, all four ratings, then supplemental details. The rich `山札` Light/Large capture shows every rating fully visible above the first example. At Accessibility XXL the controls remain vertical; the semantic hierarchy places ratings before every detail node and the enclosing review surface remains scrollable. | independent review passed |
 | 16 | P1: the review front could wrap CJK at an arbitrary character boundary, rendering `5枚以下なら` as `5枚以` / `下なら`. | Protect Natural Language word tokens from internal line breaks and choose the largest fitting single-line font tier before a multiline fallback. The exact card stays on one line at Large; at Accessibility XXL it wraps only between `以下` and `なら`, leaving `以下` intact. | independent review passed |
 | 17 | P2: the first fallback capped real long fronts at two or three lines, while its tokenizer-only regression did not exercise the live SwiftUI layout. | Remove the fallback line cap and render the exact plus a long real front through the production component at 310 pt in XCTest for Large and Accessibility XXL. Keep the four full render attachments, assert vertical expansion, and render the complete card so reverting the production wiring makes the test fail. | independent review passed |
+| 18 | P1: live review exposed semantic Markdown such as `[タップ](term:term-tap)` and the 50 pt multiline fallback left sentence fronts with too few characters per line. | Flatten inline Markdown to its visible label, preserve linked labels such as `マナゾーン` as one wrapping unit, and use a separately scaled 38 pt multiline fallback. The exact 310 pt render is 137 pt high instead of 239 pt, while short fronts retain the existing large one-line fitting tiers and long fronts remain uncapped. | independent review passed |
 
 No P0, P1, P2 or P3 findings remain after the independent review, configured
 review session, notification lifecycle matrix and refreshed Light/Large

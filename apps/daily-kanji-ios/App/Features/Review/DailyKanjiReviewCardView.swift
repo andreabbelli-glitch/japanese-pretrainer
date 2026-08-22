@@ -351,6 +351,7 @@ struct DailyKanjiReviewFrontText: View {
     static let fallbackLineLimit: Int? = nil
 
     @ScaledMetric(relativeTo: .largeTitle) private var baseSize = 78
+    @ScaledMetric(relativeTo: .title) private var multilineSize = 38
 
     let presentation: DailyKanjiLiveReviewCardPresentation
 
@@ -380,7 +381,7 @@ struct DailyKanjiReviewFrontText: View {
 
     private var fallbackText: some View {
         Text(renderedText)
-            .font(.system(size: baseSize * 0.64, weight: .semibold))
+            .font(.system(size: multilineSize, weight: .semibold))
             .lineLimit(Self.fallbackLineLimit)
             .allowsTightening(true)
             .fixedSize(horizontal: false, vertical: true)
