@@ -571,7 +571,7 @@ Run:
 ```sh
 ./scripts/with-node.sh pnpm daily-kanji:package
 cd apps/daily-kanji-ios
-./scripts/xcode-renew.sh
+./scripts/install-device.sh
 ```
 
 Manual checks on iPhone:

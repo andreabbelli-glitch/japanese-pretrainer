@@ -91,8 +91,8 @@ The build uses:
 - team `F5U46464YH` from `project.yml`;
 - `-allowProvisioningUpdates` and
   `-allowProvisioningDeviceRegistration`;
-- the selected CoreDevice identifier as the Xcode destination;
-- a dedicated ignored Derived Data directory;
+- the stable hardware UDID as the Xcode destination;
+- a dedicated ignored Derived Data directory whose root is private (`0700`);
 - an ephemeral `0600` xcconfig when private runtime values are configured.
 
 The script does not schedule itself, daemonize, retry, restart Apple services,
@@ -122,10 +122,11 @@ could otherwise produce an installable artifact.
 
 `DEVICE_ID` is the stable hardware UDID stored in `device.env`. CoreDevice may
 use a different internal identifier, so the installer resolves both columns
-and uses:
+from `devicectl`'s supported JSON output and uses:
 
-- the CoreDevice identifier for `devicectl` and the Xcode destination;
-- the hardware UDID for provisioning-profile membership checks.
+- the CoreDevice identifier for `devicectl`;
+- the hardware UDID for the Xcode destination and provisioning-profile
+  membership checks.
 
 Both USB and `localNetwork` transports are accepted. The installer checks the
 device connection and Developer Disk Image before spending time on packaging
@@ -150,10 +151,18 @@ It may define:
 
 Endpoint/token pairs are all-or-nothing. Values containing newlines are
 rejected. The generated xcconfig is temporary, mode `0600`, removed on exit,
-and never printed. Secrets and the local device identifier remain unversioned.
+and never printed. Secrets and local device identifiers remain unversioned and
+are redacted from command output. Because the resulting app bundle may embed
+private runtime values, the installer applies `umask 077` and keeps the entire
+Derived Data tree behind an owner-only `0700` root. Private values inherited
+from the caller environment are captured and then de-exported before any child
+process runs; the temporary xcconfig is the only channel into the build.
 
 Push Notifications remain opt-in. Buying the Developer Program does not by
 itself authorize silently enabling APNs in an existing local configuration.
+When enabled, the temporary xcconfig overrides an app-target-specific
+entitlements setting; the widget always keeps its App Group-only entitlements
+and never receives `aps-environment`.
 
 ## Complete Legacy Removal
 
@@ -201,6 +210,8 @@ orchestrator. The user fixes the concrete cause and reruns the same command.
 Automated verification must cover:
 
 - configuration parsing without secret disclosure;
+- owner-only permissions for private configuration and Derived Data;
+- absence of device identifiers in user-facing output;
 - stable-UDID to CoreDevice-ID resolution;
 - cable/local-network acceptance and connectivity failures;
 - one-shot ordering and fail-fast behavior;

@@ -12,11 +12,9 @@ nome app, bundle id, scheme e documentazione sono quelli di **Daily Kanji**.
 - Progetto Xcode generato da XcodeGen (`project.yml`).
 - Bundle app: `dev.local.daily-kanji`.
 - Bundle widget: `dev.local.daily-kanji.widget`.
-- Signing automatico con Personal Team `F5U46464YH`.
-- Installazione widget validata via Xcode su iPhone fisico con Apple ID
-  personale gratuito.
-- Reinstall/rinnovo da CLI validato via CoreDevice anche senza cavo, quando
-  l'iPhone e' visibile come `transportType: localNetwork`.
+- Signing automatico con Apple Developer team `F5U46464YH`.
+- Installazione app + widget validata via CoreDevice su iPhone fisico, anche
+  senza cavo quando il device e' visibile come `transportType: localNetwork`.
 - Sideloadly resta solo diagnostico: su questo setup installa la app principale
   ma non registra la WidgetKit extension nella gallery widget.
 
@@ -92,7 +90,8 @@ Giornaliero, primo media disponibile per le modalita legate a un media.
    ```
 
 4. iPhone con Developer Mode attiva e trust del Mac approvato.
-5. Apple ID personale configurato in Xcode.
+5. Account Apple Developer Program attivo e configurato in Xcode per il team
+   `F5U46464YH`.
 
 Gli script impostano automaticamente `DEVELOPER_DIR` su
 `/Applications/Xcode.app/Contents/Developer` quando Xcode e' presente.
@@ -124,87 +123,43 @@ DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer \
   -derivedDataPath build/SimulatorDerivedData build
 ```
 
-Reinstall/rinnovo su iPhone fisico:
+Installazione manuale su iPhone fisico:
 
 ```sh
-./scripts/xcode-renew.sh
+./scripts/install-device.sh
 ```
 
 Per usare un altro device, preferire l'UDID hardware stabile mostrato da Xcode
 rispetto all'UUID temporaneo assegnato da CoreDevice:
 
 ```sh
-DEVICE_ID=<coredevice-id-or-udid> ./scripts/xcode-renew.sh
+DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-device.sh
 ```
 
-Automazione rinnovo firma via launchd:
+L'installer e' un comando sincrono one-shot: preflighta CoreDevice e Developer
+Disk Image, verifica le risorse, genera il progetto, crea una build `Release`,
+controlla firma e provisioning di app e widget, installa e avvia l'app. Non
+crea job pianificati, processi in background, retry o file di stato. L'iPhone
+deve essere sbloccato e raggiungibile via cavo o sulla stessa Wi-Fi.
 
-```sh
-DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
-./scripts/xcode-renew-if-needed.sh --status
-./scripts/xcode-renew-if-needed.sh --force
+La configurazione locale non versionata vive in:
+
+```text
+~/Library/Application Support/DailyKanji/device.env
 ```
 
-`install-renew-launchd.sh` installa un LaunchAgent persistente con `RunAtLoad`
-e `StartInterval`: il check avviene al caricamento/login e ogni ora
-(`RENEW_CHECK_INTERVAL_SECONDS=3600`). Il check legge la scadenza reale minima
-dei provisioning profile embedded registrata nello snapshot atomico
-`~/Library/Application Support/DailyKanji/profile-state.env`. Il precedente
-`profile-expiry.epoch` e' letto solo come fallback finche lo snapshot non e'
-stato ancora creato. Prima delle
-ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce subito senza lock,
-CoreDevice, package o Xcode. Nella finestra preventiva prova package +
-build/install; se il device, DDI, signing, package, build o install non sono
-pronti, termina non-zero e il plist persistente riprova al successivo intervallo.
-Non esiste piu' un calendario da autoriscrivere o un processo figlio per i retry.
-L'installer valida il nuovo plist prima di sostituire quello attivo e, se il
-bootstrap fallisce, ripristina e prova a ricaricare automaticamente il plist
-precedente.
-
-L'iPhone puo essere raggiunto via cavo oppure stessa Wi-Fi `localNetwork`; prima
-del package viene preflightato anche il mount della Developer Disk Image. Il
-tunnel Wi-Fi CoreDevice non deve restare aperto: viene ricreato on demand. Se
-la ricreazione fallisce con una delle firme tunnel/RSD osservate, gli script
-riavviano una sola volta i due servizi CoreDevice dell'utente e ripetono solo
-il comando fallito dopo 4 secondi. Device bloccato, offline, non trovato o non
-associato non attivano questo recovery; il LaunchAgent riprova all'ora
-successiva. Non vengono mai modificati pairing, rete o servizi di sistema. Il
-package parte dalla root del repo anche quando launchd avvia il job da un'altra
-directory. Il device id resta in
-`~/Library/Application Support/DailyKanji/renew.env`, non nel repo. Rieseguire
-`install-renew-launchd.sh` aggiorna solo `DEVICE_ID` e conserva eventuali
-endpoint/token di sync gia' presenti nello stesso file. Le opzioni legacy
-`--mark-success-now` e `--reschedule-only` restano accettate per migrazione, ma
-non creano marker sintetici: `last-renew-success.epoch` cambia soltanto dopo un
-install riuscito e una nuova scadenza embedded valida, successiva alla
-precedente e oltre la finestra preventiva. `xcode-renew.sh` registra
-in un unico file atomico la scadenza minima e i due UUID esatti dei profili
-embedded di app e widget. Solo durante un tentativo dovuto o `--force`, il
-wrapper sposta dalla
-cache Xcode esclusivamente i file di quegli UUID in un backup temporaneo sotto
-lo state directory: questo costringe il Personal Team a emettere profili nuovi,
-senza toccare altri progetti. Un errore ripristina i vecchi file e conserva
-l'exit code originale; il backup viene eliminato solo dopo che la scadenza e'
-realmente avanzata. La build fisica usa `Release` di default, piu adatta all'uso
-quotidiano e ai consumi; per una diagnosi intenzionale si puo usare
-`CONFIGURATION=Debug ./scripts/xcode-renew.sh`.
-Per rimuovere l'automazione:
-
-```sh
-./scripts/install-renew-launchd.sh --uninstall
-```
-
-Log e diagnosi:
-
-```sh
-tail -n 80 ~/Library/Logs/DailyKanji/xcode-renew.out.log
-tail -n 80 ~/Library/Logs/DailyKanji/xcode-renew.err.log
-```
-
-Se `xcodebuild` segnala `No Accounts` o `No profiles`, apri Xcode Settings >
-Accounts, verifica il Personal Team, apri `DailyKanji.xcodeproj` e lascia Xcode
-rigenerare i profili per `dev.local.daily-kanji` e
-`dev.local.daily-kanji.widget`.
+Il file puo contenere `DEVICE_ID`, le coppie private di sync/review e
+`DAILY_KANJI_ENABLE_APNS=1`; deve avere permessi `0600`. Endpoint e token non
+vengono stampati, cosi come gli identificatori del device. La DerivedData
+dedicata e protetta da una directory radice `0700`; non spostare build contenenti
+configurazione privata in directory condivise. Anche quando arrivano
+dall'ambiente, i valori privati vengono rimossi dall'environment ereditato dai
+processi figli e passati alla sola build tramite la xcconfig temporanea. Prima
+di installare, lo script richiede due profili embedded del team `F5U46464YH`,
+con bundle id esatti, device incluso e almeno 30 giorni residui. Questo
+impedisce di usare accidentalmente una firma temporanea. Se Xcode segnala
+account o profili mancanti, apri Xcode > Settings > Accounts, aggiorna il team
+e ripeti il comando.
 
 Package IPA diagnostico:
 
@@ -267,19 +222,20 @@ Questi valori vanno impostati come build settings locali, passati a `xcodebuild`
 oppure salvati nel file locale non versionato:
 
 ```sh
-~/Library/Application Support/DailyKanji/renew.env
+~/Library/Application Support/DailyKanji/device.env
 ```
 
-`scripts/xcode-renew.sh` legge `renew.env` e passa endpoint/token alla build
-Xcode. I placeholder non configurati vengono ignorati: senza `MOBILE_API_*`
+`scripts/install-device.sh` legge `device.env` e passa endpoint/token alla
+build Xcode tramite una xcconfig temporanea protetta. I placeholder non
+configurati vengono ignorati: senza `MOBILE_API_*`
 la review live resta non configurata; senza `DAILY_KANJI_IOS_SYNC_*` l'app usa
 fallback packaged/cache per Daily Kanji e widget. I token non vanno committati.
 Dopo una build installata con `MOBILE_API_*`, l'app carica la review globale
 live ogni volta che viene aperta o riportata in foreground; il grading nativo
 richiede rete. Le notifiche push usano APNs solo nelle build firmate con un
-Apple Developer team che supporta Push Notifications: le build Personal Team
-restano installabili senza `aps-environment`, mentre `DAILY_KANJI_ENABLE_APNS=1`
-fa usare `DailyKanjiPush.entitlements` quando il provisioning lo supporta. Il
+Apple Developer team che supporta Push Notifications.
+`DAILY_KANJI_ENABLE_APNS=1` fa usare `DailyKanjiPush.entitlements` quando il
+provisioning lo supporta. Il
 processo di avvio e ogni ritorno in foreground leggono lo stato notifiche senza
 mostrare richieste di permesso. Il prompt di sistema viene avviato soltanto dal
 tap esplicito su `Attiva notifiche`; se l'autorizzazione e gia presente, l'app
@@ -397,7 +353,7 @@ Per slice che toccano signing/widget su device:
 
 ```sh
 cd apps/daily-kanji-ios
-./scripts/xcode-renew.sh
+./scripts/install-device.sh
 ```
 
 Per slice che toccano exporter, API, webapp o DB:

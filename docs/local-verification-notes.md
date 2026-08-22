@@ -225,17 +225,15 @@ Per validare il percorso che registra davvero il widget su iPhone fisico:
 
 ```sh
 cd apps/daily-kanji-ios
-./scripts/xcode-renew.sh
+./scripts/install-device.sh
 ```
 
-Su questo setup il rinnovo da CLI e' stato verificato via CoreDevice anche senza
-cavo quando l'iPhone risulta `transportType: localNetwork`. Sideloadly rimane
-diagnostico: installa la app principale, ma non registra la WidgetKit extension
-nella gallery widget.
-
-Per il job unattended e' preferibile l'UDID hardware stabile mostrato da Xcode:
-l'UUID interno CoreDevice puo cambiare. Il tunnel Wi-Fi non e' destinato a
-restare connesso quando inattivo; CoreDevice lo ricrea al bisogno.
+Il comando e' manuale e one-shot. Usa l'UDID hardware stabile, raggiunge il
+device via cavo o `localNetwork`, crea una build `Release` con signing automatico
+del team Apple Developer `F5U46464YH`, valida i profili embedded di app e widget
+per almeno 30 giorni, verifica la firma, installa e avvia l'app. Non crea job,
+retry o stato persistente. Sideloadly rimane diagnostico: non registra la
+WidgetKit extension nella gallery widget su questo setup.
 
 ### Monitor Review Live
 
@@ -264,65 +262,18 @@ server-side dietro l'endpoint deve fare una sola due-count check Turso per run
 e inviare push solo se serve. Secret APNs/mobile/monitor e token Turso non
 devono mai essere committati.
 
-Il rinnovo automatico launchd usa un plist persistente con `RunAtLoad` e
-`StartInterval=3600`: esegue un check al caricamento/login e ogni ora. Il
-wrapper legge scadenza minima e UUID dei provisioning profile embedded dallo
-snapshot atomico
-`~/Library/Application Support/DailyKanji/profile-state.env`; il precedente
-`profile-expiry.epoch` resta solo un fallback di migrazione finche lo snapshot
-non esiste. Prima delle
-ultime 48 ore (`RENEW_BEFORE_EXPIRY_SECONDS=172800`) esce senza lock,
-CoreDevice, package o Xcode; una scadenza mancante o corrotta richiede invece un
-tentativo.
+La configurazione privata resta nel solo file locale protetto:
 
-Nella finestra preventiva il wrapper preflighta CoreDevice e Developer Disk
-Image, esegue il package dalla root del repo e usa `xcode-renew.sh` con build
-fisica `Release` di default. Device offline/bloccato, DDI, package, signing,
-build, install o profili invalidi producono exit non-zero. Il job non riscrive
-il proprio plist e non crea child process: il successivo `StartInterval`
-fornisce il retry. Dopo un install riuscito, `xcode-renew.sh` registra
-in un unico file atomico scadenza minima e due UUID esatti leggendo gli
-`embedded.mobileprovision` di app e widget. Su un tentativo dovuto/forzato, il
-wrapper sposta temporaneamente dalla cache Xcode solo i file di quegli UUID: se
-build, install o validazione falliscono li ripristina dal backup mirato e
-mantiene l'exit code reale; dopo una scadenza realmente avanzata elimina il
-backup. Nessun profilo di altri progetti viene selezionato per bundle id. Solo
-una scadenza valida, successiva alla precedente e oltre la finestra preventiva
-aggiorna
-`~/Library/Application Support/DailyKanji/last-renew-success.epoch`; le opzioni
-legacy `--mark-success-now` e `--reschedule-only` non creano successi sintetici.
-L'installer mantiene un backup del plist precedente fino al bootstrap del nuovo:
-se il bootstrap fallisce, ripristina il file precedente e tenta di ricaricarlo,
-ma restituisce comunque l'exit code originale dell'installazione fallita.
-
-Se un comando `devicectl` fallisce con le firme osservate di tunnel/RSD stale
-(`CoreDeviceError 4000`, `RemotePairingError 1001`, `-402653181`/
-`0xE8000003` o timeout di negoziazione), il wrapper condiviso riavvia una sola
-volta i servizi utente `com.apple.CoreDevice.remotepairingd` e
-`com.apple.CoreDevice.CoreDeviceService`, attende 4 secondi e ritenta una sola
-volta il comando. Lo stesso budget viene ereditato da `xcode-renew.sh`, quindi
-un'attivazione non puo creare loop o ripetere build. Errori locked, device non
-trovato, offline generico o pairing perso non riavviano servizi; vengono lasciati
-al retry orario. Il recovery non usa privilegi, non modifica il pairing e non
-tocca `com.apple.remoted`.
-
-I log unattended sono in
-`~/Library/Logs/DailyKanji/xcode-renew.out.log` e
-`~/Library/Logs/DailyKanji/xcode-renew.err.log`.
-
-Installazione/migrazione e diagnosi:
-
-```sh
-cd apps/daily-kanji-ios
-DEVICE_ID=<coredevice-id-or-udid> ./scripts/install-renew-launchd.sh
-./scripts/xcode-renew-if-needed.sh --status
-./scripts/xcode-renew-if-needed.sh --force
+```text
+~/Library/Application Support/DailyKanji/device.env
 ```
 
-Se il rinnovo fallisce con `No Accounts`, `No profiles` o errori di provisioning,
-aprire Xcode Settings > Accounts, verificare il Personal Team, aprire
-`apps/daily-kanji-ios/DailyKanji.xcodeproj` e lasciare Xcode rigenerare i profili
-per `dev.local.daily-kanji` e `dev.local.daily-kanji.widget`.
+Il file, con permessi `0600`, contiene `DEVICE_ID` e opzionalmente le coppie
+endpoint/token e `DAILY_KANJI_ENABLE_APNS=1`. L'installer crea una xcconfig
+temporanea protetta, mantiene la DerivedData dietro una directory radice `0700`
+e non stampa segreti o identificatori del device. Se firma o profili non sono
+pronti, aprire Xcode > Settings > Accounts, aggiornare il team e ripetere il
+comando.
 
 Per abilitare la sync dataset runtime privata nella build locale, imposta questi
 build setting in Xcode o passali a `xcodebuild`/script wrapper:
@@ -346,8 +297,8 @@ leggere solo la cache cards-only condivisa o il bundle cards-only. Se i valori
 `Live review non configurata` e non abilita grading nativo. La richiesta
 permesso notifiche viene fatta solo quando
 `MOBILE_API_*` e' configurato e la build e' firmata con entitlement
-`aps-environment`. Le build Personal Team usano il default senza push; imposta
-`DAILY_KANJI_ENABLE_APNS=1` solo con un Apple Developer team/provisioning che
+`aps-environment`. Imposta `DAILY_KANJI_ENABLE_APNS=1` solo con un Apple
+Developer team/provisioning che
 supporta Push Notifications. La widget extension resta senza push e senza rete.
 
 Per aggiornare lo snapshot offline e gli audio packaged usati dall'app iOS:
@@ -361,7 +312,7 @@ Il comando scrive `apps/daily-kanji-ios/App/Resources/daily-kanji-cards.json`,
 `apps/daily-kanji-ios/WidgetExtension/Resources/daily-kanji-widget-cards.json`,
 poi esegue
 `daily-kanji:verify-resources`. I due workflow iOS `scripts/package-ipa.sh` e
-`scripts/xcode-renew.sh` rieseguono lo stesso verifier prima di `xcodegen
+`scripts/install-device.sh` rieseguono lo stesso verifier prima di `xcodegen
 generate`, cosi' una build/install viene bloccata se il bundle contiene ancora
 la card sample, un dataset stale, audio referenziati ma non packaged, oppure una
 proiezione widget assente, divergente o contenente il glossary. Le risorse sono

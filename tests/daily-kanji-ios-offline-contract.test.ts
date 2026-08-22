@@ -1,4 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
+import { access, readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 
 import { parse } from "yaml";
@@ -49,6 +49,19 @@ const forbiddenDatabasePatterns = [
 ];
 
 describe("daily kanji iOS offline contract", () => {
+  it("pins automatic signing to the paid Apple Developer team", async () => {
+    const project = parse(await readFile(projectConfigPath, "utf8")) as {
+      settings?: {
+        base?: Record<string, string>;
+      };
+    };
+
+    expect(project.settings?.base).toMatchObject({
+      CODE_SIGN_STYLE: "Automatic",
+      DEVELOPMENT_TEAM: "F5U46464YH"
+    });
+  });
+
   it("declares an offline-first personal app contract", async () => {
     const contract = JSON.parse(await readFile(contractPath, "utf8")) as {
       entitlements: {
@@ -259,6 +272,13 @@ describe("daily kanji iOS offline contract", () => {
         "DailyKanji",
         "CODE_SIGN_ENTITLEMENTS"
       )
+    ).toBe("$(DAILY_KANJI_APP_ENTITLEMENTS)");
+    expect(
+      readYamlTargetBaseSetting(
+        await readFile(projectConfigPath, "utf8"),
+        "DailyKanji",
+        "DAILY_KANJI_APP_ENTITLEMENTS"
+      )
     ).toBe("DailyKanji.entitlements");
     expect(
       readYamlTargetBaseSetting(
@@ -324,7 +344,7 @@ describe("daily kanji iOS offline contract", () => {
     };
     const workflowScriptPaths = [
       path.join(iosRoot, "scripts", "package-ipa.sh"),
-      path.join(iosRoot, "scripts", "xcode-renew.sh")
+      path.join(iosRoot, "scripts", "install-device.sh")
     ];
 
     expect(packageJson.scripts?.["daily-kanji:verify-resources"]).toBe(
@@ -342,6 +362,30 @@ describe("daily kanji iOS offline contract", () => {
       expect(verifyIndex).toBeGreaterThanOrEqual(0);
       expect(xcodegenIndex).toBeGreaterThanOrEqual(0);
       expect(verifyIndex).toBeLessThan(xcodegenIndex);
+    }
+  });
+
+  it("keeps legacy renewal entrypoints and test-lane references absent", async () => {
+    const legacyPaths = [
+      "apps/daily-kanji-ios/scripts/install-renew-launchd.sh",
+      "apps/daily-kanji-ios/scripts/xcode-renew-if-needed.sh",
+      "apps/daily-kanji-ios/scripts/xcode-renew.sh",
+      "apps/daily-kanji-ios/scripts/coredevice-recovery.sh",
+      "tests/daily-kanji-ios-renew-profile-state.test.ts",
+      "tests/daily-kanji-ios-renew-launchd-reschedule.test.ts",
+      "tests/daily-kanji-ios-renew-launchd.test.ts",
+      "tests/daily-kanji-ios-coredevice-recovery.test.ts"
+    ];
+    const testLanes = await readFile(
+      path.join(process.cwd(), "scripts", "vitest-test-lanes.ts"),
+      "utf8"
+    );
+
+    for (const legacyPath of legacyPaths) {
+      await expect(
+        access(path.join(process.cwd(), legacyPath))
+      ).rejects.toMatchObject({ code: "ENOENT" });
+      expect(testLanes).not.toContain(legacyPath);
     }
   });
 });
