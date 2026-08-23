@@ -42,15 +42,21 @@ describe("proxy", () => {
     expect(response.headers.get("location")).toBeNull();
   });
 
-  it("lets the Daily Kanji iOS dataset route reach its own bearer-token auth", () => {
+  it("lets Daily Kanji snapshot routes reach their own bearer-token auth", () => {
     enableAuth();
 
-    const response = proxy(
-      new NextRequest("https://example.test/api/daily-kanji/ios-dataset")
-    );
+    for (const pathname of [
+      "/api/daily-kanji/ios-dataset",
+      "/api/daily-kanji/ios-glossary",
+      "/api/internal/daily-kanji/refresh"
+    ]) {
+      const response = proxy(
+        new NextRequest(`https://example.test${pathname}`)
+      );
 
-    expect(response.status).toBe(200);
-    expect(response.headers.get("location")).toBeNull();
+      expect(response.status).toBe(200);
+      expect(response.headers.get("location")).toBeNull();
+    }
   });
 
   it("lets Daily Kanji mobile review routes reach their own bearer-token auth", () => {
