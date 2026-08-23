@@ -28,6 +28,7 @@ import {
 } from "./start-e2e-config.ts";
 import { ensureStartE2EDatabaseSnapshot } from "./start-e2e-snapshot.ts";
 import { resolveDatabaseLocation } from "../src/db/config.ts";
+import { refreshReviewCardIdentityCache } from "../src/db/backfills/review-card-identity.ts";
 
 const contentRoot = path.resolve(process.cwd(), "content");
 const nextBuildIdPath = path.resolve(process.cwd(), ".next", "BUILD_ID");
@@ -56,6 +57,9 @@ try {
   await seedE2EUserSettings(database);
   await seedDuelMastersReviewBaseline(database);
   await seedKanjiClashE2EFixture(database);
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: ["media-kanji-clash-e2e"]
+  });
 } finally {
   closeDatabaseClient(database);
 }

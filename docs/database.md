@@ -123,12 +123,8 @@ Apri Drizzle Studio:
 - `src/db/queries/*`: helper tipizzati per media, lessons, glossary,
   cards/review, sessioni Kanji Clash, sessioni Katakana Speed e sessioni Pitch
   Accent
-- `src/instrumentation.ts`: warm-up best-effort e non bloccante delle cache
-  dati piu pesanti dopo l'avvio del runtime
-- Per confrontare cold vs warm in pratica, avvia `pnpm start`, misura la
-  prima navigazione dopo un riavvio e confrontala con la stessa rotta a cache
-  calda; il warm-up in background non deve allungare il tempo di readiness del
-  server.
+- `src/instrumentation.ts`: hook intenzionalmente vuoto; i cold start non devono
+  eseguire query speculative prima di una richiesta reale
 - `scripts/db-migrate.ts`: entrypoint CLI per applicare le migrazioni
 - `scripts/db-seed.ts`: entrypoint CLI per importare il contenuto reale nel DB locale
 
@@ -148,6 +144,7 @@ Tabelle incluse nel perimetro del task:
 - `entry_link`
 - `card`
 - `card_entry_link`
+- `review_card_identity`
 - `review_subject_state`
 - `review_subject_log`
 - `kanji_clash_pair_state`
@@ -204,6 +201,17 @@ Tabelle incluse nel perimetro del task:
   `stability`, `difficulty`, `due_at`, `last_reviewed_at`,
   `last_interaction_at`, `lapses`, `reps`, `scheduled_days`,
   `learning_steps` e `scheduler_version`.
+- `review_card_identity` e la proiezione materializzata e indicizzata della
+  parte stabile dell'identita card -> subject. Il runtime la unisce a `card`
+  per leggere stato editoriale, media e lesson live; migrazioni e import la
+  aggiornano atomicamente e verificano che non esistano card senza identita.
+  Il conteggio dei link guida preserva la regola singleton senza ripetere
+  aggregazioni su `card_entry_link` nelle query runtime.
+  La CTE completa con link, aggregazioni e canonicalizzazione resta confinata
+  al rebuild, non alle query review, Daily Kanji o Kanji Clash ordinarie. Un
+  la versione salvata su ogni riga impedisce ai deploy successivi di ripetere
+  il rebuild e permette di rilevare proiezioni obsolete; gli import aggiornano
+  solo i media toccati e saltano le righe invariate.
 - L'identita del subject resta entry-level o cross-media solo per card il cui
   `front` coincide con la forma canonica della entry collegata. Se una card usa
   la stessa entry come ancora editoriale ma mostra un chunk piu lungo o
@@ -228,7 +236,10 @@ Tabelle incluse nel perimetro del task:
 - La migrazione SQL `drizzle/0011_global_review_subjects.sql` crea
   `review_subject_state` e `review_subject_log`; il contenuto sincronizzato via
   importer crea e riallinea direttamente `review_subject_state`, quindi
-  `pnpm db:migrate` non esegue piu un backfill automatico dedicato. La cleanup migration
+  `pnpm db:migrate` non esegue piu un backfill automatico dedicato di quello
+  stato. Garantisce invece la copertura di `review_card_identity`, ricostruendo
+  questa cache derivata solo alla prima installazione, quando manca copertura o
+  quando cambia la versione della proiezione. La cleanup migration
   `drizzle/0014_oval_expediter.sql` elimina poi le vecchie tabelle card-level
   `review_state` e `review_log`, ormai non piu usate dal runtime. Un recovery
   manuale resta disponibile con `pnpm db:backfill-review-subject-state`, ma non

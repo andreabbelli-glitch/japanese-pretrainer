@@ -1,6 +1,7 @@
 import { eq, inArray, sql } from "drizzle-orm";
 
 import type { DatabaseClient } from "../../../db/client.ts";
+import { refreshReviewCardIdentityCache } from "../../../db/backfills/review-card-identity.ts";
 import {
   card,
   cardEntryLink,
@@ -226,6 +227,12 @@ export async function executeContentWorkspaceSyncPlan(
   }
 
   await pruneOrphanedCrossMediaGroups(transaction);
+  await refreshReviewCardIdentityCache(transaction, {
+    mediaIds: [
+      ...input.plan.mediaPlans.map((entry) => entry.plan.media.row.id),
+      ...summary.archivedMediaIds
+    ]
+  });
   await syncReviewSubjectState(transaction, {
     now: new Date(input.nowIso)
   });

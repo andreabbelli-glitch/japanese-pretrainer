@@ -9,6 +9,7 @@ import {
   term
 } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 
 type SeedKanjiClashFixtureOptions = {
   includeSecondaryMedia?: boolean;
@@ -25,6 +26,12 @@ export async function seedKanjiClashFixture(
   if (options.includeSecondaryMedia) {
     await seedBetaMedia(database, now);
   }
+
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: options.includeSecondaryMedia
+      ? ["media-alpha", "media-beta"]
+      : ["media-alpha"]
+  });
 }
 
 async function seedAlphaMedia(database: DatabaseClient, now: string) {

@@ -260,10 +260,10 @@ export async function listReviewCardIdsByEntryRefs(
     .map((ref) => quoteSqlString(ref.entryId));
   const matchClauses = [
     termEntryIds.length > 0
-      ? `(cel.entry_type = 'term' AND cel.entry_id IN (${termEntryIds.join(", ")}))`
+      ? `(rci.entry_type = 'term' AND rci.entry_id IN (${termEntryIds.join(", ")}))`
       : null,
     grammarEntryIds.length > 0
-      ? `(cel.entry_type = 'grammar' AND cel.entry_id IN (${grammarEntryIds.join(", ")}))`
+      ? `(rci.entry_type = 'grammar' AND rci.entry_id IN (${grammarEntryIds.join(", ")}))`
       : null
   ].filter((clause): clause is string => clause !== null);
 
@@ -272,8 +272,10 @@ export async function listReviewCardIdsByEntryRefs(
   }
 
   const rows = await database.all<{ cardId: string }>(`
-    SELECT DISTINCT c.id AS cardId
-    FROM card c
+    SELECT DISTINCT rci.card_id AS cardId
+    FROM review_card_identity rci
+    INNER JOIN card c
+      ON c.id = rci.card_id
     INNER JOIN lesson l
       ON l.id = c.lesson_id
     INNER JOIN lesson_progress lp
@@ -281,35 +283,8 @@ export async function listReviewCardIdsByEntryRefs(
     WHERE c.status != 'archived'
       AND l.status = 'active'
       AND lp.status = 'completed'
-      AND EXISTS (
-        SELECT 1
-        FROM card_entry_link cel
-        WHERE cel.card_id = c.id
-          AND (
-            cel.relationship_type = 'primary'
-            OR NOT EXISTS (
-              SELECT 1
-              FROM card_entry_link cel_primary
-              WHERE cel_primary.card_id = c.id
-                AND cel_primary.relationship_type = 'primary'
-            )
-          )
-          AND (${matchClauses.join(" OR ")})
-      )
-      AND (
-        SELECT COUNT(*)
-        FROM card_entry_link cel_count
-        WHERE cel_count.card_id = c.id
-          AND (
-            cel_count.relationship_type = 'primary'
-            OR NOT EXISTS (
-              SELECT 1
-              FROM card_entry_link cel_primary
-              WHERE cel_primary.card_id = c.id
-                AND cel_primary.relationship_type = 'primary'
-            )
-          )
-      ) = 1
+      AND rci.driving_link_count = 1
+      AND (${matchClauses.join(" OR ")})
   `);
 
   return rows.map((row) => row.cardId);

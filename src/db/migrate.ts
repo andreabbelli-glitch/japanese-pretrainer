@@ -10,6 +10,7 @@ import { card, grammarPattern } from "./schema/index.ts";
 import { getFsrsOptimizerSnapshot } from "../features/fsrs-optimizer/server/settings-store.ts";
 import { persistFsrsParameterSetsForSnapshot } from "../features/fsrs-optimizer/server/parameter-set.ts";
 import { backfillLegacyReviewEvents } from "./backfills/review-event-ledger.ts";
+import { ensureReviewCardIdentityCache } from "./backfills/review-card-identity.ts";
 import { backfillReviewMemoryKeysOnce } from "../features/review/server/subject-state-backfill.ts";
 
 export async function runMigrations(
@@ -19,6 +20,7 @@ export async function runMigrations(
   await migrate(database, { migrationsFolder });
   await backfillLegacyReviewEvents(database);
   await backfillNormalizedFront(database);
+  await ensureReviewCardIdentityCache(database);
   await backfillReviewMemoryKeysOnce(database);
   await backfillGrammarSearchRomaji(database);
   await persistFsrsParameterSetsForSnapshot(

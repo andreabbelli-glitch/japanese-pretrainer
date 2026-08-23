@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "./client.ts";
+import { refreshReviewCardIdentityCache } from "./backfills/review-card-identity.ts";
 import { buildScopedEntryId } from "../features/study/model/entry-id.ts";
 import { buildReviewMemoryKey } from "../features/review/model/recall-task.ts";
 import {
@@ -769,5 +770,9 @@ export async function seedDevelopmentDatabase(
           updatedAt: sql`excluded.updated_at`
         }
       });
+
+    await refreshReviewCardIdentityCache(tx, {
+      mediaIds: [developmentFixture.mediaId]
+    });
   });
 }

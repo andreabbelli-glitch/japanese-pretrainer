@@ -12,6 +12,7 @@ import {
   userSetting
 } from "@/db/schema";
 import type { DatabaseClient } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import {
   buildReviewMemoryKey,
   REVIEW_MEMORY_KEY_VERSION
@@ -180,6 +181,9 @@ export async function createIsolatedNewMediaFixture(
   await client.insert(card).values(cards);
   await client.insert(term).values(terms);
   await client.insert(cardEntryLink).values(entryLinks);
+  await refreshReviewCardIdentityCache(client, {
+    mediaIds: [input.mediaId]
+  });
 
   return {
     cardIds: cards.map((item) => item.id),
@@ -406,6 +410,9 @@ async function insertReviewBundles(
     .insert(lessonProgress)
     .values(bundles.map((bundle) => bundle.lessonProgress));
   await database.insert(card).values(bundles.map((bundle) => bundle.card));
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: seeds.map((seed) => seed.mediaId)
+  });
 }
 
 function buildReviewBundle(

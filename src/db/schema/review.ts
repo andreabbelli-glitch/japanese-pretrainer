@@ -98,6 +98,30 @@ export const cardEntryLink = sqliteTable(
   ]
 );
 
+export const reviewCardIdentity = sqliteTable(
+  "review_card_identity",
+  {
+    cardId: text("card_id")
+      .primaryKey()
+      .references(() => card.id, { onDelete: "cascade" }),
+    hasPrimary: integer("has_primary", { mode: "boolean" })
+      .notNull()
+      .default(false),
+    drivingLinkCount: integer("driving_link_count").notNull().default(0),
+    entryType: text("entry_type", { enum: entryTypeValues }),
+    entryId: text("entry_id"),
+    crossMediaGroupId: text("cross_media_group_id"),
+    canonicalSubjectKey: text("canonical_subject_key").notNull(),
+    recallTask: text("recall_task", { enum: reviewRecallTaskValues }).notNull(),
+    memoryKey: text("memory_key").notNull(),
+    projectionVersion: integer("projection_version").notNull().default(1)
+  },
+  (table) => [
+    index("review_card_identity_memory_idx").on(table.memoryKey),
+    index("review_card_identity_entry_idx").on(table.entryType, table.entryId)
+  ]
+);
+
 export const reviewSubjectState = sqliteTable(
   "review_subject_state",
   {

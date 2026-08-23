@@ -113,23 +113,21 @@ function buildCandidateCardScopeCtesSql() {
         cm.entryId
       FROM candidate_members cm
     ),
-    candidate_cards AS (
-      SELECT DISTINCT
-        cel.card_id AS cardId
-      FROM candidate_entry_ids cei
-      INNER JOIN card_entry_link cel
-        ON cel.entry_type = 'term'
-       AND cel.entry_id = cei.entryId
-    ),
-    visible_candidate_cards AS (
+    canonical_candidate_term_links AS (
       SELECT
-        cc.cardId,
+        rci.card_id AS cardId,
         c.card_type AS cardType,
         c.front AS front,
-        c.normalized_front AS normalizedFront
-      FROM candidate_cards cc
+        c.normalized_front AS normalizedFront,
+        rci.entry_id AS entryId,
+        rci.has_primary AS hasPrimary
+      FROM candidate_entry_ids cei
+      INNER JOIN review_card_identity rci
+        ON rci.entry_type = 'term'
+       AND rci.entry_id = cei.entryId
+       AND rci.driving_link_count = 1
       INNER JOIN card c
-        ON c.id = cc.cardId
+        ON c.id = rci.card_id
       INNER JOIN lesson l
         ON l.id = c.lesson_id
       INNER JOIN lesson_progress lp
@@ -137,52 +135,6 @@ function buildCandidateCardScopeCtesSql() {
       WHERE c.status = 'active'
         AND l.status = 'active'
         AND lp.status = 'completed'
-    )
-  `;
-}
-
-function buildCanonicalCandidateTermLinksCtesSql() {
-  return `
-    driving_candidate_links AS (
-      SELECT
-        vcc.cardId,
-        vcc.cardType,
-        vcc.front,
-        vcc.normalizedFront,
-        cel.entry_id AS entryId,
-        cel.entry_type AS entryType,
-        cel.relationship_type AS relationshipType
-      FROM visible_candidate_cards vcc
-      INNER JOIN card_entry_link cel
-        ON cel.card_id = vcc.cardId
-      WHERE cel.relationship_type = 'primary'
-        OR NOT EXISTS(
-          SELECT 1
-          FROM card_entry_link cel_primary
-          WHERE cel_primary.card_id = vcc.cardId
-            AND cel_primary.relationship_type = 'primary'
-        )
-    ),
-    driving_candidate_link_counts AS (
-      SELECT
-        dcl.cardId,
-        COUNT(*) AS linkCount
-      FROM driving_candidate_links dcl
-      GROUP BY dcl.cardId
-    ),
-    canonical_candidate_term_links AS (
-      SELECT
-        dcl.cardId,
-        dcl.cardType,
-        dcl.front,
-        dcl.normalizedFront,
-        dcl.entryId,
-        dcl.relationshipType
-      FROM driving_candidate_links dcl
-      INNER JOIN driving_candidate_link_counts dclc
-        ON dclc.cardId = dcl.cardId
-      WHERE dclc.linkCount = 1
-        AND dcl.entryType = 'term'
     )
   `;
 }
@@ -199,7 +151,7 @@ function buildEligibleCanonicalTermLinksCteSql() {
         ON t.id = cctl.entryId
       WHERE (
         cctl.cardType != 'concept'
-        OR cctl.relationshipType != 'primary'
+        OR cctl.hasPrimary = 0
         OR cctl.normalizedFront IS NULL
         OR cctl.normalizedFront = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
         OR cctl.normalizedFront = ${normalizeReviewSubjectSurfaceSql("t.reading")}
@@ -226,7 +178,6 @@ export function buildListEligibleKanjiClashSubjectsSql(options?: {
     ${buildEligibleReviewSubjectsCteSql()},
     ${buildCandidateMembersCteSql(mediaFilterClause)},
     ${buildCandidateCardScopeCtesSql()},
-    ${buildCanonicalCandidateTermLinksCtesSql()},
     ${buildEligibleCanonicalTermLinksCteSql()}
     SELECT
       ectl.front AS cardFront,

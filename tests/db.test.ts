@@ -49,6 +49,7 @@ import {
   buildReviewSubjectIdentityCteSql,
   quoteSqlString
 } from "@/db/queries/review-query-helpers";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import {
   buildReviewSubjectEntryLookup,
   deriveReviewSubjectIdentity,
@@ -1001,6 +1002,9 @@ describe("database layer", () => {
       entryId: developmentFixture.termDbId,
       relationshipType: "primary"
     });
+    await refreshReviewCardIdentityCache(database, {
+      mediaIds: [developmentFixture.mediaId]
+    });
 
     const entryLookup = buildReviewSubjectEntryLookup({
       grammar: [],
@@ -1111,6 +1115,9 @@ describe("database layer", () => {
       suspended: false,
       createdAt: "2026-03-09T09:00:00.000Z",
       updatedAt: "2026-03-09T09:00:00.000Z"
+    });
+    await refreshReviewCardIdentityCache(database, {
+      mediaIds: [developmentFixture.mediaId]
     });
 
     const entryLookup = buildReviewSubjectEntryLookup({

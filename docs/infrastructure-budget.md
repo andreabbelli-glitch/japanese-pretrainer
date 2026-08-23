@@ -46,6 +46,15 @@ e ogni voto mobile ricaricava una sessione completa. Le card idratate della
 review condividevano un tag globale, per cui un voto invalidava anche contenuti
 stabili non modificati.
 
+Un secondo audit sul Turso remoto ha individuato un moltiplicatore rimasto
+nella costruzione delle card Daily Kanji. La CTE `subject_identity` ricostruiva
+la canonical identity di tutte le card a ogni query usando `card`,
+`card_entry_link`, una sottoquery correlata e aggregazioni. Turso ha osservato
+31.900.000 righe lette in 6 esecuzioni della stessa query: circa 5,32 milioni di
+righe per esecuzione. Gli indici attesi erano presenti; il problema era la
+ricostruzione della proiezione dentro query successive con join e window
+function, non un indice mancante.
+
 ## Architettura vincolata al budget
 
 ### Snapshot Daily Kanji
@@ -101,6 +110,33 @@ Le ottimizzazioni non rilassano la correttezza delle mutazioni:
 - le modifiche manuali rare (known/learning/reset/suspend) invalidano il
   contenuto card globale per evitare dati editoriali obsoleti.
 
+L'identita canonica delle card non viene piu ricalcolata nelle query runtime.
+La tabella `review_card_identity` materializza la parte stabile della
+proiezione (`canonical_subject_key`, recall task, memory key, link guida e
+numero di link guida):
+
+- la prima migrazione (o un cambio di versione della proiezione) esegue un
+  backfill di tutte le card, incluse quelle archiviate che potrebbero essere
+  riattivate; i deploy successivi fanno soltanto il controllo di copertura e
+  non rilanciano il rebuild se la cache e completa;
+- ogni import contenuti aggiorna nello stesso transaction scope soltanto i
+  media toccati e l'upsert scrive solo le identita effettivamente cambiate;
+- dopo ogni refresh un controllo di copertura confronta card e identita e fa
+  fallire migrazione/import se anche una sola card resta scoperta;
+- le query runtime fanno un join primary-key tra `card` e
+  `review_card_identity`; stato, media, lesson e ordinamento restano letti dalla
+  card live, quindi suspend/reset non rendono stale la proiezione;
+- anche il lookup delle card eseguito durante un voto review e la selezione
+  Kanji Clash usano l'indice `(entry_type, entry_id)`, senza scansioni di tutte
+  le card o sottoquery correlate su `card_entry_link`.
+
+Sul DB SQLite release da 3.811 card, a parita di dati, le tre query card dello
+snapshot sono passate complessivamente da 1.419.050 a 378.882 VM step (-73%).
+Le singole riduzioni sono state 278.636 -> 72.440, 532.772 -> 195.850 e 607.642
+-> 110.592; le full scan osservate sono passate da 3.810/4.474/3.810 a
+0/664/0. Il rebuild piu complesso resta confinato a migrazioni e import, non al
+cron quotidiano ne alle route iOS.
+
 Il runtime non esegue piu' warmup speculativi al cold start: una Function che
 parte ma non serve `/review` produce zero query di review.
 
@@ -112,20 +148,21 @@ confrontare le due architetture.
 
 | Voce | Prima | Dopo |
 | --- | ---: | ---: |
-| Build card dinamiche | incluse in ogni GET | ~1.418.793 VM step, max 34/mese |
+| Build card dinamiche | incluse in ogni GET | ~378.882 VM step, max 34/mese |
 | Build glossario | incluse in ogni GET | ~710.294 VM step, max 6/mese |
-| Proxy mensile snapshot | ~383,2 M VM step | ~52,5 M VM step |
+| Proxy mensile snapshot | ~383,2 M VM step | ~17,1 M VM step |
 | Payload sync ordinario | 3.890.395 byte | 415.098 byte osservati sul DB remoto |
 | Query editoriali su GET iOS | 5 gruppi | 0 |
 | Letture snapshot su GET iOS | 0 | 1 riga per endpoint |
 | Warmup review per cold start | 1 sequenza globale | 0 |
 | Reload sessione dopo `good/easy` mobile | ogni voto | ogni 9 voti al massimo con buffer pieno |
 
-La riduzione modellata e' circa 86% sul lavoro mensile degli snapshot e 89% sul
+La riduzione modellata e' circa 96% sul lavoro mensile degli snapshot e 89% sul
 payload ordinario. Anche ipotizzando una doppia esecuzione accidentale di ogni
-build, il proxy snapshot resta circa 105 milioni, il 21% del limite Turso Free
-di 500 milioni di righe lette. Il confronto e' deliberatamente severo, poiche'
-VM step e righe lette non sono la stessa unita'.
+build, il proxy snapshot resta circa 34,2 milioni, meno del 7% del limite Turso
+Free di 500 milioni di righe lette. Il confronto resta un proxy: VM step e righe
+lette fatturate non sono la stessa unita, e il dato Turso va verificato dopo il
+deploy sulla query materializzata.
 
 Il contratto iOS modella inoltre 15.000 voti review al mese (500 al giorno),
 1.875 reload di sessione grazie al buffer, 70 tentativi automatici di sync card
@@ -156,6 +193,8 @@ dimensioni e durata dell'ultima build. Dopo il deploy verificare:
 - `refreshNotBefore` coerente con 22 ore / 6 giorni;
 - risposta `200` o `304` dai due endpoint autenticati;
 - nessun aumento anomalo di rows read nel dashboard Turso;
+- `review_card_identity` con lo stesso numero di righe di `card` e zero card
+  scoperte;
 - invocazioni, CPU e origin transfer nel dashboard Vercel molto sotto il 50%
   del piano.
 

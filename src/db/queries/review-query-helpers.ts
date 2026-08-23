@@ -67,6 +67,44 @@ export function buildReviewSubjectIdentityCteSql(options?: {
     : "";
 
   return `
+    subject_identity AS (
+      SELECT
+        c.id AS card_id,
+        c.media_id AS media_id,
+        c.status AS card_status,
+        c.card_type AS card_type,
+        c.lesson_id AS lesson_id,
+        c.order_index AS order_index,
+        c.created_at AS created_at,
+        rci.has_primary AS has_primary,
+        rci.driving_link_count AS driving_link_count,
+        rci.entry_type AS entry_type,
+        rci.entry_id AS entry_id,
+        rci.cross_media_group_id AS cross_media_group_id,
+        rci.canonical_subject_key AS canonical_subject_key,
+        rci.recall_task AS recall_task,
+        rci.memory_key AS memory_key,
+        rci.memory_key AS subject_key
+      FROM card c
+      INNER JOIN review_card_identity rci
+        ON rci.card_id = c.id
+      WHERE c.status != 'archived'${mediaClause}
+    )
+  `;
+}
+
+export function buildComputedReviewSubjectIdentityCteSql(options?: {
+  includeArchived?: boolean;
+  mediaFilter?: string;
+}) {
+  const statusClause = options?.includeArchived
+    ? ""
+    : "\n        AND c.status != 'archived'";
+  const mediaClause = options?.mediaFilter
+    ? `\n        AND c.media_id IN (${options.mediaFilter})`
+    : "";
+
+  return `
     driving_links AS (
       SELECT
         c.id AS card_id,
@@ -81,7 +119,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
       FROM card c
       INNER JOIN card_entry_link cel
         ON cel.card_id = c.id
-      WHERE c.status != 'archived'${mediaClause}
+      WHERE 1 = 1${statusClause}${mediaClause}
         AND (
           cel.relationship_type = 'primary'
           OR NOT EXISTS(
@@ -112,6 +150,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
         c.order_index AS order_index,
         c.created_at AS created_at,
         COALESCE(dlc.has_primary, 0) AS has_primary,
+        COALESCE(dlc.link_count, 0) AS driving_link_count,
         dlc.entry_type AS entry_type,
         dlc.entry_id AS entry_id,
         CASE
@@ -163,7 +202,7 @@ export function buildReviewSubjectIdentityCteSql(options?: {
       LEFT JOIN grammar_pattern gp
         ON dlc.entry_type = 'grammar'
        AND gp.id = dlc.entry_id
-      WHERE c.status != 'archived'${mediaClause}
+      WHERE 1 = 1${statusClause}${mediaClause}
     ),
     recall_task_identity AS (
       SELECT

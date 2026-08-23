@@ -63,7 +63,10 @@ la scelta privilegia l'avanzamento lineare del curriculum rispetto al semplice
 La review usa un modello canonico a livello subject:
 
 - `review_subject_state` contiene lo stato FSRS globale del subject condiviso;
-- `review_subject_log` registra la cronologia delle risposte a livello subject.
+- `review_subject_log` registra la cronologia delle risposte a livello subject;
+- `review_card_identity` materializza la proiezione stabile card -> subject,
+  cosi le query runtime non ricostruiscono l'identita canonica sull'intero
+  corpus.
 
 La migrazione SQL [`drizzle/0011_global_review_subjects.sql`](./drizzle/0011_global_review_subjects.sql)
 crea le tabelle subject-level. Il flusso normale materializza e riallinea
@@ -548,7 +551,11 @@ Con questo setup, il server usa direttamente Turso come database remoto e non
 crea repliche locali o sync extra. Il cold start non lancia warm-up speculativi:
 le query partono solo per la superficie richiesta. Il dataset iOS usa invece
 snapshot persistenti costruiti dal cron autenticato; le route pubbliche leggono
-una sola riga e non possono avviare build globali.
+una sola riga e non possono avviare build globali. Anche il cron legge
+`review_card_identity` tramite join indicizzato; la proiezione complessa viene
+ricalcolata soltanto alla prima migrazione, quando cambia la sua versione o per
+i media modificati da un import contenuti, con controllo di copertura
+obbligatorio e upsert delle sole righe cambiate.
 
 Il database Turso di produzione risiede in `eu-west-1`; `vercel.json` fissa
 quindi l'unica regione Functions Hobby a `dub1` (Dublino). Mantieni compute e

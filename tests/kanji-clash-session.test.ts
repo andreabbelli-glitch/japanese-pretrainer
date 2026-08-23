@@ -9,6 +9,7 @@ import {
   createDatabaseClient,
   type DatabaseClient
 } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import { runMigrations } from "@/db/migrate";
 import {
   card,
@@ -993,6 +994,9 @@ async function seedManualFrontierFixture(database: DatabaseClient) {
       updatedAt: now
     }))
   );
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: ["media-zeta"]
+  });
 }
 
 async function seedManualIncrementalExpansionFixture(database: DatabaseClient) {
@@ -1138,4 +1142,7 @@ async function seedManualIncrementalExpansionFixture(database: DatabaseClient) {
       updatedAt: now
     }))
   );
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: [mediaId]
+  });
 }

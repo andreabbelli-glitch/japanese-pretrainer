@@ -9,6 +9,7 @@ import {
   createDatabaseClient,
   type DatabaseClient
 } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import { listEligibleKanjiClashSubjects } from "@/db/queries";
 import { runMigrations } from "@/db/migrate";
 import {
@@ -300,6 +301,8 @@ describe("kanji clash eligibility query", () => {
       )
     ]);
 
+    await refreshReviewCardIdentityCache(database);
+
     const subjectKeys = new Set(
       (await listEligibleKanjiClashSubjects(database)).map(
         (subject) => subject.subjectKey
@@ -586,6 +589,8 @@ describe("kanji clash eligibility query", () => {
         now
       )
     ]);
+
+    await refreshReviewCardIdentityCache(database);
 
     const subjectKeys = new Set(
       (await listEligibleKanjiClashSubjects(database)).map(
@@ -1249,6 +1254,8 @@ async function seedKanjiClashEligibilityFixture(database: DatabaseClient) {
       updatedAt: now
     }
   ]);
+
+  await refreshReviewCardIdentityCache(database);
 }
 
 function buildTermRow(

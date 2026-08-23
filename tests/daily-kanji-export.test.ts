@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import { describe, expect, it } from "vitest";
 
 import type { DatabaseClient } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import {
   card,
   cardEntryLink,
@@ -728,6 +729,10 @@ async function seedDailyKanjiCards(database: TestDatabase) {
       rating: "again"
     })
   ]);
+
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: [developmentFixture.mediaId]
+  });
 }
 
 async function seedRecentBucketRegressionCards(database: TestDatabase) {
@@ -804,6 +809,10 @@ async function seedRecentBucketRegressionCards(database: TestDatabase) {
       rating: "hard"
     })
   );
+
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: [developmentFixture.mediaId]
+  });
 }
 
 async function seedLowStabilityBucketRegressionCards(database: TestDatabase) {
@@ -873,6 +882,10 @@ async function seedLowStabilityBucketRegressionCards(database: TestDatabase) {
       state: "review"
     })
   ]);
+
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: [developmentFixture.mediaId]
+  });
 }
 
 async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
@@ -1150,6 +1163,10 @@ async function seedDailyKanjiMediaModeCards(database: TestDatabase) {
       rating: "hard"
     })
   ]);
+
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: [developmentFixture.mediaId, "media_daily_mode_other"]
+  });
 }
 
 async function seedCrossMediaGlossarySearchEntries(database: TestDatabase) {
