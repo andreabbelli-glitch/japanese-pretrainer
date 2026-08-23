@@ -532,6 +532,22 @@ nessun preset e dovuto. I preset vengono elaborati in sequenza, non nel request
 path interattivo, per limitare picchi CPU/memoria e roundtrip Turso sul piano
 gratuito mono-utente.
 
+Lo stesso `vercel.json` registra alle `04:15 UTC` il refresh Daily Kanji su
+`/api/internal/daily-kanji/refresh`. Il job costruisce uno snapshot card al
+massimo ogni 22 ore e uno snapshot glossario al massimo ogni 6 giorni. Le route
+iOS pubbliche non fanno bootstrap. Per preparare o ispezionare gli snapshot
+senza stampare i payload:
+
+```sh
+./scripts/with-node.sh pnpm daily-kanji:snapshot:refresh
+./scripts/with-node.sh pnpm daily-kanji:snapshot:refresh -- --force
+./scripts/with-node.sh pnpm daily-kanji:snapshot:status
+```
+
+`--force` e' riservato a deploy/recovery manuali: bypassa intenzionalmente il
+gate temporale e non va usato in polling. Il budget e il runbook completo sono
+in `docs/infrastructure-budget.md`.
+
 Per Turso remoto, non usare i workflow GitHub come sync generico a ogni push:
 `Sync Turso On Main` e limitato a migrazioni e import media-scoped, mentre il
 backup remoto e manuale perche `turso db export` puo consumare molte `Rows Read`.

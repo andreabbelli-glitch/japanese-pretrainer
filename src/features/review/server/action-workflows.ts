@@ -71,6 +71,7 @@ export async function gradeReviewCardFormWorkflow(
   });
 
   applyReviewActionCachePolicy({
+    affectedCardIds: gradeResult.affectedCardIds,
     includeConsolidation: gradeResult.consolidationChanged,
     mediaId,
     policy: "review"
@@ -108,7 +109,7 @@ export async function runReviewFormMutationWorkflow(
   });
 
   applyReviewActionCachePolicy({
-    includeCardContent: isReviewCardContentMutation(input.kind),
+    includeCardContent: true,
     mediaId: mutationResult.mediaId,
     policy: mutationResult.cachePolicy
   });
@@ -145,6 +146,7 @@ export async function gradeReviewCardSessionWorkflow(
   });
   const invalidateCaches = () =>
     applyReviewActionCachePolicy({
+      affectedCardIds: gradeResult.affectedCardIds,
       includeConsolidation: gradeResult.consolidationChanged,
       mediaId: gradeResult.mediaId,
       policy: "review"
@@ -243,7 +245,7 @@ export async function runReviewSessionMutationWorkflow(
   });
 
   applyReviewActionCachePolicy({
-    includeCardContent: isReviewCardContentMutation(input.kind),
+    includeCardContent: true,
     mediaId: mutationResult.mediaId,
     policy: mutationResult.cachePolicy
   });
@@ -265,8 +267,4 @@ export async function runReviewSessionMutationWorkflow(
       resolvedMediaRows: await mediaRowsPromise
     }
   );
-}
-
-function isReviewCardContentMutation(kind: ReviewMutationKind) {
-  return kind === "reset" || kind === "suspended";
 }

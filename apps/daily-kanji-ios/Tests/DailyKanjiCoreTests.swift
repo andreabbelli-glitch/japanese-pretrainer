@@ -1124,10 +1124,10 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
     }
 
-    func testSyncPolicyRefreshesWhenCacheIsOlderThanFourHours() {
+    func testSyncPolicyRefreshesWhenCacheIsOlderThanTwentyFourHours() {
         let policy = DailyKanjiSyncPolicy()
         let metadata = DailyKanjiCachedDatasetMetadata(
-            cachedAt: now.addingTimeInterval(-(4 * 60 * 60) - 1),
+            cachedAt: now.addingTimeInterval(-(24 * 60 * 60) - 1),
             generatedAt: "2026-06-11T04:00:00.000Z",
             cardCount: 1
         )
@@ -1246,7 +1246,7 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testSyncPolicyIgnoresFutureFailureTimestampAfterClockRollback() {
         let policy = DailyKanjiSyncPolicy(calendar: Self.romeCalendar())
         let staleMetadata = DailyKanjiCachedDatasetMetadata(
-            cachedAt: now.addingTimeInterval(-(5 * 60 * 60)),
+            cachedAt: now.addingTimeInterval(-(25 * 60 * 60)),
             generatedAt: "2026-06-11T03:00:00.000Z",
             cardCount: 1
         )
@@ -1265,7 +1265,7 @@ final class DailyKanjiCoreTests: XCTestCase {
     func testSyncPolicyExponentiallyBacksOffRepeatedFailures() {
         let policy = DailyKanjiSyncPolicy()
         let metadata = DailyKanjiCachedDatasetMetadata(
-            cachedAt: now.addingTimeInterval(-(5 * 60 * 60)),
+            cachedAt: now.addingTimeInterval(-(25 * 60 * 60)),
             generatedAt: "2026-06-11T04:00:00.000Z",
             cardCount: 1
         )
@@ -1335,6 +1335,45 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(cachedMetadata?.cardCount, 1)
         XCTAssertEqual(reloadCount, 1)
         XCTAssertEqual(model.syncState, .idle(source: .cache(metadata: cachedMetadata)))
+    }
+
+    @MainActor
+    func testCardOnlySyncPreservesTheLastAvailableGlossary() async throws {
+        let temporaryDirectory = try Self.makeTemporaryDirectory()
+        defer { Self.removeTemporaryDirectory(temporaryDirectory) }
+        let cacheStore = DailyKanjiCacheStore(
+            directoryURL: temporaryDirectory.appendingPathComponent("Cache", isDirectory: true)
+        )
+        let bundledDataset = try DailyKanjiDataset.decode(
+            jsonData: Self.glossaryDatasetJSON
+        )
+        let bundle = try Self.makeBundle(
+            containing: bundledDataset,
+            in: temporaryDirectory
+        )
+        let cardOnlyDataset = DailyKanjiDataset(
+            version: 1,
+            generatedAt: "2026-06-11T08:00:00.000Z",
+            recentMistakeLookbackDays: 3,
+            cards: try Self.rankedCards(count: 1)
+        )
+        let model = DailyKanjiAppModel(
+            repository: DailyKanjiRepository(bundle: bundle, cacheStore: cacheStore),
+            cacheStore: cacheStore,
+            syncer: MockDailyKanjiSyncer(result: .success(cardOnlyDataset)),
+            now: now
+        )
+
+        await model.syncNow(now: now, force: true)
+
+        XCTAssertEqual(
+            model.glossaryEntries.map(\.id),
+            bundledDataset.glossary?.entries.map(\.id)
+        )
+        XCTAssertEqual(
+            cacheStore.loadSnapshot(now: now)?.dataset.glossary,
+            bundledDataset.glossary
+        )
     }
 
     @MainActor
@@ -2005,6 +2044,67 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertFalse(presentation.canRefresh)
     }
 
+    func testSyncClientLoadsCardsAndGlossaryFromIndependentCachedEndpoints() async throws {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [MockURLProtocol.self]
+        let urlSession = URLSession(configuration: configuration)
+        let cardRequest = LockedBox<URLRequest?>(nil)
+        let glossaryRequest = LockedBox<URLRequest?>(nil)
+        let glossary = try XCTUnwrap(
+            DailyKanjiDataset.decode(jsonData: Self.glossaryDatasetJSON).glossary
+        )
+        let glossaryData = try JSONEncoder().encode(glossary)
+        MockURLProtocol.requestHandler = { request in
+            let isGlossary = request.url?.path.hasSuffix("/ios-glossary") == true
+            if isGlossary {
+                glossaryRequest.value = request
+            } else {
+                cardRequest.value = request
+            }
+
+            return (
+                HTTPURLResponse(
+                    url: request.url!,
+                    statusCode: 200,
+                    httpVersion: nil,
+                    headerFields: isGlossary
+                        ? ["Cache-Control": "private, max-age=604800"]
+                        : ["Cache-Control": "private, max-age=21600"]
+                )!,
+                isGlossary ? glossaryData : Self.datasetJSON
+            )
+        }
+        defer {
+            MockURLProtocol.requestHandler = nil
+        }
+
+        let client = try XCTUnwrap(
+            DailyKanjiSyncClient(
+                configuration: DailyKanjiSyncConfiguration(
+                    endpointURL: URL(
+                        string: "https://example.test/api/daily-kanji/ios-dataset"
+                    ),
+                    bearerToken: "mobile-token"
+                ),
+                session: urlSession
+            )
+        )
+
+        let dataset = try await client.fetchDataset()
+
+        XCTAssertEqual(cardRequest.value?.url?.path, "/api/daily-kanji/ios-dataset")
+        XCTAssertEqual(
+            glossaryRequest.value?.url?.path,
+            "/api/daily-kanji/ios-glossary"
+        )
+        XCTAssertEqual(
+            glossaryRequest.value?.value(forHTTPHeaderField: "Authorization"),
+            "Bearer mobile-token"
+        )
+        XCTAssertEqual(dataset.cards.count, 2)
+        XCTAssertEqual(dataset.glossary, glossary)
+    }
+
     func testLiveReviewClientFetchesSessionWithBearerAuth() async throws {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [MockURLProtocol.self]
@@ -2077,6 +2177,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             cardId: "live-card",
             rating: .good,
             expectedUpdatedAt: "2026-06-28T08:00:00.000Z",
+            hasBufferedSuccessor: true,
             responseMs: 1200
         )
         let body = try XCTUnwrap(capturedBody.value)
@@ -2087,6 +2188,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertEqual(payload?["cardId"] as? String, "live-card")
         XCTAssertEqual(payload?["rating"] as? String, "good")
         XCTAssertEqual(payload?["expectedUpdatedAt"] as? String, "2026-06-28T08:00:00.000Z")
+        XCTAssertEqual(payload?["hasBufferedSuccessor"] as? Bool, true)
         XCTAssertEqual(payload?["responseMs"] as? Int, 1200)
         XCTAssertEqual(result.grade.rating, .good)
     }
@@ -2122,6 +2224,7 @@ final class DailyKanjiCoreTests: XCTestCase {
             cardId: "new-live-card",
             rating: .again,
             expectedUpdatedAt: nil,
+            hasBufferedSuccessor: false,
             responseMs: nil
         )
         let body = try XCTUnwrap(capturedBody.value)
@@ -2879,7 +2982,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         )
         let gradeResult = DailyKanjiLiveReviewGradeResult(
             grade: DailyKanjiLiveReviewGradeResult.Grade(cardId: "live-card", rating: .good),
-            session: optimisticSession
+            session: nil
         )
         let liveClient = MockDailyKanjiLiveReviewClient(
             fetchResults: [.success(liveSession)],
@@ -2902,6 +3005,7 @@ final class DailyKanjiCoreTests: XCTestCase {
         XCTAssertTrue(model.liveReviewState.canReveal)
         XCTAssertFalse(model.liveReviewState.canGrade)
         XCTAssertEqual(model.liveReviewState.session?.selectedCard?.cardId, "next-live-card")
+        XCTAssertTrue(liveClient.gradeRequests[0].hasBufferedSuccessor)
 
         liveClient.resolvePendingGrade()
         await Self.waitUntil {
@@ -6978,6 +7082,7 @@ private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
         let cardId: String
         let rating: DailyKanjiLiveReviewRating
         let expectedUpdatedAt: String?
+        let hasBufferedSuccessor: Bool
         let responseMs: Int?
     }
 
@@ -7017,6 +7122,7 @@ private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
         cardId: String,
         rating: DailyKanjiLiveReviewRating,
         expectedUpdatedAt: String?,
+        hasBufferedSuccessor: Bool,
         responseMs: Int?
     ) async throws -> DailyKanjiLiveReviewGradeResult {
         gradeRequests.append(
@@ -7024,6 +7130,7 @@ private final class MockDailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
                 cardId: cardId,
                 rating: rating,
                 expectedUpdatedAt: expectedUpdatedAt,
+                hasBufferedSuccessor: hasBufferedSuccessor,
                 responseMs: responseMs
             )
         )
@@ -7156,6 +7263,7 @@ private final class ControllableDailyKanjiLiveReviewClient: DailyKanjiLiveReview
         cardId: String,
         rating: DailyKanjiLiveReviewRating,
         expectedUpdatedAt: String?,
+        hasBufferedSuccessor: Bool,
         responseMs: Int?
     ) async throws -> DailyKanjiLiveReviewGradeResult {
         throw DailyKanjiLiveReviewClientError.invalidResponse

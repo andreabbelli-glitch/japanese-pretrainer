@@ -52,6 +52,7 @@ export async function POST(request: Request) {
         cardId,
         database: db,
         expectedUpdatedAt,
+        hasBufferedSuccessor: body?.hasBufferedSuccessor === true,
         rating,
         responseMs: readOptionalResponseMs(body)
       }),

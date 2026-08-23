@@ -59,6 +59,7 @@ describe("review action workflows", () => {
     resolveReviewSessionMediaMock.mockReset();
     resolveReviewSessionMediaMock.mockResolvedValue(undefined);
     applyReviewGradeMock.mockResolvedValue({
+      affectedCardIds: ["card-a"],
       consolidationChanged: false,
       mediaId: "media-a"
     });
@@ -94,6 +95,7 @@ describe("review action workflows", () => {
     scheduledTasks[0]!();
 
     expect(applyReviewActionCachePolicyMock).toHaveBeenCalledWith({
+      affectedCardIds: ["card-a"],
       includeConsolidation: false,
       mediaId: "media-a",
       policy: "review"

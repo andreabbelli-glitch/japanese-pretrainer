@@ -29,6 +29,7 @@ import {
   GLOSSARY_SUMMARY_TAG,
   MEDIA_LIST_TAG,
   REVIEW_CARD_CONTENT_TAG,
+  REVIEW_CARD_STATE_TAG,
   REVIEW_FIRST_CANDIDATE_TAG,
   REVIEW_SUMMARY_TAG,
   SETTINGS_TAG,
@@ -85,6 +86,7 @@ describe("cache invalidation policy", () => {
 
   it("updates review caches for review-only mutations", () => {
     invalidateReviewMutationCaches({
+      affectedCardIds: ["card-a", "card-b"],
       mediaId: "media_dm",
       policy: "review"
     });
@@ -92,7 +94,9 @@ describe("cache invalidation policy", () => {
     expect(updateTagMock.mock.calls).toEqual([
       [REVIEW_SUMMARY_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
-      [`${REVIEW_SUMMARY_TAG}:media_dm`]
+      [`${REVIEW_SUMMARY_TAG}:media_dm`],
+      [`${REVIEW_CARD_STATE_TAG}:card-a`],
+      [`${REVIEW_CARD_STATE_TAG}:card-b`]
     ]);
     expect(revalidateTagMock).not.toHaveBeenCalled();
   });
@@ -105,6 +109,7 @@ describe("cache invalidation policy", () => {
     });
 
     expect(updateTagMock.mock.calls).toContainEqual([REVIEW_CARD_CONTENT_TAG]);
+    expect(updateTagMock.mock.calls).toContainEqual([REVIEW_CARD_STATE_TAG]);
   });
 
   it("updates review and glossary caches for entry-status mutations", () => {
@@ -117,6 +122,7 @@ describe("cache invalidation policy", () => {
       [REVIEW_SUMMARY_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
       [`${REVIEW_SUMMARY_TAG}:media_dm`],
+      [REVIEW_CARD_STATE_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],
       [GLOSSARY_SUMMARY_TAG],
       [REVIEW_FIRST_CANDIDATE_TAG],

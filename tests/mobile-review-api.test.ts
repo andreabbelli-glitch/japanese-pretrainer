@@ -192,6 +192,56 @@ describe("mobile review API", () => {
     );
   });
 
+  it("persists a safe buffered grade without rebuilding the global session", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-mobile-review-buffered-grade-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database, databasePath }) => {
+        const expectedUpdatedAt =
+          await makePrimaryAndSecondaryCardsDue(database);
+        const existingLogRows = await database.query.reviewSubjectLog.findMany({
+          where: eq(reviewSubjectLog.cardId, developmentFixture.primaryCardId)
+        });
+        const { POST } = await importGradeRouteForDatabase(databasePath);
+
+        const response = await POST(
+          new Request("https://example.test/api/mobile/review/grade", {
+            body: JSON.stringify({
+              cardId: developmentFixture.primaryCardId,
+              expectedUpdatedAt,
+              hasBufferedSuccessor: true,
+              rating: "good",
+              responseMs: 900
+            }),
+            headers: {
+              authorization: "Bearer mobile-review-secret",
+              "content-type": "application/json"
+            },
+            method: "POST"
+          })
+        );
+        const body = await response.json();
+        const logRows = await database.query.reviewSubjectLog.findMany({
+          where: eq(reviewSubjectLog.cardId, developmentFixture.primaryCardId)
+        });
+
+        expect(response.status, JSON.stringify(body)).toBe(200);
+        expect(body).toMatchObject({
+          ok: true,
+          grade: {
+            cardId: developmentFixture.primaryCardId,
+            rating: "good"
+          },
+          session: null
+        });
+        expect(logRows).toHaveLength(existingLogRows.length + 1);
+      }
+    );
+  });
+
   it("rejects mobile grades that omit the required freshness token", async () => {
     await withTestDatabase(
       {

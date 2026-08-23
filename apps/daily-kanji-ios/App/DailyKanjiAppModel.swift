@@ -86,6 +86,7 @@ final class DailyKanjiAppModel: ObservableObject {
     private let liveReviewNow: () -> Date
     private let deepLinkActivationSuppressionInterval: TimeInterval = 5
     private var datasetSource: DailyKanjiDatasetSource
+    private var glossarySnapshot: DailyKanjiGlossarySnapshot?
     private var requiresStudyModeAwareSync: Bool
     private var activeSyncId: UUID?
     private var syncTask: Task<Void, Never>?
@@ -177,6 +178,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.reloadTimelines = reloadTimelines
         self.liveReviewNow = liveReviewNow
         self.datasetSource = repositorySnapshot.source
+        self.glossarySnapshot = repositorySnapshot.dataset?.glossary
         self.requiresStudyModeAwareSync = repositorySnapshot.requiresStudyModeAwareSync
         self.syncState = Self.initialSyncState(
             syncer: syncer,
@@ -231,6 +233,7 @@ final class DailyKanjiAppModel: ObservableObject {
         self.reloadTimelines = reloadTimelines
         self.liveReviewNow = liveReviewNow
         self.datasetSource = .sample
+        self.glossarySnapshot = nil
         self.requiresStudyModeAwareSync = cards.contains {
             $0.studyModes != nil
         }
@@ -407,7 +410,13 @@ final class DailyKanjiAppModel: ObservableObject {
                 throw DailyKanjiAppSyncError.missingStudyModes
             }
 
-            let metadata = try await cacheWriter.write(dataset: dataset, cachedAt: now)
+            let mergedDataset = dataset.replacingGlossary(
+                dataset.glossary ?? glossarySnapshot
+            )
+            let metadata = try await cacheWriter.write(
+                dataset: mergedDataset,
+                cachedAt: now
+            )
             guard activeSyncId == syncId else {
                 return
             }
@@ -419,8 +428,9 @@ final class DailyKanjiAppModel: ObservableObject {
                     mediaSlug: draftMediaSlug
                 )
                 : nil
-            cards = dataset.cards
-            glossaryEntries = dataset.glossary?.entries ?? []
+            cards = mergedDataset.cards
+            glossarySnapshot = mergedDataset.glossary
+            glossaryEntries = mergedDataset.glossary?.entries ?? []
             datasetSource = .cache(metadata: metadata)
             requiresStudyModeAwareSync = requiresStudyModeAwareSync
                 || dataset.supportsMediaStudyModes
@@ -982,6 +992,7 @@ final class DailyKanjiAppModel: ObservableObject {
                 cardId: context.card.cardId,
                 rating: context.rating,
                 expectedUpdatedAt: context.card.reviewStateUpdatedAt,
+                hasBufferedSuccessor: context.optimisticSession != nil,
                 responseMs: context.responseMs
             )
             try Task.checkCancellation()
@@ -989,10 +1000,14 @@ final class DailyKanjiAppModel: ObservableObject {
                 return
             }
 
+            guard let acceptedSession = result.session ?? context.optimisticSession else {
+                throw DailyKanjiLiveReviewClientError.invalidResponse
+            }
+
             pendingLiveReviewResponseRetry = nil
-            liveReviewState = .ready(session: result.session)
+            liveReviewState = .ready(session: acceptedSession)
             updateLiveCardPresentationAfterGrade(
-                session: result.session,
+                session: acceptedSession,
                 context: context
             )
         } catch {

@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
 
 import { db } from "@/db";
-import { loadDailyKanjiRuntimeSnapshot } from "@/features/daily-kanji/server";
+import { loadDailyKanjiGlossaryRuntimeSnapshot } from "@/features/daily-kanji/server";
 import { matchesSecret } from "@/features/security/server/secret-compare";
 
 const noStoreHeaders = {
   "Cache-Control": "private, no-store, max-age=0"
 };
-const snapshotCacheControl = "private, max-age=21600, stale-if-error=604800";
+const snapshotCacheControl = "private, max-age=604800, stale-if-error=2592000";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -21,71 +21,60 @@ export async function GET(request: Request) {
         error:
           "DAILY_KANJI_IOS_SYNC_TOKEN is not configured on the app runtime."
       },
-      {
-        headers: noStoreHeaders,
-        status: 503
-      }
+      { headers: noStoreHeaders, status: 503 }
     );
   }
 
-  const providedSecret = parseBearerToken(request.headers.get("authorization"));
-
-  if (!matchesSecret(providedSecret, configuredSecret)) {
+  if (
+    !matchesSecret(
+      parseBearerToken(request.headers.get("authorization")),
+      configuredSecret
+    )
+  ) {
     return NextResponse.json(
       { error: "Unauthorized." },
-      {
-        headers: noStoreHeaders,
-        status: 401
-      }
+      { headers: noStoreHeaders, status: 401 }
     );
   }
 
   try {
-    const snapshot = await loadDailyKanjiRuntimeSnapshot(db);
+    const snapshot = await loadDailyKanjiGlossaryRuntimeSnapshot(db);
 
     if (!snapshot) {
       return NextResponse.json(
         {
-          error: "Daily Kanji dataset snapshot is not ready.",
+          error: "Daily Kanji glossary snapshot is not ready.",
           ok: false
         },
-        {
-          headers: noStoreHeaders,
-          status: 503
-        }
+        { headers: noStoreHeaders, status: 503 }
       );
     }
+
     const headers = {
       "Cache-Control": snapshotCacheControl,
       "Content-Type": "application/json; charset=utf-8",
       ETag: snapshot.payloadEtag,
       Vary: "Authorization",
       "X-Daily-Kanji-Generated-At": snapshot.generatedAt,
-      "X-Daily-Kanji-Snapshot": "persisted"
+      "X-Daily-Kanji-Snapshot": "persisted-glossary"
     };
 
     if (
       matchesEtag(request.headers.get("if-none-match"), snapshot.payloadEtag)
     ) {
-      return new Response(null, {
-        headers,
-        status: 304
-      });
+      return new Response(null, { headers, status: 304 });
     }
 
     return new Response(snapshot.payloadJson, { headers });
   } catch (error) {
-    console.error("Daily Kanji iOS snapshot load failed.", error);
+    console.error("Daily Kanji iOS glossary snapshot load failed.", error);
 
     return NextResponse.json(
       {
-        error: "Daily Kanji dataset snapshot is unavailable.",
+        error: "Daily Kanji glossary snapshot is unavailable.",
         ok: false
       },
-      {
-        headers: noStoreHeaders,
-        status: 500
-      }
+      { headers: noStoreHeaders, status: 500 }
     );
   }
 }
@@ -102,7 +91,7 @@ function parseBearerToken(authorization: string | null) {
   return token.length > 0 ? token : null;
 }
 
-export function matchesEtag(ifNoneMatch: string | null, etag: string) {
+function matchesEtag(ifNoneMatch: string | null, etag: string) {
   if (!ifNoneMatch) {
     return false;
   }

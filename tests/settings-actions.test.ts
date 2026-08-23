@@ -3,24 +3,27 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const {
   applyFsrsRescheduleMock,
   redirectMock,
+  updateReviewCardStateCacheMock,
   updateReviewSummaryCacheMock,
   updateSettingsCacheMock,
   updateStudySettingsMock
 } = vi.hoisted(() => ({
-    applyFsrsRescheduleMock: vi.fn(),
-    redirectMock: vi.fn((href: string) => {
-      throw new Error(`redirect:${href}`);
-    }),
-    updateReviewSummaryCacheMock: vi.fn(),
-    updateSettingsCacheMock: vi.fn(),
-    updateStudySettingsMock: vi.fn()
-  }));
+  applyFsrsRescheduleMock: vi.fn(),
+  redirectMock: vi.fn((href: string) => {
+    throw new Error(`redirect:${href}`);
+  }),
+  updateReviewCardStateCacheMock: vi.fn(),
+  updateReviewSummaryCacheMock: vi.fn(),
+  updateSettingsCacheMock: vi.fn(),
+  updateStudySettingsMock: vi.fn()
+}));
 
 vi.mock("next/navigation", () => ({
   redirect: redirectMock
 }));
 
 vi.mock("@/features/cache/server/data-cache", () => ({
+  updateReviewCardStateCache: updateReviewCardStateCacheMock,
   updateReviewSummaryCache: updateReviewSummaryCacheMock,
   updateSettingsCache: updateSettingsCacheMock
 }));
@@ -36,7 +39,8 @@ vi.mock("@/features/fsrs-optimizer/server", async (importOriginal) => {
 });
 
 vi.mock("@/features/settings/server", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@/features/settings/server")>();
+  const actual =
+    await importOriginal<typeof import("@/features/settings/server")>();
 
   return {
     ...actual,
@@ -55,6 +59,7 @@ describe("settings actions", () => {
     redirectMock.mockClear();
     applyFsrsRescheduleMock.mockReset();
     updateReviewSummaryCacheMock.mockClear();
+    updateReviewCardStateCacheMock.mockClear();
     updateSettingsCacheMock.mockClear();
     updateStudySettingsMock.mockReset();
   });
@@ -132,6 +137,7 @@ describe("settings actions", () => {
       expectedFsrsCacheKeyPart: "config|recognition|concept"
     });
     expect(updateReviewSummaryCacheMock).toHaveBeenCalledTimes(1);
+    expect(updateReviewCardStateCacheMock).toHaveBeenCalledWith([]);
   });
 
   it("redirects with a stale notice when FSRS params changed before applying", async () => {
@@ -149,5 +155,6 @@ describe("settings actions", () => {
     );
 
     expect(updateReviewSummaryCacheMock).not.toHaveBeenCalled();
+    expect(updateReviewCardStateCacheMock).not.toHaveBeenCalled();
   });
 });

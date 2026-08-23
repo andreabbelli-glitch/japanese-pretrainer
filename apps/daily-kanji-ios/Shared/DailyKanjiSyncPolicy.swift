@@ -9,7 +9,7 @@ struct DailyKanjiSyncPolicy {
     private let calendar: Calendar
 
     init(
-        refreshInterval: TimeInterval = 4 * 60 * 60,
+        refreshInterval: TimeInterval = 24 * 60 * 60,
         failureBackoff: TimeInterval = 15 * 60,
         maximumFailureBackoff: TimeInterval = 24 * 60 * 60,
         calendar: Calendar = DailyKanjiSyncPolicy.defaultCalendar()

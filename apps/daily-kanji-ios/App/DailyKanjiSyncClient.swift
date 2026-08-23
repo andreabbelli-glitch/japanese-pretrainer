@@ -59,9 +59,48 @@ struct DailyKanjiSyncClient: DailyKanjiSyncing {
     }
 
     func fetchDataset() async throws -> DailyKanjiDataset {
-        var request = URLRequest(url: endpointURL)
+        async let glossary = fetchGlossaryIfAvailable()
+        let dataset = try await fetchCardDataset()
+
+        return dataset.replacingGlossary(await glossary ?? dataset.glossary)
+    }
+
+    private func fetchCardDataset() async throws -> DailyKanjiDataset {
+        let data = try await fetchData(from: endpointURL)
+        let dataset = try DailyKanjiDataset.decode(jsonData: data)
+        guard dataset.version == 1, !dataset.cards.isEmpty else {
+            throw DailyKanjiSyncClientError.invalidDataset
+        }
+
+        return dataset
+    }
+
+    private func fetchGlossaryIfAvailable() async -> DailyKanjiGlossarySnapshot? {
+        let glossaryURL = endpointURL
+            .deletingLastPathComponent()
+            .appendingPathComponent("ios-glossary")
+
+        guard
+            let data = try? await fetchData(from: glossaryURL),
+            let glossary = try? JSONDecoder().decode(
+                DailyKanjiGlossarySnapshot.self,
+                from: data
+            ),
+            glossary.version == 1,
+            glossary.entryCount == glossary.entries.count
+        else {
+            return nil
+        }
+
+        return glossary
+    }
+
+    private func fetchData(from url: URL) async throws -> Data {
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
+        request.cachePolicy = .useProtocolCachePolicy
         request.setValue("Bearer \(bearerToken)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
 
         let (data, response) = try await session.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else {
@@ -72,12 +111,7 @@ struct DailyKanjiSyncClient: DailyKanjiSyncing {
             throw DailyKanjiSyncClientError.httpStatus(httpResponse.statusCode)
         }
 
-        let dataset = try DailyKanjiDataset.decode(jsonData: data)
-        guard dataset.version == 1, !dataset.cards.isEmpty else {
-            throw DailyKanjiSyncClientError.invalidDataset
-        }
-
-        return dataset
+        return data
     }
 }
 

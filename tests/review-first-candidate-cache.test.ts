@@ -110,6 +110,7 @@ import { reviewSubjectState } from "@/db/schema";
 import {
   revalidateGlossarySummaryCache,
   revalidateReviewCardContentCache,
+  revalidateReviewCardStateCache,
   revalidateReviewSummaryCache,
   revalidateSettingsCache,
   REVIEW_FIRST_CANDIDATE_TAG
@@ -373,6 +374,7 @@ describe("global review first-candidate cache", () => {
     expect(getFsrsOptimizerSnapshotMock).not.toHaveBeenCalled();
 
     revalidateReviewSummaryCache("media_a");
+    revalidateReviewCardStateCache(["card_a"]);
     revalidateGlossarySummaryCache("media_a");
 
     expect(revalidateTagMock).toHaveBeenCalledWith(
@@ -402,6 +404,7 @@ describe("global review first-candidate cache", () => {
     expect(cacheLoadCounts.get(contentCacheKey)).toBe(1);
 
     revalidateReviewSummaryCache("media_a");
+    revalidateReviewCardStateCache(["card_a"]);
 
     expect(cacheStore.has(hydrationCacheKey)).toBe(false);
     expect(cacheStore.has(contentCacheKey)).toBe(true);
@@ -432,6 +435,7 @@ describe("global review first-candidate cache", () => {
       suspended: true
     });
     revalidateReviewSummaryCache("media_a");
+    revalidateReviewCardStateCache(["card_a"]);
 
     const suspended = await hydrateReviewCard({
       cardId: "card_a",
@@ -447,6 +451,7 @@ describe("global review first-candidate cache", () => {
       now: new Date("2026-03-10T10:01:00.000Z")
     });
     revalidateReviewSummaryCache("media_a");
+    revalidateReviewCardStateCache(["card_a"]);
 
     const reset = await hydrateReviewCard({ cardId: "card_a", database });
 

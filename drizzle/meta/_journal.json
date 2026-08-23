@@ -260,6 +260,20 @@
       "when": 1784203225720,
       "tag": "0036_flowery_mauler",
       "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "6",
+      "when": 1787486217459,
+      "tag": "0037_clammy_oracle",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "6",
+      "when": 1787488026432,
+      "tag": "0038_wet_lady_ursula",
+      "breakpoints": true
     }
   ]
 }

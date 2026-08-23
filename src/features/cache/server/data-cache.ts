@@ -10,6 +10,7 @@ export const GLOSSARY_SUMMARY_TAG = "glossary-summary";
 export const REVIEW_SUMMARY_TAG = "review-summary";
 export const REVIEW_FIRST_CANDIDATE_TAG = "review-first-candidate";
 export const REVIEW_CARD_CONTENT_TAG = "review-card-content";
+export const REVIEW_CARD_STATE_TAG = "review-card-state";
 export const CONSOLIDATION_SUMMARY_TAG = "consolidation-summary";
 export const TEXTBOOK_LESSON_BODY_TAG = "textbook-lesson-body";
 export const TEXTBOOK_TOOLTIP_TAG = "textbook-tooltips";
@@ -40,6 +41,13 @@ export function buildReviewSummaryTags(mediaIds: string[] = []) {
   return dedupeTags([
     REVIEW_SUMMARY_TAG,
     ...mediaIds.map((mediaId) => `${REVIEW_SUMMARY_TAG}:${mediaId}`)
+  ]);
+}
+
+export function buildReviewCardStateTags(cardIds: string[] = []) {
+  return dedupeTags([
+    REVIEW_CARD_STATE_TAG,
+    ...cardIds.map((cardId) => `${REVIEW_CARD_STATE_TAG}:${cardId}`)
   ]);
 }
 
@@ -264,6 +272,25 @@ export function revalidateReviewCardContentCache() {
 
 export function updateReviewCardContentCache() {
   safeUpdateTag(REVIEW_CARD_CONTENT_TAG);
+}
+
+export function revalidateReviewCardStateCache(cardIds: string[]) {
+  for (const cardId of dedupeTags(cardIds)) {
+    safeRevalidateTag(`${REVIEW_CARD_STATE_TAG}:${cardId}`);
+  }
+}
+
+export function updateReviewCardStateCache(cardIds: string[]) {
+  const uniqueCardIds = dedupeTags(cardIds);
+
+  if (uniqueCardIds.length === 0) {
+    safeUpdateTag(REVIEW_CARD_STATE_TAG);
+    return;
+  }
+
+  for (const cardId of uniqueCardIds) {
+    safeUpdateTag(`${REVIEW_CARD_STATE_TAG}:${cardId}`);
+  }
 }
 
 export function updateConsolidationSummaryCache(mediaId?: string | null) {

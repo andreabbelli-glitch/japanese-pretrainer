@@ -48,6 +48,7 @@ export {
 export type { ReviewMutationTransaction } from "@/features/review/server/mutation-context";
 
 export type ReviewGradeResult = {
+  affectedCardIds: string[];
   cardId: string;
   consolidationChanged: boolean;
   consolidationQueued: boolean;
@@ -257,6 +258,9 @@ export async function gradeReviewCardInTransaction(input: {
     : undefined;
 
   return {
+    affectedCardIds: [
+      ...new Set(subjectContext.memberCards.map((member) => member.id))
+    ],
     cardId: loadedCard.id,
     consolidationChanged: consolidationResult.changed,
     consolidationQueued: consolidationResult.queued,

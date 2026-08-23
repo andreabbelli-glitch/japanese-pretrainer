@@ -72,7 +72,7 @@ export {
 } from "./queue-projection";
 
 type ReviewPageWorkspace = ReviewPageData["media"];
-const REVIEW_ADVANCE_WINDOW_SIZE = 3;
+const REVIEW_ADVANCE_WINDOW_SIZE = 8;
 
 function filterReviewSubjectGroupsByCards(
   subjectGroups: ReviewSubjectGroup[],

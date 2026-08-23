@@ -75,8 +75,14 @@ describe("daily kanji iOS offline contract", () => {
       freeTierBudget: {
         monthlyRuntime: {
           appSyncRequests: number;
-          tursoQueries: number;
-          vercelRequests: number;
+          cardSnapshotBuilds: number;
+          glossarySnapshotBuilds: number;
+          glossarySyncRequests: number;
+          modeledReviewGrades: number;
+          modeledReviewSessionLoads: number;
+          tursoQueryGroups: number;
+          vercelDatasetRequests: number;
+          vercelReviewRequests: number;
           widgetSyncRequests: number;
         };
         packageWorkflow: {
@@ -103,16 +109,22 @@ describe("daily kanji iOS offline contract", () => {
       },
       freeTierBudget: {
         monthlyRuntime: {
-          appSyncRequests: 200,
-          tursoQueries: 200,
-          vercelRequests: 200,
+          appSyncRequests: 70,
+          cardSnapshotBuilds: 34,
+          glossarySnapshotBuilds: 6,
+          glossarySyncRequests: 6,
+          modeledReviewGrades: 15000,
+          modeledReviewSessionLoads: 1875,
+          tursoQueryGroups: 300,
+          vercelDatasetRequests: 110,
+          vercelReviewRequests: 16875,
           widgetSyncRequests: 0
         },
         packageWorkflow: {
           defaultCardLimit: dailyKanjiDefaultExportLimit,
           defaultRecentMistakeLookbackDays:
             dailyKanjiDefaultRecentMistakeLookbackDays,
-          expectedRemoteQueriesPerPackageRun: 1,
+          expectedRemoteQueriesPerPackageRun: 5,
           generatedArtifacts: [
             "App/Resources/daily-kanji-cards.json",
             "App/Resources/Audio/",

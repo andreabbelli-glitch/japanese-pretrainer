@@ -13,13 +13,11 @@ import {
   type TermGlossaryEntry
 } from "@/db/queries";
 import {
-  buildGlossarySummaryTags,
-  buildReviewSummaryTags,
+  buildReviewCardStateTags,
   canUseDataCache,
   listMediaCached,
   runWithTaggedCache,
-  REVIEW_CARD_CONTENT_TAG,
-  REVIEW_FIRST_CANDIDATE_TAG
+  REVIEW_CARD_CONTENT_TAG
 } from "@/features/cache/server/data-cache";
 import {
   mediaGlossaryEntryHref,
@@ -138,9 +136,8 @@ export async function hydrateReviewCard(input: {
             fsrsOptimizerSnapshot: fsrsRuntimeContext.snapshot
           }),
         tags: [
-          ...buildReviewSummaryTags(),
-          ...buildGlossarySummaryTags(),
-          REVIEW_FIRST_CANDIDATE_TAG
+          REVIEW_CARD_CONTENT_TAG,
+          ...buildReviewCardStateTags([input.cardId])
         ]
       }),
     { cacheEligible, cardId: input.cardId }

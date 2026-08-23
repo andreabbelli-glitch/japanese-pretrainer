@@ -65,6 +65,27 @@ export async function buildDailyKanjiDataset(input: {
   recentMistakeLookbackDays?: number;
 }): Promise<DailyKanjiDataset> {
   const nowIso = input.nowIso ?? new Date().toISOString();
+  const [dataset, glossary] = await Promise.all([
+    buildDailyKanjiCardDataset({ ...input, nowIso }),
+    buildDailyKanjiGlossarySnapshot({
+      database: input.database,
+      nowIso
+    })
+  ]);
+
+  return {
+    ...dataset,
+    glossary
+  };
+}
+
+export async function buildDailyKanjiCardDataset(input: {
+  database: DatabaseQueryClient;
+  limit?: number;
+  nowIso?: string;
+  recentMistakeLookbackDays?: number;
+}): Promise<DailyKanjiDataset> {
+  const nowIso = input.nowIso ?? new Date().toISOString();
   const recentMistakeLookbackDays =
     input.recentMistakeLookbackDays ??
     dailyKanjiDefaultRecentMistakeLookbackDays;
@@ -104,11 +125,7 @@ export async function buildDailyKanjiDataset(input: {
     version: dailyKanjiDatasetVersion,
     generatedAt: nowIso,
     recentMistakeLookbackDays,
-    cards,
-    glossary: await buildDailyKanjiGlossarySnapshot({
-      database: input.database,
-      nowIso
-    })
+    cards
   };
 }
 

@@ -79,6 +79,18 @@ verificare ogni riga della matrice:
   non mostra CTA e non interroga o richiede l'autorizzazione.
 - Nei fallimenti di sync, il sottotitolo resta sintetico e in italiano: non
   deve mostrare HTTP status, endpoint, token o messaggi tecnici arbitrari.
+- Con snapshot server disponibili, il refresh ordinario scarica le card da
+  `/api/daily-kanji/ios-dataset` e il glossario separatamente da
+  `/api/daily-kanji/ios-glossary`; tornando in foreground nello stesso giorno
+  non deve ripetere la sync card. Il glossario HTTP cacheato non deve essere
+  ritrasferito piu di una volta ogni sette giorni salvo refresh manuale/cache
+  rimossa.
+- Simulare un `503` sul glossario: le card nuove vengono applicate e Cerca
+  conserva l'ultimo glossario valido da cache o bundle. Un `503` sulle card non
+  deve cancellare il dataset locale.
+- In `Ripasso`, con almeno due card bufferizzate, `Good` e `Easy` mostrano la
+  successiva durante l'invio e restano su quella card dopo l'ack compatto;
+  `Again` e `Hard` devono attendere lo stato live per rispettare il requeue.
 - Cronologia, metrica delle valutazioni, fallback lettura/accento e tipi alias
   del dettaglio glossario devono essere in italiano. Verificare almeno
   `lettura`, `alternativa`, `rōmaji` e il fallback `altra forma`.

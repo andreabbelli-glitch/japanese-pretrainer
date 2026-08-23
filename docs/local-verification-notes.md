@@ -283,6 +283,26 @@ DAILY_KANJI_IOS_SYNC_ENDPOINT=https://<deployment>/api/daily-kanji/ios-dataset
 DAILY_KANJI_IOS_SYNC_TOKEN=<secret>
 ```
 
+L'endpoint configurato serve soltanto le card dinamiche. Il client deriva
+automaticamente `/api/daily-kanji/ios-glossary` dallo stesso base path e usa la
+cache HTTP settimanale. Prima di testare contro un database appena migrato:
+
+```sh
+./scripts/with-node.sh pnpm db:migrate
+./scripts/with-node.sh pnpm daily-kanji:snapshot:refresh -- --force
+./scripts/with-node.sh pnpm daily-kanji:snapshot:status
+```
+
+La GET delle card deve restare sotto 1 MB e non contenere `glossary`; la GET
+glossario deve restare sotto 4 MB. Entrambe devono esporre ETag e una seconda
+richiesta condizionale deve poter ricevere `304`. Se uno snapshot manca, la
+route risponde `503` senza costruirlo e l'app continua con cache/bundle.
+
+In review live, una sessione prepara fino a 8 card. `Good`/`Easy` devono
+avanzare immediatamente dalla card bufferizzata senza un reload globale;
+`Again`/`Hard`, buffer esaurito e conflitti freshness devono invece riallineare
+sempre la sessione live.
+
 Per abilitare la review live nativa, configura separatamente:
 
 ```sh
@@ -372,13 +392,19 @@ specifico, ma non conta come matrice ufficiale di verifica.
   duplicati creati solo per aumentare le coppie candidabili.
 - Il primo avvio di `/review` va controllato anche senza media importati, per
   verificare che l'empty state dedicato non sembri una review locale vuota.
-- Le performance sono verificate solo a livello locale/percepito, non con budget automatizzati.
+- Le performance generali restano verificate soprattutto a livello
+  locale/percepito; Daily Kanji ha anche intervalli, payload massimi e contratto
+  mensile automatizzati come descritto in `docs/infrastructure-budget.md`.
 - Il prodotto resta single-user e locale-first; non include hardening per esposizione remota.
 - Il training automatico FSRS in produzione dipende da Vercel Cron, configurato
   in `vercel.json` sulla route `/api/internal/fsrs-optimizer/run`. La route
   richiede `CRON_SECRET` e usa il `DATABASE_URL` remoto del runtime. In locale lo
   stesso gate puo essere verificato con
   `./scripts/with-node.sh pnpm fsrs:optimize:if-needed`.
+- Il refresh snapshot Daily Kanji dipende dal secondo Vercel Cron in
+  `vercel.json`, sulla route `/api/internal/daily-kanji/refresh`, protetta dallo
+  stesso `CRON_SECRET`. Le route iOS pubbliche non devono mai sostituirlo con un
+  bootstrap on-demand.
 - I workflow GitHub che toccano Turso remoto sono volutamente limitati: il sync
   automatico su `main` copre migrazioni, relativi backfill in
   `src/db/backfills/**` e import `content/media/**` incrementali per slug,

@@ -1,16 +1,4 @@
 export function register() {
-  if (
-    process.env.NEXT_RUNTIME !== "nodejs" ||
-    process.env.NEXT_PHASE === "phase-production-build"
-  ) {
-    return;
-  }
-
-  void import("./instrumentation-node")
-    .then(({ registerNodeInstrumentation }) => {
-      registerNodeInstrumentation();
-    })
-    .catch(() => {
-      // Warm-up registration is non-fatal.
-    });
+  // Intentionally empty. Vercel instances scale to zero, so startup work must
+  // never issue speculative database queries before a user request.
 }

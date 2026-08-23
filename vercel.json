@@ -6,6 +6,10 @@
     {
       "path": "/api/internal/fsrs-optimizer/run",
       "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/internal/daily-kanji/refresh",
+      "schedule": "15 4 * * *"
     }
   ]
 }

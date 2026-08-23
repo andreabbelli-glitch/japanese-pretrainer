@@ -36,6 +36,18 @@ struct DailyKanjiDataset: Codable, Sendable {
             glossary: nil
         )
     }
+
+    func replacingGlossary(
+        _ replacement: DailyKanjiGlossarySnapshot?
+    ) -> DailyKanjiDataset {
+        DailyKanjiDataset(
+            version: version,
+            generatedAt: generatedAt,
+            recentMistakeLookbackDays: recentMistakeLookbackDays,
+            cards: cards,
+            glossary: replacement
+        )
+    }
 }
 
 struct DailyKanjiGlossarySnapshot: Codable, Equatable, Sendable {

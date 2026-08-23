@@ -16,6 +16,7 @@ import {
   updateGlossarySummaryCache,
   updateMediaListCache,
   updateReviewCardContentCache,
+  updateReviewCardStateCache,
   updateReviewSummaryCache,
   updateSettingsCache
 } from "@/features/cache/server/data-cache";
@@ -65,11 +66,13 @@ export function invalidateConsolidationMutationCaches(input: {
 }
 
 export function invalidateReviewMutationCaches(input: {
+  affectedCardIds?: string[];
   includeCardContent?: boolean;
   mediaId?: string;
   policy: ReviewMutationCachePolicy;
 }) {
   updateReviewSummaryCache(input.mediaId);
+  updateReviewCardStateCache(input.affectedCardIds ?? []);
 
   if (input.includeCardContent) {
     updateReviewCardContentCache();

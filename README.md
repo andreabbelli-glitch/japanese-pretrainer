@@ -511,7 +511,8 @@ Per un deploy pubblico conviene invece impostare almeno:
   solo se l'hosting garantisce persistenza del filesystem;
 - `DATABASE_AUTH_TOKEN` oppure `LIBSQL_AUTH_TOKEN` se il provider `libsql`
   richiede un token;
-- `CRON_SECRET` per proteggere l'endpoint Vercel Cron dell'optimizer FSRS;
+- `CRON_SECRET` per proteggere gli endpoint Vercel Cron dell'optimizer FSRS e
+  degli snapshot Daily Kanji;
 - `AUTH_USERNAME`, `AUTH_SESSION_SECRET` e una tra `AUTH_PASSWORD_HASH` o
   `AUTH_PASSWORD` per attivare il login minimale dell'app.
 
@@ -543,17 +544,23 @@ Stack minimo consigliato per esporla su internet spendendo zero:
 Questo evita di affidarsi a filesystem effimeri del provider e tiene il setup
 coerente con `@libsql/client` gia presente nel repo.
 
-Con questo setup, il bootstrap del server usa direttamente Turso come database
-remoto e non crea repliche locali o sync extra. Il warm-up delle cache piu
-costose parte solo in background dopo l'avvio del runtime: e best-effort e non
-blocca la prima risposta del sito, cosi il cold start Vercel non paga in
-anticipo l'intera preparazione della review.
+Con questo setup, il server usa direttamente Turso come database remoto e non
+crea repliche locali o sync extra. Il cold start non lancia warm-up speculativi:
+le query partono solo per la superficie richiesta. Il dataset iOS usa invece
+snapshot persistenti costruiti dal cron autenticato; le route pubbliche leggono
+una sola riga e non possono avviare build globali.
 
 Il database Turso di produzione risiede in `eu-west-1`; `vercel.json` fissa
 quindi l'unica regione Functions Hobby a `dub1` (Dublino). Mantieni compute e
 database co-localizzati: rimuovere questa impostazione riporterebbe le Functions
 al default Vercel `iad1` e aggiungerebbe un roundtrip transatlantico a ogni
 lettura o grade server-side.
+
+Le card Daily Kanji e il glossario sono separati: le prime hanno refresh minimo
+di 22 ore e payload massimo 1 MB, il secondo refresh minimo di 6 giorni e
+payload massimo 4 MB. Migrazione, bootstrap operativo, budget misurato e
+runbook sono documentati in
+[`docs/infrastructure-budget.md`](./docs/infrastructure-budget.md).
 
 Per le notifiche live di Daily Kanji iOS, il monitor GitHub near-real-time e
 sospeso finche APNs/notifiche non sono affidabili. Il workflow resta disponibile

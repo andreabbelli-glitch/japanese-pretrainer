@@ -310,8 +310,9 @@ iOS:
 
 - dataset full e audio locali restano packaged solo nell'app come fallback;
 - il widget package contiene solo la proiezione cards-only dello stesso export;
-- solo l'app scarica un piccolo JSON privato quando la cache condivisa e' stale
-  o quando l'utente forza il refresh;
+- solo l'app scarica il JSON privato delle card quando la cache condivisa e'
+  stale o quando l'utente forza il refresh;
+- il glossario usa uno snapshot separato, con cache HTTP settimanale ed ETag;
 - la review live e' online-only e usa `MOBILE_API_*`, separata dal dataset
   packaged/cache;
 - le notifiche APNs sono app-only; il widget resta network-free;
@@ -324,11 +325,12 @@ iOS:
 - fallback offline sempre disponibile.
 
 Con il contratto offline-first, l'app iOS installata puo consumare traffico
-runtime solo per il JSON del dataset privato e per la review live quando
-configurata. Il budget atteso resta ampiamente sotto i free tier per uso
-monoutente: sync automatico massimo ogni 4 ore solo quando l'app viene
-aperta/foregrounded, payload JSON piccolo, nessun download audio e nessun
-accesso diretto a Turso dal telefono.
+runtime solo per i due snapshot privati e per la review live quando configurata.
+Il budget atteso resta ampiamente sotto i free tier per uso monoutente: sync
+automatico delle card massimo una volta al giorno quando l'app viene
+aperta/foregrounded, glossario cacheato per sette giorni, nessun download audio
+e nessun accesso diretto a Turso dal telefono. Se il glossario remoto non e'
+disponibile, l'app conserva quello gia' presente in cache o nel bundle.
 
 Il contratto offline-first e' dichiarato in `offline-contract.json` e verificato
 da `tests/daily-kanji-ios-offline-contract.test.ts`: il test blocca
@@ -336,9 +338,11 @@ l'introduzione accidentale di database runtime iOS, Associated Domains o App
 Group diversi da quello atteso. Le API di rete restano vietate in `Shared/` per
 evitare che codice network venga linkato implicitamente sia da app sia da
 widget; il client di rete deve vivere nel target `App/`. Lo stesso contratto
-dichiara il budget free-tier atteso: 200 sync app mensili come budget automatico
-modellato, 0 sync widget, 200 richieste Vercel / 200 query Turso massime attese
-lato endpoint, piu export/package manuale.
+dichiara anche i limiti modellati: al massimo 70 tentativi automatici app
+inclusi i retry, 34 build mensili dello snapshot card, 6 build/sync glossario,
+0 sync widget e 15.000 voti review mensili come scenario di stress personale.
+La descrizione completa del budget e del runbook e' in
+`docs/infrastructure-budget.md`.
 
 ## Verifica per agenti
 

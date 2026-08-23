@@ -1,6 +1,7 @@
 import { db, type DatabaseClient } from "@/db";
 import {
   revalidateConsolidationSummaryCache,
+  revalidateReviewCardStateCache,
   revalidateReviewSummaryCache
 } from "@/features/cache/server/data-cache";
 import {
@@ -65,14 +66,14 @@ export type MobileReviewGradeResult = {
     rating: ReviewRating;
   };
   ok: true;
-  session: MobileReviewSession;
+  session: MobileReviewSession | null;
 };
 
 export async function loadMobileReviewSession(
   database: DatabaseClient = db
 ): Promise<MobileReviewSession> {
   const loadResult = await getGlobalReviewPageLoadResult({}, database, {
-    bypassCache: true
+    bypassCache: false
   });
   const generatedAt = new Date().toISOString();
 
@@ -103,6 +104,7 @@ export async function gradeMobileReviewCard(input: {
   cardId: string;
   database?: DatabaseClient;
   expectedUpdatedAt: string | null;
+  hasBufferedSuccessor?: boolean;
   rating: ReviewRating;
   responseMs?: number | null;
 }): Promise<MobileReviewGradeResult> {
@@ -116,6 +118,7 @@ export async function gradeMobileReviewCard(input: {
   });
 
   revalidateReviewSummaryCache(gradeResult.mediaId);
+  revalidateReviewCardStateCache(gradeResult.affectedCardIds);
 
   if (gradeResult.consolidationChanged) {
     revalidateConsolidationSummaryCache(gradeResult.mediaId);
@@ -130,8 +133,15 @@ export async function gradeMobileReviewCard(input: {
       rating: input.rating
     },
     ok: true,
-    session: await loadMobileReviewSession(database)
+    session:
+      input.hasBufferedSuccessor && isSafeBufferedAdvanceRating(input.rating)
+        ? null
+        : await loadMobileReviewSession(database)
   };
+}
+
+function isSafeBufferedAdvanceRating(rating: ReviewRating) {
+  return rating === "good" || rating === "easy";
 }
 
 function mapReviewPageDataToMobileSession(

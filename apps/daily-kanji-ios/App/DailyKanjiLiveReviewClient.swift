@@ -163,7 +163,7 @@ struct DailyKanjiLiveReviewGradeResult: Codable, Equatable {
     }
 
     let grade: Grade
-    let session: DailyKanjiLiveReviewSession
+    let session: DailyKanjiLiveReviewSession?
 }
 
 enum DailyKanjiLiveReviewState: Equatable {
@@ -257,6 +257,7 @@ protocol DailyKanjiLiveReviewing {
         cardId: String,
         rating: DailyKanjiLiveReviewRating,
         expectedUpdatedAt: String?,
+        hasBufferedSuccessor: Bool,
         responseMs: Int?
     ) async throws -> DailyKanjiLiveReviewGradeResult
     func registerDeviceToken(_ deviceToken: String) async throws
@@ -275,11 +276,13 @@ struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
         let cardId: String
         let rating: DailyKanjiLiveReviewRating
         let expectedUpdatedAt: String?
+        let hasBufferedSuccessor: Bool
         let responseMs: Int?
 
         enum CodingKeys: String, CodingKey {
             case cardId
             case expectedUpdatedAt
+            case hasBufferedSuccessor
             case rating
             case responseMs
         }
@@ -289,6 +292,7 @@ struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
 
             try container.encode(cardId, forKey: .cardId)
             try container.encode(rating, forKey: .rating)
+            try container.encode(hasBufferedSuccessor, forKey: .hasBufferedSuccessor)
             try container.encode(responseMs, forKey: .responseMs)
 
             if let expectedUpdatedAt {
@@ -302,7 +306,7 @@ struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
     private struct GradeResponse: Decodable {
         let ok: Bool
         let grade: DailyKanjiLiveReviewGradeResult.Grade
-        let session: DailyKanjiLiveReviewSession
+        let session: DailyKanjiLiveReviewSession?
     }
 
     private struct DeviceTokenRequest: Encodable {
@@ -363,6 +367,7 @@ struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
         cardId: String,
         rating: DailyKanjiLiveReviewRating,
         expectedUpdatedAt: String?,
+        hasBufferedSuccessor: Bool,
         responseMs: Int?
     ) async throws -> DailyKanjiLiveReviewGradeResult {
         let response: GradeResponse = try await send(
@@ -372,6 +377,7 @@ struct DailyKanjiLiveReviewClient: DailyKanjiLiveReviewing {
                 cardId: cardId,
                 rating: rating,
                 expectedUpdatedAt: expectedUpdatedAt,
+                hasBufferedSuccessor: hasBufferedSuccessor,
                 responseMs: responseMs
             )
         )

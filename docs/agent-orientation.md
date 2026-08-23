@@ -40,6 +40,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 - App code or logic: run `./scripts/with-node.sh pnpm check`.
 - Routing, DB, importer/sync, auth, cache revalidation, or E2E-covered flows: run `./scripts/with-node.sh pnpm check` and `./scripts/with-node.sh pnpm release:check`.
 - Changes under `apps/daily-kanji-ios/**`: run `./scripts/with-node.sh pnpm test:ios-ops` for the TypeScript operational contracts and `./scripts/with-node.sh pnpm daily-kanji:test` for the canonical XCTest suite.
+- Changes to Daily Kanji runtime sync or its DB projection: keep public GET routes read-only, run `./scripts/with-node.sh pnpm daily-kanji:snapshot:status`, and follow `docs/infrastructure-budget.md` before deploy.
 - Content-only repo-scoped skill work: run the skill's `Verification` section instead of broad app gates.
 - When the user asks about app runtime state such as the latest completed/opened lesson, resume target, or current textbook progress, use `./scripts/with-node.sh pnpm app:progress-brief -- --media-slug <media-slug>`; it reads the configured runtime DB/Turso state and does not replace content source-of-truth checks.
 - Before checking several candidate entry/card surfaces in the same media, use `./scripts/with-node.sh pnpm content:lookup-batch -- --media-slug <media-slug> --query <surface> [--term <surface>] [--grammar <pattern>] [--card <front>]`; it parses the Markdown bundle once and avoids repeated manual lookup calls.
@@ -72,6 +73,7 @@ This keeps local agents on the supported Node 22.x toolchain.
 | `README.md` | Product state, route semantics, bootstrap, and high-level architecture. |
 | `docs/dev-tooling.md` | Local runtime, Codex sandbox setup, workflow command notes. |
 | `docs/review-domain-boundary.md` | Review scope invariants and facade boundary for routes, actions, and components. |
+| `docs/infrastructure-budget.md` | Turso/Vercel hard budgets, persisted Daily Kanji snapshots, deployment runbook, and performance baselines. |
 | `docs/textbook-pronunciation-boundary.md` | Textbook facade imports, pronunciation display/runtime boundary, and canonical pronunciation workflow entry points. |
 | `docs/llm-kit/README.md` | External LLM content kit and content handoff source of truth. |
 | `.codex/README.md` | Codex local action and sandbox configuration. |

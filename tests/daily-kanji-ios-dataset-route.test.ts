@@ -1,21 +1,19 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  closeDatabaseClient,
-  type DatabaseClient
-} from "@/db";
+import { closeDatabaseClient, type DatabaseClient } from "@/db";
 import { developmentFixture } from "@/db/seed";
+import { refreshDailyKanjiRuntimeSnapshot } from "@/features/daily-kanji/server";
 import { withTestDatabase } from "./helpers/test-db";
 
-const { buildDailyKanjiDatasetMock, dbMock } = vi.hoisted(() => ({
-  buildDailyKanjiDatasetMock: vi.fn(),
-  dbMock: {}
+const { dbMock, loadDailyKanjiRuntimeSnapshotMock } = vi.hoisted(() => ({
+  dbMock: {},
+  loadDailyKanjiRuntimeSnapshotMock: vi.fn()
 }));
 
 describe("daily kanji iOS dataset route", () => {
   beforeEach(() => {
     process.env.DAILY_KANJI_IOS_SYNC_TOKEN = "daily-kanji-secret";
-    buildDailyKanjiDatasetMock.mockReset();
+    loadDailyKanjiRuntimeSnapshotMock.mockReset();
   });
 
   it("reports a server configuration error when the sync token is missing", async () => {
@@ -37,7 +35,7 @@ describe("daily kanji iOS dataset route", () => {
     await expect(response.json()).resolves.toEqual({
       error: "DAILY_KANJI_IOS_SYNC_TOKEN is not configured on the app runtime."
     });
-    expect(buildDailyKanjiDatasetMock).not.toHaveBeenCalled();
+    expect(loadDailyKanjiRuntimeSnapshotMock).not.toHaveBeenCalled();
   });
 
   it("rejects requests with the wrong bearer token", async () => {
@@ -58,7 +56,7 @@ describe("daily kanji iOS dataset route", () => {
     await expect(response.json()).resolves.toEqual({
       error: "Unauthorized."
     });
-    expect(buildDailyKanjiDatasetMock).not.toHaveBeenCalled();
+    expect(loadDailyKanjiRuntimeSnapshotMock).not.toHaveBeenCalled();
   });
 
   it("rejects requests without an authorization header", async () => {
@@ -75,10 +73,10 @@ describe("daily kanji iOS dataset route", () => {
     await expect(response.json()).resolves.toEqual({
       error: "Unauthorized."
     });
-    expect(buildDailyKanjiDatasetMock).not.toHaveBeenCalled();
+    expect(loadDailyKanjiRuntimeSnapshotMock).not.toHaveBeenCalled();
   });
 
-  it("returns a no-store Daily Kanji dataset for authorized requests", async () => {
+  it("serves a cacheable persisted snapshot without rebuilding it", async () => {
     const previousDatabaseUrl = process.env.DATABASE_URL;
 
     await withTestDatabase(
@@ -87,7 +85,11 @@ describe("daily kanji iOS dataset route", () => {
         prefix: "jcs-daily-kanji-ios-route-",
         seedDevelopmentFixture: true
       },
-      async ({ databasePath }) => {
+      async ({ database, databasePath }) => {
+        await refreshDailyKanjiRuntimeSnapshot({
+          database,
+          now: new Date("2026-08-23T04:15:00.000Z")
+        });
         closeAndForgetDatabaseSingleton();
         vi.resetModules();
         vi.doUnmock("@/db");
@@ -95,9 +97,8 @@ describe("daily kanji iOS dataset route", () => {
         process.env.DATABASE_URL = databasePath;
 
         try {
-          const { GET } = await import(
-            "@/app/api/daily-kanji/ios-dataset/route"
-          );
+          const { GET } =
+            await import("@/app/api/daily-kanji/ios-dataset/route");
 
           const response = await GET(
             new Request("https://example.test/api/daily-kanji/ios-dataset", {
@@ -110,13 +111,17 @@ describe("daily kanji iOS dataset route", () => {
 
           expect(response.status).toBe(200);
           expect(response.headers.get("cache-control")).toBe(
-            "private, no-store, max-age=0"
+            "private, max-age=21600, stale-if-error=604800"
+          );
+          expect(response.headers.get("etag")).toMatch(/^"dk-/u);
+          expect(response.headers.get("x-daily-kanji-snapshot")).toBe(
+            "persisted"
           );
           expect(body.version).toBe(1);
           expect(Array.isArray(body.cards)).toBe(true);
-          expect(body.cards.map((card: { cardId: string }) => card.cardId)).toContain(
-            developmentFixture.primaryCardId
-          );
+          expect(
+            body.cards.map((card: { cardId: string }) => card.cardId)
+          ).toContain(developmentFixture.primaryCardId);
         } finally {
           closeAndForgetDatabaseSingleton();
           restoreDatabaseUrl(previousDatabaseUrl);
@@ -126,12 +131,54 @@ describe("daily kanji iOS dataset route", () => {
     );
   });
 
-  it("returns a structured error if dataset generation fails", async () => {
+  it("returns 304 without a response body when the client ETag is current", async () => {
+    loadDailyKanjiRuntimeSnapshotMock.mockResolvedValue(buildSnapshotFixture());
+    const { GET } = await importRouteWithMockedSnapshot();
+
+    const response = await GET(
+      new Request("https://example.test/api/daily-kanji/ios-dataset", {
+        headers: {
+          authorization: "Bearer daily-kanji-secret",
+          "if-none-match": 'W/"dk-fixture"'
+        }
+      })
+    );
+
+    expect(response.status).toBe(304);
+    expect(response.headers.get("etag")).toBe('"dk-fixture"');
+    await expect(response.text()).resolves.toBe("");
+  });
+
+  it("returns a retryable error when the snapshot has not been generated", async () => {
+    loadDailyKanjiRuntimeSnapshotMock.mockResolvedValue(null);
+    const { GET } = await importRouteWithMockedSnapshot();
+
+    const response = await GET(
+      new Request("https://example.test/api/daily-kanji/ios-dataset", {
+        headers: {
+          authorization: "Bearer daily-kanji-secret"
+        }
+      })
+    );
+
+    expect(response.status).toBe(503);
+    expect(response.headers.get("cache-control")).toBe(
+      "private, no-store, max-age=0"
+    );
+    await expect(response.json()).resolves.toEqual({
+      error: "Daily Kanji dataset snapshot is not ready.",
+      ok: false
+    });
+  });
+
+  it("returns a structured error if the snapshot read fails", async () => {
     const consoleErrorSpy = vi
       .spyOn(console, "error")
       .mockImplementation(() => {});
-    buildDailyKanjiDatasetMock.mockRejectedValue(new Error("database offline"));
-    const { GET } = await importRouteWithMockedExporter();
+    loadDailyKanjiRuntimeSnapshotMock.mockRejectedValue(
+      new Error("database offline")
+    );
+    const { GET } = await importRouteWithMockedSnapshot();
 
     try {
       const response = await GET(
@@ -147,11 +194,11 @@ describe("daily kanji iOS dataset route", () => {
         "private, no-store, max-age=0"
       );
       await expect(response.json()).resolves.toEqual({
-        error: "Daily Kanji dataset generation failed.",
+        error: "Daily Kanji dataset snapshot is unavailable.",
         ok: false
       });
       expect(consoleErrorSpy).toHaveBeenCalledWith(
-        "Daily Kanji iOS dataset generation failed.",
+        "Daily Kanji iOS snapshot load failed.",
         expect.any(Error)
       );
     } finally {
@@ -161,16 +208,39 @@ describe("daily kanji iOS dataset route", () => {
 });
 
 async function importRouteWithMockedExporter() {
+  return importRouteWithMockedSnapshot();
+}
+
+async function importRouteWithMockedSnapshot() {
   closeAndForgetDatabaseSingleton();
   vi.resetModules();
   vi.doMock("@/db", () => ({
     db: dbMock
   }));
   vi.doMock("@/features/daily-kanji/server", () => ({
-    buildDailyKanjiDataset: buildDailyKanjiDatasetMock
+    loadDailyKanjiRuntimeSnapshot: loadDailyKanjiRuntimeSnapshotMock
   }));
 
   return import("@/app/api/daily-kanji/ios-dataset/route");
+}
+
+function buildSnapshotFixture() {
+  const payloadJson = JSON.stringify({
+    cards: [{ cardId: "card-fixture" }],
+    generatedAt: "2026-08-23T04:15:00.000Z",
+    recentMistakeLookbackDays: 3,
+    version: 1
+  });
+
+  return {
+    buildDurationMs: 10,
+    generatedAt: "2026-08-23T04:15:00.000Z",
+    payloadBytes: payloadJson.length,
+    payloadEtag: '"dk-fixture"',
+    payloadJson,
+    refreshNotBefore: "2026-08-24T00:15:00.000Z",
+    schemaVersion: 1
+  };
 }
 
 function closeAndForgetDatabaseSingleton() {
