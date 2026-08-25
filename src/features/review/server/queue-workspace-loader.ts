@@ -73,7 +73,7 @@ export async function loadStableReviewQueueSkeletonCached(input: {
         enabled: cacheEligible,
         keyParts: [
           "review",
-          "queue-skeleton-v1",
+          "queue-skeleton-v2",
           ...orderedMediaIds.map((mediaId) => `media:${mediaId}`)
         ],
         loader: () =>

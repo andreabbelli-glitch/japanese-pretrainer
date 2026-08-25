@@ -166,22 +166,30 @@ export function buildComputedReviewSubjectIdentityCteSql(options?: {
             AND NOT (
               CASE
                 WHEN dlc.entry_type = 'term' THEN
-                  c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
+                  c.front = t.lemma
+                  OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql("t.lemma")}
                   OR (
                     t.reading IS NOT NULL
-                    AND c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
-                      "t.reading"
-                    )}
+                    AND (
+                      c.front = t.reading
+                      OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                        "t.reading"
+                      )}
+                    )
                   )
                 WHEN dlc.entry_type = 'grammar' THEN
-                  c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                  c.front = gp.pattern
+                  OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
                     "gp.pattern"
                   )}
                   OR (
                     gp.reading IS NOT NULL
-                    AND c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
-                      "gp.reading"
-                    )}
+                    AND (
+                      c.front = gp.reading
+                      OR c.normalized_front = ${normalizeReviewSubjectSurfaceSql(
+                        "gp.reading"
+                      )}
+                    )
                   )
                 ELSE 0
               END

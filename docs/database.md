@@ -205,7 +205,10 @@ Tabelle incluse nel perimetro del task:
   parte stabile dell'identita card -> subject. Il runtime la unisce a `card`
   per leggere stato editoriale, media e lesson live; migrazioni e import la
   aggiornano atomicamente e verificano che non esistano card senza identita.
-  Il conteggio dei link guida preserva la regola singleton senza ripetere
+  Il conteggio dei link guida preserva la regola singleton. La proiezione v2
+  conserva inoltre l'equivalenza tra
+  front e voce canonica quando la superficie autoriale contiene furigana,
+  evitando che una card gia studiata venga riclassificata come nuova.
   aggregazioni su `card_entry_link` nelle query runtime.
   La CTE completa con link, aggregazioni e canonicalizzazione resta confinata
   al rebuild, non alle query review, Daily Kanji o Kanji Clash ordinarie. Un

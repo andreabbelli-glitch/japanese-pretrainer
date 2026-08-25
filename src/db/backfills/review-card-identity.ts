@@ -11,7 +11,7 @@ type ReviewCardIdentityRefreshDatabase = Pick<
   "all" | "get" | "run"
 >;
 
-const REVIEW_CARD_IDENTITY_PROJECTION_VERSION = 1;
+const REVIEW_CARD_IDENTITY_PROJECTION_VERSION = 2;
 
 export type ReviewCardIdentityCacheCoverage = {
   cardCount: number;

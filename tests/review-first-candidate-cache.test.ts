@@ -804,7 +804,7 @@ describe("global review first-candidate cache", () => {
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(
       [...cacheStore.keys()].some((cacheKey) =>
-        cacheKey.includes('"review","queue-skeleton-v1"')
+        cacheKey.includes('"review","queue-skeleton-v2"')
       )
     ).toBe(true);
   });
@@ -821,7 +821,7 @@ describe("global review first-candidate cache", () => {
       database
     );
     const skeletonCacheKey = [...cacheStore.keys()].find((cacheKey) =>
-      cacheKey.includes('"review","queue-skeleton-v1"')
+      cacheKey.includes('"review","queue-skeleton-v2"')
     );
 
     expect(skeletonCacheKey).toBeDefined();

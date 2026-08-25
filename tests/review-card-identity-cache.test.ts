@@ -12,8 +12,17 @@ import {
 } from "@/db/queries/review-query-helpers";
 import { buildListEligibleKanjiClashSubjectsSql } from "@/db/queries/kanji-clash-eligibility-policy";
 import { listReviewCardIdsByEntryRefs } from "@/db/queries/review-subject";
-import { card, cardEntryLink, term } from "@/db/schema";
+import {
+  card,
+  cardEntryLink,
+  crossMediaGroup,
+  grammarPattern,
+  reviewSubjectState,
+  term
+} from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
+import { loadReviewQueueWorkspace } from "@/features/review/server/queue-workspace-loader";
+import { applyReviewGrade } from "@/features/review/server/service";
 
 import { withTestDatabase } from "./helpers/test-db";
 
@@ -218,6 +227,133 @@ describe("review card identity cache", () => {
 
         expect(identity?.drivingLinkCount).toBe(2);
         expect(cardIds).toEqual([]);
+      }
+    );
+  });
+
+  it("keeps matching furigana concept cards on their canonical subject", async () => {
+    await withTestDatabase(
+      {
+        markDevelopmentLessonCompleted: true,
+        prefix: "jcs-review-card-identity-furigana-",
+        seedDevelopmentFixture: true
+      },
+      async ({ database }) => {
+        const nowIso = "2026-08-25T20:29:00.000Z";
+        const groupId = "cross_media_group_identity_cache_furigana";
+        const grammarId = "grammar_identity_cache_furigana";
+        const cardId = "card_identity_cache_furigana";
+        const authoredSurface = "～{{言|い}}う / ～って{{言|い}}う";
+        const canonicalSubjectKey = `group:grammar:${groupId}`;
+        const subjectKey = `mnemonic:v1:concept:${canonicalSubjectKey}`;
+
+        await database.insert(crossMediaGroup).values({
+          createdAt: nowIso,
+          entryType: "grammar",
+          groupKey: "いう / っていう",
+          id: groupId,
+          updatedAt: nowIso
+        });
+        await database.insert(grammarPattern).values({
+          createdAt: nowIso,
+          crossMediaGroupId: groupId,
+          id: grammarId,
+          meaningIt: "dire / chiamare",
+          mediaId: developmentFixture.mediaId,
+          pattern: authoredSurface,
+          searchPatternNorm: "言う / って言う",
+          searchRomajiNorm: "iu / tte iu",
+          segmentId: developmentFixture.segmentId,
+          sourceId: grammarId,
+          title: "Dire / chiamarsi",
+          updatedAt: nowIso
+        });
+        await database.insert(card).values({
+          back: "dire / chiamare",
+          cardType: "concept",
+          createdAt: nowIso,
+          front: authoredSurface,
+          id: cardId,
+          lessonId: developmentFixture.lessonId,
+          mediaId: developmentFixture.mediaId,
+          normalizedFront: "〜言う / 〜って言う",
+          orderIndex: 100,
+          segmentId: developmentFixture.segmentId,
+          sourceFile: "tests/review-card-identity-furigana.md",
+          status: "active",
+          updatedAt: nowIso
+        });
+        await database.insert(cardEntryLink).values({
+          cardId,
+          entryId: grammarId,
+          entryType: "grammar",
+          id: "card_entry_link_identity_cache_furigana",
+          relationshipType: "primary"
+        });
+
+        await refreshReviewCardIdentityCache(database, {
+          mediaIds: [developmentFixture.mediaId]
+        });
+
+        const identity = await database.query.reviewCardIdentity.findFirst({
+          where: (table, { eq }) => eq(table.cardId, cardId)
+        });
+
+        expect(identity).toMatchObject({
+          canonicalSubjectKey,
+          crossMediaGroupId: groupId,
+          memoryKey: subjectKey,
+          projectionVersion: 2
+        });
+
+        await database.insert(reviewSubjectState).values({
+          canonicalSubjectKey,
+          cardId,
+          createdAt: nowIso,
+          crossMediaGroupId: groupId,
+          difficulty: 4,
+          dueAt: "2026-08-25T19:00:00.000Z",
+          entryId: grammarId,
+          entryType: "grammar",
+          lapses: 0,
+          lastInteractionAt: nowIso,
+          lastReviewedAt: nowIso,
+          learningSteps: 0,
+          manualOverride: false,
+          recallTask: "concept",
+          reps: 3,
+          scheduledDays: 2,
+          schedulerVersion: "fsrs_v1",
+          stability: 3,
+          state: "review",
+          subjectKey,
+          subjectType: "group",
+          suspended: false,
+          updatedAt: nowIso
+        });
+
+        const workspace = await loadReviewQueueWorkspace({
+          bypassStableCache: true,
+          database,
+          mediaIds: [developmentFixture.mediaId],
+          now: new Date("2026-08-25T20:30:00.000Z"),
+          resolvedDailyLimit: 20,
+          resolvedNewIntroducedTodayCount: 0
+        });
+        const loadedGroup = workspace.subjectGroups.find(
+          (group) => group.identity.subjectKey === subjectKey
+        );
+
+        expect(loadedGroup?.subjectState?.updatedAt).toBe(nowIso);
+        await expect(
+          applyReviewGrade({
+            cardId,
+            database,
+            expectedUpdatedAt: loadedGroup?.subjectState?.updatedAt,
+            now: new Date("2026-08-25T20:31:00.000Z"),
+            rating: "good"
+          })
+        ).resolves.toMatchObject({ cardId });
       }
     );
   });
