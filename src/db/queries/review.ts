@@ -1,7 +1,15 @@
 import { and, asc, eq, inArray, ne } from "drizzle-orm";
 
 import type { DatabaseQueryClient } from "../client.ts";
-import { card, grammarPattern, media, term } from "../schema/index.ts";
+import {
+  card,
+  grammarPattern,
+  lesson,
+  lessonProgress,
+  media,
+  reviewCardIdentity,
+  term
+} from "../schema/index.ts";
 import {
   buildReviewSubjectIdentityCteSql,
   quoteSqlString
@@ -277,6 +285,71 @@ export async function listEligibleReviewWorkspaceCardsByMediaIds(
       (total, mediaRow) => total + mediaRow.rawCardCount,
       0
     )
+  };
+}
+
+/**
+ * Stable, presentation-free input for the review queue. The materialized
+ * identity removes the need to load every card entry link and glossary row
+ * before the queue can be deduplicated. Full card content is loaded only for
+ * the visible queue window after selection.
+ */
+export async function listEligibleReviewQueueSkeletonRowsByMediaIds(
+  database: DatabaseQueryClient,
+  mediaIds: string[]
+) {
+  if (mediaIds.length === 0) {
+    return {
+      hasRawCards: false,
+      rows: []
+    };
+  }
+
+  const orderedMediaIds = [...new Set(mediaIds)].sort();
+  const [rows, rawCardRows] = await Promise.all([
+    database
+      .select({
+        cardType: card.cardType,
+        canonicalSubjectKey: reviewCardIdentity.canonicalSubjectKey,
+        createdAt: card.createdAt,
+        crossMediaGroupId: reviewCardIdentity.crossMediaGroupId,
+        entryId: reviewCardIdentity.entryId,
+        entryType: reviewCardIdentity.entryType,
+        id: card.id,
+        lessonId: card.lessonId,
+        mediaId: card.mediaId,
+        memoryKey: reviewCardIdentity.memoryKey,
+        orderIndex: card.orderIndex,
+        recallTask: reviewCardIdentity.recallTask,
+        segmentId: card.segmentId,
+        status: card.status,
+        updatedAt: card.updatedAt
+      })
+      .from(card)
+      .innerJoin(reviewCardIdentity, eq(reviewCardIdentity.cardId, card.id))
+      .innerJoin(lesson, eq(lesson.id, card.lessonId))
+      .innerJoin(lessonProgress, eq(lessonProgress.lessonId, lesson.id))
+      .where(
+        and(
+          inArray(card.mediaId, orderedMediaIds),
+          ne(card.status, "archived"),
+          eq(lesson.status, "active"),
+          eq(lessonProgress.status, "completed")
+        )
+      )
+      .orderBy(asc(card.mediaId), asc(card.orderIndex), asc(card.createdAt)),
+    database
+      .select({ id: card.id })
+      .from(card)
+      .where(
+        and(inArray(card.mediaId, orderedMediaIds), ne(card.status, "archived"))
+      )
+      .limit(1)
+  ]);
+
+  return {
+    hasRawCards: rawCardRows.length > 0,
+    rows
   };
 }
 

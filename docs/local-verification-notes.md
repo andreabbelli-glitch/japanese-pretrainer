@@ -393,8 +393,11 @@ specifico, ma non conta come matrice ufficiale di verifica.
 - Il primo avvio di `/review` va controllato anche senza media importati, per
   verificare che l'empty state dedicato non sembri una review locale vuota.
 - Le performance generali restano verificate soprattutto a livello
-  locale/percepito; Daily Kanji ha anche intervalli, payload massimi e contratto
-  mensile automatizzati come descritto in `docs/infrastructure-budget.md`.
+  locale/percepito. In Review, un `Good` con risposta server deliberatamente
+  trattenuta deve mostrare subito la carta successiva dal buffer, senza rimontare
+  lo stage o attendere l'ack; il caso e' coperto dalla suite E2E. Daily Kanji ha
+  anche intervalli, payload massimi e contratto mensile automatizzati come
+  descritto in `docs/infrastructure-budget.md`.
 - Il prodotto resta single-user e locale-first; non include hardening per esposizione remota.
 - Il training automatico FSRS in produzione dipende da Vercel Cron, configurato
   in `vercel.json` sulla route `/api/internal/fsrs-optimizer/run`. La route

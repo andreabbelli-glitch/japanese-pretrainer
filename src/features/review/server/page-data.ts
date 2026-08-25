@@ -38,16 +38,17 @@ import type { ReviewSubjectGroup } from "@/features/review/model/subject";
 import { loadReviewCardPronunciations } from "@/features/review/server/card-hydration";
 import {
   buildReviewMediaLookup,
-  type ReviewEntryLookupItem,
   type ReviewMediaLookup
 } from "@/features/review/server/card-presenters";
 import {
-  loadGlobalReviewWorkspace,
-  loadGlobalReviewPageWorkspace,
   loadReviewWorkspaceV2,
-  type LoadedGlobalReviewPageWorkspace,
   type ReviewPageLoadOptions
 } from "@/features/review/server/loader";
+import {
+  loadGlobalReviewQueuePageWorkspace,
+  type LoadedGlobalReviewQueuePageWorkspace
+} from "@/features/review/server/queue-workspace-loader";
+import { hydrateReviewQueueWindow } from "@/features/review/server/queue-window-hydration";
 import { loadPrestudyReviewPageData } from "@/features/review/server/prestudy-page-data";
 import type {
   GlobalReviewFirstCandidateLoadResult,
@@ -73,6 +74,7 @@ export {
 
 type ReviewPageWorkspace = ReviewPageData["media"];
 const REVIEW_ADVANCE_WINDOW_SIZE = 8;
+const EMPTY_ENTRY_LOOKUP = new Map();
 
 function filterReviewSubjectGroupsByCards(
   subjectGroups: ReviewSubjectGroup[],
@@ -117,7 +119,6 @@ function resolveReviewExtraNewAnchorCount(input: {
 async function buildReviewSelectionContext(input: {
   cards: ReviewCardSource[];
   dailyLimit: number;
-  entryLookup: Map<string, ReviewEntryLookupItem>;
   excludeCardIds?: string[];
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   newIntroducedTodayCount: number;
@@ -152,7 +153,7 @@ async function buildReviewSelectionContext(input: {
       buildReviewQueueSubjectSnapshot({
         cards: segmentFilteredCards,
         dailyLimit: input.dailyLimit,
-        entryLookup: input.entryLookup,
+        entryLookup: EMPTY_ENTRY_LOOKUP,
         excludeCardIds: input.excludeCardIds,
         extraNewAnchorCount,
         extraNewCount: input.searchState.extraNewCount,
@@ -174,14 +175,6 @@ async function buildReviewSelectionContext(input: {
     searchState: input.searchState
   });
   const queueCardIds = queueSnapshot.queueModels.map((model) => model.card.id);
-  const selectedRawCard = selection.selectedModel
-    ? resolveReviewSubjectSelectionCard({
-        selectedCardId: selection.selectedCardId,
-        subjectModel: selection.selectedModel
-      })
-    : null;
-  const hasSelectedCard =
-    selection.selectedModel !== null && selectedRawCard !== null;
   const advanceCardModels =
     selection.queueIndex >= 0
       ? queueSnapshot.queueModels.slice(
@@ -192,11 +185,9 @@ async function buildReviewSelectionContext(input: {
   return {
     advanceCardModels,
     extraNewAnchorCount,
-    hasSelectedCard,
     nowIso,
     queueCardIds,
     queueSnapshot,
-    selectedRawCard,
     selection
   };
 }
@@ -206,7 +197,6 @@ export async function buildReviewPageDataFromWorkspace(input: {
   dailyLimit: number;
   database: DatabaseClient;
   excludeCardIds?: string[];
-  entryLookup: Map<string, ReviewEntryLookupItem>;
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   media: ReviewPageWorkspace;
   mediaById: ReviewMediaLookup;
@@ -221,18 +211,15 @@ export async function buildReviewPageDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }) {
   const {
-    advanceCardModels,
+    advanceCardModels: skeletonAdvanceCardModels,
     extraNewAnchorCount,
-    hasSelectedCard,
     nowIso,
     queueCardIds,
     queueSnapshot,
-    selectedRawCard,
     selection
   } = await buildReviewSelectionContext({
     cards: input.cards,
     dailyLimit: input.dailyLimit,
-    entryLookup: input.entryLookup,
     excludeCardIds: input.excludeCardIds,
     fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
     newIntroducedTodayCount: input.newIntroducedTodayCount,
@@ -242,6 +229,33 @@ export async function buildReviewPageDataFromWorkspace(input: {
     subjectGroups: input.subjectGroups,
     visibleMediaId: input.visibleMediaId
   });
+  const hydratedWindow = await hydrateReviewQueueWindow({
+    database: input.database,
+    models: [
+      ...(selection.selectedModel ? [selection.selectedModel] : []),
+      ...skeletonAdvanceCardModels
+    ],
+    profiler: input.profiler
+  });
+  const selectedModel = selection.selectedModel
+    ? (hydratedWindow.modelsBySubjectKey.get(
+        selection.selectedModel.group.identity.subjectKey
+      ) ?? null)
+    : null;
+  const advanceCardModels = skeletonAdvanceCardModels.flatMap((model) => {
+    const hydratedModel = hydratedWindow.modelsBySubjectKey.get(
+      model.group.identity.subjectKey
+    );
+
+    return hydratedModel ? [hydratedModel] : [];
+  });
+  const selectedRawCard = selectedModel
+    ? resolveReviewSubjectSelectionCard({
+        selectedCardId: selection.selectedCardId,
+        subjectModel: selectedModel
+      })
+    : null;
+  const hasSelectedCard = selectedModel !== null && selectedRawCard !== null;
   const selectedCardPronunciationsPromise = selectedRawCard
     ? measureWith(
         input.profiler,
@@ -250,7 +264,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
           loadReviewCardPronunciations({
             card: selectedRawCard,
             database: input.database,
-            entryLookup: input.entryLookup
+            entryLookup: hydratedWindow.entryLookup
           }),
         (value) => ({
           pronunciations: value.length
@@ -259,9 +273,9 @@ export async function buildReviewPageDataFromWorkspace(input: {
     : Promise.resolve([]);
   const selectedCardPronunciations = await selectedCardPronunciationsPromise;
   const selectedCardBase = hasSelectedCard
-    ? mapReviewQueueSubjectModel(selection.selectedModel!, {
+    ? mapReviewQueueSubjectModel(selectedModel!, {
         contextCache: new Map(),
-        entryLookup: input.entryLookup,
+        entryLookup: hydratedWindow.entryLookup,
         fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
         includePronunciations: false,
         mediaById: input.mediaById,
@@ -274,7 +288,7 @@ export async function buildReviewPageDataFromWorkspace(input: {
     advanceCardModels.length > 0
       ? buildReviewAdvanceCardsFromQueueModels({
           advanceCardModels,
-          entryLookup: input.entryLookup,
+          entryLookup: hydratedWindow.entryLookup,
           fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
           mediaById: input.mediaById,
           nowIso,
@@ -400,16 +414,12 @@ export async function getReviewPageData(
 
   const [settings, workspace, fsrsOptimizerSnapshot] = await Promise.all([
     settingsPromise,
-    measureWith(options.profiler, "loadGlobalReviewWorkspace", () =>
-      loadGlobalReviewWorkspace(
-        searchState,
-        database,
-        {
-          ...options,
-          resolvedMediaRows: mediaRows
-        },
-        settingsPromise.then((settings) => settings.reviewDailyLimit)
-      )
+    measureWith(options.profiler, "loadGlobalReviewQueuePageWorkspace", () =>
+      loadGlobalReviewQueuePageWorkspace(searchState, database, {
+        ...options,
+        resolvedMediaRows: mediaRows,
+        resolvedStudySettings: settingsPromise
+      })
     ),
     getFsrsOptimizerRuntimeSnapshot(database)
   ]);
@@ -419,7 +429,6 @@ export async function getReviewPageData(
       cards: workspace.cards,
       dailyLimit: workspace.dailyLimit,
       database,
-      entryLookup: workspace.entryLookup,
       excludeCardIds: options.excludeCardIds,
       fsrsOptimizerSnapshot,
       media: {
@@ -482,7 +491,7 @@ export async function loadReviewPageDataSession(
 }
 
 export async function buildGlobalReviewPageData(
-  input: LoadedGlobalReviewPageWorkspace,
+  input: LoadedGlobalReviewQueuePageWorkspace,
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot,
   database: DatabaseClient = db,
   profiler?: ReviewProfiler | null,
@@ -493,7 +502,6 @@ export async function buildGlobalReviewPageData(
       cards: input.cards,
       dailyLimit: input.dailyLimit,
       database,
-      entryLookup: input.entryLookup,
       excludeCardIds,
       fsrsOptimizerSnapshot,
       media: {
@@ -523,7 +531,7 @@ export async function getGlobalReviewPageLoadResult(
 ): Promise<GlobalReviewPageLoadResult> {
   const searchState = normalizeReviewSearchState(searchParams);
   const [workspace, fsrsOptimizerSnapshot] = await Promise.all([
-    loadGlobalReviewPageWorkspace(searchState, database, options),
+    loadGlobalReviewQueuePageWorkspace(searchState, database, options),
     getFsrsOptimizerRuntimeSnapshot(database)
   ]);
 
@@ -533,7 +541,7 @@ export async function getGlobalReviewPageLoadResult(
     };
   }
 
-  if (workspace.rawCardCount === 0) {
+  if (!workspace.hasRawCards) {
     return {
       kind: "empty-cards"
     };
@@ -554,7 +562,7 @@ export async function getGlobalReviewPageLoadResult(
 export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   cards: ReviewCardSource[];
   dailyLimit: number;
-  entryLookup: Map<string, ReviewEntryLookupItem>;
+  database: DatabaseClient;
   fsrsOptimizerSnapshot: FsrsOptimizerSnapshot;
   media: ReviewPageWorkspace;
   mediaById: ReviewMediaLookup;
@@ -569,17 +577,15 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
   profiler?: ReviewProfiler | null;
 }): Promise<ReviewFirstCandidatePageData> {
   const {
-    advanceCardModels,
+    advanceCardModels: skeletonAdvanceCardModels,
     extraNewAnchorCount,
     nowIso,
     queueCardIds,
     queueSnapshot,
-    selectedRawCard,
     selection
   } = await buildReviewSelectionContext({
     cards: input.cards,
     dailyLimit: input.dailyLimit,
-    entryLookup: input.entryLookup,
     fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
     newIntroducedTodayCount: input.newIntroducedTodayCount,
     now: input.now,
@@ -588,16 +594,42 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
     subjectGroups: input.subjectGroups,
     visibleMediaId: input.visibleMediaId
   });
+  const hydratedWindow = await hydrateReviewQueueWindow({
+    database: input.database,
+    models: [
+      ...(selection.selectedModel ? [selection.selectedModel] : []),
+      ...skeletonAdvanceCardModels
+    ],
+    profiler: input.profiler
+  });
+  const selectedModel = selection.selectedModel
+    ? (hydratedWindow.modelsBySubjectKey.get(
+        selection.selectedModel.group.identity.subjectKey
+      ) ?? null)
+    : null;
+  const advanceCardModels = skeletonAdvanceCardModels.flatMap((model) => {
+    const hydratedModel = hydratedWindow.modelsBySubjectKey.get(
+      model.group.identity.subjectKey
+    );
+
+    return hydratedModel ? [hydratedModel] : [];
+  });
+  const selectedRawCard = selectedModel
+    ? resolveReviewSubjectSelectionCard({
+        selectedCardId: selection.selectedCardId,
+        subjectModel: selectedModel
+      })
+    : null;
   const selectedCard =
-    selection.selectedModel && selectedRawCard
+    selectedModel && selectedRawCard
       ? mapReviewQueueSubjectCardPreview({
           card: selectedRawCard,
-          entryLookup: input.entryLookup,
+          entryLookup: hydratedWindow.entryLookup,
           fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
           mediaById: input.mediaById,
           nowIso,
-          queueStateSnapshot: selection.selectedModel.queueStateSnapshot,
-          schedulingKey: selection.selectedModel.group.identity.subjectKey
+          queueStateSnapshot: selectedModel.queueStateSnapshot,
+          schedulingKey: selectedModel.group.identity.subjectKey
         })
       : null;
   const selectedCardContext = buildReviewFirstCandidateSelectedCardContext({
@@ -610,7 +642,7 @@ export async function buildReviewFirstCandidateDataFromWorkspace(input: {
     advanceCardModels.length > 0
       ? buildReviewAdvanceCardsFromQueueModels({
           advanceCardModels,
-          entryLookup: input.entryLookup,
+          entryLookup: hydratedWindow.entryLookup,
           fsrsOptimizerSnapshot: input.fsrsOptimizerSnapshot,
           mediaById: input.mediaById,
           nowIso,
@@ -700,7 +732,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
 
   const loadSnapshot = async () => {
     const [workspace, runtimeContext] = await Promise.all([
-      loadGlobalReviewPageWorkspace(searchState, database, {
+      loadGlobalReviewQueuePageWorkspace(searchState, database, {
         ...options,
         resolvedStudySettings: studySettingsPromise
       }),
@@ -715,7 +747,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
       };
     }
 
-    if (workspace.rawCardCount === 0) {
+    if (!workspace.hasRawCards) {
       return {
         kind: "empty-cards" as const
       };
@@ -726,7 +758,7 @@ export async function getGlobalReviewFirstCandidateLoadResult(
       data: await buildReviewFirstCandidateDataFromWorkspace({
         cards: workspace.cards,
         dailyLimit: workspace.dailyLimit,
-        entryLookup: workspace.entryLookup,
+        database,
         fsrsOptimizerSnapshot: runtimeContext.snapshot,
         media: {
           glossaryHref: "/glossary",
@@ -771,7 +803,7 @@ export async function getGlobalReviewPageData(
 ): Promise<ReviewPageData> {
   const searchState = normalizeReviewSearchState(searchParams);
   const [workspace, fsrsOptimizerSnapshot] = await Promise.all([
-    loadGlobalReviewPageWorkspace(searchState, database, options),
+    loadGlobalReviewQueuePageWorkspace(searchState, database, options),
     getFsrsOptimizerRuntimeSnapshot(database)
   ]);
 

@@ -11,6 +11,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { ReviewCardDetailPage } from "@/components/review/review-card-detail-page";
 import { ReviewPage } from "@/components/review/review-page";
 import type { DatabaseClient } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import { card, cardEntryLink, reviewSubjectState } from "@/db/schema";
 import { developmentFixture } from "@/db/seed";
 import { importContentWorkspace } from "@/features/content/importer";
@@ -233,6 +234,9 @@ describe("review rendering", () => {
       entryType: "term",
       entryId: developmentFixture.termDbId,
       relationshipType: "primary"
+    });
+    await refreshReviewCardIdentityCache(database, {
+      mediaIds: [developmentFixture.mediaId]
     });
 
     const queueSnapshot = await getReviewQueueSnapshotForMedia(

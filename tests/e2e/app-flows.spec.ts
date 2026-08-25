@@ -208,6 +208,53 @@ test.describe("review flows", () => {
     expect(frontTop).toBeLessThan(360);
   });
 
+  test("advances the visible review card while the grade response is still pending", async ({
+    page
+  }) => {
+    await page.goto("/review");
+    await expect(page).toHaveURL(/\/review(?:\?|$)/);
+    await expectReviewReady(page);
+
+    const initialSignature = await readReviewPageSignature(page);
+    let releaseGradeRequest = () => {};
+    const gradeRequestGate = new Promise<void>((resolve) => {
+      releaseGradeRequest = resolve;
+    });
+    let gradeRequestSeen = false;
+
+    await page.route("**/*", async (route) => {
+      const request = route.request();
+      const isFirstServerAction =
+        !gradeRequestSeen &&
+        request.method() === "POST" &&
+        Boolean(await request.headerValue("next-action"));
+
+      if (isFirstServerAction) {
+        gradeRequestSeen = true;
+        await gradeRequestGate;
+      }
+
+      await route.continue();
+    });
+
+    await revealReviewAnswer(page);
+    const gradeClick = page.getByRole("button", { name: /^Good/ }).click();
+
+    try {
+      await expect.poll(() => gradeRequestSeen).toBe(true);
+      await expect
+        .poll(() => readReviewPageSignature(page))
+        .not.toEqual(initialSignature);
+      await expect(
+        page.getByRole("button", { name: "Mostra risposta" })
+      ).toBeVisible();
+    } finally {
+      releaseGradeRequest();
+      await gradeClick;
+      await page.unroute("**/*");
+    }
+  });
+
   test("keeps the revealed review answer mounted without serializing local reveal", async ({
     page
   }) => {

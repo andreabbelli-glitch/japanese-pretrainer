@@ -280,6 +280,9 @@ export async function prepareChainedBufferedAdvanceFixture(
       subjectKey: `card:${bufferedCardCId}`
     })
   ]);
+  await refreshReviewCardIdentityCache(database, {
+    mediaIds: [input.mediaId]
+  });
 
   return {
     bufferedCardBId,

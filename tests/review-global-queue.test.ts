@@ -10,6 +10,7 @@ import {
   createDatabaseClient,
   type DatabaseClient
 } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import { runMigrations } from "@/db/migrate";
 import {
   card,
@@ -567,6 +568,7 @@ describe("global review queue filtering", () => {
     await database
       .insert(userSetting)
       .values(buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z"));
+    await refreshReviewCardIdentityCache(database);
 
     const [firstCandidate, fullPage] = await Promise.all([
       getGlobalReviewFirstCandidateLoadResult({}, database),
@@ -741,6 +743,7 @@ describe("global review queue filtering", () => {
     await database
       .insert(userSetting)
       .values(buildReviewDailyLimitSetting("2026-03-10T11:00:00.000Z"));
+    await refreshReviewCardIdentityCache(database);
 
     const [firstCandidate, fullPage] = await Promise.all([
       getGlobalReviewFirstCandidateLoadResult(
@@ -957,6 +960,7 @@ async function seedCrossMediaNewOrderingFixture(database: DatabaseClient) {
   await database
     .insert(userSetting)
     .values(buildReviewDailyLimitSetting("2026-03-10T13:00:00.000Z"));
+  await refreshReviewCardIdentityCache(database);
 }
 
 async function seedCrossMediaDueOrderingFixture(database: DatabaseClient) {
@@ -1149,6 +1153,7 @@ async function seedCrossMediaDueOrderingFixture(database: DatabaseClient) {
   await database
     .insert(userSetting)
     .values(buildReviewDailyLimitSetting("2026-03-10T13:00:00.000Z"));
+  await refreshReviewCardIdentityCache(database);
 }
 
 function buildReviewTerm(input: {

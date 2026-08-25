@@ -27,6 +27,7 @@ import {
 } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
 import {
+  getGlobalReviewPageData,
   getReviewCardDetailData,
   getReviewPageData,
   getReviewQueueSnapshotForMedia,
@@ -47,6 +48,7 @@ import {
   writeCrossMediaContentFixture
 } from "./helpers/cross-media-fixture";
 import { createQuerySchedulingHarness } from "./helpers/query-scheduling";
+import { createIsolatedNewMediaFixture } from "./helpers/review-fixture";
 import { importContentWorkspace } from "@/features/content/importer";
 
 describe("review media query reuse", () => {
@@ -87,10 +89,45 @@ describe("review media query reuse", () => {
 
     expect(pageData).not.toBeNull();
     expect(mediaFindFirstSpy).not.toHaveBeenCalled();
-    expect(mediaFindManySpy).toHaveBeenCalledTimes(2);
+    expect(mediaFindManySpy).toHaveBeenCalledTimes(1);
 
     mediaFindFirstSpy.mockRestore();
     mediaFindManySpy.mockRestore();
+  });
+
+  it("hydrates only the visible queue window without loading the broad legacy workspace", async () => {
+    await createIsolatedNewMediaFixture(database, {
+      cardCount: 12,
+      mediaId: "media_queue_window",
+      mediaSlug: "media-queue-window",
+      title: "Queue Window"
+    });
+    const broadWorkspaceSpy = vi.spyOn(
+      dbQueriesModule,
+      "listEligibleReviewWorkspaceCardsByMediaIds"
+    );
+    const windowCardsSpy = vi.spyOn(dbQueriesModule, "listReviewCardsByIds");
+    const termSummarySpy = vi.spyOn(
+      dbQueriesModule,
+      "listTermEntryReviewSummariesByIds"
+    );
+
+    const pageData = await getGlobalReviewPageData({}, database, {
+      bypassCache: true
+    });
+    const hydratedCardIds = windowCardsSpy.mock.calls[0]?.[1] ?? [];
+    const hydratedTermIds = termSummarySpy.mock.calls[0]?.[1] ?? [];
+
+    expect(pageData.queueCardIds.length).toBeGreaterThan(9);
+    expect(broadWorkspaceSpy).not.toHaveBeenCalled();
+    expect(windowCardsSpy).toHaveBeenCalledTimes(1);
+    expect(hydratedCardIds.length).toBeLessThanOrEqual(9);
+    expect(hydratedCardIds.length).toBeLessThan(pageData.queueCardIds.length);
+    expect(hydratedTermIds.length).toBeLessThanOrEqual(9);
+
+    broadWorkspaceSpy.mockRestore();
+    windowCardsSpy.mockRestore();
+    termSummarySpy.mockRestore();
   });
 
   it("starts the settings lookup before the media list settles when the media is already resolved", async () => {

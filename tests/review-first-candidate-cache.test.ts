@@ -804,9 +804,52 @@ describe("global review first-candidate cache", () => {
     expect(unstableCacheMock).toHaveBeenCalled();
     expect(
       [...cacheStore.keys()].some((cacheKey) =>
-        cacheKey.includes('"review","stable-workspace"')
+        cacheKey.includes('"review","queue-skeleton-v1"')
       )
     ).toBe(true);
+  });
+
+  it("keeps the queue skeleton warm when only dynamic review state bypasses cache", async () => {
+    await seedSingleReviewCardFixture(database);
+
+    await loadReviewPageDataSession(
+      {
+        bypassCache: true,
+        scope: "global",
+        searchParams: {}
+      },
+      database
+    );
+    const skeletonCacheKey = [...cacheStore.keys()].find((cacheKey) =>
+      cacheKey.includes('"review","queue-skeleton-v1"')
+    );
+
+    expect(skeletonCacheKey).toBeDefined();
+    expect(cacheLoadCounts.get(skeletonCacheKey!)).toBe(1);
+
+    revalidateReviewSummaryCache("media_a");
+    await loadReviewPageDataSession(
+      {
+        bypassCache: true,
+        scope: "global",
+        searchParams: {}
+      },
+      database
+    );
+
+    expect(cacheLoadCounts.get(skeletonCacheKey!)).toBe(1);
+
+    revalidateReviewCardContentCache();
+    await loadReviewPageDataSession(
+      {
+        bypassCache: true,
+        scope: "global",
+        searchParams: {}
+      },
+      database
+    );
+
+    expect(cacheLoadCounts.get(skeletonCacheKey!)).toBe(2);
   });
 
   it("keeps stable workspace content warm across grades and expires it on content changes", async () => {

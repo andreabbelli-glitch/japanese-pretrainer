@@ -10,7 +10,10 @@ import {
   createDatabaseClient,
   type DatabaseClient
 } from "@/db";
-import { listEligibleReviewWorkspaceCardsByMediaIds } from "@/db/queries";
+import {
+  listEligibleReviewQueueSkeletonRowsByMediaIds,
+  listEligibleReviewWorkspaceCardsByMediaIds
+} from "@/db/queries";
 import { runMigrations } from "@/db/migrate";
 import { card, lesson, lessonProgress } from "@/db/schema";
 import { developmentFixture, seedDevelopmentDatabase } from "@/db/seed";
@@ -109,6 +112,48 @@ describe("review workspace card query", () => {
     expect(mediaQuerySpy).not.toHaveBeenCalled();
 
     mediaQuerySpy.mockRestore();
+  });
+
+  it("loads only stable queue fields while preserving the raw-card empty state", async () => {
+    await database
+      .update(lessonProgress)
+      .set({ status: "in_progress", completedAt: null })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const blocked = await listEligibleReviewQueueSkeletonRowsByMediaIds(
+      database,
+      [developmentFixture.mediaId]
+    );
+
+    expect(blocked).toMatchObject({
+      hasRawCards: true,
+      rows: []
+    });
+
+    await database
+      .update(lessonProgress)
+      .set({
+        status: "completed",
+        completedAt: "2026-03-09T10:00:00.000Z"
+      })
+      .where(eq(lessonProgress.lessonId, developmentFixture.lessonId));
+
+    const eligible = await listEligibleReviewQueueSkeletonRowsByMediaIds(
+      database,
+      [developmentFixture.mediaId]
+    );
+
+    expect(eligible.rows.map((row) => row.id)).toEqual([
+      developmentFixture.primaryCardId,
+      developmentFixture.secondaryCardId
+    ]);
+    expect(eligible.rows[0]).toMatchObject({
+      mediaId: developmentFixture.mediaId,
+      memoryKey: expect.stringMatching(/^mnemonic:v1:/u),
+      status: "active"
+    });
+    expect(eligible.rows[0]).not.toHaveProperty("back");
+    expect(eligible.rows[0]).not.toHaveProperty("front");
   });
 
   it("keeps both stable workspace loaders on the SQL-filtered relational result", async () => {

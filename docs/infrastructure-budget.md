@@ -130,6 +130,31 @@ numero di link guida):
   Kanji Clash usano l'indice `(entry_type, entry_id)`, senza scansioni di tutte
   le card o sottoquery correlate su `card_entry_link`.
 
+Il caricamento web di `/review` e del filtro review per media e' ora diviso in
+tre livelli, cosi il costo stabile non viene ripagato a ogni voto:
+
+- uno skeleton indicizzato legge per tutte le card eleggibili soltanto identita
+  materializzata, ordinamento, stato editoriale e completamento lesson; non
+  carica `front`, `back`, link o righe glossary;
+- lo stato FSRS e di consolidamento resta live, ma un voto invalida soltanto il
+  dominio dinamico. Lo skeleton usa un tag contenuti separato e viene riletto
+  solo dopo import, modifiche card o cambi di completamento lesson;
+- dopo aver deduplicato e ordinato i subject, una singola query batch idrata la
+  carta selezionata e le 8 successive. Anche term e grammar vengono richiesti
+  solo per questa finestra, non per l'intera collezione;
+- il client conserva buffer, prefetch e avanzamento ottimistico. Un test E2E
+  trattiene apposta la risposta del grading e verifica che la carta visibile
+  avanzi prima dell'ack, evitando di scambiare meno query con uno stutter UI.
+
+Sul DB locale migrato usato per il confronto, il piano dello skeleton usa
+`card_media_order_idx` e lookup primary-key su lesson, progress e
+`review_card_identity`, con zero full scan e zero sort temporanei osservati.
+Il benchmark di parita ha prodotto la stessa carta selezionata, 76 subject nello
+stesso ordine e lo stesso buffer; la pagina completa ha serializzato 23.719 byte.
+Sono misure di regressione locali: il risultato fatturato in rows read va
+confermato nel dashboard Turso dopo il deploy, senza convertire artificialmente
+i VM step in righe.
+
 Sul DB SQLite release da 3.811 card, a parita di dati, le tre query card dello
 snapshot sono passate complessivamente da 1.419.050 a 378.882 VM step (-73%).
 Le singole riduzioni sono state 278.636 -> 72.440, 532.772 -> 195.850 e 607.642

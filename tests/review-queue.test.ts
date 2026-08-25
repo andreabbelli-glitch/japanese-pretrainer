@@ -14,6 +14,7 @@ import {
   createDatabaseClient,
   type DatabaseClient
 } from "@/db";
+import { refreshReviewCardIdentityCache } from "@/db/backfills/review-card-identity";
 import { runMigrations } from "@/db/migrate";
 import {
   card,
@@ -751,6 +752,9 @@ describe("review queue", () => {
       suspended: false,
       createdAt: "2026-03-09T09:00:00.000Z",
       updatedAt: "2026-03-09T09:00:00.000Z"
+    });
+    await refreshReviewCardIdentityCache(database, {
+      mediaIds: [developmentFixture.mediaId]
     });
 
     const frontQueuePage = await getReviewPageData(

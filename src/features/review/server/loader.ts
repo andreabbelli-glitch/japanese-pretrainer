@@ -45,6 +45,7 @@ export { loadReviewIntroducedTodayCountCached } from "@/features/review/server/w
 
 export type ReviewPageLoadOptions = {
   bypassCache?: boolean;
+  bypassStableCache?: boolean;
   excludeCardIds?: string[];
   profiler?: ReviewProfiler | null;
   resolvedMedia?: Pick<MediaListItem, "id" | "slug" | "title">;
