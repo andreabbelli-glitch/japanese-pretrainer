@@ -42,15 +42,6 @@
       "updatedAt": "2026-05-24T15:14:52.128Z"
     },
     {
-      "entryId": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
-      "entryKind": "grammar",
-      "label": "「ブロッカー」を持つ光または水のシールドカード",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ぶろっかーをもつひかりまたはみずのしーるどかーど",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T14:40:14.141Z"
-    },
-    {
       "entryId": "grammar-byoito-full-effect",
       "entryKind": "grammar",
       "label": "自分の手札に加える、「ブロッカー」を持つ光または水のシールドカードすべてに、「S・トリガー」を与える",
@@ -78,33 +69,6 @@
       "updatedAt": "2026-03-23T23:52:52.358Z"
     },
     {
-      "entryId": "grammar-igai-no-houhou-de",
-      "entryKind": "grammar",
-      "label": "～以外の方法で",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "いがいのほうほうで",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:12.140Z"
-    },
-    {
-      "entryId": "grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru",
-      "entryKind": "grammar",
-      "label": "こうして選ばれなかったクリーチャーをすべて破壊する。",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "こうしてえらばれなかったくりーちゃーをすべてはかいする",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-31T15:59:33.605Z"
-    },
-    {
-      "entryId": "grammar-no-ato-ni",
-      "entryKind": "grammar",
-      "label": "～の後に",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "のあとに",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:19:19.092Z"
-    },
-    {
       "entryId": "grammar-no-uchi",
       "entryKind": "grammar",
       "label": "～のうち",
@@ -112,51 +76,6 @@
       "reading": "のうち",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-03-23T23:53:41.173Z"
-    },
-    {
-      "entryId": "grammar-power-dewanaku-cost-no-ookisa-o-kurabete-battle-suru",
-      "entryKind": "grammar",
-      "label": "クリーチャーは、パワーではなくコストの大きさを比べてバトルする",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "くりーちゃーは、ぱわーではなくこすとのおおきさをくらべてばとるする",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-31T18:20:02.332Z"
-    },
-    {
-      "entryId": "grammar-sarenakatta",
-      "entryKind": "grammar",
-      "label": "～されなかった",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "されなかった",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-12T13:44:51.291Z"
-    },
-    {
-      "entryId": "grammar-sareta-toki",
-      "entryKind": "grammar",
-      "label": "～された時",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "されたとき",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-16T22:19:18.248Z"
-    },
-    {
-      "entryId": "grammar-seigi-no-shield-count-yori-ookereba",
-      "entryKind": "grammar",
-      "label": "自分のシールドの数が相手より多ければ",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "じぶんのしーるどのかずがあいてよりおおければ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-04-25T15:09:32.005Z"
-    },
-    {
-      "entryId": "grammar-shi-yo-kore-ga-watashi-no-kansha-no-kesshou-da",
-      "entryKind": "grammar",
-      "label": "師よ、これが私の感謝の結晶だ！",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "しよ、これがわたしのかんしゃのけっしょうだ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-31T16:33:43.036Z"
     },
     {
       "entryId": "grammar-sono-card-to-onaji-bunmei-hitotsu-demo-motsu",
@@ -220,41 +139,6 @@
       "reading": "すべてにえすとりがーをあたえる",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-04-25T15:09:41.670Z"
-    },
-    {
-      "entryId": "grammar-te-inakereba",
-      "entryKind": "grammar",
-      "label": "～ていなければ",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "ていなければ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-23T23:53:21.010Z"
-    },
-    {
-      "entryId": "grammar-teireba",
-      "entryKind": "grammar",
-      "label": "～ていれば",
-      "mediaSlug": "duel-masters-dm25",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:10.512Z"
-    },
-    {
-      "entryId": "grammar-turn-timing",
-      "entryKind": "grammar",
-      "label": "～のはじめに / ～の終わりに",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "のはじめに / のおわりに",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-03-12T19:55:27.048Z"
-    },
-    {
-      "entryId": "grammar-unknown-to-zenith-ryouhou-wo-shuzoku-ni-motsu",
-      "entryKind": "grammar",
-      "label": "アンノウンとゼニス両方を種族に持つ",
-      "mediaSlug": "duel-masters-dm25",
-      "reading": "アンノウンとゼニスりょうほうをしゅぞくにもつ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-05-31T16:52:19.112Z"
     },
     {
       "entryId": "term-b-a-d-two",
@@ -428,96 +312,6 @@
       "updatedAt": "2026-05-24T16:10:17.485Z"
     },
     {
-      "entryId": "term-sv-vocabulary-012-bikkuri",
-      "entryKind": "term",
-      "label": "ビックリ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "ビックリ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:46:19.065Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-014-korogasu",
-      "entryKind": "term",
-      "label": "ころがす",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "ころがす",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:45:02.751Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-025-yorokobi",
-      "entryKind": "term",
-      "label": "よろこび",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "よろこび",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:44:16.429Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-026-buibuiiwasu",
-      "entryKind": "term",
-      "label": "ブイブイ言わす",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "ブイブイいわす",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:48:15.929Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-034-harikiru",
-      "entryKind": "term",
-      "label": "はりきる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "はりきる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:48:45.194Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-043-soratobu",
-      "entryKind": "term",
-      "label": "そらとぶ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "そらとぶ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:45:00.094Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-066-utsuwa",
-      "entryKind": "term",
-      "label": "うつわ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "うつわ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:52:50.377Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-072-magatama",
-      "entryKind": "term",
-      "label": "まがたま",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "まがたま",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:46:10.724Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-075-koegake",
-      "entryKind": "term",
-      "label": "声がけ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "こえがけ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:47:40.528Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-079-yobidasu",
-      "entryKind": "term",
-      "label": "呼びだす",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "よびだす",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:52:39.740Z"
-    },
-    {
       "entryId": "term-sv-vocabulary-086-watakushi",
       "entryKind": "term",
       "label": "ワタクシ",
@@ -525,78 +319,6 @@
       "reading": "ワタクシ",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-07-31T13:49:46.035Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-094-suberu",
-      "entryKind": "term",
-      "label": "すべる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "すべる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:50:42.477Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-099-kakezan",
-      "entryKind": "term",
-      "label": "かけ算",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "かけざん",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:45:43.816Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-106-azukaru",
-      "entryKind": "term",
-      "label": "あずかる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "あずかる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:53:23.026Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-162-wadachi",
-      "entryKind": "term",
-      "label": "わだち",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "わだち",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:45:08.334Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-181-mairu",
-      "entryKind": "term",
-      "label": "まいる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "まいる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:45:24.882Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-187-komatta",
-      "entryKind": "term",
-      "label": "こまった",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "こまった",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:50:23.222Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-201-yattsukeru",
-      "entryKind": "term",
-      "label": "やっつける",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "やっつける",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:47:59.336Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-205-zettaireido",
-      "entryKind": "term",
-      "label": "ぜったいれいど",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "ぜったいれいど",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:47:45.967Z"
     },
     {
       "entryId": "term-sv-vocabulary-213-hima",
@@ -608,87 +330,6 @@
       "updatedAt": "2026-07-31T13:44:04.635Z"
     },
     {
-      "entryId": "term-sv-vocabulary-217-oshare",
-      "entryKind": "term",
-      "label": "オシャレ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "オシャレ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:44:57.441Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-220-fubuki",
-      "entryKind": "term",
-      "label": "ふぶき",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "ふぶき",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:49:59.824Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-225-otagai",
-      "entryKind": "term",
-      "label": "おたがい",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "おたがい",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:46:40.266Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-227-kakomu",
-      "entryKind": "term",
-      "label": "かこむ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "かこむ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:47:13.077Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-238-ateru",
-      "entryKind": "term",
-      "label": "あてる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "あてる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:47:54.045Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-262-sumika",
-      "entryKind": "term",
-      "label": "すみか",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "すみか",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:52:07.362Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-285-yada",
-      "entryKind": "term",
-      "label": "ヤダ",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "ヤダ",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:53:31.075Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-319-konayuki",
-      "entryKind": "term",
-      "label": "こなゆき",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "こなゆき",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:48:55.896Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-339-tsumeru",
-      "entryKind": "term",
-      "label": "つめる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "つめる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:47:34.855Z"
-    },
-    {
       "entryId": "term-sv-vocabulary-350-batsugun",
       "entryKind": "term",
       "label": "バツグン",
@@ -696,15 +337,6 @@
       "reading": "バツグン",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-07-31T13:50:05.656Z"
-    },
-    {
-      "entryId": "term-sv-vocabulary-367-meshiagaru",
-      "entryKind": "term",
-      "label": "めしあがる",
-      "mediaSlug": "pokemon-scarlet-violet",
-      "reading": "めしあがる",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-07-31T13:52:13.093Z"
     },
     {
       "entryId": "term-v022-eriazero",
@@ -732,15 +364,6 @@
       "reading": "きのみだい",
       "reason": "not_found_on_forvo",
       "updatedAt": "2026-05-24T16:19:34.936Z"
-    },
-    {
-      "entryId": "term-kettei-shimasu",
-      "entryKind": "term",
-      "label": "決定します",
-      "mediaSlug": "tcg-generale",
-      "reading": "けっていします",
-      "reason": "not_found_on_forvo",
-      "updatedAt": "2026-06-02T23:19:06.594Z"
     },
     {
       "entryId": "term-mekuru-vanguard-reveal",

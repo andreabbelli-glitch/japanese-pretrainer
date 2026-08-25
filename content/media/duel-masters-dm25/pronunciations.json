@@ -33,6 +33,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card",
+      "audio_src": "assets/audio/grammar/grammar-blocker-wo-motsu-hikari-matawa-mizu-no-shield-card/forvo-mezashi-ふ-ろっかーをもつひかりまたはみす-のしーると-かーと.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%80%8C%E3%83%96%E3%83%AD%E3%83%83%E3%82%AB%E3%83%BC%E3%80%8D%E3%82%92%E6%8C%81%E3%81%A4%E5%85%89%E3%81%BE%E3%81%9F%E3%81%AF%E6%B0%B4%E3%81%AE%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%89%E3%82%AB%E3%83%BC%E3%83%89/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -183,6 +188,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-igai-no-houhou-de",
+      "audio_src": "assets/audio/grammar/grammar-igai-no-houhou-de/forvo-mezashi-いか-いのほうほうて.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E4%BB%A5%E5%A4%96%E3%81%AE%E6%96%B9%E6%B3%95%E3%81%A7/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -293,6 +303,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru",
+      "audio_src": "assets/audio/grammar/grammar-koushite-erabarenakatta-creature-wo-subete-hakaisuru/forvo-mezashi-こうしてえらは-れなかったくりーちゃーをすへ-てはかいする.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%93%E3%81%86%E3%81%97%E3%81%A6%E9%81%B8%E3%81%B0%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%82%92%E3%81%99%E3%81%B9%E3%81%A6%E7%A0%B4%E5%A3%8A%E3%81%99%E3%82%8B%E3%80%82/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -411,6 +426,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-no-ato-ni",
+      "audio_src": "assets/audio/grammar/grammar-no-ato-ni/forvo-mezashi-のあとに.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AE%E5%BE%8C%E3%81%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -434,16 +454,31 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-power-dewanaku-cost-no-ookisa-o-kurabete-battle-suru",
+      "audio_src": "assets/audio/grammar/grammar-power-dewanaku-cost-no-ookisa-o-kurabete-battle-suru/forvo-mezashi-くりーちゃーは-は-わーて-はなくこすとのおおきさをくらへ-ては-とるする.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%81%E3%83%A3%E3%83%BC%E3%81%AF%E3%80%81%E3%83%91%E3%83%AF%E3%83%BC%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%8F%E3%82%B3%E3%82%B9%E3%83%88%E3%81%AE%E5%A4%A7%E3%81%8D%E3%81%95%E3%82%92%E6%AF%94%E3%81%B9%E3%81%A6%E3%83%90%E3%83%88%E3%83%AB%E3%81%99%E3%82%8B/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-sarenakatta",
+      "audio_src": "assets/audio/grammar/grammar-sarenakatta/forvo-mezashi-されなかった.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%95%E3%82%8C%E3%81%AA%E3%81%8B%E3%81%A3%E3%81%9F/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-sareta-toki",
+      "audio_src": "assets/audio/grammar/grammar-sareta-toki/forvo-mezashi-されたとき.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%95%E3%82%8C%E3%81%9F%E6%99%82/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -459,11 +494,21 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-seigi-no-shield-count-yori-ookereba",
+      "audio_src": "assets/audio/grammar/grammar-seigi-no-shield-count-yori-ookereba/forvo-mezashi-し-ふ-んのしーると-のかす-か-あいてよりおおけれは.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E8%87%AA%E5%88%86%E3%81%AE%E3%82%B7%E3%83%BC%E3%83%AB%E3%83%89%E3%81%AE%E6%95%B0%E3%81%8C%E7%9B%B8%E6%89%8B%E3%82%88%E3%82%8A%E5%A4%9A%E3%81%91%E3%82%8C%E3%81%B0/#ja",
       "pitch_accent_status": "miss"
     },
     {
       "entry_type": "grammar",
       "entry_id": "grammar-shi-yo-kore-ga-watashi-no-kansha-no-kesshou-da",
+      "audio_src": "assets/audio/grammar/grammar-shi-yo-kore-ga-watashi-no-kansha-no-kesshou-da/forvo-mezashi-しよ-これか-わたしのかんしゃのけっしょうた.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E5%B8%AB%E3%82%88%E3%80%81%E3%81%93%E3%82%8C%E3%81%8C%E7%A7%81%E3%81%AE%E6%84%9F%E8%AC%9D%E3%81%AE%E7%B5%90%E6%99%B6%E3%81%A0%EF%BC%81/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -648,6 +693,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-te-inakereba",
+      "audio_src": "assets/audio/grammar/grammar-te-inakereba/forvo-mezashi-ていなけれは.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%84%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -663,6 +713,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-teireba",
+      "audio_src": "assets/audio/grammar/grammar-teireba/forvo-mezashi-ていれは.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%A6%E3%81%84%E3%82%8C%E3%81%B0/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -739,6 +794,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-turn-timing",
+      "audio_src": "assets/audio/grammar/grammar-turn-timing/forvo-mezashi-のはし-めに-のおわりに.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%81%AE%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB/#ja",
       "pitch_accent_status": "miss"
     },
     {
@@ -757,6 +817,11 @@
     {
       "entry_type": "grammar",
       "entry_id": "grammar-unknown-to-zenith-ryouhou-wo-shuzoku-ni-motsu",
+      "audio_src": "assets/audio/grammar/grammar-unknown-to-zenith-ryouhou-wo-shuzoku-ni-motsu/forvo-mezashi-アンノウンとセ-ニスりょうほうをしゅそ-くにもつ.mp3",
+      "audio_source": "forvo",
+      "audio_speaker": "mezashi",
+      "audio_attribution": "mezashi via Forvo",
+      "audio_page_url": "https://forvo.com/word/%E3%82%A2%E3%83%B3%E3%83%8E%E3%82%A6%E3%83%B3%E3%81%A8%E3%82%BC%E3%83%8B%E3%82%B9%E4%B8%A1%E6%96%B9%E3%82%92%E7%A8%AE%E6%97%8F%E3%81%AB%E6%8C%81%E3%81%A4/#ja",
       "pitch_accent_status": "miss"
     },
     {
