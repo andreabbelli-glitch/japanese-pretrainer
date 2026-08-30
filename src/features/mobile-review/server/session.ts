@@ -73,7 +73,9 @@ export async function loadMobileReviewSession(
   database: DatabaseClient = db
 ): Promise<MobileReviewSession> {
   const loadResult = await getGlobalReviewPageLoadResult({}, database, {
-    bypassCache: false
+    // Mobile responses are no-store and must not reuse a stale daily new-card
+    // budget. The stable queue skeleton remains cached through its own policy.
+    bypassCache: true
   });
   const generatedAt = new Date().toISOString();
 

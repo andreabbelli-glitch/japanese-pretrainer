@@ -104,6 +104,8 @@ Le ottimizzazioni non rilassano la correttezza delle mutazioni:
   subito e il server restituisce un ack compatto senza ricostruire la sessione;
 - `again`, `hard`, conflitti di freshness e buffer esaurito ricaricano sempre lo
   stato live, per preservare requeue e learning step;
+- ogni nuova sessione mobile legge fresco il budget giornaliero delle card
+  nuove; lo skeleton stabile della coda resta cacheato separatamente;
 - la cache delle card dinamiche usa tag per card/soggetto. Un voto invalida solo
   i membri dello stesso soggetto, mentre la coda e i contatori globali vengono
   comunque aggiornati;
