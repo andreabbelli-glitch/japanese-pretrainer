@@ -10,14 +10,14 @@ status: active
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 prerequisites: []
 summary: >-
-  Suru con quantità di denaro o tempo.
+  Suru con un prezzo e distinzione tra tempo trascorso e tempo necessario.
 ---
 
 # 「する」(5) Indicate a cost
 
 ## Quantità + する
 
-Dopo un prezzo o una durata, quantità + する vale «costare» o «richiedere quel tempo». La cosa valutata è il tema o soggetto e la quantità precede direttamente il verbo.
+Dopo un prezzo, quantità + する vale «costare». La cosa valutata è il tema o soggetto e il prezzo precede direttamente il verbo.
 
 :::example_sentence
 jp: >-
@@ -26,4 +26,6 @@ translation_it: >-
   Questa borsa costa cinquemila yen.
 :::
 
-Lo stesso schema può indicare una durata: 四十年する presenta un periodo di quarant'anni. L'unità permette di distinguere valore monetario e temporale.
+## Espressioni di tempo
+
+する compare anche in espressioni che indicano il tempo trascorso: しばらくすると significa «dopo un po'». Espressioni di questo tipo descrivono il trascorrere di un intervallo. Per dire quanto tempo serve a svolgere un'attività si usa normalmente かかる, per esempio 一時間かかる, «ci vuole un'ora».

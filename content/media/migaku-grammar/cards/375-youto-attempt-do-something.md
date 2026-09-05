@@ -15,7 +15,7 @@ reading: "ようと"
 meaning_it: >-
   Tentare di; con l'intenzione di
 notes_it: >-
-  Formazione: volitivo + と + する／思う／動作, per esempio 開けようとする, 取ろうと手を伸ばす. La struttura indica intenzione o tentativo ma non garantisce il successo; con 〜ようとしたが è spesso fallito. Non va confusa con ように di scopo.
+  Formazione: volitivo + と + azione. 取ろうと indica l'obiettivo del gesto 手を出した, senza garantirne il successo. ようとする e ようと思う sono costruzioni collegate, trattate nelle rispettive lezioni.
 level_hint: jlpt-n4
 :::
 
@@ -29,10 +29,10 @@ front: "ようと"
 back: >-
   Forma volitiva + と + verbo d'azione presenta un gesto compiuto nel tentativo di raggiungere l'obiettivo.
 example_jp: >-
-  ドアを{{開|あ}}けようとしたが、{{鍵|かぎ}}がかかっていた。
+  ケーキを{{取|と}}ろうと、{{手|て}}を{{出|だ}}した。
 example_it: >-
-  Ho provato ad aprire la porta, ma era chiusa a chiave.
+  Ho allungato la mano per prendere la torta.
 notes_it: >-
-  Formazione: volitivo + と + する／思う／動作, per esempio 開けようとする, 取ろうと手を伸ばす. La struttura indica intenzione o tentativo ma non garantisce il successo; con 〜ようとしたが è spesso fallito. Non va confusa con ように di scopo.
+  Formazione: volitivo + と + azione. 取ろうと indica l'obiettivo del gesto 手を出した, senza garantirne il successo. ようとする e ようと思う sono costruzioni collegate, trattate nelle rispettive lezioni.
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 :::

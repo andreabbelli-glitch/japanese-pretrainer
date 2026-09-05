@@ -12,9 +12,9 @@ id: grammar-197-suru-5-indicate-cost
 pattern: "する"
 title: "「する」(5) Indicate a cost"
 reading: "する"
-meaning_it: "Usare する per indicare costo o durata"
+meaning_it: "Usare する per indicare un prezzo; riconoscere gli usi con il tempo trascorso"
 notes_it: >-
-  Dopo un'espressione di prezzo o durata, する significa «costare / richiedere quel tempo». Il soggetto è la cosa valutata e la quantità precede direttamente する.
+  Dopo un prezzo, する significa «costare». Con il tempo, espressioni come しばらくすると indicano il trascorrere di un intervallo. Per il tempo necessario a svolgere un'attività si usa normalmente かかる.
 level_hint: jlpt-n5
 :::
 
@@ -24,14 +24,14 @@ lesson_id: lesson-migaku-grammar-197-suru-5-indicate-cost
 entry_type: grammar
 entry_id: grammar-197-suru-5-indicate-cost
 card_type: concept
-front: "する"
+front: "する（prezzo）"
 back: >-
-  Quantità di denaro o tempo + する indica quanto qualcosa costa o dura.
+  Prezzo + する significa «costare»: 五千円する, «costare cinquemila yen».
 example_jp: >-
   このバッグは{{五千円|ごせんえん}}する。
 example_it: >-
   Questa borsa costa cinquemila yen.
 notes_it: >-
-  In quantità + する, する vale «costare» o «richiedere tempo»; l'unità distingue denaro e durata.
+  五千円する indica il prezzo della borsa. Gli usi temporali di する riguardano il tempo trascorso; per dire quanto tempo richiede un'attività si usa normalmente かかる.
 tags: [migaku, grammar, jlpt-n5, academy-level-1, series]
 :::

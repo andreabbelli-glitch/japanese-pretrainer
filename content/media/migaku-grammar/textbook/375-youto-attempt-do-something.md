@@ -10,7 +10,7 @@ status: active
 tags: [migaku, grammar, jlpt-n4, academy-level-1]
 prerequisites: []
 summary: >-
-  Tentativo o intenzione immediata espressi dalla forma volitiva seguita dalla particella.
+  Forma volitiva seguita da と e da un'azione compiuta per raggiungere l'obiettivo.
 ---
 
 # 「ようと」Attempt to do something
@@ -21,26 +21,26 @@ Il volitivo rappresenta l'obiettivo che il soggetto si dispone a realizzare; と
 
 ## Formazione e restrizioni
 
-- Volitivo + とする: 食べようとする.
-- Volitivo + と + azione: 取ろうと手を伸ばす.
-- Passato e contrasto: 開けようとしたが〜.
+- Volitivo + と + azione: 取ろうと手を出す.
+- L'azione successiva è compiuta per raggiungere l'obiettivo espresso dal volitivo.
+- Il risultato può essere positivo o negativo: la costruzione da sola non lo specifica.
 
 ## Esempio
 
 :::example_sentence
 jp: >-
-  ドアを{{開|あ}}けようとしたが、{{鍵|かぎ}}がかかっていた。
+  ケーキを{{取|と}}ろうと、{{手|て}}を{{出|だ}}した。
 translation_it: >-
-  Ho provato ad aprire la porta, ma era chiusa a chiave.
+  Ho allungato la mano per prendere la torta.
 :::
 
 #### Analisi
 
-開けよう esprime l'obiettivo; とした segnala il tentativo, mentre が introduce il suo impedimento.
+取ろう esprime l'obiettivo di prendere la torta; と lo collega al gesto concreto 手を出した, «ho allungato la mano». La frase lascia aperto il risultato del tentativo.
 
 ## Sfumature d'uso
 
-- 〜ようとする può anche descrivere un evento sul punto di avvenire, secondo il soggetto e il verbo.
+- 〜ようとする e 〜ようと思う sono costruzioni collegate, trattate nelle rispettive lezioni. Qui l'obiettivo è seguito direttamente da un'altra azione.
 - Il successo resta aperto; per «provare e vedere com'è» si usa 〜てみる.
 
 ## Controllo attivo

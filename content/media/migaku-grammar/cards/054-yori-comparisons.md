@@ -14,7 +14,7 @@ title: "「より」(1) Make comparisons"
 reading: "より"
 meaning_it: "Marcare con より il termine di paragone: «più… di», «piuttosto che»"
 notes_it: >-
-  A より presenta A come base superata dall'altro elemento. La parte che risulta «più» può venire prima, dopo o restare sottintesa; よりも rafforza il contrasto.
+  A より presenta A come termine di paragone. La proprietà confrontata dipende dal resto della frase: より non esprime da solo una preferenza. L'altro elemento può venire prima, dopo o restare sottinteso; よりも rafforza il contrasto.
 level_hint: jlpt-n4
 :::
 
@@ -26,7 +26,7 @@ entry_id: grammar-054-yori-comparisons
 card_type: concept
 front: "より"
 back: >-
-  A より significa «rispetto ad A / più che A» e marca il termine meno favorito o di grado inferiore.
+  A より indica A come termine di paragone: «rispetto ad A / più… di A».
 example_jp: >-
   この{{店|みせ}}はあの{{店|みせ}}より{{安|やす}}い。
 example_it: >-

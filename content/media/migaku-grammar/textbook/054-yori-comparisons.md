@@ -17,7 +17,7 @@ summary: >-
 
 ## Termine di paragone
 
-A より segnala A come base che viene superata: «più… di A» o «piuttosto che A». L'elemento che risulta maggiore può seguire, precedere o essere sottinteso.
+A より segnala A come termine di paragone: «rispetto ad A», «più… di A» o «piuttosto che A», secondo il contesto. La proprietà confrontata dipende dal resto della frase; un'eventuale preferenza emerge da parole come 好き e dal contesto. L'altro elemento del confronto può seguire, precedere o essere sottinteso.
 
 :::example_sentence
 jp: >-

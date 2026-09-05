@@ -16,7 +16,7 @@ summary: >-
 
 ## Funzione
 
-I 他動詞 transitivi prendono un oggetto in を e descrivono qualcuno che causa l'evento; i 自動詞 intransitivi presentano l'entità che cambia come soggetto in が.
+I 他動詞 transitivi prendono un oggetto diretto, normalmente indicato da を. I 自動詞 intransitivi descrivono un'azione, un evento o uno stato del soggetto senza un oggetto diretto: non si limitano ai cambiamenti autonomi.
 
 ## Formazione
 

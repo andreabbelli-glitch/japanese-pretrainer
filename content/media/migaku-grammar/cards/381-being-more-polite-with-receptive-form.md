@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-381-being-more-polite-with-receptive-form
 entry_type: grammar
 entry_id: grammar-381-being-more-polite-with-receptive-form
 card_type: concept
-front: "{{受|う}}け{{身|み}}"
+front: "{{受|う}}け{{身|み}}（uso onorifico）"
 back: >-
   Trasformare il verbo in れる／られる può elevare l'azione di una persona rispettata mantenendo le particelle della frase attiva.
 example_jp: >-
