@@ -508,24 +508,6 @@ describe("site helpers", () => {
             mediaTypeLabel: "TCG",
             segmentKindLabel: "Archi"
           },
-          furiganaMode: "hover",
-          lessons: [
-            {
-              id: "lesson_fixture_core_1",
-              slug: "core-vocab",
-              title: "Core vocab",
-              orderIndex: 1,
-              difficulty: "N5",
-              summary: "Prime carte",
-              excerpt: null,
-              status: "not_started",
-              statusLabel: "Da iniziare",
-              segmentId: "segment_fixture_starter_core",
-              segmentTitle: "Starter Core",
-              lastOpenedAt: null,
-              completedAt: null
-            }
-          ],
           groups: [
             {
               id: "segment_fixture_starter_core",
@@ -552,9 +534,7 @@ describe("site helpers", () => {
               ]
             }
           ],
-          activeLesson: null,
           resumeLesson: null,
-          completedLessons: 0,
           totalLessons: 1,
           textbookProgressPercent: 0,
           glossaryHref: "/glossary?media=fixture-tcg"

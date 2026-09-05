@@ -98,6 +98,17 @@ verificare ogni riga della matrice:
 
 ## Flussi principali
 
+- In libreria e nei filtri Kanji Clash, controllare il pannello Network dopo
+  un load senza muovere il puntatore: non devono partire prefetch RSC per
+  tutte le card o tutte le combinazioni di filtri. Il link scelto deve invece
+  precaricarsi al focus da tastiera, hover o touch iniziale; Enter/click/tap
+  deve aprirlo anche quando la risposta e ancora in corso.
+- Nell'indice textbook Migaku, gruppi, espansione/collasso e CTA di resume
+  devono restare completi dopo la riduzione delle props inviate al browser.
+- Nel glossary verificare filtro media, presenza/assenza card e filtri di
+  studio separatamente: una card archiviata non conta come card disponibile;
+  i filtri di studio devono riflettere le mutazioni review come prima.
+
 - Dashboard: compare `Duel Masters`, con una sola CTA per riprendere studio e
   una sola CTA per la Review globale; non compare una seconda sezione
   `Prossimi passi` con le stesse azioni.

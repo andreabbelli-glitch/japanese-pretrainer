@@ -563,6 +563,13 @@ legge il preset salvato nell'evento, con lookup della card limitato agli eventi
 legacy. I risultati e l'ordine di studio restano invariati; misure e budget
 sono documentati in [`docs/infrastructure-budget.md`](docs/infrastructure-budget.md).
 
+Libreria, dashboard, dettaglio media e filtri Kanji Clash precaricano la
+destinazione scelta al passaggio del mouse, al focus o al touch, evitando di
+caricare tutte le destinazioni visibili. Il glossary senza filtri di studio
+usa una proiezione di catalogo piu leggera; l'indice textbook invia una sola
+copia delle lesson al client. L'audit CPU, query e browser e documentato in
+[`docs/performance-audit-2026-09-05.md`](docs/performance-audit-2026-09-05.md).
+
 Il database Turso di produzione risiede in `eu-west-1`; `vercel.json` fissa
 quindi l'unica regione Functions Hobby a `dub1` (Dublino). Mantieni compute e
 database co-localizzati: rimuovere questa impostazione riporterebbe le Functions

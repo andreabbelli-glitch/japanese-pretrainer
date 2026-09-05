@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { IntentLink as Link } from "@/components/ui/intent-link";
 
 import { getMediaLibraryData } from "@/features/media/server";
 import { renderFurigana } from "@/features/study/ui/furigana";

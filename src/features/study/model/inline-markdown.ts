@@ -32,6 +32,12 @@ export function flattenInlineNodes(nodes: InlineNode[]): string {
 }
 
 export function stripInlineMarkdown(text: string): string {
+  // Plain words cannot contain Markdown, ruby, references or whitespace that
+  // the parser would transform. Pairing compares these same surfaces often.
+  if (/^[\p{L}\p{N}]+$/u.test(text)) {
+    return text;
+  }
+
   return flattenInlineNodes(parseInlineText(text));
 }
 
@@ -42,10 +48,7 @@ export function deriveInlineReading(text: string): string | undefined {
     return undefined;
   }
 
-  const normalized = derived
-    .replace(/\./g, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  const normalized = derived.replace(/\./g, "").replace(/\s+/g, " ").trim();
 
   return normalized.length > 0 ? normalized : undefined;
 }

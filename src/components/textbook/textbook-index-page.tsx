@@ -15,7 +15,15 @@ import { EmptyState } from "../ui/empty-state";
 import { SurfaceCard } from "../ui/surface-card";
 
 type TextbookIndexPageProps = {
-  data: TextbookIndexData;
+  data: Pick<
+    TextbookIndexData,
+    | "groups"
+    | "media"
+    | "resumeLesson"
+    | "totalLessons"
+    | "textbookProgressPercent"
+    | "glossaryHref"
+  >;
 };
 
 export function TextbookIndexPage({ data }: TextbookIndexPageProps) {

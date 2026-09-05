@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { IntentLink as Link } from "@/components/ui/intent-link";
 
 import type { DashboardData } from "@/features/dashboard/server";
 import { renderFurigana } from "@/features/study/ui/furigana";

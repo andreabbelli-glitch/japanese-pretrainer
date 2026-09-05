@@ -378,6 +378,13 @@ specifico, ma non conta come matrice ufficiale di verifica.
 
 ## Limiti Residui
 
+- L'audit webapp del 2026-09-05 aggiunge quattro E2E sul prefetch su intenzione
+  e sulla navigazione con risposta in corso. Ha verificato 24 passaggi
+  consecutivi textbook/glossary senza pagine vuote; il difetto descritto sotto
+  non e stato riprodotto e non viene dichiarato risolto. Misure CPU, payload,
+  righe Turso e perimetro sono in
+  [`performance-audit-2026-09-05.md`](performance-audit-2026-09-05.md).
+
 - Durante l'audit Turso del 2026-09-05, l'E2E `navigates the core study spine`
   ha mostrato due timeout intermittenti su textbook/glossario, con `<main>`
   vuoto dopo una navigazione client. Nel caso glossario la risposta RSC era

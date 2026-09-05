@@ -1,5 +1,5 @@
 import type { Route } from "next";
-import Link from "next/link";
+import { IntentLink as Link } from "@/components/ui/intent-link";
 
 import type { ProgressPageData } from "@/features/progress/server";
 import { renderFurigana } from "@/features/study/ui/furigana";

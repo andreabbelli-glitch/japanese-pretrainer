@@ -19,5 +19,16 @@ export default async function MediaTextbookRoute({
     notFound();
   }
 
-  return <TextbookIndexPage data={data} />;
+  return (
+    <TextbookIndexPage
+      data={{
+        groups: data.groups,
+        media: data.media,
+        resumeLesson: data.resumeLesson,
+        totalLessons: data.totalLessons,
+        textbookProgressPercent: data.textbookProgressPercent,
+        glossaryHref: data.glossaryHref
+      }}
+    />
+  );
 }

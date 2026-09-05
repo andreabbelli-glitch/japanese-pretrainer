@@ -1,4 +1,5 @@
 import type { EntryType } from "../schema/index.ts";
+import { buildGlobalGlossaryCatalogScopeQuery } from "./glossary-catalog-scope.ts";
 
 export type GlossarySearchCandidateInput = {
   cards?: "all" | "with_cards" | "without_cards";
@@ -182,6 +183,10 @@ export function buildGlobalGlossaryBrowseScopeQuery(
   input: GlobalGlossaryBrowseScopeInput
 ) {
   const filters = buildGlobalGlossaryBrowseFilterClause(input);
+
+  if (!input.study) {
+    return buildGlobalGlossaryCatalogScopeQuery(filters);
+  }
 
   return {
     args: filters.args,
