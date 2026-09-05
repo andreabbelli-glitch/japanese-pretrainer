@@ -63,7 +63,7 @@ ha ricevuto un incarico dalla scuola.
 
 :::image
 src: assets/story/academy-campus-exterior.webp
-alt: "Edificio principale dell'accademia di Paldea visto dall'esterno."
+alt: "Edificio principale dell'accademia di Parudea visto dall'esterno."
 caption: >-
   L'accademia entra qui come spazio reale del prologo: è il nodo da cui
   partono aula, uffici, dormitorio e i primi briefing della storia.
@@ -174,7 +174,7 @@ jp: >-
   {{学生|がくせい}}{{食堂|しょくどう}}に {{行|い}}くと ペパーの
   {{話|はなし}}が {{進|すす}}みはじめる。
 translation_it: >-
-  Andando alla mensa studentesca, comincia ad avanzare il filone di Pepper.
+  Andando alla mensa studentesca, comincia ad avanzare il filone di Pepā.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -192,11 +192,8 @@ translation_it: >-
 jp: >-
   {{校長|こうちょう}}{{室|しつ}}に {{呼|よ}}ばれると {{大事|だいじ}}な
   {{話|はなし}}が {{始|はじ}}まる ことが {{多|おお}}い。
-translation_it: >-
-  Quando una scena ti convoca nell'ufficio del preside, di solito parte un
-  briefing ufficiale o una decisione della storia.
+translation_it: "Quando vieni convocato nell’ufficio del preside, spesso c’è qualcosa di importante da discutere."
 :::
-
 #### 🗺️ Anatomia della frase
 
 *   `{{校長|こうちょう}}{{室|しつ}}に` ➔ **Luogo con autorità** (`に` indica il
@@ -216,9 +213,9 @@ stanza, cambia il tipo di dialogo che devi aspettarti.
 
 :::image
 src: assets/story/clavell-academy-briefing.webp
-alt: "Clavell, figura autoritativa dell'accademia, in una presentazione ufficiale."
+alt: "Kuraberu, figura autoritativa dell'accademia, in una presentazione ufficiale."
 caption: >-
-  Clavell rende concreto il lato più ufficiale dell'accademia: quando il
+  Kuraberu rende concreto il lato più ufficiale dell'accademia: quando il
   prologo passa da aula e corridoi a briefing scolastici seri, il tono della
   progressione diventa subito più istituzionale.
 :::
@@ -404,7 +401,7 @@ jp: >-
   {{学生|がくせい}}{{食堂|しょくどう}}では ペパーの {{相談|そうだん}}が
   {{始|はじ}}まる。
 translation_it: >-
-  Nella mensa studentesca comincia la richiesta di aiuto di Pepper.
+  Nella mensa studentesca comincia la richiesta di aiuto di Pepā.
 :::
 
 :::example_sentence

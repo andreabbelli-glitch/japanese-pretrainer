@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-040-na-adjectives-basics
 entry_type: grammar
 entry_id: grammar-040-na-adjectives-basics
 card_type: concept
-front: "な{{形容詞|けいようし}}"
+front: "な{{形容詞|けいようし}}（davanti a un nome）"
 back: >-
   Aggettivo in な + な + nome; come predicato piano: aggettivo + だ.
 example_jp: >-

@@ -16,7 +16,7 @@ summary: >-
 
 # Dialoghi e tutorial: inviti, condizioni e sblocchi
 
-Nei giochi Pokémon, molte istruzioni non suonano come ordini. Nemi ti invita
+Nei giochi Pokémon, molte istruzioni non suonano come ordini. Nemo ti invita
 a provare, un familiare ti raccomanda di riposare, un messaggio di sistema ti
 dice che una funzione è ora disponibile. Il tono resta amichevole, ma la frase
 sta guidando un'azione concreta: scegliere una destinazione, salvare, curare la
@@ -37,7 +37,7 @@ stabile e preparazione.
 - [どうぐ](term:term-dougu) — strumento / oggetto usabile
 - [{{回復|かいふく}}](term:term-kaifuku) — recupero / cura
 - [{{状態|じょうたい}}{{異常|いじょう}}](term:term-joutai-ijou) — alterazione di stato
-- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokédex / catalogo dei Pokémon
+- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokémon Zukan / catalogo dei Pokémon
 
 ## Espressioni ricorrenti
 
@@ -65,11 +65,11 @@ stabile e preparazione.
 
 ---
 
-Quando compare il Pokédex, la frase richiama il registro che cataloga Pokemon incontrati o catturati.
+Quando compare il Pokémon Zukan, la frase richiama il registro che cataloga Pokemon incontrati o catturati.
 
 ## 1. Il tutorial parla piano, ma spinge l'azione
 
-Il registro di base e' l'invito operativo: una spinta gentile verso l'azione. Nei
+Il registro di base è l'invito operativo: una spinta gentile verso l'azione. Nei
 dialoghi guida, un personaggio può formulare la prossima azione come
 "proviamo", "che ne dici di provare" o "mi raccomando". La frase sembra
 sociale, però nel flusso del gioco apre una procedura concreta.
@@ -82,9 +82,9 @@ morbida l'istruzione di registrare qualcosa.
 
 :::image
 src: assets/story/nemona-second-battle-growth-check.webp
-alt: "Nemi parla prima di una sfida con una battuta che invita a mettere alla prova la crescita del giocatore."
+alt: "Nemo parla prima di una sfida con una battuta che invita a mettere alla prova la crescita del giocatore."
 caption: >-
-  Nemi usa il tono della prova: con `{{試|ため}}してみよう`, la sfida diventa un
+  Nemo usa il tono della prova: con `{{試|ため}}してみよう`, la sfida diventa un
   modo pratico per vedere quanto sei cresciuto, non un ordine secco.
 :::
 
@@ -218,12 +218,12 @@ jp: >-
   ポケモンセンターの {{人|ひと}}が {{手|て}}{{持|も}}ちを
   {{回復|かいふく}}してくれる。
 translation_it: >-
-  La persona del Centro Pokémon ti cura la squadra.
+  La persona del Pokémon Sentā ti cura la squadra.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `ポケモンセンターの {{人|ひと}}が` ➔ soggetto che agisce: la persona del Centro Pokémon.
+- `ポケモンセンターの {{人|ひと}}が` ➔ soggetto che agisce: la persona del Pokémon Sentā.
 - `{{手|て}}{{持|も}}ちを` ➔ oggetto curato: la squadra attiva.
 - {{回復|かいふく}}してくれる ➔ verbo + [～てくれる](grammar:grammar-te-kureru): la cura avviene a tuo favore.
 
@@ -386,7 +386,7 @@ jp: >-
   {{新|あたら}}しい ポケモンを {{捕|つか}}まえると
   ポケモン{{図鑑|ずかん}}で {{見|み}}られるようになる。
 translation_it: >-
-  Quando catturi un nuovo Pokémon, diventa consultabile nel Pokédex.
+  Quando catturi un nuovo Pokémon, diventa consultabile nel Pokémon Zukan.
 :::
 
 ## Nota finale

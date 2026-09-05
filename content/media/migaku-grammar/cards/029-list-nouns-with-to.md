@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-029-list-nouns-with-to
 entry_type: grammar
 entry_id: grammar-029-list-nouns-with-to
 card_type: concept
-front: "と"
+front: "と（elenco di nomi）"
 back: >-
   と collega due o più nomi in un elenco completo.
 example_jp: >-

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-027-sv-prestudy-l18c-reazioni-e-parlato-scuola-e-storia
 media_id: media-pokemon-scarlet-violet
 slug: 027-sv-prestudy-l18c-reazioni-e-parlato-scuola-e-storia
-title: "Aiuto, scelta e scuola: leggere parlato e menu a Paldea"
+title: "Aiuto, scelta e scuola: leggere parlato e menu a Parudea"
 order: 57
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,9 +19,9 @@ summary: >-
   confondere tono del parlato, UI e contesto dell'Accademia.
 ---
 
-# Aiuto, scelta e scuola: leggere parlato e menu a Paldea
+# Aiuto, scelta e scuola: leggere parlato e menu a Parudea
 
-A Paldea il giapponese passa continuamente da una battuta amichevole a una
+A Parudea il giapponese passa continuamente da una battuta amichevole a una
 schermata di scelta, poi di nuovo a una spiegazione scolastica o a un messaggio
 di battaglia. La lettura diventa più facile quando riconosci subito se la frase
 sta offrendo aiuto, proponendo un'azione, creando un contrasto o classificando
@@ -140,7 +140,7 @@ che ti aspetteresti e ciò che succede davvero. La prima parte prepara una
 conclusione naturale; la seconda la smentisce, la complica o la rende
 emotivamente storta.
 
-Qui il contrasto e' affettivo: qualcosa e' andato bene e una reazione emotiva resta comunque aperta. `{{残念|ざんねん}}`
+Qui il contrasto è affettivo: qualcosa è andato bene e una reazione emotiva resta comunque aperta. `{{残念|ざんねん}}`
   non è solo "triste": è il sentimento di un risultato che avrebbe potuto
   essere migliore.
 
@@ -414,12 +414,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  でんきタイプの {{食事|しょくじ}}の {{種類|しゅるい}}で、 {{色違|いろちが}}いの ポケモンを {{探|さが}}そう。
-translation_it: >-
-  Proviamo a cercare Pokémon shiny usando il tipo di pasto legato all'Elettro.
+jp: "でんきタイプのそうぐうパワーがつくサンドウィッチを{{作|つく}}ろう。"
+translation_it: "Prepariamo un sandwich che dia Sōgū Pawā per il tipo Elettro."
 :::
-
 :::example_sentence
 jp: >-
   {{中間|ちゅうかん}}テストでは {{意味|いみ}}を {{聞|き}}かれて、 {{期末|きまつ}}テストでは {{答|こた}}えを {{選|えら}}びましょう。
@@ -436,4 +433,4 @@ l'aspettativa tradita, [～ましょう / ～ましょ](grammar:grammar-g044-fac
 e [～よう](grammar:grammar-g045-facciamo-provero-a) ti dicono come il parlante
 spinge verso l'azione, mentre menu, pasti e test ti indicano il registro della
 scena. Così il testo non resta una lista di parole: diventa una guida pratica
-per capire che cosa Paldea ti sta chiedendo di fare.
+per capire che cosa Parudea ti sta chiedendo di fare.

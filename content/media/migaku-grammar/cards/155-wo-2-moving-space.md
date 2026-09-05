@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-155-wo-2-moving-space
 entry_type: grammar
 entry_id: grammar-155-wo-2-moving-space
 card_type: concept
-front: "を"
+front: "を（percorso: {{道|みち}}を{{歩|ある}}く）"
 back: >-
   Con verbi di movimento, を marca il percorso attraversato: 道を歩く, 公園を走る, 空を飛ぶ.
 example_jp: >-

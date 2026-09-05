@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-348-kakeru-exerting-influence
 entry_type: grammar
 entry_id: grammar-348-kakeru-exerting-influence
 card_type: concept
-front: "かける"
+front: "かける（azione rivolta a qualcuno）"
 back: >-
   Radice del verbo + かける può dirigere l'azione verso un bersaglio: 話しかける «rivolgere la parola».
 example_jp: >-

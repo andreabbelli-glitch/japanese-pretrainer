@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-063-ka-list-alternatives
 entry_type: grammar
 entry_id: grammar-063-ka-list-alternatives
 card_type: concept
-front: "か"
+front: "か（alternative）"
 back: >-
   か collega due opzioni: A oppure B; può anche introdurre una domanda indiretta.
 example_jp: >-

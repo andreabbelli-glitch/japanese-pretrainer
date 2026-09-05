@@ -195,7 +195,7 @@ id: term-v118-omakasebatoru
 lemma: おまかせバトル
 reading: おまかせバトル
 romaji: omakasebatoru
-meaning_it: lotta automatica
+meaning_it: "Omakase Batoru (lotta automatica)"
 notes_it: >-
   おまかせバトル contiene おまかせ, "lasciare fare / affidare": nomina la lotta in
   cui il Pokémon agisce automaticamente mentre esplori.
@@ -207,7 +207,7 @@ entry_type: term
 entry_id: term-v118-omakasebatoru
 card_type: recognition
 front: 'おまかせバトル'
-back: lotta automatica
+back: "Omakase Batoru (lotta automatica)"
 example_jp: >-
   おまかせバトルを します。
 example_it: >-

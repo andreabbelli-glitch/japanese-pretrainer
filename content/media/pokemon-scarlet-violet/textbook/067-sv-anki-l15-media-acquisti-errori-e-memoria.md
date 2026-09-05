@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acquisti-errori-e-memoria
 media_id: media-pokemon-scarlet-violet
 slug: 067-sv-anki-l15-media-acquisti-errori-e-memoria
-title: Video, acquisti e memoria nelle scene di Paldea
+title: Video, acquisti e memoria nelle scene di Parudea
 order: 97
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-15]
 prerequisites: []
 summary: >-
   Leggere video, acquisti, risposte sbagliate e ricordi come segnali di azione,
-  quantità, errore e percezione nelle scene di Paldea.
+  quantità, errore e percezione nelle scene di Parudea.
 ---
 
-# Video, acquisti e memoria nelle scene di Paldea
+# Video, acquisti e memoria nelle scene di Parudea
 
-In *Pokémon Scarlet & Violet* una stessa sessione può passare dallo Smart Rotom a un negozio, da una domanda dell'Accademia a un dialogo più intimo con un compagno di viaggio. Il giapponese non si limita a nominare oggetti: ti dice se stai guardando un contenuto, ottenendo un risultato, contando progressi, correggendo un errore o riconoscendo un ricordo.
+In *Pokémon Scarlet & Violet* una stessa sessione può passare dallo Sumaho Rotomu a un negozio, da una domanda dell'Accademia a un dialogo più intimo con un compagno di viaggio. Il giapponese non si limita a nominare oggetti: ti dice se stai guardando un contenuto, ottenendo un risultato, contando progressi, correggendo un errore o riconoscendo un ricordo.
 
 Il filo comune è pratico. [{{動画|どうが}}](term:term-anki-l15-douga) rende visibile il supporto da guardare, [{{買|か}}いもの](term:term-anki-l15-kaimono) porta l'azione dentro il negozio, [{{不正解|ふせいかい}}](term:term-anki-l15-fuseikai) classifica una risposta come sbagliata, mentre [{{感|かん}}じ](term:term-anki-l15-kanji), [{{気|き}}づく](term:term-anki-l15-kizuku) e [{{記憶|きおく}}](term:term-anki-l15-kioku) spostano la frase verso percezione, attenzione e memoria.
 
@@ -50,30 +50,30 @@ Il filo comune è pratico. [{{動画|どうが}}](term:term-anki-l15-douga) rend
 ## Etichette da riconoscere
 
 - [スマホロトム](term:term-smartphone-rotom) — dispositivo attraverso cui arrivano chiamate, video e messaggi
-- [テーブルシティ](term:term-v272-teeburushitei) — grande città centrale di Paldea, piena di negozi e passaggi scolastici
+- [テーブルシティ](term:term-v272-teeburushitei) — grande città centrale di Parudea, piena di negozi e passaggi scolastici
 - [ジムバッジ](term:term-gym-badge) — Medaglia della Palestra, unità concreta da contare nel progresso
 
 ---
 
 [スマホロトム](term:term-smartphone-rotom) porta chiamate e media, [テーブルシティ](term:term-v272-teeburushitei) concentra negozi e percorsi urbani, [ジムバッジ](term:term-gym-badge) misura invece il progresso in unità concrete.
 
-## 1. Smart Rotom e risultati: guardare non è ottenere
+## 1. Sumaho Rotomu e risultati: guardare non è ottenere
 
-Smart Rotom, chiamate e filmati creano un tipo di frase molto concreto: c'è un dispositivo, c'è un contenuto e c'è un'azione percettiva. Da lì il gioco può passare a un altro registro, quello dei risultati ottenuti dopo una battaglia o una spiegazione.
+Sumaho Rotomu, chiamate e filmati creano un tipo di frase molto concreto: c'è un dispositivo, c'è un contenuto e c'è un'azione percettiva. Da lì il gioco può passare a un altro registro, quello dei risultati ottenuti dopo una battaglia o una spiegazione.
 
 *   [{{動画|どうが}}](term:term-anki-l15-douga) è un composto trasparente se lo leggi come "immagine in movimento": {{動|どう}} porta l'idea del movimento, {{画|が}} quella dell'immagine. Vicino allo スマホロトム `動画` indica un contenuto che si guarda nel tempo.
-*   [{{得|え}}る](term:term-anki-l15-eru) non è il verbo neutro per "ricevere qualunque cosa". La cosa ottenuta prende を, ma spesso è un risultato immateriale: {{経験|けいけん}}を{{得|え}}る, ottenere esperienza, o {{知識|ちしき}}を{{得|え}}る, acquisire conoscenza. Se entra nello zaino una Poké Ball, una MT o un oggetto concreto, il gioco tende invece a usare formule più fisiche, come {{手|て}}に{{入|い}}れる o もらう.
+*   [{{得|え}}る](term:term-anki-l15-eru) non è il verbo neutro per "ricevere qualunque cosa". La cosa ottenuta prende を, ma spesso è un risultato immateriale: {{経験|けいけん}}を{{得|え}}る, ottenere esperienza, o {{知識|ちしき}}を{{得|え}}る, acquisire conoscenza. Se entra nello zaino una Monsutā Bōru, una Waza Mashin o un oggetto concreto, il gioco tende invece a usare formule più fisiche, come {{手|て}}に{{入|い}}れる o もらう.
 
 :::example_sentence
 jp: >-
   スマホロトムで {{動画|どうが}}を {{見|み}}る。
 translation_it: >-
-  Guardo un video sullo Smart Rotom.
+  Guardo un video sullo Sumaho Rotomu.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `スマホロトムで` ➔ **Mezzo / dispositivo** (`で` dice attraverso quale strumento avviene l'azione: il filmato passa dallo Smart Rotom).
+*   `スマホロトムで` ➔ **Mezzo / dispositivo** (`で` dice attraverso quale strumento avviene l'azione: il filmato passa dallo Sumaho Rotomu).
 *   `{{動画|どうが}}を` ➔ **Contenuto guardato** (`を` marca il video come oggetto della percezione, non come luogo o schermata).
 *   `{{見|み}}る` ➔ **Azione percettiva** (il contenuto viene osservato: non è ancora qualcosa che hai ottenuto o aggiunto all'inventario).
 
@@ -103,9 +103,9 @@ translation_it: >-
 
 ## 2. Negozi, quantità e porte: azioni concrete in città
 
-Nelle città di Paldea, la frase spesso descrive azioni fisiche: entri in un negozio, raccogli medaglie, apri porte. Qui le particelle ti aiutano a distinguere luogo, quantità e oggetto manipolato.
+Nelle città di Parudea, la frase spesso descrive azioni fisiche: entri in un negozio, raccogli medaglie, apri porte. Qui le particelle ti aiutano a distinguere luogo, quantità e oggetto manipolato.
 
-*   [{{買|か}}いもの](term:term-anki-l15-kaimono) nasce da {{買|か}}う, comprare, più もの, cosa. Da solo può indicare gli acquisti; con する diventa l'azione {{買|か}}いものをする, fare compere. Davanti a un banco di Delibird Consegne o nelle vie di テーブルシティ, il punto non è solo il singolo oggetto comprato: la frase ti porta nel frame del negozio.
+*   [{{買|か}}いもの](term:term-anki-l15-kaimono) nasce da {{買|か}}う, comprare, più もの, cosa. Da solo può indicare gli acquisti; con する diventa l'azione {{買|か}}いものをする, fare compere. Davanti a un banco di Deribādo Pōchi o nelle vie di テーブルシティ, il punto non è solo il singolo oggetto comprato: la frase ti porta nel frame del negozio.
 *   [{{8|やっ}}つ](term:term-anki-l15-yattsu) appartiene alla serie nativa ひとつ, ふたつ, みっつ, fino a とお. Conta cose generiche quando non serve un classificatore più tecnico. Per le Medaglie della Palestra, ジムバッジを{{8|やっ}}つ è naturale perché il testo sta contando unità raccolte, non persone, Pokémon o turni.
 *   [{{開|あ}}ける](term:term-anki-l15-akeru) è transitivo: qualcuno apre volontariamente qualcosa e quell'oggetto prende を. Funziona con porte, coperchi, contenitori e accessi fisici. Per menu, mappe o finestre dell'interfaccia, il giapponese preferisce spesso {{開|ひら}}く, più adatto all'idea di far comparire una schermata.
 
@@ -113,7 +113,7 @@ Nelle città di Paldea, la frase spesso descrive azioni fisiche: entri in un neg
 jp: >-
   テーブルシティで {{買|か}}いものを する。
 translation_it: >-
-  Faccio acquisti a Mesapoli.
+  Faccio acquisti a Tēburu Shiti.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -237,12 +237,12 @@ translation_it: >-
 jp: >-
   ペパーには むかしの {{記憶|きおく}}が ある。
 translation_it: >-
-  Pepe ha ricordi del passato.
+  Pepā ha ricordi del passato.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `ペパーには` ➔ **Possessore / punto di riferimento** (`には` presenta Pepper come persona in cui quei ricordi sono presenti).
+*   `ペパーには` ➔ **Possessore / punto di riferimento** (`には` presenta Pepā come persona in cui quei ricordi sono presenti).
 *   `むかしの {{記憶|きおく}}が` ➔ **Ricordo esistente** (`が` marca la memoria come cosa che c'è).
 *   `ある` ➔ **Esistenza / possesso** (la frase dice che quei ricordi sono presenti in lui, anche se non vengono ancora raccontati nel dettaglio).
 
@@ -262,14 +262,14 @@ translation_it: >-
 jp: >-
   スマホロトムで {{動画|どうが}}を {{見|み}}て、{{新|あたら}}しい {{知識|ちしき}}を {{得|え}}た。
 translation_it: >-
-  Ho guardato un video sullo Smart Rotom e ho acquisito nuove conoscenze.
+  Ho guardato un video sullo Sumaho Rotomu e ho acquisito nuove conoscenze.
 :::
 
 :::example_sentence
 jp: >-
   テーブルシティで {{買|か}}いものをして、ジムバッジを {{8|やっ}}つ {{集|あつ}}めた。
 translation_it: >-
-  Ho fatto acquisti a Mesapoli e ho raccolto otto Medaglie della Palestra.
+  Ho fatto acquisti a Tēburu Shiti e ho raccolto otto Medaglie della Palestra.
 :::
 
 :::example_sentence
@@ -283,7 +283,7 @@ translation_it: >-
 jp: >-
   ペパーの {{記憶|きおく}}には、ふしぎな {{感|かん}}じが ある。
 translation_it: >-
-  Nei ricordi di Pepe c'è una sensazione misteriosa.
+  Nei ricordi di Pepā c'è una sensazione misteriosa.
 :::
 
 ## Nota finale

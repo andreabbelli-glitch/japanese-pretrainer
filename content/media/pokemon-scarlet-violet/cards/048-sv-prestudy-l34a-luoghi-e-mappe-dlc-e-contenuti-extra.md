@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
 media_id: media-pokemon-scarlet-violet
 slug: 048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
-title: "Mappe, basi e contenuti extra: leggere Paldea e i DLC"
+title: "Mappe, basi e contenuti extra: leggere Parudea e i DLC"
 order: 78
 segment_ref: scarlet-violet-prestudy
 ---
@@ -11,9 +11,9 @@ id: term-v684-bourutaun
 lemma: ボウルタウン
 reading: ボウルタウン
 romaji: bourutaun
-meaning_it: Artazon
+meaning_it: Bōru Taun
 notes_it: >-
-  Città di Paldea associata a destinazioni, voli rapidi e percorsi verso la
+  Città di Parudea associata a destinazioni, voli rapidi e percorsi verso la
   palestra Erba; quando appare in una frase, aggancia il testo a un punto
   preciso della mappa.
 :::
@@ -22,9 +22,9 @@ id: term-v685-nappeyama
 lemma: ナッペ山
 reading: ナッペやま
 romaji: nappeyama
-meaning_it: Glaseado Mountain
+meaning_it: Nappe-yama
 notes_it: >-
-  Area montana innevata di Paldea; compare in nomi di zona, percorsi vicini e
+  Area montana innevata di Parudea; compare in nomi di zona, percorsi vicini e
   indicazioni legate a pendii, neve o spostamenti in quota.
 :::
 :::term
@@ -42,9 +42,9 @@ id: term-v687-chanpurutaun
 lemma: チャンプルタウン
 reading: チャンプルタウン
 romaji: chanpurutaun
-meaning_it: Medali
+meaning_it: Chanpuru Taun
 notes_it: >-
-  Città di Paldea che può comparire in fast travel, direzioni e obiettivi di
+  Città di Parudea che può comparire in fast travel, direzioni e obiettivi di
   percorso; in una frase segnala una destinazione urbana.
 :::
 :::term
@@ -52,7 +52,7 @@ id: term-v688-suiryokutaun
 lemma: スイリョクタウン
 reading: スイリョクタウン
 romaji: suiryokutaun
-meaning_it: Verdegiada
+meaning_it: Suiryoku Taun
 notes_it: >-
   Villaggio principale dell'area DLC; compare come punto di arrivo per eventi,
   dialoghi locali e spostamenti nella regione del contenuto extra.
@@ -62,9 +62,9 @@ id: term-v689-hakkoushiti
 lemma: ハッコウシティ
 reading: ハッコウシティ
 romaji: hakkoushiti
-meaning_it: Levincia
+meaning_it: Hakkō Shiti
 notes_it: >-
-  Grande città costiera di Paldea; nei menu di mappa e nei dialoghi può
+  Grande città costiera di Parudea; nei menu di mappa e nei dialoghi può
   indicare una destinazione cittadina o un riferimento a un evento urbano.
 :::
 :::term
@@ -72,9 +72,9 @@ id: term-v690-beikutaun
 lemma: ベイクタウン
 reading: ベイクタウン
 romaji: beikutaun
-meaning_it: Alfornada
+meaning_it: Beiku Taun
 notes_it: >-
-  Città di Paldea collocata in una zona più isolata; quando appare in una
+  Città di Parudea collocata in una zona più isolata; quando appare in una
   schermata, di solito il testo sta parlando di viaggio, percorso o palestra.
 :::
 :::term
@@ -82,9 +82,9 @@ id: term-v691-karafushiti
 lemma: カラフシティ
 reading: カラフシティ
 romaji: karafushiti
-meaning_it: Cascarrafa
+meaning_it: Karafu Shiti
 notes_it: >-
-  Città di Paldea vicino al deserto; in mappa e dialoghi può indicare negozi,
+  Città di Parudea vicino al deserto; in mappa e dialoghi può indicare negozi,
   percorsi cittadini o una tappa del viaggio.
 :::
 :::term
@@ -108,7 +108,7 @@ back: motivo / pattern visivo
 example_jp: >-
   ポケモンの {{模様|もよう}}を {{図鑑|ずかん}}で {{見|み}}ます。
 example_it: >-
-  Guardo il motivo del Pokémon nel Pokédex.
+  Guardo il motivo del Pokémon nel Pokémon Zukan.
 :::
 :::term
 id: term-v693-kanousei
@@ -138,9 +138,9 @@ id: term-v694-serukurutaun
 lemma: セルクルタウン
 reading: セルクルタウン
 romaji: serukurutaun
-meaning_it: Cortondo
+meaning_it: Serukuru Taun
 notes_it: >-
-  Città iniziale di Paldea; può apparire in indicazioni di percorso, voli
+  Città iniziale di Parudea; può apparire in indicazioni di percorso, voli
   rapidi e riferimenti a tappe vicine alla partenza.
 :::
 :::term
@@ -148,9 +148,9 @@ id: term-v695-furijjitaun
 lemma: フリッジタウン
 reading: フリッジタウン
 romaji: furijjitaun
-meaning_it: Montenevera
+meaning_it: Furijji Taun
 notes_it: >-
-  Località innevata di Paldea; nei testi di mappa collega la frase a una zona
+  Località innevata di Parudea; nei testi di mappa collega la frase a una zona
   fredda, a percorsi montani o a un obiettivo cittadino.
 :::
 :::term
@@ -158,7 +158,7 @@ id: term-v696-kosajitaun
 lemma: コサジタウン
 reading: コサジタウン
 romaji: kosajitaun
-meaning_it: Cabo Poco
+meaning_it: Kosaji Taun
 notes_it: >-
   Zona di partenza del protagonista; quando compare, la frase richiama casa,
   inizio viaggio o spostamenti verso l'area iniziale.
@@ -170,7 +170,7 @@ reading: スマホカバー
 romaji: sumahokabaa
 meaning_it: cover dello smartphone
 notes_it: >-
-  Accessorio del Rotom Phone; compare in negozi e menu di personalizzazione
+  Accessorio del Sumaho Rotomu; compare in negozi e menu di personalizzazione
   quando cambi l'aspetto dello smartphone.
 :::
 :::card
@@ -191,9 +191,9 @@ id: term-v698-oojanomizuumi
 lemma: オージャの湖
 reading: オージャのみずうみ
 romaji: oojanomizuumi
-meaning_it: Casseroya Lake
+meaning_it: Ōja no Mizuumi
 notes_it: >-
-  Grande lago di Paldea; compare in indicazioni di area, spawn selvatici,
+  Grande lago di Parudea; compare in indicazioni di area, spawn selvatici,
   obiettivi di esplorazione e percorsi sull'acqua.
 :::
 :::term
@@ -270,7 +270,7 @@ id: term-v702-puratotaun
 lemma: プラトタウン
 reading: プラトタウン
 romaji: puratotaun
-meaning_it: Los Platos
+meaning_it: Purato Taun
 notes_it: >-
   Piccola città vicino all'inizio del viaggio; nei testi di mappa può indicare
   una tappa iniziale, un punto di passaggio o un volo rapido.
@@ -296,7 +296,7 @@ back: trasformazione
 example_jp: >-
   メタモンが ピカチュウに {{変身|へんしん}}します。
 example_it: >-
-  Ditto si trasforma in Pikachu.
+  Metamon si trasforma in Pikachū.
 :::
 :::term
 id: term-v704-kyoten
@@ -306,7 +306,7 @@ romaji: kyoten
 meaning_it: base / punto d'appoggio
 notes_it: >-
   Base operativa o punto fisso di un gruppo; in Scarlet / Violet richiama
-  spesso basi del Team Star o hub di attività.
+  spesso basi del Sutā-dan o hub di attività.
 :::
 :::card
 id: card-v704-kyoten-recognition
@@ -319,7 +319,7 @@ back: base / punto d'appoggio
 example_jp: >-
   スター{{団|だん}}の {{拠点|きょてん}}が マップに {{出|で}}ます。
 example_it: >-
-  La base del Team Star appare sulla mappa.
+  La base del Sutā-dan appare sulla mappa.
 :::
 :::term
 id: term-v705-atonoseefekuto
@@ -346,7 +346,7 @@ id: term-v707-sentaasukuea
 lemma: センタースクエア
 reading: センタースクエア
 romaji: sentaasukuea
-meaning_it: Piazza Centrale
+meaning_it: Sentā Sukuea
 notes_it: >-
   Piazza centrale o area hub; nel DLC può indicare un punto di ritrovo sulla
   mappa dell'istituto o della zona.
@@ -389,8 +389,8 @@ id: term-v710-piketaun
 lemma: ピケタウン
 reading: ピケタウン
 romaji: piketaun
-meaning_it: Zapapico
+meaning_it: Pike Taun
 notes_it: >-
-  Insediamento di Paldea; quando appare in mappa o nei voli rapidi indica
-  Zapapico, distinto da Porto Marinada.
+  Insediamento di Parudea; quando appare in mappa o nei voli rapidi indica
+  Pike Taun, distinto da Marinādo Taun.
 :::

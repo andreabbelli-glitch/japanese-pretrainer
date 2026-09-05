@@ -13,7 +13,7 @@ reading: ざっし
 romaji: zasshi
 meaning_it: rivista
 notes_it: >-
-  La parola {{雑|ざっ}}{{誌|し}} indica specificamente le riviste e i periodici. Nel contesto dell'Accademia di Paldea, la troverai per riferirsi alle copie dei magazine (come il mensile sull'occulto) sparse per le librerie.
+  La parola {{雑|ざっ}}{{誌|し}} indica specificamente le riviste e i periodici. Nel contesto dell'Accademia di Parudea, la troverai per riferirsi alle copie dei magazine (come il mensile sull'occulto) sparse per le librerie.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: さくひん
 romaji: sakuhin
 meaning_it: opera; lavoro artistico
 notes_it: >-
-  Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassel (ハッサク) quando valuta le sculture di Brassius (コルサ) o l'espressività degli studenti.
+  Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassaku (ハッサク) quando valuta le sculture di Korusa (コルサ) o l'espressività degli studenti.
 level_hint: custom
 :::
 :::term
@@ -120,7 +120,7 @@ example_jp: >-
 example_it: >-
   All'ingresso c'è una rivista sull'occulto.
 notes_it: >-
-  La parola {{雑|ざっ}}{{誌|し}} indica specificamente le riviste e i periodici. Nel contesto dell'Accademia di Paldea, la troverai per riferirsi alle copie dei magazine (come il mensile sull'occulto) sparse per le librerie.
+  La parola {{雑|ざっ}}{{誌|し}} indica specificamente le riviste e i periodici. Nel contesto dell'Accademia di Parudea, la troverai per riferirsi alle copie dei magazine (come il mensile sull'occulto) sparse per le librerie.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -222,7 +222,7 @@ example_jp: >-
 example_it: >-
   Hai creato un'opera magnifica durante l'attività di educazione artistica.
 notes_it: >-
-  Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassel (ハッサク) quando valuta le sculture di Brassius (コルサ) o l'espressività degli studenti.
+  Il termine {{作|さく}}{{品|ひん}} copre qualsiasi produzione artistica o artigianale. Sentirai questa parola specialmente dal Professor Hassaku (ハッサク) quando valuta le sculture di Korusa (コルサ) o l'espressività degli studenti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]
 :::
 :::card
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   {{長|なが}}い {{冒|ぼう}}{{険|けん}}の {{末|すえ}}に、ついに エリアゼロへ たどり{{着|つ}}いた。
 example_it: >-
-  Al termine di una lunga avventura, siamo finalmente arrivati nell'Area Zero.
+  Al termine di una lunga avventura, siamo finalmente arrivati nell'Eria Zero.
 notes_it: >-
   {{長|なが}}い è un Aggettivo-I molto versatile. Si usa sia per lo spazio fisico (una strada, una coda) sia per la dimensione temporale (un viaggio lungo, una lunga attesa). Può precedere il nome come in {{長|なが}}い{{冒|ぼう}}{{険|けん}} (lunga avventura).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-10]

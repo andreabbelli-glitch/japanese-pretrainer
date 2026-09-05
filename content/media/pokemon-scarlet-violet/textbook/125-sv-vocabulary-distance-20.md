@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-20
 media_id: media-pokemon-scarlet-violet
 slug: 125-sv-vocabulary-distance-20
-title: 'Parole per leggere Paldea — venti'
+title: 'Parole per leggere Parudea — venti'
 order: 170
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — venti
+# Parole per leggere Parudea — venti
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -88,12 +88,9 @@ translation_it: >-
 ### [{{大将|たいしょう}}](term:term-sv-vocabulary-185-taishou) — generale; ammiraglio; capo
 
 :::example_sentence
-jp: >-
-  すまんなうちらの{{大将|たいしょう}}たまにこうなってしまうんやだだっでぇ！
-translation_it: >-
-  Scusa, il nostro capo ogni tanto fa così, è proprio così!
+jp: "すまんな。うちらの{{大将|たいしょう}}、たまにこうなってしまうんや。"
+translation_it: "Scusa, il nostro capo ogni tanto si riduce così."
 :::
-
 **Uso:** Nel contesto indica «generale; ammiraglio; capo».
 
 ### [つらい](term:term-sv-vocabulary-117-tsurai) — doloroso; amaro; straziante
@@ -165,12 +162,11 @@ translation_it: >-
 ### [ってか](term:term-sv-vocabulary-077-tteka) — o piuttosto (dire); o meglio (dire); o forse dovrei dire
 
 :::example_sentence
-jp: >-
-  えーでもエリアゼロ{{来|き}}てからライドするんも{{嫌|いや}}がってるしってかバトルフォルムになれんのでしょ？
-translation_it: >-
-  Ehm, ma da quando sei arrivato nell’Area Zero non vuoi più fare i Ride, e poi non riesci a trasformarti in Battle Form, giusto?
+jp: "このポケモン、{{人|ひと}}を{{乗|の}}せるのも{{嫌|いや}}がってるし、ってかバトルフォルムになれないんでしょ？"
+translation_it: "Questo Pokémon non vuole nemmeno farsi cavalcare e, poi, non riesce a passare alla Batoru Forumu, giusto?"
 :::
 
+*Esempio didattico.*
 **Uso:** Nel dialogo aggiunge il valore di «o piuttosto (dire); o meglio (dire); o forse dovrei dire».
 
 ### [{{代|か}}わり](term:term-sv-vocabulary-023-kawari) — al posto di; sostituto; sostituzione
@@ -201,7 +197,7 @@ translation_it: >-
 jp: >-
   これはパルデア{{地方|ちほう}}で{{初|はつ}}の{{記録|きろく}}だ。
 translation_it: >-
-  Questo è il primo record del genere nella regione di Paldea.
+  Questo è il primo record del genere nella regione di Parudea.
 :::
 
 **Uso:** Nel contesto indica «primo; iniziale».

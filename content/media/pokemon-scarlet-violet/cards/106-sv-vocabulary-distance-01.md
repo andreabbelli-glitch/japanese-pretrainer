@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-01
 media_id: media-pokemon-scarlet-violet
 slug: 106-sv-vocabulary-distance-01
-title: 'Parole per leggere Paldea — uno'
+title: 'Parole per leggere Parudea — uno'
 order: 151
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -128,7 +128,7 @@ back: >-
 example_jp: >-
   だからボクが{{掟|おきて}}とか{{向|む}}いてるはずがないんだよでもさ{{団員|だんいん}}の{{面倒|めんどう}}{{見|み}}てるのってだいたいピーニャじゃん？
 example_it: >-
-  Ecco perché non potrei mai essere adatto alle regole. Ma, dai, chi si prende cura dei membri del gruppo di solito è Pinya, no?
+  Ecco perché non potrei mai essere adatto alle regole. Ma, dai, chi si prende cura dei membri del gruppo di solito è Pīnya, no?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   いずれビッグになる{{前|まえ}}にリップが{{囲|かこ}}っちゃおっかな？
 example_it: >-
-  Quasi quasi Tulipa ti prende sotto la sua ala prima che, un giorno, tu diventi una celebrità?
+  Quasi quasi Rippu ti prende sotto la sua ala prima che, un giorno, tu diventi una celebrità?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-188-tekuru-2-an-action-state-keeps-changing
 entry_type: grammar
 entry_id: grammar-188-tekuru-2-an-action-state-keeps-changing
 card_type: concept
-front: "てくる"
+front: "てくる（evoluzione fino al presente）"
 back: >-
   Vて + くる presenta un processo che dal passato arriva al presente o un cambiamento che si avvicina e diventa percepibile.
 example_jp: >-

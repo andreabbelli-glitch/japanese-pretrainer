@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
 media_id: media-pokemon-scarlet-violet
 slug: 103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal
-title: "Dal Pokémon Center al primo Terastal: servizi, campo e sfide guidate"
+title: "Dal Pokémon Sentā al primo Terasutaru: servizi, campo e sfide guidate"
 order: 130
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -10,11 +10,10 @@ status: active
 tags: [pokemon, scarlet-violet, prologue, story]
 prerequisites: []
 summary: >-
-  Leggere il prologo da Platos Town al primo Terastal: servizi del Pokémon
-  Center, LP, TM Machine, Let's Go, sfida con Nemi e Tera Orb.
+  Leggere il prologo da Platos Town al primo Terasutaru: servizi del Pokémon Sentā, LP, Waza Mashin Machine, Rettsu Gō, sfida con Nemo e Terasutaru Ōbu.
 ---
 
-# Dal Pokémon Center al primo Terastal: servizi, campo e sfide guidate
+# Dal Pokémon Sentā al primo Terasutaru: servizi, campo e sfide guidate
 
 Da プラトタウン alla strada che porta a [テーブルシティ](term:term-v272-teeburushitei),
 Scarlet / Violet cambia passo: il viaggio diventa una catena di servizi,
@@ -22,7 +21,7 @@ risorse, comandi sul campo e prove di battaglia. Il
 [ポケモンセンター](term:term-pokemon-center) cura e ricarica, il
 [フレンドリィショップ](term:term-friendly-shop) introduce il lessico degli acquisti,
 [レッツゴー](term:term-lets-go) porta il Pokémon fuori dal turno classico e
-Nemi usa una nuova [{{勝負|しょうぶ}}](term:term-shoubu) per misurare quanto sei
+Nemo usa una nuova [{{勝負|しょうぶ}}](term:term-shoubu) per misurare quanto sei
 cresciuto lungo la salita.
 
 Il punto da tenere insieme è la funzione di ogni parola nella scena. [LP（リーグペイ）](term:term-lp)
@@ -36,17 +35,17 @@ il tipo che decide quali [わざ](term:term-waza) conviene usare.
 
 - [ポケモンセンター](term:term-pokemon-center) — hub di cura e servizi
 - [フレンドリィショップ](term:term-friendly-shop) — banco del negozio
-- [LP（リーグペイ）](term:term-lp) — League Points, valuta di sistema
+- [LP（リーグペイ）](term:term-lp) — Rīgu Pei, valuta di sistema
 - [おとしもの](term:term-otoshimono) — materiali lasciati dai Pokémon
-- [わざマシン](term:term-waza-machine) — MT / Technical Machine
+- [わざマシン](term:term-waza-machine) — Waza Mashin / Technical Machine
 - [レッツゴー](term:term-lets-go) — comando di esplorazione sul campo
 - [{{勝負|しょうぶ}}](term:term-shoubu) — sfida / match decisivo
 - [{{回復|かいふく}}](term:term-kaifuku) — recupero / guarigione
 - [{{弱点|じゃくてん}}](term:term-jakuten) — punto debole
 - [わざ](term:term-waza) — mossa
-- [テラスタル](term:term-terastal) — Terastalizzazione
-- [テラスタルオーブ](term:term-terastal-orb) — Tera Orb
-- [テラスタイプ](term:term-tera-type) — Tera Type
+- [テラスタル](term:term-terastal) — Terasutaru
+- [テラスタルオーブ](term:term-terastal-orb) — Terasutaru Ōbu
+- [テラスタイプ](term:term-tera-type) — Tera Taipu
 
 ## Espressioni ricorrenti
 
@@ -70,9 +69,9 @@ il tipo che decide quali [わざ](term:term-waza) conviene usare.
 
 ---
 
-[プラトタウン](term:term-v702-puratotaun) funziona come primo villaggio di servizio: quando il nome appare, la scena sta uscendo dal tutorial puro e si avvicina al Centro Pokémon.
+[プラトタウン](term:term-v702-puratotaun) funziona come primo villaggio di servizio: quando il nome appare, la scena sta uscendo dal tutorial puro e si avvicina al Pokémon Sentā.
 
-## 1. Il Pokémon Center come hub: accoglienza, cura e risorse
+## 1. Il Pokémon Sentā come hub: accoglienza, cura e risorse
 
 Il primo [ポケモンセンター](term:term-pokemon-center) all'aperto mette nello stesso
 spazio tre registri diversi: il parlato cortese del personale, le istruzioni
@@ -99,7 +98,7 @@ servono per trasformare materiali in [わざマシン](term:term-waza-machine).
 
 :::image
 src: assets/story/pokemon-center-service-counter.webp
-alt: "Bancone del Centro Pokémon con infermiera, shop e servizi allineati nello stesso hub esterno."
+alt: "Bancone del Pokémon Sentā con infermiera, shop e servizi allineati nello stesso hub esterno."
 caption: >-
   Il [ポケモンセンター](term:term-pokemon-center) non è un solo sportello: cura,
   negozio e servizi condividono lo stesso spazio, quindi i dialoghi alternano
@@ -111,7 +110,7 @@ jp: >-
   ポケモンセンターで {{手|て}}{{持|も}}ちの ポケモンを
   {{回復|かいふく}}してもらおう。
 translation_it: >-
-  Facciamoci curare la squadra al Pokémon Center.
+  Facciamoci curare la squadra al Pokémon Sentā.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -135,10 +134,10 @@ servizio oppure effetto di combattimento.
 ### LP, おとしもの e わざマシン: leggere il costo
 
 Quando la scena passa dalla cura alle risorse, [LP（リーグペイ）](term:term-lp) e
-[おとしもの](term:term-otoshimono) iniziano a lavorare in coppia. I League Points
+[おとしもの](term:term-otoshimono) iniziano a lavorare in coppia. I Rīgu Pei
 sono valuta; gli [おとしもの](term:term-otoshimono) sono materiali lasciati dai
 Pokémon dopo lotte e azioni sul campo. La [わざマシン](term:term-waza-machine)
-li mette nello stesso frame: per creare una MT non basta sapere il nome della
+li mette nello stesso frame: per creare una Waza Mashin non basta sapere il nome della
 mossa, devi leggere quali risorse vengono richieste.
 
 *   [LP（リーグペイ）](term:term-lp) è scritto come sigla più spiegazione tra
@@ -154,11 +153,11 @@ mossa, devi leggere quali risorse vengono richieste.
 
 :::image
 src: assets/ui/tm-machine-materials-ui.webp
-alt: "Schermata della TM Machine con costo in LP e materiali necessari visibili."
+alt: "Schermata della Waza Mashin Machine con costo in LP e materiali necessari visibili."
 caption: >-
   Nella [わざマシン](term:term-waza-machine), [LP（リーグペイ）](term:term-lp) e
   [おとしもの](term:term-otoshimono) appaiono nello stesso frame di costo: la UI
-  ti sta dicendo quali risorse mancano per creare una MT.
+  ti sta dicendo quali risorse mancano per creare una Waza Mashin.
 :::
 
 :::example_sentence
@@ -166,13 +165,13 @@ jp: >-
   わざマシンを {{作|つく}}るには LPと ポケモンの おとしものが
   {{必要|ひつよう}}だ。
 translation_it: >-
-  Per creare una MT servono LP e materiali lasciati dai Pokémon.
+  Per creare una Waza Mashin servono LP e materiali lasciati dai Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `わざマシンを {{作|つく}}るには` ➔ **cornice di requisito**: `には` prende
-    "creare una MT" e lo trasforma nella condizione da soddisfare.
+    "creare una Waza Mashin" e lo trasforma nella condizione da soddisfare.
 *   `LPと ポケモンの おとしものが` ➔ **soggetto del bisogno**: `と` unisce valuta
     e materiali nella stessa lista di costo.
 *   `{{必要|ひつよう}}だ` ➔ **necessità dichiarata**: `必要だ` dichiara una necessità.
@@ -207,7 +206,7 @@ chi parte, che cosa fa e che cosa torna a te.
 
 :::image
 src: assets/story/lets-go-auto-battle-field.webp
-alt: "Pokémon partner sul campo dopo un'azione di Let's Go, con notifica di drop o vittoria automatica visibile."
+alt: "Pokémon partner sul campo dopo un'azione di Rettsu Gō, con notifica di drop o vittoria automatica visibile."
 caption: >-
   [レッツゴー](term:term-lets-go) mostra il partner fuori dalla battaglia
   classica: il testo sul campo collega movimento, scontro rapido e raccolta di
@@ -219,7 +218,7 @@ jp: >-
   レッツゴーで {{先頭|せんとう}}の ポケモンを {{出|だ}}すと、
   {{道具|どうぐ}}を {{拾|ひろ}}ってきてくれる ことが ある。
 translation_it: >-
-  Quando mandi fuori il Pokémon in testa con Let's Go, a volte va a
+  Quando mandi fuori il Pokémon in testa con Rettsu Gō, a volte va a
   raccoglierti degli oggetti.
 :::
 
@@ -250,10 +249,10 @@ Pokémon si allontana, fa qualcosa e il risultato torna verso il protagonista.
 È un'immagine pratica per leggere `{{拾|ひろ}}ってきて` come azione con ritorno,
 non come un semplice "raccoglie".
 
-## 3. Nemi legge la strada come prova di crescita
+## 3. Nemo legge la strada come prova di crescita
 
 Dopo {{南|みなみ}}{{1番|いちばん}}エリア, la seconda
-[{{勝負|しょうぶ}}](term:term-shoubu) di Nemi riprende quello che hai appena
+[{{勝負|しょうぶ}}](term:term-shoubu) di Nemo riprende quello che hai appena
 fatto: camminare, combattere, curare,
 raccogliere e usare il partner sul campo. La grammatica del suo parlato lega
 esperienza e verifica: se hai attraversato la salita, allora si può provare a
@@ -261,24 +260,24 @@ misurare quanto sei diventato forte.
 
 *   [{{勝負|しょうぶ}}](term:term-shoubu) è più pesante di "lotta" come evento
     casuale. Porta l'idea di confronto che decide qualcosa: nella voce di
-    Nemi, il match diventa un test concreto della tua crescita.
+    Nemo, il match diventa un test concreto della tua crescita.
 *   [{{弱点|じゃくてん}}](term:term-jakuten) resta il lessico tattico da tenere
     pronto. Nelle prime battaglie il gioco continua a farti collegare tipo,
     [わざ](term:term-waza) e decisione del turno: riconoscere il punto debole
     significa sapere dove conviene colpire.
 *   [～てみる](grammar:grammar-te-miru) rende l'azione una prova. In
-    `{{試|ため}}してみよう`, Nemi non sta ordinando in modo freddo: sta dicendo
+    `{{試|ため}}してみよう`, Nemo non sta ordinando in modo freddo: sta dicendo
     "proviamo a vedere", con il tono energico di chi vuole verificare subito il
     risultato.
 *   [～てあげる](grammar:grammar-te-ageru) e [～てもらう](grammar:grammar-te-morau)
-    distribuiscono i ruoli. Nemi fa qualcosa per te, mostra o guida; al
+    distribuiscono i ruoli. Nemo fa qualcosa per te, mostra o guida; al
     centro, invece, tu ricevi un servizio dal personale.
 
 :::image
 src: assets/story/nemona-second-battle-growth-check.webp
-alt: "Nemi sul sentiero prima della seconda sfida con la battuta giapponese sulla prova della tua crescita."
+alt: "Nemo sul sentiero prima della seconda sfida con la battuta giapponese sulla prova della tua crescita."
 caption: >-
-  In `{{勝負|しょうぶ}}して {{試|ため}}してみよう`, Nemi lega il match alla
+  In `{{勝負|しょうぶ}}して {{試|ため}}してみよう`, Nemo lega il match alla
   verifica della crescita: la sfida diventa un test pratico, non solo una
   battuta energica.
 :::
@@ -304,7 +303,7 @@ translation_it: >-
 #### ⚖️ Contrasto grammaticale: chi aiuta e chi riceve
 
 [～てあげる](grammar:grammar-te-ageru) guarda l'azione dal lato di chi fa
-qualcosa per qualcun altro: Nemi può spiegare, mostrare o farti provare una
+qualcosa per qualcun altro: Nemo può spiegare, mostrare o farti provare una
 meccanica. [～てもらう](grammar:grammar-te-morau) guarda invece l'azione dal
 lato di chi riceve: al [ポケモンセンター](term:term-pokemon-center) ti fai curare
 la squadra. Se segui questa differenza, il prologo diventa più chiaro anche nei
@@ -339,10 +338,10 @@ translation_it: >-
 
 Per ricordare [{{勝負|しょうぶ}}](term:term-shoubu), pensa alla sfida come a una
 bilancia: dopo il percorso, il match pesa il risultato. È un'immagine utile per
-questa scena, non una spiegazione etimologica. Nemi non vuole solo "fare una
+questa scena, non una spiegazione etimologica. Nemo non vuole solo "fare una
 lotta"; vuole vedere che cosa ha prodotto il tratto appena giocato.
 
-## 4. Il primo Terastal: azione, oggetto e tipo
+## 4. Il primo Terasutaru: azione, oggetto e tipo
 
 Il primo [テラスタル](term:term-terastal) arriva prima come spettacolo di
 battaglia e poi come strumento nelle tue mani. Il gioco ti fa vedere l'effetto
@@ -353,7 +352,7 @@ cristallo", perdi il pezzo operativo del tutorial.
 
 *   [テラスタル](term:term-terastal) è l'azione o lo stato della trasformazione.
     Quando leggi `テラスタルする`, il verbo `する` trasforma il nome in "fare la
-    Terastalizzazione".
+    Terasutaru".
 *   [テラスタルオーブ](term:term-terastal-orb) è l'oggetto che abilita l'azione.
     La sua presenza spiega perché il [ポケモンセンター](term:term-pokemon-center)
     torna importante: non cura soltanto la squadra, ma ricarica anche la
@@ -362,7 +361,7 @@ cristallo", perdi il pezzo operativo del tutorial.
     Non coincide sempre con il tipo originario del Pokémon, quindi va letto
     prima di scegliere quale [わざ](term:term-waza) sfruttare.
 *   [{{弱点|じゃくてん}}](term:term-jakuten) resta il ponte con le battaglie
-    precedenti. La Terastalizzazione non cancella il ragionamento su tipo e
+    precedenti. La Terasutaru non cancella il ragionamento su tipo e
     punto debole: lo rende più mobile.
 
 :::image
@@ -380,16 +379,16 @@ jp: >-
   テラスタルすると テラスタイプと {{同|おな}}じ タイプの わざは
   さらに {{強|つよ}}くなる。
 translation_it: >-
-  Quando un Pokémon terastalizza, le mosse dello stesso Tera Type diventano
+  Quando un Pokémon terastalizza, le mosse dello stesso Tera Taipu diventano
   ancora più forti.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `テラスタルすると` ➔ **condizione di trasformazione**: `と` presenta ciò che
-    succede quando la Terastalizzazione avviene.
+    succede quando la Terasutaru avviene.
 *   `テラスタイプと {{同|おな}}じ タイプの わざは` ➔ **tema tattico**: la frase
-    isola le mosse dello stesso tipo del Tera Type.
+    isola le mosse dello stesso tipo del Tera Taipu.
 *   `さらに {{強|つよ}}くなる` ➔ **risultato di potenziamento**: `さらに` aggiunge
     "ancora di più", quindi il bonus non è solo una variazione estetica.
 
@@ -418,16 +417,14 @@ servizio, il comando e la conseguenza:
 jp: >-
   お{{疲|つか}}れさまです。ポケモンセンターで {{手|て}}{{持|も}}ちを
   {{回復|かいふく}}してもらいましょう。
-translation_it: >-
-  Benvenuto. Facciamoci curare la squadra al Pokémon Center.
+translation_it: "Grazie dell’impegno. Facciamoci curare la squadra al Pokémon Sentā."
 :::
-
 :::example_sentence
 jp: >-
   フレンドリィショップでは モンスターボールや キズぐすりを LPで
   {{買|か}}える。
 translation_it: >-
-  Al Friendly Shop puoi comprare Poké Ball e Pozioni usando gli LP.
+  Al Furendorī Shoppu puoi comprare Monsutā Bōru e Kizugusuri usando gli LP.
 :::
 
 :::example_sentence
@@ -435,8 +432,8 @@ jp: >-
   レッツゴーで ポケモンが {{戦|たたか}}ってきたら おとしものを
   {{集|あつ}}めて わざマシンを {{作|つく}}れる。
 translation_it: >-
-  Se un Pokémon combatte usando Let's Go, puoi raccogliere materiali e creare
-  MT.
+  Se un Pokémon combatte usando Rettsu Gō, puoi raccogliere materiali e creare
+  Waza Mashin.
 :::
 
 :::example_sentence
@@ -444,7 +441,7 @@ jp: >-
   テラスタルオーブを チャージしておくと {{次|つぎ}}の バトルで
   {{困|こま}}らない。
 translation_it: >-
-  Se tieni carico il Tera Orb, non ti troverai in difficoltà nel prossimo match.
+  Se tieni carico il Terasutaru Ōbu, non ti troverai in difficoltà nel prossimo match.
 :::
 
 ---
@@ -455,7 +452,7 @@ Il prologo dopo プラトタウン funziona come una catena: il
 [ポケモンセンター](term:term-pokemon-center) insegna il lessico del servizio,
 [LP（リーグペイ）](term:term-lp) e [おとしもの](term:term-otoshimono) trasformano la
 strada in risorse, [レッツゴー](term:term-lets-go) fa lavorare il partner fuori
-dalla battaglia classica, Nemi usa la [{{勝負|しょうぶ}}](term:term-shoubu) come
+dalla battaglia classica, Nemo usa la [{{勝負|しょうぶ}}](term:term-shoubu) come
 prova e il [テラスタルオーブ](term:term-terastal-orb) richiama il centro come
 punto di ricarica. Quando riconosci questi passaggi, i tutorial non sembrano
 consigli sparsi: diventano una sequenza leggibile di azioni, costi e decisioni.

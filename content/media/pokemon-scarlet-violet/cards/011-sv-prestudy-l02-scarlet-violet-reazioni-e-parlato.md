@@ -79,7 +79,7 @@ example_it: >-
 id: grammar-g005-senza-fare-non-fare-e
 pattern: ～ないで
 title: Senza fare / non fare
-meaning_it: senza fare... / non fare e...
+meaning_it: "senza fare… (subordinata); non fare… (richiesta)"
 notes_it: >-
   Si usa per dire "senza fare X" oppure per collegare una negazione a ciò che
   segue. È comune in istruzioni e richieste: みないで = senza guardare / non
@@ -92,11 +92,12 @@ entry_type: grammar
 entry_id: grammar-g005-senza-fare-non-fare-e
 card_type: concept
 front: '～ないで'
-back: senza fare / non fare e...
+back: "senza fare…; a fine frase: non fare… (richiesta)"
 example_jp: >-
   ここで バトルしないで。
 example_it: >-
   Non combattere qui.
+notes_it: "Come subordinata, ないで indica «senza fare»: 朝ご飯を食べないで出かけた, «sono uscito senza fare colazione». A fine frase può essere una richiesta negativa, come nell’esempio; con ください diventa più cortese."
 :::
 :::grammar
 id: grammar-g006-contrazione-colloquiale-di
@@ -120,7 +121,7 @@ back: forma colloquiale di ～ている
 example_jp: >-
   ネモが {{待|ま}}ってる。
 example_it: >-
-  Nemi sta aspettando.
+  Nemo sta aspettando.
 :::
 :::term
 id: term-v013-mou
@@ -143,7 +144,7 @@ back: già / ormai
 example_jp: >-
   もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 example_it: >-
-  Andiamo: Nemi sta già aspettando.
+  Andiamo: Nemo sta già aspettando.
 :::
 :::term
 id: term-v014-raido
@@ -220,20 +221,20 @@ id: term-v017-sutaa-dan
 lemma: スター団
 reading: すたーだん
 romaji: sutaa dan
-meaning_it: Team Star
+meaning_it: Sutā-dan
 notes_it: >-
   Nome del gruppo legato al percorso scolastico di Scarlet / Violet. Quando
-  compare, la scena sta entrando nel filone delle basi e dei membri del Team Star.
+  compare, la scena sta entrando nel filone delle basi e dei membri del Sutā-dan.
 :::
 :::term
 id: term-v018-botan
 lemma: ボタン
 reading: ぼたん
 romaji: botan
-meaning_it: Penny
+meaning_it: "Botan (studentessa dell’accademia)"
 notes_it: >-
-  Nome giapponese di Penny. Nei dialoghi segnala il passaggio a un personaggio
-  specifico del filone Team Star, non un bottone della UI.
+  Nome giapponese di Botan. Nei dialoghi segnala il passaggio a un personaggio
+  specifico del filone Sutā-dan, non un bottone della UI.
 :::
 :::term
 id: term-v019-gakkou
@@ -309,9 +310,9 @@ id: term-v022-eriazero
 lemma: エリアゼロ
 reading: エリアゼロ
 romaji: eriazero
-meaning_it: Area Zero
+meaning_it: Eria Zero
 notes_it: >-
-  Nome dell’Area Zero. Quando appare, la scena richiama la grande zona centrale
+  Nome dell’Eria Zero. Quando appare, la scena richiama la grande zona centrale
   della trama, non una generica area di mappa.
 :::
 :::term
@@ -365,7 +366,7 @@ id: term-v025-shitenou
 lemma: 四天王
 reading: してんのう
 romaji: shitenou
-meaning_it: Superquattro
+meaning_it: Shitennō
 notes_it: >-
   Nome del gruppo dei quattro avversari finali della Lega. Vicino a
   チャンピオン indica la parte alta del percorso competitivo.
@@ -377,9 +378,9 @@ entry_type: term
 entry_id: term-v025-shitenou
 card_type: recognition
 front: '{{四天王|し.てん.のう}}'
-back: Superquattro
+back: Shitennō
 example_jp: >-
   {{四天王|し.てん.のう}}に {{挑戦|ちょうせん}}する {{前|まえ}}に {{準備|じゅんび}}する。
 example_it: >-
-  Mi preparo prima di sfidare i Superquattro.
+  Mi preparo prima di sfidare i Shitennō.
 :::

@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-111-nakute-negative-te-form
 entry_type: grammar
 entry_id: grammar-111-nakute-negative-te-form
 card_type: concept
-front: "なくて"
+front: "なくて（collegamento negativo）"
 back: >-
   て-forma negativa che collega stati, eventi o una causa
 example_jp: >-

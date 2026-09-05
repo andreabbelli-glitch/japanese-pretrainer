@@ -312,7 +312,7 @@ id: term-kaishi-1708637441184
 lemma: '偉い'
 reading: 'えらい'
 romaji: 'erai'
-meaning_it: 'great, famous'
+meaning_it: "great; eminent; distinguished"
 aliases: ['えらい', '偉い']
 audio_src: 'assets/audio/term/term-kaishi-1708637441184/987480ea633aeb3f909494c5111e53ca-247f6a7bd34e0ec30518df8e219c1feedf14b0a5.mp3'
 audio_source: kaishi
@@ -327,16 +327,15 @@ entry_type: term
 entry_id: term-kaishi-1708637441184
 card_type: recognition
 front: '{{偉|えら}}い'
-back: 'great, famous'
-example_jp: '{{彼|かれ}}は{{偉|えら}}い{{学|がく}}{{者|しゃ}}です。'
-example_it: 'He''s a famous scholar.'
+back: "great; eminent; distinguished"
+example_jp: "{{彼|かれ}}は{{偉|えら}}い{{学|がく}}{{者|しゃ}}です。"
+example_it: "He is a distinguished scholar."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441184-recognition/0a40121d56a732f90af0c0601310bfc5-1be925b99e27270afd42c1b7a3843bb9b3b9370f.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637440903
 lemma: '王国'

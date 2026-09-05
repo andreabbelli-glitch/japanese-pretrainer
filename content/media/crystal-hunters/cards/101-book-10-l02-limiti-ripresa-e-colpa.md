@@ -27,8 +27,7 @@ reading: はずす
 romaji: hazusu
 meaning_it: togliere; rimuovere
 pos: verb
-notes_it: >-
-  {{外|はず}}す è togliere qualcosa da dove era fissato, indossato o agganciato.
+notes_it: "外す indica la rimozione di qualcosa di fissato, indossato o agganciato: 眼鏡を外す, «togliersi gli occhiali». Per il cappello è comune 帽子を脱ぐ, «togliersi il cappello»."
 level_hint: n4
 :::
 
@@ -144,10 +143,9 @@ entry_id: term-ch-b10-nido
 card_type: recognition
 front: '{{二度|にど}}'
 back: 'にど — due volte; una seconda volta'
-example_jp: '{{二度|にど}}とそんな{{事|こと}}はしない。'
-example_it: Non farò mai più una cosa del genere.
-notes_it: >-
-  Con と e una negazione, {{二度|にど}} diventa spesso "mai più".
+example_jp: "この{{町|まち}}には{{二度|にど}}{{来|き}}たことがある。"
+example_it: "Sono stato in questa città due volte."
+notes_it: "二度 conta due occorrenze. Nella costruzione 二度と…ない, il senso diventa «mai più»: 二度としない, «non lo farò mai più»."
 tags: [crystal-hunters, book-10, lesson-02]
 :::
 
@@ -159,10 +157,9 @@ entry_id: term-ch-b10-hazusu
 card_type: recognition
 front: '{{外|はず}}す'
 back: 'はずす — togliere; rimuovere'
-example_jp: '{{帽子|ぼうし}}を{{外|はず}}す。'
-example_it: Tolgo il cappello.
-notes_it: >-
-  Si usa per togliere qualcosa che era attaccato, indossato o fissato.
+example_jp: "{{眼鏡|めがね}}を{{外|はず}}す。"
+example_it: "Mi tolgo gli occhiali."
+notes_it: "外す indica la rimozione di qualcosa di fissato, indossato o agganciato: 眼鏡を外す, «togliersi gli occhiali». Per il cappello è comune 帽子を脱ぐ, «togliersi il cappello»."
 tags: [crystal-hunters, book-10, lesson-02]
 :::
 

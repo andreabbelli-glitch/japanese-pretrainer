@@ -83,7 +83,7 @@ La cosa da seguire non è solo il significato delle singole parole. È il tipo d
 
 Quando il gioco passa a una schermata di sistema, il giapponese si accorcia. Una parola indica la riga della lista, un suffisso dice se l'azione è ancora aperta, un verbo operativo decide se stai vendendo, ricevendo o cambiando vista. Qui il primo gesto utile è cercare il bersaglio dell'azione: la voce, il gruppo, il premio o la modalità.
 
-- [{{項目|こうもく}}](term:term-v670-koumoku) è l'elemento leggibile di una lista: una voce di menu, una riga di impostazione, una scelta tra opzioni. Non è un oggetto fisico nel mondo di Paldea. Se una frase dice この{{項目|こうもく}}を{{選|えら}}ぶ, il gioco non ti sta chiedendo di raccogliere qualcosa: ti sta dicendo di scegliere quella riga dell'interfaccia.
+- [{{項目|こうもく}}](term:term-v670-koumoku) è l'elemento leggibile di una lista: una voce di menu, una riga di impostazione, una scelta tra opzioni. Non è un oggetto fisico nel mondo di Parudea. Se una frase dice この{{項目|こうもく}}を{{選|えら}}ぶ, il gioco non ti sta chiedendo di raccogliere qualcosa: ti sta dicendo di scegliere quella riga dell'interfaccia.
 - [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku) unisce {{全|ぜん}}, "tutto", e {{選択|せんたく}}, "selezione". In una lista di strumenti o materiali sposta lo scope dell'azione: non agisci più sulla voce evidenziata, ma su tutto ciò che può essere selezionato in quel momento.
 - [まとめ{{売|う}}り](term:term-v664-matomeuri) e [{{買|か}}い{{取|と}}り](term:term-v678-kaitori) descrivono la stessa area del negozio da due angoli diversi. まとめ raccoglie più elementi in blocco, mentre {{売|う}}り mantiene il valore di vendere; [{{買|か}}い{{取|と}}り](term:term-v678-kaitori), invece, contiene {{買|か}}う ma lo guarda dal punto di vista del negozio, che compra da te ciò che stai cedendo.
 
@@ -142,7 +142,7 @@ translation_it: >-
 Fuori dai menu, *Scarlet & Violet* usa parole scolastiche per dare forma all'esplorazione. L'Accademia non è solo uno sfondo: incornicia il viaggio, le regole di comportamento e l'uscita nel mondo aperto. Qui conviene leggere i composti per blocchi, perché ogni metà delimita il tipo di attività.
 
 - [{{伝統|でんとう}}{{行事|ぎょうじ}}](term:term-v662-dentougyouji) combina {{伝統|でんとう}}, ciò che viene tramandato, e {{行事|ぎょうじ}}, un evento organizzato. Nel contesto scolastico dà all'evento un peso istituzionale, come qualcosa che l'Accademia riconosce e ripete.
-- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge come {{課外|かがい}}, fuori dal corso ordinario e dall'aula, più {{活動|かつどう}}, attività. In Paldea può indicare proprio l'uscita esplorativa che porta lo studente nel mondo aperto, oltre al caso dei club scolastici.
+- [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou) si legge come {{課外|かがい}}, fuori dal corso ordinario e dall'aula, più {{活動|かつどう}}, attività. In Parudea può indicare proprio l'uscita esplorativa che porta lo studente nel mondo aperto, oltre al caso dei club scolastici.
 - [{{風紀|ふうき}}](term:term-v667-fuuki) porta il focus su disciplina, ordine e comportamento atteso. Se compare in bocca a personale scolastico o dentro una regola, la frase non sta parlando di forza in battaglia, ma di come uno studente deve stare dentro gli spazi e le norme dell'Accademia.
 
 :::example_sentence
@@ -338,12 +338,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  {{共闘|きょうとう}}すれば、{{困難|こんなん}}な {{相手|あいて}}を {{追|お}}いはらえる {{予感|よかん}}がします。
-translation_it: >-
-  Se combattiamo insieme, ho il presentimento che riusciremo a scacciare un avversario difficile.
+jp: "{{共闘|きょうとう}}すれば、{{手|て}}ごわい{{相手|あいて}}も{{追|お}}いはらえる{{予感|よかん}}がします。"
+translation_it: "Ho la sensazione che, combattendo insieme, riusciremo a scacciare anche un avversario temibile."
 :::
-
 ## Nota finale
 
-Nei messaggi di sistema cerca stato, bersaglio e ampiezza: [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou), [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi), [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku), [{{項目|こうもく}}](term:term-v670-koumoku) e [{{切|き}}り{{替|か}}える](term:term-v675-kirikaeru) dicono che cosa puoi fare adesso. Nei dialoghi e nell'esplorazione, invece, [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou), [おつかれさま](term:term-e108-otsukaresama), [～ってば](grammar:grammar-g109-ti-sto-dicendo-che), [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che), [{{滑空|かっくう}}する](term:term-v673-kakkuu-suru) e [{{縦横無尽|じゅうおうむじん}}](term:term-v682-juuoumujin) ti fanno leggere il contesto: scuola, tono, pressione del parlante e libertà di movimento a Paldea.
+Nei messaggi di sistema cerca stato, bersaglio e ampiezza: [{{受|う}}けとり{{可能|かのう}}](term:term-v668-uketorikanou), [{{受|う}}けとり{{済|ず}}み](term:term-v669-uketorizumi), [{{全選択|ぜんせんたく}}](term:term-v665-zensentaku), [{{項目|こうもく}}](term:term-v670-koumoku) e [{{切|き}}り{{替|か}}える](term:term-v675-kirikaeru) dicono che cosa puoi fare adesso. Nei dialoghi e nell'esplorazione, invece, [{{課外|かがい}}{{活動|かつどう}}](term:term-v663-kagaikatsudou), [おつかれさま](term:term-e108-otsukaresama), [～ってば](grammar:grammar-g109-ti-sto-dicendo-che), [～わけじゃない](grammar:grammar-g110-non-e-che-non-significa-che), [{{滑空|かっくう}}する](term:term-v673-kakkuu-suru) e [{{縦横無尽|じゅうおうむじん}}](term:term-v682-juuoumujin) ti fanno leggere il contesto: scuola, tono, pressione del parlante e libertà di movimento a Parudea.

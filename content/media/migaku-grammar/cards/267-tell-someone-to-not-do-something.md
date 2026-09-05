@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-267-tell-someone-to-not-do-something
 entry_type: grammar
 entry_id: grammar-267-tell-someone-to-not-do-something
 card_type: concept
-front: "な"
+front: "な（V dizionario + な）"
 back: >-
   Imperativo negativo forte: «non fare!»
 example_jp: >-

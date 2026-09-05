@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-17
 media_id: media-pokemon-scarlet-violet
 slug: 122-sv-vocabulary-distance-17
-title: 'Parole per leggere Paldea — diciassette'
+title: 'Parole per leggere Parudea — diciassette'
 order: 167
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -153,7 +153,7 @@ back: >-
 example_jp: >-
   パルデアの{{乾燥|かんそう}}{{地帯|ちたい}}を{{中心|ちゅうしん}}に{{数|すう}}{{件|けん}}の{{目撃|もくげき}}{{報告|ほうこく}}があるもののいまだ{{捕獲|ほかく}}されたという{{記録|きろく}}はない。
 example_it: >-
-  Sebbene ci siano state diverse segnalazioni di avvistamenti, soprattutto nelle zone aride di Paldea, non ci sono ancora registrazioni di catture.
+  Sebbene ci siano state diverse segnalazioni di avvistamenti, soprattutto nelle zone aride di Parudea, non ci sono ancora registrazioni di catture.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

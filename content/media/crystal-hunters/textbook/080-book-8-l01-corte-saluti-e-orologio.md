@@ -22,8 +22,8 @@ questo parole come [{{女王|じょおう}}](term:term-ch-b8-joou),
 [{{献上|けんじょう}}](term:term-ch-b8-kenjou) e
 [{{差|さ}}し{{上|あ}}げる](term:term-ch-b8-sashiageru) pesano molto nella lettura.
 
-Parole piu' semplici, come {{店|みせ}}, {{本|ほん}}, {{時計|とけい}} e
-{{強|つよ}}い, fanno da impalcatura alla scena. Il vero salto del volume e'
+Parole più semplici, come {{店|みせ}}, {{本|ほん}}, {{時計|とけい}} e
+{{強|つよ}}い, fanno da impalcatura alla scena. Il vero salto del volume è
 capire tono, cerimonia e politezza.
 
 ## Termini chiave
@@ -49,13 +49,13 @@ capire tono, cerimonia e politezza.
 
 - [Vます／Vました](grammar:grammar-ch-b8-masu-politeness) — verbi in registro cortese
 - [Vません／Vませんでした](grammar:grammar-ch-b8-masen-politeness) — negativo cortese
-- [Nではありません](grammar:grammar-ch-b8-dewa-arimasen) — "non e' N" in forma cortese
+- [Nではありません](grammar:grammar-ch-b8-dewa-arimasen) — "non è N" in forma cortese
 
 ---
 
 ## 1. Uscire e tornare
 
-[{{行|い}}ってらっしゃい](term:term-ch-b8-itterasshai) non e' un semplice
+[{{行|い}}ってらっしゃい](term:term-ch-b8-itterasshai) non è un semplice
 "arrivederci". Si dice a qualcuno che sta andando da qualche parte e che ci si
 aspetta torni. La formula contiene l'idea di andare e rientrare.
 
@@ -72,7 +72,7 @@ translation_it: >-
 *   `{{行|い}}ってらっしゃい` -> **Formula di saluto**: vai e torna.
 
 In italiano puoi scegliere "buona giornata", "buon viaggio" o "torna sano e
-salvo" secondo la scena. Il punto e' non leggerlo come un comando duro.
+salvo" secondo la scena. Il punto è non leggerlo come un comando duro.
 
 Quando la scena passa dal saluto all'azione, [よし](term:term-ch-b8-yoshi)
 funziona come un colpo secco di decisione.
@@ -88,7 +88,7 @@ translation_it: >-
 
 [{{女王|じょおう}}](term:term-ch-b8-joou) porta il discorso in una cornice
 pubblica. Con lei compaiono [{{民|たみ}}](term:term-ch-b8-tami), "popolo /
-sudditi", e [{{我|われ}}ら](term:term-ch-b8-warera), un "noi" piu' solenne di
+sudditi", e [{{我|われ}}ら](term:term-ch-b8-warera), un "noi" più solenne di
 {{私|わたし}}たち.
 
 :::example_sentence
@@ -104,7 +104,7 @@ translation_it: >-
 *   `{{女王|じょおう}}が` -> **Figura messa a fuoco**.
 *   `{{来|く}}る` -> **Movimento verso la scena**.
 
-[{{万歳|ばんざい}}](term:term-ch-b8-banzai) e' il grido pubblico:
+[{{万歳|ばんざい}}](term:term-ch-b8-banzai) è il grido pubblico:
 
 :::example_sentence
 jp: >-
@@ -113,7 +113,7 @@ translation_it: >-
   Lunga vita alla regina!
 :::
 
-[{{皆々様|みなみなさま}}](term:term-ch-b8-minamina-sama) alza ancora di piu' il
+[{{皆々様|みなみなさま}}](term:term-ch-b8-minamina-sama) alza ancora di più il
 registro: `皆様` alza il registro e si rivolge al gruppo in modo cerimoniale.
 
 :::example_sentence
@@ -126,7 +126,7 @@ translation_it: >-
 ## 3. Guardare e offrire con rispetto
 
 Quando il parlante si abbassa davanti a qualcuno di status alto, entra
-[{{拝見|はいけん}}](term:term-ch-b8-haiken). E' "vedere", ma non neutro.
+[{{拝見|はいけん}}](term:term-ch-b8-haiken). È "vedere", ma non neutro.
 
 :::example_sentence
 jp: >-
@@ -160,13 +160,13 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-あげる e' "dare" normale; {{差|さ}}し{{上|あ}}げる e'
-"dare umilmente"; {{献上|けんじょう}}する e' "offrire formalmente a un superiore".
-La cosa data puo' essere simile, ma il rapporto sociale cambia.
+あげる è "dare" normale; {{差|さ}}し{{上|あ}}げる è
+"dare umilmente"; {{献上|けんじょう}}する è "offrire formalmente a un superiore".
+La cosa data può essere simile, ma il rapporto sociale cambia.
 
 ## 4. Orologio, torre e preparativi
 
-[{{時計台|とけいだい}}](term:term-ch-b8-tokeidai) e' la torre dell'orologio:
+[{{時計台|とけいだい}}](term:term-ch-b8-tokeidai) è la torre dell'orologio:
 non il piccolo oggetto che porti con te, ma un elemento pubblico della citta'.
 
 :::example_sentence
@@ -177,7 +177,7 @@ translation_it: >-
 :::
 
 [{{万端|ばんたん}}](term:term-ch-b8-bantan) si legge spesso dentro
-`{{準備|じゅんび}}{{万端|ばんたん}}`: tutto e' pronto, ogni dettaglio sistemato.
+`{{準備|じゅんび}}{{万端|ばんたん}}`: tutto è pronto, ogni dettaglio sistemato.
 
 :::example_sentence
 jp: >-
@@ -196,10 +196,10 @@ translation_it: >-
   Ricevo la ricompensa.
 :::
 
-## 5. Domande piu' forti
+## 5. Domande più forti
 
 [{{一体|いったい}}](term:term-ch-b8-ittai) rafforza una domanda. Non devi
-tradurlo sempre con "diavolo", ma devi sentire che la domanda e' piu' marcata.
+tradurlo sempre con "diavolo", ma devi sentire che la domanda è più marcata.
 
 :::example_sentence
 jp: >-
@@ -235,7 +235,7 @@ translation_it: >-
   Ho venduto un libro in negozio.
 :::
 
-La negativa cortese e' ません; il passato negativo e' ませんでした.
+La negativa cortese è ません; il passato negativo è ませんでした.
 
 :::example_sentence
 jp: >-
@@ -244,16 +244,13 @@ translation_it: >-
   Non ho ricevuto il badge.
 :::
 
-Con nomi e aggettivi in な, `じゃない` diventa piu' cortese come
+Con nomi e aggettivi in な, `じゃない` diventa più cortese come
 `ではありません`.
 
 :::example_sentence
-jp: >-
-  これはたくさんのお{{金|かね}}ではありません。
-translation_it: >-
-  Questo non e' molto denaro.
+jp: "これは{{私|わたし}}のお{{金|かね}}ではありません。"
+translation_it: "Questi soldi non sono miei."
 :::
-
 ## Esempi guidati di riepilogo
 
 :::example_sentence

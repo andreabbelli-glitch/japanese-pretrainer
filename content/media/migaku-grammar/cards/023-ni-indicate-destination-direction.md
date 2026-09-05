@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-023-ni-indicate-destination-direction
 entry_type: grammar
 entry_id: grammar-023-ni-indicate-destination-direction
 card_type: concept
-front: "に"
+front: "に（destinazione）"
 back: >-
   に segue la destinazione verso cui si dirige il movimento.
 example_jp: >-

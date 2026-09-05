@@ -240,15 +240,14 @@ entry_id: term-kaishi-1708637441138
 card_type: recognition
 front: '{{神|かみ}}{{様|さま}}'
 back: 'God, the divine'
-example_jp: '{{神|かみ}}{{様|さま}}にお{{願|ねが}}いしました。'
-example_it: 'I asked a favor to God.'
+example_jp: "{{神|かみ}}{{様|さま}}にお{{願|ねが}}いしました。"
+example_it: "I asked God for a favor."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441138-recognition/f914252f9b01903efdb9b752f88101d8.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637439879
 lemma: 'その'

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-024-sv-prestudy-l17b-battaglia-reazioni-e-parlato
 media_id: media-pokemon-scarlet-violet
 slug: 024-sv-prestudy-l17b-battaglia-reazioni-e-parlato
-title: "Battaglia, indagini e reazioni nel parlato di Paldea"
+title: "Battaglia, indagini e reazioni nel parlato di Parudea"
 order: 54
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,9 +19,9 @@ summary: >-
   presenza, partecipazione, tipo e crescita.
 ---
 
-# Battaglia, indagini e reazioni nel parlato di Paldea
+# Battaglia, indagini e reazioni nel parlato di Parudea
 
-A Paldea il testo passa spesso da una battuta di dialogo a una schermata operativa: un personaggio capisce qualcosa, si scusa prima di intervenire, ipotizza una scoperta, poi il gioco nomina ricerche, tipi, cristalli, statistiche e possibilità disponibili.
+A Parudea il testo passa spesso da una battuta di dialogo a una schermata operativa: un personaggio capisce qualcosa, si scusa prima di intervenire, ipotizza una scoperta, poi il gioco nomina ricerche, tipi, cristalli, statistiche e possibilità disponibili.
 
 Il filo da seguire è la funzione della frase. Alcune forme aprono il tono sociale, altre fanno comparire un elemento nella scena, altre ancora decidono se stai leggendo una ricerca, una partecipazione o una valutazione da battaglia.
 
@@ -58,7 +58,7 @@ Il filo da seguire è la funzione della frase. Alcune forme aprono il tono socia
 
 ## Etichette da riconoscere
 
-- [ポケモンリーグ](term:term-v187-pokemonriigu) — Lega Pokémon, riferimento istituzionale del gioco
+- [ポケモンリーグ](term:term-v187-pokemonriigu) — Pokémon Rīgu, riferimento istituzionale del gioco
 
 ---
 
@@ -124,11 +124,11 @@ translation_it: >-
 
 Pensa a が come a un riflettore: in una frase con [〜が あります](term:term-e035-ga-arimasu), il riflettore illumina proprio ciò che il gioco vuole farti notare nella scena o nella schermata.
 
-## 3. Battaglia e Teracristal: tipo, potenza, funzione disponibile
+## 3. Battaglia e Terasutaru: tipo, potenza, funzione disponibile
 
 Nelle schermate di battaglia, i nomi dei tipi sono informazioni operative. [ドラゴン](term:term-v178-doragon) e [どく](term:term-v182-doku) non servono solo a colorare il Pokémon: in ドラゴンタイプのわざ o どくタイプのわざ, タイプの collega il tipo alla mossa e ti dice quale tabella di efficacia sta entrando in gioco.
 
-[{{威力|いりょく}}](term:term-v179-iryoku) misura quanto forte colpisce una mossa. [{{能力|のうりょく}}](term:term-v184-nouryoku) guarda invece il Pokémon o l'unità come insieme di capacità e statistiche. [{{結晶|けっしょう}}](term:term-v181-kesshou) richiama il lessico visivo dei cristalli Teracristal, mentre [{{可能|かのう}}](term:term-v189-kanou) segnala che una funzione è possibile adesso. Se una UI mostra [{{大事|だいじ}}](term:term-v183-daiji), il testo sta trattando l'oggetto o l'informazione come qualcosa da non perdere.
+[{{威力|いりょく}}](term:term-v179-iryoku) misura quanto forte colpisce una mossa. [{{能力|のうりょく}}](term:term-v184-nouryoku) guarda invece il Pokémon o l'unità come insieme di capacità e statistiche. [{{結晶|けっしょう}}](term:term-v181-kesshou) richiama il lessico visivo dei cristalli Terasutaru, mentre [{{可能|かのう}}](term:term-v189-kanou) segnala che una funzione è possibile adesso. Se una UI mostra [{{大事|だいじ}}](term:term-v183-daiji), il testo sta trattando l'oggetto o l'informazione come qualcosa da non perdere.
 
 :::example_sentence
 jp: >-
@@ -154,7 +154,7 @@ translation_it: >-
 
 *   `ここから` ➔ **Punto di partenza**: `から` indica da dove diventa valida l'azione.
 *   `ライドが` ➔ **Funzione presentata**: `が` mette a fuoco la funzione disponibile.
-*   {{可能|かのう}}です ➔ **Stato di disponibilità**: `可能です` comunica disponibilita': l'azione ora si puo' fare.
+*   {{可能|かのう}}です ➔ **Stato di disponibilità**: `可能です` comunica disponibilita': l'azione ora si può fare.
 
 #### ⚖️ Contrasto operativo
 
@@ -227,10 +227,8 @@ translation_it: >-
 :::example_sentence
 jp: >-
   {{成長|せいちょう}}した ポケモンの {{能力|のうりょく}}は {{最高|さいこう}}です！
-translation_it: >-
-  Le statistiche del Pokémon cresciuto sono al massimo!
+translation_it: "Le statistiche del Pokémon, ora che è cresciuto, sono eccezionali!"
 :::
-
 ---
 
 ## Nota finale

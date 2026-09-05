@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-091-na-adjectives-past
 entry_type: grammar
 entry_id: grammar-091-na-adjectives-past
 card_type: concept
-front: "な{{形容詞|けいようし}}"
+front: "な{{形容詞|けいようし}}（passato）"
 back: >-
   Passato affermativo dei な-aggettivi: «era / è stato…»
 example_jp: >-

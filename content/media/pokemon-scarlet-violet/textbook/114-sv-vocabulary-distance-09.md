@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-09
 media_id: media-pokemon-scarlet-violet
 slug: 114-sv-vocabulary-distance-09
-title: 'Parole per leggere Paldea — nove'
+title: 'Parole per leggere Parudea — nove'
 order: 159
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — nove
+# Parole per leggere Parudea — nove
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -58,7 +58,7 @@ translation_it: >-
 jp: >-
   {{道|みち}}に{{落|お}}ちていたボールを{{拾|ひろ}}う。
 translation_it: >-
-  Raccolgo la Poké Ball caduta sulla strada.
+  Raccolgo la Monsutā Bōru caduta sulla strada.
 :::
 
 **Uso:** L'azione espressa nel contesto è «raccogliere; trovare (e raccogliere; qualcosa che qualcuno ha fatto cadere); selezionare».
@@ -77,12 +77,9 @@ translation_it: >-
 ### [しまう](term:term-sv-vocabulary-256-shimau) — mettere via; finire; completare anche con sfumatura involontaria
 
 :::example_sentence
-jp: >-
-  {{大事|だいじ}}な{{道具|どうぐ}}をバッグにしまう。
-translation_it: >-
-  Ripongo nella Borsa lo strumento appena ottenuto.
+jp: "{{大事|だいじ}}な{{道具|どうぐ}}をバッグにしまう。"
+translation_it: "Ripongo nella borsa uno strumento importante."
 :::
-
 **Uso:** L'azione espressa nel contesto è «mettere via; finire; completare anche con sfumatura involontaria».
 
 ### [{{目的|もくてき}}](term:term-sv-vocabulary-366-mokuteki) — scopo; meta; obiettivo
@@ -157,7 +154,7 @@ translation_it: >-
 jp: >-
   ところがダイオウドウが{{暴|あば}}れてしまいなんと{{壁画|へきが}}が{{壊|こわ}}れてしまったんです！
 translation_it: >-
-  Ma poi Copperajah si è scatenato e, incredibilmente, ha distrutto l'affresco!
+  Ma poi Daiōdō si è scatenato e, incredibilmente, ha distrutto l'affresco!
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «incredibilmente; nientemeno che; che...!».

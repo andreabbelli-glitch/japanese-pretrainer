@@ -16,7 +16,7 @@ notes_it: >-
   In Scarlet / Violet indica il programma ufficiale dell'accademia per
   l'esplorazione esterna. Quando compare `{{課外授業|か.がい.じゅ.ぎょう}}`, la scena
   segna il passaggio da attività interne al campus a progressione libera nel
-  mondo di Paldea.
+  mondo di Parudea.
 :::
 :::card
 id: card-kagai-jugyou-recognition
@@ -51,7 +51,7 @@ reading: チャンピオンランク
 romaji: chanpion ranku
 meaning_it: rango Campione
 notes_it: >-
-  In Paldea indica un rango ufficiale riconosciuto dalla Lega Pokémon dopo il
+  In Parudea indica un rango ufficiale riconosciuto dalla Pokémon Rīgu dopo il
   percorso Gym e il test finale. Quando il dialogo usa `チャンピオンランク` o
   `{{目指|めざ}}してみない`, la scena sta aprendo un obiettivo di progressione preciso,
   non un incoraggiamento generico.
@@ -64,7 +64,7 @@ romaji: jimu bajji
 meaning_it: Medaglia Palestra
 notes_it: >-
   Segna il superamento di una Palestra, non un semplice souvenir. Nel flusso di
-  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemi e, più avanti,
+  Scarlet / Violet i `ジムバッジ` fanno avanzare la route di Nemo e, più avanti,
   incidono anche su quali Pokémon forti ti obbediscono senza problemi.
 :::
 :::card
@@ -105,7 +105,7 @@ example_jp: >-
   {{強|つよ}}い トレーナーの ことだよ。
 example_it: >-
   Il rango Campione sarebbe il rango degli Allenatori forti riconosciuti dalla
-  Lega Pokémon.
+  Pokémon Rīgu.
 :::
 :::grammar
 id: grammar-dake-ja-dame

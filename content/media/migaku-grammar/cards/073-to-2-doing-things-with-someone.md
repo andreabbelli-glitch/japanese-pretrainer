@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-073-to-2-doing-things-with-someone
 entry_type: grammar
 entry_id: grammar-073-to-2-doing-things-with-someone
 card_type: concept
-front: "と"
+front: "と（con qualcuno）"
 back: >-
   Marca la persona con cui si compie un'azione: «con»
 example_jp: >-

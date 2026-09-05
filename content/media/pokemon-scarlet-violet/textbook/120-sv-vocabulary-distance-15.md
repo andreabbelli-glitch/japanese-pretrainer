@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-15
 media_id: media-pokemon-scarlet-violet
 slug: 120-sv-vocabulary-distance-15
-title: 'Parole per leggere Paldea — quindici'
+title: 'Parole per leggere Parudea — quindici'
 order: 165
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — quindici
+# Parole per leggere Parudea — quindici
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -69,7 +69,7 @@ translation_it: >-
 jp: >-
   どうしてもあんたに{{会|あ}}って{{直接|ちょくせつ}}{{話|ばなし}}がしたいそうだシュウメイ{{殿|どの}}{{聞|き}}いて！
 translation_it: >-
-  A quanto pare vuole assolutamente incontrarti per parlarti di persona, Shumei-sama, ascolta!
+  A quanto pare vuole assolutamente incontrarti per parlarti di persona, Shūmei-sama, ascolta!
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «a tutti i costi; a qualsiasi prezzo; qualunque cosa accada».
@@ -132,12 +132,9 @@ translation_it: >-
 ### [{{黙|だま}}る](term:term-sv-vocabulary-314-damaru) — tacere; non dire nulla
 
 :::example_sentence
-jp: >-
-  ...{{黙|だま}}りなさいわたしはわたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ{{優|やさ}}しいボスさん{{勝負|しょうぶ}}{{再開|さいかい}}といこうか！
-translation_it: >-
-  …Stai zitto, voglio solo che nessuno si faccia male, tranne me. Capo gentile, ricominciamo la sfida!
+jp: "……{{黙|だま}}りなさい。わたしは、わたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ。"
+translation_it: "…Sta’ zitto. Voglio solo che nessuno, a parte me, si faccia male."
 :::
-
 **Uso:** L'azione espressa nel contesto è «tacere; non dire nulla».
 
 ### [{{目撃|もくげき}}](term:term-sv-vocabulary-199-mokugeki) — avvistamento; testimonianza; vedere
@@ -146,7 +143,7 @@ translation_it: >-
 jp: >-
   {{謎|なぞ}}の{{生物|せいぶつ}}イダイナキバパルデア{{某所|ぼうしょ}}にある{{乾燥|かんそう}}{{地帯|ちたい}}において{{謎|なぞ}}の{{生物|せいぶつ}}の{{目撃|もくげき}}が{{報告|ほうこく}}されている。
 translation_it: >-
-  Creatura misteriosa: Grandizanne. In una zona arida di un luogo non precisato di Paldea sono stati segnalati avvistamenti di questa creatura.
+  Creatura misteriosa: Idaina Kiba. In una zona arida di un luogo non precisato di Parudea sono stati segnalati avvistamenti di questa creatura.
 :::
 
 **Uso:** Nel contesto indica «avvistamento; testimonianza; vedere».

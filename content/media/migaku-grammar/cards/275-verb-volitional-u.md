@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-275-verb-volitional-u
 entry_type: grammar
 entry_id: grammar-275-verb-volitional-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（volitivo）"
 back: >-
   Volitivo dei verbi godan: proposta «facciamo» o intenzione «farò»
 example_jp: >-

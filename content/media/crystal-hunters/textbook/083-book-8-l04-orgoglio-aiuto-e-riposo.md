@@ -49,8 +49,8 @@ altri, qualcuno entra in casa e deve usare formule come
 
 ## 1. Orgoglio e rifiuto
 
-[{{意地|いじ}}を{{張|は}}る](term:term-ch-b8-iji-o-haru) non e' semplice
-determinazione. E' ostinazione guidata dall'orgoglio.
+[{{意地|いじ}}を{{張|は}}る](term:term-ch-b8-iji-o-haru) non è semplice
+determinazione. È ostinazione guidata dall'orgoglio.
 
 :::example_sentence
 jp: >-
@@ -64,14 +64,14 @@ translation_it: >-
 *   `{{意地|いじ}}を{{張|は}}る` -> **Ostinazione per orgoglio**.
 *   `な` -> **Divieto secco**: non farlo.
 
-[{{願|ねが}}い{{下|さ}}げ](term:term-ch-b8-negaisage) e' un rifiuto ancora piu'
+[{{願|ねが}}い{{下|さ}}げ](term:term-ch-b8-negaisage) è un rifiuto ancora più
 netto: il parlante non vuole nemmeno accettare la proposta.
 
 :::example_sentence
 jp: >-
   そんな{{手助|てだす}}けは{{願|ねが}}い{{下|さ}}げだ。
 translation_it: >-
-  Di un aiuto cosi' faccio volentieri a meno.
+  Di un aiuto così faccio volentieri a meno.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -81,12 +81,12 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`いらない` e' "non mi serve"; `{{願|ねが}}い{{下|さ}}げだ` e' piu' sprezzante:
+`いらない` è "non mi serve"; `{{願|ねが}}い{{下|さ}}げだ` è più sprezzante:
 "non lo voglio nemmeno".
 
 ## 2. Calmare o giudicare
 
-[{{落|お}}ち{{着|つ}}く](term:term-ch-b8-ochitsuku) e' intransitivo:
+[{{落|お}}ち{{着|つ}}く](term:term-ch-b8-ochitsuku) è intransitivo:
 qualcuno si calma o si stabilizza. L'ordine breve `{{落|お}}ち{{着|つ}}け`
 viene da questo verbo e significa "calmati".
 
@@ -97,28 +97,25 @@ translation_it: >-
   Calmati.
 :::
 
-[{{奴|やつ}}](term:term-ch-b8-yatsu) e' un "tipo / tizio" ruvido. Non usarlo
+[{{奴|やつ}}](term:term-ch-b8-yatsu) è un "tipo / tizio" ruvido. Non usarlo
 come parola neutra per persona.
 
 :::example_sentence
-jp: >-
-  あの{{奴|やつ}}は{{強|つよ}}い。
-translation_it: >-
-  Quel tipo e' forte.
+jp: "あいつは{{強|つよ}}い{{奴|やつ}}だ。"
+translation_it: "Quel tipo è forte."
 :::
-
-[{{立派|りっぱ}}](term:term-ch-b8-rippa) invece e' valutazione positiva:
+[{{立派|りっぱ}}](term:term-ch-b8-rippa) invece è valutazione positiva:
 
 :::example_sentence
 jp: >-
   {{立派|りっぱ}}な{{仲間|なかま}}だ。
 translation_it: >-
-  E' un compagno ammirevole.
+  È un compagno ammirevole.
 :::
 
 ## 3. Aiuto, accordo e cuore leggero
 
-[{{賛成|さんせい}}](term:term-ch-b8-sansei) e' accordo con un piano.
+[{{賛成|さんせい}}](term:term-ch-b8-sansei) è accordo con un piano.
 
 :::example_sentence
 jp: >-
@@ -127,8 +124,8 @@ translation_it: >-
   Io sono d'accordo.
 :::
 
-[{{手助|てだす}}け](term:term-ch-b8-tedasuke) e' aiuto pratico. Dopo una
-conversazione o un gesto che scioglie la tensione, il cuore puo' "schiarirsi":
+[{{手助|てだす}}け](term:term-ch-b8-tedasuke) è aiuto pratico. Dopo una
+conversazione o un gesto che scioglie la tensione, il cuore può "schiarirsi":
 
 :::example_sentence
 jp: >-
@@ -151,7 +148,7 @@ translation_it: >-
   Sono al limite.
 :::
 
-Se il piano non puo' proseguire, [{{出直|でなお}}す](term:term-ch-b8-denaosu)
+Se il piano non può proseguire, [{{出直|でなお}}す](term:term-ch-b8-denaosu)
 chiude il tentativo e prepara una ripartenza.
 
 :::example_sentence
@@ -161,7 +158,7 @@ translation_it: >-
   Tornerò domani.
 :::
 
-[{{先|さき}}を{{越|こ}}す](term:term-ch-b8-saki-o-kosu) e' il rischio opposto:
+[{{先|さき}}を{{越|こ}}す](term:term-ch-b8-saki-o-kosu) è il rischio opposto:
 qualcuno arriva prima di te.
 
 :::example_sentence
@@ -174,7 +171,7 @@ translation_it: >-
 ## 5. Entrare nello spazio altrui
 
 Quando si entra in casa o nello spazio di qualcun altro, [お{{邪魔|じゃま}}する](term:term-ch-b8-ojama-suru)
-e' la formula naturale.
+è la formula naturale.
 
 :::example_sentence
 jp: >-
@@ -202,7 +199,7 @@ translation_it: >-
 ## 6. Attacco e respinta
 
 [{{襲|おそ}}い{{掛|か}}かる](term:term-ch-b8-osoi-kakaru) descrive l'avventarsi
-di un nemico. [{{撃退|げきたい}}](term:term-ch-b8-gekitai) e' il respingerlo con
+di un nemico. [{{撃退|げきたい}}](term:term-ch-b8-gekitai) è il respingerlo con
 la forza.
 
 :::example_sentence

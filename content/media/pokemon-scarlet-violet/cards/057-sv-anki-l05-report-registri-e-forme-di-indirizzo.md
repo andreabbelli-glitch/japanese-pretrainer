@@ -65,9 +65,8 @@ id: term-anki-l05-anata
 lemma: 貴方
 reading: あなた
 romaji: anata
-meaning_it: tu, forma scritta/formale
-notes_it: >-
-  {{貴方|あなた}} è un pronome di seconda persona relativamente distaccato. Nel parlato giapponese spesso è più naturale usare il nome o il titolo dell'interlocutore; quando compare, può creare un tono neutro-formale o segnare distanza sociale.
+meaning_it: "tu / Lei (pronome; registro dipendente dal contesto)"
+notes_it: "あなた è un pronome di seconda persona; 貴方 è una sua grafia in kanji. Il tono può essere neutro, distaccato, intimo o persino brusco secondo la relazione e il contesto. Rivolgendosi a un superiore, di norma si preferisce il nome con un suffisso adeguato o il titolo: あなた non garantisce cortesia."
 level_hint: custom
 :::
 :::term
@@ -77,7 +76,7 @@ reading: きさま
 romaji: kisama
 meaning_it: tu, forma rude/offensiva
 notes_it: >-
-  Nonostante i kanji di origine onorifica ({{貴|き}} 'nobile', {{様|さま}} 'signore'), {{貴|き}}{{様|さま}} è oggi un pronome di seconda persona estremamente volgare e dispregiativo. A Paldea si incontra sulla bocca di antagonisti arrabbiati (come le reclute del Team Star) e serve a marcare una rottura violenta della cortesia.
+  Nonostante i kanji di origine onorifica ({{貴|き}} 'nobile', {{様|さま}} 'signore'), {{貴|き}}{{様|さま}} è oggi un pronome di seconda persona estremamente volgare e dispregiativo. A Parudea si incontra sulla bocca di antagonisti arrabbiati (come le reclute del Sutā-dan) e serve a marcare una rottura violenta della cortesia.
 level_hint: custom
 :::
 :::term
@@ -95,9 +94,8 @@ id: term-anki-l05-shousei
 lemma: 小生
 reading: しょうせい
 romaji: shousei
-meaning_it: io, umile/letterario
-notes_it: >-
-  {{小|しょう}}{{生|せい}} (letteralmente 'piccola vita') è un pronome di prima persona estremamente formale e antiquato. Viene usato esclusivamente da uomini colti per mostrarsi umili davanti a un interlocutore. A Paldea, è il tratto linguistico che caratterizza l'eloquio artistico e compassato del professor Hassaku.
+meaning_it: "io (tradizionalmente maschile, soprattutto epistolare)"
+notes_it: "小生 è un pronome di prima persona tradizionalmente maschile, soprattutto epistolare. È umile nella forma, ma si usa tipicamente verso pari o inferiori; non è una formula universale di rispetto verso un superiore. Nel gioco caratterizza il modo di parlare del professor Hassaku."
 level_hint: custom
 :::
 :::term
@@ -139,7 +137,7 @@ back: >-
 example_jp: >-
   クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}は{{済|す}}んだか？
 example_it: >-
-  Hai già fatto rapporto al preside Clavel?
+  Hai già fatto rapporto al preside Kuraberu?
 notes_it: >-
   Il termine {{報|ほう}}{{告|こく}} indica un report: una comunicazione attiva
   con cui si informa qualcun altro, per esempio un preside, un superiore, un
@@ -194,7 +192,7 @@ back: >-
 example_jp: >-
   エリアゼロの{{底|そこ}}にあるものが、どうしても{{気|き}}になる。
 example_it: >-
-  Non riesco proprio a togliermi dalla testa ciò che c'è sul fondo dell'Area Zero.
+  Non riesco proprio a togliermi dalla testa ciò che c'è sul fondo dell'Eria Zero.
 notes_it: >-
   {{気|き}}になる descrive qualcosa che cattura l'attenzione senza volerlo: può essere curiosità, apprensione o preoccupazione. La cosa che interessa prende が, mentre chi prova l'interesse spesso resta implicito o viene marcato da は.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
@@ -206,14 +204,12 @@ entry_type: term
 entry_id: term-anki-l05-anata
 card_type: recognition
 front: '{{貴方|あなた}}'
-back: >-
-  あなた — tu (forma scritta/formale); pronome di seconda persona distaccato, usato in assenza di confidenza o in testi scritti formali.
+back: "あなた — tu / Lei; il grado di cortesia dipende dal contesto"
 example_jp: >-
   {{貴方|あなた}}のポケモン、とても{{強|つよ}}そうですね。
 example_it: >-
   Il tuo Pokémon sembra davvero forte.
-notes_it: >-
-  {{貴方|あなた}} è un pronome di seconda persona relativamente distaccato. Nel parlato giapponese spesso è più naturale usare il nome o il titolo dell'interlocutore; quando compare, può creare un tono neutro-formale o segnare distanza sociale.
+notes_it: "あなた è un pronome di seconda persona; 貴方 è una sua grafia in kanji. Il tono può essere neutro, distaccato, intimo o persino brusco secondo la relazione e il contesto. Rivolgendosi a un superiore, di norma si preferisce il nome con un suffisso adeguato o il titolo: あなた non garantisce cortesia."
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -228,9 +224,9 @@ back: >-
 example_jp: >-
   {{貴|き}}{{様|さま}}、スター{{団|だん}}のジャマをする{{気|き}}か！
 example_it: >-
-  Maledetto, hai intenzione di intralciare il Team Star?!
+  Maledetto, hai intenzione di intralciare il Sutā-dan?!
 notes_it: >-
-  Nonostante i kanji di origine onorifica ({{貴|き}} 'nobile', {{様|さま}} 'signore'), {{貴|き}}{{様|さま}} è oggi un pronome di seconda persona estremamente volgare e dispregiativo. A Paldea si incontra sulla bocca di antagonisti arrabbiati (come le reclute del Team Star) e serve a marcare una rottura violenta della cortesia.
+  Nonostante i kanji di origine onorifica ({{貴|き}} 'nobile', {{様|さま}} 'signore'), {{貴|き}}{{様|さま}} è oggi un pronome di seconda persona estremamente volgare e dispregiativo. A Parudea si incontra sulla bocca di antagonisti arrabbiati (come le reclute del Sutā-dan) e serve a marcare una rottura violenta della cortesia.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card
@@ -245,7 +241,7 @@ back: >-
 example_jp: >-
   パルデアの{{歴史|れきし}}には、{{大昔|おおむかし}}の{{災|わざわ}}いについて{{書|か}}かれている。
 example_it: >-
-  Nella storia di Paldea si narra di un'antica calamità.
+  Nella storia di Parudea si narra di un'antica calamità.
 notes_it: >-
   Il termine {{災|わざわ}}い si riferisce a disastri, maledizioni o calamità epocali, distinguendosi da normali incidenti quotidiani (come {{事|じ}}{{故|こ}}). Nel mondo di Scarlet e Violet, si lega profondamente al folklore e alle leggende antiche (come per i Pokémon Rovina).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
@@ -257,14 +253,12 @@ entry_type: term
 entry_id: term-anki-l05-shousei
 card_type: recognition
 front: '{{小|しょう}}{{生|せい}}'
-back: >-
-  しょうせい — io (umile/letterario); pronome di prima persona antiquato, usato solo da uomini per abbassarsi rispetto a chi ascolta.
+back: "しょうせい — io; pronome tradizionalmente maschile, soprattutto epistolare"
 example_jp: >-
   {{小|しょう}}{{生|せい}}はアカデミーで{{美術|びじゅつ}}を{{教|おし}}えております。
 example_it: >-
   Il sottoscritto insegna arte all'Accademia.
-notes_it: >-
-  {{小|しょう}}{{生|せい}} (letteralmente 'piccola vita') è un pronome di prima persona estremamente formale e antiquato. Viene usato esclusivamente da uomini colti per mostrarsi umili davanti a un interlocutore. A Paldea, è il tratto linguistico che caratterizza l'eloquio artistico e compassato del professor Hassaku.
+notes_it: "小生 è un pronome di prima persona tradizionalmente maschile, soprattutto epistolare. È umile nella forma, ma si usa tipicamente verso pari o inferiori; non è una formula universale di rispetto verso un superiore. Nel gioco caratterizza il modo di parlare del professor Hassaku."
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-05]
 :::
 :::card

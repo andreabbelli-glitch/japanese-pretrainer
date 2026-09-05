@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-104-dou-ask-how
 entry_type: grammar
 entry_id: grammar-104-dou-ask-how
 card_type: concept
-front: "どう"
+front: "どう（どうですか）"
 back: >-
   Chiede «come?» o «che ne dici?» riguardo a uno stato o una proposta
 example_jp: >-

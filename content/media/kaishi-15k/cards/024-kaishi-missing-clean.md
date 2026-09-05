@@ -178,7 +178,7 @@ entry_id: term-kaishi-1708637441010
 card_type: recognition
 front: '{{見|み}}{{守|まも}}る'
 back: 'to watch, to keep watch over'
-example_jp: '{{皆|みんな}}で{{暖|あたた}}かく{{見|み}}{{守|まも}}りましょう。'
+example_jp: "{{皆|みんな}}で{{温|あたた}}かく{{見守|みまも}}りましょう。"
 example_it: 'Let''s all warmly watch over them.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441010-recognition/8077c9f9ad5db17de97744c5a4c4b50d.mp3'
 example_audio_source: kaishi

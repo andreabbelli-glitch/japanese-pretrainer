@@ -24,12 +24,9 @@ entry_type: term
 entry_id: term-v730-butsuri
 card_type: recognition
 front: "{{物理|ぶつり}}"
-back: fisico / Physical
-example_jp: >-
-  {{物理|ぶつり}}は ポケモンの {{攻撃|こうげき}}が {{高|たか}}ければ
-  {{相手|あいて}}に {{与|あた}}える ダメージが {{大|おお}}きい。
-example_it: >-
-  Le mosse fisiche fanno più danni se il Pokémon ha un Attacco alto.
+back: "fisico (categoria di mosse)"
+example_jp: "{{物理技|ぶつりわざ}}は、ポケモンの{{攻撃|こうげき}}が{{高|たか}}いほど、{{相手|あいて}}に{{与|あた}}えるダメージが{{大|おお}}きくなる。"
+example_it: "Con le mosse fisiche, più è alto l’Attacco del Pokémon, maggiori sono i danni inflitti all’avversario."
 :::
 :::term
 id: term-v731-bunrui
@@ -50,11 +47,8 @@ entry_id: term-v731-bunrui
 card_type: recognition
 front: "{{分類|ぶんるい}}"
 back: categoria / classificazione
-example_jp: >-
-  {{技|わざ}}には {{物理|ぶつり}}と {{特殊|とくしゅ}}の ふたつの
-  {{分類|ぶんるい}}が {{存在|そんざい}}する。
-example_it: >-
-  Le mosse sono classificate in due categorie: fisiche e speciali.
+example_jp: "{{技|わざ}}は、{{物理|ぶつり}}・{{特殊|とくしゅ}}・{{変化|へんか}}の{{3種類|さんしゅるい}}に{{分類|ぶんるい}}される。"
+example_it: "Le mosse si dividono in tre categorie: fisiche, speciali e di stato."
 :::
 :::term
 id: term-v732-kaidan
@@ -101,7 +95,7 @@ back: responsabile / docente di materia
 example_jp: >-
   バトル{{学|がく}}{{担当|たんとう}}は キハダ{{先生|せんせい}}だ。
 example_it: >-
-  La docente responsabile della classe di lotta è la professoressa Dendra.
+  La docente responsabile della classe di lotta è la professoressa Kihada.
 :::
 :::term
 id: term-v734-gakusekibangou
@@ -244,7 +238,7 @@ example_jp: >-
   パルデアの {{大穴|おおあな}}への {{立|た}}ち{{入|い}}りは
   {{危|あぶ}}ないので やめてくださいね。
 example_it: >-
-  Non bisogna entrare nel Grande Cratere di Paldea, perché è pericoloso.
+  Non bisogna entrare nel Parudea no Ōana di Parudea, perché è pericoloso.
 :::
 :::term
 id: term-v741-kousoku

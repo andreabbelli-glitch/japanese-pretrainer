@@ -239,7 +239,7 @@ back: surf / cavalcare le onde
 example_jp: >-
   なみのりで {{水上|すいじょう}}を {{進|すす}}む。
 example_it: >-
-  Avanzo sull'acqua con Surf.
+  Avanzo sull'acqua con Naminori.
 :::
 :::term
 id: term-v261-chuui
@@ -502,9 +502,9 @@ id: term-v272-teeburushitei
 lemma: テーブルシティ
 reading: てーぶるしてぃ
 romaji: teeburushitei
-meaning_it: città centrale di Paldea
+meaning_it: "Tēburu Shiti (città dell’accademia)"
 notes_it: >-
-  テーブルシティ è il nome della città centrale di Paldea. Nei dialoghi funziona
+  テーブルシティ è il nome della città centrale di Parudea. Nei dialoghi funziona
   come destinazione o luogo di riferimento, non come parola comune da tradurre.
 :::
 :::term

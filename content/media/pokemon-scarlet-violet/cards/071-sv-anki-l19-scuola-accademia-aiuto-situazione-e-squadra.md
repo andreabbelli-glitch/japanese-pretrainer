@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra
 media_id: media-pokemon-scarlet-violet
 slug: 071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra
-title: "Accademia, aiuto e squadra: leggere chi fa cosa a Paldea"
+title: "Accademia, aiuto e squadra: leggere chi fa cosa a Parudea"
 order: 101
 segment_ref: scarlet-violet-prestudy
 ---
@@ -103,7 +103,7 @@ reading: だんいん
 romaji: danin
 meaning_it: membro del gruppo/team
 notes_it: >-
-  {{団|だん}}{{員|いん}} indica gli affiliati a una {{団|だん}} (organizzazione, banda o fazione). Nella terminologia Pokémon, i vari team rivali (come lo スター{{団|だん}} in Paldea o il ロケット{{団|だん}} a Kanto) hanno affiliati che vengono definiti regolarmente {{団|だん}}{{員|いん}}. I membri di basso rango vengono spesso chiamati したっぱ.
+  {{団|だん}}{{員|いん}} indica gli affiliati a una {{団|だん}} (organizzazione, banda o fazione). Nella terminologia Pokémon, i vari team rivali (come lo スター{{団|だん}} in Parudea o il ロケット{{団|だん}} a Kanto) hanno affiliati che vengono definiti regolarmente {{団|だん}}{{員|いん}}. I membri di basso rango vengono spesso chiamati したっぱ.
 level_hint: custom
 :::
 :::term
@@ -145,7 +145,7 @@ back: >-
 example_jp: >-
   アカデミーで {{歴|れき}}{{史|し}}の {{授|じゅ}}{{業|ぎょう}}を{{受|う}}けると、パルデアの ことが よく わかる。
 example_it: >-
-  Se segui un corso di storia all'Accademia, capisci meglio Paldea.
+  Se segui un corso di storia all'Accademia, capisci meglio Parudea.
 notes_it: >-
   Il verbo {{受|う}}ける letteralmente significa "ricevere" o "sottoporsi a", ed è il termine standard per indicare la partecipazione a un corso o a un'attività in aula, oppure il sostenere un esame. Chi insegna usa invece {{授|じゅ}}{{業|ぎょう}}をする (tenere il corso).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
@@ -162,7 +162,7 @@ back: >-
 example_jp: >-
   ピンチの ときに ポケモンセンターが あると {{助|たす}}かる。
 example_it: >-
-  Quando sei nei guai, avere un Centro Pokémon è davvero d'aiuto.
+  Quando sei nei guai, avere un Pokémon Sentā è davvero d'aiuto.
 notes_it: >-
   {{助|たす}}かる è un verbo intransitivo che significa "essere salvato" o "risparmiarsi un fastidio". È la frase standard per esprimere sollievo e gratitudine quando qualcuno o qualcosa ci facilita il compito, simile a "mi sei stato d'aiuto". Il transitivo "salvare qualcuno" è {{助|たす}}ける.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
@@ -179,7 +179,7 @@ back: >-
 example_jp: >-
   いまの {{状|じょう}}{{況|きょう}}を クラベル{{校|こう}}{{長|ちょう}}に {{伝|つた}}えよう。
 example_it: >-
-  Comunichiamo la situazione attuale al preside Clavel.
+  Comunichiamo la situazione attuale al preside Kuraberu.
 notes_it: >-
   {{状|じょう}}{{況|きょう}} descrive l'insieme delle condizioni oggettive in un dato momento. Si usa spesso nei report o per analizzare cosa sta succedendo (es. {{状|じょう}}{{況|きょう}}を{{把|は}}{{握|あく}}する, "comprendere la situazione"). A differenza di {{状|じょう}}{{態|たい}}, che è lo "stato" di una singola entità (come le condizioni di salute di un Pokémon), {{状|じょう}}{{況|きょう}} guarda al quadro generale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
@@ -213,7 +213,7 @@ back: >-
 example_jp: >-
   {{正|しょう}}{{直|じき}}に {{言|い}}うと、ネモの バトルへの {{情|じょう}}{{熱|ねつ}}には ついていけない。
 example_it: >-
-  A dire il vero, non riesco a stare dietro alla passione di Nemi per le lotte.
+  A dire il vero, non riesco a stare dietro alla passione di Nemo per le lotte.
 notes_it: >-
   Come avverbio (spesso {{正|しょう}}{{直|じき}} o {{正|しょう}}{{直|じき}}に), serve ad abbassare le difese e confessare qualcosa in modo diretto. Come tratto del carattere ({{正|しょう}}{{直|じき}}な{{人|ひと}}) indica una persona che non mente e agisce in modo trasparente.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
@@ -230,7 +230,7 @@ back: >-
 example_jp: >-
   パルデア{{地|ち}}{{方|ほう}}は、{{人|ひと}}と ポケモンが {{共|とも}}に {{生|い}}きる {{場|ば}}{{所|しょ}}だ。
 example_it: >-
-  La regione di Paldea è un luogo in cui persone e Pokémon vivono insieme.
+  La regione di Parudea è un luogo in cui persone e Pokémon vivono insieme.
 notes_it: >-
   Il verbo {{生|い}}きる indica il fatto biologico e profondo di essere vivi, sopravvivere o vivere la propria vita (es. {{自|じ}}{{由|ゆう}}に{{生|い}}きる). Per indicare il "risiedere" o "abitare" in un luogo fisico si usa invece il verbo {{住|す}}む.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
@@ -247,7 +247,7 @@ back: >-
 example_jp: >-
   スター{{団|だん}}の ボス {{全|ぜん}}{{員|いん}}を {{倒|たお}}すのだ。
 example_it: >-
-  Devi sconfiggere tutti i capi del Team Star.
+  Devi sconfiggere tutti i capi del Sutā-dan.
 notes_it: >-
   {{全|ぜん}}{{員|いん}} è composto dai kanji di "tutto" e "membro/persona". Si usa esclusivamente per gruppi di persone, mai per oggetti o Pokémon (per i quali si userebbe {{全|ぜん}}{{部|ぶ}} o すべて). Indica la totalità di una categoria o gruppo specifico.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
@@ -276,14 +276,13 @@ entry_type: term
 entry_id: term-anki-l19-danin
 card_type: recognition
 front: '{{団|だん}}{{員|いん}}'
-back: >-
-  だんいん — membro del gruppo/team (es.
+back: "だんいん — membro di un gruppo, un’organizzazione o una squadra"
 example_jp: >-
   あの テントの {{前|まえ}}に スター{{団|だん}}の {{団|だん}}{{員|いん}}が いる。
 example_it: >-
-  Ci sono dei membri del Team Star davanti a quella tenda.
+  Ci sono dei membri del Sutā-dan davanti a quella tenda.
 notes_it: >-
-  {{団|だん}}{{員|いん}} indica gli affiliati a una {{団|だん}} (organizzazione, banda o fazione). Nella terminologia Pokémon, i vari team rivali (come lo スター{{団|だん}} in Paldea o il ロケット{{団|だん}} a Kanto) hanno affiliati che vengono definiti regolarmente {{団|だん}}{{員|いん}}. I membri di basso rango vengono spesso chiamati したっぱ.
+  {{団|だん}}{{員|いん}} indica gli affiliati a una {{団|だん}} (organizzazione, banda o fazione). Nella terminologia Pokémon, i vari team rivali (come lo スター{{団|だん}} in Parudea o il ロケット{{団|だん}} a Kanto) hanno affiliati che vengono definiti regolarmente {{団|だん}}{{員|いん}}. I membri di basso rango vengono spesso chiamati したっぱ.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]
 :::
 :::card
@@ -298,7 +297,7 @@ back: >-
 example_jp: >-
   ハッコウシティの {{名|めい}}{{物|ぶつ}}を {{食|た}}べに {{行|い}}こう！
 example_it: >-
-  Andiamo a mangiare le specialità di Leudapoli!
+  Andiamo a mangiare le specialità di Hakkō Shiti!
 notes_it: >-
   Composto da {{名|めい}} (nome/fama) e {{物|もの}} (cosa), indica ciò che rende celebre un certo luogo. In Giappone (e nelle regioni Pokémon, che ne ricalcano la cultura), ogni città o zona ha un suo "{{名|めい}}{{物|ぶつ}}", che sia un piatto tipico, un dolce o un artigianato locale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-19]

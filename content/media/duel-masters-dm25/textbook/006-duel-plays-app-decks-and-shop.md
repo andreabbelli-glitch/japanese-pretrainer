@@ -78,7 +78,7 @@ risorsa.
 
 ---
 
-`選択` e' il gesto di portare una voce al centro dell'azione, prima della conferma.
+`選択` è il gesto di portare una voce al centro dell'azione, prima della conferma.
 
 ## 1. デッキ non è sempre lo stesso “mazzo”
 
@@ -295,28 +295,21 @@ requisito da soddisfare.
   stato concluso.
 
 :::example_sentence
-jp: >-
-  レアカードの{{所持|しょじ}}が{{2枚|にまい}}だけなので、デッキにはあと{{2枚|にまい}}{{入|い}}れることができる。
-translation_it: >-
-  Poiché possiedi solo 2 copie della carta rara, puoi inserirne altre 2 nel
-  deck.
+jp: "このカードはデッキに{{2枚|にまい}}{{入|はい}}っているので、あと{{2枚|にまい}}{{入|い}}れられる。"
+translation_it: "Nel mazzo ci sono due copie di questa carta, quindi posso aggiungerne altre due."
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `レアカードの{{所持|しょじ}}が{{2枚|にまい}}だけ` ➔ **Quantità posseduta**:
-    `だけ` restringe lo stock a sole due copie.
-*   `なので` ➔ **Ragione**: la quantità posseduta spiega il limite successivo.
-*   `デッキにはあと{{2枚|にまい}}` ➔ **Spazio residuo rispetto al deck**: `あと`
-    indica quanto manca o quanto resta possibile inserire.
-*   `{{入|い}}れることができる` ➔ **Possibilità concreta**: la frase non parla di
-    desiderio, ma di ciò che la schermata consente.
+- `このカードは` mette a tema questa carta.
+- `デッキに{{2枚|にまい}}{{入|はい}}っている` indica che nel mazzo ci sono già due copie.
+- `ので` presenta quel conteggio come ragione.
+- `あと{{2枚|にまい}}{{入|い}}れられる` indica le altre due copie che si possono inserire, entro il limite ordinario di quattro.
 
-#### 🧠 Gancio cognitivo
+#### ⚖️ Contrasto operativo
 
-[{{所持|しょじ}}](term:term-owned) contiene l'idea di “tenere in possesso”.
-Come gancio pratico, leggilo sempre vicino al numero: non ti dice quanto costa
-una carta, ma quante copie sono già nel tuo inventario.
+[{{所持|しょじ}}](term:term-owned) riguarda le copie possedute nell'inventario.
+`デッキに{{入|はい}}っている` riguarda invece le copie già inserite nel mazzo.
+Il numero posseduto, da solo, non dice quante copie restano inseribili.
 
 ## 6. ～を選択 e ～可能 sono segnali di azione, non semplici descrizioni
 

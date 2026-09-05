@@ -10,7 +10,7 @@ status: active
 tags: [pokemon, scarlet-violet, prologue, story, capture]
 prerequisites: []
 summary: >-
-  Leggere cattura, avvisi di percorso, grotta e Pepper distinguendo cattura,
+  Leggere cattura, avvisi di percorso, grotta e Pepā distinguendo cattura,
   stato indebolito, controllo e parlato ruvido.
 ---
 
@@ -22,8 +22,8 @@ presentazione e diventa campo di gioco. Il tratto verso
 percorso, indizi sonori e spiegazioni sullo stato del Pokémon misterioso che
 compare nella grotta.
 
-Il cambio di voce separa subito i ruoli. Nemi usa [{{捕獲|ほかく}}](term:term-hokaku),
-[{{弱|よわ}}らせる](term:term-yowaraseru) e ボール come procedura guidata; Pepper
+Il cambio di voce separa subito i ruoli. Nemo usa [{{捕獲|ほかく}}](term:term-hokaku),
+[{{弱|よわ}}らせる](term:term-yowaraseru) e ボール come procedura guidata; Pepā
 porta [{{姿|すがた}}](term:term-sugata), `{{戦|たたか}}えねえ` e
 [{{制御|せいぎょ}}する](term:term-seigyo-suru) dentro sospetto, stato fisico e
 controllo del Pokémon misterioso.
@@ -32,7 +32,7 @@ controllo del Pokémon misterioso.
 
 - [{{捕獲|ほかく}}](term:term-hokaku) — cattura come attività di gioco
 - [{{捕|つか}}まえる](term:term-tsukamaeru) — catturare / prendere
-- [モンスターボール](term:term-monster-ball) — Poké Ball / Monster Ball
+- [モンスターボール](term:term-monster-ball) — Monsutā Bōru
 - [{{弱|よわ}}らせる](term:term-yowaraseru) — indebolire senza arrivare per forza al KO
 - [{{野生|やせい}}](term:term-yasei) — selvatico / wild
 - [{{気|き}}をつける](term:term-ki-o-tsukeru) — fare attenzione
@@ -44,7 +44,7 @@ controllo del Pokémon misterioso.
 - [{{制御|せいぎょ}}する](term:term-seigyo-suru) — controllare / tenere sotto controllo
 - [{{災難|さいなん}}](term:term-sainan) — guaio / brutta sorte
 - [{{思|おも}}いやられる](term:term-omoiyarareru) — lasciare presagire male
-- [わざマシン](term:term-waza-machine) — MT / oggetto per insegnare una mossa
+- [わざマシン](term:term-waza-machine) — Waza Mashin / oggetto per insegnare una mossa
 
 ## Espressioni ricorrenti
 
@@ -67,7 +67,7 @@ controllo del Pokémon misterioso.
 
 - コサジの{{小道|こみち}} — il sentiero iniziale verso il faro
 - {{入|い}}り{{江|え}}の ほら{{穴|あな}} — la grotta sotto il faro
-- [ペパー](term:term-v048-pepaa) — Pepper nel dialogo giapponese
+- [ペパー](term:term-v048-pepaa) — Pepā nel dialogo giapponese
 - [コライドン](term:term-v096-koraidon) / [ミライドン](term:term-v097-miraidon) — il Pokémon misterioso che appare nel prologo
 
 ---
@@ -91,14 +91,14 @@ più senso. Per questo [{{捕獲|ほかく}}](term:term-hokaku) e
 [{{捕獲|ほかく}}](term:term-hokaku) è l'attività o il risultato di cattura,
 mentre [{{捕|つか}}まえる](term:term-tsukamaeru) è il verbo dell'azione concreta.
 
-Nemi rende questa procedura più morbida con due pattern. Con
+Nemo rende questa procedura più morbida con due pattern. Con
 [～てあげる](grammar:grammar-te-ageru), frasi come わけてあげる presentano
 l'azione come aiuto fatto per te: ti dà Ball, spiegazioni o spazio per
 provare. `戦ってみて` propone una prova guidata immediata.
 
 :::image
 src: assets/ui/catch-tutorial-monster-ball.webp
-alt: "Tutorial iniziale di cattura con Pokémon selvatico indebolito e opzione di usare una Monster Ball."
+alt: "Tutorial iniziale di cattura con Pokémon selvatico indebolito e opzione di usare una Monsutā Bōru."
 caption: >-
   Il tutorial mette in sequenza [{{弱|よわ}}らせる](term:term-yowaraseru) e [モンスターボール](term:term-monster-ball): prima rendi il Pokémon catturabile, poi passi dalla lotta alla [{{捕獲|ほかく}}](term:term-hokaku).
 :::
@@ -108,7 +108,7 @@ jp: >-
   {{野生|やせい}}の ポケモンを {{弱|よわ}}らせてから モンスターボールを
   {{投|な}}げてみて。
 translation_it: >-
-  Prova a lanciare una Monster Ball dopo aver indebolito il Pokémon selvatico.
+  Prova a lanciare una Monsutā Bōru dopo aver indebolito il Pokémon selvatico.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -134,7 +134,7 @@ abbastanza margine perché la cattura possa riuscire.
 ## 2. Il percorso parla con avvisi, habitat e suoni
 
 Uscendo verso コサジの{{小道|こみち}}, il gioco non ti guida solo con indicatori
-visivi. Il giapponese comincia a segnalare rischio e direzione. Quando Nemi
+visivi. Il giapponese comincia a segnalare rischio e direzione. Quando Nemo
 usa [{{気|き}}をつける](term:term-ki-o-tsukeru), la frase non è un saluto
 gentile: `{{足元|あしもと}}に {{気|き}}をつけて` ti fa guardare dove cammini, perché
 dirupi, dislivelli e zone non ancora sicure hanno conseguenze reali.
@@ -216,11 +216,11 @@ condizione del Pokémon misterioso.
 [{{姿|すがた}}](term:term-sugata) è la parola che cambia la lettura: indica una
 forma o condizione visibile che cambia ciò che il Pokémon può fare.
 
-Quando Pepper dice qualcosa come `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ`, il
+Quando Pepā dice qualcosa come `この {{姿|すがた}}じゃ {{戦|たたか}}えねえ`, il
 centro della frase è `この {{姿|すがた}}じゃ`, cioè "in questa forma / in questo
 stato". La negazione ruvida `{{戦|たたか}}えねえ` corrisponde allo standard
 `{{戦|たたか}}えない`: la forma attuale gli impedisce di combattere. La
-difficoltà sta nel registro contratto con cui Pepper lo formula.
+difficoltà sta nel registro contratto con cui Pepā lo formula.
 
 La causa si legge in
 [{{力|ちから}}を {{使|つか}}い{{果|は}}たす](term:term-chikara-o-tsukai-hatasu).
@@ -271,9 +271,9 @@ scena. In forme contratte come `{{落|お}}ちちゃう`, `へたりこんじゃ
 compimento e il risultato può essere indesiderato. Nel prologo questo colore si
 adatta a cadute, consumo di risorse e crolli di energia.
 
-## 4. Pepper legge la scena come controllo e cattivo presagio
+## 4. Pepā legge la scena come controllo e cattivo presagio
 
-Con Pepper entra il lessico del controllo. In questa battuta,
+Con Pepā entra il lessico del controllo. In questa battuta,
 [{{制御|せいぎょ}}する](term:term-seigyo-suru) significa "controllare / tenere
 sotto controllo" e `ための もの` descrive la funzione della Ball: serve a
 controllare quel Pokémon. La frase non spiega il funzionamento dell'oggetto e
@@ -281,9 +281,9 @@ non dice altro sul modo in cui esercita quel controllo.
 
 :::image
 src: assets/story/pepper-control-ball.webp
-alt: "Pepper in primo piano con una Monster Ball tesa in avanti verso il giocatore."
+alt: "Pepā in primo piano con una Monsutā Bōru tesa in avanti verso il giocatore."
 caption: >-
-  La battuta associa la Ball di Pepper a [{{制御|せいぎょ}}する](term:term-seigyo-suru): l'oggetto serve a tenere sotto controllo quel Pokémon.
+  La battuta associa la Ball di Pepā a [{{制御|せいぎょ}}する](term:term-seigyo-suru): l'oggetto serve a tenere sotto controllo quel Pokémon.
 :::
 
 :::example_sentence
@@ -299,7 +299,7 @@ translation_it: >-
 - `あの ポケモンを` ➔ bersaglio del controllo: l'oggetto agisce su quel Pokémon specifico.
 - `{{制御|せいぎょ}}するための もの` ➔ scopo nominalizzato: `ための` trasforma "controllare" nella funzione dell'oggetto.
 
-Il modo in cui Pepper commenta il protagonista è altrettanto marcato.
+Il modo in cui Pepā commenta il protagonista è altrettanto marcato.
 [{{災難|さいなん}}](term:term-sainan) nomina un guaio capitato addosso: non una
 sfida nobile, ma una situazione sfortunata in cui sei finito. Con
 [{{思|おも}}いやられる](term:term-omoiyarareru), il giudizio si sposta in avanti:
@@ -309,7 +309,7 @@ se l'inizio fosse già abbastanza problematico da far dubitare del seguito.
 Il pattern [～ば ～ほど](grammar:grammar-ba-hodo) intensifica questa impressione.
 In `{{見|み}}れば {{見|み}}るほど`, la prima parte mette la condizione "se / quando
 guardi", la seconda dice che l'effetto cresce quanto più continui a guardare.
-La forma aderisce alla voce di Pepper: l'osservazione non calma il sospetto, lo
+La forma aderisce alla voce di Pepā: l'osservazione non calma il sospetto, lo
 fa aumentare.
 
 :::example_sentence
@@ -339,19 +339,19 @@ jp: >-
   わざマシンは {{1回|いっかい}} {{使|つか}}うと なくなっちゃうから
   {{使|つか}}いどころを {{考|かんが}}えよう。
 translation_it: >-
-  Le MT spariscono dopo un uso, quindi pensiamo bene al momento giusto per
+  Le Waza Mashin spariscono dopo un uso, quindi pensiamo bene al momento giusto per
   usarle.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `わざマシンは` ➔ **Tema della regola** (la frase mette a tema l'oggetto MT).
+*   `わざマシンは` ➔ **Tema della regola** (la frase mette a tema l'oggetto Waza Mashin).
 *   `{{1回|いっかい}} {{使|つか}}うと` ➔ **Condizione automatica** (`と` collega
     un solo uso alla conseguenza che segue).
 *   `なくなっちゃうから` ➔ **Consumo completo più avvertimento** (`なくなる`
     diventa "sparire / esaurirsi"; `ちゃう` aggiunge la sfumatura di risultato
     compiuto e poco desiderabile).
-La scelta riguarda quando conviene usare la MT.
+La scelta riguarda quando conviene usare la Waza Mashin.
 
 ## Esempi guidati di riepilogo
 
@@ -395,7 +395,7 @@ translation_it: >-
 
 Questo tratto del prologo mette in fila quattro sistemi di lettura: la cattura
 come procedura, il percorso come spazio di avvisi, la grotta come spiegazione
-di uno stato fisico e Pepper come voce ruvida che giudica ciò che vede. Se
+di uno stato fisico e Pepā come voce ruvida che giudica ciò che vede. Se
 riconosci [{{弱|よわ}}らせる](term:term-yowaraseru),
 [{{生息|せいそく}}する](term:term-seisoku-suru),
 [{{姿|すがた}}](term:term-sugata) e

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-015-sv-prestudy-l06-scarlet-violet-esplorazione-e-movimento
 media_id: media-pokemon-scarlet-violet
 slug: 015-sv-prestudy-l06-scarlet-violet-esplorazione-e-movimento
-title: "Orientarsi a Paldea: direzioni, strumenti e divieti"
+title: "Orientarsi a Parudea: direzioni, strumenti e divieti"
 order: 45
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -16,12 +16,12 @@ tags:
 prerequisites: []
 summary: >-
   Leggere cartelli, prompt e dialoghi di esplorazione: direzioni, strumenti,
-  mappa, supposizioni e divieti mentre ti muovi a Paldea.
+  mappa, supposizioni e divieti mentre ti muovi a Parudea.
 ---
 
-# Orientarsi a Paldea: direzioni, strumenti e divieti
+# Orientarsi a Parudea: direzioni, strumenti e divieti
 
-Quando il viaggio si apre nella regione di Paldea, il giapponese comincia a lavorare come segnaletica: un cartello ti dice che cosa c'è più avanti, un personaggio ti richiama da una parte, un menu ti chiede quale strumento usare, un dialogo scolastico cambia registro appena entra in scena il direttore Clavell.
+Quando il viaggio si apre nella regione di Parudea, il giapponese comincia a lavorare come segnaletica: un cartello ti dice che cosa c'è più avanti, un personaggio ti richiama da una parte, un menu ti chiede quale strumento usare, un dialogo scolastico cambia registro appena entra in scena il direttore Kuraberu.
 
 Questi pezzi non vanno letti come parole isolate. In *Pokémon Scarlet & Violet* direzione, movimento e divieto si riconoscono da particelle molto concrete: `に` colloca, `へ` orienta, `を` marca ciò che usi o scegli, `と` incornicia ciò che qualcuno pensa o dice.
 
@@ -51,9 +51,9 @@ Questi pezzi non vanno letti come parole isolate. In *Pokémon Scarlet & Violet*
 
 ## Etichette da riconoscere
 
-- [パルデア{{地方|ちほう}}](term:term-v064-parudea-chihou) — regione di Paldea
+- [パルデア{{地方|ちほう}}](term:term-v064-parudea-chihou) — regione di Parudea
 - [{{大穴|おおあな}}](term:term-v068-ooana) — grande voragine
-- [クラベル](term:term-v069-kuraberu) — Clavell, direttore dell'Accademia
+- [クラベル](term:term-v069-kuraberu) — Kuraberu, direttore dell'Accademia
 
 ---
 
@@ -96,7 +96,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `こっちへ` ➔ **Direzione di movimento** (`へ` orienta l'azione: il punto importante è la direzione, non l'arrivo preciso).
-*   `{{行|い}}こう` ➔ **Invito volitivo** (`行こう` e' un invito volitivo: muoviamoci / andiamo).
+*   `{{行|い}}こう` ➔ **Invito volitivo** (`行こう` è un invito volitivo: muoviamoci / andiamo).
 
 #### ⚖️ Contrasto operativo
 
@@ -236,7 +236,7 @@ Le stesse forme si ricombinano mentre passi da cartelli, mappa, menu e dialoghi:
 jp: >-
   パルデア{{地方|ちほう}}で {{冒険|ぼうけん}}を はじめよう。
 translation_it: >-
-  Iniziamo l'avventura nella regione di Paldea.
+  Iniziamo l'avventura nella regione di Parudea.
 :::
 
 :::example_sentence
@@ -257,7 +257,7 @@ translation_it: >-
 jp: >-
   クラベル{{先生|せんせい}}、よろしくお{{願|ねが}}いします。
 translation_it: >-
-  Direttore Clavell, conto sulla sua collaborazione.
+  Direttore Kuraberu, conto sulla sua collaborazione.
 :::
 
 ---

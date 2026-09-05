@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-11
 media_id: media-pokemon-scarlet-violet
 slug: 116-sv-vocabulary-distance-11
-title: 'Parole per leggere Paldea — undici'
+title: 'Parole per leggere Parudea — undici'
 order: 161
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   コオリッポと{{一緒|いっしょ}}だと{{室内|しつない}}でもヒンヤリじゃホッホッホ{{大丈夫|だいじょうぶ}}？
 example_it: >-
-  Con Eiscue accanto, fa fresco persino al chiuso. Oh-oh-oh! Tutto bene?
+  Con Kōrippo accanto, fa fresco persino al chiuso. Oh-oh-oh! Tutto bene?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -237,7 +237,7 @@ id: term-sv-vocabulary-205-zettaireido
 lemma: 'ぜったいれいど'
 reading: 'ぜったいれいど'
 romaji: 'zettaireido'
-meaning_it: 'zero assoluto; Purogelo, mossa Pokémon'
+meaning_it: 'zero assoluto; Zettai Reido, mossa Pokémon'
 level_hint: custom
 :::
 
@@ -249,11 +249,11 @@ entry_id: term-sv-vocabulary-205-zettaireido
 card_type: recognition
 front: 'ぜったいれいど'
 back: >-
-  ぜったいれいど — zero assoluto; Purogelo, mossa Pokémon.
+  ぜったいれいど — zero assoluto; Zettai Reido, mossa Pokémon.
 example_jp: >-
   {{次回|じかい}}からは{{最|さい}}{{難関|なんかん}}のぜったいれいどコースに{{挑戦|ちょうせん}}できるよ！
 example_it: >-
-  Dalla prossima volta potrai affrontare il percorso Purogelo, il più difficile!
+  Dalla prossima volta potrai affrontare il percorso Zettai Reido, il più difficile!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -328,7 +328,7 @@ back: >-
 example_jp: >-
   {{謎|なぞ}}の{{生物|せいぶつ}}イダイナキバパルデア{{某所|ぼうしょ}}にある{{乾燥|かんそう}}{{地帯|ちたい}}において{{謎|なぞ}}の{{生物|せいぶつ}}の{{目撃|もくげき}}が{{報告|ほうこく}}されている。
 example_it: >-
-  Creatura misteriosa: Grandizanne. In una zona arida di un luogo non precisato di Paldea sono stati segnalati avvistamenti di questa creatura.
+  Creatura misteriosa: Idaina Kiba. In una zona arida di un luogo non precisato di Parudea sono stati segnalati avvistamenti di questa creatura.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -353,6 +353,6 @@ back: >-
 example_jp: >-
   {{大穴|おおあな}}の{{活躍|かつやく}}をおおやけに{{祝|いわ}}えないぶんこちらはアカデミーみんなでお{{祝|いわ}}いをしたいですねハイ！
 example_it: >-
-  Poiché non possiamo celebrare pubblicamente le imprese nella Grande Voragine, vorremmo festeggiarle qui con tutta l'Accademia!
+  Poiché non possiamo celebrare pubblicamente le imprese nella Parudea no Ōana, vorremmo festeggiarle qui con tutta l'Accademia!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::

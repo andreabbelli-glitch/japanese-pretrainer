@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-204-tokoroda-express-that-it-takes-certain-time
 entry_type: grammar
 entry_id: grammar-204-tokoroda-express-that-it-takes-certain-time-from-a-b
 card_type: concept
-front: "ところだ"
+front: "ところだ（distanza o tempo di percorrenza）"
 back: >-
   〜から… durata のところだ significa «si trova a … di distanza da qui/lì».
 example_jp: >-

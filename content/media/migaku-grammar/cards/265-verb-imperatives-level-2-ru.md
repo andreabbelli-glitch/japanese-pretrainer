@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-265-verb-imperatives-level-2-ru
 entry_type: grammar
 entry_id: grammar-265-verb-imperatives-level-2-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（imperativo）"
 back: >-
   Imperativo forte dei verbi ichidan
 example_jp: >-

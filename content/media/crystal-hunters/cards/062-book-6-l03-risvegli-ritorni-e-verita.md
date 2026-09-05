@@ -270,7 +270,7 @@ entry_id: term-ch-b6-mo-32
 card_type: recognition
 front: '{{何度|なんど}}も'
 back: 'なんども — molte volte; ripetutamente'
-example_jp: 'カルを{{何度|なんど}}も{{救|すく}}う。'
+example_jp: "カルを{{何度|なんど}}も{{救|すく}}った。"
 example_it: 'Ho salvato Kal molte volte.'
 notes_it: >-
   も allarga la ripetizione: non una volta sola, ma ancora e ancora.

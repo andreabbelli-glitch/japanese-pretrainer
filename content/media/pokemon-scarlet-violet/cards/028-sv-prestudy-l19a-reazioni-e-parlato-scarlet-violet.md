@@ -166,7 +166,7 @@ lemma: ゼロラボ
 reading: ゼロラボ
 romaji: zerorabo
 meaning_it: >-
-  Laboratorio Zero
+  Zero Rabo
 notes_it: >-
   ゼロラボ è un nome proprio di struttura: nei dialoghi indica un luogo specifico
   legato alla trama, non un laboratorio qualsiasi.

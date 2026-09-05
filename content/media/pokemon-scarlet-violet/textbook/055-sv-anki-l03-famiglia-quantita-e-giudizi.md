@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-055-sv-anki-l03-famiglia-quantita-e-giudizi
 media_id: media-pokemon-scarlet-violet
 slug: 055-sv-anki-l03-famiglia-quantita-e-giudizi
-title: "Famiglia, quantità e giudizi nei dialoghi di Paldea"
+title: "Famiglia, quantità e giudizi nei dialoghi di Parudea"
 order: 85
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-03]
 prerequisites: []
 summary: >-
   Leggere risorse che bastano, quantità di Pokémon, prime esperienze, ricordi
-  familiari e giudizi colloquiali a Paldea.
+  familiari e giudizi colloquiali a Parudea.
 ---
 
-# Famiglia, quantità e giudizi nei dialoghi di Paldea
+# Famiglia, quantità e giudizi nei dialoghi di Parudea
 
-Tra le strade di Paldea, le aule dell'Accademia e i messaggi che accompagnano l'esplorazione, il giapponese misura spesso una cosa molto concreta: quante risorse ci sono, se bastano, chi sta parlando della propria famiglia e che giudizio dà alla situazione.
+Tra le strade di Parudea, le aule dell'Accademia e i messaggi che accompagnano l'esplorazione, il giapponese misura spesso una cosa molto concreta: quante risorse ci sono, se bastano, chi sta parlando della propria famiglia e che giudizio dà alla situazione.
 
 Questo blocco di parole non vive in astratto. [{{足|た}}りる](term:term-anki-l03-tariru) decide se una quantità è sufficiente, [{{1匹|いっぴき}}](term:term-anki-l03-ippiki) conta una creatura alla volta, [{{初|はじ}}めて](term:term-anki-l03-hajimete) marca la prima esperienza, mentre [{{父|とう}}ちゃん](term:term-anki-l03-touchan), [{{母|かあ}}ちゃん](term:term-anki-l03-kaachan) e [{{悪|わる}}い](term:term-anki-l03-warui) portano il dialogo dentro un registro più personale.
 
@@ -89,7 +89,7 @@ Pensa a [{{足|た}}りる](term:term-anki-l03-tariru) come a una spia verde sul
 Nei dialoghi più narrativi il gioco non conta soltanto oggetti: ordina le esperienze. Un personaggio può parlare di ciò che succede per la prima volta, di qualcosa avvenuto tempo fa o di una decisione da ponderare. Qui la lettura dipende meno dalla singola parola e più dal punto della frase in cui compare.
 
 *   [{{初|はじ}}めて](term:term-anki-l03-hajimete) funziona come avverbio: mette l'intera azione sotto l'idea di "prima volta". In {{初|はじ}}めてポケモンを{{見|み}}た, non stai chiamando il Pokémon "iniziale"; stai dicendo che l'esperienza del vederlo accade per la prima volta.
-*   [{{昔|むかし}}](term:term-anki-l03-mukashi) apre una distanza temporale ampia: "tempo fa", "nel passato". Nei racconti di Paldea può introdurre ricordi familiari, leggende locali o spiegazioni scolastiche. Quando lo vedi a inizio frase, preparati a un cambio di fuoco: dal presente della scena a una memoria o a una causa precedente.
+*   [{{昔|むかし}}](term:term-anki-l03-mukashi) apre una distanza temporale ampia: "tempo fa", "nel passato". Nei racconti di Parudea può introdurre ricordi familiari, leggende locali o spiegazioni scolastiche. Quando lo vedi a inizio frase, preparati a un cambio di fuoco: dal presente della scena a una memoria o a una causa precedente.
 *   [{{考|かんが}}える](term:term-anki-l03-kangaeru) è "pensare" nel senso di riflettere, valutare, prendere in considerazione. È più operativo di un semplice "credere": in una scelta, in un dialogo o in una spiegazione dell'Accademia, segnala che qualcuno sta pesando informazioni.
 *   [{{書|か}}く](term:term-anki-l03-kaku) rende il pensiero visibile: scrivere un nome, una risposta, un appunto o qualcosa sul quaderno. Quando compare con を, l'elemento marcato è ciò che finisce scritto, non il luogo in cui si scrive.
 
@@ -210,4 +210,4 @@ translation_it: >-
 
 ## Nota finale
 
-In Paldea, quantità e tono personale si leggono spesso dagli stessi dettagli piccoli: が mostra che cosa viene misurato, 匹 conta una creatura, [{{初|はじ}}めて](term:term-anki-l03-hajimete) sposta l'azione nel territorio della prima esperienza, e parole familiari come [{{父|とう}}ちゃん](term:term-anki-l03-touchan) o [{{母|かあ}}ちゃん](term:term-anki-l03-kaachan) fanno sentire chi sta parlando. Quando riconosci questi segnali insieme, il dialogo smette di essere una sequenza di gloss e diventa una scena leggibile.
+In Parudea, quantità e tono personale si leggono spesso dagli stessi dettagli piccoli: が mostra che cosa viene misurato, 匹 conta una creatura, [{{初|はじ}}めて](term:term-anki-l03-hajimete) sposta l'azione nel territorio della prima esperienza, e parole familiari come [{{父|とう}}ちゃん](term:term-anki-l03-touchan) o [{{母|かあ}}ちゃん](term:term-anki-l03-kaachan) fanno sentire chi sta parlando. Quando riconosci questi segnali insieme, il dialogo smette di essere una sequenza di gloss e diventa una scena leggibile.

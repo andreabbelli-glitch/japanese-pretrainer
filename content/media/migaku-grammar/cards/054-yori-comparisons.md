@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-054-yori-comparisons
 entry_type: grammar
 entry_id: grammar-054-yori-comparisons
 card_type: concept
-front: "より"
+front: "より（confronto）"
 back: >-
   A より indica A come termine di paragone: «rispetto ad A / più… di A».
 example_jp: >-

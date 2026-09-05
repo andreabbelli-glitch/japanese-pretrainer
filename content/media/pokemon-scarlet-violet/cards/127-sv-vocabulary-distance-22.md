@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-22
 media_id: media-pokemon-scarlet-violet
 slug: 127-sv-vocabulary-distance-22
-title: 'Parole per leggere Paldea — ventidue'
+title: 'Parole per leggere Parudea — ventidue'
 order: 172
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   ボウルタウンへの{{抜|ぬ}}け{{道|みち}}はこちら{{迷子|まいご}}になったらはしごをのぼろう！
 example_it: >-
-  La scorciatoia per Bowl Town è da questa parte: se ti perdi, sali sulla scala!
+  La scorciatoia per Bōru Taun è da questa parte: se ti perdi, sali sulla scala!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -250,11 +250,10 @@ card_type: recognition
 front: 'それでも'
 back: >-
   それでも — ma (comunque); eppure; ciononostante.
-example_jp: >-
-  それでもダメならおうえんだ！
-example_it: >-
-  Se proprio non ce la fai, ti faccio il tifo!
+example_jp: "{{技|わざ}}を{{変|か}}えてみよう。それでもダメなら、おうえんで{{仲間|なかま}}を{{助|たす}}けよう！"
+example_it: "Proviamo a cambiare mossa. Se neanche così funziona, aiutiamo i compagni con l’incoraggiamento!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "Esempio didattico."
 :::
 
 :::term

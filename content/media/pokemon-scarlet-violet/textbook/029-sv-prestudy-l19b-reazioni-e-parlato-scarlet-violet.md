@@ -58,18 +58,18 @@ Il gioco usa parole e formule riconoscibili quando conferma una scelta, segnala 
 
 ## Etichette da riconoscere
 
-- [テーブルシティ](term:term-v272-teeburushitei) — città centrale di Paldea
+- [テーブルシティ](term:term-v272-teeburushitei) — città centrale di Parudea
 
 ---
 
-## 1. La cornice scolastica ed esplorativa: avventure a Paldea
+## 1. La cornice scolastica ed esplorativa: avventure a Parudea
 
-Il tuo viaggio a Paldea si divide tra i banchi dell'Accademia e l'esplorazione selvaggia.
+Il tuo viaggio a Parudea si divide tra i banchi dell'Accademia e l'esplorazione selvaggia.
 
 *   [{{家庭科|かていか}}](term:term-v263-kateika) (**Economia Domestica**): Composto da {{家庭|かてい}} (*katei*, famiglia/casa) e {{科|か}} (*ka*, corso/materia). All'Accademia, indica la classe in cui impari a preparare i panini e a gestire le risorse. Quando vedi [{{家庭科|かていか}}](term:term-v263-kateika), preparati a dialoghi legati a ingredienti, cibo e relazioni domestiche.
-*   [なみのり](term:term-v260-naminori) (**Surf / Cavalcare le onde**): Letteralmente "cavalcare le onde" ({{波|なみ}} *nami*, onda + {{乗|の}}り *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Surf* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
+*   [なみのり](term:term-v260-naminori) (**Naminori / Cavalcare le onde**): Letteralmente "cavalcare le onde" ({{波|なみ}} *nami*, onda + {{乗|の}}り *nori*, cavalcare/salire a bordo). È il nome storico della mossa *Naminori* e indica l'abilità della tua cavalcatura (Koraidon o Miraidon) di muoversi sull'acqua. Se leggi [なみのり](term:term-v260-naminori) in un tutorial, il gioco ti sta spiegando come superare fiumi o specchi di mare.
 *   [{{味方|みかた}}](term:term-v258-mikata) e [{{古代|こだい}}](term:term-v255-kodai):
-    *   [{{味方|みかた}}](term:term-v258-mikata) (**Alleato / Compagno**): Indica chi combatte dalla tua parte (es. nei Raid Terastal).
+    *   [{{味方|みかた}}](term:term-v258-mikata) (**Alleato / Compagno**): Indica chi combatte dalla tua parte (es. nei Raid Terasutaru).
         *   🧠 **Gancio mnemonico:** Pensa a {{味|み}} come "gusto/fazione" e {{方|かた}} come "direzione/persona". Chi condivide la tua stessa direzione è il tuo [{{味方|みかた}}](term:term-v258-mikata) (alleato). Contrasta direttamente con {{相手|あいて}} (*aite*, avversario). *(Nota: è un trucco di memoria, non l’etimologia reale — {{味方|みかた}} è probabilmente un ateji da {{御方|みかた}}.)*
     *   [{{古代|こだい}}](term:term-v255-kodai) (**Antichità / Passato remoto**): Composto da {{古|こ}} (*vecchio*) e {{代|だい}} (*era/generazione*). In *Pokémon Violet* sentirai parlare di futuro, ma in *Pokémon Scarlet* sentirai costantemente nominare i [{{古代|こだい}}](term:term-v255-kodai)のポケモン (i Pokémon del passato remoto, o Pokémon Paradosso del passato).
 
@@ -105,7 +105,7 @@ Quando navighi nei menu, configuri il multiplayer o raccogli oggetti, il gioco c
 *   [{{全部|ぜんぶ}}](term:term-v266-zenbu) (**Tutto**): Composto da {{全|ぜん}} (*intero*) e {{部|ぶ}} (*parte*). Indica la totalità senza esclusioni. Lo trovi nei menu di acquisto o di selezione multipla.
 *   [{{通信|つうしん}}](term:term-v267-tsuushin) (**Connessione / Comunicazione**): Composto da {{通|つう}} (*attraversare/trasmettere*) e {{信|しん}} (*messaggio/comunicazione*, con il valore di base di fiducia). Qualsiasi funzione online o locale di scambio dati (scambi, lotte in link, connessioni wireless) è introdotta da questa parola.
 *   [{{結果|けっか}}](term:term-v269-kekka) (**Risultato / Esito**): Il responso finale dopo un test, una battaglia o una sessione all'Accademia.
-*   [テーブルシティ](term:term-v272-teeburushitei) (**Mesapoli**): La grande metropoli al centro di Paldea, dove ha sede l'Accademia.
+*   [テーブルシティ](term:term-v272-teeburushitei) (**Tēburu Shiti**): La grande metropoli al centro di Parudea, dove ha sede l'Accademia.
 
 Vediamo come si comportano queste parole nei messaggi operativi del sistema:
 
@@ -138,7 +138,7 @@ translation_it: >-
 Il bello del giapponese nei media sta nel saper cogliere le relazioni tra i personaggi attraverso la grammatica.
 
 ### A. Esprimere desideri personali: `～てほしい`
-Quando un personaggio (es. Nemi o Pepper) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in -te del verbo + ほしい** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come ～てほしいと{{思|おも}}っている o ～てほしがっている.
+Quando un personaggio (es. Nemo o Pepā) vuole che tu faccia qualcosa, usa la struttura grammaticale [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che). Si forma con la **forma in -te del verbo + ほしい** (desiderabile) ed esprime il desiderio dal punto di vista del parlante. Se si parla del desiderio di una terza persona, di solito serve una forma riportata o osservabile, come ～てほしいと{{思|おも}}っている o ～てほしがっている.
 
 :::example_sentence
 jp: >-
@@ -222,11 +222,11 @@ translation_it: >-
 jp: >-
   せっかく テーブルシティに {{来|き}}たから、 {{通信|つうしん}}で {{対戦|たいせん}}してみて。
 translation_it: >-
-  Visto che sei arrivato fino a Mesapoli, prova a fare una lotta via connessione.
+  Visto che sei arrivato fino a Tēburu Shiti, prova a fare una lotta via connessione.
 :::
 
 ---
 
 ## Nota finale
 
-Esplorazione sul campo, notifiche di sistema e parlato dei personaggi usano gli stessi segnali in modi diversi: [{{家庭科|かていか}}](term:term-v263-kateika) porta ai [レシピ](term:term-v264-reshipi), i comandi di sistema usano [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) e [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai), mentre i dialoghi esprimono desideri personali con [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) o prove amichevoli con [〜してみて](term:term-e053-shitemite). Buon viaggio a Paldea!
+Esplorazione sul campo, notifiche di sistema e parlato dei personaggi usano gli stessi segnali in modi diversi: [{{家庭科|かていか}}](term:term-v263-kateika) porta ai [レシピ](term:term-v264-reshipi), i comandi di sistema usano [〜を {{受|う}}けとりました！](term:term-e046-o-uketorimashita) e [〜を {{選|えら}}んでください](term:term-e047-o-erandekudasai), mentre i dialoghi esprimono desideri personali con [～てほしい](grammar:grammar-g050-voglio-che-mi-piacerebbe-che) o prove amichevoli con [〜してみて](term:term-e053-shitemite). Buon viaggio a Parudea!

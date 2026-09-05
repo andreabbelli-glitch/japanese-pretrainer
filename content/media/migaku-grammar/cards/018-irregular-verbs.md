@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-018-irregular-verbs
 entry_type: grammar
 entry_id: grammar-018-irregular-verbs
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（forme dizionario）"
 back: >-
   I principali paradigmi irregolari sono する e 来る; ある e 行く richiedono attenzione in alcune coniugazioni.
 example_jp: >-

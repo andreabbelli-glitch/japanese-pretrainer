@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-26
 media_id: media-pokemon-scarlet-violet
 slug: 131-sv-vocabulary-distance-26
-title: 'Parole per leggere Paldea — ventisei'
+title: 'Parole per leggere Parudea — ventisei'
 order: 176
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -125,10 +125,8 @@ card_type: recognition
 front: '{{実|みの}}りある'
 back: >-
   みのりある — gratificante; fruttuoso; fertile.
-example_jp: >-
-  それじゃあよろしく{{実|みの}}りある{{勝負|しょうぶ}}にしよっ！
-example_it: >-
-  Allora, ci vediamo! Facciamo in modo che sia una sfida fruttuosa!
+example_jp: "それじゃあ、よろしく！{{実|みの}}りある{{勝負|しょうぶ}}にしよっ！"
+example_it: "Allora, diamoci da fare! Facciamo una sfida da cui imparare qualcosa!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -328,7 +326,7 @@ back: >-
 example_jp: >-
   ジムバッジをやっつ{{集|あつ}}めたらぜひポケモンリーグの{{扉|とびら}}を{{叩|たた}}いてください。
 example_it: >-
-  Quando avrai raccolto otto distintivi di Palestra, bussa pure alla porta della Lega Pokémon.
+  Quando avrai raccolto otto distintivi di Palestra, bussa pure alla porta della Pokémon Rīgu.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -353,7 +351,7 @@ back: >-
 example_jp: >-
   お{{疲|つか}}れさまちゃんリップと{{究極|きゅうきょく}}の{{美|び}}を{{追求|ついきゅう}}する？
 example_it: >-
-  Ottimo lavoro! Vuoi perseguire la bellezza suprema insieme a Tulipa?
+  Ottimo lavoro! Vuoi perseguire la bellezza suprema insieme a Rippu?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

@@ -151,15 +151,10 @@ id: term-abyss-rush
 lemma: アビスラッシュ
 reading: あびすらっしゅ
 romaji: abisurasshu
-meaning_it: Abyss Rush / keyword di permanenza e rilancio
+meaning_it: "Abyss Rush: evocazione dal cimitero e attacco immediato ai giocatori"
 pos: keyword
 aliases: [アビスラッシュ, abisurasshu, abyss rush]
-notes_it: >-
-  È una keyword dell'asse Abyss che comprime una regola di sostituzione:
-  quando la creatura sta per [{{離|はな}}れる](term:term-hanareru), puoi tenere il corpo
-  in gioco pagando un costo alternativo, spesso scartando carte. In partita
-  cambia l'esito di una rimozione: la perdita di board viene convertita in
-  consumo di mano.
+notes_it: "アビスラッシュ permette di evocare dal proprio cimitero pagando il costo richiesto. La creatura così evocata può attaccare i giocatori in quel turno; alla fine del turno viene messa in fondo al mazzo."
 level_hint: custom
 :::
 
@@ -168,14 +163,10 @@ id: term-civil-count
 lemma: シビルカウント
 reading: しびるかうんと
 romaji: shibiru kaunto
-meaning_it: Civil Count / soglia basata su un totale di costi
+meaning_it: "Civil Count: soglia di creature e Tamaseed di una civiltà"
 pos: keyword
 aliases: [シビルカウント, shibiru kaunto, civil count]
-notes_it: >-
-  Introduce un conteggio-soglia: dopo il numero devi cercare quale totale il
-  testo sta sommando davvero. In `DM25-SD1` non conta quante carte hai, ma il
-  costo totale delle carte di una certa civiltà. È quindi una keyword che va
-  letta insieme a [{{合計|ごうけい}}](term:term-goukei) e a un filtro come `{{3以上|さんいじょう}}`.
+notes_it: "シビルカウント controlla quante tue creature e quanti tuoi Tamaseed della civiltà indicata si trovano nella zona di battaglia. Il numero richiesto è una soglia minima; l’effetto specifico è scritto dopo la condizione."
 level_hint: custom
 :::
 
@@ -249,17 +240,10 @@ entry_type: term
 entry_id: term-abyss-rush
 card_type: recognition
 front: アビスラッシュ
-back: Abyss Rush
-example_jp: >-
-  アビスラッシュ：このクリーチャーが{{離|はな}}れる{{時|とき}}、かわりに
-  {{自分|じぶん}}の{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい。
-example_it: >-
-  Abyss Rush: quando questa creatura sta per lasciare il campo, puoi invece
-  scartare 2 carte dalla tua mano.
-notes_it: >-
-  Questa keyword applica una sostituzione con [{{離|はな}}れる](term:term-hanareru) +
-  [かわりに](grammar:grammar-kawarini): invece di uscire dal campo, la creatura
-  resta in gioco pagando il costo richiesto.
+back: "Abyss Rush: evocazione dal cimitero, attacco ai giocatori e fondo del mazzo a fine turno"
+example_jp: "アビスラッシュで{{墓地|ぼち}}から{{召喚|しょうかん}}したクリーチャーで、{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}する。"
+example_it: "Attacco il giocatore avversario con la creatura evocata dal cimitero tramite Abyss Rush."
+notes_it: "アビスラッシュ permette di evocare dal proprio cimitero pagando il costo richiesto. La creatura così evocata può attaccare i giocatori in quel turno; alla fine del turno viene messa in fondo al mazzo."
 tags: [dm25-sd1, abyss, keyword]
 :::
 
@@ -270,21 +254,12 @@ entry_type: term
 entry_id: term-civil-count
 card_type: recognition
 front: シビルカウント
-back: Civil Count
-example_jp: >-
-  シビルカウント{{3|さん}}：{{自分|じぶん}}の{{闇|やみ}}のカードのコストの
-  {{合計|ごうけい}}が{{3以上|さんいじょう}}であれば、このクリーチャーの
-  「S・トリガー」を{{使|つか}}ってもよい。
-example_it: >-
-  Civil Count 3: se la somma dei costi delle tue carte oscurità è 3 o più, puoi
-  usare l'S-Trigger di questa creatura.
-notes_it: >-
-  Il numero non basta: la soglia controlla un totale di costi specifico. Se il
-  totale richiesto è raggiunto, l'abilita si attiva; se non è raggiunto,
-  l'effetto resta bloccato.
+back: "Civil Count: conta le tue creature e i tuoi Tamaseed della civiltà indicata in campo"
+example_jp: "バトルゾーンに{{闇|やみ}}のクリーチャーとタマシードが{{合計|ごうけい}}{{3|みっ}}つあるので、シビルカウント{{3|さん}}の{{条件|じょうけん}}を{{満|み}}たしている。"
+example_it: "Ho in campo un totale di tre creature e Tamaseed di oscurità, quindi soddisfo la condizione di Civil Count 3."
+notes_it: "シビルカウント controlla quante tue creature e quanti tuoi Tamaseed della civiltà indicata si trovano nella zona di battaglia. Il numero richiesto è una soglia minima; l’effetto specifico è scritto dopo la condizione."
 tags: [dm25-sd1, keyword, threshold]
 :::
-
 :::card
 id: card-attack-target-recognition
 lesson_id: lesson-duel-masters-dm25-dm25-sd1-overview

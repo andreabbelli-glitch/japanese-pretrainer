@@ -73,7 +73,7 @@ reading: うつくしい
 romaji: utsukushii
 meaning_it: bello; splendido
 notes_it: >-
-  {{美|うつく}}しい denota una bellezza profonda e affascinante. A differenza di きれい (bello/pulito), che è d'uso molto più quotidiano, questo aggettivo ha una sfumatura più raffinata, spesso utilizzato da personaggi dall'animo artistico (come il Professor Hassel) per lodare opere d'arte o esecuzioni impeccabili.
+  {{美|うつく}}しい denota una bellezza profonda e affascinante. A differenza di きれい (bello/pulito), che è d'uso molto più quotidiano, questo aggettivo ha una sfumatura più raffinata, spesso utilizzato da personaggi dall'animo artistico (come il Professor Hassaku) per lodare opere d'arte o esecuzioni impeccabili.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: ぶったい
 romaji: buttai
 meaning_it: oggetto; corpo
 notes_it: >-
-  {{物|ぶっ}}{{体|たい}} è un vocabolo tecnico per indicare un "corpo fisico" o un "oggetto". Viene tipicamente impiegato in contesti di ricerca, indagine o documentazione scientifica (come le annotazioni sull'Area Zero) al posto del più colloquiale もの per conferire alla frase un tono accademico o misterioso.
+  {{物|ぶっ}}{{体|たい}} è un vocabolo tecnico per indicare un "corpo fisico" o un "oggetto". Viene tipicamente impiegato in contesti di ricerca, indagine o documentazione scientifica (come le annotazioni sull'Eria Zero) al posto del più colloquiale もの per conferire alla frase un tono accademico o misterioso.
 level_hint: custom
 :::
 :::term
@@ -135,7 +135,7 @@ back: >-
 example_jp: >-
   では、{{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}でテラスタルを{{見|み}}ましょう。
 example_it: >-
-  Allora, al prossimo incontro in aula osserviamo la teracristallizzazione.
+  Allora, al prossimo incontro in aula osserviamo la Terasutaru.
 notes_it: >-
   {{次|じ}}{{回|かい}} (prossima volta) è un sostantivo molto frequente nel contesto scolastico dell'Accademia per rimandare all'incontro successivo. Quando qualifica un altro sostantivo, richiede la particella の, come in {{次|じ}}{{回|かい}}の{{授|じゅ}}{{業|ぎょう}} (il prossimo incontro in aula).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
@@ -152,7 +152,7 @@ back: >-
 example_jp: >-
   エリアゼロに{{誰|だれ}}かいるのか？
 example_it: >-
-  C'è qualcuno nell'Area Zero?
+  C'è qualcuno nell'Eria Zero?
 notes_it: >-
   L'aggiunta del suffisso か ai pronomi interrogativi li trasforma in indefiniti: {{誰|だれ}} (chi) diventa {{誰|だれ}}か (qualcuno). Quando funge da soggetto, la particella が viene spesso omessa nel linguaggio parlato.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
@@ -169,7 +169,7 @@ back: >-
 example_jp: >-
   クラベル{{校長|こうちょう}}に{{伝|つた}}えることがある。
 example_it: >-
-  Ho qualcosa da riferire al preside Clavel.
+  Ho qualcosa da riferire al preside Kuraberu.
 notes_it: >-
   Il verbo {{伝|つた}}える racchiude l'idea di far arrivare un'informazione da una fonte a un destinatario. La persona a cui si comunica il messaggio prende に, mentre il contenuto del messaggio prende を.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
@@ -222,7 +222,7 @@ example_jp: >-
 example_it: >-
   Che Pokémon splendido...!
 notes_it: >-
-  {{美|うつく}}しい denota una bellezza profonda e affascinante. A differenza di きれい (bello/pulito), che è d'uso molto più quotidiano, questo aggettivo ha una sfumatura più raffinata, spesso utilizzato da personaggi dall'animo artistico (come il Professor Hassel) per lodare opere d'arte o esecuzioni impeccabili.
+  {{美|うつく}}しい denota una bellezza profonda e affascinante. A differenza di きれい (bello/pulito), che è d'uso molto più quotidiano, questo aggettivo ha una sfumatura più raffinata, spesso utilizzato da personaggi dall'animo artistico (come il Professor Hassaku) per lodare opere d'arte o esecuzioni impeccabili.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
 :::
 :::card
@@ -237,9 +237,9 @@ back: >-
 example_jp: >-
   エリアゼロで{{未知|みち}}の{{物|ぶっ}}{{体|たい}}を{{発見|はっけん}}した。
 example_it: >-
-  Abbiamo scoperto un oggetto sconosciuto nell'Area Zero.
+  Abbiamo scoperto un oggetto sconosciuto nell'Eria Zero.
 notes_it: >-
-  {{物|ぶっ}}{{体|たい}} è un vocabolo tecnico per indicare un "corpo fisico" o un "oggetto". Viene tipicamente impiegato in contesti di ricerca, indagine o documentazione scientifica (come le annotazioni sull'Area Zero) al posto del più colloquiale もの per conferire alla frase un tono accademico o misterioso.
+  {{物|ぶっ}}{{体|たい}} è un vocabolo tecnico per indicare un "corpo fisico" o un "oggetto". Viene tipicamente impiegato in contesti di ricerca, indagine o documentazione scientifica (come le annotazioni sull'Eria Zero) al posto del più colloquiale もの per conferire alla frase un tono accademico o misterioso.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-09]
 :::
 :::card

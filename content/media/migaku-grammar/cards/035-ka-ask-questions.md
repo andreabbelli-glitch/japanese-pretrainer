@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-035-ka-ask-questions
 entry_type: grammar
 entry_id: grammar-035-ka-ask-questions
 card_type: concept
-front: "か"
+front: "か（domanda diretta）"
 back: >-
   Frase + か segnala una domanda: «…?».
 example_jp: >-

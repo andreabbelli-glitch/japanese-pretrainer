@@ -11,7 +11,7 @@ id: term-pokemon-center
 lemma: ポケモンセンター
 reading: ポケモンセンター
 romaji: pokemon sentaa
-meaning_it: Centro Pokémon
+meaning_it: Pokémon Sentā
 notes_it: >-
   In Scarlet / Violet non è solo il posto dove curi la squadra. È il nodo dove
   rimetti in sesto la [{{手|て}}{{持|も}}ち](term:term-te-mochi), compri oggetti,
@@ -26,32 +26,32 @@ entry_type: term
 entry_id: term-pokemon-center
 card_type: recognition
 front: ポケモンセンター
-back: Centro Pokémon
+back: Pokémon Sentā
 example_jp: >-
   ポケモンセンターが {{見|み}}えたら いったん {{手|て}}{{持|も}}ちを
   {{整|ととの}}えよう。
 example_it: >-
-  Quando vediamo un Centro Pokémon, fermiamoci a sistemare la squadra.
+  Quando vediamo un Pokémon Sentā, fermiamoci a sistemare la squadra.
 :::
 :::term
 id: term-friendly-shop
 lemma: フレンドリィショップ
 reading: フレンドリィショップ
 romaji: furendorii shoppu
-meaning_it: negozio del Centro Pokémon
+meaning_it: "Furendorī Shoppu (negozio del Pokémon Sentā)"
 notes_it: >-
-  La scena nomina il banco servizi del Centro Pokémon: il punto acquisti collegato al [ポケモンセンター](term:term-pokemon-center), dove compri Ball, medicine e altri oggetti di base.
+  La scena nomina il banco servizi del Pokémon Sentā: il punto acquisti collegato al [ポケモンセンター](term:term-pokemon-center), dove compri Ball, medicine e altri oggetti di base.
 :::
 :::term
 id: term-lp
 lemma: LP
 reading: リーグペイ
 romaji: riigu pei
-meaning_it: LP / punti League Pay
+meaning_it: LP / punti Rīgu Pei
 notes_it: >-
   È una valuta di sistema usata sia per comprare sia per creare
   [わざマシン](term:term-waza-machine). Nel tutorial viene spiegato che ha un
-  valore spendibile come il denaro normale, quindi quando Nemi te ne regala o
+  valore spendibile come il denaro normale, quindi quando Nemo te ne regala o
   il gioco te ne assegna, non stai ricevendo un numero astratto ma risorse da
   usare subito.
 :::
@@ -64,7 +64,7 @@ meaning_it: materiale lasciato dai Pokémon
 notes_it: >-
   Nel lessico comune può voler dire oggetto smarrito, ma in Scarlet / Violet
   indica i materiali che i Pokémon lasciano dopo le lotte o gli scontri sul
-  campo. `わざマシン` qui rimanda a materiali e drop utili alla creazione di MT.
+  campo. `わざマシン` qui rimanda a materiali e drop utili alla creazione di Waza Mashin.
 :::
 :::card
 id: card-otoshimono-recognition
@@ -77,30 +77,30 @@ back: materiale lasciato dai Pokémon
 example_jp: >-
   おとしものが たまると {{新|あたら}}しい わざマシンを {{作|つく}}りやすい。
 example_it: >-
-  Quando accumuli materiali dai Pokémon, diventa più facile creare nuove MT.
+  Quando accumuli materiali dai Pokémon, diventa più facile creare nuove Waza Mashin.
 :::
 :::term
 id: term-lets-go
 lemma: レッツゴー
 reading: レッツゴー
 romaji: rettsu goo
-meaning_it: comando Let's Go / manda avanti il Pokémon
+meaning_it: comando Rettsu Gō / manda avanti il Pokémon
 notes_it: >-
   In questo gioco non è un semplice inglesismo trasparente. È il nome del
   comando con cui mandi avanti il Pokémon in testa alla squadra per fargli
   raccogliere oggetti o affrontare da solo piccoli scontri. Il termine compare
-  sia nel tutorial di Nemi sia nelle istruzioni future sul campo.
+  sia nel tutorial di Nemo sia nelle istruzioni future sul campo.
 :::
 :::term
 id: term-terastal
 lemma: テラスタル
 reading: テラスタル
 romaji: terasutaru
-meaning_it: Terastal / teracristallizzazione
+meaning_it: "Terasutaru (fenomeno che cambia il tipo in lotta)"
 notes_it: >-
-  Nomina la trasformazione tipica di Paldea. In battaglia cambia il Pokémon nel
+  Nomina la trasformazione tipica di Parudea. In battaglia cambia il Pokémon nel
   suo [テラスタイプ](term:term-tera-type) e rende più forti le mosse del tipo
-  corrispondente. In questo prologo lo vedi prima come mossa di Nemi e subito
+  corrispondente. In questo prologo lo vedi prima come mossa di Nemo e subito
   dopo come sistema che il giocatore sblocca davvero.
 :::
 :::term
@@ -108,7 +108,7 @@ id: term-terastal-orb
 lemma: テラスタルオーブ
 reading: テラスタルオーブ
 romaji: terasutaru oobu
-meaning_it: Tera Orb / strumento per il Terastal
+meaning_it: Terasutaru Ōbu / strumento per il Terasutaru
 notes_it: >-
   È l'oggetto che abilita il [テラスタル](term:term-terastal). Non va letto come
   accessorio scenico: senza questo oggetto il comando non si attiva. Dopo
@@ -120,7 +120,7 @@ id: term-tera-type
 lemma: テラスタイプ
 reading: テラスタイプ
 romaji: tera taipu
-meaning_it: Teratipo / tipo Terastal
+meaning_it: "Tera Taipu (tipo assunto con il Terasutaru)"
 notes_it: >-
   È il tipo che conta dopo la trasformazione, non per forza il tipo originale
   del Pokémon. Quando il tutorial parla di mosse più forti o di strategia
@@ -134,7 +134,7 @@ reading: かしこまりました
 romaji: kashikomarimashita
 meaning_it: certamente / ricevuto
 notes_it: >-
-  Formula di servizio molto cortese. Al Pokémon Center segnala che il personale
+  Formula di servizio molto cortese. Al Pokémon Sentā segnala che il personale
   ha preso in carico la tua richiesta e sta eseguendo la procedura, non che sta
   solo rispondendo in modo generico.
 :::
@@ -160,7 +160,7 @@ meaning_it: grazie per l'impegno / buon lavoro; formula dopo una fatica
 notes_it: >-
   Formula di contatto molto comune nei servizi e sul lavoro: riconosce lo
   sforzo o la fatica dell'interlocutore. Il kanji 疲 richiama fatica/stanchezza,
-  anche quando in scena suona come una formula di accoglienza. Al Pokémon Center
+  anche quando in scena suona come una formula di accoglienza. Al Pokémon Sentā
   la senti anche allungata colloquialmente come `お{{疲|つか}}れさまでーす`, ma la
   forma canonica resta `お{{疲|つか}}れさまです`.
 :::
@@ -185,7 +185,7 @@ meaning_it: qualcuno fa qualcosa per te / a tuo vantaggio
 notes_it: >-
   È il punto di vista di chi riceve aiuto, servizio o gestione da parte di un
   altro. In questo capitolo marca la cura al [ポケモンセンター](term:term-pokemon-
-  center) e le procedure che Nemi organizza prima del primo
+  center) e le procedure che Nemo organizza prima del primo
   [テラスタル](term:term-terastal).
 :::
 :::card
@@ -199,7 +199,7 @@ back: ricevere un favore o un servizio
 example_jp: >-
   ポケモンセンターで {{手|て}}{{持|も}}ちを {{回復|かいふく}}してもらおう。
 example_it: >-
-  Facciamoci curare la squadra al Centro Pokémon.
+  Facciamoci curare la squadra al Pokémon Sentā.
 :::
 :::grammar
 id: grammar-te-kuru
@@ -224,7 +224,7 @@ example_jp: >-
   レッツゴーすると ポケモンが {{道具|どうぐ}}を {{拾|ひろ}}ってきてくれる
   ことが ある。
 example_it: >-
-  Con Let's Go può capitare che il Pokémon vada a prenderti degli oggetti.
+  Con Rettsu Gō può capitare che il Pokémon vada a prenderti degli oggetti.
 :::
 :::card
 id: card-kaifuku-prologue-03-recognition
@@ -251,15 +251,15 @@ entry_type: term
 entry_id: term-waza-machine
 card_type: recognition
 front: わざマシン
-back: MT / oggetto per insegnare una mossa
+back: Waza Mashin / oggetto per insegnare una mossa
 example_jp: >-
   ポケモンセンターの {{端末|たんまつ}}で {{新|あたら}}しい わざマシンを
   {{作|つく}}ってみよう。
 example_it: >-
-  Al terminale del Centro Pokémon puoi creare una nuova MT.
+  Al terminale del Pokémon Sentā puoi creare una nuova Waza Mashin.
 notes_it: >-
   Qui la parola smette di essere solo ricompensa e diventa parte di un loop di
-  sistema: raccogli materiali, spendi LP e costruisci la MT necessaria.
+  sistema: raccogli materiali, spendi LP e costruisci la Waza Mashin necessaria.
 :::
 :::card
 id: card-shoubu-prologue-03-recognition
@@ -274,7 +274,7 @@ example_jp: >-
 example_it: >-
   Facciamo una sfida e vediamo quanto sei diventato forte!
 notes_it: >-
-  In questo capitolo Nemi usa `{{勝負|しょうぶ}}` per misurare la tua crescita
+  In questo capitolo Nemo usa `{{勝負|しょうぶ}}` per misurare la tua crescita
   dopo il tratto di strada, non solo per proporti un'altra lotta qualsiasi.
 :::
 :::card
@@ -290,7 +290,7 @@ example_jp: >-
 example_it: >-
   Ti do un po' di LP, così li usi per comprare o creare quello che ti serve.
 notes_it: >-
-  Qui il pattern evidenzia un aiuto concreto di Nemi: trasferisce LP al
+  Qui il pattern evidenzia un aiuto concreto di Nemo: trasferisce LP al
   giocatore e abilita subito acquisti e crafting.
 :::
 :::card
@@ -305,7 +305,7 @@ example_jp: >-
   テーブルシティを {{見|み}}てまわったら {{学校|がっこう}}の {{前|まえ}}で
   {{合流|ごうりゅう}}しよう。
 example_it: >-
-  Dopo aver fatto un giro per Mesapoli, ritroviamoci davanti alla scuola.
+  Dopo aver fatto un giro per Tēburu Shiti, ritroviamoci davanti alla scuola.
 notes_it: >-
   In questo capitolo [～たら](grammar:grammar-tara) segna i passaggi che
   sbloccano il blocco successivo della progressione.
@@ -338,7 +338,7 @@ example_jp: >-
   ユニオンサークルでは いっしょに {{冒険|ぼうけん}}する メンバーを
   {{募集|ぼしゅう}}する ことが できる。
 example_it: >-
-  Nell'Union Circle puoi cercare compagni con cui partire all'avventura insieme.
+  Nell'Yunion Sākuru puoi cercare compagni con cui partire all'avventura insieme.
 notes_it: >-
   In questo blocco il pattern resta il segnale più chiaro che una funzione del
   sistema e davvero disponibile nella schermata o nel luogo in cui ti trovi.

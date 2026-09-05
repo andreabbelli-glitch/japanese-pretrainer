@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-25
 media_id: media-pokemon-scarlet-violet
 slug: 130-sv-vocabulary-distance-25
-title: 'Parole per leggere Paldea — venticinque'
+title: 'Parole per leggere Parudea — venticinque'
 order: 175
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -75,13 +75,10 @@ card_type: recognition
 front: '{{完成|かんせい}}'
 back: >-
   かんせい — completamento; perfezione; realizzazione.
-example_jp: >-
-  わたしの{{質問|しつもん}}に{{図鑑|ずかん}}の{{完成|かんせい}}を{{目指|めざ}}すって{{言|い}}ってくれたよね！
-example_it: >-
-  Hai detto che avresti completato la guida per rispondere alla mia domanda, vero?
+example_jp: "わたしの{{質問|しつもん}}に{{図鑑|ずかん}}の{{完成|かんせい}}を{{目指|めざ}}すって{{言|い}}ってくれたよね！"
+example_it: "Alla mia domanda hai risposto che punti a completare il Pokémon Zukan, vero?"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-079-yobidasu
 lemma: '呼びだす'
@@ -100,10 +97,8 @@ card_type: recognition
 front: '{{呼|よ}}びだす'
 back: >-
   よびだす — chiamare (qualcuno) alla (porta, al telefono, ecc.); dire a (qualcuno) di venire; chiamare (al telefono).
-example_jp: >-
-  ああいじめっ{{子|こ}}をまとめてグラウンドに{{呼|よ}}びだしたってさいよいよか！
-example_it: >-
-  Ah, hai finalmente radunato tutti i bulli sul campo, eh?!
+example_jp: "ああ、いじめっ{{子|こ}}をまとめてグラウンドに{{呼|よ}}びだしたってさ。"
+example_it: "Ah, dicono che abbia convocato tutti i bulli sul campo."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -200,11 +195,10 @@ card_type: recognition
 front: '{{差|さ}}し{{上|あ}}げる'
 back: >-
   さしあげる — dare; offrire con umiltà.
-example_jp: >-
-  ゆえにLPを{{差|さ}}し{{上|あ}}げようぞお{{疲|つか}}れさまでスターでござる！
-example_it: >-
-  Quindi ti darò un po’ di LP. Grazie per il tuo impegno, sei una vera stella!
+example_jp: "ゆえにLPを{{差|さ}}し{{上|あ}}げようぞ。お{{疲|つか}}れさまでスターでござる！"
+example_it: "Perciò ti darò degli LP. Grazie dell’impegno!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "お疲れさまでスター è il saluto del Sutā-dan: sostituisce la fine di お疲れさまでした con スター. La chiusura でござる dà alla battuta un tono antiquato e teatrale."
 :::
 
 :::term
@@ -353,6 +347,6 @@ back: >-
 example_jp: >-
   {{大穴|おおあな}}の{{技術|ぎじゅつ}}を{{使|つか}}うぞ{{起動|きどう}}せよテクノロジー！
 example_it: >-
-  Userò la tecnologia della Grande Voragine. Attivati, tecnologia!
+  Userò la tecnologia della Parudea no Ōana. Attivati, tecnologia!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::

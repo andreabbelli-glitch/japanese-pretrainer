@@ -377,8 +377,8 @@ entry_id: term-ch-ko-child
 card_type: recognition
 front: '{{子|こ}}'
 back: 'こ — bambino; persona giovane'
-example_jp: '{{火事|かじ}}の{{建物|たてもの}}に{{子|こ}}がいる。'
-example_it: 'C''è un bambino nell''edificio in fiamme.'
+example_jp: "{{火事|かじ}}だ！あの{{子|こ}}はまだ{{建物|たてもの}}の{{中|なか}}にいる。"
+example_it: "Al fuoco! Quel bambino è ancora dentro l’edificio."
 notes_it: >-
   {{子|こ}} indica un bambino o una persona giovane. Come persona si presenta
   con `いる`; con `を` può diventare la persona portata, tenuta o salvata.

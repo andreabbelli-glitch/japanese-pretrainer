@@ -190,7 +190,7 @@ la stessa cosa.
     [{{達成|たっせい}}](term:term-achievement) ma una
     [{{報酬|ほうしゅう}}](term:term-reward) già riscossa, ancora disponibile o
     bloccata da un altro stato.
-`達成済み` segnala una condizione gia' completata.
+`達成済み` segnala una condizione già completata.
 
 :::example_sentence
 jp: >-
@@ -231,12 +231,10 @@ Per questo `{{未|み}}{{解放|かいほう}}` è già una frase compatta: il c
 ma non puoi ancora entrarci.
 
 :::example_sentence
-jp: >-
-  {{条件|じょうけん}}をクリアするまで、このイベントステージは[{{未|み}}～](grammar:grammar-mi-prefix)[{{解放|かいほう}}](term:term-unlock)のままになる。
+jp: "{{条件|じょうけん}}をクリアするまで、このイベントステージは{{未解放|みかいほう}}のままになる。"
 translation_it: >-
   Finché non completi i requisiti, questo stage evento resterà non ancora sbloccato.
 :::
-
 #### 🗺️ Anatomia della frase
 
 *   `{{条件|じょうけん}}をクリアするまで` ➔ **Limite temporale-condizionale**:
@@ -244,7 +242,7 @@ translation_it: >-
     condizione.
 *   `このイベントステージは` ➔ **Tema bloccato**: lo stage evento è ciò di cui
     viene dichiarato lo stato.
-*   [{{未|み}}～](grammar:grammar-mi-prefix)[{{解放|かいほう}}](term:term-unlock)のままになる
+*   [{{未|み}}](grammar:grammar-mi-prefix)[{{解放|かいほう}}](term:term-unlock)のままになる
     ➔ **Stato mantenuto**: `のまま` indica che la situazione resta così; non è
     un blocco momentaneo, è lo stato che continua finché la condizione non
     cambia.

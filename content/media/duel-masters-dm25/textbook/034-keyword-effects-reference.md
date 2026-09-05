@@ -35,8 +35,7 @@ mentalmente l'effetto nel momento sbagliato.
 
 ## Termini chiave
 
-- [アビスラッシュ](term:term-abyss-rush) — sostituzione quando una creatura sta
-  per lasciare la zona
+- [アビスラッシュ](term:term-abyss-rush) — evocazione dal cimitero, attacco ai giocatori e ritorno nel mazzo a fine turno
 - [アビス・メクレイド](term:term-abyss-mekureido) — guarda il mazzo e usa una
   carta entro una soglia di costo
 - [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two) — costo ridotto ora,
@@ -47,8 +46,8 @@ mentalmente l'effetto nel momento sbagliato.
   tapped o untapped
 - [マナ{{進化|しんか}}GV](term:term-mana-evolution-gv) — evoluzione usando
   materiali dalla mana zone
-- [シビルカウント](term:term-civil-count) — condizione basata sul numero di carte
-  della stessa civiltà
+- [シビルカウント](term:term-civil-count) — condizione basata sul totale di creature
+  e Tamaseed della civiltà indicata
 - [ジャストダイバー](term:term-justdiver) — protezione temporanea dopo l'ingresso
 - [G・ストライク](term:term-g-strike) — risposta difensiva quando una carta esce
   dagli scudi
@@ -72,8 +71,8 @@ mentalmente l'effetto nel momento sbagliato.
   versione a fine turno con totale libero di materiali
 - [S・トリガー](term:term-s-trigger) — uso gratuito quando la carta passa dallo
   scudo alla mano
-- [シンカライズ](term:term-shinkarize) — carta trattata come base o collegamento
-  di evoluzione
+- [シンカライズ](term:term-shinkarize) — Tamaseed utilizzabile come base
+  per un’evoluzione
 - [スマッシュ・バースト](term:term-smash-burst) — lato spell lanciato mentre la
   carta resta nel battle zone
 - [スピードアタッカー](term:term-speed-attacker) — attacco subito nel turno
@@ -145,12 +144,7 @@ opzione. Quando accanto compare `かわりに`, l'opzione sostituisce un evento;
 compare `そうした{{場合|ばあい}}`, la scelta appena fatta diventa la condizione
 per il prezzo successivo.
 
-- [アビスラッシュ](term:term-abyss-rush) usa {{離|はな}}れるかわりに: il testo
-  non aspetta che la creatura sia già uscita, ma mette un recupero al posto
-  dell'uscita normale. La particella `から` poi inchioda la fonte al
-  [{{墓地|ぼち}}](term:term-graveyard), quindi il movimento leggibile è
-  cimitero verso [{{手札|てふだ}}](term:term-hand), non un rimbalzo generico dal
-  battle zone.
+- [アビスラッシュ](term:term-abyss-rush) permette di evocare dal proprio cimitero. La creatura può attaccare i giocatori in quel turno; alla fine del turno viene messa in fondo al mazzo. `{{墓地|ぼち}}から` indica la provenienza e `{{召喚|しょうかん}}する` l’azione, soggetta al costo di evocazione.
 - [{{B・A・D 2|びーえーでぃーつー}}](term:term-b-a-d-two) separa vantaggio e
   conto finale. `{{少|すく}}なくしてもよい` permette di ridurre il
   [{{召喚|しょうかん}}](term:term-summon)コスト adesso; そうした{{場合|ばあい}}
@@ -158,27 +152,15 @@ per il prezzo successivo.
   sposta la [{{破壊|はかい}}](term:term-destroy) alla fine del turno.
 
 :::example_sentence
-jp: >-
-  [アビスラッシュ](term:term-abyss-rush)：このクリーチャーが
-  {{離|はな}}れるかわりに、
-  [{{墓地|ぼち}}](term:term-graveyard)からアビスラッシュを{{持|も}}つ
-  クリーチャーを{{1体|いったい}}[{{手札|てふだ}}](term:term-hand)に{{戻|もど}}してもよい。
-translation_it: >-
-  Abyss Rush: invece di lasciare il battle zone, puoi riprendere in mano dal
-  cimitero una creatura con Abyss Rush.
+jp: "アビスラッシュで{{召喚|しょうかん}}したクリーチャーは、このターン、プレイヤーを{{攻撃|こうげき}}できる。"
+translation_it: "La creatura evocata tramite Abyss Rush può attaccare i giocatori in questo turno."
 reveal_mode: sentence
 :::
-
 #### 🗺️ Anatomia della frase
 
-- `このクリーチャーが{{離|はな}}れる`: il soggetto è questa creatura, e il verbo
-  indica l'uscita dalla zona in cui si trova.
-- `かわりに`: il recupero non viene dopo l'evento, ma prende il posto di
-  quell'evento.
-- [{{墓地|ぼち}}](term:term-graveyard)から: から marca la fonte, quindi il
-  cimitero è il punto di partenza della carta scelta.
-- {{1体|いったい}}[{{手札|てふだ}}](term:term-hand)に{{戻|もど}}してもよい: il numero
-  limita il bersaglio a una creatura e `〜てもよい` conserva la scelta.
+- `アビスラッシュで{{召喚|しょうかん}}したクリーチャーは` presenta come tema la creatura evocata con questa abilità.
+- `このターン` limita il permesso al turno corrente.
+- `プレイヤーを{{攻撃|こうげき}}できる` è una forma potenziale: la creatura può attaccare i giocatori.
 
 :::example_sentence
 jp: >-
@@ -272,22 +254,22 @@ reveal_mode: sentence
   frase resta una scelta.
 
 [シビルカウント](term:term-civil-count) e [ラビリンス](term:term-labyrinth) non
-guardano un costo da pagare, ma una quantità già presente. Il primo conta carte
-nella [バトルゾーン](term:term-battle-zone) che condividono la
-[{{文明|ぶんめい}}](term:term-civilization) della carta; il secondo confronta il
+guardano un costo da pagare, ma una quantità già presente. Il primo conta creature e Tamaseed
+nella [バトルゾーン](term:term-battle-zone) della
+[{{文明|ぶんめい}}](term:term-civilization) indicata dall’abilità; il secondo confronta il
 [{{数|かず}}](term:term-kazu) dei tuoi scudi con quello dell'avversario.
 
 :::example_sentence
 jp: >-
   [シビルカウント](term:term-civil-count)：{{自分|じぶん}}の
-  [バトルゾーン](term:term-battle-zone)に、このカードと{{同|おな}}じ
+  [バトルゾーン](term:term-battle-zone)に、{{指定|してい}}された
   [{{文明|ぶんめい}}](term:term-civilization)を{{持|も}}つ
   クリーチャーまたはタマシードが{{指定|してい}}された
   {{数|かず}}{{以上|いじょう}}あれば、このカードの{{条件|じょうけん}}や
   [{{効果|こうか}}](term:term-effect)が{{有効|ゆうこう}}になる。
 translation_it: >-
   Civil Count: se nella tua battle zone hai almeno il numero richiesto di
-  creature o Tamaseed della stessa civiltà di questa carta, la condizione o
+  creature o Tamaseed della civiltà indicata, la condizione o
   l'effetto diventa attivo.
 reveal_mode: sentence
 :::
@@ -650,16 +632,10 @@ reveal_mode: sentence
 :::
 
 :::example_sentence
-jp: >-
-  [シンカライズ](term:term-shinkarize)：{{進化元|しんかもと}}にも
-  {{進化先|しんかさき}}にもなれるように{{扱|あつか}}って、
-  [{{進化|しんか}}](term:term-evolution)のつながりを{{作|つく}}る。
-translation_it: >-
-  Shinkarize: tratta la carta in modo da poter fare da base o da estensione di
-  un'evoluzione e creare il collegamento evolutivo.
+jp: "シンカライズを{{持|も}}つタマシードを、{{進化元|しんかもと}}に{{使|つか}}う。"
+translation_it: "Uso come base di evoluzione un Tamaseed con Shinkarize."
 reveal_mode: sentence
 :::
-
 :::example_sentence
 jp: >-
   [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution)：すでに
@@ -676,13 +652,13 @@ reveal_mode: sentence
 - [{{無月|むげつ}}の{{門|もん}}](term:term-mugestsu-no-mon): il trigger parte quando un Magic Tool entra e poi sceglie due materiali per zona.
 - [{{無月|むげつ}}の{{門|もん}}・{{絶|ぜつ}}](term:term-mugestsu-no-mon-zetsu): il timing diventa fine turno e il numero diventa totale sei.
 - `{{合計6|ごうけいむっ}}つ` è il punto che impedisce di leggere "due da ciascuna zona".
-- [シンカライズ](term:term-shinkarize): la carta viene trattata come ponte evolutivo.
+- [シンカライズ](term:term-shinkarize): il Tamaseed può fare da base a una creatura evoluzione.
 - [{{究極進化|きゅうきょくしんか}}](term:term-ultimate-evolution): il nuovo livello si mette sopra una creatura già evoluta.
 
 #### ⚖️ Contrasto operativo
 
-`{{進化元|しんかもと}}` e `{{進化先|しんかさき}}` parlano del ruolo che una carta può
-assumere nella catena evolutiva. `{{下|した}}にあるカード`, invece, parla di
+`{{進化元|しんかもと}}` indica la base su cui si mette la nuova creatura evoluzione.
+Con シンカライズ, il Tamaseed occupa proprio il ruolo di base. `{{下|した}}にあるカード`, invece, parla di
 materiale già sotto la creatura e pronto a essere spostato o consumato.
 `{{上|うえ}}に{{重|かさ}}ねる` crea lo stack; `{{下|した}}にあるカードを{{墓地|ぼち}}に{{置|お}}く`
 lo svuota.

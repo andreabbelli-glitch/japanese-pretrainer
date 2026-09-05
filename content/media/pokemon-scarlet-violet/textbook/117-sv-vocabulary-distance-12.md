@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-12
 media_id: media-pokemon-scarlet-violet
 slug: 117-sv-vocabulary-distance-12
-title: 'Parole per leggere Paldea — dodici'
+title: 'Parole per leggere Parudea — dodici'
 order: 162
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — dodici
+# Parole per leggere Parudea — dodici
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -79,7 +79,7 @@ translation_it: >-
 jp: >-
   ふたつのヨロイからひとつをえらんでへんしんしてゲンガーをやっつけて！
 translation_it: >-
-  Scegli una delle due armature, trasformati e sconfiggi Gengar!
+  Scegli una delle due armature, trasformati e sconfiggi Gengā!
 :::
 
 **Uso:** L'azione espressa nel contesto è «battere; attaccare (un nemico); eliminare».

@@ -112,7 +112,7 @@ back: anche
 example_jp: >-
   ネモも {{来|く}}る。
 example_it: >-
-  Viene anche Nemi.
+  Viene anche Nemo.
 :::
 :::grammar
 id: grammar-g091-tra-gli-altri-eccetera
@@ -133,7 +133,7 @@ back: tra gli altri / eccetera
 example_jp: >-
   ボールや どうぐを {{買|か}}う。
 example_it: >-
-  Compro cose come Poké Ball e oggetti.
+  Compro cose come Monsutā Bōru e oggetti.
 :::
 :::grammar
 id: grammar-g092-e-inoltre-tra-l-altro
@@ -505,7 +505,7 @@ id: term-v469-guraidomoodo
 lemma: グライドモード
 reading: ぐらいどもーど
 romaji: guraidomoodo
-meaning_it: Glide Mode
+meaning_it: Guraido Mōdo
 notes_it: >-
   グライドモード è la modalità di planata: グライド identifica il movimento in aria,
   モード la modalità attiva.
@@ -515,7 +515,7 @@ id: term-v470-doraibumoodo
 lemma: ドライブモード
 reading: どらいぶもーど
 romaji: doraibumoodo
-meaning_it: Drive Mode
+meaning_it: Doraibu Mōdo
 notes_it: >-
   ドライブモード è la modalità di avanzamento su terreno: ドライブ qui descrive il
   muoversi/correre con la cavalcatura.
@@ -525,7 +525,7 @@ id: term-v471-furootomoodo
 lemma: フロートモード
 reading: ふろーともーど
 romaji: furootomoodo
-meaning_it: Float Mode
+meaning_it: Furōto Mōdo
 notes_it: >-
   フロートモード è la modalità sull'acqua: フロート richiama il galleggiamento,
   モード la forma attiva del movimento.

@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-299-verb-desire-ru
 entry_type: grammar
 entry_id: grammar-299-verb-desire-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（desiderativo）"
 back: >-
   Desiderio di compiere un'azione con un verbo ichidan
 example_jp: >-

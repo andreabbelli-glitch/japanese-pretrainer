@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-195-demo-question-words
 entry_type: grammar
 entry_id: grammar-195-demo-question-words
 card_type: concept
-front: "でも"
+front: "でも（dopo un interrogativo）"
 back: >-
   QW + でも significa «qualsiasi… / chiunque / dovunque / in qualunque momento».
 example_jp: >-

@@ -21,7 +21,7 @@ in cui il giapponese decide se stai salvando, aprendo l'inventario, scegliendo
 un membro della squadra o preparando la prossima rotta. Le parole sono brevi,
 spesso in katakana o hiragana, ma ognuna porta un'azione precisa.
 
-Scarlet / Violet aggiunge mappa, Rotom Phone e riepiloghi più ricchi, però il
+Scarlet / Violet aggiunge mappa, Sumaho Rotomu e riepiloghi più ricchi, però il
 cuore resta leggibile attraverso poche opposizioni stabili: salvataggio o
 uscita, squadra attiva o deposito, borsa del giocatore o oggetto tenuto dal
 Pokémon, destinazione libera o punto già registrato. Se riconosci queste forme,
@@ -35,7 +35,7 @@ la UI smette di essere una lista di label e diventa una grammatica di azioni.
 - [バッグ](term:term-bag) — borsa / inventario generale
 - [どうぐ](term:term-dougu) — oggetto usabile / strumento
 - [たいせつなもの](term:term-taisetsu-na-mono) — strumenti chiave di progressione
-- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokédex / catalogo delle specie viste o catturate
+- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokémon Zukan / catalogo delle specie viste o catturate
 - [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) — destinazione / punto da raggiungere
 - [{{強|つよ}}さを{{見|み}}る](term:term-tsuyosa-o-miru) — aprire il riepilogo del Pokémon
 - [もちもの](term:term-mochimono) — oggetto tenuto da un Pokémon
@@ -98,7 +98,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`レポート` e' il comando di salvataggio del gioco. Se lo incontri vicino a `はい` e `いいえ`, la domanda reale è "vuoi
+`レポート` è il comando di salvataggio del gioco. Se lo incontri vicino a `はい` e `いいえ`, la domanda reale è "vuoi
 salvare adesso?", non "vuoi aprire un documento?".
 
 #### 🧠 Gancio cognitivo
@@ -194,10 +194,10 @@ translation_it: >-
 Confonderli porta a leggere una schermata di equipaggiamento come se fosse una
 lista generale di oggetti.
 
-## 4. Mappa e Pokédex: registrare ciò che scopri e dove vai
+## 4. Mappa e Pokémon Zukan: registrare ciò che scopri e dove vai
 
 [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) è il catalogo che registra le
-specie viste o catturate. Il Pokédex trasforma incontri e catture in progresso registrato.
+specie viste o catturate. Il Pokémon Zukan trasforma incontri e catture in progresso registrato.
 
 La mappa lavora in modo simile, ma sullo spazio. [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi)
 unisce `{{目的|もくてき}}`, scopo o obiettivo, e `{{地|ち}}`, luogo. Non indica
@@ -208,7 +208,7 @@ registrato, non solo guardato.
 
 :::image
 src: assets/ui/smart-rotom-map-destination.webp
-alt: "Schermata mappa dello Smart Rotom con icone laterali delle app e destinazione evidenziata al centro."
+alt: "Schermata mappa dello Sumaho Rotomu con icone laterali delle app e destinazione evidenziata al centro."
 caption: >-
   Schermata mappa di [スマホロトム](term:term-smartphone-rotom): qui [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) diventa un marker concreto e si vede che mappa, app e navigazione convivono nello stesso dispositivo.
 :::
@@ -383,7 +383,7 @@ jp: >-
   マップで {{目的|もくてき}}{{地|ち}}を {{登録|とうろく}}してから
   ポケモン{{図鑑|ずかん}}を {{開|ひら}}く。
 translation_it: >-
-  Dopo aver registrato una destinazione sulla mappa, apri il Pokédex.
+  Dopo aver registrato una destinazione sulla mappa, apri il Pokémon Zukan.
 :::
 
 :::example_sentence

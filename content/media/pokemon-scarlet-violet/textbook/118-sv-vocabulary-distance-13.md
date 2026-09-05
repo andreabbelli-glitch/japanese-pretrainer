@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-13
 media_id: media-pokemon-scarlet-violet
 slug: 118-sv-vocabulary-distance-13
-title: 'Parole per leggere Paldea — tredici'
+title: 'Parole per leggere Parudea — tredici'
 order: 163
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — tredici
+# Parole per leggere Parudea — tredici
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 

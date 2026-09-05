@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-079-tokoroda-when-you-are-just-about-do-somethi
 entry_type: grammar
 entry_id: grammar-079-tokoroda-when-you-are-just-about-do-something
 card_type: concept
-front: "ところだ"
+front: "ところだ（V dizionario + ところだ）"
 back: >-
   Indica che si è proprio sul punto di fare qualcosa
 example_jp: >-

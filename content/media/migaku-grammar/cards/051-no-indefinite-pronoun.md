@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-051-no-indefinite-pronoun
 entry_type: grammar
 entry_id: grammar-051-no-indefinite-pronoun
 card_type: concept
-front: "の"
+front: "の（sostituisce un nome）"
 back: >-
   Modificatore + の evita di ripetere il nome: «quello/la cosa che è…».
 example_jp: >-

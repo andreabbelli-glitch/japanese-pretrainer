@@ -170,7 +170,7 @@ id: term-v064-parudea-chihou
 lemma: パルデア地方
 reading: ぱるであちほう
 romaji: parudea chihou
-meaning_it: regione di Paldea
+meaning_it: "Parudea (regione)"
 notes_it: >-
   Nome della regione in cui si svolge Scarlet / Violet. `地方` indica una regione ampia.
 :::
@@ -250,7 +250,7 @@ reading: おおあな
 romaji: ooana
 meaning_it: grande voragine
 notes_it: >-
-  Nome della grande voragine di Paldea. Quando appare con この{{先|さき}} o
+  Nome della grande voragine di Parudea. Quando appare con この{{先|さき}} o
   パルデア{{地方|ちほう}}, il dialogo sta parlando di un luogo centrale della mappa.
 :::
 :::term
@@ -258,9 +258,9 @@ id: term-v069-kuraberu
 lemma: クラベル
 reading: くらべる
 romaji: kuraberu
-meaning_it: Clavell
+meaning_it: "Kuraberu (preside dell’accademia)"
 notes_it: >-
-  Nome giapponese di Clavell. Nei dialoghi scolastici richiama il direttore
+  Nome giapponese di Kuraberu. Nei dialoghi scolastici richiama il direttore
   dell’Accademia e le scene legate a regole o introduzioni ufficiali.
 :::
 :::term

@@ -63,7 +63,7 @@ example_jp: >-
   スグリは {{本物|ほんもの}}の オーガポンを {{見|み}}たと
   {{言|い}}った。
 example_it: >-
-  Kieran ha detto di aver visto il vero Ogerpon.
+  Suguri ha detto di aver visto il vero Ōgapon.
 :::
 :::term
 id: term-v542-yousu
@@ -94,7 +94,7 @@ id: term-v543-pokemonwosshu
 lemma: ポケモンウォッシュ
 reading: ポケモンウォッシュ
 romaji: pokemonwosshu
-meaning_it: Pokémon Wash
+meaning_it: Pokémon Wosshu
 notes_it: >-
   Etichetta del picnic: indica la funzione per lavare il Pokémon selezionato
   durante una pausa, prima di tornare a esplorazione o lotte.
@@ -168,7 +168,7 @@ back: vera identità
 example_jp: >-
   エリアゼロで {{博士|はかせ}}の {{正体|しょうたい}}が わかる。
 example_it: >-
-  Nell'Area Zero si scopre la vera identità del professore.
+  Nell'Eria Zero si scopre la vera identità del professore.
 :::
 :::term
 id: term-v547-shoukai
@@ -192,7 +192,7 @@ example_jp: >-
   ネモが {{新|あたら}}しい トレーナーに バトルの ルールを
   {{紹介|しょうかい}}する。
 example_it: >-
-  Nemi presenta le regole della battaglia al nuovo allenatore.
+  Nemo presenta le regole della battaglia al nuovo allenatore.
 :::
 :::term
 id: term-v548-himitsunomenyuu
@@ -201,7 +201,7 @@ reading: ひみつのメニュー
 romaji: himitsunomenyuu
 meaning_it: menu segreto
 notes_it: >-
-  Indizio del test della palestra di Medali: collega il dialogo del locale
+  Indizio del test della palestra di Chanpuru Taun: collega il dialogo del locale
   alla scelta corretta nel ristorante.
 :::
 :::term
@@ -212,7 +212,7 @@ romaji: kenkyuujo
 meaning_it: istituto di ricerca
 notes_it: >-
   Luogo di ricerca legato a professori, appunti e tecnologia; in Scarlet/Violet
-  può rimandare alla storia dell'Area Zero o al laboratorio vicino al faro.
+  può rimandare alla storia dell'Eria Zero o al laboratorio vicino al faro.
 :::
 :::card
 id: card-v549-kenkyuujo-recognition
@@ -275,7 +275,7 @@ example_jp: >-
   {{相手|あいて}}が まもるを {{使|つか}}ったので、こちらの
   {{技|わざ}}は {{失敗|しっぱい}}した。
 example_it: >-
-  Poiché l'avversario ha usato Protezione, la nostra mossa è fallita.
+  Poiché l'avversario ha usato Mamoru, la nostra mossa è fallita.
 :::
 :::term
 id: term-v552-ouen
@@ -284,7 +284,7 @@ reading: おうえん
 romaji: ouen
 meaning_it: incitamento / cheer
 notes_it: >-
-  Nei Raid Teracristal indica il comando di supporto dato alla squadra, distinto
+  Nei Tera Reido Batoru indica il comando di supporto dato alla squadra, distinto
   da una mossa offensiva.
 :::
 :::card
@@ -299,7 +299,7 @@ example_jp: >-
   テラレイドバトルで おうえんを {{使|つか}}うと、{{味方|みかた}}の
   HPが {{回復|かいふく}}する。
 example_it: >-
-  In un Raid Teracristal, usando il supporto, gli HP degli alleati si
+  In un Tera Reido Batoru, usando il supporto, gli HP degli alleati si
   ripristinano.
 :::
 :::term
@@ -324,7 +324,7 @@ example_jp: >-
   レイドバトルに {{勝|か}}つと、{{報酬|ほうしゅう}}として
   テラピースを もらえる。
 example_it: >-
-  Se vinci un raid, ricevi Teraliti come ricompensa.
+  Se vinci un raid, ricevi Tera Pīsu come ricompensa.
 :::
 :::term
 id: term-v554-tansaku
@@ -348,7 +348,7 @@ example_jp: >-
   エリアゼロを {{探索|たんさく}}して、{{強|つよ}}い ポケモンの
   {{様子|ようす}}を {{調|しら}}べる。
 example_it: >-
-  Esplori l'Area Zero e controlli lo stato dei Pokémon forti.
+  Esplori l'Eria Zero e controlli lo stato dei Pokémon forti.
 :::
 :::term
 id: term-v555-shiea
@@ -372,7 +372,7 @@ example_jp: >-
   ポケポータルで あいことばを シェアして、{{友|とも}}だちを
   レイドに {{招待|しょうたい}}する。
 example_it: >-
-  Nel Poké Portal condividi la password e inviti un amico al raid.
+  Nel Pokepōtaru condividi la password e inviti un amico al raid.
 :::
 :::term
 id: term-v556-genshou
@@ -381,7 +381,7 @@ reading: げんしょう
 romaji: genshou
 meaning_it: fenomeno
 notes_it: >-
-  In Scarlet/Violet richiama spesso il fenomeno Teracristal: una regola del
+  In Scarlet/Violet richiama spesso il fenomeno Terasutaru: una regola del
   mondo, non un semplice evento visivo.
 :::
 :::card
@@ -396,7 +396,7 @@ example_jp: >-
   パルデアでは テラスタル{{現象|げんしょう}}で ポケモンの タイプが
   {{変|か}}わる。
 example_it: >-
-  A Paldea, con il fenomeno Teracristal, il tipo del Pokémon cambia.
+  A Parudea, con il fenomeno Terasutaru, il tipo del Pokémon cambia.
 :::
 :::term
 id: term-v557-ongaku
@@ -406,7 +406,7 @@ romaji: ongaku
 meaning_it: musica
 notes_it: >-
   Può segnalare cambio di scena: musica di lotta, evento, palestra o base del
-  Team Star.
+  Sutā-dan.
 :::
 :::card
 id: card-v557-ongaku-recognition
@@ -420,16 +420,16 @@ example_jp: >-
   スター{{団|だん}}の アジトでは、バトルの {{音楽|おんがく}}が
   {{変|か}}わる。
 example_it: >-
-  Nella base del Team Star, la musica della battaglia cambia.
+  Nella base del Sutā-dan, la musica della battaglia cambia.
 :::
 :::term
 id: term-v558-onitaijifesu
 lemma: 鬼退治フェス
 reading: おにたいじフェス
 romaji: onitaijifesu
-meaning_it: Ogre Oustin' festival
+meaning_it: Oni Taiji Fesu
 notes_it: >-
-  Nome del minigioco del DLC di Kitakami/Nordivia: raccogli bacche e affronti
+  Nome del minigioco del DLC di Kitakami/Kitakami: raccogli bacche e affronti
   palloni/bersagli in un evento separato dalle lotte normali.
 :::
 :::term
@@ -454,7 +454,7 @@ example_jp: >-
   {{鬼退治|おにたいじ}}フェスは キタカミの {{里|さと}}で
   {{開催|かいさい}}される。
 example_it: >-
-  L'Ogre Oustin' Festival si tiene nel villaggio di Kitakami.
+  L'Oni Taiji Fesu' Festival si tiene nel villaggio di Kitakami.
 :::
 :::term
 id: term-v560-shoutai
@@ -477,7 +477,7 @@ back: invito / invitare
 example_jp: >-
   {{友|とも}}だちを テラレイドバトルに {{招待|しょうたい}}する。
 example_it: >-
-  Inviti un amico a un Raid Teracristal.
+  Inviti un amico a un Tera Reido Batoru.
 :::
 :::term
 id: term-v561-koubaibu
@@ -501,7 +501,7 @@ example_jp: >-
   {{購買部|こう.ばい.ぶ}}で キズぐすりを {{買|か}}ってから
   バトルに {{行|い}}く。
 example_it: >-
-  Compri una Pozione al negozio della scuola e poi vai alla battaglia.
+  Compri una Kizugusuri al negozio della scuola e poi vai alla battaglia.
 :::
 :::term
 id: term-v562-kanari
@@ -534,7 +534,7 @@ romaji: kouryuu
 meaning_it: scambio / interazione
 notes_it: >-
   Copre interazione e scambio tra persone: studenti, allenatori o giocatori nel
-  Poké Portal.
+  Pokepōtaru.
 :::
 :::card
 id: card-v563-kouryuu-recognition
@@ -548,7 +548,7 @@ example_jp: >-
   ポケポータルの {{交流|こうりゅう}}で {{友|とも}}だちと ポケモンを
   {{交換|こうかん}}する。
 example_it: >-
-  Nel Poké Portal interagisci con un amico e scambi Pokémon.
+  Nel Pokepōtaru interagisci con un amico e scambi Pokémon.
 :::
 :::term
 id: term-v564-konran
@@ -572,7 +572,7 @@ example_jp: >-
   {{相手|あいて}}の {{技|わざ}}で ピカチュウは
   {{混乱|こんらん}}した。
 example_it: >-
-  Per la mossa dell'avversario, Pikachu è andato in confusione.
+  Per la mossa dell'avversario, Pikachū è andato in confusione.
 :::
 :::term
 id: term-v565-nouryokuhenka
@@ -596,7 +596,7 @@ example_jp: >-
   {{能力変化|のう.りょく.へん.か}}で ニャオハの {{攻撃|こうげき}}が
   {{上|あ}}がった。
 example_it: >-
-  Con una variazione delle statistiche, l'Attacco di Sprigatito è aumentato.
+  Con una variazione delle statistiche, l'Attacco di Nyahoha è aumentato.
 :::
 :::term
 id: term-v566-shinyuusha
@@ -605,7 +605,7 @@ reading: しんにゅうしゃ
 romaji: shinyuusha
 meaning_it: intruso
 notes_it: >-
-  Parola narrativa per chi entra dove non dovrebbe: base del Team Star, area
+  Parola narrativa per chi entra dove non dovrebbe: base del Sutā-dan, area
   protetta o luogo sorvegliato.
 :::
 :::card
@@ -620,14 +620,14 @@ example_jp: >-
   スター{{団|だん}}の アジトで、こちらの トレーナーは
   {{侵入者|しん.にゅう.しゃ}}として {{止|と}}められた。
 example_it: >-
-  Nella base del Team Star, il nostro allenatore è stato fermato come intruso.
+  Nella base del Sutā-dan, il nostro allenatore è stato fermato come intruso.
 :::
 :::term
 id: term-v567-majikarukoukan
 lemma: マジカル交換
 reading: マジカルこうかん
 romaji: majikarukoukan
-meaning_it: scambio magico / surprise trade
+meaning_it: "Majikaru Kōkan (scambio con un partner casuale)"
 notes_it: >-
   Funzione online: mandi un Pokémon e ne ricevi uno da un giocatore casuale,
   quindi il risultato non è scelto in anticipo.
@@ -639,12 +639,12 @@ entry_type: term
 entry_id: term-v567-majikarukoukan
 card_type: recognition
 front: "マジカル{{交換|こうかん}}"
-back: scambio magico / surprise trade
+back: "Majikaru Kōkan (scambio con un partner casuale)"
 example_jp: >-
   マジカル{{交換|こうかん}}で {{出|だ}}した ポケモンは、{{知|し}}らない
   トレーナーの ポケモンと {{交換|こうかん}}される。
 example_it: >-
-  Il Pokémon inviato con lo scambio magico viene scambiato con quello di un
+  Il Pokémon inviato con lo Majikaru Kōkan viene scambiato con quello di un
   allenatore sconosciuto.
 :::
 :::term
@@ -693,7 +693,7 @@ example_jp: >-
   {{能力変化|のう.りょく.へん.か}}で ウェーニバルの
   {{素早|すばや}}さが {{上昇|じょうしょう}}した。
 example_it: >-
-  Per una variazione delle statistiche, la Velocità di Quaquaval è aumentata.
+  Per una variazione delle statistiche, la Velocità di Wēnibaru è aumentata.
 :::
 :::term
 id: term-v570-maigo

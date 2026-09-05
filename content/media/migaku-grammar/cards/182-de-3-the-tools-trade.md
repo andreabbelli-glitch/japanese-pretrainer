@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-182-de-3-the-tools-trade
 entry_type: grammar
 entry_id: grammar-182-de-3-the-tools-trade
 card_type: concept
-front: "で"
+front: "で（mezzo o strumento）"
 back: >-
   Nome + で indica lo strumento, il mezzo, il metodo, il materiale o la quantità impiegata per realizzare un'azione.
 example_jp: >-

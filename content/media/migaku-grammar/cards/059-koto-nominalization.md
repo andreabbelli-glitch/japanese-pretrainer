@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-059-koto-nominalization
 entry_type: grammar
 entry_id: grammar-059-koto-nominalization
 card_type: concept
-front: "こと"
+front: "こと（nominalizzazione）"
 back: >-
   こと trasforma ciò che precede in «il fatto / l'atto di…».
 example_jp: >-

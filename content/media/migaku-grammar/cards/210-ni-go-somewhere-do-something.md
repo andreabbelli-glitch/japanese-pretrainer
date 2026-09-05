@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-210-ni-go-somewhere-do-something
 entry_type: grammar
 entry_id: grammar-210-ni-go-somewhere-do-something
 card_type: concept
-front: "に"
+front: "に（base verbale + に{{行|い}}く）"
 back: >-
   Base del verbo + に + verbo di movimento significa «andare/venire a fare».
 example_jp: >-

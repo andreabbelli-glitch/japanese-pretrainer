@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-05
 media_id: media-pokemon-scarlet-violet
 slug: 110-sv-vocabulary-distance-05
-title: 'Parole per leggere Paldea — cinque'
+title: 'Parole per leggere Parudea — cinque'
 order: 155
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -100,11 +100,10 @@ card_type: recognition
 front: 'まいる'
 back: >-
   まいる — andare o venire, in registro umile; essere sopraffatto.
-example_jp: >-
-  じゃあ{{即刻|そっこく}}{{消|き}}えなさいわたしここを{{離|はな}}れないからまいります！
-example_it: >-
-  Allora sparisci subito. Io non lascerò questo posto: mi faccio avanti!
+example_jp: "では、{{校長室|こうちょうしつ}}にまいります。"
+example_it: "Allora mi recherò nell’ufficio del preside."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "Esempio didattico."
 :::
 
 :::term
@@ -128,7 +127,7 @@ back: >-
 example_jp: >-
   ここはパルデア{{十景|じっけい}}の{{一|ひと}}つだ。
 example_it: >-
-  Questo è uno dei dieci panorami di Paldea.
+  Questo è uno dei dieci panorami di Parudea.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -228,7 +227,7 @@ back: >-
 example_jp: >-
   リップちゃんとのコラボ{{配信|はいしん}}よかった！
 example_it: >-
-  La diretta in collaborazione con Tulipa è stata fantastica!
+  La diretta in collaborazione con Rippu è stata fantastica!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

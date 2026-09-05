@@ -62,10 +62,7 @@ romaji: burokkaa
 meaning_it: bloccante
 pos: keyword
 aliases: [ブロッカー, burokkaa]
-notes_it: >-
-  È una keyword difensiva. Ti dice che quella creatura può fermare un attacco
-  avversario. Segnala quindi una funzione di protezione del
-  campo o degli scudi.
+notes_it: "ブロッカー permette di tappare la creatura per far diventare essa il bersaglio di un attacco avversario. Un eventuale divieto di attaccare il giocatore è un’abilità separata, scritta sulla carta."
 level_hint: custom
 :::
 
@@ -110,12 +107,7 @@ romaji: shinkaraizu
 meaning_it: effetto che permette di evolvere sopra un Tamaseed
 pos: keyword
 aliases: [シンカライズ, shinkaraizu]
-notes_it: >-
-  È la keyword che collega i タマシード alle carte di evoluzione. In pratica ti
-  sta dicendo che il Tamaseed non va letto come pezzo isolato: può funzionare
-  da base su cui sovrapporre un'altra carta. Se trovi シンカライズ, la
-  risoluzione include una meccanica di evoluzione appoggiata su un supporto già
-  in campo.
+notes_it: "シンカライズ consente di usare quel Tamaseed come base di evoluzione, trattandolo come una creatura per questo scopo. La creatura evoluzione viene sovrapposta al Tamaseed, rispettando i requisiti dell’evoluzione."
 level_hint: custom
 :::
 
@@ -984,22 +976,11 @@ lesson_id: lesson-duel-masters-dm25-keyword-effects-reference
 entry_type: term
 entry_id: term-blocker
 card_type: concept
-front: >-
-  {{相手|あいて}}プレイヤーを{{攻撃|こうげき}}できない。{{相手|あいて}}の
-  クリーチャーが{{攻撃|こうげき}}する{{時|とき}}、かわりにこの
-  クリーチャーをタップしてもよい。
-back: >-
-  Non può attaccare il giocatore avversario; quando una creatura avversaria
-  attacca, puoi invece tappare questa creatura per bloccare.
-example_jp: >-
-  ブロッカーを{{持|も}}つクリーチャーは、
-  {{相手|あいて}}プレイヤーを{{直接|ちょくせつ}}{{攻撃|こうげき}}できない。
-example_it: >-
-  Una creatura con Blocker non può attaccare direttamente il giocatore
-  avversario.
-notes_it: >-
-  Questa è la lettura operativa della keyword: una restrizione permanente più
-  un rimpiazzo difensivo con `かわりに ... タップしてもよい`.
+front: "ブロッカー（effetto）"
+back: "Puoi tappare questa creatura per deviare su di essa l’attacco di una creatura avversaria."
+example_jp: "ブロッカーを{{持|も}}つクリーチャーをタップして、{{相手|あいて}}の{{攻撃|こうげき}}をブロックした。"
+example_it: "Ho tappato una creatura con Blocker e ho bloccato l’attacco avversario."
+notes_it: "ブロッカー permette di tappare la creatura per far diventare essa il bersaglio di un attacco avversario. Un eventuale divieto di attaccare il giocatore è un’abilità separata, scritta sulla carta."
 tags: [core, keyword, defense]
 :::
 
@@ -1064,20 +1045,11 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: term
 entry_id: term-shinkarize
 card_type: concept
-front: >-
-  {{進化元|しん.か.もと}}にも{{進化先|しん.か.さき}}にもなれるように{{扱|あつか}}って、
-  {{進化|しんか}}のつながりを{{作|つく}}る。
-back: >-
-  La tratta in modo che possa funzionare sia come base sia come estensione di
-  un'evoluzione, creando il collegamento evolutivo.
-example_jp: >-
-  このタマシードを{{進化元|しん.か.もと}}にも{{進化先|しん.か.さき}}にもなれるように
-  {{扱|あつか}}う。
-example_it: >-
-  Tratta questo Tamaseed in modo che possa funzionare sia come base sia come
-  estensione di un'evoluzione.
-notes_it: >-
-  Qui conta il verbo `扱う`: una carta viene trattata come avente una certa qualita'.
+front: "シンカライズ（evoluzione）"
+back: "Puoi far evolvere una creatura sopra questo Tamaseed, trattandolo come una creatura ai fini dell’evoluzione."
+example_jp: "シンカライズを{{持|も}}つタマシードの{{上|うえ}}に、{{進化|しんか}}クリーチャーを{{重|かさ}}ねる。"
+example_it: "Sovrapponi una creatura evoluzione a un Tamaseed con Shinkarize."
+notes_it: "シンカライズ consente di usare quel Tamaseed come base di evoluzione, trattandolo come una creatura per questo scopo. La creatura evoluzione viene sovrapposta al Tamaseed, rispettando i requisiti dell’evoluzione."
 tags: [core, keyword, evolution, dm25-sd2]
 :::
 
@@ -1893,13 +1865,9 @@ entry_id: grammar-kawarini
 card_type: concept
 front: かわりに
 back: invece di; al posto di; in cambio
-example_jp: >-
-  カードを{{1枚|いちまい}} {{引|ひ}}く。かわりに、{{手札|てふだ}}を{{1枚|いちまい}} {{捨|す}}てる。
-example_it: >-
-  Pesca 1 carta; in cambio, scarta 1 carta dalla mano.
-notes_it: >-
-  Va letto come sostituzione, non come aggiunta. Un evento prende il posto di un
-  altro.
+example_jp: "カードを{{引|ひ}}くかわりに、{{山札|やまふだ}}の{{上|うえ}}から{{1枚目|いちまいめ}}を{{墓地|ぼち}}に{{置|お}}く。"
+example_it: "Invece di pescare una carta, metti nel cimitero la prima carta del mazzo."
+notes_it: "V + かわりに presenta un’azione che prende il posto di V: qui la carta va nel cimitero anziché nella mano. In altri contesti かわりに può introdurre un compenso o uno scambio di favori."
 tags: [core, grammar, replacement]
 :::
 

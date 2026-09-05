@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-16
 media_id: media-pokemon-scarlet-violet
 slug: 121-sv-vocabulary-distance-16
-title: 'Parole per leggere Paldea — sedici'
+title: 'Parole per leggere Parudea — sedici'
 order: 166
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — sedici
+# Parole per leggere Parudea — sedici
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -33,7 +33,7 @@ conserva un valore preciso nella frase.
 - [{{届|とど}}ける](term:term-sv-vocabulary-204-todokeru) — consegnare; inoltrare; inviare
 - [{{内|ない}}](term:term-sv-vocabulary-105-nai) — dentro; all'interno
 - [{{言語|げんご}}](term:term-sv-vocabulary-361-gengo) — lingua
-- [{{理事長|りじちょう}}](term:term-sv-vocabulary-352-rijichou) — presidente del consiglio di amministrazione; amministratore delegato; direttore generale
+- [{{理事長|りじちょう}}](term:term-sv-vocabulary-352-rijichou) — presidente del consiglio di amministrazione di un ente
 - [{{一般的|いっぱんてき}}](term:term-sv-vocabulary-154-ippanteki) — generale; comune; tipico
 - [{{大漁|たいりょう}}](term:term-sv-vocabulary-369-tairyou) — grande pescata (pesca); bel bottino
 
@@ -91,7 +91,7 @@ translation_it: >-
 jp: >-
   {{見|み}}ての{{通|とお}}りまだまだ{{先|さき}}は{{長|なが}}いんだひとまず{{途中|とちゅう}}のプラトタウンを{{目指|めざ}}しましょー！
 translation_it: >-
-  Come vedi, la strada è ancora lunga. Per ora puntiamo a Los Platos, lungo il percorso!
+  Come vedi, la strada è ancora lunga. Per ora puntiamo a Purato Taun, lungo il percorso!
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «per ora; per il momento; al momento».
@@ -173,16 +173,15 @@ translation_it: >-
 
 **Uso:** Nel contesto indica «lingua».
 
-### [{{理事長|りじちょう}}](term:term-sv-vocabulary-352-rijichou) — presidente del consiglio di amministrazione; amministratore delegato; direttore generale
+### [{{理事長|りじちょう}}](term:term-sv-vocabulary-352-rijichou) — presidente del consiglio di amministrazione di un ente
 
 :::example_sentence
-jp: >-
-  いやいやこの{{人|ひと}}たしか{{学校|がっこう}}の{{理事長|りじちょう}}でもあるしマジ？
-translation_it: >-
-  No, no, questa persona è anche il presidente del consiglio scolastico, sul serio?
+jp: "あの{{人|ひと}}は{{学校|がっこう}}の{{理事長|りじちょう}}です。"
+translation_it: "Quella persona è il presidente del consiglio di amministrazione della scuola."
 :::
 
-**Uso:** Nel contesto indica «presidente del consiglio di amministrazione; amministratore delegato; direttore generale».
+*Esempio didattico.*
+**Uso:** Nel contesto indica «presidente del consiglio di amministrazione di un ente».
 
 ### [{{一般的|いっぱんてき}}](term:term-sv-vocabulary-154-ippanteki) — generale; comune; tipico
 

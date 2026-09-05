@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-13
 media_id: media-pokemon-scarlet-violet
 slug: 118-sv-vocabulary-distance-13
-title: 'Parole per leggere Paldea — tredici'
+title: 'Parole per leggere Parudea — tredici'
 order: 163
 segment_ref: scarlet-violet-vocabulary
 ---

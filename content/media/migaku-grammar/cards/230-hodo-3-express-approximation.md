@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-230-hodo-3-express-approximation
 entry_type: grammar
 entry_id: grammar-230-hodo-3-express-approximation
 card_type: concept
-front: "ほど"
+front: "ほど（quantità approssimativa）"
 back: >-
   Quantità con contatore + ほど indica una stima approssimativa.
 example_jp: >-

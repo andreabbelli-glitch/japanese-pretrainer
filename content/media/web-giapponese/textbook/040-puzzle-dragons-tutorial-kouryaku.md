@@ -32,7 +32,7 @@ in una proposta: proviamo ad affrontare e completare anche questo dungeon.
 
 ## Espressioni ricorrenti
 
-- `HPが{{回復|かいふく}}したよ` — gli HP si sono recuperati, ora la situazione è stabile
+- `HPが{{回復|かいふく}}したよ` — gli HP sono stati ripristinati, ora la situazione è stabile
 - `それじゃ` — allora / bene, passiamo al passo successivo
 - `このダンジョンも` — anche questo dungeon come nuovo bersaglio
 
@@ -62,7 +62,7 @@ caption: >-
 Il popup parte da `やった！HPが{{回復|かいふく}}したよ！`: una piccola esclamazione
 di successo, poi una conferma di stato. `HP` è il tema pratico della schermata,
 ma la particella `が` lo presenta come ciò che è cambiato: non "hai usato una
-cura", bensì "gli HP si sono recuperati".
+cura", bensì "gli HP sono stati ripristinati".
 
 `{{回復|かいふく}}した` è il passato di `{{回復|かいふく}}する`, quindi descrive un
 risultato già ottenuto. Il finale `よ` aggiunge il tono da tutorial che ti
@@ -73,10 +73,8 @@ passaggio operativo da "situazione sistemata" a "prossima cosa da fare".
 :::example_sentence
 jp: >-
   やった！HPが{{回復|かいふく}}したよ！
-translation_it: >-
-  Evviva! Gli HP si sono recuperati!
+translation_it: "Evviva! Gli HP sono stati ripristinati!"
 :::
-
 #### 🗺️ Anatomia della frase
 
 *   `やった！` ➔ **Reazione di successo** (il tutorial marca il recupero come un
@@ -228,7 +226,7 @@ Le stesse forme diventano leggibili quando segui stato, bersaglio e proposta:
 jp: >-
   HPが{{回復|かいふく}}したから、このダンジョンも{{攻略|こうりゃく}}してみよう。
 translation_it: >-
-  Visto che gli HP si sono recuperati, proviamo ad affrontare anche questo dungeon.
+  Visto che gli HP sono stati ripristinati, proviamo ad affrontare anche questo dungeon.
 :::
 
 :::example_sentence

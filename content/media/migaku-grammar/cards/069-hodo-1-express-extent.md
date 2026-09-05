@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-069-hodo-1-express-extent
 entry_type: grammar
 entry_id: grammar-069-hodo-1-express-extent
 card_type: concept
-front: "ほど"
+front: "ほど（grado）"
 back: >-
   Indica grado o estensione: «quanto», «al punto da» oppure «circa»
 example_jp: >-

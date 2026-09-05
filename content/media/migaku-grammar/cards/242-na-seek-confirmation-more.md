@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-242-na-seek-confirmation-more
 entry_type: grammar
 entry_id: grammar-242-na-seek-confirmation-more
 card_type: concept
-front: "な"
+front: "な（commento a fine frase）"
 back: >-
   Frase + な vale spesso «eh / vero / però…» come commento riflessivo.
 example_jp: >-

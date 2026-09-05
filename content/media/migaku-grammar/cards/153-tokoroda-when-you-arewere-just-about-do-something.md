@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-153-tokoroda-when-you-arewere-just-about-do-som
 entry_type: grammar
 entry_id: grammar-153-tokoroda-when-you-arewere-just-about-do-something
 card_type: concept
-front: "ところだ"
+front: "ところだ（fase dell’azione）"
 back: >-
   La forma del verbo davanti a ところだ localizza l'azione: Vる prima, Vている durante, Vた subito dopo.
 example_jp: >-

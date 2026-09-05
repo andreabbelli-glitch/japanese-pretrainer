@@ -16,7 +16,7 @@ meaning_it: buon viaggio; torna sano e salvo
 pos: greeting
 notes_it: >-
   {{行|い}}ってらっしゃい si dice a qualcuno che sta uscendo e tornera'. Il senso
-  letterale e' vicino a "vai e torna", ma in italiano spesso rende "buona
+  letterale è vicino a "vai e torna", ma in italiano spesso rende "buona
   giornata / torna sano e salvo".
 level_hint: custom
 :::
@@ -42,7 +42,7 @@ romaji: yoshi
 meaning_it: bene; ok; ci siamo
 pos: interjection
 notes_it: >-
-  よし segnala decisione o prontezza: il parlante ha deciso che si puo'
+  よし segnala decisione o prontezza: il parlante ha deciso che si può
   procedere, attaccare o passare all'azione.
 level_hint: n5
 :::
@@ -55,8 +55,8 @@ romaji: joou
 meaning_it: regina
 pos: noun
 notes_it: >-
-  {{女王|じょおう}} e' la regina. Nel Book 8 porta con se' registro pubblico,
-  corte, sudditi e formule piu' solenni.
+  {{女王|じょおう}} è la regina. Nel Book 8 porta con se' registro pubblico,
+  corte, sudditi e formule più solenni.
 level_hint: n3
 :::
 
@@ -68,7 +68,7 @@ romaji: haiken
 meaning_it: vedere; guardare con umilta'
 pos: suru-noun
 notes_it: >-
-  {{拝見|はいけん}}する e' la forma umile di "vedere / guardare". Il parlante
+  {{拝見|はいけん}}する è la forma umile di "vedere / guardare". Il parlante
   abbassa se stesso davanti a qualcuno di status alto.
 level_hint: n2
 :::
@@ -94,8 +94,8 @@ romaji: warera
 meaning_it: noi
 pos: pronoun
 notes_it: >-
-  {{我|われ}}ら e' un "noi" solenne o arcaico. Non e' il normale {{私|わたし}}たち:
-  suona piu' cerimoniale.
+  {{我|われ}}ら è un "noi" solenne o arcaico. Non è il normale {{私|わたし}}たち:
+  suona più cerimoniale.
 level_hint: n2
 :::
 
@@ -107,7 +107,7 @@ romaji: minamina-sama
 meaning_it: tutti voi; signore e signori
 pos: expression
 notes_it: >-
-  {{皆々様|みなみなさま}} e' una forma cerimoniale e rispettosa per rivolgersi a
+  {{皆々様|みなみなさま}} è una forma cerimoniale e rispettosa per rivolgersi a
   tutti i presenti. La ripetizione di {{皆|みな}} alza il registro.
 level_hint: custom
 :::
@@ -121,7 +121,7 @@ meaning_it: torre dell'orologio
 pos: noun
 notes_it: >-
   {{時計台|とけいだい}} combina {{時計|とけい}} "orologio" e {{台|だい}} "base /
-  struttura". Nel Book 8 e' l'oggetto pubblico al centro della scena.
+  struttura". Nel Book 8 è l'oggetto pubblico al centro della scena.
 level_hint: n2
 :::
 
@@ -133,7 +133,7 @@ romaji: banzai
 meaning_it: evviva; lunga vita
 pos: interjection
 notes_it: >-
-  {{万歳|ばんざい}} e' un grido celebrativo. Con {{女王|じょおう}}, puo' rendere
+  {{万歳|ばんざい}} è un grido celebrativo. Con {{女王|じょおう}}, può rendere
   "lunga vita alla regina".
 level_hint: n2
 :::
@@ -147,7 +147,7 @@ meaning_it: ogni cosa; tutto pronto
 pos: noun
 notes_it: >-
   {{万端|ばんたん}} indica tutti gli aspetti di una preparazione. In
-  {{準備|じゅんび}}{{万端|ばんたん}}, il senso e' "preparativi perfetti".
+  {{準備|じゅんび}}{{万端|ばんたん}}, il senso è "preparativi perfetti".
 level_hint: n1
 :::
 
@@ -159,8 +159,8 @@ romaji: uketoru
 meaning_it: ricevere; prendere in consegna
 pos: verb
 notes_it: >-
-  {{受|う}}け{{取|と}}る e' ricevere qualcosa prendendolo in carico. In una
-  cerimonia, puo' essere accettare un dono ufficiale.
+  {{受|う}}け{{取|と}}る è ricevere qualcosa prendendolo in carico. In una
+  cerimonia, può essere accettare un dono ufficiale.
 level_hint: n4
 :::
 
@@ -172,7 +172,7 @@ romaji: kenjou
 meaning_it: offerta a un superiore; presentazione formale
 pos: suru-noun
 notes_it: >-
-  {{献上|けんじょう}} e' offrire qualcosa a qualcuno di rango alto. Si adatta a
+  {{献上|けんじょう}} è offrire qualcosa a qualcuno di rango alto. Si adatta a
   regine, sovrani e doni ufficiali.
 level_hint: n1
 :::
@@ -185,7 +185,7 @@ romaji: sashiageru
 meaning_it: dare; offrire con umilta'
 pos: verb
 notes_it: >-
-  {{差|さ}}し{{上|あ}}げる e' la forma umile di あげる. Il parlante presenta il
+  {{差|さ}}し{{上|あ}}げる è la forma umile di あげる. Il parlante presenta il
   dono abbassando se stesso rispetto al destinatario.
 level_hint: n3
 :::
@@ -195,7 +195,7 @@ id: term-ch-b8-ittai
 lemma: 一体
 reading: いったい
 romaji: ittai
-meaning_it: mai; in assoluto
+meaning_it: "mai; diavolo (enfasi nelle domande)"
 pos: adverb
 notes_it: >-
   {{一体|いったい}} rafforza una domanda: {{一体|いったい}}{{何者|なにもの}}だ significa
@@ -229,9 +229,9 @@ level_hint: n5
 id: grammar-ch-b8-dewa-arimasen
 pattern: Nではありません
 title: Non essere, in forma cortese
-meaning_it: non e' N; non era N
+meaning_it: "non è N (cortese)"
 notes_it: >-
-  ではありません e' la versione cortese di じゃない. Al passato diventa
+  ではありません è la versione cortese di じゃない. Al passato diventa
   ではありませんでした.
 level_hint: n5
 :::
@@ -247,7 +247,7 @@ back: 'いってらっしゃい — buon viaggio; torna sano e salvo'
 example_jp: '{{街|まち}}へ{{行|い}}くの？{{行|い}}ってらっしゃい。'
 example_it: Vai in città? Buon viaggio.
 notes_it: >-
-  Si usa quando l'altra persona esce e tornera'. Non e' un addio definitivo.
+  Si usa quando l'altra persona esce e tornera'. Non è un addio definitivo.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -308,7 +308,7 @@ back: 'はいけん — vedere; guardare con umiltà'
 example_jp: '{{女王|じょおう}}のお{{姿|すがた}}を{{拝見|はいけん}}します。'
 example_it: Avrò l'onore di vedere Sua Maestà.
 notes_it: >-
-  Il verbo e' umile: il parlante mostra rispetto abbassando se stesso.
+  Il verbo è umile: il parlante mostra rispetto abbassando se stesso.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -323,7 +323,7 @@ back: 'たみ — popolo; sudditi'
 example_jp: '{{民|たみ}}が{{女王|じょおう}}を{{待|ま}}つ。'
 example_it: Il popolo aspetta la regina.
 notes_it: >-
-  Non e' "persona" generica: guarda una comunita' rispetto a chi governa.
+  Non è "persona" generica: guarda una comunita' rispetto a chi governa.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -338,7 +338,7 @@ back: 'われら — noi'
 example_jp: '{{我|われ}}らの{{町|まち}}だ。'
 example_it: È la nostra città.
 notes_it: >-
-  Suona piu' solenne o arcaico di {{私|わたし}}たち.
+  Suona più solenne o arcaico di {{私|わたし}}たち.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -353,7 +353,7 @@ back: 'みなみなさま — tutti voi; signore e signori'
 example_jp: '{{皆々様|みなみなさま}}、{{女王|じょおう}}{{万歳|ばんざい}}。'
 example_it: Signore e signori, lunga vita alla regina.
 notes_it: >-
-  E' un modo cerimoniale di rivolgersi a tutti i presenti.
+  È un modo cerimoniale di rivolgersi a tutti i presenti.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -368,7 +368,7 @@ back: 'とけいだい — torre dell''orologio'
 example_jp: '{{新|あら}}たな{{時計台|とけいだい}}を{{見|み}}る。'
 example_it: Guardo la nuova torre dell'orologio.
 notes_it: >-
-  {{時計台|とけいだい}} e' un oggetto pubblico, non un piccolo orologio personale.
+  {{時計台|とけいだい}} è un oggetto pubblico, non un piccolo orologio personale.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -383,7 +383,7 @@ back: 'ばんざい — evviva; lunga vita'
 example_jp: '{{女王|じょおう}}{{万歳|ばんざい}}！'
 example_it: Lunga vita alla regina!
 notes_it: >-
-  E' un grido celebrativo. Il tono dipende da chi lo urla e da quanto e'
+  È un grido celebrativo. Il tono dipende da chi lo urla e da quanto è
   pubblico il momento.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
@@ -399,7 +399,7 @@ back: 'ばんたん — tutto pronto; ogni dettaglio'
 example_jp: '{{準備|じゅんび}}{{万端|ばんたん}}だ。'
 example_it: I preparativi sono perfetti.
 notes_it: >-
-  {{準備|じゅんび}}{{万端|ばんたん}} e' una formula da ricordare intera.
+  {{準備|じゅんび}}{{万端|ばんたん}} è una formula da ricordare intera.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -430,7 +430,7 @@ back: 'けんじょう — offerta a un superiore'
 example_jp: '{{女王|じょおう}}に{{時計|とけい}}を{{献上|けんじょう}}する。'
 example_it: Offro l'orologio alla regina.
 notes_it: >-
-  E' una parola formale: l'oggetto viene presentato verso l'alto, a qualcuno di
+  È una parola formale: l'oggetto viene presentato verso l'alto, a qualcuno di
   rango superiore.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
@@ -446,7 +446,7 @@ back: 'さしあげる — dare; offrire con umiltà'
 example_jp: '{{女王|じょおう}}に{{本|ほん}}を{{差|さ}}し{{上|あ}}げる。'
 example_it: Offro un libro alla regina.
 notes_it: >-
-  E' la versione umile di あげる: il destinatario sta piu' in alto nel rapporto.
+  È la versione umile di あげる: il destinatario sta più in alto nel rapporto.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -457,11 +457,11 @@ entry_type: term
 entry_id: term-ch-b8-ittai
 card_type: recognition
 front: '{{一体|いったい}}'
-back: 'いったい — mai; in assoluto'
+back: "いったい — mai; diavolo (enfasi nelle domande)"
 example_jp: '{{一体|いったい}}{{何者|なにもの}}だ？'
 example_it: Chi diavolo sei?
 notes_it: >-
-  Rafforza la domanda. `一体` rafforza l'interrogativa e rende la domanda piu' pressante.
+  Rafforza la domanda. `一体` rafforza l'interrogativa e rende la domanda più pressante.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
 
@@ -476,7 +476,7 @@ back: presente/futuro e passato cortese dei verbi
 example_jp: '{{時計|とけい}}を{{買|か}}いますか？'
 example_it: Comprerai l'orologio?
 notes_it: >-
-  La forma cortese rende il dialogo piu' controllato: utile quando la corte e
+  La forma cortese rende il dialogo più controllato: utile quando la corte e
   la regina entrano in scena.
 tags: [crystal-hunters, book-8, lesson-01]
 :::
@@ -504,9 +504,9 @@ entry_id: grammar-ch-b8-dewa-arimasen
 card_type: concept
 front: 'Nではありません'
 back: 'non è N, in forma cortese'
-example_jp: 'これはたくさんのお{{金|かね}}ではありません。'
-example_it: Questo non è molto denaro.
+example_jp: "これは{{私|わたし}}のお{{金|かね}}ではありません。"
+example_it: "Questi soldi non sono miei."
 notes_it: >-
-  ではありません e' la forma non contratta e cortese di じゃない.
+  ではありません è la forma non contratta e cortese di じゃない.
 tags: [crystal-hunters, book-8, lesson-01]
 :::

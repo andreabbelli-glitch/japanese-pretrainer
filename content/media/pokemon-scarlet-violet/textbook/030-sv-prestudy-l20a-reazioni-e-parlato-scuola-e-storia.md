@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia
 media_id: media-pokemon-scarlet-violet
 slug: 030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia
-title: "Reazioni e parlato di scuola: stati, dubbi e storia di Paldea"
+title: "Reazioni e parlato di scuola: stati, dubbi e storia di Parudea"
 order: 60
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,7 +18,7 @@ summary: >-
   Seguire dialoghi scolastici e reazioni: riconoscere ruoli, dubbi, risultati e
   segnali di tempo per capire che cosa viene spiegato o richiesto.
 ---
-# Reazioni e parlato di scuola: stati, dubbi e storia di Paldea
+# Reazioni e parlato di scuola: stati, dubbi e storia di Parudea
 
 Nei passaggi scolastici di *Pokémon Scarlet & Violet*, il giapponese alterna messaggi di sistema, battute brevi e parole più narrative. Una schermata può dirti che un effetto è stato rimosso; subito dopo un personaggio può chiedersi il motivo di un comportamento, ricordare un dettaglio o parlare di un tesoro personale.
 
@@ -61,7 +61,7 @@ Stato, chiusura, dubbio, contatto e memoria non sono liste separate: lavorano in
 
 ## Etichette da riconoscere
 
-- [{{秘伝|ひでん}}](term:term-v279-hiden) — segreto / Herba Mystica (come nome breve)
+- [{{秘伝|ひでん}}](term:term-v279-hiden) — segreto / Hiden Supaisu (come nome breve)
 - [ひこう](term:term-v265-hikou) — tipo Volante, utile come contrasto con la
   planata di esplorazione
 
@@ -85,7 +85,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `やけどが` ➔ **soggetto dello stato**: la condizione di scottatura è ciò che cambia.
-*   `{{解除|かいじょ}}されました` ➔ **passivo cortese di risultato**: `解除されました` mette il focus sul nuovo stato: l'effetto e' rimosso.
+*   `{{解除|かいじょ}}されました` ➔ **passivo cortese di risultato**: `解除されました` mette il focus sul nuovo stato: l'effetto è rimosso.
 
 #### ⚖️ Contrasto operativo
 
@@ -134,7 +134,7 @@ Le lezioni dell'Accademia e i dialoghi sul Treasure Hunt usano parole che sembra
 
 *   [{{大切|たいせつ}}](term:term-v281-taisetsu) significa **importante / prezioso**. Non è solo "grande": {{大|たい}} dà l'idea di rilievo e {{切|せつ}} partecipa al composto che indica ciò che va trattato con cura. Se un personaggio dice {{大切|たいせつ}}な..., sta marcando qualcosa come emotivamente o praticamente rilevante.
 *   [{{宝|たから}}](term:term-v282-takara) è il **tesoro** come valore prezioso, oggetto desiderato o immagine forte di qualcosa che merita ricerca. [{{宝物|たからもの}}](term:term-v286-takaramono) aggiunge {{物|もの}} (*cosa*) e rende il tesoro più personale: non solo "ricchezza", ma "cosa preziosa per qualcuno".
-*   [{{秘伝|ひでん}}](term:term-v279-hiden) significa "segreto / tramandato". In Scarlet/Violet può comparire come forma breve legata all'Herba Mystica: non leggerlo come un segreto qualunque da gossip, ma come qualcosa di raro, speciale e custodito dentro la storia di Paldea.
+*   [{{秘伝|ひでん}}](term:term-v279-hiden) significa "segreto / tramandato". In Scarlet/Violet può comparire come forma breve legata all'Hiden Supaisu: non leggerlo come un segreto qualunque da gossip, ma come qualcosa di raro, speciale e custodito dentro la storia di Parudea.
 
 #### ⚖️ Contrasto operativo
 
@@ -183,25 +183,34 @@ Nei dialoghi brevi, il gioco spesso non spiega tutto da capo. Usa parole sociali
 *   [またね](term:term-e055-matane) chiude in modo leggero: また (*di nuovo*) + ね di tono condiviso, quindi "ci si vede / a dopo". È un saluto che lascia aperta la possibilità di rivedersi, non un addio definitivo.
 
 :::example_sentence
-jp: >-
-  それって、また {{連絡|れんらく}}するってことは？
-translation_it: >-
-  Quindi, questo vuol dire che ci contatterai di nuovo?
+jp: "それって、また{{連絡|れんらく}}するってこと？"
+translation_it: "Questo vuol dire che mi contatterai di nuovo?"
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `それって` ➔ **ripresa colloquiale**: aggancia ciò che l'altro ha appena detto.
-*   `また {{連絡|れんらく}}する` ➔ **azione futura o ripetuta**: mettersi di nuovo in contatto.
-*   `ってことは` ➔ **deduzione**: il parlante prova a trasformare l'informazione in una conclusione.
+- `それって` riprende in modo colloquiale ciò che l'altro ha appena detto.
+- `また{{連絡|れんらく}}する` significa mettersi di nuovo in contatto.
+- `ってこと？` chiede conferma dell'interpretazione: «vuol dire che…?».
+
+[ってことは](term:term-e056-ttekotoha) introduce invece una conclusione ricavata
+da ciò che si sa già:
+
+:::example_sentence
+jp: "ってことは、{{明日|あした}}も{{学校|がっこう}}に{{来|く}}るんだね。"
+translation_it: "Quindi vieni a scuola anche domani, giusto?"
+:::
 
 #### ⚖️ Contrasto operativo
 
-[{{苦手|にがて}}](term:term-v291-nigate) non è sempre rifiuto emotivo. {{勉強|べんきょう}}が{{苦手|にがて}} dice "non sono bravo nello studio" o "lo studio mi mette in difficoltà"; per "non mi piace" il giapponese può usare anche {{好|す}}きじゃない, che è più diretto sul gusto personale.
+[{{苦手|にがて}}](term:term-v291-nigate) non è sempre rifiuto emotivo.
+{{勉強|べんきょう}}が{{苦手|にがて}} dice «non sono bravo nello studio» o
+«lo studio mi mette in difficoltà»; {{好|す}}きじゃない esprime direttamente
+«non mi piace».
 
 #### 🧠 Gancio cognitivo
 
-Con [それって](term:term-e054-sorette) e [ってことは](term:term-e056-ttekotoha), pensa a due movimenti diversi: il primo punta indietro a ciò che è stato detto, il secondo punta avanti alla conclusione che il personaggio sta tirando.
+[それって](term:term-e054-sorette) riprende l'informazione precedente;
+[ってことは](term:term-e056-ttekotoha) apre la conclusione che ne ricavi.
 
 ## 5. Dubbi e memoria: mentre, chissà, com'era già
 
@@ -249,12 +258,12 @@ translation_it: >-
 jp: >-
   {{秘伝|ひでん}}って、{{大切|たいせつ}}な {{宝物|たからもの}}だったっけ？
 translation_it: >-
-  L'Herba Mystica era un tesoro prezioso, giusto?
+  L'Hiden Supaisu era un tesoro prezioso, giusto?
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `{{秘伝|ひでん}}って` ➔ **tema colloquiale**: "quanto a Hiden / Herba Mystica".
+*   `{{秘伝|ひでん}}って` ➔ **tema colloquiale**: "quanto a Hiden / Hiden Supaisu".
 *   `{{大切|たいせつ}}な {{宝物|たからもの}}` ➔ **nome qualificato**: un tesoro trattato come prezioso.
 *   `だったっけ` ➔ **ricordo incerto al passato**: il parlante controlla un'informazione che pensa di aver già sentito.
 

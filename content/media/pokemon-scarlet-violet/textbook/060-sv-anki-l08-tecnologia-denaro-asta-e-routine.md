@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-denaro-asta-e-routine
 media_id: media-pokemon-scarlet-violet
 slug: 060-sv-anki-l08-tecnologia-denaro-asta-e-routine
-title: Tecnologia, denaro e routine nelle scene di Paldea
+title: Tecnologia, denaro e routine nelle scene di Parudea
 order: 90
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -10,13 +10,13 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-08]
 prerequisites: []
 summary: >-
-  Capire tecnologia, denaro, aste e routine nei dialoghi di Paldea: chi agisce,
+  Capire tecnologia, denaro, aste e routine nei dialoghi di Parudea: chi agisce,
   quale risorsa serve e quale tono guida la scena.
 ---
 
-# Tecnologia, denaro e routine nelle scene di Paldea
+# Tecnologia, denaro e routine nelle scene di Parudea
 
-Paldea alterna molto in fretta registri diversi: una schermata di negozio parla di [お{{金|かね}}](term:term-anki-l08-okane), il mercato di Marinada sposta l'attenzione sulla [{{競|せ}}り](term:term-anki-l08-seri), l'Accademia nomina [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), mentre l'Area Zero fa entrare in scena [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai). Non sono argomenti separati: sono segnali che ti dicono quale sistema sta parlando, quale risorsa conta e quale azione puoi aspettarti.
+Parudea alterna molto in fretta registri diversi: una schermata di negozio parla di [お{{金|かね}}](term:term-anki-l08-okane), il mercato di Marinada sposta l'attenzione sulla [{{競|せ}}り](term:term-anki-l08-seri), l'Accademia nomina [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu), mentre l'Eria Zero fa entrare in scena [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai). Non sono argomenti separati: sono segnali che ti dicono quale sistema sta parlando, quale risorsa conta e quale azione puoi aspettarti.
 
 Nei dialoghi più quotidiani, lo stesso principio vale per tempo, tono e routine. [この{{前|まえ}}](term:term-anki-l08-konomae) colloca un ricordo vicino, [{{押|おっ}}{{忍|す}}](term:term-anki-l08-ossu) fa sentire una voce energica, [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) chiariscono se qualcuno si gode, riposa o modifica qualcosa. La lettura diventa più stabile quando guardi prima particelle e funzione nella scena.
 
@@ -57,7 +57,7 @@ Nei dialoghi più quotidiani, lo stesso principio vale per tempo, tono e routine
 
 ## 1. Tecnologia e controllo: quando l'IA diventa soggetto
 
-Nelle scene dell'Area Zero, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non funziona come semplice parola fantascientifica. È una sigla inglese scritta nel testo giapponese con lettura エーアイ, e proprio questa forma fredda la distingue da un personaggio umano: quando la frase parte da {{Ａ|エー}}{{Ｉ|アイ}}が, il testo sta assegnando a un sistema artificiale il ruolo di soggetto.
+Nelle scene dell'Eria Zero, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) non funziona come semplice parola fantascientifica. È una sigla inglese scritta nel testo giapponese con lettura エーアイ, e proprio questa forma fredda la distingue da un personaggio umano: quando la frase parte da {{Ａ|エー}}{{Ｉ|アイ}}が, il testo sta assegnando a un sistema artificiale il ruolo di soggetto.
 
 *   [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) compare bene dove il gioco vuole far sentire una presenza tecnica che parla, analizza o gestisce. Se il soggetto fosse una persona, ti aspetteresti un nome proprio, un titolo o una descrizione umana; con {{Ａ|エー}}{{Ｉ|アイ}}, invece, la battuta mette davanti un'entità costruita, capace di compiere azioni operative.
 *   Con `AI` marcato da `が`, guarda che cosa fa il sistema nella frase. Con が, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) può controllare, spiegare, bloccare o guidare una procedura. In una scena tesa, questo cambia il peso della battuta: stai leggendo il comportamento di un sistema, non un semplice commento di sfondo.
@@ -66,7 +66,7 @@ Nelle scene dell'Area Zero, [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-ee
 jp: >-
   {{Ａ|エー}}{{Ｉ|アイ}}が エリアゼロを {{管理|かんり}}している。
 translation_it: >-
-  L'IA gestisce l'Area Zero.
+  L'IA gestisce l'Eria Zero.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -83,7 +83,7 @@ translation_it: >-
 
 ## 2. Denaro, asta e arte: risorse e luoghi sociali
 
-I menu e le città di Paldea fanno passare il giapponese dal prezzo fisso alla competizione, poi dalla compravendita alla cultura dell'Accademia. [お{{金|かね}}](term:term-anki-l08-okane), [{{競|せ}}り](term:term-anki-l08-seri) e [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) appartengono allo stesso blocco di lettura perché ti obbligano a chiederti che tipo di situazione hai davanti.
+I menu e le città di Parudea fanno passare il giapponese dal prezzo fisso alla competizione, poi dalla compravendita alla cultura dell'Accademia. [お{{金|かね}}](term:term-anki-l08-okane), [{{競|せ}}り](term:term-anki-l08-seri) e [{{芸|げい}}{{術|じゅつ}}](term:term-anki-l08-geijutsu) appartengono allo stesso blocco di lettura perché ti obbligano a chiederti che tipo di situazione hai davanti.
 
 *   [お{{金|かね}}](term:term-anki-l08-okane) indica i soldi ordinari del giocatore. Il prefisso お fa parte dell'uso naturale: `お金で払う` usa il denaro come mezzo, marcato da `で`.
 *   [{{競|せ}}り](term:term-anki-l08-seri) sposta l'attenzione dal semplice pagare al competere. Il kanji {{競|せ}} porta l'idea di gara: `競り` trasforma il prezzo in risultato di rilanci e competizione. Se leggi [{{競|せ}}り](term:term-anki-l08-seri), preparati a una dinamica in cui vincere l'oggetto significa superare altri offerenti.
@@ -93,7 +93,7 @@ I menu e le città di Paldea fanno passare il giapponese dal prezzo fisso alla c
 jp: >-
   お{{金|かね}}で モンスターボールを {{買|か}}う。
 translation_it: >-
-  Compro delle Poké Ball con i soldi.
+  Compro delle Monsutā Bōru con i soldi.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -137,7 +137,7 @@ Le battute tra allenatori e compagni usano piccoli segnali per farti sentire dis
 jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 translation_it: >-
-  L'altro giorno ho fatto una lotta Pokémon con Nemi.
+  L'altro giorno ho fatto una lotta Pokémon con Nemo.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -169,7 +169,7 @@ translation_it: >-
 Il gioco passa spesso da grandi obiettivi a gesti piccoli: controllare quanto hai fatto, riposare nella stanza, cambiare una cover o un'impostazione. [{{今|いま}}まで](term:term-anki-l08-imamade), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) ti aiutano a leggere proprio queste scene di routine.
 
 *   [{{今|いま}}まで](term:term-anki-l08-imamade) unisce {{今|いま}}, il momento presente, e まで, il limite fino a cui arriva una linea. Nei dialoghi di bilancio, il personaggio non parla di un evento isolato: tira una linea dal passato fino ad adesso. Per questo funziona bene con Pokémon catturati, progressi accumulati, esperienze fatte o risultati raggiunti.
-*   [{{寝|ね}}る](term:term-anki-l08-neru) è intransitivo: il soggetto dorme o si corica, ma non "dorme qualcosa". Il luogo prende で, come in ベッドで{{寝|ね}}る, perché indica dove avviene l'azione. In Paldea può descrivere il riposo del protagonista o il sonno come condizione, ma la grammatica resta semplice: guarda chi dorme e dove.
+*   [{{寝|ね}}る](term:term-anki-l08-neru) è intransitivo: il soggetto dorme o si corica, ma non "dorme qualcosa". Il luogo prende で, come in ベッドで{{寝|ね}}る, perché indica dove avviene l'azione. In Parudea può descrivere il riposo del protagonista o il sonno come condizione, ma la grammatica resta semplice: guarda chi dorme e dove.
 *   [{{変|か}}える](term:term-anki-l08-kaeru) è transitivo e richiede un oggetto con を: qualcuno cambia deliberatamente una cover, una scelta, un ordine o un'impostazione. È diverso da {{変|か}}わる, dove qualcosa cambia da sé o il cambiamento viene osservato senza indicare chi lo provoca.
 
 :::example_sentence
@@ -201,7 +201,7 @@ translation_it: >-
 jp: >-
   スマホロトムの カバーを {{変|か}}える。
 translation_it: >-
-  Cambio la cover dello Smart Rotom.
+  Cambio la cover dello Sumaho Rotomu.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -230,7 +230,7 @@ translation_it: >-
 jp: >-
   ハッサク{{先生|せんせい}}の {{芸|げい}}{{術|じゅつ}}の {{授業|じゅぎょう}}を {{受|う}}ける。
 translation_it: >-
-  Seguo il corso di arte del professor Hassel.
+  Seguo il corso di arte del professor Hassaku.
 :::
 
 :::example_sentence
@@ -251,4 +251,4 @@ translation_it: >-
 
 ## Nota finale
 
-Questo gruppo di parole copre tecnologia, mercato, scuola e vita quotidiana, ma il metodo di lettura resta lo stesso. [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) e [お{{金|かね}}](term:term-anki-l08-okane) mostrano agenti e risorse, [この{{前|まえ}}](term:term-anki-l08-konomae) e [{{今|いま}}まで](term:term-anki-l08-imamade) fissano il tempo della battuta, [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) indicano che tipo di azione sta avvenendo. Se segui particelle e ruolo nella scena, Paldea diventa meno una lista di parole e più una sequenza leggibile di scelte, voci e azioni.
+Questo gruppo di parole copre tecnologia, mercato, scuola e vita quotidiana, ma il metodo di lettura resta lo stesso. [{{Ａ|エー}}{{Ｉ|アイ}}](term:term-anki-l08-eeai) e [お{{金|かね}}](term:term-anki-l08-okane) mostrano agenti e risorse, [この{{前|まえ}}](term:term-anki-l08-konomae) e [{{今|いま}}まで](term:term-anki-l08-imamade) fissano il tempo della battuta, [{{楽|たの}}しむ](term:term-anki-l08-tanoshimu), [{{寝|ね}}る](term:term-anki-l08-neru) e [{{変|か}}える](term:term-anki-l08-kaeru) indicano che tipo di azione sta avvenendo. Se segui particelle e ruolo nella scena, Parudea diventa meno una lista di parole e più una sequenza leggibile di scelte, voci e azioni.

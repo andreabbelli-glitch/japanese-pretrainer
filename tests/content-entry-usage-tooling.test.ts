@@ -192,12 +192,12 @@ describe("content entry usage tooling", () => {
       expect.arrayContaining([
         expect.objectContaining({
           field: "card.front",
-          line: 140,
+          line: 127,
           source_path: "body.blocks[7].front.nodes[1]"
         }),
         expect.objectContaining({
           field: "card.example_jp",
-          line: 143,
+          line: 130,
           source_path: "body.blocks[7].example_jp.nodes[1]"
         })
       ])

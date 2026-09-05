@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-143-tekuru-1-do-action-come
 entry_type: grammar
 entry_id: grammar-143-tekuru-1-do-action-come
 card_type: concept
-front: "てくる"
+front: "てくる（movimento nello spazio）"
 back: >-
   Vて + くる descrive un movimento verso il parlante oppure un'azione compiuta fuori seguita dal ritorno.
 example_jp: >-

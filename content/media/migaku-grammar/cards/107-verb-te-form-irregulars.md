@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-107-verb-te-form-irregulars
 entry_type: grammar
 entry_id: grammar-107-verb-te-form-irregulars
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（forma in て）"
 back: >-
   て-forme fondamentali: して, 来て, 行って e あって
 example_jp: >-

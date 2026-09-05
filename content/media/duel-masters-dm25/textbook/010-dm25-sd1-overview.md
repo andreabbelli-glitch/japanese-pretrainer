@@ -82,8 +82,8 @@ nel parsing, anche una carta lunga diventa una procedura leggibile.
 
 ## Etichette da riconoscere
 
-- [アビスラッシュ](term:term-abyss-rush) — keyword Abyss basata su uscita dal
-  campo e sostituzione
+- [アビスラッシュ](term:term-abyss-rush) — evocazione dal cimitero con attacco ai giocatori
+  nello stesso turno e ritorno in fondo al mazzo a fine turno
 - [シビルカウント](term:term-civil-count) — keyword di soglia: controlla un
   conteggio prima di permettere un'azione
 - [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei) — creatura-ancora
@@ -122,56 +122,35 @@ alt: Carta 2 del mazzo DM25-SD1, creatura centrale del pacchetto Abyss.
 card_id: card-abyssbell-jashintei-recognition
 caption: >-
   DM25-SD1 2/13: [アビスベル=ジャシン{{帝|てい}}](term:term-abyssbell-jashintei)。
-  [アビスラッシュ](term:term-abyss-rush) + かわりに trasformano l'uscita dal
-  campo in una scelta di sostituzione pagata dalla mano.
+  [アビスラッシュ](term:term-abyss-rush) consente l’evocazione dal cimitero.
+  Un’altra abilità usa かわりに per sostituire l’uscita dal campo con lo scarto di due carte.
 :::
 
-[アビスラッシュ](term:term-abyss-rush) è il punto in cui la keyword smette di
-essere una label e diventa una frase da leggere. Il blocco non dice solo
-"questa creatura ha Abyss Rush": apre una condizione di uscita, poi propone un
-costo alternativo introdotto da `かわりに`.
+[アビスラッシュ](term:term-abyss-rush) permette di evocare dal proprio
+[{{墓地|ぼち}}](term:term-graveyard), pagando il costo di evocazione. La creatura
+così evocata può attaccare i giocatori in quel turno e viene messa in fondo al
+mazzo alla fine del turno.
 
 :::example_sentence
 jp: >-
-  [アビスラッシュ](term:term-abyss-rush)：このクリーチャーが
-  [{{離|はな}}れる](term:term-hanareru){{時|とき}}、かわりに
-  {{自分|じぶん}}の{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい。
+  アビスラッシュで{{墓地|ぼち}}から{{召喚|しょうかん}}したクリーチャーで、{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}する。
 translation_it: >-
-  Abyss Rush: quando questa creatura sta per lasciare il campo, puoi invece
-  scartare 2 carte dalla tua mano.
+  Attacco il giocatore avversario con la creatura evocata dal cimitero tramite Abyss Rush.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   [アビスラッシュ](term:term-abyss-rush) ➔ **Keyword apribile**. La parola
-    compatta annuncia una regola, ma la riga dopo i due punti ti dice quando e
-    come applicarla.
-*   `このクリーチャーが{{離|はな}}れる{{時|とき}}` ➔ **Trigger di uscita**.
-    [{{離|はな}}れる](term:term-hanareru) indica che la
-    creatura lascia la zona; non restringe automaticamente il caso alla sola
-    distruzione.
-*   `かわりに` ➔ **Sostituzione**. Il testo ti chiede di leggere l'azione
-    successiva come "al posto di" ciò che stava per accadere.
-*   `{{自分|じぶん}}の{{手札|てふだ}}を{{2枚|にまい}}{{捨|す}}ててもよい` ➔
-    **Costo opzionale**. [～てもよい](grammar:grammar-temoyoi) rende la
-    sostituzione permessa, non obbligatoria: puoi scartare due carte per
-    impedire l'uscita, ma il testo non ti forza a farlo.
+- `アビスラッシュで` indica il metodo usato per evocare.
+- `{{墓地|ぼち}}から` marca la zona di provenienza.
+- `{{召喚|しょうかん}}したクリーチャーで` indica la creatura con cui si attacca; la relativa al passato specifica come è entrata in gioco.
+- `{{相手|あいて}}プレイヤーを{{攻撃|こうげき}}する` identifica il bersaglio e l’azione.
 
-#### ⚖️ Contrasto operativo: uscita, distruzione e sostituzione
-
-*   [{{破壊|はかい}}](term:term-destroy) è un modo specifico in cui una creatura
-    può lasciare il campo.
-*   [{{離|はな}}れる](term:term-hanareru) è più largo: copre il fatto di
-    allontanarsi dalla zona, qualunque sia il meccanismo che lo produce.
-*   `かわりに` non aggiunge un effetto dopo l'uscita: lo inserisce al posto
-    dell'uscita prevista. Se lo leggi come "poi", sbagli la finestra.
-
-#### 🧠 Gancio cognitivo
-
-Pensa a `かわりに` come a un cartello di scambio: la freccia non è
-lascia il campo ➔ scarta, ma stava per lasciare il campo ➔ puoi pagare
-scartando per sostituire quell'evento. È un trucco di memoria, non una
-spiegazione etimologica.
+La riga di Jashin con [{{離|はな}}れる](term:term-hanareru) e
+[かわりに](grammar:grammar-kawarini) è un’abilità distinta: se scarti due carte,
+sostituisci l’uscita prevista della creatura. [～てもよい](grammar:grammar-temoyoi)
+lascia quella scelta facoltativa. [{{破壊|はかい}}](term:term-destroy) indica un
+modo specifico di lasciare il campo, mentre {{離|はな}}れる comprende anche altre
+forme di spostamento.
 
 ## 2. Tempo difensivo: quel turno e il resto da saltare
 
@@ -325,42 +304,24 @@ ma verso quella specifica creatura recuperata.
 
 ## 5. Soglie, sequenze e restrizioni
 
-[シビルカウント](term:term-civil-count) porta nel deck un altro tipo di lettura:
-prima di usare un effetto, devi controllare se una soglia è stata raggiunta. Il
-giapponese lo segnala con `{{合計|ごうけい}}`, [～{{以下|いか}} /
-～{{以上|いじょう}}](grammar:grammar-ika-ijou) e formule condizionali come
-`であれば`.
+[シビルカウント](term:term-civil-count) richiede un numero minimo di tue
+creature e Tamaseed della civiltà indicata nella zona di battaglia. Con
+[～{{以上|いじょう}}](grammar:grammar-ika-ijou), anche il numero indicato soddisfa
+la soglia: tre o più include tre.
 
 :::example_sentence
-jp: >-
-  [シビルカウント{{3|さん}}](term:term-civil-count)：
-  {{自分|じぶん}}の{{闇|やみ}}のカードのコストの{{合計|ごうけい}}が
-  {{3以上|さんいじょう}}であれば、このクリーチャーの「S・トリガー」を
-  {{使|つか}}ってもよい。
+jp: "バトルゾーンに{{闇|やみ}}のクリーチャーとタマシードが{{合計|ごうけい}}{{3|みっ}}つあるので、シビルカウント{{3|さん}}の{{条件|じょうけん}}を{{満|み}}たしている。"
 translation_it: >-
-  Civil Count 3: se la somma dei costi delle tue carte oscurità è 3 o più, puoi
-  usare l'S-Trigger di questa creatura.
+  Ho in campo un totale di tre creature e Tamaseed di oscurità, quindi soddisfo la condizione di Civil Count 3.
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   [シビルカウント{{3|さん}}](term:term-civil-count) ➔ **Keyword di soglia**.
-    Il numero dopo la keyword è la soglia da verificare, non il numero di volte
-    in cui l'effetto si applica.
-*   `{{自分|じぶん}}の{{闇|やみ}}のカードのコストの{{合計|ごうけい}}が` ➔
-    **Soggetto calcolato**. Il testo non conta quante carte hai: somma i loro
-    costi.
-*   `{{3以上|さんいじょう}}であれば` ➔ **Condizione minima**.
-    `{{以上|いじょう}}` include 3; `であれば` trasforma il totale in condizione.
-*   `{{使|つか}}ってもよい` ➔ **Permesso risultante**. Se la soglia passa, puoi
-    usare l'S-Trigger; non diventa automaticamente obbligatorio.
+- `{{闇|やみ}}の` filtra la civiltà delle creature e dei Tamaseed contati.
+- `{{合計|ごうけい}}{{3|みっ}}つあるので` somma il numero dei permanenti validi e presenta il risultato come ragione.
+- `{{条件|じょうけん}}を{{満|み}}たしている` descrive una condizione attualmente soddisfatta.
 
-#### ⚖️ Contrasto operativo: conteggio delle carte vs somma dei costi
-
-La trappola è leggere [シビルカウント](term:term-civil-count) come "ho tre carte
-oscurità". Qui la frase dice `コストの{{合計|ごうけい}}`: il totale è numerico e
-nasce dai costi stampati, non dal numero fisico di carte. La keyword ti chiede
-quindi "quanto sommano?", non "quante sono?".
+Il costo stampato sulle carte non entra in questo conteggio. L’effetto ottenuto
+quando la soglia è soddisfatta dipende dalla riga della singola carta.
 
 La stessa precisione vale quando dopo un effetto compare
 [その後](grammar:grammar-sonoato): il testo sta segnando una sequenza, non una

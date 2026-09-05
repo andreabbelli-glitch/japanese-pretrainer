@@ -21,7 +21,7 @@ summary: >-
 
 # Primi menu e prime lotte: scelta, blocco e avversario
 
-All'inizio del viaggio a Paldea il gioco ti mette davanti a frasi molto brevi: un prompt ti chiede che cosa fare, una schermata blocca un comando, una battaglia sposta l'occhio sul tipo dell'avversario. Sono messaggi piccoli, ma decidono subito se stai leggendo una scelta, una causa o un limite operativo.
+All'inizio del viaggio a Parudea il gioco ti mette davanti a frasi molto brevi: un prompt ti chiede che cosa fare, una schermata blocca un comando, una battaglia sposta l'occhio sul tipo dell'avversario. Sono messaggi piccoli, ma decidono subito se stai leggendo una scelta, una causa o un limite operativo.
 
 Nel giapponese dei primi menu la parte importante spesso non è un verbo lungo: è una particella, una parola domanda o una formula negativa. `{{相手|あいて}}の タイプ` ti dice quale lato del campo osservare; `どう しますか` apre una scelta; `ここでは できません` e `お{{金|かね}}が {{足|た}}りません` spiegano due blocchi diversi.
 
@@ -119,7 +119,7 @@ translation_it: >-
 
 ### C. `かな`: pensiero ad alta voce, non comando
 
-[～かな](grammar:grammar-g002-mi-chiedo-se) ammorbidisce una frase e la fa suonare come dubbio o riflessione. In un dialogo con Nemi, un insegnante o un NPC, non sempre chi parla sta chiedendo a te di rispondere: può stare valutando la situazione davanti a sé.
+[～かな](grammar:grammar-g002-mi-chiedo-se) ammorbidisce una frase e la fa suonare come dubbio o riflessione. In un dialogo con Nemo, un insegnante o un NPC, non sempre chi parla sta chiedendo a te di rispondere: può stare valutando la situazione davanti a sé.
 
 :::example_sentence
 jp: >-

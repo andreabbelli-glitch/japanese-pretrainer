@@ -38,8 +38,7 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - [{{確定|かくてい}}](term:term-kakutei) — conferma / determinazione definitiva
 - [{{起動|きどう}}](term:term-kidou) — attivazione / avvio; in
   `{{起動|きどう}}{{能力|のうりょく}}` indica una capacità attivabile
-- [{{発揮|はっき}}](term:term-hakki-vanguard-effect) — manifestazione /
-  efficacia espressa da un effetto
+- [{{発揮|はっき}}](term:term-hakki-vanguard-effect) — espressione di una capacità; produzione di un effetto
 - [{{生意気|なまいき}}](term:term-namaiki-vanguard-cheeky) — insolente /
   impertinente
 - [{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian) — guardiano /
@@ -49,7 +48,7 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
 - [ともに](term:term-tomoni) — insieme / assieme; mette più elementi nella
   stessa azione
 - [{{低|ひく}}い](term:term-hikui-low-grade) — basso / inferiore, qui riferito
-  al grado della unità
+  al grado dell’unità
 - [もし](term:term-moshi-vanguard-if) — se / nel caso in cui
 - [{{後|うし}}ろ](term:term-ushiro-vanguard-behind) — dietro / parte posteriore
 - [{{目|め}}の{{前|まえ}}](term:term-me-no-mae-vanguard) — proprio davanti /
@@ -78,7 +77,7 @@ e [{{後列|こうれつ}}](term:term-kouretsu-vanguard-back-row) leggono il cam
   sono unità compagne che combattono insieme
 - `ヴァンガードと{{同|おな}}じか{{低|ひく}}いグレード` — grado uguale o inferiore al
   Vanguard
-- `もしグレード{{1|いち}}を{{持|も}}っていたら` — se hai una unità di grado 1
+- `もしグレード{{1|いち}}を{{持|も}}っていたら` — se hai un’unità di grado 1
 - {{手札|てふだ}}に[{{守護者|しゅごしゃ}}](term:term-shugosha-vanguard-guardian)と{{書|か}}かれたカードはある？
   — hai in mano una carta con scritto Guardiano?
 - `アタックに{{成功|せいこう}}すると` — quando l'attacco riesce
@@ -254,7 +253,7 @@ disponibili in mano.
 jp: >-
   もしグレード{{1|いち}}を{{持|も}}っていたらヴァンガードの{{後|うし}}ろにコールしてみて。
 translation_it: >-
-  Se hai una unità di grado 1, prova a chiamarla dietro al Vanguard.
+  Se hai un’unità di grado 1, prova a chiamarla dietro al Vanguard.
 :::
 
 :::example_sentence
@@ -267,10 +266,10 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   [もし](term:term-moshi-vanguard-if)グレード{{1|いち}}を{{持|も}}っていたら ➔
-    **Condizione**: il tutorial controlla prima se il giocatore ha una unità
+    **Condizione**: il tutorial controlla prima se il giocatore ha un’unità
     del grado richiesto.
 *   ヴァンガードの[{{後|うし}}ろ](term:term-ushiro-vanguard-behind)に ➔
-    **Destinazione sul campo**: `に` marca il punto in cui chiamare la unità.
+    **Destinazione sul campo**: `に` marca il punto in cui chiamare l’unità.
 *   `コールしてみて` ➔ **Invito operativo**: `してみて` chiede di provare il call
     come passo guidato.
 
@@ -278,14 +277,14 @@ translation_it: >-
 jp: >-
   {{前列|ぜんれつ}}のユニットでアタックする。
 translation_it: >-
-  Attacchi con una unità della fila anteriore.
+  Attacchi con un’unità della fila anteriore.
 :::
 
 :::example_sentence
 jp: >-
   {{後列|こうれつ}}にユニットをコールする。
 translation_it: >-
-  Chiami una unità nella fila posteriore.
+  Chiami un’unità nella fila posteriore.
 :::
 
 ## 5. Attacco riuscito ed effetti
@@ -301,7 +300,7 @@ ridotto. In `{{相手|あいて}}のリアガードを{{減|へ}}らす`, l'ogge
 è il gruppo di rear-guard dell'avversario. La forma `{{減|へ}}らしたり` usa
 `〜たり`, che elenca quell'azione dentro una serie di effetti possibili.
 
-Un secondo prompt porta lo stesso tema su una singola unità:
+Un secondo prompt porta lo stesso tema su una singol’unità:
 リアガードへのアタックがヒットしたなら、そのリアガードは[{{退却|たいきゃく}}](term:term-taikyaku-vanguard-retire).
 `への` aggancia l'attacco al bersaglio rear-guard, `ヒットしたなら` apre la
 condizione "se ha colpito" e `そのリアガードは` riprende proprio quel bersaglio.

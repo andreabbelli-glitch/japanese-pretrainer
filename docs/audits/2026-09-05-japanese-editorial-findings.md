@@ -1,6 +1,6 @@
-# Registro delle proposte — audit giapponese del 5 settembre 2026
+# Registro delle correzioni — audit giapponese del 5 settembre 2026
 
-Ogni voce indica un problema o una proposta editoriale; non equivale necessariamente a una card diversa. Gli esempi e i retro citati sono quelli presenti prima dell’audit. Le cinque voci marcate **corretto** sono state implementate nel bundle Migaku. Tutte le altre restano proposte.
+Ogni voce indica un problema o una proposta editoriale; non equivale necessariamente a una card diversa. Gli esempi e i retro citati sono quelli presenti prima dell’audit. Tutte le 136 voci sono ora corrette nel contenuto canonico: cinque nella fase iniziale e 131 nella successiva implementazione autorizzata. Lo stato dell’importazione è nel [rapporto di implementazione](2026-09-05-japanese-editorial-implementation.md).
 
 **P1**: significato, regola, lettura o integrità del testo da correggere. **P2**: naturalezza, chiarezza o utilità didattica. La voce «certezza» distingue errori solidi, preferenze editoriali e casi in cui occorre ricostruire il contesto del dialogo.
 
@@ -22,11 +22,11 @@ Riferimento stabile: `card-054-yori-comparisons-concept`.
 
 **Proposta e motivo:** Termine di paragone, senza giudizio di preferenza.
 
-**Applicato:** Retro e spiegazioni ora presentano A come termine di paragone neutro.
+**Applicato:** より（confronto） → A より indica A come termine di paragone: «rispetto ad A / più… di A». この店はあの店より安い。 — Questo negozio è più economico di quello. Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-002 · P1 · ものだ: formazione con gli aggettivi in な
 
-**Proposto** · certezza: alta · [146-monoda-express-strong-emotions.md:23](</Users/abelli/Codex/Japanese Custom Study/content/media/migaku-grammar/cards/146-monoda-express-strong-emotions.md:23>)
+**Corretto** · certezza: alta · [146-monoda-express-strong-emotions.md:22](</Users/abelli/Codex/Japanese Custom Study/content/media/migaku-grammar/cards/146-monoda-express-strong-emotions.md:22>)
 
 Riferimento stabile: `card-146-monoda-express-strong-emotions-concept`.
 
@@ -35,6 +35,8 @@ Riferimento stabile: `card-146-monoda-express-strong-emotions-concept`.
 **Proposta e motivo:** Eliminare la regola che aggiunge だ prima di もの. Usare 静かなものだ; 静かだったものだ è possibile al passato. Distinguere la costruzione da だもの／だもん usata come giustificazione. La tabella originale Migaku 7.2 contiene a sua volta 静かだものだ: serve una correzione editoriale dichiarata, non una copia cieca.
 
 Verifica: [Japan Foundation: もの](https://www.jpf.go.jp/j/project/japanese/teach/tsushin/grammar/201206.html).
+
+**Applicato:** ものだ → ものだ può esprimere meraviglia, una norma generale o nostalgia per un'abitudine passata; il valore dipende dal tempo e dal contesto. 子供の成長は早いものだ。 — Quanto crescono in fretta i bambini! Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-003 · P1 · する: costo e durata confusi
 
@@ -50,11 +52,11 @@ Riferimento stabile: `card-197-suru-5-indicate-cost-concept`.
 
 **Proposta e motivo:** Distinguere denaro + する da tempo + すると/して e da かかる.
 
-**Applicato:** Fronte する（prezzo）; prezzo, tempo trascorso e tempo necessario distinti in card e textbook.
+**Applicato:** する（prezzo） → Prezzo + する significa «costare»: 五千円する, «costare cinquemila yen». このバッグは五千円する。 — Questa borsa costa cinquemila yen. Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-004 · P1 · ぜひ: divieto troppo ampio sulle intenzioni
 
-**Proposto** · certezza: alta · [364-zehi-certainly.md:23](</Users/abelli/Codex/Japanese Custom Study/content/media/migaku-grammar/cards/364-zehi-certainly.md:23>)
+**Corretto** · certezza: alta · [364-zehi-certainly.md:22](</Users/abelli/Codex/Japanese Custom Study/content/media/migaku-grammar/cards/364-zehi-certainly.md:22>)
 
 Riferimento stabile: `card-364-zehi-certainly-concept`.
 
@@ -63,6 +65,8 @@ Riferimento stabile: `card-364-zehi-certainly-concept`.
 **Proposta e motivo:** Rimuovere l’esclusione generale delle dichiarazioni d’intenzione. Come risposta entusiasta a un invito, ぜひ行きます è naturale. Conservare gli usi con richieste e desideri già spiegati. Anche la fonte Migaku 14.13 formula il divieto: segnalare la rettifica come nota editoriale.
 
 Verifica: [Dizionario 大辞泉: 是非](https://kotobank.jp/word/%E6%98%AF%E9%9D%9E-548716).
+
+**Applicato:** ぜひ → ぜひ rafforza inviti, richieste, desideri e adesioni entusiaste: il parlante vuole vivamente che l’azione avvenga. ぜひ遊びに来てください。 — Venga assolutamente a trovarci. Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-005 · P1 · Fronte 受け身 per uso onorifico
 
@@ -78,17 +82,19 @@ Riferimento stabile: `card-381-being-more-polite-with-receptive-form-concept`.
 
 **Proposta e motivo:** Distinguere れる・られる（尊敬） da passivo; la fonte 14.30 lo dice esplicitamente.
 
-**Applicato:** Fronte 受け身（uso onorifico）.
+**Applicato:** 受け身（uso onorifico） → Trasformare il verbo in れる／られる può elevare l'azione di una persona rispettata mantenendo le particelle della frase attiva. 先生は何時に来られますか。 — A che ora arriverà il professore? Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-006 · P2 · 誰もいる non è un modello affermativo utile
 
-**Proposto** · certezza: alta · [194-mo-2-question-words-encompass-everything-nothing.md:22](</Users/abelli/Codex/Japanese Custom Study/content/media/migaku-grammar/cards/194-mo-2-question-words-encompass-everything-nothing.md:22>)
+**Corretto** · certezza: alta · [194-mo-2-question-words-encompass-everything-nothing.md:21](</Users/abelli/Codex/Japanese Custom Study/content/media/migaku-grammar/cards/194-mo-2-question-words-encompass-everything-nothing.md:21>)
 
 Riferimento stabile: `card-194-mo-2-question-words-encompass-everything-nothing-concept`.
 
 **Attuale:** Non tradurre も da solo: controlla il predicato. 誰もいる sarebbe affermativo ma è raro; 誰もいない è il modello comune.
 
 **Proposta e motivo:** Sostituire il commento «sarebbe affermativo ma è raro» con un contrasto chiaro: 誰も知らない «nessuno lo sa» / 誰もが知っている «tutti lo sanno». Spiegare separatamente gli usi affermativi di interrogativo + も; evitare una regola meccanica basata soltanto sulla polarità.
+
+**Applicato:** も（dopo un interrogativo） → Interrogativo + も: いつも «sempre», 誰も…ない «nessuno», 何も…ない «niente». Per «tutti» è comune 誰もが + affermativo. 誰も来なかった。 — Non è venuto nessuno. Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-007 · P2 · Transitivo/intransitivo: definizione troppo stretta
 
@@ -104,7 +110,7 @@ Riferimento stabile: `card-310-self-moving-and-other-moving-verbs-concept`.
 
 **Proposta e motivo:** Oggetto diretto vs azione/stato del soggetto; non tutti gli intransitivi sono cambiamenti autonomi.
 
-**Applicato:** Definizione basata sulla presenza dell’oggetto diretto; corretti card e textbook.
+**Applicato:** 自動詞・他動詞 → Intransitivi: senza oggetto diretto. Transitivi: con un oggetto diretto. 私が窓を開けると、風でドアが開いた。 — Quando ho aperto la finestra, la porta si è aperta per il vento. Correzione applicata e verificata nel contenuto canonico.
 
 ### JA-008 · P2 · ようと confuso con ようとする
 
@@ -120,13 +126,14 @@ Riferimento stabile: `card-375-youto-attempt-do-something-concept`.
 
 **Proposta e motivo:** Confrontare lezione originale 14.24; non attribuire automaticamente il significato di tentativo al solo と.
 
-**Applicato:** Esempio originale didattico con volitivo + と + azione; distinta la costruzione da ようとする e ようと思う.
 
 ## Duel Masters — 18 voci
 
+**Applicato:** ようと → Forma volitiva + と + verbo d'azione presenta un gesto compiuto nel tentativo di raggiungere l'obiettivo. ケーキを取ろうと、手を出した。 — Ho allungato la mano per prendere la torta. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-009 · P1 · ブロッカー: restrizione falsa
 
-**Proposto** · certezza: alta · [001-tcg-core.md:982](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/001-tcg-core.md:982>)
+**Corretto** · certezza: alta · [001-tcg-core.md:974](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/001-tcg-core.md:974>)
 
 Riferimento stabile: `card-blocker-operational-concept`.
 
@@ -140,9 +147,11 @@ Riferimento stabile: `card-blocker-operational-concept`.
 
 Verifica: [Regole ufficiali: Blocker](https://dm.takaratomy.co.jp/card/detail/?id=dm26sd1-m004).
 
+**Applicato:** ブロッカー（effetto） → Puoi tappare questa creatura per deviare su di essa l’attacco di una creatura avversaria. ブロッカーを持つクリーチャーをタップして、相手の攻撃をブロックした。 — Ho tappato una creatura con Blocker e ho bloccato l’attacco avversario. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-010 · P1 · シンカライズ: evoluzione invertita
 
-**Proposto** · certezza: alta · [001-tcg-core.md:1062](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/001-tcg-core.md:1062>)
+**Corretto** · certezza: alta · [001-tcg-core.md:1043](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/001-tcg-core.md:1043>)
 
 Riferimento stabile: `card-shinkarize-connection-concept`.
 
@@ -156,9 +165,11 @@ Riferimento stabile: `card-shinkarize-connection-concept`.
 
 Verifica: [Q&A ufficiale: Shinkarize](https://dm.takaratomy.co.jp/rule/qa/41075/).
 
+**Applicato:** シンカライズ（evoluzione） → Puoi far evolvere una creatura sopra questo Tamaseed, trattandolo come una creatura ai fini dell’evoluzione. シンカライズを持つタマシードの上に、進化クリーチャーを重ねる。 — Sovrapponi una creatura evoluzione a un Tamaseed con Shinkarize. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-011 · P1 · アビスラッシュ: abilità scambiata
 
-**Proposto** · certezza: alta · [010-dm25-sd1-core.md:246](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/010-dm25-sd1-core.md:246>)
+**Corretto** · certezza: alta · [010-dm25-sd1-core.md:237](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/010-dm25-sd1-core.md:237>)
 
 Riferimento stabile: `card-abyss-rush-recognition`.
 
@@ -172,9 +183,11 @@ Riferimento stabile: `card-abyss-rush-recognition`.
 
 Verifica: [Carta ufficiale Jashin](https://dm.takaratomy.co.jp/card/detail/?id=dm25sd1-002).
 
+**Applicato:** アビスラッシュ → Abyss Rush: evocazione dal cimitero, attacco ai giocatori e fondo del mazzo a fine turno アビスラッシュで墓地から召喚したクリーチャーで、相手プレイヤーを攻撃する。 — Attacco il giocatore avversario con la creatura evocata dal cimitero tramite Abyss Rush. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-012 · P1 · シビルカウント: conteggio sbagliato
 
-**Proposto** · certezza: alta · [010-dm25-sd1-core.md:267](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/010-dm25-sd1-core.md:267>)
+**Corretto** · certezza: alta · [010-dm25-sd1-core.md:251](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/010-dm25-sd1-core.md:251>)
 
 Riferimento stabile: `card-civil-count-recognition`.
 
@@ -188,9 +201,11 @@ Riferimento stabile: `card-civil-count-recognition`.
 
 Verifica: [Q&A ufficiale: Civil Count](https://dm.takaratomy.co.jp/rule/qa/41983/).
 
+**Applicato:** シビルカウント → Civil Count: conta le tue creature e i tuoi Tamaseed della civiltà indicata in campo バトルゾーンに闇のクリーチャーとタマシードが合計3つあるので、シビルカウント3の条件を満たしている。 — Ho in campo un totale di tre creature e Tamaseed di oscurità, quindi soddisfo la condizione di Civil Count 3. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-013 · P1 · Furigana di 順序
 
-**Proposto** · certezza: alta · [020-dm25-sd2-core.md:670](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/020-dm25-sd2-core.md:670>)
+**Corretto** · certezza: alta · [020-dm25-sd2-core.md:670](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/020-dm25-sd2-core.md:670>)
 
 Riferimento stabile: `card-sukina-junjo-de-concept`.
 
@@ -202,9 +217,11 @@ Riferimento stabile: `card-sukina-junjo-de-concept`.
 
 **Proposta e motivo:** しゅんじょ → じゅんじょ.
 
+**Applicato:** 好きな順序で → nell'ordine che preferisci 残りを好きな順序で山札の下に置く。 — Metti il resto in fondo al mazzo nell'ordine che preferisci. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-014 · P1 · ずつ distributivo
 
-**Proposto** · certezza: alta · [031-live-duel-encounters-garchainsaw-dragon.md:170](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/031-live-duel-encounters-garchainsaw-dragon.md:170>)
+**Corretto** · certezza: alta · [031-live-duel-encounters-garchainsaw-dragon.md:167](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/031-live-duel-encounters-garchainsaw-dragon.md:167>)
 
 Riferimento stabile: `card-garchainsaw-one-by-one-concept`.
 
@@ -216,9 +233,11 @@ Riferimento stabile: `card-garchainsaw-one-by-one-concept`.
 
 **Proposta e motivo:** Nell’esempio significa uno per ciascun avversario, non uno per volta.
 
+**Applicato:** 1つずつ → uno per ciascuno; qui, uno scudo per ogni altro avversario 他の各相手のシールドも 1つずつブレイクする。 — Rompe anche uno scudo di ciascun altro avversario. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-015 · P1 · 未～解放: segnaposto rimasto nella frase
 
-**Proposto** · certezza: alta · [007-duel-plays-app-modes-and-progression.md:233](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/007-duel-plays-app-modes-and-progression.md:233>)
+**Corretto** · certezza: alta · [007-duel-plays-app-modes-and-progression.md:233](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/007-duel-plays-app-modes-and-progression.md:233>)
 
 **Esempio:** 条件をクリアするまで、このイベントステージは未～解放のままになる。
 
@@ -226,9 +245,11 @@ Riferimento stabile: `card-garchainsaw-one-by-one-concept`.
 
 **Proposta e motivo:** Sostituire 未～解放 con 未解放 negli esempi correnti (anche esempio 53 del textbook). Riservare 未〜 alla spiegazione astratta del prefisso.
 
+**Applicato:** 条件をクリアするまで、このイベントステージは未解放のままになる。 — Finché non completi i requisiti, questo stage evento resterà non ancora sbloccato. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-016 · P1 · Reference keyword: seconda definizione falsa di Abyss Rush
 
-**Proposto** · certezza: alta · [034-keyword-effects-reference.md:160](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/034-keyword-effects-reference.md:160>)
+**Corretto** · certezza: alta · [034-keyword-effects-reference.md:154](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/034-keyword-effects-reference.md:154>)
 
 **Esempio:** アビスラッシュ：このクリーチャーが 離れるかわりに、 墓地からアビスラッシュを持つ クリーチャーを1体手札に戻してもよい。
 
@@ -238,9 +259,11 @@ Riferimento stabile: `card-garchainsaw-one-by-one-concept`.
 
 Verifica: [Carta ufficiale Jashin](https://dm.takaratomy.co.jp/card/detail/?id=dm25sd1-002).
 
+**Applicato:** アビスラッシュで召喚したクリーチャーは、このターン、プレイヤーを攻撃できる。 — La creatura evocata tramite Abyss Rush può attaccare i giocatori in questo turno. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-017 · P1 · Reference keyword: Shinkarize invertito anche nel textbook
 
-**Proposto** · certezza: alta · [034-keyword-effects-reference.md:652](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/034-keyword-effects-reference.md:652>)
+**Corretto** · certezza: alta · [034-keyword-effects-reference.md:634](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/034-keyword-effects-reference.md:634>)
 
 **Esempio:** シンカライズ：進化元にも 進化先にもなれるように扱って、 進化のつながりを作る。
 
@@ -250,9 +273,11 @@ Verifica: [Carta ufficiale Jashin](https://dm.takaratomy.co.jp/card/detail/?id=d
 
 Verifica: [Q&A ufficiale: Shinkarize](https://dm.takaratomy.co.jp/rule/qa/41075/).
 
+**Applicato:** シンカライズを持つタマシードを、進化元に使う。 — Uso come base di evoluzione un Tamaseed con Shinkarize. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-018 · P1 · 次の～のうち: segnaposto nell’esempio completo
 
-**Proposto** · certezza: alta · [047-live-duel-encounters-do-sumonma.md:88](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/047-live-duel-encounters-do-sumonma.md:88>)
+**Corretto** · certezza: alta · [047-live-duel-encounters-do-sumonma.md:88](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/047-live-duel-encounters-do-sumonma.md:88>)
 
 **Esempio:** このクリーチャーが出た時、 次の ～のうち いずれか1つを 選ぶ。
 
@@ -260,9 +285,11 @@ Verifica: [Q&A ufficiale: Shinkarize](https://dm.takaratomy.co.jp/rule/qa/41075/
 
 **Proposta e motivo:** Usare 次のうち、いずれか1つを選ぶ。 oppure inserire il referente 次の能力のうち; separare la formula astratta dagli esempi pronunciabili.
 
+**Applicato:** このクリーチャーが出た時、次のうち、いずれか1つを選ぶ。 — Quando questa creatura entra, scegli una delle seguenti opzioni. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-019 · P1 · Soggetto di 出た時 cambiato in traduzione
 
-**Proposto** · certezza: alta · [080-live-duel-encounters-rensha-no-karma-yukime.md:75](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/080-live-duel-encounters-rensha-no-karma-yukime.md:75>)
+**Corretto** · certezza: alta · [080-live-duel-encounters-rensha-no-karma-yukime.md:75](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/080-live-duel-encounters-rensha-no-karma-yukime.md:75>)
 
 **Esempio:** 連射のカルマ ユキメは、 召喚以外の方法で 出た時、 相手のクリーチャーを 破壊する。
 
@@ -270,9 +297,11 @@ Verifica: [Q&A ufficiale: Shinkarize](https://dm.takaratomy.co.jp/rule/qa/41075/
 
 **Proposta e motivo:** Il giapponese fa leggere che sia Yukime a entrare per un metodo diverso dall’evocazione, mentre l’italiano parla della creatura avversaria. Esplicitare 相手のクリーチャーが召喚以外の方法で出た時 nell’esempio autonomo, coerentemente con il testo ufficiale.
 
+**Applicato:** 相手のクリーチャーが召喚以外の方法で出た時、連射のカルマ ユキメの能力で、そのクリーチャーを破壊する。 — Quando una creatura avversaria entra con un metodo diverso dall’evocazione, la distruggo con l’abilità di Yukime, Karma della raffica. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-020 · P2 · かわりに non distingue sostituzione e compenso
 
-**Proposto** · certezza: alta · [001-tcg-core.md:1889](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/001-tcg-core.md:1889>)
+**Corretto** · certezza: alta · [001-tcg-core.md:1861](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/001-tcg-core.md:1861>)
 
 Riferimento stabile: `card-kawarini-concept`.
 
@@ -284,9 +313,11 @@ Riferimento stabile: `card-kawarini-concept`.
 
 **Proposta e motivo:** Usare una frase con alternativa esplicita: カードを引くかわりに、山札の上から1枚目を墓地に置く。
 
+**Applicato:** かわりに → invece di; al posto di; in cambio カードを引くかわりに、山札の上から1枚目を墓地に置く。 — Invece di pescare una carta, metti nel cimitero la prima carta del mazzo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-021 · P2 · 交換期間が終了時に近づく poco naturale
 
-**Proposto** · certezza: alta · [006-duel-plays-app-ui-deep-dive.md:676](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/006-duel-plays-app-ui-deep-dive.md:676>)
+**Corretto** · certezza: alta · [006-duel-plays-app-ui-deep-dive.md:676](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/006-duel-plays-app-ui-deep-dive.md:676>)
 
 Riferimento stabile: `card-exchange-period-recognition`.
 
@@ -298,9 +329,11 @@ Riferimento stabile: `card-exchange-period-recognition`.
 
 **Proposta e motivo:** カードの交換期間が終わりに近づいている。
 
+**Applicato:** 交換期間 → periodo di scambio / exchange period カードの交換期間が終わりに近づいている。 — Il periodo di scambio della carta si sta avvicinando al termine. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-022 · P2 · Obbligo aggiunto dalla traduzione
 
-**Proposto** · certezza: alta · [022-live-duel-encounters-maou-de-szark.md:220](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/022-live-duel-encounters-maou-de-szark.md:220>)
+**Corretto** · certezza: alta · [022-live-duel-encounters-maou-de-szark.md:220](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/022-live-duel-encounters-maou-de-szark.md:220>)
 
 Riferimento stabile: `card-sorera-concept`.
 
@@ -312,9 +345,11 @@ Riferimento stabile: `card-sorera-concept`.
 
 **Proposta e motivo:** 見失わない non significa di per sé non devi perdere di vista. Sostituire il commento artificioso con una semplice istruzione sull’impilare.
 
+**Applicato:** それら4枚の上に → sopra quelle quattro carte appena nominate このクリーチャーをそれら4枚の上に重ねる。 — Sovrapponi questa creatura a quelle quattro carte. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-023 · P2 · Fronte ed esempio contano cose diverse
 
-**Proposto** · certezza: alta · [030-live-duel-encounters-bolshack-dorago-the-great.md:60](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/030-live-duel-encounters-bolshack-dorago-the-great.md:60>)
+**Corretto** · certezza: alta · [030-live-duel-encounters-bolshack-dorago-the-great.md:60](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/030-live-duel-encounters-bolshack-dorago-the-great.md:60>)
 
 Riferimento stabile: `card-same-number-of-cards-as-opponents`.
 
@@ -326,9 +361,11 @@ Riferimento stabile: `card-same-number-of-cards-as-opponents`.
 
 **Proposta e motivo:** 人数 nel fronte, creature nell’esempio: allineare il riferimento alle persone.
 
+**Applicato:** 相手の人数と同じ枚数 → il numero di carte pari al numero di avversari 相手の人数と同じ枚数のカードを、墓地から選ぶ。 — Scegli dal cimitero un numero di carte pari al numero degli avversari. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-024 · P2 · Eternal Ω: destinazione invece di mancata uscita
 
-**Proposto** · certezza: alta · [032-live-duel-encounters-beethoven-zenith-of-horror.md:94](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/032-live-duel-encounters-beethoven-zenith-of-horror.md:94>)
+**Corretto** · certezza: alta · [032-live-duel-encounters-beethoven-zenith-of-horror.md:89](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/032-live-duel-encounters-beethoven-zenith-of-horror.md:89>)
 
 Riferimento stabile: `card-eternal-omega-recognition`.
 
@@ -340,9 +377,11 @@ Riferimento stabile: `card-eternal-omega-recognition`.
 
 **Proposta e motivo:** La carta torna in mano al posto della destinazione prevista: tornare in mano implica comunque lasciare la zona di battaglia.
 
+**Applicato:** エターナル・Ω → torna in mano al posto della destinazione prevista 「エターナル・Ω」を持つクリーチャーが離れる時、 かわりに手札に戻す。 — Quando una creatura con Eternal Omega sta per lasciare il campo, la rimetti in mano al posto di mandarla nella destinazione prevista. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-025 · P2 · Condizione troncata e ていて
 
-**Proposto** · certezza: alta · [038-live-duel-encounters-dragocalypse-day.md:127](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/038-live-duel-encounters-dragocalypse-day.md:127>)
+**Corretto** · certezza: alta · [038-live-duel-encounters-dragocalypse-day.md:127](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/cards/038-live-duel-encounters-dragocalypse-day.md:127>)
 
 Riferimento stabile: `card-multiplayer-state-start-concept`.
 
@@ -354,9 +393,11 @@ Riferimento stabile: `card-multiplayer-state-start-concept`.
 
 **Proposta e motivo:** Usare una condizione completa o tradurre ていて come collegamento, senza attribuirgli da solo il valore di se.
 
+**Applicato:** 始まっていて → è iniziato… e…; collega il fatto iniziale alla condizione seguente このゲームが2人以上の相手がいる状態で始まっていて、この呪文がシールドゾーンにあれば、この呪文に「S・トリガー」を与える。 — Se la partita è iniziata con almeno due avversari e questa magia si trova nella zona scudi, conferiscile S-Trigger. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-026 · P2 · Copie possedute e copie inserite nel deck
 
-**Proposto** · certezza: alta · [006-duel-plays-app-decks-and-shop.md:297](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/006-duel-plays-app-decks-and-shop.md:297>)
+**Corretto** · certezza: alta · [006-duel-plays-app-decks-and-shop.md:297](</Users/abelli/Codex/Japanese Custom Study/content/media/duel-masters-dm25/textbook/006-duel-plays-app-decks-and-shop.md:297>)
 
 **Esempio:** レアカードの所持が2枚だけなので、デッキにはあと2枚入れることができる。
 
@@ -366,9 +407,11 @@ Riferimento stabile: `card-multiplayer-state-start-concept`.
 
 ## Pokémon Scarlet / Violet — 59 voci
 
+**Applicato:** このカードはデッキに2枚入っているので、あと2枚入れられる。 — Nel mazzo ci sono due copie di questa carta, quindi posso aggiungerne altre due. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-027 · P1 · Potenziale: verbi in る e ichidan confusi
 
-**Proposto** · certezza: alta · [016-sv-prestudy-l07-reazioni-e-parlato-battaglia.md:64](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/016-sv-prestudy-l07-reazioni-e-parlato-battaglia.md:64>)
+**Corretto** · certezza: alta · [016-sv-prestudy-l07-reazioni-e-parlato-battaglia.md:64](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/016-sv-prestudy-l07-reazioni-e-parlato-battaglia.md:64>)
 
 Riferimento stabile: `grammar-g020-poter-fare`.
 
@@ -378,9 +421,11 @@ Riferimento stabile: `grammar-g020-poter-fare`.
 
 **Proposta e motivo:** Scrivere «verbi ichidan / gruppo 2», non semplicemente «verbi in -る»: 帰る termina in る ma forma 帰れる. Aggiungere un esempio godan in る evita di insegnare 食べられる come regola di tutti i verbi con questa terminazione.
 
+**Applicato:** potere fare... / essere in grado di fare... Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-028 · P1 · 以上: limite inclusivo
 
-**Proposto** · certezza: alta · [023-sv-prestudy-l17a-battaglia-scarlet-violet.md:473](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/023-sv-prestudy-l17a-battaglia-scarlet-violet.md:473>)
+**Corretto** · certezza: alta · [023-sv-prestudy-l17a-battaglia-scarlet-violet.md:471](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/023-sv-prestudy-l17a-battaglia-scarlet-violet.md:471>)
 
 Riferimento stabile: `card-v175-ijou-recognition`.
 
@@ -392,9 +437,11 @@ Riferimento stabile: `card-v175-ijou-recognition`.
 
 **Proposta e motivo:** N以上 = almeno N; non soltanto più di N. これ以上 = oltre questo / più di così.
 
+**Applicato:** 以上 → N以上: almeno N; これ以上: oltre questo / più di così これ以上は むりです。 — Più di così è impossibile. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-029 · P1 · Esistenza: で al posto di に
 
-**Proposto** · certezza: alta · [035-sv-prestudy-l22b-esplorazione-e-movimento-battaglia.md:185](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/035-sv-prestudy-l22b-esplorazione-e-movimento-battaglia.md:185>)
+**Corretto** · certezza: alta · [035-sv-prestudy-l22b-esplorazione-e-movimento-battaglia.md:185](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/035-sv-prestudy-l22b-esplorazione-e-movimento-battaglia.md:185>)
 
 Riferimento stabile: `card-v376-nazo-recognition`.
 
@@ -406,9 +453,11 @@ Riferimento stabile: `card-v376-nazo-recognition`.
 
 **Proposta e motivo:** 学校には謎があります。
 
+**Applicato:** 謎 → mistero 学校には謎があります。 — A scuola c'è un mistero. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-030 · P1 · ようやくだよ/だね/だな
 
-**Proposto** · certezza: alta · [037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento.md:127](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento.md:127>)
+**Corretto** · certezza: alta · [037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento.md:127](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento.md:127>)
 
 Riferimento stabile: `card-g084-enfasi-conferma-tono-emotivo-concept`.
 
@@ -420,9 +469,11 @@ Riferimento stabile: `card-g084-enfasi-conferma-tono-emotivo-concept`.
 
 **Proposta e motivo:** Usare やっと終わったよ／やっと終わったね／やっと終わったな per confrontare particelle finali.
 
+**Applicato:** finali di frase よ / ね / な → enfasi / conferma / tono emotivo やっと終わったよ。／やっと終わったね。／やっと終わったな。 — Finalmente è finita! / Finalmente è finita, vero? / Finalmente è finita, eh. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-031 · P1 · 二つ名の読み: につな → ふたつな
 
-**Proposto** · certezza: alta · [044-sv-prestudy-l30b-sistema-e-menu-scarlet-violet.md:390](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/044-sv-prestudy-l30b-sistema-e-menu-scarlet-violet.md:390>)
+**Corretto** · certezza: alta · [044-sv-prestudy-l30b-sistema-e-menu-scarlet-violet.md:390](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/044-sv-prestudy-l30b-sistema-e-menu-scarlet-violet.md:390>)
 
 Riferimento stabile: `term-v602-nitsunapawaa`.
 
@@ -432,9 +483,11 @@ Riferimento stabile: `term-v602-nitsunapawaa`.
 
 Verifica: [Dizionario 大辞泉: 二つ名](https://kotobank.jp/word/%E4%BA%8C%E3%81%A4%E5%90%8D-618789).
 
+**Applicato:** Futatsuna Pawā (potere che favorisce gli incontri con Pokémon con un marchio) Lettura: ふたつなパワー Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-032 · P1 · Classifica senza contatore 位
 
-**Proposto** · certezza: alta · [045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:525](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:525>)
+**Corretto** · certezza: alta · [045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:525](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:525>)
 
 Riferimento stabile: `card-v631-juni-recognition`.
 
@@ -446,9 +499,11 @@ Riferimento stabile: `card-v631-juni-recognition`.
 
 **Proposta e motivo:** 順位は3位です。
 
+**Applicato:** 順位 → posizione in classifica 順位は3位です。 — Sono al terzo posto in classifica. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-033 · P1 · この先に落下があります non naturale
 
-**Proposto** · certezza: alta · [046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento.md:158](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento.md:158>)
+**Corretto** · certezza: alta · [046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento.md:158](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/046-sv-prestudy-l30d-sistema-e-menu-esplorazione-e-movimento.md:158>)
 
 Riferimento stabile: `card-v638-rakka-recognition`.
 
@@ -460,9 +515,11 @@ Riferimento stabile: `card-v638-rakka-recognition`.
 
 **Proposta e motivo:** この先は落下の危険があります。 oppure この先では落下に注意してください。
 
+**Applicato:** 落下 → caduta この先は落下の危険があります。 — Più avanti c'è rischio di caduta. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-034 · P1 · Categorie mosse: manca 変化
 
-**Proposto** · certezza: alta · [050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:46](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:46>)
+**Corretto** · certezza: alta · [050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:43](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:43>)
 
 Riferimento stabile: `card-v731-bunrui-recognition`.
 
@@ -474,9 +531,11 @@ Riferimento stabile: `card-v731-bunrui-recognition`.
 
 **Proposta e motivo:** Dire 攻撃技なら物理と特殊… oppure includere le mosse di stato; non dichiarare che tutte le mosse hanno solo due categorie.
 
+**Applicato:** 分類 → categoria / classificazione 技は、物理・特殊・変化の3種類に分類される。 — Le mosse si dividono in tre categorie: fisiche, speciali e di stato. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-035 · P1 · 小生: registro e destinatari descritti in modo fuorviante
 
-**Proposto** · certezza: alta · [057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:254](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:254>)
+**Corretto** · certezza: alta · [057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:250](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:250>)
 
 Riferimento stabile: `card-anki-l05-shousei-recognition`.
 
@@ -490,9 +549,11 @@ Riferimento stabile: `card-anki-l05-shousei-recognition`.
 
 Verifica: [Dizionario 大辞泉: 小生](https://kotobank.jp/word/%E5%B0%8F%E7%94%9F-532256).
 
+**Applicato:** 小生 → しょうせい — io; pronome tradizionalmente maschile, soprattutto epistolare 小生はアカデミーで美術を教えております。 — Il sottoscritto insegna arte all'Accademia. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-036 · P1 · Retro troncato
 
-**Proposto** · certezza: alta · [071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra.md:273](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra.md:273>)
+**Corretto** · certezza: alta · [071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra.md:273](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/071-sv-anki-l19-scuola-accademia-aiuto-situazione-e-squadra.md:273>)
 
 Riferimento stabile: `card-anki-l19-danin-recognition`.
 
@@ -504,9 +565,11 @@ Riferimento stabile: `card-anki-l19-danin-recognition`.
 
 **Proposta e motivo:** Completare membro del gruppo/team (es. ... oppure rimuovere l’inciso incompleto.
 
+**Applicato:** 団員 → だんいん — membro di un gruppo, un’organizzazione o una squadra あの テントの 前に スター団の 団員が いる。 — Ci sono dei membri del Sutā-dan davanti a quella tenda. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-037 · P1 · Crescita futura resa già completata
 
-**Proposto** · certezza: alta · [107-sv-vocabulary-distance-02.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/107-sv-vocabulary-distance-02.md:95>)
+**Corretto** · certezza: alta · [107-sv-vocabulary-distance-02.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/107-sv-vocabulary-distance-02.md:95>)
 
 Riferimento stabile: `card-sv-vocabulary-230-tanoshiminisuru-recognition`.
 
@@ -518,9 +581,11 @@ Riferimento stabile: `card-sv-vocabulary-230-tanoshiminisuru-recognition`.
 
 **Proposta e motivo:** Non vedo l’ora di ritrovarvi dopo che sarete cresciuti grazie alle attività extracurricolari. Anche card 1315.
 
+**Applicato:** 楽しみにする → たのしみにする — attendere con ansia. 課外授業を通して大きく成長したあなたたちに、再びご挨拶できることを楽しみにしておりますよ。それでは、宝探し開始！ — Non vedo l’ora di ritrovarvi dopo che sarete cresciuti grazie alle attività extracurricolari. Allora, che la caccia al tesoro abbia inizio! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-038 · P1 · Battute concatenate e genere italiano
 
-**Proposto** · certezza: alta · [108-sv-vocabulary-distance-03.md:20](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/108-sv-vocabulary-distance-03.md:20>)
+**Corretto** · certezza: alta · [108-sv-vocabulary-distance-03.md:20](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/108-sv-vocabulary-distance-03.md:20>)
 
 Riferimento stabile: `card-sv-vocabulary-385-ichiou-recognition`.
 
@@ -532,9 +597,11 @@ Riferimento stabile: `card-sv-vocabulary-385-ichiou-recognition`.
 
 **Proposta e motivo:** Separare il divieto d’accesso dal grido sulla caccia al tesoro; la Grande Voragine.
 
+**Applicato:** 一応 → いちおう — per sicurezza; comunque; per il momento. ……ああ、一応言っておくが、パルデアの大穴およびエリアゼロは関係者以外立ち入り禁止だ。 — …Ah, lo dico per sicurezza: l’accesso a Parudea no Ōana e a Eria Zero è riservato agli autorizzati. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-039 · P1 · Risposta balbettata fusa al turno precedente
 
-**Proposto** · certezza: contesto da ricostruire · [108-sv-vocabulary-distance-03.md:45](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/108-sv-vocabulary-distance-03.md:45>)
+**Corretto** · certezza: contesto da ricostruire · [108-sv-vocabulary-distance-03.md:43](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/108-sv-vocabulary-distance-03.md:43>)
 
 Riferimento stabile: `card-sv-vocabulary-221-uchira-recognition`.
 
@@ -546,9 +613,11 @@ Riferimento stabile: `card-sv-vocabulary-221-uchira-recognition`.
 
 **Proposta e motivo:** Separare i turni e verificare だだっでぇ sulla fonte. Non tradurlo è proprio così. Anche 1454.
 
+**Applicato:** うちら → うちら — noi, in registro colloquiale. すまんな。うちらの大将、たまにこうなってしまうんや。 — Scusa, il nostro capo ogni tanto si riduce così. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-040 · P1 · Oliva trattata come nome proprio
 
-**Proposto** · certezza: alta · [108-sv-vocabulary-distance-03.md:295](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/108-sv-vocabulary-distance-03.md:295>)
+**Corretto** · certezza: alta · [108-sv-vocabulary-distance-03.md:288](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/108-sv-vocabulary-distance-03.md:288>)
 
 Riferimento stabile: `card-sv-vocabulary-014-korogasu-recognition`.
 
@@ -560,9 +629,11 @@ Riferimento stabile: `card-sv-vocabulary-014-korogasu-recognition`.
 
 **Proposta e motivo:** Non fate rotolare Smoliv scambiandolo per un’oliva! Anche 1362.
 
+**Applicato:** ころがす → ころがす — far rotolare; rovesciare; far girare. オリーブと間違えてミニーブをころがさないようにね！ — Non fate rotolare Minību scambiandolo per un’oliva! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-041 · P1 · Nome giocatore perso prima di さん
 
-**Proposto** · certezza: alta · [109-sv-vocabulary-distance-04.md:270](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/109-sv-vocabulary-distance-04.md:270>)
+**Corretto** · certezza: alta · [109-sv-vocabulary-distance-04.md:270](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/109-sv-vocabulary-distance-04.md:270>)
 
 Riferimento stabile: `card-sv-vocabulary-121-saranaru-recognition`.
 
@@ -574,9 +645,11 @@ Riferimento stabile: `card-sv-vocabulary-121-saranaru-recognition`.
 
 **Proposta e motivo:** Ripristinare il segnaposto esplicito o usare un esempio didattico completo; ではさんに問おう non è autosufficiente.
 
+**Applicato:** さらなる → さらなる — ancora di più; ulteriormente. さらなる成長のために、毎日練習しよう。 — Per migliorare ancora, alleniamoci ogni giorno. Nuovo esempio didattico, esplicitamente etichettato; non ricostruzione certificata della battuta originale.
+
 ### JA-042 · P1 · Turni discordanti concatenati
 
-**Proposto** · certezza: contesto da ricostruire · [110-sv-vocabulary-distance-05.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/110-sv-vocabulary-distance-05.md:95>)
+**Corretto** · certezza: contesto da ricostruire · [110-sv-vocabulary-distance-05.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/110-sv-vocabulary-distance-05.md:95>)
 
 Riferimento stabile: `card-sv-vocabulary-181-mairu-recognition`.
 
@@ -588,9 +661,11 @@ Riferimento stabile: `card-sv-vocabulary-181-mairu-recognition`.
 
 **Proposta e motivo:** Separare ordine di andarsene, rifiuto di andarsene e まいります, verificando attribuzione dei parlanti.
 
+**Applicato:** まいる → まいる — andare o venire, in registro umile; essere sopraffatto. では、校長室にまいります。 — Allora mi recherò nell’ufficio del preside. Nuovo esempio didattico, esplicitamente etichettato; non ricostruzione certificata della battuta originale.
+
 ### JA-043 · P1 · Onorifico in terza persona tradotto chi sei tu
 
-**Proposto** · certezza: alta · [112-sv-vocabulary-distance-07.md:45](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/112-sv-vocabulary-distance-07.md:45>)
+**Corretto** · certezza: alta · [112-sv-vocabulary-distance-07.md:45](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/112-sv-vocabulary-distance-07.md:45>)
 
 Riferimento stabile: `card-sv-vocabulary-009-itasu-recognition`.
 
@@ -602,9 +677,11 @@ Riferimento stabile: `card-sv-vocabulary-009-itasu-recognition`.
 
 **Proposta e motivo:** Le chiedo scusa: chi è questa persona? Conservare rispetto e riferimento a このお方.
 
+**Applicato:** いたす → いたす — fare, forma umile di する. 大変失礼いたしました。このおかたはどちらさまなのでしょう？ — Le chiedo davvero scusa: chi è questa persona? Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-044 · P1 · 傷つく: transitivo al posto dell’intransitivo
 
-**Proposto** · certezza: alta · [113-sv-vocabulary-distance-08.md:220](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/113-sv-vocabulary-distance-08.md:220>)
+**Corretto** · certezza: alta · [113-sv-vocabulary-distance-08.md:221](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/113-sv-vocabulary-distance-08.md:221>)
 
 Riferimento stabile: `card-sv-vocabulary-254-kizutsuku-recognition`.
 
@@ -616,9 +693,11 @@ Riferimento stabile: `card-sv-vocabulary-254-kizutsuku-recognition`.
 
 **Proposta e motivo:** Essere/rimanere ferito, anche nei sentimenti. Ferire i sentimenti di qualcuno è 傷つける. Separare anche i turni nell’esempio.
 
+**Applicato:** 傷つく → きずつく — essere ferito; rimanere ferito nei sentimenti ……黙りなさい。わたしは、わたし以外誰も傷ついてほしくないだけよ。 — …Sta’ zitto. Voglio solo che nessuno, a parte me, si faccia male. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-045 · P1 · 大事な tradotto appena ottenuto
 
-**Proposto** · certezza: alta · [114-sv-vocabulary-distance-09.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/114-sv-vocabulary-distance-09.md:95>)
+**Corretto** · certezza: alta · [114-sv-vocabulary-distance-09.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/114-sv-vocabulary-distance-09.md:95>)
 
 Riferimento stabile: `card-sv-vocabulary-256-shimau-recognition`.
 
@@ -630,9 +709,11 @@ Riferimento stabile: `card-sv-vocabulary-256-shimau-recognition`.
 
 **Proposta e motivo:** Ripongo nella borsa uno strumento importante.
 
+**Applicato:** しまう → しまう — mettere via; finire; completare anche con sfumatura involontaria. 大事な道具をバッグにしまう。 — Ripongo nella borsa uno strumento importante. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-046 · P1 · 理事長 confuso con CEO
 
-**Proposto** · certezza: alta · [121-sv-vocabulary-distance-16.md:320](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/121-sv-vocabulary-distance-16.md:320>)
+**Corretto** · certezza: alta · [121-sv-vocabulary-distance-16.md:320](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/121-sv-vocabulary-distance-16.md:320>)
 
 Riferimento stabile: `card-sv-vocabulary-352-rijichou-recognition`.
 
@@ -644,9 +725,11 @@ Riferimento stabile: `card-sv-vocabulary-352-rijichou-recognition`.
 
 **Proposta e motivo:** Presidente del consiglio di amministrazione/dell’ente; rimuovere equivalenza generica con amministratore delegato.
 
+**Applicato:** 理事長 → りじちょう — presidente del consiglio di amministrazione di un ente あの人は学校の理事長です。 — Quella persona è il presidente del consiglio di amministrazione della scuola. Nuovo esempio didattico, esplicitamente etichettato; non ricostruzione certificata della battuta originale.
+
 ### JA-047 · P1 · Soggetto Pokémon trasformato nel giocatore
 
-**Proposto** · certezza: contesto da ricostruire · [125-sv-vocabulary-distance-20.md:295](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/125-sv-vocabulary-distance-20.md:295>)
+**Corretto** · certezza: contesto da ricostruire · [125-sv-vocabulary-distance-20.md:292](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/125-sv-vocabulary-distance-20.md:292>)
 
 Riferimento stabile: `card-sv-vocabulary-077-tteka-recognition`.
 
@@ -658,9 +741,11 @@ Riferimento stabile: `card-sv-vocabulary-077-tteka-recognition`.
 
 **Proposta e motivo:** Verificare contesto e ripristinare il soggetto del rifiuto di farsi cavalcare e della forma lotta.
 
+**Applicato:** ってか → ってか — o piuttosto (dire); o meglio (dire); o forse dovrei dire. このポケモン、人を乗せるのも嫌がってるし、ってかバトルフォルムになれないんでしょ？ — Questo Pokémon non vuole nemmeno farsi cavalcare e, poi, non riesce a passare alla Batoru Forumu, giusto? Nuovo esempio didattico, esplicitamente etichettato; non ricostruzione certificata della battuta originale.
+
 ### JA-048 · P1 · Nome giocatore perso prima di とも
 
-**Proposto** · certezza: alta · [126-sv-vocabulary-distance-21.md:70](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/126-sv-vocabulary-distance-21.md:70>)
+**Corretto** · certezza: alta · [126-sv-vocabulary-distance-21.md:70](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/126-sv-vocabulary-distance-21.md:70>)
 
 Riferimento stabile: `card-sv-vocabulary-338-saikai-recognition`.
 
@@ -672,9 +757,11 @@ Riferimento stabile: `card-sv-vocabulary-338-saikai-recognition`.
 
 **Proposta e motivo:** Ripristinare il nome/placeholder o riscrivere un esempio completo di 再会.
 
+**Applicato:** 再会 → さいかい — ritrovo; ricongiungimento. 宝探しの途中で再会したら、また勝負しようね！ — Se ci ritroviamo durante la caccia al tesoro, sfidiamoci di nuovo! Nuovo esempio didattico, esplicitamente etichettato; non ricostruzione certificata della battuta originale.
+
 ### JA-049 · P1 · Stanza del giocatore diventa mia stanza
 
-**Proposto** · certezza: alta · [126-sv-vocabulary-distance-21.md:295](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/126-sv-vocabulary-distance-21.md:295>)
+**Corretto** · certezza: alta · [126-sv-vocabulary-distance-21.md:294](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/126-sv-vocabulary-distance-21.md:294>)
 
 Riferimento stabile: `card-sv-vocabulary-100-ryou-recognition`.
 
@@ -686,9 +773,11 @@ Riferimento stabile: `card-sv-vocabulary-100-ryou-recognition`.
 
 **Proposta e motivo:** Nel contesto dell’accompagnamento: la tua stanza / la stanza del dormitorio. Confrontare l’esempio equivalente 1162.
 
+**Applicato:** 寮 → りょう — dormitorio; collegio. ジニア先生から寮の部屋を案内するように言われたの！ — Il professor Jinia mi ha detto di accompagnarti a vedere la tua stanza nel dormitorio! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-050 · P1 · ヌシ perde il significato del gioco
 
-**Proposto** · certezza: alta · [128-sv-vocabulary-distance-23.md:245](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/128-sv-vocabulary-distance-23.md:245>)
+**Corretto** · certezza: alta · [128-sv-vocabulary-distance-23.md:245](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/128-sv-vocabulary-distance-23.md:245>)
 
 Riferimento stabile: `card-sv-vocabulary-262-sumika-recognition`.
 
@@ -700,9 +789,11 @@ Riferimento stabile: `card-sv-vocabulary-262-sumika-recognition`.
 
 **Proposta e motivo:** La tana del Dominante di tipo Drago.
 
+**Applicato:** すみか → すみか — tana; habitat; dimora. ドラゴンタイプのヌシのすみか！ — La tana del Nushi di tipo Drago! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-051 · P1 · Risposta a una domanda trasformata in scopo
 
-**Proposto** · certezza: alta · [130-sv-vocabulary-distance-25.md:70](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/130-sv-vocabulary-distance-25.md:70>)
+**Corretto** · certezza: alta · [130-sv-vocabulary-distance-25.md:70](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/130-sv-vocabulary-distance-25.md:70>)
 
 Riferimento stabile: `card-sv-vocabulary-024-kansei-recognition`.
 
@@ -714,9 +805,11 @@ Riferimento stabile: `card-sv-vocabulary-024-kansei-recognition`.
 
 **Proposta e motivo:** Alla mia domanda hai risposto che punti a completare il Pokédex, vero?
 
+**Applicato:** 完成 → かんせい — completamento; perfezione; realizzazione. わたしの質問に図鑑の完成を目指すって言ってくれたよね！ — Alla mia domanda hai risposto che punti a completare il Pokémon Zukan, vero? Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-052 · P1 · Discorso riferito trasformato in azione di tu
 
-**Proposto** · certezza: alta · [130-sv-vocabulary-distance-25.md:95](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/130-sv-vocabulary-distance-25.md:95>)
+**Corretto** · certezza: alta · [130-sv-vocabulary-distance-25.md:92](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/130-sv-vocabulary-distance-25.md:92>)
 
 Riferimento stabile: `card-sv-vocabulary-079-yobidasu-recognition`.
 
@@ -728,9 +821,11 @@ Riferimento stabile: `card-sv-vocabulary-079-yobidasu-recognition`.
 
 **Proposta e motivo:** Ripristinare ってさ e separare いよいよか: Dicono che abbia convocato…
 
+**Applicato:** 呼びだす → よびだす — chiamare (qualcuno) alla (porta, al telefono, ecc.); dire a (qualcuno) di venire; chiamare (al telefono). ああ、いじめっ子をまとめてグラウンドに呼びだしたってさ。 — Ah, dicono che abbia convocato tutti i bulli sul campo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-053 · P1 · よろしく iniziale tradotto ci vediamo
 
-**Proposto** · certezza: alta · [131-sv-vocabulary-distance-26.md:120](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/131-sv-vocabulary-distance-26.md:120>)
+**Corretto** · certezza: alta · [131-sv-vocabulary-distance-26.md:120](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/131-sv-vocabulary-distance-26.md:120>)
 
 Riferimento stabile: `card-sv-vocabulary-281-minoriaru-recognition`.
 
@@ -742,9 +837,11 @@ Riferimento stabile: `card-sv-vocabulary-281-minoriaru-recognition`.
 
 **Proposta e motivo:** Formula di avvio della sfida: Conto su di te / Facciamo una bella sfida; non un congedo.
 
+**Applicato:** 実りある → みのりある — gratificante; fruttuoso; fertile. それじゃあ、よろしく！実りある勝負にしよっ！ — Allora, diamoci da fare! Facciamo una sfida da cui imparare qualcosa! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-054 · P1 · ヤダ non è improbabile
 
-**Proposto** · certezza: alta · [132-sv-vocabulary-distance-27.md:295](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/132-sv-vocabulary-distance-27.md:295>)
+**Corretto** · certezza: alta · [132-sv-vocabulary-distance-27.md:295](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/132-sv-vocabulary-distance-27.md:295>)
 
 Riferimento stabile: `card-sv-vocabulary-285-yada-recognition`.
 
@@ -756,9 +853,11 @@ Riferimento stabile: `card-sv-vocabulary-285-yada-recognition`.
 
 **Proposta e motivo:** No! / Non voglio! / Che fastidio!, secondo il contesto.
 
+**Applicato:** ヤダ → ヤダ — no!; non voglio!; nemmeno per sogno! ヤダ！そんな危ない場所には行きたくない。 — No! Non voglio andare in un posto così pericoloso. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-055 · P1 · ってことは？ spezza la domanda
 
-**Proposto** · certezza: alta · [030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia.md:185](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia.md:185>)
+**Corretto** · certezza: alta · [030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia.md:185](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/030-sv-prestudy-l20a-reazioni-e-parlato-scuola-e-storia.md:185>)
 
 **Esempio:** それって、また 連絡するってことは？
 
@@ -766,9 +865,11 @@ Riferimento stabile: `card-sv-vocabulary-285-yada-recognition`.
 
 **Proposta e motivo:** Per «Questo vuol dire che mi contatterai di nuovo?» usare それって、また連絡するってこと？; ってことは normalmente introduce un’inferenza successiva.
 
+**Applicato:** それって、また連絡するってこと？ — Questo vuol dire che mi contatterai di nuovo? Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-056 · P2 · 捕まえる: formulazione circolare
 
-**Proposto** · certezza: alta · [001-pokemon-videogame-core.md:502](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/001-pokemon-videogame-core.md:502>)
+**Corretto** · certezza: alta · [001-pokemon-videogame-core.md:502](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/001-pokemon-videogame-core.md:502>)
 
 Riferimento stabile: `card-tsukamaeru-recognition`.
 
@@ -780,9 +881,11 @@ Riferimento stabile: `card-tsukamaeru-recognition`.
 
 **Proposta e motivo:** HPを減らすと、ポケモンを捕まえやすくなる。
 
+**Applicato:** 捕まえる → catturare HPを減らすと、ポケモンを捕まえやすくなる。 — Se gli riduci gli HP, il Pokémon diventa più facile da catturare. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-057 · P2 · ないで: richiesta omessa nel retro
 
-**Proposto** · certezza: alta · [011-sv-prestudy-l02-scarlet-violet-reazioni-e-parlato.md:89](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/011-sv-prestudy-l02-scarlet-violet-reazioni-e-parlato.md:89>)
+**Corretto** · certezza: alta · [011-sv-prestudy-l02-scarlet-violet-reazioni-e-parlato.md:89](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/011-sv-prestudy-l02-scarlet-violet-reazioni-e-parlato.md:89>)
 
 Riferimento stabile: `card-g005-senza-fare-non-fare-e-concept`.
 
@@ -794,9 +897,11 @@ Riferimento stabile: `card-g005-senza-fare-non-fare-e-concept`.
 
 **Proposta e motivo:** Aggiungere non fare… come richiesta autonoma e distinguere senza fare… come subordinata.
 
+**Applicato:** ～ないで → senza fare…; a fine frase: non fare… (richiesta) ここで バトルしないで。 — Non combattere qui. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-058 · P2 · 前に: esempio senza contenuto chiaro
 
-**Proposto** · certezza: alta · [013-sv-prestudy-l04-reazioni-e-parlato-scarlet-violet.md:63](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/013-sv-prestudy-l04-reazioni-e-parlato-scarlet-violet.md:63>)
+**Corretto** · certezza: alta · [013-sv-prestudy-l04-reazioni-e-parlato-scarlet-violet.md:63](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/013-sv-prestudy-l04-reazioni-e-parlato-scarlet-violet.md:63>)
 
 Riferimento stabile: `card-g010-prima-di-concept`.
 
@@ -808,9 +913,11 @@ Riferimento stabile: `card-g010-prima-di-concept`.
 
 **Proposta e motivo:** 行く前に、道具を確認しよう。
 
+**Applicato:** ～前に → prima di fare... / prima di... 行く前に、道具を確認しよう。 — Prima di andare, controlliamo gli strumenti. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-059 · P2 · いってらっしゃい: italiano innaturale
 
-**Proposto** · certezza: alta · [026-sv-prestudy-l18b-scuola-e-storia-reazioni-e-parlato.md:19](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/026-sv-prestudy-l18b-scuola-e-storia-reazioni-e-parlato.md:19>)
+**Corretto** · certezza: alta · [026-sv-prestudy-l18b-scuola-e-storia-reazioni-e-parlato.md:19](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/026-sv-prestudy-l18b-scuola-e-storia-reazioni-e-parlato.md:19>)
 
 Riferimento stabile: `card-e039-itterasshai-recognition`.
 
@@ -822,9 +929,11 @@ Riferimento stabile: `card-e039-itterasshai-recognition`.
 
 **Proposta e motivo:** A dopo! / Buona giornata! / Buon viaggio!, secondo contesto; non Vai e torna come formula naturale.
 
+**Applicato:** いってらっしゃい → a dopo!; buona giornata!; buon viaggio! (a chi esce) いってらっしゃい。 — A dopo! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-060 · P2 · Ability がけのぼり usata come luogo
 
-**Proposto** · certezza: alta · [032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:288](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:288>)
+**Corretto** · certezza: alta · [032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:288](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:288>)
 
 Riferimento stabile: `card-v318-gakenobori-recognition`.
 
@@ -836,9 +945,11 @@ Riferimento stabile: `card-v318-gakenobori-recognition`.
 
 **Proposta e motivo:** がけのぼりを使って、崖を登る。
 
+**Applicato:** がけのぼり → Gakenobori (abilità per scalare le pareti) がけのぼりを使って、崖を登る。 — Uso Gakenobori per scalare la parete. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-061 · P2 · 自分だけ non implica beneficiario per sé
 
-**Proposto** · certezza: alta · [033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:370](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:370>)
+**Corretto** · certezza: alta · [033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:370](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:370>)
 
 Riferimento stabile: `card-v344-jibun-dake-recognition`.
 
@@ -850,9 +961,11 @@ Riferimento stabile: `card-v344-jibun-dake-recognition`.
 
 **Proposta e motivo:** Rendere l’esclusione del soggetto: soltanto io/tu/lui secondo il contesto.
 
+**Applicato:** 自分だけ → soltanto io/tu/lui; solo la persona indicata da 自分 自分だけ 先に 行く。 — Solo io vado avanti. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-062 · P2 · 本校 non soltanto sede principale
 
-**Proposto** · certezza: alta · [045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:640](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:640>)
+**Corretto** · certezza: alta · [045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:636](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet.md:636>)
 
 Riferimento stabile: `card-v636-honkou-recognition`.
 
@@ -864,9 +977,11 @@ Riferimento stabile: `card-v636-honkou-recognition`.
 
 **Proposta e motivo:** Nel contesto istituzionale questa/la nostra scuola; distinguere dalla sede centrale contrapposta alle succursali.
 
+**Applicato:** 本校 → questa / la nostra scuola; sede principale (rispetto a una succursale) 本校には、いろいろな授業があります。 — Nella nostra scuola ci sono diversi corsi. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-063 · P2 · 物理 come categoria senza mosse
 
-**Proposto** · certezza: alta · [050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:21](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:21>)
+**Corretto** · certezza: alta · [050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:21](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:21>)
 
 Riferimento stabile: `card-v730-butsuri-recognition`.
 
@@ -878,9 +993,11 @@ Riferimento stabile: `card-v730-butsuri-recognition`.
 
 **Proposta e motivo:** Usare 物理技 per una frase autosufficiente.
 
+**Applicato:** 物理 → fisico (categoria di mosse) 物理技は、ポケモンの攻撃が高いほど、相手に与えるダメージが大きくなる。 — Con le mosse fisiche, più è alto l’Attacco del Pokémon, maggiori sono i danni inflitti all’avversario. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-064 · P2 · あなた/貴方 presentato come formale sicuro
 
-**Proposto** · certezza: alta · [057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:203](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:203>)
+**Corretto** · certezza: alta · [057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:201](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/057-sv-anki-l05-report-registri-e-forme-di-indirizzo.md:201>)
 
 Riferimento stabile: `card-anki-l05-anata-recognition`.
 
@@ -892,9 +1009,11 @@ Riferimento stabile: `card-anki-l05-anata-recognition`.
 
 **Proposta e motivo:** Spiegare che non è un modo universalmente cortese di rivolgersi a un superiore; di norma nome/titolo.
 
+**Applicato:** 貴方 → あなた — tu / Lei; il grado di cortesia dipende dal contesto 貴方のポケモン、とても強そうですね。 — Il tuo Pokémon sembra davvero forte. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-065 · P2 · ば～ほど non richiede due quantità crescenti
 
-**Proposto** · certezza: alta · [102-scarlet-violet-story-prologue-02.md:400](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/102-scarlet-violet-story-prologue-02.md:400>)
+**Corretto** · certezza: alta · [102-scarlet-violet-story-prologue-02.md:400](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/102-scarlet-violet-story-prologue-02.md:400>)
 
 Riferimento stabile: `grammar-ba-hodo`.
 
@@ -904,9 +1023,11 @@ Riferimento stabile: `grammar-ba-hodo`.
 
 **Proposta e motivo:** Usare «al variare di X, varia proporzionalmente Y: più… più/meno…». Il secondo valore può diminuire: 値段が高ければ高いほど、買う人は少なくなる。 La frase già presente 見れば見るほど può restare.
 
+**Applicato:** più… più/meno… (variazione correlata) Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-066 · P2 · Hearsay という perso
 
-**Proposto** · certezza: alta · [115-sv-vocabulary-distance-10.md:45](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/115-sv-vocabulary-distance-10.md:45>)
+**Corretto** · certezza: alta · [115-sv-vocabulary-distance-10.md:45](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/115-sv-vocabulary-distance-10.md:45>)
 
 Riferimento stabile: `card-sv-vocabulary-283-osoikakaru-recognition`.
 
@@ -918,9 +1039,11 @@ Riferimento stabile: `card-sv-vocabulary-283-osoikakaru-recognition`.
 
 **Proposta e motivo:** Si racconta/si dice che…; anche card 1521.
 
+**Applicato:** 襲いかかる → おそいかかる — attaccare; avventarsi su; piombare su. 一見ドンファンに似たその生物は突如球体に変化すると高速で回転し襲いかかってきたという。 — Si racconta che quella creatura, a prima vista simile a Donfan, si sia trasformata all’improvviso in una sfera, abbia iniziato a ruotare ad alta velocità e si sia lanciata all’attacco. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-067 · P2 · Istruzione al giocatore trasformata in promessa
 
-**Proposto** · certezza: contesto da ricostruire · [127-sv-vocabulary-distance-22.md:245](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/127-sv-vocabulary-distance-22.md:245>)
+**Corretto** · certezza: contesto da ricostruire · [127-sv-vocabulary-distance-22.md:245](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/127-sv-vocabulary-distance-22.md:245>)
 
 Riferimento stabile: `card-sv-vocabulary-295-soredemo-recognition`.
 
@@ -932,9 +1055,11 @@ Riferimento stabile: `card-sv-vocabulary-295-soredemo-recognition`.
 
 **Proposta e motivo:** Nel contesto raid: se neanche così funziona, usa l’incoraggiamento. Verificare la battuta sorgente.
 
+**Applicato:** それでも → それでも — ma (comunque); eppure; ciononostante. 技を変えてみよう。それでもダメなら、おうえんで仲間を助けよう！ — Proviamo a cambiare mossa. Se neanche così funziona, aiutiamo i compagni con l’incoraggiamento! Nuovo esempio didattico, esplicitamente etichettato; non ricostruzione certificata della battuta originale.
+
 ### JA-068 · P2 · Gioco di parole Team Star trasformato in lode
 
-**Proposto** · certezza: alta · [130-sv-vocabulary-distance-25.md:195](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/130-sv-vocabulary-distance-25.md:195>)
+**Corretto** · certezza: alta · [130-sv-vocabulary-distance-25.md:190](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/cards/130-sv-vocabulary-distance-25.md:190>)
 
 Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
@@ -946,9 +1071,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Spiegare お疲れさまでスター come saluto del Team Star; non inventare sei una vera stella.
 
+**Applicato:** 差し上げる → さしあげる — dare; offrire con umiltà. ゆえにLPを差し上げようぞ。お疲れさまでスターでござる！ — Perciò ti darò degli LP. Grazie dell’impegno! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-069 · P2 · 最高 non significa statistiche al massimo
 
-**Proposto** · certezza: alta · [024-sv-prestudy-l17b-battaglia-reazioni-e-parlato.md:227](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/024-sv-prestudy-l17b-battaglia-reazioni-e-parlato.md:227>)
+**Corretto** · certezza: alta · [024-sv-prestudy-l17b-battaglia-reazioni-e-parlato.md:227](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/024-sv-prestudy-l17b-battaglia-reazioni-e-parlato.md:227>)
 
 **Esempio:** 成長した ポケモンの 能力は 最高です！
 
@@ -956,9 +1083,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Tradurre «Le statistiche di questo Pokémon sono eccezionali!»; per valori al massimo il giapponese deve dirlo esplicitamente.
 
+**Applicato:** 成長した ポケモンの 能力は 最高です！ — Le statistiche del Pokémon, ora che è cresciuto, sono eccezionali! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-070 · P2 · Confronto con un tipo anziché con un avversario
 
-**Proposto** · certezza: alta · [025-sv-prestudy-l18a-reazioni-e-parlato-battaglia.md:212](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/025-sv-prestudy-l18a-reazioni-e-parlato-battaglia.md:212>)
+**Corretto** · certezza: alta · [025-sv-prestudy-l18a-reazioni-e-parlato-battaglia.md:212](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/025-sv-prestudy-l18a-reazioni-e-parlato-battaglia.md:212>)
 
 **Esempio:** ネモって、 むしタイプより ずっと 強い 相手を 選ぶよね。
 
@@ -966,9 +1095,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Se l’intento è una preferenza di Nemi, usare ネモって、いつも強い相手を選ぶよね。 «Nemi sceglie sempre avversari forti, vero?»
 
+**Applicato:** ネモって、いつも強い相手を選ぶよね。 — Nemo sceglie sempre avversari forti, vero? Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-071 · P2 · 食事の種類: struttura poco naturale
 
-**Proposto** · certezza: alta · [027-sv-prestudy-l18c-reazioni-e-parlato-scuola-e-storia.md:416](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/027-sv-prestudy-l18c-reazioni-e-parlato-scuola-e-storia.md:416>)
+**Corretto** · certezza: alta · [027-sv-prestudy-l18c-reazioni-e-parlato-scuola-e-storia.md:416](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/027-sv-prestudy-l18c-reazioni-e-parlato-scuola-e-storia.md:416>)
 
 **Esempio:** でんきタイプの 食事の 種類で、 色違いの ポケモンを 探そう。
 
@@ -976,9 +1107,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Scegliere una frase concreta: でんきタイプのそうぐうパワーがつくサンドウィッチを作ろう。 «Prepariamo un sandwich che dia il Potere Incontro per il tipo Elettro». Verificare il nome ufficiale del potere nella localizzazione scelta.
 
+**Applicato:** でんきタイプのそうぐうパワーがつくサンドウィッチを作ろう。 — Prepariamo un sandwich che dia Sōgū Pawā per il tipo Elettro. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-072 · P2 · 機能が入る invece di 追加される
 
-**Proposto** · certezza: alta · [031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:76](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:76>)
+**Corretto** · certezza: alta · [031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:76](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:76>)
 
 **Esempio:** メニューに 新しい 機能が 入りました。
 
@@ -986,9 +1119,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Per una funzione aggiunta al menu: メニューに新しい機能が追加されました。; analogamente ダッシュの機能が追加された oppure ダッシュが使えるようになった.
 
+**Applicato:** メニューに新しい機能が追加されました。 — Nel menu è stata aggiunta una nuova funzione. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-073 · P2 · Precisione della mossa collegata alle impostazioni
 
-**Proposto** · certezza: alta · [031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:305](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:305>)
+**Corretto** · certezza: alta · [031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:313](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/031-sv-prestudy-l20b-battaglia-scuola-e-storia.md:313>)
 
 **Esempio:** じめんタイプの わざは 命中率が 低そうだから、 設定を 見ておこう。
 
@@ -996,9 +1131,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Usare una conseguenza plausibile: このわざは命中率が低そうだから、別のわざを選ぼう。 «Questa mossa sembra poco precisa, quindi scegliamone un’altra». Non suggerire che le impostazioni cambino la precisione.
 
+**Applicato:** このわざは命中率が低そうだから、別のわざを選ぼう。 — Questa mossa sembra poco precisa, quindi scegliamone un’altra. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-074 · P2 · Acquisti e velocità di ricarica senza rapporto
 
-**Proposto** · certezza: alta · [032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:293](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:293>)
+**Corretto** · certezza: alta · [032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:293](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/032-sv-prestudy-l21a-sistema-e-menu-verbi-operativi.md:293>)
 
 **Esempio:** まとめて 買うと、 チャージが 早くなるかも。
 
@@ -1006,9 +1143,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Per まとめて usare どうぐをまとめて買うと、買い物の時間を短縮できる。 «Comprando gli strumenti tutti insieme, si risparmia tempo». Separare l’esempio di チャージ.
 
+**Applicato:** どうぐをまとめて買うと、買い物の時間を短縮できる。 — Comprando gli strumenti tutti insieme, si risparmia tempo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-075 · P2 · Ingredienti registrati nell’app fotocamera
 
-**Proposto** · certezza: alta · [033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:334](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:334>)
+**Corretto** · certezza: alta · [033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:333](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/033-sv-prestudy-l21b-sistema-e-menu-reazioni-e-parlato.md:333>)
 
 **Esempio:** しばらく お待ちください。サンドウィッチの 材料は カメラアプリに 登録してあります。
 
@@ -1016,9 +1155,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Usare una scena plausibile: サンドウィッチの材料はメモしてあります。 «Ho annotato gli ingredienti del sandwich». Se si intende una foto, dire 写真に撮ってあります.
 
+**Applicato:** サンドウィッチの材料はメモしてあります。 — Ho annotato gli ingredienti del sandwich. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-076 · P2 · Scorciatoie delle mosse non supportate dal contesto
 
-**Proposto** · certezza: alta · [041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:133](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:133>)
+**Corretto** · certezza: alta · [041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:133](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:133>)
 
 **Esempio:** 自動セーブを オンにして、よく使う わざを ショートカットに 追加します。
 
@@ -1026,9 +1167,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Separare il salvataggio automatico da una funzione concreta realmente presente nel gioco. Evitare di inventare un’interfaccia solo per includere ショートカット.
 
+**Applicato:** 自動セーブをオンにしてから、設定を確認します。 — Dopo aver attivato il salvataggio automatico, controllo le impostazioni. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-077 · P2 · Passato giapponese tradotto presente
 
-**Proposto** · certezza: alta · [041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:302](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:302>)
+**Corretto** · certezza: alta · [041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:299](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/041-sv-prestudy-l29b-sistema-e-menu-scuola-e-storia.md:299>)
 
 **Esempio:** プレゼントの 受けとりを 選ぶと、道具が バッグに 追加されました。
 
@@ -1036,9 +1179,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Tradurre «Quando ho selezionato il ritiro del regalo, lo strumento è stato aggiunto alla borsa» oppure mettere 追加されます nel giapponese per la regola generale.
 
+**Applicato:** プレゼントの 受けとりを 選ぶと、道具が バッグに 追加されました。 — Quando ho selezionato il ritiro del regalo, lo strumento è stato aggiunto alla borsa. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-078 · P2 · おかえり e ただいま senza turni
 
-**Proposto** · certezza: alta · [043-sv-prestudy-l30a-esplorazione-e-movimento-sistema-e-menu.md:262](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/043-sv-prestudy-l30a-esplorazione-e-movimento-sistema-e-menu.md:262>)
+**Corretto** · certezza: alta · [043-sv-prestudy-l30a-esplorazione-e-movimento-sistema-e-menu.md:262](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/043-sv-prestudy-l30a-esplorazione-e-movimento-sistema-e-menu.md:262>)
 
 **Esempio:** おかえり。 ただいま。
 
@@ -1046,9 +1191,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Segnare i parlanti A/B; in una scena normale chi rientra dice ただいま e l’altro risponde おかえり.
 
+**Applicato:** A：ただいま。 B：おかえり。 — A: Sono tornato. B: Bentornato. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-079 · P2 · 困難な相手
 
-**Proposto** · certezza: alta · [047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi.md:340](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi.md:340>)
+**Corretto** · certezza: alta · [047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi.md:340](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/047-sv-prestudy-l30e-sistema-e-menu-verbi-operativi.md:340>)
 
 **Esempio:** 共闘すれば、困難な 相手を 追いはらえる 予感がします。
 
@@ -1056,9 +1203,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Usare 手ごわい相手 per un avversario ostico; 困難な descrive normalmente il compito o la situazione difficile.
 
+**Applicato:** 共闘すれば、手ごわい相手も追いはらえる予感がします。 — Ho la sensazione che, combattendo insieme, riusciremo a scacciare anche un avversario temibile. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-080 · P2 · 敬語っぽい空気: frase costruita intorno all’etichetta
 
-**Proposto** · certezza: alta · [050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:369](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:369>)
+**Corretto** · certezza: alta · [050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:369](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/050-sv-prestudy-l35a-scuola-classi-e-regole-accademia.md:369>)
 
 **Esempio:** 学籍番号で 呼ばれると、 授業中の 敬語っぽい 空気に なる。
 
@@ -1066,9 +1215,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Usare una situazione osservabile: 授業中、先生に名前を呼ばれたので、敬語で返事をした。 «Durante la lezione il professore mi ha chiamato e ho risposto in modo cortese». Evitare l’astratta «atmosfera del linguaggio cortese».
 
+**Applicato:** 授業中、先生に名前を呼ばれたので、敬語で返事をした。 — Durante la lezione il professore mi ha chiamato per nome e ho risposto in modo cortese. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-081 · P2 · 自称スマホ占い
 
-**Proposto** · certezza: alta · [051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana.md:238](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana.md:238>)
+**Corretto** · certezza: alta · [051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana.md:238](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana.md:238>)
 
 **Esempio:** 自称 スマホ占いは いかがですか？
 
@@ -1076,9 +1227,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Per 自称 scegliere un soggetto che si attribuisce un titolo: 自称占い師の人に、スマホで運勢を占ってもらった。 «Mi sono fatto leggere il futuro sullo smartphone da una persona che si presenta come indovino». Il nome della pratica non si autoproclama.
 
+**Applicato:** 自称占い師の人に、スマホで運勢を占ってもらった。 — Mi sono fatto leggere il futuro sullo smartphone da una persona che si presenta come indovino. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-082 · P2 · 話を話す ridondante
 
-**Proposto** · certezza: alta · [054-sv-anki-l02-treasure-hunt-e-area-zero.md:196](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/054-sv-anki-l02-treasure-hunt-e-area-zero.md:196>)
+**Corretto** · certezza: alta · [054-sv-anki-l02-treasure-hunt-e-area-zero.md:196](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/054-sv-anki-l02-treasure-hunt-e-area-zero.md:196>)
 
 **Esempio:** ネモと ポケモンの 話を 少し 話す。
 
@@ -1086,9 +1239,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** ネモとポケモンの話を少しする。 «Parlo un po’ con Nemi dei Pokémon». Si può anche usare ネモとポケモンについて少し話す。
 
+**Applicato:** ネモとポケモンの話を少しする。 — Parlo un po’ con Nemo dei Pokémon. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-083 · P2 · データの数が上がる
 
-**Proposto** · certezza: alta · [058-sv-anki-l06-voci-linguistica-umani-e-macchine.md:245](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/058-sv-anki-l06-voci-linguistica-umani-e-macchine.md:245>)
+**Corretto** · certezza: alta · [058-sv-anki-l06-voci-linguistica-umani-e-macchine.md:245](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/058-sv-anki-l06-voci-linguistica-umani-e-macchine.md:245>)
 
 **Esempio:** この 機械を 使うと、 データの 数が 上がる。
 
@@ -1096,9 +1251,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Usare データの量が増える per la quantità dei dati, oppure 件数が増える per il numero di record.
 
+**Applicato:** この機械を使うと、データの量が増える。 — Se usi questa macchina, la quantità di dati aumenta. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-084 · P2 · お疲れさまです tradotto Benvenuto
 
-**Proposto** · certezza: dipende dal contesto · [103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal.md:417](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal.md:417>)
+**Corretto** · certezza: dipende dal contesto · [103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal.md:416](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/103-scarlet-violet-story-prologue-03-pokemon-center-second-battle-and-first-terastal.md:416>)
 
 **Esempio:** お疲れさまです。ポケモンセンターで 手持ちを 回復してもらいましょう。
 
@@ -1106,9 +1263,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 **Proposta e motivo:** Segnalare la funzione pragmatica del saluto: riconoscimento dell’impegno o della fatica. «Benvenuto» da solo non rende お疲れさまです. In un esempio autonomo usare «Grazie dell’impegno»; nel dialogo di gioco scegliere la formula italiana dopo aver verificato chi saluta chi.
 
+**Applicato:** お疲れさまです。ポケモンセンターで 手持ちを 回復してもらいましょう。 — Grazie dell’impegno. Facciamoci curare la squadra al Pokémon Sentā. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-085 · P2 · Traduzione aggiunge scena e briefing
 
-**Proposto** · certezza: alta · [104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance.md:191](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance.md:191>)
+**Corretto** · certezza: alta · [104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance.md:191](</Users/abelli/Codex/Japanese Custom Study/content/media/pokemon-scarlet-violet/textbook/104-scarlet-violet-story-prologue-04-academy-classroom-facilities-and-guidance.md:191>)
 
 **Esempio:** 校長室に 呼ばれると 大事な 話が 始まる ことが 多い。
 
@@ -1118,9 +1277,11 @@ Riferimento stabile: `card-sv-vocabulary-078-sashiageru-recognition`.
 
 ## Crystal Hunters — 16 voci
 
+**Applicato:** 校長室に 呼ばれると 大事な 話が 始まる ことが 多い。 — Quando vieni convocato nell’ufficio del preside, spesso c’è qualcosa di importante da discutere. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-086 · P1 · Tempo giapponese e traduzione divergono
 
-**Proposto** · certezza: alta · [062-book-6-l03-risvegli-ritorni-e-verita.md:266](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/062-book-6-l03-risvegli-ritorni-e-verita.md:266>)
+**Corretto** · certezza: alta · [062-book-6-l03-risvegli-ritorni-e-verita.md:266](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/062-book-6-l03-risvegli-ritorni-e-verita.md:266>)
 
 Riferimento stabile: `card-crystal-hunters-book-6-l03-nandomo-recognition`.
 
@@ -1132,9 +1293,11 @@ Riferimento stabile: `card-crystal-hunters-book-6-l03-nandomo-recognition`.
 
 **Proposta e motivo:** 救う non corrisponde a Ho salvato: usare 救った se l’esempio è originale didattico oppure mantenere il tempo nella traduzione.
 
+**Applicato:** 何度も → なんども — molte volte; ripetutamente カルを何度も救った。 — Ho salvato Kal molte volte. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-087 · P1 · ではありません: passato aggiunto nel significato
 
-**Proposto** · certezza: alta · [080-book-8-l01-corte-saluti-e-orologio.md:229](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/080-book-8-l01-corte-saluti-e-orologio.md:229>)
+**Corretto** · certezza: alta · [080-book-8-l01-corte-saluti-e-orologio.md:229](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/080-book-8-l01-corte-saluti-e-orologio.md:229>)
 
 Riferimento stabile: `grammar-ch-b8-dewa-arimasen`.
 
@@ -1144,9 +1307,11 @@ Riferimento stabile: `grammar-ch-b8-dewa-arimasen`.
 
 **Proposta e motivo:** Nel significato della voce lasciare «non è N (cortese)». «Non era N» richiede ではありませんでした, come già spiega correttamente la nota.
 
+**Applicato:** non è N (cortese) Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-088 · P2 · 気に入る come stato già attuale
 
-**Proposto** · certezza: editoriale · [003-book-1-l03-bow-girl-chase-and-rescue.md:330](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/003-book-1-l03-bow-girl-chase-and-rescue.md:330>)
+**Corretto** · certezza: editoriale · [003-book-1-l03-bow-girl-chase-and-rescue.md:330](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/003-book-1-l03-bow-girl-chase-and-rescue.md:330>)
 
 Riferimento stabile: `card-crystal-hunters-ki-ni-iru-recognition`.
 
@@ -1158,9 +1323,11 @@ Riferimento stabile: `card-crystal-hunters-ki-ni-iru-recognition`.
 
 **Proposta e motivo:** Per L’arco mi piace: この弓が気に入っている。 oppure 気に入った per la scoperta.
 
+**Applicato:** 気に入る → きにいる — piacere; andare a genio この弓が気に入っている。 — Questo arco mi piace. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-089 · P2 · 火事の建物に子がいる poco idiomatico
 
-**Proposto** · certezza: alta · [021-book-2-l02-denaro-citta-e-salvataggi.md:373](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/021-book-2-l02-denaro-citta-e-salvataggi.md:373>)
+**Corretto** · certezza: alta · [021-book-2-l02-denaro-citta-e-salvataggi.md:373](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/021-book-2-l02-denaro-citta-e-salvataggi.md:373>)
 
 Riferimento stabile: `card-crystal-hunters-book-2-l02-denaro-citta-e-salvataggi-ch-ko-child-recognition`.
 
@@ -1172,9 +1339,11 @@ Riferimento stabile: `card-crystal-hunters-book-2-l02-denaro-citta-e-salvataggi-
 
 **Proposta e motivo:** 火事になっている建物の中に、まだ子供がいる。 «C’è ancora un bambino nell’edificio in fiamme». Conserva la scena e rende più naturale sia il luogo sia 子供 nell’esempio isolato.
 
+**Applicato:** 子 → こ — bambino; persona giovane 火事だ！あの子はまだ建物の中にいる。 — Al fuoco! Quel bambino è ancora dentro l’edificio. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-090 · P2 · Italiano: mettere mano sulla famiglia
 
-**Proposto** · certezza: alta · [061-book-6-l02-vita-chiavi-e-aiuto.md:311](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/061-book-6-l02-vita-chiavi-e-aiuto.md:311>)
+**Corretto** · certezza: alta · [061-book-6-l02-vita-chiavi-e-aiuto.md:311](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/061-book-6-l02-vita-chiavi-e-aiuto.md:311>)
 
 Riferimento stabile: `card-crystal-hunters-book-6-l02-te-o-dasu-recognition`.
 
@@ -1186,9 +1355,11 @@ Riferimento stabile: `card-crystal-hunters-book-6-l02-te-o-dasu-recognition`.
 
 **Proposta e motivo:** Non toccare la mia famiglia / Non mettere le mani addosso ai miei familiari.
 
+**Applicato:** 手を出す → てをだす — mettere le mani addosso; fare una mossa contro 家族に手を出すな。 — Non mettere le mani addosso ai miei familiari. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-091 · P2 · 一体 con gloss troppo ampio
 
-**Proposto** · certezza: alta · [080-book-8-l01-corte-saluti-e-orologio.md:454](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/080-book-8-l01-corte-saluti-e-orologio.md:454>)
+**Corretto** · certezza: alta · [080-book-8-l01-corte-saluti-e-orologio.md:454](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/080-book-8-l01-corte-saluti-e-orologio.md:454>)
 
 Riferimento stabile: `card-crystal-hunters-book-8-l01-ittai-recognition`.
 
@@ -1200,9 +1371,11 @@ Riferimento stabile: `card-crystal-hunters-book-8-l01-ittai-recognition`.
 
 **Proposta e motivo:** Separare l’uso enfatico nelle domande: mai / diavolo; non insegnare in assoluto come equivalente generale.
 
+**Applicato:** 一体 → いったい — mai; diavolo (enfasi nelle domande) 一体何者だ？ — Chi diavolo sei? Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-092 · P2 · Esempio artificioso di ではありません
 
-**Proposto** · certezza: editoriale · [080-book-8-l01-corte-saluti-e-orologio.md:500](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/080-book-8-l01-corte-saluti-e-orologio.md:500>)
+**Corretto** · certezza: editoriale · [080-book-8-l01-corte-saluti-e-orologio.md:500](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/080-book-8-l01-corte-saluti-e-orologio.md:500>)
 
 Riferimento stabile: `card-crystal-hunters-book-8-l01-dewa-arimasen-concept`.
 
@@ -1214,9 +1387,11 @@ Riferimento stabile: `card-crystal-hunters-book-8-l01-dewa-arimasen-concept`.
 
 **Proposta e motivo:** これは私のお金ではありません。
 
+**Applicato:** Nではありません → non è N, in forma cortese これは私のお金ではありません。 — Questi soldi non sono miei. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-093 · P2 · あの奴 poco naturale
 
-**Proposto** · certezza: editoriale · [083-book-8-l04-orgoglio-aiuto-e-riposo.md:262](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/083-book-8-l04-orgoglio-aiuto-e-riposo.md:262>)
+**Corretto** · certezza: editoriale · [083-book-8-l04-orgoglio-aiuto-e-riposo.md:262](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/083-book-8-l04-orgoglio-aiuto-e-riposo.md:262>)
 
 Riferimento stabile: `card-crystal-hunters-book-8-l04-yatsu-recognition`.
 
@@ -1228,9 +1403,11 @@ Riferimento stabile: `card-crystal-hunters-book-8-l04-yatsu-recognition`.
 
 **Proposta e motivo:** あいつは強いやつだ。
 
+**Applicato:** 奴 → やつ — tipo; tizio; cosa あいつは強い奴だ。 — Quel tipo è forte. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-094 · P2 · 二度 e 二度と…ない
 
-**Proposto** · certezza: alta · [101-book-10-l02-limiti-ripresa-e-colpa.md:140](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/101-book-10-l02-limiti-ripresa-e-colpa.md:140>)
+**Corretto** · certezza: alta · [101-book-10-l02-limiti-ripresa-e-colpa.md:139](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/101-book-10-l02-limiti-ripresa-e-colpa.md:139>)
 
 Riferimento stabile: `card-crystal-hunters-book-10-l02-nido-recognition`.
 
@@ -1242,9 +1419,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l02-nido-recognition`.
 
 **Proposta e motivo:** Distinguere due volte da mai più oppure usare un esempio di conteggio per la card 二度.
 
+**Applicato:** 二度 → にど — due volte; una seconda volta この町には二度来たことがある。 — Sono stato in questa città due volte. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-095 · P2 · Collocazione di 外す
 
-**Proposto** · certezza: editoriale · [101-book-10-l02-limiti-ripresa-e-colpa.md:155](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/101-book-10-l02-limiti-ripresa-e-colpa.md:155>)
+**Corretto** · certezza: editoriale · [101-book-10-l02-limiti-ripresa-e-colpa.md:153](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/101-book-10-l02-limiti-ripresa-e-colpa.md:153>)
 
 Riferimento stabile: `card-crystal-hunters-book-10-l02-hazusu-recognition`.
 
@@ -1256,9 +1435,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l02-hazusu-recognition`.
 
 **Proposta e motivo:** 帽子を外す è comprensibile e non va marcato come errore grammaticale. Per una flashcard di base di 外す preferire 眼鏡を外す, collocazione più trasparente; per il cappello insegnare anche 帽子を脱ぐ.
 
+**Applicato:** 外す → はずす — togliere; rimuovere 眼鏡を外す。 — Mi tolgo gli occhiali. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-096 · P2 · この物 deittico poco naturale
 
-**Proposto** · certezza: editoriale · [105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:218](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:218>)
+**Corretto** · certezza: editoriale · [105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:218](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:218>)
 
 Riferimento stabile: `card-crystal-hunters-book-10-l06-mono-recognition`.
 
@@ -1270,9 +1451,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l06-mono-recognition`.
 
 **Proposta e motivo:** 危険な物には触れるな。
 
+**Applicato:** 物 → もの - cosa fisica; oggetto 危険な物には触れるな。 — Non toccare oggetti pericolosi. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-097 · P2 · Discorso diretto trasformato con soggetto arbitrario
 
-**Proposto** · certezza: dipende dal contesto · [105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:398](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:398>)
+**Corretto** · certezza: dipende dal contesto · [105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:398](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/cards/105-book-10-l06-subtesto-oggetti-e-verbi-composti.md:398>)
 
 Riferimento stabile: `card-crystal-hunters-book-10-l06-embedded-quote-concept`.
 
@@ -1284,9 +1467,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l06-embedded-quote-concept`.
 
 **Proposta e motivo:** La regina ha detto: «Siete stupidi».
 
+**Applicato:** XはYは...だと言う → X dice che Y... 女王は「お前達はバカだ」と言った。 — La regina ha detto: «Siete stupidi». Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-098 · P2 · 私は見える è ambiguo fuori contesto
 
-**Proposto** · certezza: alta · [001-book-1-l01-sword-pronouns-and-first-movement.md:282](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/001-book-1-l01-sword-pronouns-and-first-movement.md:282>)
+**Corretto** · certezza: alta · [001-book-1-l01-sword-pronouns-and-first-movement.md:282](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/001-book-1-l01-sword-pronouns-and-first-movement.md:282>)
 
 **Esempio:** 私は見える。
 
@@ -1294,9 +1479,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l06-embedded-quote-concept`.
 
 **Proposta e motivo:** Per mostrare la percezione visiva usare 私にはクリスタルが見える。 «Riesco a vedere il cristallo». 私は見える può essere interpretato come «io sono visibile»; non è un buon esempio isolato della struttura.
 
+**Applicato:** 私にはクリスタルが見える。 — Riesco a vedere il cristallo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-099 · P2 · Offerta e accettazione senza interlocutori
 
-**Proposto** · certezza: alta · [095-book-9-l06-fuga-furto-e-chiusura.md:206](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/095-book-9-l06-fuga-furto-e-chiusura.md:206>)
+**Corretto** · certezza: alta · [095-book-9-l06-fuga-furto-e-chiusura.md:206](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/095-book-9-l06-fuga-furto-e-chiusura.md:206>)
 
 **Esempio:** 今日は俺の奢りだ。お言葉に甘えて。
 
@@ -1304,9 +1491,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l06-embedded-quote-concept`.
 
 **Proposta e motivo:** Presentare come mini dialogo A: 今日は俺の奢りだ。 B: では、お言葉に甘えて。; tradurre «Oggi offro io.» / «Allora accetto volentieri.»
 
+**Applicato:** A：今日は俺の奢りだ。 B：では、お言葉に甘えて。 — A: Oggi offro io. B: Allora accetto volentieri. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-100 · P2 · Desiderare di riprendere conoscenza mentre si parla
 
-**Proposto** · certezza: contestuale · [100-book-10-l01-risvegli-rotture-e-controllo.md:198](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/100-book-10-l01-risvegli-rotture-e-controllo.md:198>)
+**Corretto** · certezza: contestuale · [100-book-10-l01-risvegli-rotture-e-controllo.md:198](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/100-book-10-l01-risvegli-rotture-e-controllo.md:198>)
 
 **Esempio:** 嫌だ。意識を取り戻したい。
 
@@ -1314,9 +1503,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l06-embedded-quote-concept`.
 
 **Proposta e motivo:** In un esempio autonomo sostituire con 早く意識を取り戻してほしい。 «Vorrei che riprendesse presto conoscenza». Se è una citazione di sogno/monologo, conservarla con quel contesto.
 
+**Applicato:** 早く意識を取り戻してほしい。 — Vorrei che riprendesse presto conoscenza. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-101 · P2 · Nome ナイツ traslitterato in due modi
 
-**Proposto** · certezza: alta · [112-ad-hoc-mukatte-kuru.md:63](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/112-ad-hoc-mukatte-kuru.md:63>)
+**Corretto** · certezza: alta · [112-ad-hoc-mukatte-kuru.md:63](</Users/abelli/Codex/Japanese Custom Study/content/media/crystal-hunters/textbook/112-ad-hoc-mukatte-kuru.md:63>)
 
 **Esempio:** 男がナイツに向かってくる！
 
@@ -1326,9 +1517,11 @@ Riferimento stabile: `card-crystal-hunters-book-10-l06-embedded-quote-concept`.
 
 ## Kaishi — 15 voci
 
+**Applicato:** 男がナイツに向かってくる！ — L’uomo si avventa contro Knites! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-102 · P1 · 言い訳 non è apology
 
-**Proposto** · certezza: alta · [001-kaishi-missing-clean.md:475](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/001-kaishi-missing-clean.md:475>)
+**Corretto** · certezza: alta · [001-kaishi-missing-clean.md:475](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/001-kaishi-missing-clean.md:475>)
 
 Riferimento stabile: `card-kaishi-1708637441227-recognition`.
 
@@ -1340,9 +1533,11 @@ Riferimento stabile: `card-kaishi-1708637441227-recognition`.
 
 **Proposta e motivo:** excuse; explanation/justification. Rimuovere apology.
 
+**Applicato:** 言い訳 → excuse; justification あなたは言い訳が多すぎます。 — You give too many excuses. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-103 · P1 · も scalare tradotto also
 
-**Proposto** · certezza: alta · [012-kaishi-missing-clean.md:84](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/012-kaishi-missing-clean.md:84>)
+**Corretto** · certezza: alta · [012-kaishi-missing-clean.md:84](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/012-kaishi-missing-clean.md:84>)
 
 Riferimento stabile: `card-kaishi-1708637441210-recognition`.
 
@@ -1354,9 +1549,11 @@ Riferimento stabile: `card-kaishi-1708637441210-recognition`.
 
 **Proposta e motivo:** It’s pathetic that you don’t even know this.
 
+**Applicato:** 情けない → pathetic, shameful こんなことも知らないとは情けない。 — It’s pathetic that you don’t even know this. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-104 · P1 · 年齢は問いません non promette di non chiedere l’età
 
-**Proposto** · certezza: alta · [018-kaishi-missing-clean.md:417](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/018-kaishi-missing-clean.md:417>)
+**Corretto** · certezza: alta · [018-kaishi-missing-clean.md:417](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/018-kaishi-missing-clean.md:417>)
 
 Riferimento stabile: `card-kaishi-1708637440979-recognition`.
 
@@ -1368,9 +1565,11 @@ Riferimento stabile: `card-kaishi-1708637440979-recognition`.
 
 **Proposta e motivo:** Applicants of any age are welcome / There is no age requirement for applicants.
 
+**Applicato:** 問う → to ask, to inquire 応募者の年齢は問いません。 — There is no age requirement for applicants. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-105 · P1 · 偉い non equivale a famous
 
-**Proposto** · certezza: alta · [032-kaishi-missing-clean.md:324](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/032-kaishi-missing-clean.md:324>)
+**Corretto** · certezza: alta · [032-kaishi-missing-clean.md:324](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/032-kaishi-missing-clean.md:324>)
 
 Riferimento stabile: `card-kaishi-1708637441184-recognition`.
 
@@ -1382,9 +1581,11 @@ Riferimento stabile: `card-kaishi-1708637441184-recognition`.
 
 **Proposta e motivo:** great; eminent; distinguished. Esempio: He is a distinguished scholar.
 
+**Applicato:** 偉い → great; eminent; distinguished 彼は偉い学者です。 — He is a distinguished scholar. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-106 · P2 · 早い/速い per fastest
 
-**Proposto** · certezza: normalizzazione facoltativa · [001-kaishi-missing-clean.md:205](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/001-kaishi-missing-clean.md:205>)
+**Corretto** · certezza: normalizzazione facoltativa · [001-kaishi-missing-clean.md:205](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/001-kaishi-missing-clean.md:205>)
 
 Riferimento stabile: `card-kaishi-1708637441046-recognition`.
 
@@ -1396,9 +1597,11 @@ Riferimento stabile: `card-kaishi-1708637441046-recognition`.
 
 **Proposta e motivo:** Valutare 速い, senza cambiare audio o lettura.
 
+**Applicato:** 最も → the most 彼は世界で最も速い男です。 — He's the fastest man in the world. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-107 · P2 · Reggenza inglese ask a favor
 
-**Proposto** · certezza: alta · [004-kaishi-missing-clean.md:236](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/004-kaishi-missing-clean.md:236>)
+**Corretto** · certezza: alta · [004-kaishi-missing-clean.md:236](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/004-kaishi-missing-clean.md:236>)
 
 Riferimento stabile: `card-kaishi-1708637441138-recognition`.
 
@@ -1410,9 +1613,11 @@ Riferimento stabile: `card-kaishi-1708637441138-recognition`.
 
 **Proposta e motivo:** I asked God for a favor.
 
+**Applicato:** 神様 → God, the divine 神様にお願いしました。 — I asked God for a favor. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-108 · P2 · Traduzione inventa una trasmissione radio
 
-**Proposto** · certezza: alta · [006-kaishi-missing-clean.md:234](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/006-kaishi-missing-clean.md:234>)
+**Corretto** · certezza: alta · [006-kaishi-missing-clean.md:234](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/006-kaishi-missing-clean.md:234>)
 
 Riferimento stabile: `card-kaishi-1708637440828-recognition`.
 
@@ -1424,9 +1629,11 @@ Riferimento stabile: `card-kaishi-1708637440828-recognition`.
 
 **Proposta e motivo:** Shocking news suddenly came in.
 
+**Applicato:** 衝撃 → impact, shock 衝撃のニュースが飛び込んできた。 — Shocking news suddenly came in. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-109 · P2 · Tempo inglese con since
 
-**Proposto** · certezza: alta · [016-kaishi-missing-clean.md:54](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/016-kaishi-missing-clean.md:54>)
+**Corretto** · certezza: alta · [016-kaishi-missing-clean.md:54](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/016-kaishi-missing-clean.md:54>)
 
 Riferimento stabile: `card-kaishi-1708637440662-recognition`.
 
@@ -1438,9 +1645,11 @@ Riferimento stabile: `card-kaishi-1708637440662-recognition`.
 
 **Proposta e motivo:** I’ve had a fever since yesterday.
 
+**Applicato:** 熱 → fever 昨日から熱があります。 — I’ve had a fever since yesterday. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-110 · P2 · Grafia standard つまずく
 
-**Proposto** · certezza: normalizzazione facoltativa · [016-kaishi-missing-clean.md:204](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/016-kaishi-missing-clean.md:204>)
+**Corretto** · certezza: normalizzazione facoltativa · [016-kaishi-missing-clean.md:203](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/016-kaishi-missing-clean.md:203>)
 
 Riferimento stabile: `card-kaishi-1708637440646-recognition`.
 
@@ -1452,9 +1661,11 @@ Riferimento stabile: `card-kaishi-1708637440646-recognition`.
 
 **Proposta e motivo:** つまづいた → つまずいた.
 
+**Applicato:** 石 → stone, small rock 私は石につまずいた。 — I tripped on a stone. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-111 · P2 · 転んだ e preposizione inglese
 
-**Proposto** · certezza: alta · [019-kaishi-missing-clean.md:264](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/019-kaishi-missing-clean.md:264>)
+**Corretto** · certezza: alta · [019-kaishi-missing-clean.md:264](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/019-kaishi-missing-clean.md:264>)
 
 Riferimento stabile: `card-kaishi-1708637441282-recognition`.
 
@@ -1466,9 +1677,11 @@ Riferimento stabile: `card-kaishi-1708637441282-recognition`.
 
 **Proposta e motivo:** I took a spectacular fall on the snowy road.
 
+**Applicato:** 派手 → showy, flashy 雪道で派手に転んでしまったの。 — I took a spectacular fall on the snowy road. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-112 · P2 · Inglese: collocazione hit into
 
-**Proposto** · certezza: alta · [023-kaishi-missing-clean.md:414](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/023-kaishi-missing-clean.md:414>)
+**Corretto** · certezza: alta · [023-kaishi-missing-clean.md:414](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/023-kaishi-missing-clean.md:414>)
 
 Riferimento stabile: `card-kaishi-1708637441286-recognition`.
 
@@ -1480,9 +1693,11 @@ Riferimento stabile: `card-kaishi-1708637441286-recognition`.
 
 **Proposta e motivo:** I hit the wall with my car.
 
+**Applicato:** ぶつける → to bump 車を壁にぶつけてしまいました。 — I hit the wall with my car. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-113 · P2 · 温かく per calore umano
 
-**Proposto** · certezza: normalizzazione facoltativa · [024-kaishi-missing-clean.md:174](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/024-kaishi-missing-clean.md:174>)
+**Corretto** · certezza: normalizzazione facoltativa · [024-kaishi-missing-clean.md:174](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/024-kaishi-missing-clean.md:174>)
 
 Riferimento stabile: `card-kaishi-1708637441010-recognition`.
 
@@ -1494,9 +1709,11 @@ Riferimento stabile: `card-kaishi-1708637441010-recognition`.
 
 **Proposta e motivo:** 暖かく見守る → 温かく見守る.
 
+**Applicato:** 見守る → to watch, to keep watch over 皆で温かく見守りましょう。 — Let's all warmly watch over them. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-114 · P2 · Avverbio inglese innaturale
 
-**Proposto** · certezza: alta · [035-kaishi-missing-clean.md:564](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/035-kaishi-missing-clean.md:564>)
+**Corretto** · certezza: alta · [035-kaishi-missing-clean.md:564](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/035-kaishi-missing-clean.md:564>)
 
 Riferimento stabile: `card-kaishi-1708637440816-recognition`.
 
@@ -1508,9 +1725,11 @@ Riferimento stabile: `card-kaishi-1708637440816-recognition`.
 
 **Proposta e motivo:** The moon looks bright tonight.
 
+**Applicato:** 月 → moon 今晩は月が明るく見えます。 — The moon looks bright tonight. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-115 · P2 · 満ちてきた progressivo
 
-**Proposto** · certezza: alta · [036-kaishi-missing-clean.md:267](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/036-kaishi-missing-clean.md:267>)
+**Corretto** · certezza: alta · [036-kaishi-missing-clean.md:267](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/036-kaishi-missing-clean.md:267>)
 
 Riferimento stabile: `card-kaishi-1708637441175-recognition`.
 
@@ -1522,9 +1741,11 @@ Riferimento stabile: `card-kaishi-1708637441175-recognition`.
 
 **Proposta e motivo:** The moon is getting fuller, isn’t it?
 
+**Applicato:** 満ちる → to fill, to become full 月が満ちてきましたね。 — The moon is getting fuller, isn’t it? Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-116 · P2 · Concordanza inglese
 
-**Proposto** · certezza: alta · [038-kaishi-missing-clean.md:506](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/038-kaishi-missing-clean.md:506>)
+**Corretto** · certezza: alta · [038-kaishi-missing-clean.md:506](</Users/abelli/Codex/Japanese Custom Study/content/media/kaishi-15k/cards/038-kaishi-missing-clean.md:506>)
 
 Riferimento stabile: `card-kaishi-1708637440390-recognition`.
 
@@ -1538,9 +1759,11 @@ Riferimento stabile: `card-kaishi-1708637440390-recognition`.
 
 ## Web giapponese — 9 voci
 
+**Applicato:** 首 → neck きりんの首は長い。 — Giraffes have long necks. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-117 · P1 · Reggenza di 耐える
 
-**Proposto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:72](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:72>)
+**Corretto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:72](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:72>)
 
 Riferimento stabile: `card-web-giapponese-hensei-recognition`.
 
@@ -1554,9 +1777,11 @@ Riferimento stabile: `card-web-giapponese-hensei-recognition`.
 
 Verifica: [Dizionario 大辞泉: 耐える](https://kotobank.jp/word/%E8%80%90%E3%81%88%E3%82%8B-559002).
 
+**Applicato:** 編成 → composizione; schieramento; configurazione ボスの攻撃に耐えるために、回復役を後衛に置くパーティー編成にする。 — Per sopravvivere agli attacchi del boss, costruisco un team con l'healer nelle retrovie. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-118 · P1 · Articolo spiegato invece del contenuto
 
-**Proposto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:676](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:676>)
+**Corretto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:672](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:672>)
 
 Riferimento stabile: `card-shoshinsha-recognition`.
 
@@ -1568,9 +1793,11 @@ Riferimento stabile: `card-shoshinsha-recognition`.
 
 **Proposta e motivo:** この記事では、ガチャの仕組みを初心者にもわかるように、ていねいに解説している。
 
+**Applicato:** 初心者 → principiante; beginner この記事では、ガチャの仕組みを初心者にもわかるように、ていねいに解説している。 — Questo articolo spiega con cura il funzionamento del gacha, così anche i principianti possono capirlo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-119 · P2 · Esempio di 防衛戦 contorto
 
-**Proposto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:614](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:614>)
+**Corretto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:613](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:613>)
 
 Riferimento stabile: `card-defense-battle-recognition`.
 
@@ -1582,9 +1809,11 @@ Riferimento stabile: `card-defense-battle-recognition`.
 
 **Proposta e motivo:** 防衛戦では、押し寄せる敵から拠点を守る。
 
+**Applicato:** 防衛戦 → battaglia di difesa 防衛戦では、押し寄せる敵から拠点を守る。 — Nella battaglia difensiva proteggo la base dall’assalto dei nemici. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-120 · P2 · パーティーの考え方
 
-**Proposto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:707](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:707>)
+**Corretto** · certezza: alta · [010-appmedia-starsavior-party-composition.md:702](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/010-appmedia-starsavior-party-composition.md:702>)
 
 Riferimento stabile: `card-kangaekata-recognition`.
 
@@ -1596,9 +1825,11 @@ Riferimento stabile: `card-kangaekata-recognition`.
 
 **Proposta e motivo:** パーティー編成の考え方.
 
+**Applicato:** 考え方 → modo di pensare; approccio 難しいイベントをクリアできない時は、パーティー編成の考え方をガラッと変える。 — Quando non riesco a completare un evento difficile, cambio radicalmente il modo di comporre il gruppo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-121 · P2 · 使い道が広い
 
-**Proposto** · certezza: alta · [020-appmedia-starsavior-bunny-charles-evaluation-and-usage.md:195](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/020-appmedia-starsavior-bunny-charles-evaluation-and-usage.md:195>)
+**Corretto** · certezza: alta · [020-appmedia-starsavior-bunny-charles-evaluation-and-usage.md:195](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/020-appmedia-starsavior-bunny-charles-evaluation-and-usage.md:195>)
 
 Riferimento stabile: `card-web-giapponese-tsukaimichi-recognition`.
 
@@ -1610,9 +1841,11 @@ Riferimento stabile: `card-web-giapponese-tsukaimichi-recognition`.
 
 **Proposta e motivo:** このサポートキャラは、高難易度クエストでの使い道が多い。
 
+**Applicato:** 使い道 → uso; impiego; use case このサポートキャラは、高難易度クエストでの使い道が多い。 — Questo personaggio di supporto ha molti impieghi nelle missioni ad alta difficoltà. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-122 · P2 · 新規: nota ed esempio non coincidono
 
-**Proposto** · certezza: alta · [030-dmps-takaratomy-deckbuilder-create-or-code-input.md:39](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/030-dmps-takaratomy-deckbuilder-create-or-code-input.md:39>)
+**Corretto** · certezza: alta · [030-dmps-takaratomy-deckbuilder-create-or-code-input.md:39](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/030-dmps-takaratomy-deckbuilder-create-or-code-input.md:39>)
 
 Riferimento stabile: `card-web-giapponese-shinki-recognition`.
 
@@ -1624,9 +1857,11 @@ Riferimento stabile: `card-web-giapponese-shinki-recognition`.
 
 **Proposta e motivo:** Esempio di UI: 「新規作成」を選んで、新しいデッキを作る。
 
+**Applicato:** 新規 → nuovo; da zero 「新規作成」を選んで、新しいデッキを作る。 — Seleziono «Crea nuovo» per creare un nuovo mazzo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-123 · P2 · 直前: spazio nell’esempio e tempo nella nota
 
-**Proposto** · certezza: alta · [110-hong-kong-disneyland-ice-walk-and-monument.md:177](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/110-hong-kong-disneyland-ice-walk-and-monument.md:177>)
+**Corretto** · certezza: alta · [110-hong-kong-disneyland-ice-walk-and-monument.md:177](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/cards/110-hong-kong-disneyland-ice-walk-and-monument.md:177>)
 
 Riferimento stabile: `card-web-giapponese-chokuzen-recognition`.
 
@@ -1638,9 +1873,11 @@ Riferimento stabile: `card-web-giapponese-chokuzen-recognition`.
 
 **Proposta e motivo:** ゲートを通る直前に、少し止まった。
 
+**Applicato:** 直前 → appena prima; immediatamente prima ゲートを通る直前に、少し止まった。 — Mi sono fermato un attimo prima di attraversare il cancello. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-124 · P2 · 回復した: italiano poco idiomatico
 
-**Proposto** · certezza: alta · [040-puzzle-dragons-tutorial-kouryaku.md:73](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/textbook/040-puzzle-dragons-tutorial-kouryaku.md:73>)
+**Corretto** · certezza: alta · [040-puzzle-dragons-tutorial-kouryaku.md:73](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/textbook/040-puzzle-dragons-tutorial-kouryaku.md:73>)
 
 **Esempio:** やった！HPが回復したよ！
 
@@ -1648,9 +1885,11 @@ Riferimento stabile: `card-web-giapponese-chokuzen-recognition`.
 
 **Proposta e motivo:** «Evviva! Gli HP sono stati ripristinati!» oppure «Evviva! Abbiamo recuperato HP!». Allineare anche l’esempio della stessa pagina con 攻略してみよう. Conservare la terminologia HP/PS scelta per quel gioco.
 
+**Applicato:** やった！HPが回復したよ！ — Evviva! Gli HP sono stati ripristinati! Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-125 · P2 · 引き直す: ritirare è ambiguo in italiano
 
-**Proposto** · certezza: alta · [080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement.md:272](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/textbook/080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement.md:272>)
+**Corretto** · certezza: alta · [080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement.md:272](</Users/abelli/Codex/Japanese Custom Study/content/media/web-giapponese/textbook/080-dragon-quest-smash-grow-reroll-hard-mode-and-weapon-enhancement.md:272>)
 
 **Esempio:** 何度でも引き直せるから、好きなぶきが出るまで待てる。
 
@@ -1660,9 +1899,11 @@ Riferimento stabile: `card-web-giapponese-chokuzen-recognition`.
 
 ## Gundam Arsenal Base — 2 voci
 
+**Applicato:** 何度でも引き直せるから、好きなぶきが出るまで待てる。 — Puoi ripetere l’estrazione quante volte vuoi e aspettare che esca l’arma che ti piace. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-126 · P2 · 次のランクポイントまで: riferimento poco chiaro
 
-**Proposto** · certezza: alta · [001-arcade-core.md:1085](</Users/abelli/Codex/Japanese Custom Study/content/media/gundam-arsenal-base/cards/001-arcade-core.md:1085>)
+**Corretto** · certezza: alta · [001-arcade-core.md:1085](</Users/abelli/Codex/Japanese Custom Study/content/media/gundam-arsenal-base/cards/001-arcade-core.md:1085>)
 
 Riferimento stabile: `card-rank-match-recognition`.
 
@@ -1674,9 +1915,11 @@ Riferimento stabile: `card-rank-match-recognition`.
 
 **Proposta e motivo:** ランクマッチでは、勝敗だけでなく、次のランクに必要なポイントも意識しています。 «In modalità classificata considero anche i punti necessari per il grado successivo». 潜る è gergo di gioco possibile; il problema è soprattutto il gruppo 次のランクポイントまで.
 
+**Applicato:** ランクマッチ → modalità classificata online ランクマッチでは、勝敗だけでなく、次のランクに必要なポイントも意識しています。 — In modalità classificata tengo d’occhio sia l’esito delle partite sia i punti necessari per il grado successivo. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-127 · P2 · Costo elevato trasformato in facilità di conservazione
 
-**Proposto** · certezza: editoriale · [004-special-starter-seed-freedom-gq-core.md:270](</Users/abelli/Codex/Japanese Custom Study/content/media/gundam-arsenal-base/cards/004-special-starter-seed-freedom-gq-core.md:270>)
+**Corretto** · certezza: editoriale · [004-special-starter-seed-freedom-gq-core.md:270](</Users/abelli/Codex/Japanese Custom Study/content/media/gundam-arsenal-base/cards/004-special-starter-seed-freedom-gq-core.md:270>)
 
 Riferimento stabile: `card-mighty-strike-freedom-gundam-recognition`.
 
@@ -1690,9 +1933,11 @@ Riferimento stabile: `card-mighty-strike-freedom-gundam-recognition`.
 
 ## TCG generale — 1 voci
 
+**Applicato:** マイティーストライクフリーダムガンダム → Mighty Strike Freedom Gundam マイティーストライクフリーダムガンダムはコストが高いので、終盤まで温存します。 — Dato il suo costo elevato, tengo in serbo il Mighty Strike Freedom Gundam fino alla fase finale. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-128 · P2 · Elisioni e terminologia degli effetti in italiano
 
-**Proposto** · certezza: editoriale · [002-vanguard-stand-up-kakegoe-first-vanguard.md:443](</Users/abelli/Codex/Japanese Custom Study/content/media/tcg-generale/cards/002-vanguard-stand-up-kakegoe-first-vanguard.md:443>)
+**Corretto** · certezza: editoriale · [002-vanguard-stand-up-kakegoe-first-vanguard.md:443](</Users/abelli/Codex/Japanese Custom Study/content/media/tcg-generale/cards/002-vanguard-stand-up-kakegoe-first-vanguard.md:443>)
 
 **Attuale:** prima controlli se hai la unità richiesta
 
@@ -1700,9 +1945,11 @@ Riferimento stabile: `card-mighty-strike-freedom-gundam-recognition`.
 
 ## Katakana Speed — 8 voci
 
+**Applicato:** Elisioni l’unità / dell’unità normalizzate; 発揮 reso come espressione di una capacità o produzione di un effetto. Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-129 · P1 · レビュー e レヴュー: equivalenza di significato troppo generale
 
-**Proposto** · certezza: alta · [sentence-bank.ts:76](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:76>)
+**Corretto** · certezza: alta · [sentence-bank.ts:76](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:76>)
 
 Riferimento stabile: `P28`.
 
@@ -1712,9 +1959,11 @@ Riferimento stabile: `P28`.
 
 Verifica: [Dizionario: レビュー／レヴュー](https://kotobank.jp/word/%E3%82%8C%E3%81%B3%E3%82%86%E3%83%BC-3176036).
 
+**Applicato:** レヴューの舞台を見に、劇場へ行きました。 Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-130 · P2 · ヒンドゥー: glossa italiana
 
-**Proposto** · certezza: alta · [catalog-static-data.ts:632](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/catalog-static-data.ts:632>)
+**Corretto** · certezza: alta · [catalog-static-data.ts:632](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/catalog-static-data.ts:632>)
 
 Riferimento stabile: `word-hindu`.
 
@@ -1722,9 +1971,11 @@ Riferimento stabile: `word-hindu`.
 
 **Proposta e motivo:** Usare «indù (persona/aggettivo)». Per «induismo» rendere esplicito ヒンドゥー教, già usato nella frase P25.
 
+**Applicato:** ヒンドゥー → indù (persona / aggettivo) Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-131 · P2 · ヴォーカル: glossa italiana
 
-**Proposto** · certezza: alta · [catalog-static-data.ts:636](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/catalog-static-data.ts:636>)
+**Corretto** · certezza: alta · [catalog-static-data.ts:642](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/catalog-static-data.ts:642>)
 
 Riferimento stabile: `word-vocal`.
 
@@ -1732,9 +1983,11 @@ Riferimento stabile: `word-vocal`.
 
 **Proposta e motivo:** Usare «voce / canto; cantante» nel contesto musicale. «Vocale» da solo può essere letto come il suono a/e/i/o/u e non chiarisce il prestito giapponese.
 
+**Applicato:** ヴォーカル → voce / canto; cantante Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-132 · P2 · 読み始めで止まります: frase artificiale
 
-**Proposto** · certezza: alta · [sentence-bank.ts:80](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:80>)
+**Corretto** · certezza: alta · [sentence-bank.ts:78](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:78>)
 
 Riferimento stabile: `P30`.
 
@@ -1742,9 +1995,11 @@ Riferimento stabile: `P30`.
 
 **Proposta e motivo:** ディーとジーを見間違えると、読むときに戸惑います。 «Se confondo ディー e ジー, esito durante la lettura».
 
+**Applicato:** ディーとジーを見間違えると、読むときに戸惑います。 Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-133 · P2 · ファイル etichettato come pseudoparola
 
-**Proposto** · certezza: alta · [sentence-bank.ts:81](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:81>)
+**Corretto** · certezza: alta · [sentence-bank.ts:81](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:81>)
 
 Riferimento stabile: `P31`.
 
@@ -1752,9 +2007,11 @@ Riferimento stabile: `P31`.
 
 **Proposta e motivo:** ファイルとハイルを見比べて、最初の文字を確かめます。 Evitare di chiamare pseudoparole entrambi gli elementi: ファイル è una parola normale.
 
+**Applicato:** ファイルとハイルを見比べて、最初の文字を確かめます。 Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-134 · P2 · 注意が上がる: collocazione innaturale
 
-**Proposto** · certezza: alta · [sentence-bank.ts:85](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:85>)
+**Corretto** · certezza: alta · [sentence-bank.ts:85](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:85>)
 
 Riferimento stabile: `P33`.
 
@@ -1762,9 +2019,11 @@ Riferimento stabile: `P33`.
 
 **Proposta e motivo:** ウェブとエブを並べると、小さいェに気づきやすくなります。 «Accostando ウェブ ed エブ, è più facile notare la piccola ェ».
 
+**Applicato:** ウェブとエブを並べると、小さいェに気づきやすくなります。 Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-135 · P2 · テューバ e チューブ: parole diverse
 
-**Proposto** · certezza: alta · [sentence-bank.ts:131](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:131>)
+**Corretto** · certezza: alta · [sentence-bank.ts:131](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:131>)
 
 Riferimento stabile: `P45`.
 
@@ -1772,12 +2031,16 @@ Riferimento stabile: `P45`.
 
 **Proposta e motivo:** テューバは楽器、チューブは管を指す言葉です。 «テューバ indica uno strumento musicale, チューブ un tubo». Evitare la vaga spiegazione «lo scopo della grafia è diverso».
 
+**Applicato:** テューバは楽器、チューブは管を指す言葉です。 Correzione applicata e verificata nel contenuto canonico.
+
 ### JA-136 · P2 · 正解速度: formulazione opaca
 
-**Proposto** · certezza: alta · [sentence-bank.ts:193](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:193>)
+**Corretto** · certezza: alta · [sentence-bank.ts:191](</Users/abelli/Codex/Japanese Custom Study/src/features/katakana-speed/model/sentence-bank.ts:191>)
 
 Riferimento stabile: `P60`.
 
 **Esempio:** 珍しい表記は、正解速度よりも一瞬で固まらないことを重視します。
 
 **Proposta e motivo:** 珍しい表記でも戸惑わずに読めるよう、少しずつ練習します。 «Mi esercito gradualmente per leggere senza esitazioni anche le grafie rare».
+
+**Applicato:** 珍しい表記でも戸惑わずに読めるよう、少しずつ練習します。 Correzione applicata e verificata nel contenuto canonico.

@@ -69,6 +69,25 @@ Il riferimento positivo è
 
 ## Struttura didattica consigliata
 
+### Nomi giapponesi nelle traduzioni
+
+Nei nomi propri di personaggi, Pokémon, luoghi, oggetti, mosse e funzioni
+nominate, usa la lettura giapponese romanizzata anche nel testo italiano.
+Esempi: ネモ → Nemo, ペパー → Pepā, ボタン → Botan, テーブルシティ → Tēburu
+Shiti, モンスターボール → Monsutā Bōru. Le vocali lunghe si scrivono con il
+macron: ā, ī, ū, ē, ō. La grafia deve aiutare a riconoscere i kana letti nel
+gioco, senza introdurre il nome della localizzazione italiana o inglese.
+
+Per chiarire il referente, aggiungi una breve descrizione italiana separata:
+«Pepā (compagno di viaggio)», «Monsutā Bōru (strumento per catturare Pokémon)».
+Applica la stessa scelta a flashcard, glossario, esempi, traduzioni, titoli e
+prosa del textbook. Mantieni gli ID, gli slug e i percorsi degli asset stabili.
+Le parole comuni continuano ad avere una traduzione italiana naturale.
+
+Per i nomi del gioco, verifica la grafia nella
+[presentazione ufficiale dei personaggi](https://www.pokemon.co.jp/ex/sv/ja/character/)
+e nel [sito ufficiale del DLC](https://www.pokemon.co.jp/ex/sv_dlc/ja/).
+
 ### Asse 1 - Pokemon Videogame Core
 
 Serve a creare una base comune prima di entrare in `Pokemon Scarlet / Violet`.

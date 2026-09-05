@@ -13,7 +13,7 @@ reading: まとめて
 romaji: matomete
 meaning_it: tutto insieme / in totale
 notes_it: >-
-  Acquisti multipli, totale, shop e TM machine.
+  Acquisti multipli, totale, shop e Waza Mashin machine.
 :::
 :::card
 id: card-e048-matomete-recognition
@@ -35,7 +35,7 @@ reading: つくれる
 romaji: tsukureru
 meaning_it: si può creare / craftare
 notes_it: >-
-  TM machine, ricette e sblocco di sandwich.
+  Waza Mashin machine, ricette e sblocco di sandwich.
 :::
 :::card
 id: card-e049-tsukureru-recognition
@@ -48,7 +48,7 @@ back: si può creare / craftare
 example_jp: >-
   ここで わざマシンが {{作|つく}}れる。
 example_it: >-
-  Qui puoi creare una MT.
+  Qui puoi creare una Waza Mashin.
 :::
 :::term
 id: term-e060-chinamini
@@ -279,7 +279,7 @@ id: term-v318-gakenobori
 lemma: がけのぼり
 reading: がけのぼり
 romaji: gakenobori
-meaning_it: arrampicata sulla parete
+meaning_it: "Gakenobori (abilità per scalare le pareti)"
 notes_it: >-
   がけのぼり nomina l'arrampicata sulle pareti: がけ indica la parete/precipizio e
   のぼり il salire.
@@ -291,11 +291,9 @@ entry_type: term
 entry_id: term-v318-gakenobori
 card_type: recognition
 front: "がけのぼり"
-back: arrampicata sulla parete
-example_jp: >-
-  この{{先|さき}}に がけのぼりが あります。
-example_it: >-
-  Più avanti c'è l'arrampicata sulla parete.
+back: "Gakenobori (abilità per scalare le pareti)"
+example_jp: "がけのぼりを{{使|つか}}って、{{崖|がけ}}を{{登|のぼ}}る。"
+example_it: "Uso Gakenobori per scalare la parete."
 :::
 :::term
 id: term-v319-chaaji
@@ -318,7 +316,7 @@ back: ricarica
 example_jp: >-
   テラスタルエネルギーを チャージします。
 example_it: >-
-  Ricarico l'energia Teracristal.
+  Ricarico l'energia Terasutaru.
 :::
 :::term
 id: term-v320-annai

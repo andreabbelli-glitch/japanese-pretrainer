@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-02
 media_id: media-pokemon-scarlet-violet
 slug: 107-sv-vocabulary-distance-02
-title: 'Parole per leggere Paldea — due'
+title: 'Parole per leggere Parudea — due'
 order: 152
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — due
+# Parole per leggere Parudea — due
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -77,12 +77,9 @@ translation_it: >-
 ### [{{楽|たの}}しみにする](term:term-sv-vocabulary-230-tanoshiminisuru) — attendere con ansia
 
 :::example_sentence
-jp: >-
-  {{課外|かがい}}{{授業|じゅぎょう}}を{{通|とお}}して{{大|おお}}きく{{成長|せいちょう}}したあなたたちに{{再|ふたた}}びご{{挨拶|あいさつ}}できることを{{楽|たの}}しみにしておりますよそれでは{{宝探|たからさが}}し{{開始|かいし}}！
-translation_it: >-
-  Non vedo l’ora di salutarvi di nuovo, voi che siete cresciuti tantissimo grazie alle lezioni extra. Allora, che la caccia al tesoro abbia inizio!
+jp: "{{課外授業|かがいじゅぎょう}}を{{通|とお}}して{{大|おお}}きく{{成長|せいちょう}}したあなたたちに、{{再|ふたた}}びご{{挨拶|あいさつ}}できることを{{楽|たの}}しみにしておりますよ。それでは、{{宝探|たからさが}}し{{開始|かいし}}！"
+translation_it: "Non vedo l’ora di ritrovarvi dopo che sarete cresciuti grazie alle attività extracurricolari. Allora, che la caccia al tesoro abbia inizio!"
 :::
-
 **Uso:** L'azione espressa nel contesto è «attendere con ansia».
 
 ### [{{完全|かんぜん}}](term:term-sv-vocabulary-174-kanzen) — completo; perfetto; completamente
@@ -113,7 +110,7 @@ translation_it: >-
 jp: >-
   {{命中|めいちゅう}}で{{話題|わだい}}にあがるのはなみのりとハイドロポンプかしら？
 translation_it: >-
-  Quando si parla di precisione, vengono in mente Surf e Idropompa, no?
+  Quando si parla di precisione, vengono in mente Naminori e Haidoro Ponpu, no?
 :::
 
 **Uso:** Nel contesto indica «argomento; tema; di cui si parla molto».
@@ -168,7 +165,7 @@ translation_it: >-
 jp: >-
   これがいわゆるテラスタルだ。
 translation_it: >-
-  Questo è il cosiddetto fenomeno Teracristal.
+  Questo è il cosiddetto fenomeno Terasutaru.
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «ciò che si chiama; ciò che chiami; ciò che chiamano».

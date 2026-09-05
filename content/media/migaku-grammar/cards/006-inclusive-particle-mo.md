@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-006-inclusive-particle-mo
 entry_type: grammar
 entry_id: grammar-006-inclusive-particle-mo
 card_type: concept
-front: "も"
+front: "も（inclusione）"
 back: >-
   Nome + も segnala che anche quel referente condivide la stessa proprietà o azione.
 example_jp: >-

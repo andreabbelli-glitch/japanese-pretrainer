@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-successo-azioni-e-fantasia
 media_id: media-pokemon-scarlet-violet
 slug: 069-sv-anki-l17-asta-successo-azioni-e-fantasia
-title: "Aste, scoperte e inviti: azioni che fanno avanzare Paldea"
+title: "Aste, scoperte e inviti: azioni che fanno avanzare Parudea"
 order: 99
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -14,10 +14,10 @@ summary: >-
   da menu e campo a Lega, picnic e multiplayer.
 ---
 
-# Aste, scoperte e inviti: azioni che fanno avanzare Paldea
+# Aste, scoperte e inviti: azioni che fanno avanzare Parudea
 
-In *Pokémon Scarlet & Violet* una giornata a Paldea può cambiare scena molto in
-fretta: un rilancio al mercato di Marinada, una scoperta nell'Area Zero, una
+In *Pokémon Scarlet & Violet* una giornata a Parudea può cambiare scena molto in
+fretta: un rilancio al mercato di Marinada, una scoperta nell'Eria Zero, una
 pausa al picnic, poi una sfida che punta alla Lega. Il giapponese segue questi
 spostamenti con forme compatte: molti nomi diventano azioni con `する`, i luoghi
 entrano con `で`, le persone coinvolte prendono `を`, e le valutazioni dicono se
@@ -106,13 +106,13 @@ translation_it: >-
 jp: >-
   エリアゼロで {{新|あたら}}しい ポケモンを {{発|はっ}}{{見|けん}}した。
 translation_it: >-
-  Ho scoperto un nuovo Pokémon nell'Area Zero.
+  Ho scoperto un nuovo Pokémon nell'Eria Zero.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `エリアゼロで` ➔ **Luogo dell'azione** (`で` colloca la scoperta dentro
-    l'Area Zero, non nel menu astratto).
+    l'Eria Zero, non nel menu astratto).
 *   `{{新|あたら}}しい ポケモンを` ➔ **Oggetto portato alla luce** (`を` marca ciò
     che viene scoperto).
 *   `{{発|はっ}}{{見|けん}}した` ➔ **Scoperta conclusa** (`{{発|はっ}}{{見|けん}}する`
@@ -173,7 +173,7 @@ translation_it: >-
 jp: >-
   ポケモンリーグで {{優|ゆう}}{{勝|しょう}}して、チャンピオンになる。
 translation_it: >-
-  Vinco la Lega Pokémon e divento Campione.
+  Vinco la Pokémon Rīgu e divento Campione.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -200,7 +200,7 @@ con `{{勝|しょう}}` diventa il risultato di una competizione.
 
 ## 3. Inviti, gioco e gruppi: chi entra nella scena
 
-Molti dialoghi di Paldea non servono solo a mandarti verso un luogo: stabiliscono
+Molti dialoghi di Parudea non servono solo a mandarti verso un luogo: stabiliscono
 chi partecipa. [{{誘|さそ}}う](term:term-anki-l17-sasou) apre un invito,
 [{{遊|あそ}}ぶ](term:term-anki-l17-asobu) descrive tempo condiviso, e
 [{{4人|よにん}}](term:term-anki-l17-yonin) rende operativo il numero delle persone.
@@ -224,7 +224,7 @@ chi partecipa. [{{誘|さそ}}う](term:term-anki-l17-sasou) apre un invito,
 jp: >-
   ネモを ポケモンしょうぶに {{誘|さそ}}う。
 translation_it: >-
-  Invito Nemi a una lotta Pokémon.
+  Invito Nemo a una lotta Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -267,7 +267,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`ネモを{{誘|さそ}}う` mette Nemi come persona invitata. `ネモに{{誘|さそ}}われる`
+`ネモを{{誘|さそ}}う` mette Nemo come persona invitata. `ネモに{{誘|さそ}}われる`
 la mette invece come persona da cui arriva l'invito: la forma passiva cambia il
 punto di vista della scena. Con [{{遊|あそ}}ぶ](term:term-anki-l17-asobu), invece,
 non cercare per forza un `を`: la compagnia viene naturale con `と`.
@@ -356,21 +356,21 @@ azioni, e parole come [{{4人|よにん}}](term:term-anki-l17-yonin) o
 jp: >-
   マリナードタウンの セリで {{入|にゅう}}{{札|さつ}}して、ポケモンセンターで どうぐの {{補|ほ}}{{給|きゅう}}を します。
 translation_it: >-
-  Faccio un'offerta all'asta di Marinada e poi rifornisco gli strumenti al Centro Pokémon.
+  Faccio un'offerta all'asta di Marinada e poi rifornisco gli strumenti al Pokémon Sentā.
 :::
 
 :::example_sentence
 jp: >-
   エリアゼロで {{発|はっ}}{{見|けん}}された ポケモンは、{{竜|りゅう}}の ような すがたを している。
 translation_it: >-
-  Il Pokémon scoperto nell'Area Zero ha un aspetto simile a un drago.
+  Il Pokémon scoperto nell'Eria Zero ha un aspetto simile a un drago.
 :::
 
 :::example_sentence
 jp: >-
   {{優|ゆう}}{{秀|しゅう}}な {{生|せい}}{{徒|と}}が ポケモンリーグで {{優|ゆう}}{{勝|しょう}}する。
 translation_it: >-
-  Uno studente eccellente vince la Lega Pokémon.
+  Uno studente eccellente vince la Pokémon Rīgu.
 :::
 
 :::example_sentence

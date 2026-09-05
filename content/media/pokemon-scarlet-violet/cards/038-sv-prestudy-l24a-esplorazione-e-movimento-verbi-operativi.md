@@ -454,7 +454,7 @@ back: ricerca
 example_jp: >-
   ポケモン{{図鑑|ずかん}}で {{名前|なまえ}}を {{検索|けんさく}}します。
 example_it: >-
-  Cerco il nome nel Pokédex.
+  Cerco il nome nel Pokémon Zukan.
 :::
 :::term
 id: term-v444-gake

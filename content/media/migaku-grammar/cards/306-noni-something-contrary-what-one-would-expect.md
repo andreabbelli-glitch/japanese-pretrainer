@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-306-noni-something-contrary-what-one-would-expe
 entry_type: grammar
 entry_id: grammar-306-noni-something-contrary-what-one-would-expect
 card_type: concept
-front: "のに"
+front: "のに（contrasto inatteso）"
 back: >-
   Contrasto inatteso: «sebbene / eppure»
 example_jp: >-

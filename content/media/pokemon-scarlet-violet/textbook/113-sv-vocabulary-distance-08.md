@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-08
 media_id: media-pokemon-scarlet-violet
 slug: 113-sv-vocabulary-distance-08
-title: 'Parole per leggere Paldea — otto'
+title: 'Parole per leggere Parudea — otto'
 order: 158
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — otto
+# Parole per leggere Parudea — otto
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -29,7 +29,7 @@ conserva un valore preciso nella frase.
 - [{{感|かん}}](term:term-sv-vocabulary-364-kan) — sensazione; impressione; atmosfera
 - [{{封|ふう}}じる](term:term-sv-vocabulary-395-fuujiru) — sigillare (ad es. una lettera); impedire (ad es. un movimento); vietare
 - [{{個体|こたい}}](term:term-sv-vocabulary-236-kotai) — individuo; esemplare
-- [{{傷|きず}}つく](term:term-sv-vocabulary-254-kizutsuku) — essere ferito; subire un infortunio; ferire i sentimenti di qualcuno
+- [{{傷|きず}}つく](term:term-sv-vocabulary-254-kizutsuku) — essere ferito; rimanere ferito nei sentimenti
 - [{{思|おも}}い{{出|で}}](term:term-sv-vocabulary-040-omoide) — ricordi; memorie; reminiscenze
 - [おたがい](term:term-sv-vocabulary-225-otagai) — l’uno all’altro; l’uno con l’altro
 - [{{人気|にんき}}](term:term-sv-vocabulary-277-ninki) — popolarità; favore del pubblico
@@ -47,7 +47,7 @@ conserva un valore preciso nella frase.
 jp: >-
   くわしいルールは{{当|とう}}ジムを{{出|で}}て{{左手|ひだりて}}の{{坂|さか}}をのぼった{{先|さき}}{{雪山|ゆきやま}}{{滑|すべ}}り{{開始|かいし}}{{地点|ちてん}}で{{説明|せつめい}}しますねようこそナッペ{{山|さん}}ジムへ！
 translation_it: >-
-  Ti spiegherò le regole dettagliate una volta uscito da questa Palestra, in cima alla salita sulla sinistra, al punto di partenza della pista da sci. Benvenuto alla Palestra del Monte Nappe!
+  Ti spiegherò le regole dettagliate una volta uscito da questa Palestra, in cima alla salita sulla sinistra, al punto di partenza della pista da sci. Benvenuto alla Palestra del Nappe-yama!
 :::
 
 **Uso:** Nel contesto indica «scivolata; discesa sulla neve; pista da sci».
@@ -129,16 +129,13 @@ translation_it: >-
 
 **Uso:** Nel contesto indica «individuo; esemplare».
 
-### [{{傷|きず}}つく](term:term-sv-vocabulary-254-kizutsuku) — essere ferito; subire un infortunio; ferire i sentimenti di qualcuno
+### [{{傷|きず}}つく](term:term-sv-vocabulary-254-kizutsuku) — essere ferito; rimanere ferito nei sentimenti
 
 :::example_sentence
-jp: >-
-  ...{{黙|だま}}りなさいわたしはわたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ{{優|やさ}}しいボスさん{{勝負|しょうぶ}}{{再開|さいかい}}といこうか！
-translation_it: >-
-  …Stai zitto, voglio solo che nessuno, a parte me, si faccia male. Capo gentile, riprendiamo la sfida!
+jp: "……{{黙|だま}}りなさい。わたしは、わたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ。"
+translation_it: "…Sta’ zitto. Voglio solo che nessuno, a parte me, si faccia male."
 :::
-
-**Uso:** L'azione espressa nel contesto è «essere ferito; subire un infortunio; ferire i sentimenti di qualcuno».
+**Uso:** L'azione espressa nel contesto è «essere ferito; rimanere ferito nei sentimenti».
 
 ### [{{思|おも}}い{{出|で}}](term:term-sv-vocabulary-040-omoide) — ricordi; memorie; reminiscenze
 

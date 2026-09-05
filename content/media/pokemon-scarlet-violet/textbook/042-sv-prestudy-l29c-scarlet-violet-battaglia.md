@@ -75,10 +75,10 @@ sta parlando di identità reale, apparenza sospetta o fastidio causato ad altri.
 - [{{招待|しょうたい}}](term:term-v560-shoutai) — invito a partecipare
 - [{{交流|こうりゅう}}](term:term-v563-kouryuu) — scambio o interazione tra persone
 - [{{紹介|しょうかい}}](term:term-v547-shoukai) — presentazione o introduzione
-- [マジカル{{交換|こうかん}}](term:term-v567-majikarukoukan) — Surprise Trade / scambio magico
+- [マジカル{{交換|こうかん}}](term:term-v567-majikarukoukan) — Majikaru Kōkan / Majikaru Kōkan
 - [{{購買部|こうばいぶ}}](term:term-v561-koubaibu) — negozio della scuola
-- [{{秘密|ひみつ}}のメニュー](term:term-v548-himitsunomenyuu) — indizio del test della palestra di Medali
-- [{{鬼退治|おにたいじ}}フェス](term:term-v558-onitaijifesu) — minigioco del DLC di Nordivia / Kitakami
+- [{{秘密|ひみつ}}のメニュー](term:term-v548-himitsunomenyuu) — indizio del test della palestra di Chanpuru Taun
+- [{{鬼退治|おにたいじ}}フェス](term:term-v558-onitaijifesu) — minigioco del DLC di Kitakami
 - [かなり](term:term-v562-kanari) — parecchio, in modo considerevole
 - [{{迷子|まいご}}](term:term-v570-maigo) — persona o Pokémon smarrito
 
@@ -184,7 +184,7 @@ jp: >-
   {{相手|あいて}}が まもるを {{使|つか}}ったので、こちらの
   {{技|わざ}}は {{失敗|しっぱい}}した。
 translation_it: >-
-  Poiché l'avversario ha usato Protezione, la nostra mossa è fallita.
+  Poiché l'avversario ha usato Mamoru, la nostra mossa è fallita.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -202,7 +202,7 @@ va letto automaticamente come "ho sbagliato". In battaglia spesso significa
 
 ## 3. Raid e interfaccia: prepararsi, sostenere, ricevere
 
-Nei raid Teracristal e nelle funzioni collegate alla lotta, il giapponese resta
+Nei raid Terasutaru e nelle funzioni collegate alla lotta, il giapponese resta
 molto orientato all'azione. [{{用意|ようい}}](term:term-v545-youi) non è
 intenzione vaga: sono Pokémon pronti, oggetti scelti, connessione disponibile o
 condizioni completate. [おうえん](term:term-v552-ouen) è il comando di supporto
@@ -327,7 +327,7 @@ sta iniziando. [{{探索|たんさく}}](term:term-v554-tansaku) si avvicina a
 informazioni, oggetti o una causa.
 [{{探検|たんけん}}](term:term-v568-tanken) ha un tono più da spedizione:
 l'area stessa è da attraversare e scoprire. In una storia che alterna
-Accademia, Area Zero e DLC, questa distinzione cambia l'aspettativa della
+Accademia, Eria Zero e DLC, questa distinzione cambia l'aspettativa della
 scena.
 
 Le etichette sociali completano il passaggio dalla preparazione all'ingresso:

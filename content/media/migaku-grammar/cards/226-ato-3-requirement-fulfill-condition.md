@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-226-ato-3-requirement-fulfill-condition
 entry_type: grammar
 entry_id: grammar-226-ato-3-requirement-fulfill-condition
 card_type: concept
-front: "あと"
+front: "あと（quantità restante）"
 back: >-
   あと + quantità significa «ancora quella quantità / ne mancano…».
 example_jp: >-

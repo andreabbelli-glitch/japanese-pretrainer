@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-041-na-adjectives-negation
 entry_type: grammar
 entry_id: grammar-041-na-adjectives-negation
 card_type: concept
-front: "な{{形容詞|けいようし}}"
+front: "な{{形容詞|けいようし}}（negativo）"
 back: >-
   Aggettivo in な + じゃない significa «non è… / non …».
 example_jp: >-

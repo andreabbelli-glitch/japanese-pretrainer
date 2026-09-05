@@ -86,41 +86,29 @@ apre il momento esatto in cui l'effetto si attiva, cioè l'ingresso della
 creatura nella battle zone.
 
 :::example_sentence
-jp: >-
-  このクリーチャーが[{{出|で}}た{{時|とき}}](grammar:grammar-toki)、
-  [{{次|つぎ}}の](grammar:grammar-tsugi-no)
-  [～のうち](grammar:grammar-no-uchi)
-  [いずれか](grammar:grammar-izureka){{1|ひと}}つを
-  [{{選|えら}}ぶ](term:term-erabu)。
+jp: "このクリーチャーが{{出|で}}た{{時|とき}}、{{次|つぎ}}のうち、いずれか{{1|ひと}}つを{{選|えら}}ぶ。"
 translation_it: >-
   Quando questa creatura entra, scegli una delle seguenti opzioni.
 reveal_mode: sentence
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `このクリーチャーが` — soggetto della condizione: l'effetto parla di questa creatura, non di una creatura qualsiasi.
-*   [{{出|で}}た{{時|とき}}](grammar:grammar-toki) — timing di ingresso: la scelta si apre quando la creatura è entrata.
-*   [{{次|つぎ}}の](grammar:grammar-tsugi-no) — puntatore in avanti: il testo ti prepara a leggere le righe successive come opzioni.
-*   [～のうち](grammar:grammar-no-uchi) — confine del gruppo: quelle righe diventano l'insieme chiuso da cui scegliere.
-*   [いずれか](grammar:grammar-izureka){{1|ひと}}つを — quantità selezionabile: una qualsiasi tra le alternative, ma una sola.
-*   [{{選|えら}}ぶ](term:term-erabu) — verbo operativo finale: non osservi una lista, devi compiere una scelta.
+- `このクリーチャーが{{出|で}}た{{時|とき}}` indica il momento in cui questa creatura entra in campo.
+- `{{次|つぎ}}のうち` significa «tra le seguenti opzioni»: `{{次|つぎ}}` indica ciò che segue e `のうち` delimita l'insieme.
+- [いずれか](grammar:grammar-izureka){{1|ひと}}つを indica una sola opzione, a scelta.
+- [{{選|えら}}ぶ](term:term-erabu) è l'azione finale richiesta.
 
-#### ⚖️ Contrasto operativo: elenco aperto vs insieme chiuso
+#### ⚖️ Contrasto operativo
 
-[{{次|つぎ}}の](grammar:grammar-tsugi-no) da solo indica ciò che segue; non dice
-ancora come usare quell'elenco. [～のうち](grammar:grammar-no-uchi) lo trasforma
-in un bacino chiuso, [いずれか](grammar:grammar-izureka) prende un candidato
-dentro quel bacino e `{{1|ひと}}つ` blocca la quantità. Se salti `のうち`, la
-frase sembra una lista di effetti. Se salti `{{1|ひと}}つ`, sembra possibile
-prendere più opzioni.
+[{{次|つぎ}}の](grammar:grammar-tsugi-no) può introdurre direttamente un nome,
+come in `{{次|つぎ}}の{{能力|のうりょく}}` («l'abilità seguente»).
+Nell'esempio, [～のうち](grammar:grammar-no-uchi) si attacca a `{{次|つぎ}}`:
+si scrive `{{次|つぎ}}のうち`, con un solo `の`.
 
 #### 🧠 Gancio cognitivo
 
-Come trucco mnemonico, immagina `のうち` come il bordo di una scatola: tutto ciò
-che sta dopo entra nella scatola delle opzioni. [いずれか](grammar:grammar-izureka)
-è la mano che ne prende una, mentre `{{1|ひと}}つ` ti impedisce di prenderne due.
-Questo promemoria rende visibile il movimento logico della frase.
+`のうち` delimita il gruppo da cui scegliere; `いずれか{{1|ひと}}つ` stabilisce
+che puoi prenderne una sola.
 
 ## 2. L'opzione che rimette carte sotto il deck
 
@@ -227,15 +215,11 @@ Le stesse forme diventano stabili quando ricombini scelta, quantità e direzione
 del movimento:
 
 :::example_sentence
-jp: >-
-  このクリーチャーが[{{出|で}}た{{時|とき}}](grammar:grammar-toki)、
-  [{{次|つぎ}}の](grammar:grammar-tsugi-no)[～のうち](grammar:grammar-no-uchi)
-  [いずれか](grammar:grammar-izureka){{1|ひと}}つを[{{選|えら}}ぶ](term:term-erabu)。
+jp: "このクリーチャーが{{出|で}}た{{時|とき}}、{{次|つぎ}}のうち、いずれか{{1|ひと}}つを{{選|えら}}ぶ。"
 translation_it: >-
   Quando questa creatura entra, scegli una delle opzioni seguenti.
 reveal_mode: sentence
 :::
-
 :::example_sentence
 jp: >-
   {{自分|じぶん}}の[{{墓地|ぼち}}](term:term-graveyard)からカードを{{4枚|よんまい}}、

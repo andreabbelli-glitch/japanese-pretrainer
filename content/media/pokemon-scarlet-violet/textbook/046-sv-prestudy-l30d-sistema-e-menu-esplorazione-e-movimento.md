@@ -213,14 +213,14 @@ translation_it: >-
 
 Nei dialoghi di gruppo, la scuola lascia spazio alla pressione sociale. [{{勧誘|かんゆう}}](term:term-v646-kanyuu) e [{{憧|あこが}}れ](term:term-v660-akogare) non descrivono un menu: descrivono come qualcuno viene attirato verso un gruppo o verso un modello.
 
-*   [{{勧誘|かんゆう}}](term:term-v646-kanyuu) (**Reclutamento / invito a unirsi**): non è un invito neutro come "vieni a vedere". È un'azione orientata a far entrare qualcuno in un'organizzazione o gruppo. In una scena con il Team Star, leggere [{{勧誘|かんゆう}}](term:term-v646-kanyuu) ti fa sentire subito la pressione del reclutamento.
+*   [{{勧誘|かんゆう}}](term:term-v646-kanyuu) (**Reclutamento / invito a unirsi**): non è un invito neutro come "vieni a vedere". È un'azione orientata a far entrare qualcuno in un'organizzazione o gruppo. In una scena con il Sutā-dan, leggere [{{勧誘|かんゆう}}](term:term-v646-kanyuu) ti fa sentire subito la pressione del reclutamento.
 *   [{{憧|あこが}}れ](term:term-v660-akogare) (**Ammirazione / aspirazione**): non è una semplice preferenza. Se qualcuno prova {{憧|あこが}}れ verso una persona forte, la sta guardando come figura ideale o traguardo emotivo.
 
 :::example_sentence
 jp: >-
   スター{{団|だん}}への {{勧誘|かんゆう}}について、{{教員|きょういん}}に {{相談|そうだん}}します。
 translation_it: >-
-  Parlo con un insegnante riguardo al reclutamento nel Team Star.
+  Parlo con un insegnante riguardo al reclutamento nel Sutā-dan.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -330,7 +330,7 @@ translation_it: >-
 jp: >-
   スター{{団|だん}}が {{新|あたら}}しい {{仲間|なかま}}を {{勧誘|かんゆう}}しています。
 translation_it: >-
-  Il Team Star sta reclutando nuovi compagni.
+  Il Sutā-dan sta reclutando nuovi compagni.
 :::
 
 ## Nota finale

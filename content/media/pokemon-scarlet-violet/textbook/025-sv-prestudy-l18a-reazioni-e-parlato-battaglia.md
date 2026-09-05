@@ -21,7 +21,7 @@ summary: >-
 
 # Reazioni e battaglie: capire tono, confronto e condizioni
 
-Quando *Pokémon Scarlet & Violet* passa da una battuta tra personaggi a un prompt di battaglia, il giapponese cambia ritmo ma non smette di darti indizi. Una particella può trasformare Nemi in tema di conversazione, una forma condizionale può aprire il "se" di una sfida, e una parola come `{{戦闘|せんとう}}` può far capire che non stai leggendo una lotta generica, ma lo stato tecnico del combattimento.
+Quando *Pokémon Scarlet & Violet* passa da una battuta tra personaggi a un prompt di battaglia, il giapponese cambia ritmo ma non smette di darti indizi. Una particella può trasformare Nemo in tema di conversazione, una forma condizionale può aprire il "se" di una sfida, e una parola come `{{戦闘|せんとう}}` può far capire che non stai leggendo una lotta generica, ma lo stato tecnico del combattimento.
 
 Le reazioni brevi servono a seguire il tono della scena: chi capisce, chi conferma, chi resta incredulo. Le parole di torneo, tipo e oggetto tenuto servono invece a leggere cosa succede sullo schermo mentre una scelta diventa azione.
 
@@ -89,7 +89,7 @@ Quando entra [{{感謝|かんしゃ}}](term:term-v208-kansha), il registro si sp
 
 ## 2. Parlare di persone e parole: `って` mette il tema davanti
 
-Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-tema-colloquiale) per agganciare qualcosa appena nominato. Può riprendere una citazione, ma in frasi come ネモって... funziona soprattutto da tema colloquiale: "quanto a Nemi...", "Nemi, dici?". È più leggero di は e dà alla frase un tono parlato, come se il personaggio stesse raccogliendo un nome dalla conversazione e lo mettesse sul tavolo.
+Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-tema-colloquiale) per agganciare qualcosa appena nominato. Può riprendere una citazione, ma in frasi come ネモって... funziona soprattutto da tema colloquiale: "quanto a Nemo...", "Nemo, dici?". È più leggero di は e dà alla frase un tono parlato, come se il personaggio stesse raccogliendo un nome dalla conversazione e lo mettesse sul tavolo.
 
 [{{言葉|ことば}}](term:term-v198-kotoba) aiuta a leggere questo stesso territorio. Non indica solo una "parola" singola: può essere una frase, una scelta di parole o il modo in cui qualcuno si esprime. Nei dialoghi, quindi, その{{言葉|ことば}} può puntare a ciò che è stato detto, non a un vocabolo isolato da dizionario.
 
@@ -97,7 +97,7 @@ Il parlato dei personaggi usa spesso [〜って](grammar:grammar-g037-citazione-
 jp: >-
   ネモって {{一番|いちばん}} {{強|つよ}}いよね。
 translation_it: >-
-  Nemi, dici? È la più forte, vero?
+  Nemo, dici? È la più forte, vero?
 :::
 
 #### 🗺️ Anatomia della frase
@@ -108,7 +108,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`って` puo' introdurre un tema colloquiale: quanto a Nemi, quanto a quella persona. Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
+`って` può introdurre un tema colloquiale: quanto a Nemo, quanto a quella persona. Se invece il blocco riprende una frase detta da qualcuno, allora la lettura da citazione torna possibile.
 
 #### 🧠 Gancio cognitivo
 
@@ -147,7 +147,7 @@ Per ricordare [{{持|も}}たせる](term:term-v202-mota-seru), visualizza l'ogg
 
 Molte battute di battaglia non dicono solo cosa succede, ma quanto una cosa supera un'altra o a quale condizione parte l'effetto. [〜より / 〜ほど](grammar:grammar-g038-piu-di-al-punto-da) copre due movimenti diversi: AよりB mette A come punto di confronto e fa risaltare B, mentre ほど misura il grado, spesso in frasi come "non quanto pensavo" o "al punto da".
 
-`ずっと強い` nei confronti intensifica: molto piu' forte. [{{全然|ぜんぜん}}](term:term-v203-zenzen) richiede attenzione simile: con una forma negativa è "per niente", mentre nel parlato moderno può rafforzare una valutazione positiva, come "assolutamente / davvero".
+`ずっと強い` nei confronti intensifica: molto più forte. [{{全然|ぜんぜん}}](term:term-v203-zenzen) richiede attenzione simile: con una forma negativa è "per niente", mentre nel parlato moderno può rafforzare una valutazione positiva, come "assolutamente / davvero".
 
 :::example_sentence
 jp: >-
@@ -210,12 +210,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  ネモって、 むしタイプより ずっと {{強|つよ}}い {{相手|あいて}}を {{選|えら}}ぶよね。
-translation_it: >-
-  Nemi sceglie avversari molto più forti del tipo Coleottero, vero?
+jp: "ネモって、いつも{{強|つよ}}い{{相手|あいて}}を{{選|えら}}ぶよね。"
+translation_it: "Nemo sceglie sempre avversari forti, vero?"
 :::
-
 ---
 
 ## Nota finale

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
-title: "Esplorazione, campus e vita quotidiana a Paldea"
+title: "Esplorazione, campus e vita quotidiana a Parudea"
 order: 81
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,9 +19,9 @@ summary: >-
   piccoli dialoghi, sandwich e messaggi sul rapporto con i Pokémon.
 ---
 
-# Esplorazione, campus e vita quotidiana a Paldea
+# Esplorazione, campus e vita quotidiana a Parudea
 
-A Paldea il giapponese quotidiano compare mentre lasci il campus, apri la mappa, prepari un sandwich o ascolti un NPC che si presenta con troppa sicurezza. Non sono frasi spettacolari: sono segnali brevi che ti dicono se una meta è solo provvisoria, se una strada rischia di confonderti, se una ricompensa è un regalo o una condivisione, e se un incontro va letto con fiducia o con cautela.
+A Parudea il giapponese quotidiano compare mentre lasci il campus, apri la mappa, prepari un sandwich o ascolti un NPC che si presenta con troppa sicurezza. Non sono frasi spettacolari: sono segnali brevi che ti dicono se una meta è solo provvisoria, se una strada rischia di confonderti, se una ricompensa è un regalo o una condivisione, e se un incontro va letto con fiducia o con cautela.
 
 Il gioco alterna tre registri molto riconoscibili. I consigli di esplorazione usano parole morbide come [とりあえず](term:term-e109-toriaezu) e [オススメ](term:term-e110-osusume); le descrizioni del mondo aperto trasformano [{{天気|てんき}}](term:term-v749-tenki), percorso e ritorno in condizioni pratiche; le scene di picnic e compagnia fanno emergere cura, affetto e piccoli scambi sociali.
 
@@ -66,8 +66,8 @@ Il gioco alterna tre registri molto riconoscibili. I consigli di esplorazione us
 
 ## Etichette da riconoscere
 
-- [ヌシ](term:term-v167-nushi) — Titan / presenza dominante indicata nella mappa
-- [テーブルシティ](term:term-v272-teeburushitei) — Mesapoli, riferimento urbano centrale di Paldea
+- [ヌシ](term:term-v167-nushi) — Nushi / presenza dominante indicata nella mappa
+- [テーブルシティ](term:term-v272-teeburushitei) — Tēburu Shiti, riferimento urbano centrale di Parudea
 
 ---
 
@@ -87,13 +87,13 @@ jp: >-
   とりあえず ヌシが いそうな {{場所|ばしょ}}だけ マップアプリに
   {{登録|とうろく}}しておくな。
 translation_it: >-
-  Intanto ti segno sulla mappa solo i posti dove potrebbe esserci un Dominante.
+  Intanto ti segno sulla mappa solo i posti dove potrebbe esserci un Nushi.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `とりあえず` ➔ **Piano provvisorio**: limita l'azione al primo passo pratico, non a una decisione definitiva.
-*   `ヌシが いそうな {{場所|ばしょ}}` ➔ **Luogo probabile**: `いそう` presenta una presenza come plausibile, "posti dove sembra che ci sia un Titan".
+*   `ヌシが いそうな {{場所|ばしょ}}` ➔ **Luogo probabile**: `いそう` presenta una presenza come plausibile, "posti dove sembra che ci sia un Nushi".
 *   `だけ` ➔ **Restrizione del bersaglio**: non tutta la mappa, solo quei luoghi.
 *   `マップアプリに` ➔ **Destinazione operativa**: `に` aggancia la registrazione all'app mappa, cioè al punto in cui l'informazione resta disponibile.
 *   {{登録|とうろく}}しておく ➔ **Preparazione lasciata pronta**: [～ておく](grammar:grammar-teoku) dice che la registrazione serve per dopo, non solo per l'istante presente.
@@ -236,22 +236,21 @@ Non tutti gli incontri quotidiani sono teneri o affidabili. Alcuni NPC si presen
 *   [なんということでしょう](term:term-e112-nantoiukotodeshou) è una formula esclamativa teatrale: letteralmente suona come "che cosa mai è questa cosa?". Nel parlato dà effetto da presentatore o reazione esagerata, più che domanda rivolta al giocatore.
 
 :::example_sentence
-jp: >-
-  {{自称|じしょう}} スマホ{{占|うらな}}いは いかがですか？
-translation_it: >-
-  Che ne dici di una sedicente divinazione via smartphone?
+jp: "{{自称|じしょう}}{{占|うらな}}い{{師|し}}の{{人|ひと}}に、スマホで{{運勢|うんせい}}を{{占|うらな}}ってもらった。"
+translation_it: "Mi sono fatto leggere il futuro sullo smartphone da una persona che si presenta come indovino."
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `{{自称|じしょう}}` ➔ **Etichetta presa con distanza**: l'NPC si presenta così, ma la frase non garantisce che sia affidabile.
-*   `スマホ{{占|うらな}}い` ➔ **Composto misto**: smartphone più divinazione, quindi un servizio presentato come moderno e un po' teatrale.
-*   `は` ➔ **Tema dell'offerta**: mette il servizio sul tavolo come proposta da valutare.
-*   `いかがですか` ➔ **Invito cortese**: chiede "che ne dici?" in modo morbido, più da venditore o presentatore che da comando di sistema.
+- `{{自称|じしょう}}{{占|うらな}}い{{師|し}}の{{人|ひと}}` indica una persona che si definisce indovino: la frase riferisce il titolo senza garantirlo.
+- `{{人|ひと}}に` indica la persona a cui ci si rivolge per ricevere il servizio.
+- `スマホで` indica il mezzo usato.
+- `{{運勢|うんせい}}を{{占|うらな}}ってもらった` significa «mi sono fatto predire la fortuna»; `～てもらう` presenta l'azione ricevuta da qualcuno.
 
 #### ⚖️ Contrasto operativo
 
-[あやしい](term:term-v761-ayashii) vale più di "strano". Se modifica una persona o un servizio, aggiunge dubbio sulla fiducia: puoi aspettarti ambiguità, piccola truffa, esagerazione o una presentazione volutamente poco credibile.
+[あやしい](term:term-v761-ayashii) può esprimere un dubbio sull'affidabilità
+di una persona o di un servizio. `{{自称|じしょう}}` segnala chi rivendica un
+titolo; il sospetto dipende anche dal contesto.
 
 ---
 
@@ -264,7 +263,7 @@ jp: >-
   オススメの {{道|みち}}を {{知|し}}れるなら、まず テーブルシティに
   {{戻|もど}}れるか {{確認|かくにん}}しよう。
 translation_it: >-
-  Se posso scoprire il percorso consigliato, controlliamo prima se si può tornare a Mesapoli.
+  Se posso scoprire il percorso consigliato, controlliamo prima se si può tornare a Tēburu Shiti.
 :::
 
 :::example_sentence
@@ -300,4 +299,4 @@ translation_it: >-
 
 ## Nota finale
 
-Nelle scene quotidiane di Paldea, le parole piccole decidono il tono della lettura: [とりあえず](term:term-e109-toriaezu) rende provvisorio un piano, [{{戻|もど}}れる](term:term-v746-modoreru) apre una possibilità di ritorno, [おすそわけ](term:term-v758-osusowake) trasforma un eccesso in condivisione, [なかよし](term:term-v754-nakayoshi) misura la vicinanza con il team, mentre [{{自称|じしょう}}](term:term-v760-jishou) e [あやしい](term:term-v761-ayashii) ti avvisano che l'incontro va letto con cautela.
+Nelle scene quotidiane di Parudea, le parole piccole decidono il tono della lettura: [とりあえず](term:term-e109-toriaezu) rende provvisorio un piano, [{{戻|もど}}れる](term:term-v746-modoreru) apre una possibilità di ritorno, [おすそわけ](term:term-v758-osusowake) trasforma un eccesso in condivisione, [なかよし](term:term-v754-nakayoshi) misura la vicinanza con il team, mentre [{{自称|じしょう}}](term:term-v760-jishou) e [あやしい](term:term-v761-ayashii) ti avvisano che l'incontro va letto con cautela.

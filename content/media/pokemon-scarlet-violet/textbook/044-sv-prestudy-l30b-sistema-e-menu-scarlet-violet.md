@@ -84,7 +84,7 @@ Quando il gioco passa dalle schermate locali al [ポケポータル](term:term-v
 jp: >-
   ポケポータルに{{接続|せつぞく}}して、{{通信対戦|つうしんたいせん}}のシーズンを{{確認|かくにん}}してみましょう！
 translation_it: >-
-  Connettiamoci al Poké Portal e proviamo a controllare la stagione delle lotte online!
+  Connettiamoci al Pokepōtaru e proviamo a controllare la stagione delle lotte online!
 :::
 
 #### 🗺️ Anatomia della frase
@@ -180,7 +180,7 @@ Per `パワー`, leggi prima la parola a sinistra e poi il contenitore: `ちび�
 
 ## 4. Luoghi, distanza e parlato colloquiale
 
-Fuori dai menu online, le stesse schermate possono guidarti nello spazio o far emergere una voce più colloquiale. `研究室` e' lo spazio associato a ricerca, scienziati e funzioni narrative. [{{壁|かべ}}](term:term-v598-kabe), invece, è concreto: una parete o barriera fisica, quindi in esplorazione segnala limite, ostacolo o superficie.
+Fuori dai menu online, le stesse schermate possono guidarti nello spazio o far emergere una voce più colloquiale. `研究室` è lo spazio associato a ricerca, scienziati e funzioni narrative. [{{壁|かべ}}](term:term-v598-kabe), invece, è concreto: una parete o barriera fisica, quindi in esplorazione segnala limite, ostacolo o superficie.
 
 *   [{{距離|きょり}}](term:term-v606-kyori) misura quanto due punti sono lontani. Se appare accanto a luoghi, icone o marker, ti sta facendo leggere una relazione spaziale.
 *   [～くらい / ～ぐらい](grammar:grammar-g100-circa-al-punto-da) introduce una

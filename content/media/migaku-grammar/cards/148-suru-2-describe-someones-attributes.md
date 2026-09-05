@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-148-suru-2-describe-someones-attributes
 entry_type: grammar
 entry_id: grammar-148-suru-2-describe-someones-attributes
 card_type: concept
-front: "する"
+front: "する（caratteristica: {{目|め}}をしている）"
 back: >-
   Aggettivo + Nome + をしている descrive una caratteristica visibile: «avere occhi grandi», «avere una forma strana».
 example_jp: >-

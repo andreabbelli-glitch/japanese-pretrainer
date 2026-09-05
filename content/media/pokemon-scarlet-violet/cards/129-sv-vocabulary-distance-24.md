@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-24
 media_id: media-pokemon-scarlet-violet
 slug: 129-sv-vocabulary-distance-24
-title: 'Parole per leggere Paldea — ventiquattro'
+title: 'Parole per leggere Parudea — ventiquattro'
 order: 174
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -375,9 +375,7 @@ card_type: recognition
 front: '{{変化|へんか}}'
 back: >-
   へんか — cambiamento; variazione; alterazione.
-example_jp: >-
-  {{一見|いっけん}}ドンファンに{{似|に}}たその{{生物|せいぶつ}}は{{突如|とつじょ}}{{球体|きゅうたい}}に{{変化|へんか}}すると{{高速|こうそく}}で{{回転|かいてん}}し{{襲|おそ}}いかかってきたという。
-example_it: >-
-  A prima vista, quella creatura simile a Donphan si trasformò all'improvviso in una sfera, ruotò ad alta velocità e si lanciò all'attacco.
+example_jp: "{{一見|いっけん}}ドンファンに{{似|に}}たその{{生物|せいぶつ}}は{{突如|とつじょ}}{{球体|きゅうたい}}に{{変化|へんか}}すると{{高速|こうそく}}で{{回転|かいてん}}し{{襲|おそ}}いかかってきたという。"
+example_it: "Si racconta che quella creatura, a prima vista simile a Donfan, si sia trasformata all’improvviso in una sfera, abbia iniziato a ruotare ad alta velocità e si sia lanciata all’attacco."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::

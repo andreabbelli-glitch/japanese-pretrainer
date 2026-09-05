@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-036-kara-show-reasons
 entry_type: grammar
 entry_id: grammar-036-kara-show-reasons
 card_type: concept
-front: "から"
+front: "から（ragione）"
 back: >-
   から collega una ragione al suo risultato; il risultato può restare sottinteso.
 example_jp: >-

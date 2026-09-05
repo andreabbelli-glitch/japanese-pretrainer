@@ -36,9 +36,9 @@ id: term-monster-ball
 lemma: モンスターボール
 reading: モンスターボール
 romaji: monsutaa booru
-meaning_it: Poké Ball / Monster Ball
+meaning_it: "Monsutā Bōru (strumento per catturare Pokémon)"
 notes_it: >-
-  È il nome giapponese standard della Pokeball. Nel tutorial e nei dialoghi di
+  È il nome giapponese standard della Monsutā Bōru. Nel tutorial e nei dialoghi di
   viaggio segnala lo strumento concreto con cui puoi passare dalla semplice
   lotta alla cattura di un Pokémon selvatico.
 :::
@@ -49,12 +49,12 @@ entry_type: term
 entry_id: term-monster-ball
 card_type: recognition
 front: モンスターボール
-back: Poké Ball / Monster Ball
+back: "Monsutā Bōru (strumento per catturare Pokémon)"
 example_jp: >-
   {{弱|よわ}}った タイミングで モンスターボールを {{投|な}}げると
   {{捕|つか}}まえやすい。
 example_it: >-
-  Se lanci la Poké Ball quando il Pokémon è indebolito, è più facile catturarlo.
+  Se lanci la Monsutā Bōru quando il Pokémon è indebolito, è più facile catturarlo.
 :::
 :::term
 id: term-yowaraseru
@@ -113,7 +113,7 @@ romaji: seisoku suru
 meaning_it: vivere in una zona / abitare un habitat
 notes_it: >-
   Descrive la presenza naturale di una specie in un'area. Quando compare in
-  dialoghi o Pokédex, quel luogo e marcato come habitat effettivo: li sono
+  dialoghi o Pokémon Zukan, quel luogo e marcato come habitat effettivo: li sono
   previsti incontri, rischi e risorse collegati a quella specie.
 :::
 :::card
@@ -159,12 +159,12 @@ id: term-waza-machine
 lemma: わざマシン
 reading: わざマシン
 romaji: waza mashin
-meaning_it: MT / oggetto per insegnare una mossa
+meaning_it: Waza Mashin / oggetto per insegnare una mossa
 notes_it: >-
   In Scarlet / Violet una `わざマシン` serve a insegnare una mossa a un Pokémon. In
   questo capitolo compare come premio subito dopo la grotta: non è un oggetto
   decorativo, ma un primo assaggio della personalizzazione del team e del
-  fatto che in questo titolo la MT si consuma quando viene usata.
+  fatto che in questo titolo la Waza Mashin si consuma quando viene usata.
 :::
 :::card
 id: card-waza-machine-recognition
@@ -173,11 +173,11 @@ entry_type: term
 entry_id: term-waza-machine
 card_type: recognition
 front: わざマシン
-back: MT / oggetto per insegnare una mossa
+back: Waza Mashin / oggetto per insegnare una mossa
 example_jp: >-
   {{強|つよ}}い わざを {{覚|おぼ}}えさせたいなら わざマシンを {{使|つか}}おう。
 example_it: >-
-  Se vuoi insegnare una mossa forte, usa una MT.
+  Se vuoi insegnare una mossa forte, usa una Waza Mashin.
 :::
 :::term
 id: term-sugata
@@ -188,7 +188,7 @@ meaning_it: aspetto / forma / stato visibile
 notes_it: >-
   In Pokémon `{{姿|すがた}}` non descrive solo come qualcosa appare. Spesso
   segnala una forma o uno stato che cambia il comportamento del Pokémon. Nel
-  prologo Pepper lo usa per distinguere la condizione indebolita di Koraidon /
+  prologo Pepā lo usa per distinguere la condizione indebolita di Koraidon /
   Miraidon dalla forma in cui può davvero combattere.
 :::
 :::card
@@ -262,7 +262,7 @@ romaji: seigyo suru
 meaning_it: controllare / tenere sotto controllo
 notes_it: >-
   `{{制御|せいぎょ}}する` indica controllo o regolazione intenzionale. Nella frase
-  con Pepper, `ための もの` presenta la funzione della Ball: serve a tenere quel
+  con Pepā, `ための もの` presenta la funzione della Ball: serve a tenere quel
   Pokémon sotto controllo.
 :::
 :::card
@@ -286,7 +286,7 @@ romaji: sainan
 meaning_it: guaio / brutta sorte
 notes_it: >-
   Parola usata per commentare una situazione sfortunata che ti è capitata
-  addosso. Pepper la usa con tono secco e poco empatico, coerente con il suo
+  addosso. Pepā la usa con tono secco e poco empatico, coerente con il suo
   ingresso brusco nella scena.
 :::
 :::card
@@ -310,7 +310,7 @@ romaji: omoiyarareru
 meaning_it: lascia presagire male / fa pensare che andrà dura
 notes_it: >-
   Espressione valutativa che proietta un'impressione negativa sul futuro. Nel
-  parlato di Pepper non è una riflessione neutra: è un giudizio brusco su ciò
+  parlato di Pepā non è una riflessione neutra: è un giudizio brusco su ciò
   che ti aspetta se già ora sei in difficoltà.
 :::
 :::card
@@ -347,7 +347,7 @@ back: fare qualcosa per qualcuno
 example_jp: >-
   モンスターボールを {{少|すこ}}し わけてあげるね。
 example_it: >-
-  Ti do qualche Poké Ball, così puoi usarle.
+  Ti do qualche Monsutā Bōru, così puoi usarle.
 :::
 :::grammar
 id: grammar-nai-you-ni
@@ -400,11 +400,8 @@ example_it: >-
 id: grammar-ba-hodo
 pattern: ～ば ～ほど
 title: Più..., più...
-meaning_it: più succede X, più aumenta Y
-notes_it: >-
-  Collega due movimenti che crescono insieme. In questo arco è perfetto per
-  leggere osservazioni come `{{見|み}}れば {{見|み}}るほど`: più Pepper osserva il
-  Pokémon misterioso, più lo trova strano o degno di attenzione.
+meaning_it: "più… più/meno… (variazione correlata)"
+notes_it: "Collega due variazioni: all’aumentare di X, Y può aumentare oppure diminuire. 見れば見るほど: «più guardo, più…». 値段が高ければ高いほど、買う人は少なくなる: «più il prezzo è alto, meno persone comprano». Si ripete normalmente lo stesso verbo o aggettivo prima di ば e di ほど."
 :::
 :::card
 id: card-ba-hodo-concept
@@ -413,11 +410,12 @@ entry_type: grammar
 entry_id: grammar-ba-hodo
 card_type: concept
 front: ～ば ～ほど
-back: più..., più...
+back: "più… più/meno… (variazione correlata)"
 example_jp: >-
   {{見|み}}れば {{見|み}}るほど {{不思議|ふしぎ}}な ポケモンだ。
 example_it: >-
   Più lo guardi, più sembra un Pokémon misterioso.
+notes_it: "Collega due variazioni: all’aumentare di X, Y può aumentare oppure diminuire. 見れば見るほど: «più guardo, più…». 値段が高ければ高いほど、買う人は少なくなる: «più il prezzo è alto, meno persone comprano». Si ripete normalmente lo stesso verbo o aggettivo prima di ば e di ほど."
 :::
 :::card
 id: card-yasei-prologue-02-recognition
@@ -450,7 +448,7 @@ example_it: >-
 notes_it: >-
   `{{捕|つか}}まえる` indica un obiettivo diverso dal semplice KO. In pratica il
   combattimento passa da riduzione HP a lancio Ball per aggiungere la specie al
-  team o al Pokédex.
+  team o al Pokémon Zukan.
 :::
 :::card
 id: card-te-miru-prologue-02-concept
@@ -480,9 +478,9 @@ back: finire per / fare del tutto / fare per errore
 example_jp: >-
   わざマシンは {{1回|いっかい}} {{使|つか}}うと なくなっちゃうよ。
 example_it: >-
-  Una MT, quando la usi una volta, sparisce.
+  Una Waza Mashin, quando la usi una volta, sparisce.
 notes_it: >-
-  Qui il pattern marca un esito completato e irreversibile: la MT viene
+  Qui il pattern marca un esito completato e irreversibile: la Waza Mashin viene
   consumata dopo l'uso. In altri punti della scena può anche segnalare un
   risultato imprevisto o indesiderato.
 :::

@@ -28,7 +28,7 @@ romaji: yoyuu
 meaning_it: margine; spazio mentale o temporale
 pos: noun
 notes_it: >-
-  {{余裕|よゆう}} e' il margine che permette di pensare, respirare o agire. Con
+  {{余裕|よゆう}} è il margine che permette di pensare, respirare o agire. Con
   がない significa non avere spazio per altro.
 level_hint: n3
 :::
@@ -41,7 +41,7 @@ romaji: jisu
 meaning_it: rifiutare; tirarsi indietro
 pos: verb
 notes_it: >-
-  {{辞|じ}}す e' formale. In negativo, come {{辞|じ}}さない, significa non
+  {{辞|じ}}す è formale. In negativo, come {{辞|じ}}さない, significa non
   esitare / non tirarsi indietro.
 level_hint: n1
 :::
@@ -54,7 +54,7 @@ romaji: shioki
 meaning_it: punizione
 pos: noun
 notes_it: >-
-  {{仕置|しお}}き e' una punizione, spesso con tono di minaccia o rimprovero duro.
+  {{仕置|しお}}き è una punizione, spesso con tono di minaccia o rimprovero duro.
 level_hint: n1
 :::
 
@@ -79,7 +79,7 @@ romaji: ajiwau
 meaning_it: assaporare; vivere pienamente
 pos: verb
 notes_it: >-
-  {{味|あじ}}わう puo' essere assaporare cibo o vivere un'esperienza in modo
+  {{味|あじ}}わう può essere assaporare cibo o vivere un'esperienza in modo
   pieno, anche doloroso o ironico.
 level_hint: n2
 :::
@@ -114,11 +114,11 @@ level_hint: n5
 id: grammar-ch-b10-sou-suru-sou-iu
 pattern: そうする／そう言う
 reading: そうする／そういう
-title: "Fare cosi' / dire cosi'"
-meaning_it: fare quello; dire cosi'
+title: "Fare così / dire così"
+meaning_it: fare quello; dire così
 notes_it: >-
-  そう riprende un contenuto gia' presente. Con する diventa "fare cosi'"; con
-  {{言|い}}う diventa "dire cosi' / dire quello".
+  そう riprende un contenuto già presente. Con する diventa "fare così"; con
+  {{言|い}}う diventa "dire così / dire quello".
 level_hint: n4
 :::
 
@@ -162,7 +162,7 @@ reading: XはYは...だという
 title: "Citazione incorporata"
 meaning_it: X dice che Y...
 notes_it: >-
-  Una frase citata puo' entrare dentro una frase piu' grande. I due は non
+  Una frase citata può entrare dentro una frase più grande. I due は non
   devono essere letti come contrasto automatico: appartengono a blocchi diversi.
 level_hint: n3
 :::
@@ -173,7 +173,7 @@ pattern: forma piana + nome
 title: "Verbi che descrivono nomi"
 meaning_it: nome che fa / ha fatto / fara' V
 notes_it: >-
-  Una forma verbale piana puo' stare direttamente prima di un nome:
+  Una forma verbale piana può stare direttamente prima di un nome:
   {{逃|に}}げている{{男|おとこ}}, l'uomo che sta scappando. Non si usa la forma
   cortese davanti al nome.
 level_hint: n4
@@ -198,7 +198,7 @@ pattern: よかった、Vて／いいな、Vて
 title: "て spostata per enfasi emotiva"
 meaning_it: valutazione emotiva prima, situazione in て dopo
 notes_it: >-
-  La frase in て puo' arrivare dopo la reazione emotiva: よかった、{{食|た}}べられて.
+  La frase in て può arrivare dopo la reazione emotiva: よかった、{{食|た}}べられて.
   Prima senti il giudizio del parlante; poi scopri quale situazione lo provoca.
 level_hint: n3
 :::
@@ -222,10 +222,10 @@ entry_id: term-ch-b10-mono
 card_type: recognition
 front: '{{物|もの}}'
 back: 'もの - cosa fisica; oggetto'
-example_jp: 'この{{物|もの}}に{{触|ふ}}れるな。'
-example_it: Non toccare questo oggetto.
+example_jp: "{{危険|きけん}}な{{物|もの}}には{{触|ふ}}れるな。"
+example_it: "Non toccare oggetti pericolosi."
 notes_it: >-
-  Se la cosa esiste fisicamente, {{物|もの}} e' spesso la scelta giusta.
+  Se la cosa esiste fisicamente, {{物|もの}} è spesso la scelta giusta.
 tags: [crystal-hunters, book-10, lesson-06]
 :::
 
@@ -240,7 +240,7 @@ back: 'よゆう - margine; spazio mentale o temporale'
 example_jp: '{{考|かんが}}える{{余裕|よゆう}}がない。'
 example_it: Non ho margine per pensare.
 notes_it: >-
-  Non e' solo tempo libero: e' spazio mentale o operativo.
+  Non è solo tempo libero: è spazio mentale o operativo.
 tags: [crystal-hunters, book-10, lesson-06]
 :::
 
@@ -300,7 +300,7 @@ back: 'あじわう - assaporare; vivere pienamente'
 example_jp: 'この{{時間|じかん}}を{{味|あじ}}わう。'
 example_it: Assaporo questo momento.
 notes_it: >-
-  Puo' riguardare sapori reali o esperienze vissute intensamente.
+  Può riguardare sapori reali o esperienze vissute intensamente.
 tags: [crystal-hunters, book-10, lesson-06]
 :::
 
@@ -345,7 +345,7 @@ back: fare quello / dire così
 example_jp: 'いい{{考|かんが}}えだ。そうする。'
 example_it: È una buona idea. Faccio così.
 notes_it: >-
-  そう rimanda a qualcosa gia' detto o evidente nella scena.
+  そう rimanda a qualcosa già detto o evidente nella scena.
 tags: [crystal-hunters, book-10, lesson-06]
 :::
 
@@ -402,13 +402,12 @@ entry_id: grammar-ch-b10-embedded-quote
 card_type: concept
 front: 'XはYは...だと{{言|い}}う'
 back: X dice che Y...
-example_jp: '{{女王|じょおう}}は「お{{前達|まえたち}}はバカだ」と{{言|い}}った。'
-example_it: La regina ha detto che siamo stupidi.
+example_jp: "{{女王|じょおう}}は「お{{前達|まえたち}}はバカだ」と{{言|い}}った。"
+example_it: "La regina ha detto: «Siete stupidi»."
 notes_it: >-
   Il primo は appartiene alla frase esterna; il secondo alla citazione.
 tags: [crystal-hunters, book-10, lesson-06]
 :::
-
 :::card
 id: card-crystal-hunters-book-10-l06-verb-before-noun-concept
 lesson_id: lesson-crystal-hunters-book-10-l06-subtesto-oggetti-e-verbi-composti
@@ -466,6 +465,6 @@ back: こと = fatto/azione; もの = oggetto concreto
 example_jp: '{{悪|わる}}い{{事|こと}}をした。{{悪|わる}}い{{物|もの}}を{{食|た}}べた。'
 example_it: Ho fatto qualcosa di sbagliato. Ho mangiato qualcosa di cattivo.
 notes_it: >-
-  {{事|こと}} non si afferra; {{物|もの}} puo' essere un oggetto o una cosa fisica.
+  {{事|こと}} non si afferra; {{物|もの}} può essere un oggetto o una cosa fisica.
 tags: [crystal-hunters, book-10, lesson-06]
 :::

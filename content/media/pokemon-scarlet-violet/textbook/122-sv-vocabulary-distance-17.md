@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-17
 media_id: media-pokemon-scarlet-violet
 slug: 122-sv-vocabulary-distance-17
-title: 'Parole per leggere Paldea — diciassette'
+title: 'Parole per leggere Parudea — diciassette'
 order: 167
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — diciassette
+# Parole per leggere Parudea — diciassette
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -102,7 +102,7 @@ translation_it: >-
 jp: >-
   パルデアの{{乾燥|かんそう}}{{地帯|ちたい}}を{{中心|ちゅうしん}}に{{数|すう}}{{件|けん}}の{{目撃|もくげき}}{{報告|ほうこく}}があるもののいまだ{{捕獲|ほかく}}されたという{{記録|きろく}}はない。
 translation_it: >-
-  Sebbene ci siano state diverse segnalazioni di avvistamenti, soprattutto nelle zone aride di Paldea, non ci sono ancora registrazioni di catture.
+  Sebbene ci siano state diverse segnalazioni di avvistamenti, soprattutto nelle zone aride di Parudea, non ci sono ancora registrazioni di catture.
 :::
 
 **Uso:** Nel contesto indica «centro; mezzo; cuore».

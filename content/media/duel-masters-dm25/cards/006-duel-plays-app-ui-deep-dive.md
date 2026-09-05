@@ -651,7 +651,7 @@ example_it: >-
   Siccome i pack ticket non bastano, li compro con le gemme.
 notes_it: >-
   È lo stock immediato che il popup userà per decidere fino a dove puoi arrivare.
-  La valuta qui e' il saldo spendibile adesso.
+  La valuta qui è il saldo spendibile adesso.
 tags: [duel-plays, app, ui, resource]
 :::
 
@@ -678,10 +678,9 @@ lesson_id: lesson-duel-masters-dm25-duel-plays-app-exchange-decks-and-setup
 entry_type: term
 entry_id: term-exchange-period
 card_type: recognition
-front: '{{交換期間|こう.かん.き.かん}}'
+front: "{{交換期間|こうかんきかん}}"
 back: periodo di scambio / exchange period
-example_jp: >-
-  カードの{{交換期間|こう.かん.き.かん}}が{{終了時|しゅう.りょう.じ}}に{{近|ちか}}づいている。
+example_jp: "カードの{{交換期間|こうかんきかん}}が{{終|お}}わりに{{近|ちか}}づいている。"
 example_it: >-
   Il periodo di scambio della carta si sta avvicinando al termine.
 notes_it: >-

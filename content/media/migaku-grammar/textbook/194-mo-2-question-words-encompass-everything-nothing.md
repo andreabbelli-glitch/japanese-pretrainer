@@ -15,9 +15,9 @@ summary: >-
 
 # 「も」(2) Question words encompass everything or nothing
 
-## La polarità decide il valore
+## Leggere la combinazione completa
 
-Parola interrogativa + も estende il riferimento a tutta la categoria. Con un predicato affermativo può significare «tutto/sempre/ovunque»; con una negazione, «niente/mai/da nessuna parte».
+Impara le combinazioni nel loro uso: いつも significa «sempre»; どこも può accompagnare un’affermazione o una negazione. Per «nessuno» si usa 誰も con un predicato negativo: 誰も知らない, «nessuno lo sa». Per «tutti» è comune 誰もが: 誰もが知っている, «tutti lo sanno». 何もない significa «non c’è niente».
 
 :::example_sentence
 jp: >-
@@ -26,8 +26,8 @@ translation_it: >-
   Non è venuto nessuno.
 :::
 
-いつも si usa affermativamente per «sempre». どこも compare con entrambe le polarità. 何も e 誰も sono invece soprattutto negativi: 何もない, 誰もいない.
+Nell’esempio, 誰も si collega a 来なかった: la negazione comprende tutte le persone, quindi «non è venuto nessuno».
 
 ## Lettura operativa
 
-Non tradurre il gruppo prima di aver letto il predicato: la stessa struttura totalizzante produce in italiano una parola positiva o negativa.
+Leggi insieme la parola interrogativa, le particelle e il predicato. La forma affermativa 誰もが知っている e quella negativa 誰も知らない sono due modelli utili da memorizzare separatamente.

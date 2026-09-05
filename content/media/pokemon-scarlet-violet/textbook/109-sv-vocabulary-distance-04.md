@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-04
 media_id: media-pokemon-scarlet-violet
 slug: 109-sv-vocabulary-distance-04
-title: 'Parole per leggere Paldea — quattro'
+title: 'Parole per leggere Parudea — quattro'
 order: 154
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — quattro
+# Parole per leggere Parudea — quattro
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -102,7 +102,7 @@ translation_it: >-
 jp: >-
   {{謎|なぞ}}の{{物体|ぶったい}}テツノワダチパルデア{{某所|ぼうしょ}}にある{{乾燥|かんそう}}{{地帯|ちたい}}において{{謎|なぞ}}の{{生物|せいぶつ}}の{{目撃|もくげき}}が{{報告|ほうこく}}されている。
 translation_it: >-
-  Creatura misteriosa: Solcoferreo. In una zona arida di Paldea sono stati segnalati avvistamenti di questa creatura.
+  Creatura misteriosa: Tetsu no Wadachi. In una zona arida di Parudea sono stati segnalati avvistamenti di questa creatura.
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «solco; traccia di ruota; scanalatura».
@@ -154,12 +154,11 @@ translation_it: >-
 ### [さらなる](term:term-sv-vocabulary-121-saranaru) — ancora di più; ulteriormente
 
 :::example_sentence
-jp: >-
-  ではさんに{{問|と}}おうさらなる{{食事|しょくじ}}パワーを{{得|え}}るためにはきみは{{何|なに}}に{{気|き}}をつけるのだ？
-translation_it: >-
-  Allora, ti chiedo: per ottenere ancora più potere dal cibo, a cosa devi prestare attenzione?
+jp: "さらなる{{成長|せいちょう}}のために、{{毎日|まいにち}}{{練習|れんしゅう}}しよう。"
+translation_it: "Per migliorare ancora, alleniamoci ogni giorno."
 :::
 
+*Esempio didattico.*
 **Uso:** Nel dialogo aggiunge il valore di «ancora di più; ulteriormente».
 
 ### [{{驚|おどろ}}く](term:term-sv-vocabulary-296-odoroku) — essere sorpreso; rimanere sbalordito; stupirsi
@@ -190,7 +189,7 @@ translation_it: >-
 jp: >-
   {{大空|おおぞら}}のヌシと{{呼|よ}}ばれるポケモンを{{探|さが}}してみるのはいかがでしょう？
 translation_it: >-
-  Che ne dici di cercare il Pokémon chiamato Dominante dei Cieli?
+  Che ne dici di cercare il Pokémon chiamato Nushi dei Cieli?
 :::
 
 **Uso:** Nel contesto indica «cielo a perdita d’occhio; l’azzurro; i cieli».

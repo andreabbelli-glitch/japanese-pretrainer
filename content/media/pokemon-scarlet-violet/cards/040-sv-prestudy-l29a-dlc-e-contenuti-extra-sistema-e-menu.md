@@ -13,7 +13,7 @@ reading: ありがとうございました
 romaji: arigatougozaimashita
 meaning_it: grazie mille / formula di chiusura
 notes_it: >-
-  Formula cortese che chiude una vendita, una cura al Centro Pokémon o un
+  Formula cortese che chiude una vendita, una cura al Pokémon Sentā o un
   servizio. In dialogo segnala che l'interazione è terminata.
 :::
 :::card
@@ -74,36 +74,36 @@ back: tipo... / cose come...
 example_jp: >-
   キタカミとか ブルーベリー{{学園|がくえん}}とかに いきます。
 example_it: >-
-  Vado a Kitakami, all'Istituto Mirtillo e posti del genere.
+  Vado a Kitakami, al Burūberī Gakuen e posti del genere.
 :::
 :::term
 id: term-v476-kitakami
 lemma: キタカミ
 reading: キタカミ
 romaji: kitakami
-meaning_it: Kitakami / Nordivia
+meaning_it: "Kitakami (regione)"
 notes_it: >-
-  Nome giapponese di Nordivia. Sulla mappa e nei dialoghi del DLC segnala la
-  zona della Maschera Turchese, distinta da Paldea e dall'Istituto Mirtillo.
+  Nome giapponese di Kitakami. Sulla mappa e nei dialoghi del DLC segnala la
+  zona di Midori no Kamen, distinta da Parudea e dal Burūberī Gakuen.
 :::
 :::term
 id: term-v477-buruuberiigakuen
 lemma: ブルーベリー学園
 reading: ブルーベリーがくえん
 romaji: buruuberiigakuen
-meaning_it: Istituto Mirtillo / Blueberry Academy
+meaning_it: "Burūberī Gakuen (accademia)"
 notes_it: >-
-  Nome dell'accademia del Disco Indaco. Quando appare in menu o dialogo,
-  richiama scambio studentesco, Lega Mirtillo, Bioterarium e servizi interni.
+  Nome dell'accademia di Ai no Enban. Quando appare in menu o dialogo,
+  richiama scambio studentesco, Lega Mirtillo, Terariumu Dōmu e servizi interni.
 :::
 :::term
 id: term-v478-oogapon
 lemma: オーガポン
 reading: オーガポン
 romaji: oogapon
-meaning_it: Ogerpon
+meaning_it: Ōgapon
 notes_it: >-
-  Nome del Pokémon mascherato al centro della Maschera Turchese. Nei dialoghi
+  Nome del Pokémon mascherato al centro di Midori no Kamen. Nei dialoghi
   indica il personaggio specifico dell'evento, non una specie generica.
 :::
 :::term
@@ -157,9 +157,9 @@ id: term-v481-biipii
 lemma: ＢＰ
 reading: びーぴー
 romaji: biipii
-meaning_it: BP / Punti Mirtillo
+meaning_it: BP / Burūberī Pointo
 notes_it: >-
-  Valuta dell'Istituto Mirtillo. Nei menu del DLC compare come saldo, costo,
+  Valuta del Burūberī Gakuen. Nei menu del DLC compare come saldo, costo,
   ricompensa delle Ricreattività o contributo ai club.
 :::
 :::term
@@ -236,9 +236,9 @@ id: term-v486-terariumudoomu
 lemma: テラリウムドーム
 reading: テラリウムドーム
 romaji: terariumudoomu
-meaning_it: Bioterarium / Terarium Dome
+meaning_it: "Terariumu Dōmu (biomi dell’accademia)"
 notes_it: >-
-  Grande area artificiale dell'Istituto Mirtillo. Sulla mappa del DLC introduce
+  Grande area artificiale del Burūberī Gakuen. Sulla mappa del DLC introduce
   i settori ambientali in cui si esplorano Pokémon e missioni.
 :::
 :::term
@@ -269,9 +269,9 @@ id: term-v488-koosutoeria
 lemma: コーストエリア
 reading: コーストエリア
 romaji: koosutoeria
-meaning_it: Settore Costa / Coast Area
+meaning_it: "Kōsuto Eria (area costiera)"
 notes_it: >-
-  Nome di settore del Bioterarium. In mappa e missioni indica la zona costiera,
+  Nome di settore del Terariumu Dōmu. In mappa e missioni indica la zona costiera,
   utile per capire dove cercare Pokémon, sfidanti o obiettivi.
 :::
 :::term
@@ -302,19 +302,19 @@ id: term-v490-omodaka
 lemma: オモダカ
 reading: おもだか
 romaji: omodaka
-meaning_it: Alisma / Geeta
+meaning_it: "Omodaka (presidente della Lega)"
 notes_it: >-
-  Nome giapponese di Alisma, supercampionessa di Paldea. Nei dialoghi indica la
-  persona specifica legata alla Lega Pokémon, non un titolo generico.
+  Nome giapponese di Omodaka, supercampionessa di Parudea. Nei dialoghi indica la
+  persona specifica legata alla Pokémon Rīgu, non un titolo generico.
 :::
 :::term
 id: term-v491-sabanaeria
 lemma: サバンナエリア
 reading: サバンナエリア
 romaji: sabanaeria
-meaning_it: Settore Savana / Savanna Area
+meaning_it: "Sabanna Eria (area della savana)"
 notes_it: >-
-  Nome di settore del Bioterarium. Sulla mappa rimanda alla zona savana e alle
+  Nome di settore del Terariumu Dōmu. Sulla mappa rimanda alla zona savana e alle
   missioni o ricompense che chiedono di agire in quel settore.
 :::
 :::term
@@ -322,10 +322,10 @@ id: term-v492-pooraeria
 lemma: ポーラエリア
 reading: ポーラエリア
 romaji: pooraeria
-meaning_it: Settore Ghiacciai / area polare
+meaning_it: "Pōra Eria (Pōra Eria)"
 notes_it: >-
-  Nome giapponese dell'area polare del Bioterarium, localizzata in italiano
-  come Settore Ghiacciai. Compare in mappa, missioni e indicazioni di zona.
+  Nome giapponese dell'Pōra Eria del Terariumu Dōmu, localizzata in italiano
+  come Pōra Eria. Compare in mappa, missioni e indicazioni di zona.
 :::
 :::term
 id: term-v493-daisakusen
@@ -348,7 +348,7 @@ back: grande operazione / grande piano
 example_jp: >-
   オーガポンを さがす {{大作戦|だい.さく.せん}}が はじまります。
 example_it: >-
-  Comincia la grande operazione per cercare Ogerpon.
+  Comincia la grande operazione per cercare Ōgapon.
 :::
 :::term
 id: term-v494-pikku
@@ -401,10 +401,10 @@ id: term-v496-burureku
 lemma: ブルレク
 reading: ブルレク
 romaji: burureku
-meaning_it: Ricreattività Mirtillo / Blueberry Quest
+meaning_it: "Burureku (missioni dell’accademia)"
 notes_it: >-
-  Abbreviazione giapponese delle missioni dell'Istituto Mirtillo. Nei menu del
-  DLC apre l'elenco delle attività che danno Punti Mirtillo.
+  Abbreviazione giapponese delle missioni del Burūberī Gakuen. Nei menu del
+  DLC apre l'elenco delle attività che danno Burūberī Pointo.
 :::
 :::term
 id: term-v497-sakusen
@@ -434,9 +434,9 @@ id: term-v498-kyanioneria
 lemma: キャニオンエリア
 reading: キャニオンエリア
 romaji: kyanioneria
-meaning_it: Settore Canyon / Canyon Area
+meaning_it: "Kyanion Eria (area del canyon)"
 notes_it: >-
-  Nome di settore del Bioterarium. In mappa e obiettivi richiama la zona dei
+  Nome di settore del Terariumu Dōmu. In mappa e obiettivi richiama la zona dei
   canyon, spesso come luogo di cattura, sfida o ricerca.
 :::
 :::term
@@ -506,7 +506,7 @@ back: piacere moltissimo / adorare
 example_jp: >-
   オーガポンが {{大好|だいす}}き です。
 example_it: >-
-  Ogerpon mi piace tantissimo.
+  Ōgapon mi piace tantissimo.
 :::
 :::term
 id: term-v502-kanban
@@ -562,7 +562,7 @@ romaji: kansoku
 meaning_it: osservazione / rilevamento
 notes_it: >-
   Lessico da ricerca e monitoraggio. Può descrivere dati raccolti su Pokémon,
-  ambiente, fenomeni o attività del Bioterarium.
+  ambiente, fenomeni o attività del Terariumu Dōmu.
 :::
 :::card
 id: card-v505-kansoku-recognition

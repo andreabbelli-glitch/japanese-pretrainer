@@ -76,8 +76,7 @@ entry_id: term-hensei
 card_type: recognition
 front: '{{編成|へんせい}}'
 back: 'composizione; schieramento; configurazione'
-example_jp: >-
-  ボスの{{攻撃|こうげき}}を{{耐|た}}えるために、{{回復役|かい.ふく.やく}}を{{後衛|こうえい}}に{{置|お}}くパーティー{{編成|へんせい}}にする。
+example_jp: "ボスの{{攻撃|こうげき}}に{{耐|た}}えるために、{{回復役|かいふくやく}}を{{後衛|こうえい}}に{{置|お}}くパーティー{{編成|へんせい}}にする。"
 example_it: >-
   Per sopravvivere agli attacchi del boss, costruisco un team con l'healer nelle retrovie.
 notes_it: >-
@@ -618,11 +617,8 @@ entry_id: term-defense-battle
 card_type: recognition
 front: '{{防衛戦|ぼうえいせん}}'
 back: 'battaglia di difesa'
-example_jp: >-
-  {{押|お}}し{{寄|よ}}せる{{敵|てき}}から{{拠点|きょてん}}にダメージが{{入|はい}}らないように、{{防衛戦|ぼうえいせん}}でしっかり{{陣地|じんち}}を{{守|まも}}る。
-example_it: >-
-  In una battaglia difensiva proteggo bene la base, così i nemici che avanzano non le
-  infliggono danni.
+example_jp: "{{防衛戦|ぼうえいせん}}では、{{押|お}}し{{寄|よ}}せる{{敵|てき}}から{{拠点|きょてん}}を{{守|まも}}る。"
+example_it: "Nella battaglia difensiva proteggo la base dall’assalto dei nemici."
 notes_it: >-
   [{{防衛戦|ぼうえいせん}}](term:term-defense-battle) è la faccia “tenere
   il campo” della strategia battle, quindi l'idea chiave è la resistenza.
@@ -680,8 +676,7 @@ entry_id: term-shoshinsha
 card_type: recognition
 front: '{{初心者|しょしんしゃ}}'
 back: 'principiante; beginner'
-example_jp: >-
-  この{{記事|きじ}}はガチャの{{仕組|しく}}みが{{初心者|しょしんしゃ}}でもわかるように、ていねいに{{解説|かいせつ}}されている。
+example_jp: "この{{記事|きじ}}では、ガチャの{{仕組|しく}}みを{{初心者|しょしんしゃ}}にもわかるように、ていねいに{{解説|かいせつ}}している。"
 example_it: >-
   Questo articolo spiega con cura il funzionamento del gacha, così anche i principianti
   possono capirlo.
@@ -711,11 +706,8 @@ entry_id: term-kangaekata
 card_type: recognition
 front: '{{考|かんが}}え{{方|かた}}'
 back: 'modo di pensare; approccio'
-example_jp: >-
-  {{難|むずか}}しいイベントをクリアできない{{時|とき}}は、パーティーの{{考|かんが}}え{{方|かた}}をガラッとかえる。
-example_it: >-
-  Quando non riesco a completare un evento difficile, cambio radicalmente l'approccio al
-  party.
+example_jp: "{{難|むずか}}しいイベントをクリアできない{{時|とき}}は、パーティー{{編成|へんせい}}の{{考|かんが}}え{{方|かた}}をガラッと{{変|か}}える。"
+example_it: "Quando non riesco a completare un evento difficile, cambio radicalmente il modo di comporre il gruppo."
 notes_it: >-
   [{{考|かんが}}え{{方|かた}}](term:term-kangaekata) è la parola che la pagina
   usa per passare dalle singole squadre al criterio generale di costruzione.

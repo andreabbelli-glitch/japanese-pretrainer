@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi-gruppi-e-invii
 media_id: media-pokemon-scarlet-violet
 slug: 066-sv-anki-l14-esami-paesi-gruppi-e-invii
-title: Esami, gruppi e trasferimenti nelle scene di Paldea
+title: Esami, gruppi e trasferimenti nelle scene di Parudea
 order: 96
 segment_ref: scarlet-violet-prestudy
 ---
@@ -63,7 +63,7 @@ reading: しさつ
 romaji: shisatsu
 meaning_it: ispezione; sopralluogo
 notes_it: >-
-  {{視|し}}{{察|さつ}} è un termine molto formale che indica un'ispezione sul campo condotta da chi detiene una certa autorità (come un Superquattro o la Presidente della Lega). Usa la particella の per collegarsi alla struttura ispezionata: ジムの{{視|し}}{{察|さつ}} (l'ispezione della palestra).
+  {{視|し}}{{察|さつ}} è un termine molto formale che indica un'ispezione sul campo condotta da chi detiene una certa autorità (come un Shitennō o la Presidente della Lega). Usa la particella の per collegarsi alla struttura ispezionata: ジムの{{視|し}}{{察|さつ}} (l'ispezione della palestra).
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: しけん
 romaji: shiken
 meaning_it: esame; test
 notes_it: >-
-  Il termine {{試|し}}{{験|けん}} copre sia i test accademici scritti (a scuola) sia le prove pratiche (come l'esame della Lega Pokémon). Si usa tipicamente con verbi di superamento ({{合|ごう}}{{格|かく}}する), fallimento ({{落|お}}ちる) o per descrivere l'inizio di una prova ufficiale.
+  Il termine {{試|し}}{{験|けん}} copre sia i test accademici scritti (a scuola) sia le prove pratiche (come l'esame della Pokémon Rīgu). Si usa tipicamente con verbi di superamento ({{合|ごう}}{{格|かく}}する), fallimento ({{落|お}}ちる) o per descrivere l'inizio di una prova ufficiale.
 level_hint: custom
 :::
 :::term
@@ -203,9 +203,9 @@ back: >-
 example_jp: >-
   オモダカさんは、ジムの {{視|し}}{{察|さつ}}で {{忙|いそが}}しいみたい。
 example_it: >-
-  Sembra che Alisma sia impegnata con l'ispezione delle Palestre.
+  Sembra che Omodaka sia impegnata con l'ispezione delle Palestre.
 notes_it: >-
-  {{視|し}}{{察|さつ}} è un termine molto formale che indica un'ispezione sul campo condotta da chi detiene una certa autorità (come un Superquattro o la Presidente della Lega). Usa la particella の per collegarsi alla struttura ispezionata: ジムの{{視|し}}{{察|さつ}} (l'ispezione della palestra).
+  {{視|し}}{{察|さつ}} è un termine molto formale che indica un'ispezione sul campo condotta da chi detiene una certa autorità (come un Shitennō o la Presidente della Lega). Usa la particella の per collegarsi alla struttura ispezionata: ジムの{{視|し}}{{察|さつ}} (l'ispezione della palestra).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card
@@ -222,7 +222,7 @@ example_jp: >-
 example_it: >-
   Iniziamo l'esame per diventare Campione.
 notes_it: >-
-  Il termine {{試|し}}{{験|けん}} copre sia i test accademici scritti (a scuola) sia le prove pratiche (come l'esame della Lega Pokémon). Si usa tipicamente con verbi di superamento ({{合|ごう}}{{格|かく}}する), fallimento ({{落|お}}ちる) o per descrivere l'inizio di una prova ufficiale.
+  Il termine {{試|し}}{{験|けん}} copre sia i test accademici scritti (a scuola) sia le prove pratiche (come l'esame della Pokémon Rīgu). Si usa tipicamente con verbi di superamento ({{合|ごう}}{{格|かく}}する), fallimento ({{落|お}}ちる) o per descrivere l'inizio di una prova ufficiale.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-14]
 :::
 :::card

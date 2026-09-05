@@ -105,12 +105,9 @@ Quando la scena parla di azioni ripetute, [{{何度|なんど}}も](term:term-ch
 aggiunge insistenza.
 
 :::example_sentence
-jp: >-
-  カルを{{何度|なんど}}も{{救|すく}}う。
-translation_it: >-
-  Salvo Kal molte volte.
+jp: "カルを{{何度|なんど}}も{{救|すく}}った。"
+translation_it: "Ho salvato Kal molte volte."
 :::
-
 #### ⚖️ Contrasto operativo
 
 `{{生|い}}きている` dice che qualcuno è vivo adesso. `{{生|い}}き{{返|かえ}}る`

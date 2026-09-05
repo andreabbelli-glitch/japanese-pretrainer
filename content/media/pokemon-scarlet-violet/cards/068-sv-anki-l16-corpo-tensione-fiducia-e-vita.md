@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensione-fiducia-e-vita
 media_id: media-pokemon-scarlet-violet
 slug: 068-sv-anki-l16-corpo-tensione-fiducia-e-vita
-title: Corpo, tensione e fiducia nei discorsi di Paldea
+title: Corpo, tensione e fiducia nei discorsi di Parudea
 order: 98
 segment_ref: scarlet-violet-prestudy
 ---
@@ -33,7 +33,7 @@ reading: いまから
 romaji: imakara
 meaning_it: da ora; adesso
 notes_it: >-
-  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemi, dichiara le proprie intenzioni immediate di sfidarti.
+  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemo, dichiara le proprie intenzioni immediate di sfidarti.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: しょくん
 romaji: shokun
 meaning_it: voi tutti; signori
 notes_it: >-
-  {{諸|しょ}}{{君|くん}} (しょくん) è un plurale formale usato per rivolgersi a un gruppo. Spesso si aggiunge ad altri sostantivi, come in {{生|せい}}{{徒|と}}{{諸|しょ}}{{君|くん}} (studenti). Conferisce un tono solenne ma benevolo al parlante, tipico dei discorsi del Preside Clavell.
+  {{諸|しょ}}{{君|くん}} (しょくん) è un plurale formale usato per rivolgersi a un gruppo. Spesso si aggiunge ad altri sostantivi, come in {{生|せい}}{{徒|と}}{{諸|しょ}}{{君|くん}} (studenti). Conferisce un tono solenne ma benevolo al parlante, tipico dei discorsi del Preside Kuraberu.
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: ふかい
 romaji: fukai
 meaning_it: profondo
 notes_it: >-
-  {{深|ふか}}い (ふかい) funge da descrittore universale per l'intensità o la profondità. Si abbina a luoghi inesplorati (come l'Area Zero o grandi laghi) ma serve anche per enfatizzare sentimenti e legami astratti, come {{縁|えん}}が{{深|ふか}}い (avere un legame profondo). L'opposto è {{浅|あさ}}い (あさい, superficiale).
+  {{深|ふか}}い (ふかい) funge da descrittore universale per l'intensità o la profondità. Si abbina a luoghi inesplorati (come l'Eria Zero o grandi laghi) ma serve anche per enfatizzare sentimenti e legami astratti, come {{縁|えん}}が{{深|ふか}}い (avere un legame profondo). L'opposto è {{浅|あさ}}い (あさい, superficiale).
 level_hint: custom
 :::
 :::term
@@ -154,7 +154,7 @@ example_jp: >-
 example_it: >-
   Da adesso daremo inizio all'Esame della Palestra.
 notes_it: >-
-  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemi, dichiara le proprie intenzioni immediate di sfidarti.
+  Composto da {{今|いま}} (ora) e la particella から (da). Sottolinea l'imminenza di un'azione. È perfetto per annunci ufficiali dello staff o quando un personaggio, come Nemo, dichiara le proprie intenzioni immediate di sfidarti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]
 :::
 :::card
@@ -171,7 +171,7 @@ example_jp: >-
 example_it: >-
   Studenti, trovate un tesoro tutto vostro.
 notes_it: >-
-  {{諸|しょ}}{{君|くん}} (しょくん) è un plurale formale usato per rivolgersi a un gruppo. Spesso si aggiunge ad altri sostantivi, come in {{生|せい}}{{徒|と}}{{諸|しょ}}{{君|くん}} (studenti). Conferisce un tono solenne ma benevolo al parlante, tipico dei discorsi del Preside Clavell.
+  {{諸|しょ}}{{君|くん}} (しょくん) è un plurale formale usato per rivolgersi a un gruppo. Spesso si aggiunge ad altri sostantivi, come in {{生|せい}}{{徒|と}}{{諸|しょ}}{{君|くん}} (studenti). Conferisce un tono solenne ma benevolo al parlante, tipico dei discorsi del Preside Kuraberu.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]
 :::
 :::card
@@ -203,9 +203,9 @@ back: >-
 example_jp: >-
   パルデアの {{深|ふか}}い {{森|もり}}には、めずらしい ポケモンが すんでいる。
 example_it: >-
-  Nelle foreste profonde di Paldea abitano Pokémon rari.
+  Nelle foreste profonde di Parudea abitano Pokémon rari.
 notes_it: >-
-  {{深|ふか}}い (ふかい) funge da descrittore universale per l'intensità o la profondità. Si abbina a luoghi inesplorati (come l'Area Zero o grandi laghi) ma serve anche per enfatizzare sentimenti e legami astratti, come {{縁|えん}}が{{深|ふか}}い (avere un legame profondo). L'opposto è {{浅|あさ}}い (あさい, superficiale).
+  {{深|ふか}}い (ふかい) funge da descrittore universale per l'intensità o la profondità. Si abbina a luoghi inesplorati (come l'Eria Zero o grandi laghi) ma serve anche per enfatizzare sentimenti e legami astratti, come {{縁|えん}}が{{深|ふか}}い (avere un legame profondo). L'opposto è {{浅|あさ}}い (あさい, superficiale).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]
 :::
 :::card
@@ -237,7 +237,7 @@ back: >-
 example_jp: >-
   パルデア{{地|ち}}{{方|ほう}}には、{{多|おお}}くの ポケモンが いるんだ。
 example_it: >-
-  Nella regione di Paldea ci sono tantissimi Pokémon.
+  Nella regione di Parudea ci sono tantissimi Pokémon.
 notes_it: >-
   {{多|おお}}く è una forma derivata da {{多|おお}}い e serve a esprimere quantità. Per dire “molti X” si usa {{多|おお}}くの + nome, come {{多|おお}}くのポケモン. {{多|おお}}い invece funziona soprattutto come predicato o in altre costruzioni, per esempio ポケモンが{{多|おお}}い.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-16]

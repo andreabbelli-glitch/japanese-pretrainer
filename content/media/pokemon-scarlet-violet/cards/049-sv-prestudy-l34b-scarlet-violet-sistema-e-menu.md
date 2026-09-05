@@ -11,9 +11,9 @@ id: term-v711-rotoribou
 lemma: ロトりぼう
 reading: ロトりぼう
 romaji: rotoribou
-meaning_it: asta / selfie stick Rotom
+meaning_it: "Rotoribō (asta per i selfie)"
 notes_it: >-
-  Etichetta di oggetto legata al Rotom Phone: indica un accessorio fisico da
+  Etichetta di oggetto legata al Sumaho Rotomu: indica un accessorio fisico da
   usare o riconoscere in schermata, non una mossa o un Pokémon. La scrittura è
   quasi tutta in kana, quindi conviene fissarla come label di menu.
 :::
@@ -39,7 +39,7 @@ back: chiarimento / risoluzione scientifica
 example_jp: >-
   {{博士|はかせ}}は パルデアの ナゾを {{解明|かいめい}}しようとしている。
 example_it: >-
-  Il professore sta cercando di risolvere il mistero di Paldea.
+  Il professore sta cercando di risolvere il mistero di Parudea.
 :::
 :::term
 id: term-v713-furyou
@@ -49,7 +49,7 @@ romaji: furyou
 meaning_it: teppista / delinquente
 notes_it: >-
   Nella cornice scolastica indica uno studente problematico o un teppista, per
-  esempio quando si parla di gruppi come il Team Star. Fuori contesto può anche
+  esempio quando si parla di gruppi come il Sutā-dan. Fuori contesto può anche
   voler dire "difettoso", ma qui la lettura utile è quella riferita alle persone.
 :::
 :::card
@@ -63,7 +63,7 @@ back: teppista / delinquente
 example_jp: >-
   スター{{団|だん}}には {{不良|ふりょう}}と よばれる {{生徒|せいと}}も いる。
 example_it: >-
-  Nel Team Star ci sono anche studenti chiamati teppisti.
+  Nel Sutā-dan ci sono anche studenti chiamati teppisti.
 :::
 :::term
 id: term-v714-kyouyuu
@@ -205,7 +205,7 @@ back: illustrazione inserita
 example_jp: >-
   {{図鑑|ずかん}}の {{説明|せつめい}}に {{挿絵|さしえ}}が ついている。
 example_it: >-
-  Alla descrizione del Pokédex è allegata un'illustrazione.
+  Alla descrizione del Pokémon Zukan è allegata un'illustrazione.
 :::
 :::term
 id: term-v720-okotowaririsuto
@@ -460,7 +460,7 @@ romaji: kaidame
 meaning_it: fare scorta
 notes_it: >-
   Nome/verbo in `買いだめする`: fare scorta prima di una spedizione, una lotta o
-  una zona lunga. Si usa spesso con oggetti consumabili come Poké Ball e
+  una zona lunga. Si usa spesso con oggetti consumabili come Monsutā Bōru e
   medicine.
 :::
 :::card
@@ -568,7 +568,7 @@ back: occupazione / controllo dell'area
 example_jp: >-
   スター{{団|だん}}が {{古|ふる}}い {{基地|きち}}を {{占拠|せんきょ}}した。
 example_it: >-
-  Il Team Star ha occupato una vecchia base.
+  Il Sutā-dan ha occupato una vecchia base.
 :::
 :::term
 id: term-v736-odorokaseru

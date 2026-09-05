@@ -43,10 +43,8 @@ entry_id: term-shinki
 card_type: recognition
 front: '{{新規|しんき}}'
 back: 'nuovo; da zero'
-example_jp: >-
-  {{新規|しんき}}プレイヤーは、まず{{無料|むりょう}}で{{配|くば}}られるデッキを{{作成|さくせい}}するのがおすすめだ。
-example_it: >-
-  Ai nuovi giocatori si consiglia, come prima cosa, di creare il mazzo dato gratuitamente.
+example_jp: "「{{新規作成|しんきさくせい}}」を{{選|えら}}んで、{{新|あたら}}しいデッキを{{作|つく}}る。"
+example_it: "Seleziono «Crea nuovo» per creare un nuovo mazzo."
 notes_it: >-
   In questo contesto [{{新規|しんき}}](term:term-shinki) non è “ultimo” o
   “appena arrivato”: indica il fatto che la lista nasce nuova.

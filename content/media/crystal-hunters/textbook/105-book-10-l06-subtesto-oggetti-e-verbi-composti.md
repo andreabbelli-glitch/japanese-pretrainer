@@ -16,16 +16,16 @@ summary: >-
 
 # Subtesto, oggetti e verbi composti
 
-L'ultima parte del Book 10 alterna comicita', tensione e grammatica piu'
+L'ultima parte del Book 10 alterna comicita', tensione e grammatica più
 astratta. Ci sono oggetti da non toccare, punizioni promesse, pensieri che non
 lasciano margine e verbi composti come
 [{{取|と}}り{{出|だ}}す](term:term-ch-b10-toridasu).
 
 Qui il testo introduce anche diversi strumenti di lettura molto utili: usare
-`そう` per riprendere "cosi' / quello", leggere `だと` come citazione sorpresa,
+`そう` per riprendere "così / quello", leggere `だと` come citazione sorpresa,
 leggere il rammarico di `てしまう`, mettere un verbo davanti a un nome per
 descriverlo, e riconoscere quando una frase in `て` arriva dopo la reazione
-emotiva. Sono pattern importanti perche' cambiano davvero come leggi le
+emotiva. Sono pattern importanti perché cambiano davvero come leggi le
 battute.
 
 ## Termini chiave
@@ -41,11 +41,11 @@ battute.
 
 ## Pattern grammaticali chiave
 
-- [そうする／そう{{言|い}}う](grammar:grammar-ch-b10-sou-suru-sou-iu) — fare cosi' / dire cosi'
+- [そうする／そう{{言|い}}う](grammar:grammar-ch-b10-sou-suru-sou-iu) — fare così / dire così
 - [Vてしまう](grammar:grammar-ch-b10-te-shimau) — finire col fare; completare l'azione, spesso con rammarico
 - [Vます-stem + ましょう](grammar:grammar-ch-b10-mashou) — proposta cortese: facciamo...
 - [だと](grammar:grammar-ch-b10-da-to) — citazione con sorpresa o incredulita'
-- [citazione incorporata](grammar:grammar-ch-b10-embedded-quote) — XはYだと言う dentro una frase piu' grande
+- [citazione incorporata](grammar:grammar-ch-b10-embedded-quote) — XはYだと言う dentro una frase più grande
 - [verbo davanti al nome](grammar:grammar-ch-b10-verb-before-noun) — uomo che scappa, cosa da pensare
 - [V-stem + {{降|お}}りる／{{出|だ}}す](grammar:grammar-ch-b10-verb-stem-compounds) — giu', fuori, inizio
 - [よかった、Vて／いいな、Vて](grammar:grammar-ch-b10-wandering-te) — reazione emotiva prima, situazione in て dopo
@@ -65,26 +65,23 @@ battute.
 
 ## 1. もの: la cosa fisica
 
-[{{物|もの}}](term:term-ch-b10-mono) e'
-la "cosa" che puo' esistere fisicamente. Contrasta con
+[{{物|もの}}](term:term-ch-b10-mono) è
+la "cosa" che può esistere fisicamente. Contrasta con
 [{{事|こと}}](term:term-ch-b10-koto), che hai visto nella prima lezione come
 fatto, situazione o azione astratta.
 
 :::example_sentence
-jp: >-
-  この{{物|もの}}に{{触|ふ}}れるな。
-translation_it: >-
-  Non toccare questo oggetto.
+jp: "{{危険|きけん}}な{{物|もの}}には{{触|ふ}}れるな。"
+translation_it: "Non toccare oggetti pericolosi."
 :::
-
 #### ⚖️ Contrasto operativo
 
-`{{悪|わる}}い{{物|もの}}` puo' essere un cibo, una sostanza o un oggetto concreto.
-`{{悪|わる}}い{{事|こと}}` e' un'azione sbagliata, un fatto che non dovevi fare.
+`{{悪|わる}}い{{物|もの}}` può essere un cibo, una sostanza o un oggetto concreto.
+`{{悪|わる}}い{{事|こと}}` è un'azione sbagliata, un fatto che non dovevi fare.
 
 ## 2. Margine, rifiuto e punizione
 
-[{{余裕|よゆう}}](term:term-ch-b10-yoyuu) e' il margine che ti permette di
+[{{余裕|よゆう}}](term:term-ch-b10-yoyuu) è il margine che ti permette di
 pensare, respirare o agire. In combattimento, non avere 余裕 significa non avere
 spazio mentale o tempo per altro.
 
@@ -95,7 +92,7 @@ translation_it: >-
   Non ho margine per pensare.
 :::
 
-[{{辞|じ}}す](term:term-ch-b10-jisu) e' formale. Lo vedrai spesso in frasi
+[{{辞|じ}}す](term:term-ch-b10-jisu) è formale. Lo vedrai spesso in frasi
 negative come `辞さない`: non esitare, non tirarsi indietro davanti a qualcosa.
 
 :::example_sentence
@@ -105,7 +102,7 @@ translation_it: >-
   Non esito nemmeno a combattere.
 :::
 
-[{{仕置|しお}}き](term:term-ch-b10-shioki) e' una punizione, spesso con tono da
+[{{仕置|しお}}き](term:term-ch-b10-shioki) è una punizione, spesso con tono da
 rimprovero duro o minaccia personale.
 
 :::example_sentence
@@ -117,7 +114,7 @@ translation_it: >-
 
 ## 3. Fine, riposo e rammarico
 
-[{{終|お}}わる](term:term-ch-b10-owaru) dice che qualcosa arriva alla fine. Con l'intransitivo, il soggetto e' la cosa che termina da se' nella frase.
+[{{終|お}}わる](term:term-ch-b10-owaru) dice che qualcosa arriva alla fine. Con l'intransitivo, il soggetto è la cosa che termina da se' nella frase.
 
 :::example_sentence
 jp: >-
@@ -126,7 +123,7 @@ translation_it: >-
   La battaglia finisce.
 :::
 
-[{{休|やす}}む](term:term-ch-b10-yasumu) e' riposare o prendersi una pausa.
+[{{休|やす}}む](term:term-ch-b10-yasumu) è riposare o prendersi una pausa.
 Dopo lo scontro, anche una frase breve come `少し休む` cambia il ritmo della
 scena.
 
@@ -138,7 +135,7 @@ translation_it: >-
 :::
 
 [Vてしまう](grammar:grammar-ch-b10-te-shimau) aggiunge spesso una sfumatura di
-rammarico o conseguenza negativa. Non dice solo che l'azione e' successa:
+rammarico o conseguenza negativa. Non dice solo che l'azione è successa:
 lascia sentire che il risultato pesa.
 
 :::example_sentence
@@ -148,12 +145,12 @@ translation_it: >-
   Ho finito per rompere l'arco.
 :::
 
-`しまった` puo' anche stare da solo come reazione: "accidenti", "ho combinato
+`しまった` può anche stare da solo come reazione: "accidenti", "ho combinato
 un guaio". In giapponese questa parola porta il colpo emotivo di una situazione finita male.
 
 ## 4. Proposta cortese: ましょう
 
-[Vます-stem + ましょう](grammar:grammar-ch-b10-mashou) e' la proposta nel
+[Vます-stem + ましょう](grammar:grammar-ch-b10-mashou) è la proposta nel
 registro cortese. Parti dalla forma in `ます`, togli `ます` e aggiungi
 `ましょう`: {{帰|かえ}}ります diventa {{帰|かえ}}りましょう.
 
@@ -161,39 +158,39 @@ registro cortese. Parti dalla forma in `ます`, togli `ます` e aggiungi
 jp: >-
   もう{{疲|つか}}れた。{{帰|かえ}}りましょう。
 translation_it: >-
-  Sono gia' stanco. Torniamo a casa.
+  Sono già stanco. Torniamo a casa.
 :::
 
-## 5. Fare cosi', dire cosi'
+## 5. Fare così, dire così
 
-Nel Book 10, `そう` non sempre significa "si', e' cosi'". Con un verbo, riprende
-un'azione o una frase gia' detta.
+Nel Book 10, `そう` non sempre significa "si', è così". Con un verbo, riprende
+un'azione o una frase già detta.
 
 :::example_sentence
 jp: >-
   いい{{考|かんが}}えだ。そうする。
 translation_it: >-
-  E' una buona idea. Faccio cosi'.
+  È una buona idea. Faccio così.
 :::
 
 :::example_sentence
 jp: >-
   {{先生|せんせい}}もそう{{言|い}}った。
 translation_it: >-
-  Anche il maestro ha detto cosi'.
+  Anche il maestro ha detto così.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `そう` -> **rimando**: "cosi' / quello".
+*   `そう` -> **rimando**: "così / quello".
 *   `する` o `{{言|い}}う` -> **verbo che decide il tipo di rimando**: fare o dire.
 
 ## 6. だと e citazioni senza virgolette
 
 [だと](grammar:grammar-ch-b10-da-to) nasce da `だ` + particella di citazione
 `と`. Nella citazione neutra, `だ` resta naturale soprattutto dopo nomi e
-aggettivi in な; nella battuta sorpresa, invece, `...だと？` puo' reagire anche
-a un'intera frase appena sentita. Il punto non e' tradurre `だ`: e' sentire
+aggettivi in な; nella battuta sorpresa, invece, `...だと？` può reagire anche
+a un'intera frase appena sentita. Il punto non è tradurre `だ`: è sentire
 "hai detto davvero questo!?".
 
 :::example_sentence
@@ -210,8 +207,8 @@ translation_it: >-
   Ha detto che non tornerà più!?
 :::
 
-La citazione puo' anche entrare dentro una frase piu' grande. Il risultato puo'
-sembrare strano perche' compaiono due `は`, ma ognuno appartiene al proprio
+La citazione può anche entrare dentro una frase più grande. Il risultato può
+sembrare strano perché compaiono due `は`, ma ognuno appartiene al proprio
 blocco.
 
 :::example_sentence
@@ -229,7 +226,7 @@ translation_it: >-
 
 ## 7. Verbi davanti ai nomi
 
-In giapponese, una frase verbale puo' descrivere il nome che segue. Non serve
+In giapponese, una frase verbale può descrivere il nome che segue. Non serve
 un pronome relativo come "che".
 
 :::example_sentence
@@ -265,8 +262,8 @@ translation_it: >-
 :::
 
 Il Book 10 tratta questi secondi verbi come un piccolo dizionario. {{降|お}}りる
-aggiunge spesso movimento verso il basso: {{飛|と}}び{{降|お}}りる e' saltare
-giu', {{走|はし}}り{{降|お}}りる e' correre giu'. {{出|だ}}す aggiunge uscita:
+aggiunge spesso movimento verso il basso: {{飛|と}}び{{降|お}}りる è saltare
+giu', {{走|はし}}り{{降|お}}りる è correre giu'. {{出|だ}}す aggiunge uscita:
 {{取|と}}り{{出|だ}}す tira fuori qualcosa, {{連|つ}}れ{{出|だ}}す porta fuori
 qualcuno.
 
@@ -277,14 +274,14 @@ translation_it: >-
   Porto fuori l'uomo.
 :::
 
-Attenzione a non tradurre sempre meccanicamente. {{走|はし}}り{{出|だ}}す non e'
+Attenzione a non tradurre sempre meccanicamente. {{走|はし}}り{{出|だ}}す non è
 solo "correre fuori": spesso significa "mettersi a correre", come se l'azione
 partisse all'improvviso.
 
 ## 9. 味わう: assaporare anche un'esperienza
 
 [{{味|あじ}}わう](term:term-ch-b10-ajiwau) parte dal sapore, ma non resta solo
-nel cibo. Puo' significare assaporare un momento, vivere pienamente
+nel cibo. Può significare assaporare un momento, vivere pienamente
 un'esperienza o, con ironia, provare sulla propria pelle una conseguenza.
 
 :::example_sentence
@@ -297,9 +294,9 @@ translation_it: >-
 ## 10. て spostata: prima l'emozione, poi il motivo
 
 Di solito la parte in `て` prepara quello che segue: `{{食|た}}べられてよかった`
-= "sono contento perche' siamo riusciti a mangiare". Nel dialogo, pero', il
-parlante puo' mettere prima la reazione e poi aggiungere la situazione in `て`.
-L'effetto e' piu' emotivo: senti prima il sollievo, poi il motivo.
+= "sono contento perché siamo riusciti a mangiare". Nel dialogo, pero', il
+parlante può mettere prima la reazione e poi aggiungere la situazione in `て`.
+L'effetto è più emotivo: senti prima il sollievo, poi il motivo.
 
 :::example_sentence
 jp: >-
@@ -331,5 +328,5 @@ translation_it: >-
 jp: >-
   {{女王|じょおう}}はそう{{言|い}}った。{{何|なん}}だと？
 translation_it: >-
-  La regina ha detto cosi'. Come sarebbe!?
+  La regina ha detto così. Come sarebbe!?
 :::

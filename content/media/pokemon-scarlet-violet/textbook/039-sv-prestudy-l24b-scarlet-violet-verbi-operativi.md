@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-039-sv-prestudy-l24b-scarlet-violet-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 039-sv-prestudy-l24b-scarlet-violet-verbi-operativi
-title: "Azioni, modalità e richieste operative a Paldea"
+title: "Azioni, modalità e richieste operative a Parudea"
 order: 69
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -16,9 +16,9 @@ tags:
 prerequisites: []
 summary: >-
   Riconoscere verbi, modalità e particelle che trasformano esplorazione, menu e
-  dialoghi in azioni leggibili a Paldea.
+  dialoghi in azioni leggibili a Parudea.
 ---
-# Azioni, modalità e richieste operative a Paldea
+# Azioni, modalità e richieste operative a Parudea
 
 In *Pokémon Scarlet & Violet*, molte frasi ti dicono che cosa cambia nel mondo di gioco: una cavalcatura assume una forma, un Pokémon recupera energie, una lista viene riordinata, un personaggio ti chiede un favore. Non sono solo descrizioni: sono istruzioni mascherate da dialogo, tutorial o voce di menu.
 
@@ -61,9 +61,9 @@ Il segnale più utile è il verbo operativo. Quando trovi を, cerca quale cosa 
 - [かっくうけいたい](term:term-v466-kakkuukeitai) — forma planata
 - [しっそうけいたい](term:term-v467-shissoukeitai) — forma corsa
 - [ゆうえいけいたい](term:term-v468-yuueikeitai) — forma nuoto
-- [グライドモード](term:term-v469-guraidomoodo) — Glide Mode
-- [ドライブモード](term:term-v470-doraibumoodo) — Drive Mode
-- [フロートモード](term:term-v471-furootomoodo) — Float Mode
+- [グライドモード](term:term-v469-guraidomoodo) — Guraido Mōdo
+- [ドライブモード](term:term-v470-doraibumoodo) — Doraibu Mōdo
+- [フロートモード](term:term-v471-furootomoodo) — Furōto Mōdo
 
 ---
 
@@ -71,8 +71,8 @@ Il segnale più utile è il verbo operativo. Quando trovi を, cerca quale cosa 
 
 Quando il gioco usa verbi come [{{広|ひろ}}げる](term:term-v454-hiroge-ru), [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{預|あず}}ける](term:term-v465-azuke-ru) o [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru), la frase non resta descrittiva: qualcosa passa da uno stato a un altro. Il nome marcato da を è il bersaglio concreto dell'operazione.
 
-*   [{{広|ひろ}}げる](term:term-v454-hiroge-ru) significa allargare o espandere. In un tutorial di Paldea può riguardare lo spazio esplorabile, il raggio d'azione o una possibilità appena sbloccata: `広げる` amplia cio' che prima era limitato: spazio, raggio o possibilita'.
-*   [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru) unisce {{回復|かいふく}} (*recupero*) e させる, forma causativa di する. In ポケモンを {{回復|かいふく}}させる, il Pokémon non decide da solo di guarire: tu fai sì che recuperi tramite un Centro Pokémon, uno strumento o una funzione del menu.
+*   [{{広|ひろ}}げる](term:term-v454-hiroge-ru) significa allargare o espandere. In un tutorial di Parudea può riguardare lo spazio esplorabile, il raggio d'azione o una possibilità appena sbloccata: `広げる` amplia cio' che prima era limitato: spazio, raggio o possibilita'.
+*   [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru) unisce {{回復|かいふく}} (*recupero*) e させる, forma causativa di する. In ポケモンを {{回復|かいふく}}させる, il Pokémon non decide da solo di guarire: tu fai sì che recuperi tramite un Pokémon Sentā, uno strumento o una funzione del menu.
 *   [{{手|て}}ごわい](term:term-v463-tegowai) qualifica un avversario, un
     percorso o una prova che richiede attenzione perché non si lascia gestire
     facilmente. In `{{手|て}}ごわい {{相手|あいて}}`, non leggere solo "forte":
@@ -106,7 +106,7 @@ translation_it: >-
 Quando la frase passa dall'inventario al mondo aperto, i verbi diventano spaziali. Qui contano direzione, mezzo e percorso: il gioco ti fa salire verso l'alto, fermarti solo di passaggio, girare più punti o riconoscere un riferimento sulla mappa.
 
 *   [{{登|のぼ}}る](term:term-v458-noboru) è il verbo del movimento verso l'alto: montagne, pareti, scale, strutture. Con [はしご](term:term-v459-hashigo), la scala a pioli non è solo un oggetto: diventa il percorso fisico su cui avviene la salita.
-*   [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru) combina {{立|た}}つ (*stare in piedi / mettersi in un punto*) e {{寄|よ}}る (*avvicinarsi*). Il risultato `立ち寄る` e' una sosta lungo il percorso prima di ripartire.
+*   [{{立|た}}ち{{寄|よ}}る](term:term-v461-tachi-yoru) combina {{立|た}}つ (*stare in piedi / mettersi in un punto*) e {{寄|よ}}る (*avvicinarsi*). Il risultato `立ち寄る` è una sosta lungo il percorso prima di ripartire.
 *   [{{巡|めぐ}}る](term:term-v472-meguru) descrive un giro attraverso più luoghi. {{町|まち}}を {{巡|めぐ}}る non suona come visitare un singolo edificio: la città viene attraversata come insieme di punti.
 *   [{{目印|めじるし}}](term:term-v456-mejirushi) è il segno che orienta il movimento: un edificio riconoscibile, un simbolo sulla mappa, un dettaglio che un personaggio ti dice di cercare. Nei dialoghi di percorso, questa parola trasforma un "vai lì" generico in "segui quel riferimento".
 
@@ -162,7 +162,7 @@ translation_it: >-
 
 Le schermate di gestione comprimono azioni diverse in parole molto brevi. Il trucco è non leggere tutte le voci come "prendere qualcosa": alcune indicano acquisizione reale, altre solo ordine, filtro o categoria.
 
-*   [ポケモンのおとしもの](term:term-v464-pokemon-nootoshimono) è costruito da ポケモンの più おとしもの, cioè "cosa lasciata cadere". Nel contesto di Scarlet/Violet non è un oggetto smarrito da restituire: sono materiali lasciati dai Pokémon, usati per crafting e MT.
+*   [ポケモンのおとしもの](term:term-v464-pokemon-nootoshimono) è costruito da ポケモンの più おとしもの, cioè "cosa lasciata cadere". Nel contesto di Scarlet/Violet non è un oggetto smarrito da restituire: sono materiali lasciati dai Pokémon, usati per crafting e Waza Mashin.
 *   [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) è il segnale forte di acquisizione. Quando compare dopo una lotta, una raccolta o una ricompensa, qualcosa entra davvero tra le tue risorse.
 *   [{{並|なら}}べかえ](term:term-v473-narabekae) cambia l'ordine, non il possesso. {{並|なら}}べる è disporre in fila, かえ rimanda al cambiare: una lista viene riorganizzata, ma gli oggetti non aumentano.
 *   [{{協力|きょうりょく}}する](term:term-v460-kyouryoku-suru) può apparire vicino a obiettivi condivisi o richieste di aiuto. {{協|きょう}} porta l'idea di fare insieme, {{力|りょく}} quella di forza: `協力する` mette la propria azione dentro uno sforzo comune.
@@ -195,7 +195,7 @@ Nei dialoghi dei personaggi, l'operatività passa attraverso tono e particelle. 
 
 [{{秘密|ひみつ}}だよ](term:term-e085-himitsu-dayo) combina [{{秘密|ひみつ}}](term:term-e085-himitsu-dayo), "segreto", con だよ, finale assertiva e colloquiale. Il personaggio non sta solo nominando una cosa segreta: ti sta dicendo che quell'informazione resta chiusa tra chi parla e chi ascolta, spesso con tono complice.
 
-[{{行|い}}ってきます](term:term-e087-itte-kimasu) è la formula di chi esce e prevede di tornare. {{行|い}}って dà il movimento in partenza, きます richiama il ritorno verso il punto del parlante o del gruppo. Nei dialoghi di Paldea, leggilo come andata temporanea, non come addio definitivo.
+[{{行|い}}ってきます](term:term-e087-itte-kimasu) è la formula di chi esce e prevede di tornare. {{行|い}}って dà il movimento in partenza, きます richiama il ritorno verso il punto del parlante o del gruppo. Nei dialoghi di Parudea, leggilo come andata temporanea, non come addio definitivo.
 
 :::example_sentence
 jp: >-
@@ -301,4 +301,4 @@ translation_it: >-
 
 ## Nota finale
 
-I verbi operativi di Paldea diventano chiari quando segui bersaglio, mezzo e limite: を mostra che cosa viene curato, ottenuto, riordinato o ritirato; で mostra con quale forma o modalità ci si muove; [だけ](grammar:grammar-g089-solo), [も](grammar:grammar-g090-anche), [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) dicono se il campo si chiude, si allarga o accumula motivi. Così [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) e [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) non restano gloss separate: diventano segnali pratici per capire che cosa il gioco ti sta facendo fare.
+I verbi operativi di Parudea diventano chiari quando segui bersaglio, mezzo e limite: を mostra che cosa viene curato, ottenuto, riordinato o ritirato; で mostra con quale forma o modalità ci si muove; [だけ](grammar:grammar-g089-solo), [も](grammar:grammar-g090-anche), [や / など](grammar:grammar-g091-tra-gli-altri-eccetera) e [し](grammar:grammar-g092-e-inoltre-tra-l-altro) dicono se il campo si chiude, si allarga o accumula motivi. Così [{{回復|かいふく}}させる](term:term-v462-kaifuku-saseru), [{{入手|にゅうしゅ}}](term:term-v474-nyuushu) e [{{引|ひ}}っ{{込|こ}}める](term:term-v475-hitsu-kome-ru) non restano gloss separate: diventano segnali pratici per capire che cosa il gioco ti sta facendo fare.

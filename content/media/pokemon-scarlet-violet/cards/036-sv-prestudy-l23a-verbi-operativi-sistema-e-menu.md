@@ -117,7 +117,7 @@ back: sembrare voler fare (terza persona)
 example_jp: >-
   ネモは すぐ バトルしたがる。
 example_it: >-
-  Nemi tende a voler lottare subito.
+  Nemo tende a voler lottare subito.
 :::
 :::grammar
 id: grammar-g081-e-meglio-fare
@@ -192,7 +192,7 @@ id: term-v395-kagayakipawaa
 lemma: かがやきパワー
 reading: かがやきパワー
 romaji: kagayakipawaa
-meaning_it: Sparkling Power
+meaning_it: "Kagayaki Pawā (bonus agli incontri con Pokémon cromatici)"
 notes_it: >-
   Bonus pasto di Scarlet/Violet legato alla ricerca di Pokémon cromatici. Nella
   schermata dei poteri compare insieme al tipo interessato.
@@ -218,7 +218,7 @@ back: volare
 example_jp: >-
   ポケモンセンターへ {{飛|と}}びます。
 example_it: >-
-  Mi sposto rapidamente al Centro Pokémon.
+  Mi sposto rapidamente al Pokémon Sentā.
 :::
 :::term
 id: term-v397-kaeru
@@ -251,14 +251,14 @@ romaji: paradokkusupokemon
 meaning_it: Pokémon Paradosso
 notes_it: >-
   Categoria propria di Scarlet/Violet per Pokémon collegati al passato o al
-  futuro. Compare in dialoghi, descrizioni e materiali sul Pokédex.
+  futuro. Compare in dialoghi, descrizioni e materiali sul Pokémon Zukan.
 :::
 :::term
 id: term-v399-souguupawaa
 lemma: そうぐうパワー
 reading: そうぐうパワー
 romaji: souguupawaa
-meaning_it: Encounter Power
+meaning_it: "Sōgū Pawā (bonus agli incontri)"
 notes_it: >-
   Bonus pasto che aumenta la probabilità di incontrare Pokémon di un certo tipo.
   Si legge come etichetta nella lista dei poteri attivi.
@@ -314,9 +314,9 @@ id: term-v402-riigupei
 lemma: リーグペイ
 reading: りーぐぺい
 romaji: riigupei
-meaning_it: League Pay (LP)
+meaning_it: Rīgu Pei (LP)
 notes_it: >-
-  Valuta LP di Paldea usata in negozi, MT e funzioni di sistema. Nei menu appare
+  Valuta LP di Parudea usata in negozi, Waza Mashin e funzioni di sistema. Nei menu appare
   come risorsa di pagamento.
 :::
 :::term
@@ -370,7 +370,7 @@ id: term-v405-otoshimonopawaa
 lemma: おとしものパワー
 reading: おとしものパワー
 romaji: otoshimonopawaa
-meaning_it: Item Drop Power
+meaning_it: "Otoshimono Pawā (bonus ai materiali lasciati dai Pokémon)"
 notes_it: >-
   Bonus pasto che aumenta gli oggetti lasciati dai Pokémon dopo la lotta. È
   un'etichetta da leggere insieme al tipo del potere.
@@ -513,16 +513,16 @@ back: posizione di testa / primo
 example_jp: >-
   ピカチュウを {{先頭|せんとう}}にします。
 example_it: >-
-  Metto Pikachu in prima posizione.
+  Metto Pikachū in prima posizione.
 :::
 :::term
 id: term-v412-zukan-kansei
 lemma: 図鑑完成
 reading: ずかんかんせい
 romaji: zukan kansei
-meaning_it: completamento del Pokédex
+meaning_it: completamento del Pokémon Zukan
 notes_it: >-
-  Nome obiettivo per il Pokédex completato o quasi completato. Compare in frasi
+  Nome obiettivo per il Pokémon Zukan completato o quasi completato. Compare in frasi
   di progresso come 図鑑完成まであと一匹.
 :::
 :::card
@@ -532,9 +532,9 @@ entry_type: term
 entry_id: term-v412-zukan-kansei
 card_type: recognition
 front: "{{図鑑完成|ず.かん.かん.せい}}"
-back: completamento del Pokédex
+back: completamento del Pokémon Zukan
 example_jp: >-
   {{図鑑完成|ず.かん.かん.せい}}まで あと {{一匹|いっぴき}}です。
 example_it: >-
-  Manca solo un Pokémon al completamento del Pokédex.
+  Manca solo un Pokémon al completamento del Pokémon Zukan.
 :::

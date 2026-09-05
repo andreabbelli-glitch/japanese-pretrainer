@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-235-tte-introduce-topic-colloquially
 entry_type: grammar
 entry_id: grammar-235-tte-introduce-topic-colloquially
 card_type: concept
-front: "って"
+front: "って（introduce un argomento）"
 back: >-
   A って introduce informalmente ciò di cui si sta per parlare.
 example_jp: >-

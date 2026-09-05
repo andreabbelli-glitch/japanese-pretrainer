@@ -199,8 +199,7 @@ entry_id: term-tsukaimichi
 card_type: recognition
 front: '{{使|つか}}い{{道|みち}}'
 back: 'uso; impiego; use case'
-example_jp: >-
-  このサポートキャラは、{{高難易度|こう.なん.い.ど}}クエストでの{{使|つか}}い{{道|みち}}がとても{{広|ひろ}}い。
+example_jp: "このサポートキャラは、{{高難易度|こうなんいど}}クエストでの{{使|つか}}い{{道|みち}}が{{多|おお}}い。"
 example_it: >-
   Questo personaggio di supporto ha molti impieghi nelle missioni ad alta difficoltà.
 notes_it: >-

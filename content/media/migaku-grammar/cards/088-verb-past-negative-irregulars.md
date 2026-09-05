@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-088-verb-past-negative-irregulars
 entry_type: grammar
 entry_id: grammar-088-verb-past-negative-irregulars
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（passato negativo）"
 back: >-
   Passati negativi fondamentali: しなかった, 来なかった, 行かなかった, なかった
 example_jp: >-

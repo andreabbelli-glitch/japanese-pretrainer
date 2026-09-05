@@ -629,11 +629,23 @@ export const KATAKANA_SPEED_MANUAL_WORD_ROWS = [
   manualWord("word-wallet", "ウォレット", "B", ["ウォ"], "portafoglio"),
   manualWord("word-quartet", "クァルテット", "B", ["クァ"], "quartetto"),
   manualWord("word-quarter", "クォーター", "B", ["クォ"], "quarto"),
-  manualWord("word-hindu", "ヒンドゥー", "B", ["ドゥ"], "induismo"),
+  manualWord(
+    "word-hindu",
+    "ヒンドゥー",
+    "B",
+    ["ドゥ"],
+    "indù (persona / aggettivo)"
+  ),
   manualWord("word-violin-v", "ヴァイオリン", "B", ["ヴァ"], "violino"),
   manualWord("word-venus", "ヴィーナス", "B", ["ヴィ"], "Venere"),
   manualWord("word-venice", "ヴェネツィア", "B", ["ヴェ", "ツィ"], "Venezia"),
-  manualWord("word-vocal", "ヴォーカル", "B", ["ヴォ"], "vocale"),
+  manualWord(
+    "word-vocal",
+    "ヴォーカル",
+    "B",
+    ["ヴォ"],
+    "voce / canto; cantante"
+  ),
   manualWord("word-fusion", "フュージョン", "B", ["フュ"], "fusion"),
   manualWord("word-interview-v", "インタヴュー", "B", ["ヴュ"], "intervista"),
   manualWord(

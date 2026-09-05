@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-342-mazu-probably
 entry_type: grammar
 entry_id: grammar-342-mazu-probably
 card_type: concept
-front: "まず"
+front: "まず（congettura）"
 back: >-
   まず con una congettura o una negazione forte indica che il parlante considera l'esito praticamente certo.
 example_jp: >-

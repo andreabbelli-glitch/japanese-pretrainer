@@ -60,7 +60,7 @@ Il trucco è leggere ogni blocco come una piccola istruzione di scena. Se compar
 
 ## Etichette da riconoscere
 
-- [わざマシンマシン](term:term-v306-waza-mashinmashin) — macchina per creare MT
+- [わざマシンマシン](term:term-v306-waza-mashinmashin) — macchina per creare Waza Mashin
 
 ---
 
@@ -71,24 +71,32 @@ Le schermate di esplorazione usano parole molto concrete. Non descrivono solo un
 - [ダッシュ](term:term-v294-dasshu) è lo scatto, quindi porta con sé l'idea di accelerazione controllata. Quando il tutorial lo lega alla cavalcatura o a un comando, non va letto come un movimento generico: il testo sta dicendo che l'esplorazione ora ha un ritmo diverso, perché puoi coprire distanza più rapidamente o superare un tratto che prima sembrava lento.
 - [{{機能|きのう}}](term:term-v295-kinou) è la parola da riconoscere quando il gioco parla di una funzione disponibile. In una frase con {{使|つか}}える, {{追加|ついか}}された o [{{入|はい}}る](term:term-v300-iru), il centro non è la teoria della funzione: è il fatto che una possibilità entra nella UI o diventa utilizzabile.
 - [{{設定|せってい}}](term:term-v305-settei) indica una cosa configurabile. In una schermata di opzioni, {{設定|せってい}}を{{変|か}}える non significa "cambiare un'ambientazione" in senso narrativo: significa modificare un valore, una preferenza o un comportamento del gioco.
-- [わざマシンマシン](term:term-v306-waza-mashinmashin) è un'etichetta buffa ma leggibile: la prima parte, わざマシン, richiama le MT; la seconda, マシン, segnala il dispositivo che le produce. Quando compare, preparati a leggere una schermata di creazione o gestione, non una semplice descrizione di mossa.
+- [わざマシンマシン](term:term-v306-waza-mashinmashin) è un'etichetta buffa ma leggibile: la prima parte, わざマシン, richiama le Waza Mashin; la seconda, マシン, segnala il dispositivo che le produce. Quando compare, preparati a leggere una schermata di creazione o gestione, non una semplice descrizione di mossa.
 
 :::example_sentence
-jp: >-
-  メニューに {{新|あたら}}しい {{機能|きのう}}が {{入|はい}}りました。
+jp: "メニューに{{新|あたら}}しい{{機能|きのう}}が{{追加|ついか}}されました。"
 translation_it: >-
   Nel menu è stata aggiunta una nuova funzione.
 :::
-
 #### 🗺️ Anatomia della frase
 
-- `メニューに` ➔ `に` marca il luogo o contenitore in cui qualcosa entra: qui il menu.
-- `{{新|あたら}}しい {{機能|きのう}}が` ➔ `が` presenta ciò che compare, cioè la nuova funzione.
-- {{入|はい}}りました ➔ [{{入|はい}}る](term:term-v300-iru) non richiede una stanza fisica. Con un menu, una modalità o un sistema significa che una voce viene aggiunta dentro quel contesto.
+- `メニューに` indica dove viene aggiunta la funzione.
+- `{{新|あたら}}しい{{機能|きのう}}が` presenta la nuova funzione come soggetto.
+- `{{追加|ついか}}されました` è il passato cortese del passivo: «è stata aggiunta».
 
 #### ⚖️ Contrasto operativo
 
-[{{入|はい}}る](term:term-v300-iru) guarda il movimento verso l'interno: una funzione entra nel menu, un personaggio entra in un luogo, un elemento entra in una lista. [{{出|で}}る](term:term-v298-deru) guarda invece l'uscita o la comparsa sulla scena. In ポケモンが{{出|で}}る, il Pokémon non "esce" per forza da un edificio: appare come incontro leggibile dal giocatore.
+Per una funzione aggiunta al menu, `{{追加|ついか}}される` esprime il cambiamento
+in modo diretto. [{{入|はい}}る](term:term-v300-iru) è invece naturale per
+l'ingresso in un luogo:
+
+:::example_sentence
+jp: "{{建物|たてもの}}に{{入|はい}}る{{前|まえ}}に、マップを{{確認|かくにん}}する。"
+translation_it: "Controllo la mappa prima di entrare nell'edificio."
+:::
+
+[{{出|で}}る](term:term-v298-deru) può indicare un'uscita oppure una comparsa.
+In ポケモンが{{出|で}}る, il Pokémon può semplicemente apparire come incontro.
 
 :::example_sentence
 jp: >-
@@ -164,7 +172,7 @@ translation_it: >-
 
 ## 3. Scuola e storia: materie, incontri e tono emotivo
 
-La parte scolastica di Paldea non usa solo parole da aula. Le stesse frasi possono parlare di lezioni, esperienza personale, aspettative o segreti tra personaggi. Qui il valore pratico è capire se la frase sta collocando una materia, descrivendo lo stato di qualcuno o caricando una scena di importanza narrativa.
+La parte scolastica di Parudea non usa solo parole da aula. Le stesse frasi possono parlare di lezioni, esperienza personale, aspettative o segreti tra personaggi. Qui il valore pratico è capire se la frase sta collocando una materia, descrivendo lo stato di qualcuno o caricando una scena di importanza narrativa.
 
 - [{{数学|すうがく}}](term:term-v307-suugaku) è la materia "matematica". Con parole come {{授業|じゅぎょう}}, {{先生|せんせい}} o {{習|なら}}う, non indica un singolo calcolo: ti porta dentro l'ambiente dell'Accademia e prepara spiegazioni, domande o quiz.
 - [{{経験|けいけん}}](term:term-v309-keiken) può essere esperienza accumulata in senso da gioco, ma nei dialoghi può anche essere ciò che una persona ha vissuto. Se la frase parla di un personaggio, non ridurla automaticamente a "punti esperienza": può indicare maturità, storia personale o qualcosa imparato sul campo.
@@ -283,7 +291,7 @@ Le frasi diventano più leggibili quando lessico, particelle e pattern lavorano 
 
 :::example_sentence
 jp: >-
-  ダッシュの {{機能|きのう}}が {{入|はい}}ったから、 あの {{場所|ばしょ}}へ {{行|い}}ってみよう。
+  ダッシュが{{使|つか}}えるようになったから、 あの {{場所|ばしょ}}へ {{行|い}}ってみよう。
 translation_it: >-
   Ora che è stata aggiunta la funzione di scatto, proviamo ad andare in quel posto.
 :::
@@ -303,12 +311,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  じめんタイプの わざは {{命中|めいちゅう}}{{率|りつ}}が {{低|ひく}}そうだから、 {{設定|せってい}}を {{見|み}}ておこう。
-translation_it: >-
-  La mossa di tipo Terra sembra avere un hit rate basso, quindi controlliamo prima le impostazioni.
+jp: "このわざは{{命中率|めいちゅうりつ}}が{{低|ひく}}そうだから、{{別|べつ}}のわざを{{選|えら}}ぼう。"
+translation_it: "Questa mossa sembra poco precisa, quindi scegliamone un’altra."
 :::
-
 ---
 
 ## Nota finale

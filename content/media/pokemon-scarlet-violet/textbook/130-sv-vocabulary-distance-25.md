@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-25
 media_id: media-pokemon-scarlet-violet
 slug: 130-sv-vocabulary-distance-25
-title: 'Parole per leggere Paldea — venticinque'
+title: 'Parole per leggere Parudea — venticinque'
 order: 175
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — venticinque
+# Parole per leggere Parudea — venticinque
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -65,23 +65,17 @@ translation_it: >-
 ### [{{完成|かんせい}}](term:term-sv-vocabulary-024-kansei) — completamento; perfezione; realizzazione
 
 :::example_sentence
-jp: >-
-  わたしの{{質問|しつもん}}に{{図鑑|ずかん}}の{{完成|かんせい}}を{{目指|めざ}}すって{{言|い}}ってくれたよね！
-translation_it: >-
-  Hai detto che avresti completato la guida per rispondere alla mia domanda, vero?
+jp: "わたしの{{質問|しつもん}}に{{図鑑|ずかん}}の{{完成|かんせい}}を{{目指|めざ}}すって{{言|い}}ってくれたよね！"
+translation_it: "Alla mia domanda hai risposto che punti a completare il Pokémon Zukan, vero?"
 :::
-
 **Uso:** Nel contesto indica «completamento; perfezione; realizzazione».
 
 ### [{{呼|よ}}びだす](term:term-sv-vocabulary-079-yobidasu) — chiamare (qualcuno) alla (porta, al telefono, ecc.); dire a (qualcuno) di venire; chiamare (al telefono)
 
 :::example_sentence
-jp: >-
-  ああいじめっ{{子|こ}}をまとめてグラウンドに{{呼|よ}}びだしたってさいよいよか！
-translation_it: >-
-  Ah, hai finalmente radunato tutti i bulli sul campo, eh?!
+jp: "ああ、いじめっ{{子|こ}}をまとめてグラウンドに{{呼|よ}}びだしたってさ。"
+translation_it: "Ah, dicono che abbia convocato tutti i bulli sul campo."
 :::
-
 **Uso:** L'azione espressa nel contesto è «chiamare (qualcuno) alla (porta, al telefono, ecc.); dire a (qualcuno) di venire; chiamare (al telefono)».
 
 ### [{{一致|いっち}}](term:term-sv-vocabulary-111-icchi) — accordo; intesa; corrispondenza
@@ -120,12 +114,9 @@ translation_it: >-
 ### [{{差|さ}}し{{上|あ}}げる](term:term-sv-vocabulary-078-sashiageru) — dare; offrire con umiltà
 
 :::example_sentence
-jp: >-
-  ゆえにLPを{{差|さ}}し{{上|あ}}げようぞお{{疲|つか}}れさまでスターでござる！
-translation_it: >-
-  Quindi ti darò un po’ di LP. Grazie per il tuo impegno, sei una vera stella!
+jp: "ゆえにLPを{{差|さ}}し{{上|あ}}げようぞ。お{{疲|つか}}れさまでスターでござる！"
+translation_it: "Perciò ti darò degli LP. Grazie dell’impegno!"
 :::
-
 **Uso:** L'azione espressa nel contesto è «dare; offrire con umiltà».
 
 ### [{{嘘|うそ}}](term:term-sv-vocabulary-061-uso) — bugia; bugietta; falsità
@@ -189,7 +180,7 @@ translation_it: >-
 jp: >-
   {{大穴|おおあな}}の{{技術|ぎじゅつ}}を{{使|つか}}うぞ{{起動|きどう}}せよテクノロジー！
 translation_it: >-
-  Userò la tecnologia della Grande Voragine. Attivati, tecnologia!
+  Userò la tecnologia della Parudea no Ōana. Attivati, tecnologia!
 :::
 
 **Uso:** Nel contesto indica «tecnologia; ingegneria; tecnica».

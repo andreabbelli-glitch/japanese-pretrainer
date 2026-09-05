@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-161-no-4-ask-questions-explain
 entry_type: grammar
 entry_id: grammar-161-no-4-ask-questions-explain
 card_type: concept
-front: "の"
+front: "の（a fine frase）"
 back: >-
   La forma piana + の a fine frase può chiedere una spiegazione o presentarla in tono colloquiale.
 example_jp: >-

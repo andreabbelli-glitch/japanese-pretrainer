@@ -225,16 +225,9 @@ card_type: concept
 front: >-
   それら{{4枚|よんまい}}の{{上|うえ}}に
 back: sopra quelle quattro carte appena nominate
-example_jp: >-
-  それら{{4枚|よんまい}}の{{上|うえ}}に{{重|かさ}}なるから、
-  さっき{{選|えら}}んだ{{素材|そざい}}を{{見失|みうしな}}わない。
-example_it: >-
-  Siccome si sovrappone sopra quelle quattro carte, non devi perdere di vista i
-  materiali che hai appena scelto.
-notes_it: >-
-  `それら` vale la pena di essere fissato perché nei testi procedurali richiama
-  l'ultimo gruppo già costruito. Qui ti dice che De Szark entra sopra le stesse
-  quattro carte appena selezionate, non sopra un gruppo diverso.
+example_jp: "このクリーチャーをそれら{{4枚|よんまい}}の{{上|うえ}}に{{重|かさ}}ねる。"
+example_it: "Sovrapponi questa creatura a quelle quattro carte."
+notes_it: "それら riprende un gruppo già nominato. {{4枚|よんまい}} ne precisa il numero e {{上|うえ}}に indica dove sovrapporre la creatura."
 tags: [live-duel, grammar, reference, procedure]
 :::
 

@@ -23,7 +23,7 @@ summary: >-
 
 Nei contenuti extra di *Pokémon Scarlet & Violet*, una schermata può passare in pochi caratteri da un comando di sistema a un nome di luogo. [{{開始|かいし}}](term:term-v506-kaishi) ti dice che qualcosa sta per partire, [{{確認|かくにん}}](term:term-v482-kakunin) rallenta l'azione per controllare dati o condizioni, [クリア](term:term-v479-kuria) segnala che l'obiettivo è ormai chiuso.
 
-Accanto a questi verbi da menu compaiono etichette molto concrete: [キタカミ](term:term-v476-kitakami), [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen), [テラリウムドーム](term:term-v486-terariumudoomu), le aree interne del Bioterarium, [ＢＰ](term:term-v481-biipii) e [ブルレク](term:term-v496-burureku). Riconoscerle cambia subito la lettura: non stai solo traducendo una parola, stai capendo se il gioco ti sta mandando in un luogo, aprendo una missione, proponendo una regola o consegnando una ricompensa.
+Accanto a questi verbi da menu compaiono etichette molto concrete: [キタカミ](term:term-v476-kitakami), [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen), [テラリウムドーム](term:term-v486-terariumudoomu), le aree interne del Terariumu Dōmu, [ＢＰ](term:term-v481-biipii) e [ブルレク](term:term-v496-burureku). Riconoscerle cambia subito la lettura: non stai solo traducendo una parola, stai capendo se il gioco ti sta mandando in un luogo, aprendo una missione, proponendo una regola o consegnando una ricompensa.
 
 ## Termini chiave
 
@@ -58,17 +58,17 @@ Accanto a questi verbi da menu compaiono etichette molto concrete: [キタカミ
 
 ## Etichette da riconoscere
 
-- [キタカミ](term:term-v476-kitakami) — Kitakami / Nordivia
-- [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) — Istituto Mirtillo / Blueberry Academy
-- [オーガポン](term:term-v478-oogapon) — Ogerpon
-- [ＢＰ](term:term-v481-biipii) — BP / Punti Mirtillo
-- [テラリウムドーム](term:term-v486-terariumudoomu) — Bioterarium / Terarium Dome
-- [コーストエリア](term:term-v488-koosutoeria) — Settore Costa
-- [サバンナエリア](term:term-v491-sabanaeria) — Settore Savana
-- [ポーラエリア](term:term-v492-pooraeria) — Settore Ghiacciai / area polare
+- [キタカミ](term:term-v476-kitakami) — Kitakami
+- [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) — Burūberī Gakuen
+- [オーガポン](term:term-v478-oogapon) — Ōgapon
+- [ＢＰ](term:term-v481-biipii) — BP / Burūberī Pointo
+- [テラリウムドーム](term:term-v486-terariumudoomu) — Terariumu Dōmu / Terariumu Dōmu
+- [コーストエリア](term:term-v488-koosutoeria) — Kōsuto Eria
+- [サバンナエリア](term:term-v491-sabanaeria) — Sabanna Eria
+- [ポーラエリア](term:term-v492-pooraeria) — Pōra Eria / Pōra Eria
 - [ピック](term:term-v494-pikku) — pick / stecchino decorativo
-- [ブルレク](term:term-v496-burureku) — Ricreattività Mirtillo / Blueberry Quest
-- [キャニオンエリア](term:term-v498-kyanioneria) — Settore Canyon
+- [ブルレク](term:term-v496-burureku) — Burureku / Burureku
+- [キャニオンエリア](term:term-v498-kyanioneria) — Kyanion Eria
 
 ---
 
@@ -153,7 +153,7 @@ In [{{挑戦者|ちょうせんしゃ}}](term:term-v495-chousensha), {{者|し�
 
 ## 3. Geografia del DLC: nomi propri, settori e liste aperte
 
-I nomi del DLC funzionano come coordinate. [キタカミ](term:term-v476-kitakami) porta subito alla cornice di Nordivia; [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) sposta la scena nell'Istituto Mirtillo; [テラリウムドーム](term:term-v486-terariumudoomu) restringe il campo al grande spazio artificiale del Bioterarium.
+I nomi del DLC funzionano come coordinate. [キタカミ](term:term-v476-kitakami) porta subito alla cornice di Kitakami; [ブルーベリー{{学園|がくえん}}](term:term-v477-buruuberiigakuen) sposta la scena nell'Burūberī Gakuen; [テラリウムドーム](term:term-v486-terariumudoomu) restringe il campo al grande spazio artificiale del Terariumu Dōmu.
 
 Dentro quel blocco, [コーストエリア](term:term-v488-koosutoeria), [サバンナエリア](term:term-v491-sabanaeria), [ポーラエリア](term:term-v492-pooraeria) e [キャニオンエリア](term:term-v498-kyanioneria) ti dicono quale settore della mappa sta parlando. [ＢＰ](term:term-v481-biipii) e [ブルレク](term:term-v496-burureku) sono invece segnali da sistema Blueberry: possono comparire come saldo, ricompensa, costo o lista di attività.
 
@@ -161,20 +161,20 @@ Dentro quel blocco, [コーストエリア](term:term-v488-koosutoeria), [サバ
 jp: >-
   キタカミとか ブルーベリー{{学園|がくえん}}とかに {{行|い}}きます。
 translation_it: >-
-  Vado a Kitakami, all'Istituto Mirtillo e posti del genere.
+  Vado a Kitakami, al Burūberī Gakuen e posti del genere.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   キタカミとか ➔ **Primo esempio** ([～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) presenta Kitakami come membro di un gruppo più ampio).
-*   `ブルーベリー{{学園|がくえん}}とか` ➔ **Secondo esempio** (aggiunge l'Istituto Mirtillo senza chiudere la lista).
+*   `ブルーベリー{{学園|がくえん}}とか` ➔ **Secondo esempio** (aggiunge l'Burūberī Gakuen senza chiudere la lista).
 *   `に {{行|い}}きます` ➔ **Destinazione** (`に` conferma che i nomi precedenti sono luoghi verso cui ci si muove).
 
 :::example_sentence
 jp: >-
   ブルレクを クリアして、ＢＰを {{受|う}}け{{取|と}}りました。
 translation_it: >-
-  Ho completato la Ricreattività Mirtillo e ho ricevuto BP.
+  Ho completato la Burureku e ho ricevuto BP.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -185,7 +185,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-キタカミとブルーベリー{{学園|がくえん}} tende a elencare due luoghi specifici. キタカミとかブルーベリー{{学園|がくえん}}とか li tratta come esempi: "Kitakami, l'Istituto Mirtillo e posti di quel tipo". [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) lascia la porta aperta.
+キタカミとブルーベリー{{学園|がくえん}} tende a elencare due luoghi specifici. キタカミとかブルーベリー{{学園|がくえん}}とか li tratta come esempi: "Kitakami, l'Burūberī Gakuen e posti di quel tipo". [～とか](grammar:grammar-g095-tipo-e-cose-cosi-tra-gli-esempi) lascia la porta aperta.
 
 ## 4. Cartelli, indizi e ricerca: leggere prove sul campo
 
@@ -210,7 +210,7 @@ translation_it: >-
 jp: >-
   テラリウムドームで ポケモンを {{観測|かんそく}}して、{{撮影|さつえい}}します。
 translation_it: >-
-  Osservo i Pokémon nel Bioterarium e li fotografo.
+  Osservo i Pokémon nel Terariumu Dōmu e li fotografo.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -233,7 +233,7 @@ translation_it: >-
 
 [おまけ](term:term-v483-omake) segnala qualcosa in più rispetto all'elemento principale: un bonus, un extra, un'aggiunta omaggio. [ピック](term:term-v494-pikku), nel contesto dei panini, non va letto come il verbo inglese "pick": è lo stecchino decorativo. [{{洞|どう}}くつ](term:term-v484-doukutsu) resta invece una parola da esplorazione; quando appare in un nome di luogo, prepara a una grotta o a un'area sotterranea.
 
-Quando la frase diventa personale, [{{大好|だいす}}き](term:term-v501-daisuki) porta affetto forte, non semplice utilità. [オーガポン](term:term-v478-oogapon)が {{大好|だいす}}きです non significa che Ogerpon conviene in battaglia: il parlante lo adora. Se nello stesso contesto compare [{{知識|ちしき}}](term:term-v507-chishiki), il sapere nasce da interesse o attaccamento, non solo da una richiesta del sistema.
+Quando la frase diventa personale, [{{大好|だいす}}き](term:term-v501-daisuki) porta affetto forte, non semplice utilità. [オーガポン](term:term-v478-oogapon)が {{大好|だいす}}きです non significa che Ōgapon conviene in battaglia: il parlante lo adora. Se nello stesso contesto compare [{{知識|ちしき}}](term:term-v507-chishiki), il sapere nasce da interesse o attaccamento, non solo da una richiesta del sistema.
 
 :::example_sentence
 jp: >-
@@ -252,7 +252,7 @@ translation_it: >-
 jp: >-
   オーガポンが {{大好|だいす}}き だから、もっと {{知識|ちしき}}を {{集|あつ}}めます。
 translation_it: >-
-  Siccome adoro Ogerpon, raccolgo altre informazioni.
+  Siccome adoro Ōgapon, raccolgo altre informazioni.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -280,7 +280,7 @@ translation_it: >-
 jp: >-
   コーストエリアとか サバンナエリアとかで {{観測|かんそく}}します。
 translation_it: >-
-  Faccio osservazioni nel Settore Costa, nel Settore Savana e in aree del genere.
+  Faccio osservazioni nel Kōsuto Eria, nel Sabanna Eria e in aree del genere.
 :::
 
 :::example_sentence
@@ -294,7 +294,7 @@ translation_it: >-
 jp: >-
   {{洞|どう}}くつの {{近|ちか}}くで オーガポンの {{知識|ちしき}}を {{集|あつ}}めます。
 translation_it: >-
-  Raccolgo informazioni su Ogerpon vicino alla grotta.
+  Raccolgo informazioni su Ōgapon vicino alla grotta.
 :::
 
 ---

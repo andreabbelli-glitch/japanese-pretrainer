@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-118-ni-mark-source
 entry_type: grammar
 entry_id: grammar-118-ni-mark-source
 card_type: concept
-front: "に"
+front: "に（fonte: {{先生|せんせい}}に{{聞|き}}く）"
 back: >-
   Marca la persona da cui si riceve, apprende o sente qualcosa
 example_jp: >-

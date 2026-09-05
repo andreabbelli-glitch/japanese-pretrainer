@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento
 media_id: media-pokemon-scarlet-violet
 slug: 037-sv-prestudy-l23b-verbi-operativi-esplorazione-e-movimento
-title: "Muoversi, agire e reagire nell'esplorazione di Paldea"
+title: "Muoversi, agire e reagire nell'esplorazione di Parudea"
 order: 67
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,7 +18,7 @@ summary: >-
   Capire movimenti e comandi operativi: riconoscere direzioni, spostamenti,
   oggetti e consigli per sapere dove andare e quale azione tentare.
 ---
-# Muoversi, agire e reagire nell'esplorazione di Paldea
+# Muoversi, agire e reagire nell'esplorazione di Parudea
 
 Quando *Pokémon Scarlet & Violet* ti manda verso una grotta, chiude una lotta, ti consegna una ricetta o ti fa scegliere se spingerti oltre, il giapponese lavora come una piccola interfaccia di azione. Non descrive solo lo scenario: indica una direzione, assegna un bersaglio, segnala un effetto attivo o modula la voce di chi ti sta parlando.
 
@@ -57,9 +57,9 @@ Molti di questi segnali sono brevi, ma hanno un peso pratico immediato. `{{奥|�
 
 ## Etichette da riconoscere
 
-- [けいけんちパワー](term:term-v413-keikenchipawaa) — Exp. Point Power
-- [レイドパワー](term:term-v414-reidopawaa) — Raid Power
-- [タマゴパワー](term:term-v419-tamagopawaa) — Egg Power
+- [けいけんちパワー](term:term-v413-keikenchipawaa) — Keikenchi Pawā
+- [レイドパワー](term:term-v414-reidopawaa) — Reido Pawā
+- [タマゴパワー](term:term-v419-tamagopawaa) — Tamago Pawā
 
 ---
 
@@ -129,7 +129,7 @@ Dopo una lunga strada, il giapponese spesso segnala non solo il fatto di arrivar
 jp: >-
   ようやく ゼロゲートに {{着|つ}}いた。{{強|つよ}}い {{相手|あいて}}に {{立|た}}ち{{向|む}}かう。
 translation_it: >-
-  Finalmente sono arrivato allo Zero Gate. Affronto un avversario forte.
+  Finalmente sono arrivato allo Zero Gēto. Affronto un avversario forte.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -231,7 +231,7 @@ Nei menu legati ai panini, [{{発動|はつどう}}](term:term-v431-hatsudou) in
 jp: >-
   {{湖|みずうみ}}の {{近|ちか}}くで タマゴパワーが {{発動|はつどう}}する。
 translation_it: >-
-  L'Egg Power si attiva vicino al lago.
+  L'Tamago Pawā si attiva vicino al lago.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -273,7 +273,7 @@ translation_it: >-
 jp: >-
   レイドパワーが {{発動|はつどう}}したから、{{次|つぎ}}はだれ？
 translation_it: >-
-  Il Raid Power si è attivato, quindi chi è il prossimo?
+  Il Reido Pawā si è attivato, quindi chi è il prossimo?
 :::
 
 ## Nota finale

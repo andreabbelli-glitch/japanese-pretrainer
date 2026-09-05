@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-248-verb-potential-ru
 entry_type: grammar
 entry_id: grammar-248-verb-potential-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（potenziale）"
 back: >-
   Base del verbo in る + られる significa «poter / riuscire a fare».
 example_jp: >-

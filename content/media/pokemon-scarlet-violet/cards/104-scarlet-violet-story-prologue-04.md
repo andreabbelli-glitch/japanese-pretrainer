@@ -28,7 +28,7 @@ back: mensa studentesca
 example_jp: >-
   {{学生食堂|がく.せい.しょく.どう}}で ペパーと サンドウィッチを {{食|た}}べる。
 example_it: >-
-  Mangio un sandwich con Pepe alla mensa studentesca.
+  Mangio un sandwich con Pepā alla mensa studentesca.
 :::
 :::term
 id: term-shokuinshitsu
@@ -53,7 +53,7 @@ example_jp: >-
   {{職員室|しょく.いん.しつ}}では ネモが {{次|つぎ}}の {{目標|もくひょう}}を
   {{説明|せつめい}}してくれる。
 example_it: >-
-  Nella sala insegnanti Nemi ti spiega il prossimo obiettivo.
+  Nella sala insegnanti Nemo ti spiega il prossimo obiettivo.
 :::
 :::term
 id: term-kouchoushitsu
@@ -256,7 +256,7 @@ notes_it: >-
   Attaccato alla radice in `ます`, `～{{放題|ほうだい}}` comunica disponibilità ampia o
   assenza pratica di limite. In questo arco si sente in frasi come
   `{{使|つか}}い{{放題|ほうだい}}` per le facility del campus e richiama anche il più
-  colloquiale `やり{{放題|ほうだい}}` di Nemi.
+  colloquiale `やり{{放題|ほうだい}}` di Nemo.
 :::
 :::card
 id: card-houdai-concept

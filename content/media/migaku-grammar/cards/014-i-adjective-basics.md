@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-014-i-adjective-basics
 entry_type: grammar
 entry_id: grammar-014-i-adjective-basics
 card_type: concept
-front: "い{{形容詞|けいようし}}"
+front: "い{{形容詞|けいようし}}（davanti a un nome）"
 back: >-
   Gli aggettivi in い si collocano direttamente prima del nome, senza particella né copula.
 example_jp: >-

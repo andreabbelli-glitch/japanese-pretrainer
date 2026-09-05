@@ -131,17 +131,16 @@ entry_id: grammar-g084-enfasi-conferma-tono-emotivo
 card_type: concept
 front: "finali di frase よ / ね / な"
 back: enfasi / conferma / tono emotivo
-example_jp: >-
-  ようやくだよ。 / ようやくだね。 / ようやくだな。
-example_it: >-
-  Finalmente! / Finalmente, vero? / Finalmente, eh.
+example_jp: "やっと{{終|お}}わったよ。／やっと{{終|お}}わったね。／やっと{{終|お}}わったな。"
+example_it: "Finalmente è finita! / Finalmente è finita, vero? / Finalmente è finita, eh."
+notes_it: "よ informa o richiama l’attenzione; ね cerca o esprime condivisione; な può esprimere una riflessione o un’emozione del parlante. Il valore preciso dipende da intonazione e contesto."
 :::
 :::term
 id: term-v413-keikenchipawaa
 lemma: けいけんちパワー
 reading: けいけんちパワー
 romaji: keikenchipawaa
-meaning_it: Exp. Point Power
+meaning_it: "Keikenchi Pawā (bonus ai punti esperienza)"
 notes_it: >-
   けいけんちパワー è un bonus ai punti esperienza: けいけんち specifica il tipo di
   guadagno, パワー il bonus attivo.
@@ -151,7 +150,7 @@ id: term-v414-reidopawaa
 lemma: レイドパワー
 reading: レイドパワー
 romaji: reidopawaa
-meaning_it: Raid Power
+meaning_it: "Reido Pawā (bonus alle ricompense dei raid)"
 notes_it: >-
   レイドパワー indica un bonus collegato ai raid. Quando appare in un menu panino o
   bonus, Il bonus appartiene a quella modalita' specifica di lotta.
@@ -253,7 +252,7 @@ id: term-v419-tamagopawaa
 lemma: タマゴパワー
 reading: タマゴパワー
 romaji: tamagopawaa
-meaning_it: Egg Power
+meaning_it: "Tamago Pawā (bonus alle uova)"
 notes_it: >-
   タマゴパワー è un bonus legato alle uova. In una lista di poteri, タマゴ separa
   questo effetto da esperienza, raid o cattura.
@@ -371,7 +370,7 @@ back: finalmente
 example_jp: >-
   ようやく ゼロゲートに {{着|つ}}いた。
 example_it: >-
-  Finalmente sono arrivato allo Zero Gate.
+  Finalmente sono arrivato allo Zero Gēto.
 :::
 :::term
 id: term-v425-tachi-muka-u
@@ -417,7 +416,7 @@ back: toccare
 example_jp: >-
   ボールに {{触|ふ}}れる。
 example_it: >-
-  Tocco la Poké Ball.
+  Tocco la Monsutā Bōru.
 :::
 :::term
 id: term-v427-nando-demo

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-023-sv-prestudy-l17a-battaglia-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 023-sv-prestudy-l17a-battaglia-scarlet-violet
-title: "Battaglia, Accademia e Titan: chi agisce nella scena"
+title: "Battaglia, Accademia e Nushi: chi agisce nella scena"
 order: 53
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,11 +19,11 @@ summary: >-
   conta, e come formule brevi aprono turni, richieste e spiegazioni.
 ---
 
-# Battaglia, Accademia e Titan: chi agisce nella scena
+# Battaglia, Accademia e Nushi: chi agisce nella scena
 
-Quando *Pokémon Scarlet & Violet* passa da un dialogo scolastico a una lotta o a una pista sui Titan, il giapponese cambia cornice ma non smette di segnalare chi sta guidando la scena. Una parola apre il turno di parola, una particella dice con quale mezzo avviene l'azione, un'etichetta come `ボス` o `ヌシ` restringe subito il tipo di avversario davanti a te.
+Quando *Pokémon Scarlet & Violet* passa da un dialogo scolastico a una lotta o a una pista sui Nushi, il giapponese cambia cornice ma non smette di segnalare chi sta guidando la scena. Una parola apre il turno di parola, una particella dice con quale mezzo avviene l'azione, un'etichetta come `ボス` o `ヌシ` restringe subito il tipo di avversario davanti a te.
 
-Qui il punto pratico è leggere frasi brevi senza schiacciarle su traduzioni isolate: くさ non è solo "erba" se accanto compare タイプ, [{{出|だ}}す](term:term-v172-dasu) non è solo "tirare fuori" quando il campo di lotta aspetta un Pokémon, e [スパイス](term:term-v163-supaisu) non resta cucina neutra quando la storia parla dei Titan.
+Qui il punto pratico è leggere frasi brevi senza schiacciarle su traduzioni isolate: くさ non è solo "erba" se accanto compare タイプ, [{{出|だ}}す](term:term-v172-dasu) non è solo "tirare fuori" quando il campo di lotta aspetta un Pokémon, e [スパイス](term:term-v163-supaisu) non resta cucina neutra quando la storia parla dei Nushi.
 
 ## Termini chiave
 
@@ -36,7 +36,7 @@ Qui il punto pratico è leggere frasi brevi senza schiacciarle su traduzioni iso
 - [ランク](term:term-v171-ranku) — grado, rango o livello classificato
 - [{{力|ちから}}](term:term-v176-chikara) — forza, potenza reale
 - [{{以上|いじょう}}](term:term-v175-ijou) — oltre / almeno / da qui in su
-- [スパイス](term:term-v163-supaisu) — spezia, soprattutto nel filone dei Titan
+- [スパイス](term:term-v163-supaisu) — spezia, soprattutto nel filone dei Nushi
 - [{{料理|りょうり}}](term:term-v166-ryouri) — cucina, piatto o preparazione
 - [{{不思議|ふしぎ}}](term:term-v161-fushigi) — misterioso, strano, inspiegabile
 
@@ -57,7 +57,7 @@ Qui il punto pratico è leggere frasi brevi senza schiacciarle su traduzioni iso
 - [チーム](term:term-v157-chiimu) — team, gruppo organizzato
 - [ボス](term:term-v159-bosu) — boss / capo da affrontare
 - [アジト](term:term-v165-ajito) — base, covo, nascondiglio
-- [ヌシ](term:term-v167-nushi) — dominante legato al filone dei Titan
+- [ヌシ](term:term-v167-nushi) — dominante legato al filone dei Nushi
 - [{{学園|がくえん}}](term:term-v158-gakuen) — scuola come istituzione e campus
 - [{{校長|こうちょう}}](term:term-v168-kouchou) — preside, figura che rappresenta l'Accademia
 - [{{勉強|べんきょう}}](term:term-v174-benkyou) — studio, preparazione, lezione
@@ -94,7 +94,7 @@ Come trucco mnemonico, immagina [さて](term:term-e030-sate) come una mano che 
 
 ## 2. Team, scuola e boss: leggere il ruolo prima del nome
 
-La storia di Paldea alterna gruppi organizzati, autorità scolastiche e avversari speciali. `チームのボス` lega il boss al gruppo; `アジト` porta la scena verso base o covo. [ボス](term:term-v159-bosu) restringe la scena a una figura da raggiungere, affrontare o ascoltare, mentre [アジト](term:term-v165-ajito) sposta l'attenzione sul luogo del gruppo: base, covo, nascondiglio.
+La storia di Parudea alterna gruppi organizzati, autorità scolastiche e avversari speciali. `チームのボス` lega il boss al gruppo; `アジト` porta la scena verso base o covo. [ボス](term:term-v159-bosu) restringe la scena a una figura da raggiungere, affrontare o ascoltare, mentre [アジト](term:term-v165-ajito) sposta l'attenzione sul luogo del gruppo: base, covo, nascondiglio.
 
 La cornice scolastica usa un vocabolario diverso. `学園` indica istituzione e campus; `校長` porta autorita' scolastica nella scena. Quando questi termini entrano insieme, la scena non è più solo "qualcuno parla": sta parlando l'Accademia come sistema.
 
@@ -173,11 +173,11 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [{{出|だ}}す](term:term-v172-dasu) come al gesto dell'allenatore che porta una Poké Ball davanti a sé: qualcosa viene fatto uscire verso la scena.
+Pensa a [{{出|だ}}す](term:term-v172-dasu) come al gesto dell'allenatore che porta una Monsutā Bōru davanti a sé: qualcosa viene fatto uscire verso la scena.
 
-## 5. Titan, cucina e mistero: quando una spezia cambia funzione
+## 5. Nushi, cucina e mistero: quando una spezia cambia funzione
 
-Nel filone dei Titan, [ヌシ](term:term-v167-nushi) non va letto come "padrone" generico. In *Scarlet & Violet* segnala il dominante: un avversario speciale, legato a una zona e a una scoperta. Per questo [スパイス](term:term-v163-supaisu) non resta una parola neutra da cucina. Dentro questa trama rimanda alle spezie speciali che motivano esplorazione, lotta e pasti.
+Nel filone dei Nushi, [ヌシ](term:term-v167-nushi) non va letto come "padrone" generico. In *Scarlet & Violet* segnala il dominante: un avversario speciale, legato a una zona e a una scoperta. Per questo [スパイス](term:term-v163-supaisu) non resta una parola neutra da cucina. Dentro questa trama rimanda alle spezie speciali che motivano esplorazione, lotta e pasti.
 
 [{{料理|りょうり}}](term:term-v166-ryouri) può indicare l'attività di cucinare oppure il piatto preparato; con を {{作|つく}}る, il focus è sull'azione di preparare. [{{不思議|ふしぎ}}](term:term-v161-fushigi) aggiunge la reazione della scena: qualcosa non torna, sembra strano, chiede una spiegazione.
 
@@ -197,11 +197,11 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[スパイス](term:term-v163-supaisu) in un menu di cucina è un ingrediente. Accanto a [ヌシ](term:term-v167-nushi), diventa anche indizio narrativo: segnala che il pasto è collegato alla caccia ai Titan e ai suoi effetti.
+[スパイス](term:term-v163-supaisu) in un menu di cucina è un ingrediente. Accanto a [ヌシ](term:term-v167-nushi), diventa anche indizio narrativo: segnala che il pasto è collegato alla caccia ai Nushi e ai suoi effetti.
 
 #### 🧠 Gancio cognitivo
 
-Come trucco di lettura, lascia che [ヌシ](term:term-v167-nushi) "colori" le parole vicine: se compare vicino a [スパイス](term:term-v163-supaisu), la cucina non è solo cucina, è avanzamento del filone Titan.
+Come trucco di lettura, lascia che [ヌシ](term:term-v167-nushi) "colori" le parole vicine: se compare vicino a [スパイス](term:term-v163-supaisu), la cucina non è solo cucina, è avanzamento del filone Nushi.
 
 ## Esempi guidati di riepilogo
 
@@ -239,4 +239,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando una scena passa da scuola a lotta o da lotta a Titan, non inseguire ogni parola nello stesso modo. Prima identifica la cornice: [さて](term:term-e030-sate) apre un nuovo turno, [チーム](term:term-v157-chiimu) e [{{学園|がくえん}}](term:term-v158-gakuen) dicono quale mondo sociale stai leggendo, タイプ trasforma [くさ](term:term-v160-kusa), [ほのお](term:term-v170-honoo) e [みず](term:term-v173-mizu) in categorie di battaglia, mentre [で](grammar:grammar-g027-luogo-dell-azione-mezzo), [を](grammar:grammar-g033-marca-l-oggetto-diretto) e [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) mostrano mezzo, oggetto e collegamento tra ruoli.
+Quando una scena passa da scuola a lotta o da lotta a Nushi, non inseguire ogni parola nello stesso modo. Prima identifica la cornice: [さて](term:term-e030-sate) apre un nuovo turno, [チーム](term:term-v157-chiimu) e [{{学園|がくえん}}](term:term-v158-gakuen) dicono quale mondo sociale stai leggendo, タイプ trasforma [くさ](term:term-v160-kusa), [ほのお](term:term-v170-honoo) e [みず](term:term-v173-mizu) in categorie di battaglia, mentre [で](grammar:grammar-g027-luogo-dell-azione-mezzo), [を](grammar:grammar-g033-marca-l-oggetto-diretto) e [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) mostrano mezzo, oggetto e collegamento tra ruoli.

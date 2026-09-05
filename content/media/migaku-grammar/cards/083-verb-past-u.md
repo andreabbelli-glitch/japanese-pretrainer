@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-083-verb-past-u
 entry_type: grammar
 entry_id: grammar-083-verb-past-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（passato）"
 back: >-
   Forma piana passata dei verbi godan (verbi in -u)
 example_jp: >-

@@ -275,7 +275,7 @@ back: all'improvviso
 example_jp: >-
   いきなり ネモが {{来|く}}る。
 example_it: >-
-  Nemi arriva all'improvviso.
+  Nemo arriva all'improvviso.
 :::
 :::term
 id: term-v338-kaihiritsu
@@ -307,7 +307,7 @@ reading: ざいりょう
 romaji: zairyou
 meaning_it: materiale
 notes_it: >-
-  材料 sono materiali o ingredienti usati per creare ricette, MT o oggetti. Con
+  材料 sono materiali o ingredienti usati per creare ricette, Waza Mashin o oggetti. Con
   集める diventano risorse da raccogliere.
 :::
 :::card
@@ -361,7 +361,7 @@ id: term-v344-jibun-dake
 lemma: 自分だけ
 reading: じぶんだけ
 romaji: jibun dake
-meaning_it: solo per sé
+meaning_it: "soltanto io/tu/lui (esclusione degli altri)"
 notes_it: >-
   自分だけ limita l'azione al soggetto: "solo io/solo per sé". だけ esclude gli
   altri partecipanti o destinatari.
@@ -373,7 +373,7 @@ entry_type: term
 entry_id: term-v344-jibun-dake
 card_type: recognition
 front: "{{自分|じぶん}}だけ"
-back: solo per sé
+back: "soltanto io/tu/lui; solo la persona indicata da 自分"
 example_jp: >-
   {{自分|じぶん}}だけ {{先|さき}}に {{行|い}}く。
 example_it: >-
@@ -400,7 +400,7 @@ back: cooperazione
 example_jp: >-
   ネモと {{協力|きょうりょく}}します。
 example_it: >-
-  Collaboro con Nemi.
+  Collaboro con Nemo.
 :::
 :::term
 id: term-v346-koukabatsugun
@@ -545,7 +545,7 @@ id: term-v352-yunionsaakuru
 lemma: ユニオンサークル
 reading: ユニオンサークル
 romaji: yunionsaakuru
-meaning_it: Union Circle
+meaning_it: "Yunion Sākuru (modalità per giocare insieme)"
 notes_it: >-
   ユニオンサークル è la funzione cooperativa di Scarlet/Violet. Nei menu indica il
   sistema per riunirsi con altri giocatori.

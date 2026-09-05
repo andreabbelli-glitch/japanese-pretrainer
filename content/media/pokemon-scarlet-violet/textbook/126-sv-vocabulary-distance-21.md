@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-21
 media_id: media-pokemon-scarlet-violet
 slug: 126-sv-vocabulary-distance-21
-title: 'Parole per leggere Paldea — ventuno'
+title: 'Parole per leggere Parudea — ventuno'
 order: 171
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — ventuno
+# Parole per leggere Parudea — ventuno
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -65,12 +65,11 @@ translation_it: >-
 ### [{{再会|さいかい}}](term:term-sv-vocabulary-338-saikai) — ritrovo; ricongiungimento
 
 :::example_sentence
-jp: >-
-  {{宝探|たからさが}}し{{中|ちゅう}}{{再会|さいかい}}したらとも{{戦|たたか}}わせてよね！
-translation_it: >-
-  Se ci ritroviamo durante la caccia al tesoro, fammi combattere anche contro di te!
+jp: "{{宝探|たからさが}}しの{{途中|とちゅう}}で{{再会|さいかい}}したら、また{{勝負|しょうぶ}}しようね！"
+translation_it: "Se ci ritroviamo durante la caccia al tesoro, sfidiamoci di nuovo!"
 :::
 
+*Esempio didattico.*
 **Uso:** Nel contesto indica «ritrovo; ricongiungimento».
 
 ### [ほとんど](term:term-sv-vocabulary-188-hotondo) — quasi; per lo più; praticamente
@@ -164,12 +163,9 @@ translation_it: >-
 ### [{{寮|りょう}}](term:term-sv-vocabulary-100-ryou) — dormitorio; collegio
 
 :::example_sentence
-jp: >-
-  ジニア{{先生|せんせい}}から{{寮|りょう}}の{{部屋|へや}}を{{案内|あんない}}するように{{言|い}}われたの！
-translation_it: >-
-  Il professor Zinia mi ha chiesto di farti vedere la mia stanza nel dormitorio!
+jp: "ジニア{{先生|せんせい}}から{{寮|りょう}}の{{部屋|へや}}を{{案内|あんない}}するように{{言|い}}われたの！"
+translation_it: "Il professor Jinia mi ha detto di accompagnarti a vedere la tua stanza nel dormitorio!"
 :::
-
 **Uso:** Nel contesto indica «dormitorio; collegio».
 
 ### [{{責任|せきにん}}](term:term-sv-vocabulary-226-sekinin) — dovere; responsabilità (compresa la supervisione del personale); obbligo

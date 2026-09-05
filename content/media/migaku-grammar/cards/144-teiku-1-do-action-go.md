@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-144-teiku-1-do-action-go
 entry_type: grammar
 entry_id: grammar-144-teiku-1-do-action-go
 card_type: concept
-front: "ていく"
+front: "ていく（movimento nello spazio）"
 back: >-
   Vて + いく descrive un movimento che si allontana dal parlante o un'azione compiuta prima/proseguendo verso la destinazione.
 example_jp: >-

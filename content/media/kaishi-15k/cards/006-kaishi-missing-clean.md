@@ -238,15 +238,14 @@ entry_id: term-kaishi-1708637440828
 card_type: recognition
 front: '{{衝|しょう}}{{撃|げき}}'
 back: 'impact, shock'
-example_jp: '{{衝|しょう}}{{撃|げき}}のニュースが{{飛|と}}び{{込|こ}}んできた。'
-example_it: 'The shocking news filled the airwaves.'
+example_jp: "{{衝|しょう}}{{撃|げき}}のニュースが{{飛|と}}び{{込|こ}}んできた。"
+example_it: "Shocking news suddenly came in."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440828-recognition/js04160a.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637441179
 lemma: '背負う'

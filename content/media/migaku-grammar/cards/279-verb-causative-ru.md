@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-279-verb-causative-ru
 entry_type: grammar
 entry_id: grammar-279-verb-causative-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（causativo）"
 back: >-
   Far fare o lasciare fare con un verbo ichidan
 example_jp: >-

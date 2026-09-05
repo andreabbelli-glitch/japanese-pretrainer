@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-349-kakeru-do-something-halfway-almost
 entry_type: grammar
 entry_id: grammar-349-kakeru-do-something-halfway-almost
 card_type: concept
-front: "かける"
+front: "かける（azione incompleta）"
 back: >-
   Radice + かける indica un'azione già avviata ma incompleta, oppure uno stato involontario quasi raggiunto.
 example_jp: >-

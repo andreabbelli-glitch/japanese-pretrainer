@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
 media_id: media-pokemon-scarlet-violet
 slug: 101-scarlet-violet-story-prologue-01-home-smartphone-starter-and-first-battle
-title: "Dal campanello al primo match: leggere il prologo di Paldea"
+title: "Dal campanello al primo match: leggere il prologo di Parudea"
 order: 110
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -11,15 +11,15 @@ tags: [pokemon, scarlet-violet, prologue, story]
 prerequisites: []
 summary: >-
   Leggere il prologo iniziale: cortesia domestica, smartphone, scelta dello
-  starter, primo match e Pokédex come segnali operativi.
+  starter, primo match e Pokémon Zukan come segnali operativi.
 ---
 
-# Dal campanello al primo match: leggere il prologo di Paldea
+# Dal campanello al primo match: leggere il prologo di Parudea
 
 Il primo tratto giocabile di *Pokémon Scarlet / Violet* non parte con una
 grande missione, ma con segnali piccoli e molto leggibili: qualcuno bussa alla
 porta, un adulto parla in registro formale, la madre ti prepara per uscire, lo
-smartphone diventa interfaccia, Nemi trasforma una presentazione in una sfida.
+smartphone diventa interfaccia, Nemo trasforma una presentazione in una sfida.
 
 Il giapponese del blocco lavora su due piani insieme. Da una parte ci sono le
 formule di casa e scuola, come [ごめんください](term:term-gomen-kudasai) o
@@ -35,7 +35,7 @@ quando una funzione entra stabilmente nel viaggio.
 - [{{校長|こうちょう}}{{先生|せんせい}}](term:term-kouchou-sensei) — preside, autorità scolastica
 - [{{転入|てんにゅう}}](term:term-tennyuu) — trasferimento / ingresso come studente trasferito
 - [{{不手際|ふてぎわ}}](term:term-futegiwa) — disguido causato da chi gestisce la situazione
-- [スマホロトム](term:term-smartphone-rotom) — Rotom Phone, interfaccia di viaggio
+- [スマホロトム](term:term-smartphone-rotom) — Sumaho Rotomu, interfaccia di viaggio
 - [{{登録|とうろく}}](term:term-touroku) — registrazione ufficiale in un sistema
 - [{{勝負|しょうぶ}}](term:term-shoubu) — sfida / match concreto
 - [{{準備|じゅんび}}](term:term-junbi) — preparazione, stato di "pronto"
@@ -44,7 +44,7 @@ quando una funzione entra stabilmente nel viaggio.
 - [{{素質|そしつ}}アリ](term:term-soshitsu-ari) — ha stoffa / mostra talento
 - [{{弱点|じゃくてん}}](term:term-jakuten) — debolezza, punto debole
 - [{{繰|く}}り{{出|だ}}す](term:term-kuridasu) — mandare in campo / far uscire
-- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokédex
+- [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) — Pokémon Zukan
 - [{{手書|てが}}き](term:term-tegaki) — scritto o compilato a mano
 - [お{{弁当|べんとう}}](term:term-obentou) — bento / pranzo al sacco
 
@@ -83,7 +83,7 @@ quando una funzione entra stabilmente nel viaggio.
 
 ## 1. Casa e Accademia: la cortesia che muove la scena
 
-La prima lingua da riconoscere è quella dell'ingresso domestico. Clavell non
+La prima lingua da riconoscere è quella dell'ingresso domestico. Kuraberu non
 compare come "personaggio qualunque": la scena lo fa entrare attraverso titoli,
 formule di soglia e scuse formali. Prima ancora di parlare di battaglie,
 l'Accademia si presenta come istituzione che bussa alla porta di casa.
@@ -119,7 +119,7 @@ translation_it: >-
 *   `{{届|とど}}けに {{来|き}}てくれた` ➔ **Azione a tuo favore** (qualcuno è
     venuto apposta per portarti qualcosa).
 
-Il registro di Clavell conferma la stessa cornice. [ごめんください](term:term-gomen-kudasai)
+Il registro di Kuraberu conferma la stessa cornice. [ごめんください](term:term-gomen-kudasai)
 è una formula da soglia: si dice da fuori, prima di invadere lo spazio
 dell'altro. Subito dopo, [{{申|もう}}し{{訳|わけ}}ありません](term:term-moushiwake-arimasen)
 alza il peso della scusa. Non è un semplice `すみません`: `{{申|もう}}し{{訳|わけ}}`
@@ -138,7 +138,7 @@ funzione: il primo permette l'ingresso, il secondo assume responsabilità.
 La formula [お{{言葉|ことば}}に {{甘|あま}}えて](term:term-okotoba-ni-amaete) chiude
 il piccolo rituale domestico. `お{{言葉|ことば}}` è la proposta gentile
 dell'altra persona; `{{甘|あま}}えて` significa appoggiarsi a quella gentilezza.
-Quando Clavell accetta il tè, non sta solo dicendo "sì": sta prendendo
+Quando Kuraberu accetta il tè, non sta solo dicendo "sì": sta prendendo
 l'offerta della madre senza spezzare il registro formale della visita.
 
 Anche [～てください](grammar:grammar-te-kudasai) lavora dentro questa cortesia.
@@ -175,7 +175,7 @@ un telefono, collega un problema concreto alla soluzione da premere.
 jp: >-
   {{道|みち}}に {{迷|まよ}}ったら スマホロトムで マップを {{開|ひら}}いてね。
 translation_it: >-
-  Se ti perdi, apri la mappa sul Rotom Phone, mi raccomando.
+  Se ti perdi, apri la mappa sul Sumaho Rotomu, mi raccomando.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -199,7 +199,7 @@ funzione utile senza irrigidire il tono.
 
 :::image
 src: assets/story/smart-rotom-field.webp
-alt: "Protagonista in uniforme sul campo con lo Smart Rotom che fluttua accanto."
+alt: "Protagonista in uniforme sul campo con lo Sumaho Rotomu che fluttua accanto."
 caption: >-
   [スマホロトム](term:term-smartphone-rotom) accanto al protagonista: il nome in
   katakana diventa subito un'interfaccia leggibile, non un semplice oggetto
@@ -220,16 +220,16 @@ Pensa a `～づくし` come a un tavolo coperto tutto dallo stesso tipo di cosa.
 `{{初|はじ}}めてづくし` è quindi una giornata apparecchiata di "prime volte". È
 un trucco mnemonico, non un'etimologia.
 
-## 3. Starter e Nemi: da vicini a rivali
+## 3. Starter e Nemo: da vicini a rivali
 
-Nemi cambia subito la velocità della scena. Il suo parlato è meno formale,
+Nemo cambia subito la velocità della scena. Il suo parlato è meno formale,
 più diretto e pieno di agganci sociali: ti colloca come vicino, interpreta lo
 starter come partner e trasforma quasi subito la presentazione in lotta.
 
 *   [ご{{近所|きんじょ}}](term:term-gokinjo), o
     `ご{{近所|きんじょ}}{{同士|どうし}}`, crea una relazione di quartiere.
     `{{近所|きんじょ}}` lega due persone alla stessa zona e il prefisso `ご` la
-    rende socialmente morbida: Nemi usa la geografia per accorciare la
+    rende socialmente morbida: Nemo usa la geografia per accorciare la
     distanza tra voi.
 *   [{{勝負|しょうぶ}}](term:term-shoubu) qui nomina il match concreto. In
     `{{勝負|しょうぶ}}しよう` la parola diventa verbo con `する`; in
@@ -254,7 +254,7 @@ Il soggetto grammaticale è l'essere pronti per il match.
 *   `{{下|した}}の ビーチへ {{来|き}}てね` ➔ **Direzione più invito amichevole**
     (il dialogo ti sposta verso il luogo della lotta).
 
-La scelta dello starter usa un giapponese più osservativo. Clavell commenta
+La scelta dello starter usa un giapponese più osservativo. Kuraberu commenta
 `この {{子|こ}}は きみを {{気|き}}に {{入|い}}った みたいですね`.
 [～みたい](grammar:grammar-mitai) presenta la lettura come impressione osservata:
 "sembra", "dà l'impressione". La scena lascia che il comportamento del
@@ -275,7 +275,7 @@ translation_it: >-
 *   `きみを {{気|き}}に {{入|い}}った` ➔ **Simpatia verso un bersaglio**
     (`{{気|き}}に {{入|い}}る` significa piacere, andare a genio; qui il bersaglio
     sei tu).
-*   `みたいですね` ➔ **Impressione condivisa in tono cortese** (Clavell
+*   `みたいですね` ➔ **Impressione condivisa in tono cortese** (Kuraberu
     interpreta la scena senza suonare categorico).
 
 :::image
@@ -293,12 +293,12 @@ caption: >-
 vede. La frase suona quindi come un'osservazione messa in bocca al personaggio,
 non come una decisione fredda del sistema.
 
-Nemi carica poi il primo match come [デビュー{{戦|せん}}](term:term-debyuu-sen).
+Nemo carica poi il primo match come [デビュー{{戦|せん}}](term:term-debyuu-sen).
 `デビュー` nomina l'esordio e `{{戦|せん}}` lo aggancia alla prova di battaglia:
 è il debutto del partner come prima sfida in campo. Dopo il
 match, [{{素質|そしつ}}アリ](term:term-soshitsu-ari) compatta il
-giudizio di Nemi: `{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è /
-presente" colloquiale. Nel modo in cui combatti Nemi vede potenziale, più che
+giudizio di Nemo: `{{素質|そしつ}}` è la predisposizione, `アリ` è il "c'è /
+presente" colloquiale. Nel modo in cui combatti Nemo vede potenziale, più che
 una forza già compiuta.
 
 ## 4. Spiaggia e tipi: debolezza, superefficacia e autocontrollo
@@ -335,7 +335,7 @@ translation_it: >-
 
 :::image
 src: assets/story/nemona-first-battle-beach.webp
-alt: "Primo combattimento tutorial contro Nemi sulla spiaggia con i Pokémon in campo e interfaccia di lotta visibile."
+alt: "Primo combattimento tutorial contro Nemo sulla spiaggia con i Pokémon in campo e interfaccia di lotta visibile."
 caption: >-
   Nel primo match, [{{弱点|じゃくてん}}](term:term-jakuten) e
   [こうかは ばつぐんだ！](term:term-kouka-wa-batsugun) formano una catena leggibile:
@@ -349,7 +349,7 @@ caption: >-
 il colpo. Se li fondi in una sola idea, perdi il timing: prima scegli la mossa
 in base alla debolezza, poi il gioco conferma l'effetto.
 
-La battuta di Nemi su `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
+La battuta di Nemo su `いつもの ポケモンを {{繰|く}}り{{出|だ}}しちゃう ところでした`
 spiega il suo autocontrollo in lingua di battaglia. [{{繰|く}}り{{出|だ}}す](term:term-kuridasu)
 è il verbo per mandare fuori qualcosa in modo deciso; nei dialoghi Pokémon
 indica anche mandare in campo un Pokémon. La forma [～てしまう](grammar:grammar-te-shimau),
@@ -378,10 +378,10 @@ In `{{繰|く}}り{{出|だ}}す`, immagina qualcosa che viene fatto uscire in s
 spinto fuori sul campo. È un'immagine per ricordare il valore operativo del
 verbo, non una spiegazione etimologica completa.
 
-## 5. Pokédex e registrazione: dal quaderno all'app
+## 5. Pokémon Zukan e registrazione: dal quaderno all'app
 
-Dopo la lotta, Nemi sposta il focus dal combattimento al sistema. La
-scena prende un oggetto familiare della serie, il Pokédex, e lo rilegge come
+Dopo la lotta, Nemo sposta il focus dal combattimento al sistema. La
+scena prende un oggetto familiare della serie, il Pokémon Zukan, e lo rilegge come
 app nello [スマホロトム](term:term-smartphone-rotom): non più quaderno da
 riempire a mano, ma interfaccia che aggiorna dati.
 
@@ -399,7 +399,7 @@ jp: >-
   {{捕|つか}}まえた ポケモンは ポケモン{{図鑑|ずかん}}に {{自動|じどう}}で
   {{登録|とうろく}}されるよ。
 translation_it: >-
-  I Pokémon che catturi vengono registrati automaticamente nel Pokédex.
+  I Pokémon che catturi vengono registrati automaticamente nel Pokémon Zukan.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -407,14 +407,14 @@ translation_it: >-
 *   `{{捕|つか}}まえた ポケモンは` ➔ **Tema definito da un'azione già compiuta**
     (i Pokémon catturati).
 *   `ポケモン{{図鑑|ずかん}}に` ➔ **Destinazione della registrazione** (il dato
-    entra nel Pokédex).
+    entra nel Pokémon Zukan).
 *   `{{自動|じどう}}で` ➔ **Modalità** (non serve un inserimento manuale).
 *   `{{登録|とうろく}}される` ➔ **Passivo di sistema** (il Pokémon viene
     registrato dal meccanismo dell'app).
 
 :::image
 src: assets/ui/pokedex-auto-registration-scene.webp
-alt: "Scena o schermata in cui il Pokédex viene introdotto sullo Smart Rotom."
+alt: "Scena o schermata in cui il Pokémon Zukan viene introdotto sullo Sumaho Rotomu."
 caption: >-
   [ポケモン{{図鑑|ずかん}}](term:term-pokemon-zukan) e
   [{{登録|とうろく}}](term:term-touroku) entrano insieme: l'app non conserva solo
@@ -422,7 +422,7 @@ caption: >-
 :::
 
 Il contrasto con [{{手書|てが}}き](term:term-tegaki) rende più chiaro il salto.
-`{{手|て}}` è la mano, `{{書|が}}き` è lo scritto: un vecchio Pokédex compilato
+`{{手|て}}` è la mano, `{{書|が}}き` è lo scritto: un vecchio Pokémon Zukan compilato
 a mano richiederebbe annotazione manuale. Lo
 [スマホロトム](term:term-smartphone-rotom), invece, collega cattura,
 [{{登録|とうろく}}](term:term-touroku) e consultazione nella stessa interfaccia.
@@ -434,18 +434,18 @@ a mano richiederebbe annotazione manuale. Lo
 Il primo ti fa immaginare una nota scritta, il secondo un sistema che aggiorna
 una voce.
 
-Quando Nemi definisce l'app [{{要|よう}}チェック](term:term-you-check), il
+Quando Nemo definisce l'app [{{要|よう}}チェック](term:term-you-check), il
 tono diventa colloquiale ma non perde funzione. `{{要|よう}}` qui vale "richiede
 / è necessario", mentre `チェック` resta il controllo da fare: per un
 Allenatore, quella funzione è da guardare subito. Il pattern
 [～たばかり](grammar:grammar-ta-bakari) completa la situazione in frasi come
 `ポケモンを {{始|はじ}}めたばっかり`: hai appena iniziato, quindi il gioco può
-spiegarti Pokédex, tipi e match come basi legittime, non come cose già date.
+spiegarti Pokémon Zukan, tipi e match come basi legittime, non come cose già date.
 
 ## Esempi guidati di riepilogo
 
 Le frasi seguenti ricombinano il flusso del prologo: casa, uscita, scelta,
-battaglia e Pokédex.
+battaglia e Pokémon Zukan.
 
 :::example_sentence
 jp: >-
@@ -460,7 +460,7 @@ jp: >-
   {{初|はじ}}めてづくしの {{一日|いちにち}}でも、 スマホロトムと
   お{{弁当|べんとう}}が あれば {{少|すこ}}し {{安心|あんしん}}できる。
 translation_it: >-
-  Anche in una giornata piena di prime volte, avere il Rotom Phone e il bento
+  Anche in una giornata piena di prime volte, avere il Sumaho Rotomu e il bento
   dà un po' di tranquillità.
 :::
 
@@ -478,7 +478,7 @@ jp: >-
   {{相手|あいて}}の {{弱点|じゃくてん}}を {{突|つ}}いて {{勝負|しょうぶ}}に
   {{勝|か}}ったら、 ネモは {{素質|そしつ}}アリ と {{言|い}}ってくれる。
 translation_it: >-
-  Se colpisci la debolezza dell'avversario e vinci il match, Nemi ti dice
+  Se colpisci la debolezza dell'avversario e vinci il match, Nemo ti dice
   che hai stoffa.
 :::
 
@@ -488,7 +488,7 @@ jp: >-
   ポケモン{{図鑑|ずかん}}に {{自動|じどう}}で {{登録|とうろく}}される。
 translation_it: >-
   I Pokémon catturati non vengono scritti a mano: vengono registrati
-  automaticamente nel Pokédex.
+  automaticamente nel Pokémon Zukan.
 :::
 
 ## Nota finale
@@ -496,7 +496,7 @@ translation_it: >-
 Questo prologo insegna a leggere il passaggio da casa a viaggio come una serie
 di segnali linguistici: la cortesia apre la porta, [{{準備|じゅんび}}](term:term-junbi)
 marca i gate, [スマホロトム](term:term-smartphone-rotom) trasforma le battute in
-interfaccia, [{{勝負|しょうぶ}}](term:term-shoubu) porta Nemi sul campo e
-[{{登録|とうろく}}](term:term-touroku) collega cattura e Pokédex. Se riconosci
+interfaccia, [{{勝負|しょうぶ}}](term:term-shoubu) porta Nemo sul campo e
+[{{登録|とうろく}}](term:term-touroku) collega cattura e Pokémon Zukan. Se riconosci
 questi pezzi mentre compaiono, il tutorial smette di essere una sequenza di
 frasi isolate e diventa un sistema leggibile.

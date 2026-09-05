@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-331-5-so-well-and-then
 entry_type: grammar
 entry_id: grammar-331-5-so-well-and-then
 card_type: concept
-front: "で"
+front: "で（a inizio battuta）"
 back: >-
   で a inizio battuta collega il discorso precedente a ciò che segue ed è spesso una contrazione colloquiale di それで.
 example_jp: >-

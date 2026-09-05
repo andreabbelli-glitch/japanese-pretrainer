@@ -268,15 +268,14 @@ entry_id: term-kaishi-1708637441282
 card_type: recognition
 front: '{{派|は}}{{手|で}}'
 back: 'showy, flashy'
-example_jp: '{{雪|ゆき}}{{道|みち}}で{{派|は}}{{手|で}}に{{転|ころ}}んでしまったの。'
-example_it: 'I slipped spectacularly at the snowy road.'
+example_jp: "{{雪|ゆき}}{{道|みち}}で{{派|は}}{{手|で}}に{{転|ころ}}んでしまったの。"
+example_it: "I took a spectacular fall on the snowy road."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441282-recognition/c6f8f399721feb12daf9f871cae59c5a.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637441107
 lemma: '微妙'

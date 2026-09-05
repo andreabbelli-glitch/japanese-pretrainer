@@ -67,8 +67,8 @@ Quando incontri [これでＯＫ](term:term-e096-korede-okee), {{注文|ちゅ�
 
 ## Etichette da riconoscere
 
-- [グレープアカデミー](term:term-v513-gureepuakademii) — Accademia Grape
-- [{{宝食堂|たからしょくどう}}](term:term-v509-takarashokudou) — Treasure Eatery
+- [グレープアカデミー](term:term-v513-gureepuakademii) — Gurēpu Akademī
+- [{{宝食堂|たからしょくどう}}](term:term-v509-takarashokudou) — Takara Shokudō
 - [レイドバトル](term:term-v511-reidobatoru) — raid battle
 - [バトルチーム](term:term-v515-batoruchiimu) — battle team
 - [エントリー](term:term-v536-entorii) — iscrizione / registrazione a un evento
@@ -117,7 +117,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `メニューから` ➔ **Punto di partenza**: l'azione nasce dentro il menu.
-*   `プレゼントの {{受|う}}けとりを` ➔ **Funzione selezionata**: `プレゼントの受けとり` e' l'opzione per ricevere il regalo.
+*   `プレゼントの {{受|う}}けとりを` ➔ **Funzione selezionata**: `プレゼントの受けとり` è l'opzione per ricevere il regalo.
 *   `{{選|えら}}びます` ➔ **Selezione operativa**: la schermata aspetta una scelta, non una conferma finale.
 
 #### 🧠 Gancio cognitivo
@@ -131,17 +131,14 @@ Quando il gioco parla di funzioni, [{{自動|じどう}}](term:term-v538-jidou) 
 [おこづかい](term:term-v533-okozukai) porta invece il registro verso i soldi personali. Nel mondo Pokémon può indicare il denaro che ricevi dopo una lotta o che spendi negli acquisti. Se appare con もらう, {{増|ふ}}える o {{使|つか}}う, la frase parla della tua disponibilità economica, non di un oggetto fisico nello zaino.
 
 :::example_sentence
-jp: >-
-  {{自動|じどう}}セーブを オンにして、よく{{使|つか}}う わざを ショートカットに {{追加|ついか}}します。
-translation_it: >-
-  Attivo il salvataggio automatico e aggiungo alle scorciatoie una mossa che uso spesso.
+jp: "{{自動|じどう}}セーブをオンにしてから、{{設定|せってい}}を{{確認|かくにん}}します。"
+translation_it: "Dopo aver attivato il salvataggio automatico, controllo le impostazioni."
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `{{自動|じどう}}セーブを オンにして` ➔ **Prima azione collegata**: `を` marca il salvataggio automatico come oggetto; `して` collega l'impostazione all'azione successiva.
-*   `よく{{使|つか}}う わざを` ➔ **Nome modificato da frase verbale**: `よく{{使|つか}}う` restringe `わざ` alla mossa che usi spesso.
-*   `ショートカットに {{追加|ついか}}します` ➔ **Destinazione dell'aggiunta**: `に` dice dove entra la mossa nella UI.
+- `{{自動|じどう}}セーブをオンにして` indica l'attivazione del salvataggio automatico.
+- `～てから` ordina le azioni: prima si attiva il salvataggio, poi si controllano le impostazioni.
+- `{{設定|せってい}}を{{確認|かくにん}}します` indica il controllo successivo; `を` marca le impostazioni come oggetto.
 
 :::example_sentence
 jp: >-
@@ -170,7 +167,7 @@ La vita scolastica si legge meglio quando abbini ogni nome al verbo che lo richi
 jp: >-
   グレープアカデミーに {{入学|にゅうがく}}して、{{教室|きょうしつ}}へ {{向|む}}かいます。
 translation_it: >-
-  Entro all'Accademia Grape e mi dirigo verso l'aula.
+  Entro all'Gurēpu Akademī e mi dirigo verso l'aula.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -220,7 +217,7 @@ Le parole di ruolo cambiano tono. [したっぱ](term:term-v530-shitappa) è col
 jp: >-
   {{入学|にゅうがく}}の {{記念|きねん}}に、{{宝食堂|たからしょくどう}}で {{写真|しゃしん}}を {{撮|と}}ります。
 translation_it: >-
-  Come ricordo dell'ingresso a scuola, scatto una foto alla Treasure Eatery.
+  Come ricordo dell'ingresso a scuola, scatto una foto alla Takara Shokudō.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -252,7 +249,7 @@ translation_it: >-
 
 ## 5. Lotte di gruppo e parole che cambiano dominio
 
-Nel dominio Pokémon alcune parole cambiano valore appena cambia la schermata. [{{自然|しぜん}}](term:term-v514-shizen) è la natura come ambiente: paesaggi, fenomeni, territorio di Paldea. [{{性格|せいかく}}](term:term-v527-seikaku) è invece la natura o personalità del Pokémon: compare nelle schermate di stato e può avere conseguenze sulle statistiche. Tradurle entrambe con "natura" senza guardare la cornice cancella la differenza tra mondo esterno e attributo del singolo Pokémon.
+Nel dominio Pokémon alcune parole cambiano valore appena cambia la schermata. [{{自然|しぜん}}](term:term-v514-shizen) è la natura come ambiente: paesaggi, fenomeni, territorio di Parudea. [{{性格|せいかく}}](term:term-v527-seikaku) è invece la natura o personalità del Pokémon: compare nelle schermate di stato e può avere conseguenze sulle statistiche. Tradurle entrambe con "natura" senza guardare la cornice cancella la differenza tra mondo esterno e attributo del singolo Pokémon.
 
 In battaglia, [{{与|あた}}える](term:term-v510-atae-ru) diventa molto concreto con ダメージを{{与|あた}}える: il soggetto infligge danni a un bersaglio. [{{応援|おうえん}}](term:term-v539-ouen) non è solo "fare il tifo" da fuori; in un [レイドバトル](term:term-v511-reidobatoru) può essere un'azione di supporto agli alleati. [エントリー](term:term-v536-entorii) e [バトルチーム](term:term-v515-batoruchiimu) completano il flusso: prima ti registri all'evento, poi controlli o registri la squadra che partecipa.
 
@@ -296,16 +293,14 @@ translation_it: >-
 jp: >-
   {{宝食堂|たからしょくどう}}で {{商品|しょうひん}}を {{選|えら}}んで、{{注文|ちゅうもん}}します。
 translation_it: >-
-  Alla Treasure Eatery scelgo un prodotto e faccio l'ordine.
+  Alla Takara Shokudō scelgo un prodotto e faccio l'ordine.
 :::
 
 :::example_sentence
 jp: >-
   プレゼントの {{受|う}}けとりを {{選|えら}}ぶと、{{道具|どうぐ}}が バッグに {{追加|ついか}}されました。
-translation_it: >-
-  Quando scegli il ritiro del regalo, lo strumento viene aggiunto alla borsa.
+translation_it: "Quando ho selezionato il ritiro del regalo, lo strumento è stato aggiunto alla borsa."
 :::
-
 :::example_sentence
 jp: >-
   {{制服|せいふく}}に {{着替|きが}}えて、{{生徒会長|せいとかいちょう}}からの {{連絡|れんらく}}に {{返事|へんじ}}を します。

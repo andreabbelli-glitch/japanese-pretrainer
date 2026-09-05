@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-087-verb-past-negative-ru
 entry_type: grammar
 entry_id: grammar-087-verb-past-negative-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（passato negativo）"
 back: >-
   Passato negativo piano dei verbi ichidan: «non fece»
 example_jp: >-

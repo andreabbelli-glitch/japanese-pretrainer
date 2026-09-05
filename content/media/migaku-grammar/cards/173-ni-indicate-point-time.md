@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-173-ni-indicate-point-time
 entry_type: grammar
 entry_id: grammar-173-ni-indicate-point-time
 card_type: concept
-front: "に"
+front: "に（momento preciso）"
 back: >-
   Un'espressione temporale + に marca il momento preciso in cui avviene un evento.
 example_jp: >-

@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-096-koto-2-express-thing
 entry_type: grammar
 entry_id: grammar-096-koto-2-express-thing
 card_type: concept
-front: "こと"
+front: "こと（fatto o cosa astratta）"
 back: >-
   «Cosa / fatto» di natura astratta, evento o contenuto
 example_jp: >-

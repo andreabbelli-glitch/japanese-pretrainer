@@ -53,7 +53,7 @@ reading: まち
 romaji: machi
 meaning_it: città; paese
 notes_it: >-
-  {{町|まち}} indica un nucleo abitato o la zona centrale di una cittadina, differenziandosi da una metropoli o grande città ({{市|し}}). Nei giochi Pokémon, definisce solitamente i paesi base dotati di Centro Pokémon o Palestra.
+  {{町|まち}} indica un nucleo abitato o la zona centrale di una cittadina, differenziandosi da una metropoli o grande città ({{市|し}}). Nei giochi Pokémon, definisce solitamente i paesi base dotati di Pokémon Sentā o Palestra.
 level_hint: custom
 :::
 :::term
@@ -98,7 +98,7 @@ back: >-
 example_jp: >-
   チャンピオンの ネモに {{話|はなし}}を {{聞|き}}く。
 example_it: >-
-  Ascolto quello che ha da dire Nemi, la Campionessa.
+  Ascolto quello che ha da dire Nemo, la Campionessa.
 notes_it: >-
   Il verbo {{聞|き}}く racchiude sia la ricezione di un suono (“sentire/ascoltare”) sia la ricerca attiva di informazioni (“chiedere”). La persona a cui chiedi prende に: {{人|ひと}}に{{聞|き}}く. Il contenuto che ascolti o chiedi prende を: {{話|はなし}}を{{聞|き}}く, ポケモンのことを{{聞|き}}く.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
@@ -115,7 +115,7 @@ back: >-
 example_jp: >-
   テーブルシティで ネモを {{待|ま}}つ あいだ、ポケモンセンターに よろう。
 example_it: >-
-  Mentre aspettiamo Nemi a Mesapoli, passiamo dal Centro Pokémon.
+  Mentre aspettiamo Nemo a Tēburu Shiti, passiamo dal Pokémon Sentā.
 notes_it: >-
   Il verbo {{待|ま}}つ (aspettare) si usa frequentemente nella forma -て/-で per descrivere un'azione in corso ({{待|ま}}っている, spesso contratto in {{待|ま}}ってる) o per dire a qualcuno di aspettare ({{待|ま}}って). Il luogo dell'attesa si marca con で.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
@@ -149,7 +149,7 @@ back: >-
 example_jp: >-
   オボンのみを {{食|た}}べると ＨＰが {{回復|かいふく}}する。
 example_it: >-
-  Quando mangia una Baccacedro, recupera PS.
+  Quando mangia una Obon no Mi, recupera PS.
 notes_it: >-
   Il verbo {{食|た}}べる indica l'azione di consumare cibo solido. Negli avvisi di lotta del gioco si incontra quando un Pokémon usa autonomamente uno strumento tenuto, come una Bacca: オボンのみを{{食|た}}べて.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
@@ -168,7 +168,7 @@ example_jp: >-
 example_it: >-
   In questa città non c'è una Palestra Pokémon.
 notes_it: >-
-  {{町|まち}} indica un nucleo abitato o la zona centrale di una cittadina, differenziandosi da una metropoli o grande città ({{市|し}}). Nei giochi Pokémon, definisce solitamente i paesi base dotati di Centro Pokémon o Palestra.
+  {{町|まち}} indica un nucleo abitato o la zona centrale di una cittadina, differenziandosi da una metropoli o grande città ({{市|し}}). Nei giochi Pokémon, definisce solitamente i paesi base dotati di Pokémon Sentā o Palestra.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -183,7 +183,7 @@ back: >-
 example_jp: >-
   モンスターボールは {{200|にひゃく}}{{円|えん}} です。
 example_it: >-
-  Le Poké Ball costano duecento yen.
+  Le Monsutā Bōru costano duecento yen.
 notes_it: >-
   Nei negozi o nelle lotte indica i soldi in yen. In giapponese si scrive direttamente la parola al posto del simbolo occidentale. È utile notare che nelle interfacce dei giochi, il conteggio della valuta omette i plurali.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
@@ -200,7 +200,7 @@ back: >-
 example_jp: >-
   ポケモンセンターに {{入|はい}}ると、すぐ カウンターが ある。
 example_it: >-
-  Quando entri nel Centro Pokémon, trovi subito il bancone.
+  Quando entri nel Pokémon Sentā, trovi subito il bancone.
 notes_it: >-
   Il verbo {{入|はい}}る (entrare) è intransitivo: descrive il soggetto che si sposta all'interno di uno spazio fisico (che prende la particella に, per indicare la destinazione). Va distinto dal verbo transitivo {{入|い}}れる (mettere dentro).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
@@ -217,9 +217,9 @@ back: >-
 example_jp: >-
   わざマシンを {{作|つく}}るには {{Ｌ|エル}}{{Ｐ|ピー}}が {{必要|ひつよう}}なんだ。
 example_it: >-
-  Per creare le Macchine Tecniche ti servono i Punti Lega.
+  Per creare le Waza Mashin ti servono i Punti Lega.
 notes_it: >-
-  I Punti Lega (LP) sono una valuta di sistema: si spendono alla Macchina MT e nei negozi al posto degli yen. Quando lettere latine compaiono nella UI giapponese, spesso vengono lette con una pronuncia katakana: LP diventa エルピー.
+  I Punti Lega (LP) sono una valuta di sistema: si spendono alla Macchina Waza Mashin e nei negozi al posto degli yen. Quando lettere latine compaiono nella UI giapponese, spesso vengono lette con una pronuncia katakana: LP diventa エルピー.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]
 :::
 :::card
@@ -234,7 +234,7 @@ back: >-
 example_jp: >-
   {{私|わたし}}の {{名前|なまえ}}は クラベル。アカデミーの {{校長|こうちょう}}です。
 example_it: >-
-  Il mio nome è Clavel. Sono il preside dell'Accademia.
+  Il mio nome è Kuraberu. Sono il preside dell'Accademia.
 notes_it: >-
   {{私|わたし}} è un pronome di prima persona. È usato per mantenere un registro cortese ({{丁|てい}}{{寧|ねい}}{{語|ご}}, teineigo). Si sente da figure formali come presidi o professori, o neutramente da giovani allenatrici e allenatori in certi contesti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-01]

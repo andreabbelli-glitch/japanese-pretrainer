@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-24
 media_id: media-pokemon-scarlet-violet
 slug: 129-sv-vocabulary-distance-24
-title: 'Parole per leggere Paldea — ventiquattro'
+title: 'Parole per leggere Parudea — ventiquattro'
 order: 174
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — ventiquattro
+# Parole per leggere Parudea — ventiquattro
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -198,10 +198,7 @@ translation_it: >-
 ### [{{変化|へんか}}](term:term-sv-vocabulary-071-henka) — cambiamento; variazione; alterazione
 
 :::example_sentence
-jp: >-
-  {{一見|いっけん}}ドンファンに{{似|に}}たその{{生物|せいぶつ}}は{{突如|とつじょ}}{{球体|きゅうたい}}に{{変化|へんか}}すると{{高速|こうそく}}で{{回転|かいてん}}し{{襲|おそ}}いかかってきたという。
-translation_it: >-
-  A prima vista, quella creatura simile a Donphan si trasformò all'improvviso in una sfera, ruotò ad alta velocità e si lanciò all'attacco.
+jp: "{{一見|いっけん}}ドンファンに{{似|に}}たその{{生物|せいぶつ}}は{{突如|とつじょ}}{{球体|きゅうたい}}に{{変化|へんか}}すると{{高速|こうそく}}で{{回転|かいてん}}し{{襲|おそ}}いかかってきたという。"
+translation_it: "Si racconta che quella creatura, a prima vista simile a Donfan, si sia trasformata all’improvviso in una sfera, abbia iniziato a ruotare ad alta velocità e si sia lanciata all’attacco."
 :::
-
 **Uso:** Nel contesto indica «cambiamento; variazione; alterazione».

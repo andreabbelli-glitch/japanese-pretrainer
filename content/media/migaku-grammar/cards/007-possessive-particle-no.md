@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-007-possessive-particle-no
 entry_type: grammar
 entry_id: grammar-007-possessive-particle-no
 card_type: concept
-front: "の"
+front: "の（tra due nomi）"
 back: >-
   A の B significa «B collegato ad A»; il contesto decide se rendere の con «di», un possessivo o un'altra costruzione.
 example_jp: >-

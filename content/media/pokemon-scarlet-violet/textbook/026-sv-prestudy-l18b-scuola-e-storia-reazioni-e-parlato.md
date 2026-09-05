@@ -21,7 +21,7 @@ summary: >-
 
 # Scuola, storia e reazioni: dubbi e spiegazioni all'Accademia
 
-All'Accademia di Paldea il gioco alterna scene molto quotidiane e frasi che aprono misteri più grandi: qualcuno ti saluta mentre parti, cambia argomento con una domanda improvvisa, spiega una materia, commenta un risultato o reagisce davanti a un Pokémon che sembra venire da un altro tempo.
+All'Accademia di Parudea il gioco alterna scene molto quotidiane e frasi che aprono misteri più grandi: qualcuno ti saluta mentre parti, cambia argomento con una domanda improvvisa, spiega una materia, commenta un risultato o reagisce davanti a un Pokémon che sembra venire da un altro tempo.
 
 La chiave è riconoscere che questi pezzi non vivono separati. Un saluto ti dice chi resta e chi parte; [ところで](term:term-e040-tokorode) sposta il fuoco della conversazione; [～とき](grammar:grammar-g040-quando-nel-momento-in-cui) incornicia il momento; [～のか](grammar:grammar-g042-domanda-spiegativa-sorpresa-davvero-e-co) trasforma una domanda in ricerca di spiegazione. Quando li leggi insieme, il parlato diventa meno "frase da tradurre" e più scena da seguire.
 
@@ -38,7 +38,7 @@ La chiave è riconoscere che questi pezzi non vivono separati. Un saluto ti dice
 - [{{未来|みらい}}](term:term-v218-mirai) — futuro
 - [{{本気|ほんき}}](term:term-v219-honki) — serietà / al massimo
 - [{{一度|いちど}}](term:term-v220-ichido) — una volta
-- [キズぐすり](term:term-v221-kizu-gusuri) — Pozione
+- [キズぐすり](term:term-v221-kizu-gusuri) — Kizugusuri
 - [{{防御|ぼうぎょ}}](term:term-v223-bougyo) — Difesa
 
 ## Espressioni ricorrenti
@@ -162,7 +162,7 @@ Quando vedi [～のか](grammar:grammar-g042-domanda-spiegativa-sorpresa-davvero
 
 ## 3. Materie, spiegazioni e risultati: l'Accademia come lingua operativa
 
-La scuola di Paldea porta molto lessico che sembra ordinario, ma nei dialoghi serve a orientarti: chi sei nella classe, quale materia è in corso, se stai leggendo una spiegazione o un quesito, e se il risultato è stato superato.
+La scuola di Parudea porta molto lessico che sembra ordinario, ma nei dialoghi serve a orientarti: chi sei nella classe, quale materia è in corso, se stai leggendo una spiegazione o un quesito, e se il risultato è stato superato.
 
 *   [{{転入|てんにゅう}}{{生|せい}}](term:term-v210-tenyuusei) indica lo studente che entra in una scuola dopo un trasferimento. In *Scarlet & Violet* è una parola identitaria: ti colloca subito come nuovo arrivato, quindi come qualcuno a cui regole, luoghi e routine devono ancora essere spiegati.
 *   [{{生物|せいぶつ}}](term:term-v214-seibutsu) può significare "esseri viventi", ma nel contesto dell'Accademia spesso si legge come materia: biologia. Se compare con の{{授業|じゅぎょう}}, の{{説明|せつめい}} o una domanda scolastica, la lettura da materia è quella naturale.
@@ -190,27 +190,27 @@ translation_it: >-
 
 ## 4. Intensità, cura e battaglia: dal parlato emotivo ai menu pratici
 
-Fuori dalla classe, le stesse battute possono diventare più emotive o più operative. Un personaggio parla di ciò che succede ultimamente, promette di fare sul serio, propone di provare una volta; poi il gioco torna ai menu di lotta, dove parole come "alto", "Pozione" e "Difesa" hanno conseguenze concrete.
+Fuori dalla classe, le stesse battute possono diventare più emotive o più operative. Un personaggio parla di ciò che succede ultimamente, promette di fare sul serio, propone di provare una volta; poi il gioco torna ai menu di lotta, dove parole come "alto", "Kizugusuri" e "Difesa" hanno conseguenze concrete.
 
 *   [{{最近|さいきん}}](term:term-v212-saikin) restringe il discorso al periodo recente. Se apre una battuta, prepara spesso un commento su una tendenza: "ultimamente succede spesso", "di recente va così", "negli ultimi tempi ho notato...".
 *   [{{絶対|ぜったい}}](term:term-v213-zettai) rafforza la frase con "assolutamente". Davanti a un verbo rende la decisione molto netta; davanti a una negazione può diventare "assolutamente no / mai".
 *   [{{本気|ほんき}}](term:term-v219-honki) è la serietà piena, il "fare sul serio". In contesto di battaglia, {{本気|ほんき}}を{{出|だ}}す non è solo "essere serio": è tirare fuori il massimo.
 *   [{{一度|いちど}}](term:term-v220-ichido) indica una singola volta o occasione. Nei dialoghi può ammorbidire un invito: "prova almeno una volta", "dai un'occhiata una volta", "fallo una volta e vediamo".
 *   [{{高|たか}}い](term:term-v211-takai) resta "alto", ma non sempre parla di altezza fisica. Con una statistica indica valore elevato; con un prezzo indica caro; con probabilità o livello indica quantità alta. Il nome vicino decide la lettura.
-*   [キズぐすり](term:term-v221-kizu-gusuri) è la Pozione base. La forma è trasparente se la spezzi: キズ richiama la ferita e ぐすり è medicina. Nei menu di lotta il termine segnala cura immediata, non una descrizione narrativa.
+*   [キズぐすり](term:term-v221-kizu-gusuri) è la Kizugusuri base. La forma è trasparente se la spezzi: キズ richiama la ferita e ぐすり è medicina. Nei menu di lotta il termine segnala cura immediata, non una descrizione narrativa.
 *   [{{防御|ぼうぎょ}}](term:term-v223-bougyo) è la Difesa come statistica o azione difensiva. Quando leggi {{防御|ぼうぎょ}}が{{高|たか}}い, il punto non è "alto" in astratto: è che quel Pokémon regge meglio gli attacchi fisici.
 
 :::example_sentence
 jp: >-
   {{防御|ぼうぎょ}}が {{高|たか}}いから、 キズぐすりは まだ {{使|つか}}わないだろう。
 translation_it: >-
-  Siccome la Difesa è alta, probabilmente non userò ancora la Pozione.
+  Siccome la Difesa è alta, probabilmente non userò ancora la Kizugusuri.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{防御|ぼうぎょ}}が {{高|たか}}いから` ➔ **Motivo della scelta** (`が` marca la statistica osservata; `{{高|たか}}い` dice che il valore è alto; `から` trasforma tutto in ragione).
-*   `キズぐすりは` ➔ **Oggetto messo in pausa** (`は` contrasta la Pozione con altre possibili azioni: per ora proprio quella non viene usata).
+*   `キズぐすりは` ➔ **Oggetto messo in pausa** (`は` contrasta la Kizugusuri con altre possibili azioni: per ora proprio quella non viene usata).
 *   `まだ {{使|つか}}わないだろう` ➔ **Decisione probabile** (`まだ` aggiunge "ancora"; `{{使|つか}}わない` nega l'uso; `だろう` presenta la previsione come probabile).
 
 #### ⚖️ Contrasto operativo
@@ -250,7 +250,7 @@ translation_it: >-
 jp: >-
   {{防御|ぼうぎょ}}が {{高|たか}}い ポケモンなら、 キズぐすりを {{使|つか}}うときも {{落|お}}ちつけるだろう。
 translation_it: >-
-  Se è un Pokémon con Difesa alta, probabilmente puoi restare calmo anche quando usi una Pozione.
+  Se è un Pokémon con Difesa alta, probabilmente puoi restare calmo anche quando usi una Kizugusuri.
 :::
 
 ## Nota finale

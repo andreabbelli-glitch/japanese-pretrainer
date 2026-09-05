@@ -13,7 +13,7 @@ reading: こうちょうせんせい
 romaji: kouchou sensei
 meaning_it: preside / il preside
 notes_it: >-
-  Nel prologo è la forma con cui la madre presenta Clavell.
+  Nel prologo è la forma con cui la madre presenta Kuraberu.
   `{{校長先生|こう.ちょう.せん.せい}}` marca subito un registro scolastico formale: il
   parlante riconosce il ruolo di autorità dell'Accademia.
 :::
@@ -62,7 +62,7 @@ romaji: gomen kudasai
 meaning_it: permesso? / posso entrare?
 notes_it: >-
   Formula fissa usata quando si chiama da fuori casa o da un ingresso. Nel
-  prologo Clavell la usa come apertura molto educata, prima ancora di entrare
+  prologo Kuraberu la usa come apertura molto educata, prima ancora di entrare
   nella sfera privata della famiglia del protagonista.
 :::
 :::card
@@ -85,7 +85,7 @@ reading: もうしわけありません
 romaji: moushiwake arimasen
 meaning_it: mi dispiace molto / non ho scuse
 notes_it: >-
-  È una scusa formale e pesante, più forte di un semplice `すみません`. Clavell la
+  È una scusa formale e pesante, più forte di un semplice `すみません`. Kuraberu la
   usa quando si assume la responsabilità del ritardo dei documenti scolastici.
 :::
 :::card
@@ -109,7 +109,7 @@ romaji: futegiwa
 meaning_it: errore di gestione / disguido
 notes_it: >-
   Descrive un problema imputabile a chi gestisce la situazione, non una
-  sfortuna neutra. Nel prologo Clavell parla del ritardo come `アカデミーの
+  sfortuna neutra. Nel prologo Kuraberu parla del ritardo come `アカデミーの
   {{不手際|ふてぎわ}}`.
 :::
 :::card
@@ -133,7 +133,7 @@ romaji: okotoba ni amaete
 meaning_it: accetto volentieri la sua offerta
 notes_it: >-
   Espressione fissa di cortesia: il parlante accetta l'invito dell'altro
-  appoggiandosi alla sua gentilezza. Clavell la usa quando decide di fermarsi a
+  appoggiandosi alla sua gentilezza. Kuraberu la usa quando decide di fermarsi a
   prendere il tè.
 :::
 :::card
@@ -154,7 +154,7 @@ id: term-smartphone-rotom
 lemma: スマホロトム
 reading: スマホロトム
 romaji: sumaho rotomu
-meaning_it: Rotom Phone / smartphone di gioco
+meaning_it: Sumaho Rotomu / smartphone di gioco
 notes_it: >-
   È il telefono del protagonista in Scarlet / Violet. Quando il gioco nomina
   `スマホロトム`, non indica solo un oggetto narrativo: è l'interfaccia da cui si
@@ -184,7 +184,7 @@ back: registrazione
 example_jp: >-
   {{捕|つか}}まえた ポケモンは ポケモン{{図鑑|ずかん}}に {{登録|とうろく}}される。
 example_it: >-
-  I Pokémon catturati vengono registrati nel Pokédex.
+  I Pokémon catturati vengono registrati nel Pokémon Zukan.
 :::
 :::term
 id: term-shoubu
@@ -193,7 +193,7 @@ reading: しょうぶ
 romaji: shoubu
 meaning_it: sfida / match / confronto di battaglia
 notes_it: >-
-  È la parola che Nemi usa continuamente per proporre un confronto vero.
+  È la parola che Nemo usa continuamente per proporre un confronto vero.
   Quando senti `{{勝負|しょうぶ}}しよう` o `{{勝負|しょうぶ}}の {{準備|じゅんび}}は いい？`, non è un
   riferimento astratto al combattimento: la scena entra in un tutorial o in un
   match concreto.
@@ -243,7 +243,7 @@ romaji: jakuten
 meaning_it: debolezza / punto debole
 notes_it: >-
   In battaglia indica il tipo contro cui un Pokémon subisce più danni. Nel
-  primo match con Nemi collega la teoria dei tipi al risultato del turno: se
+  primo match con Nemo collega la teoria dei tipi al risultato del turno: se
   colpisci la `{{弱点|じゃくてん}}`, il danno sale e compare spesso [こうかは
   ばつぐんだ！](term:term-kouka-wa-batsugun).
 :::
@@ -269,7 +269,7 @@ meaning_it: mandare in campo / far uscire
 notes_it: >-
   Nel giapponese Pokémon descrive l'atto di far scendere in campo un Pokémon o
   di lanciare una [わざ](term:term-waza). Nel prologo appare nella forma
-  colloquiale `くりだしちゃう`: Nemi segnala che, per abitudine, stava quasi
+  colloquiale `くりだしちゃう`: Nemo segnala che, per abitudine, stava quasi
   mandando in campo un Pokémon troppo forte.
 :::
 :::card
@@ -292,7 +292,7 @@ reading: ごきんじょ
 romaji: gokinjo
 meaning_it: vicinato / persona del quartiere
 notes_it: >-
-  Nel prologo Nemi lo usa per trasformare un rapporto geografico in un legame
+  Nel prologo Nemo lo usa per trasformare un rapporto geografico in un legame
   sociale immediato. La variante `ご{{近所|きんじょ}}{{同士|どうし}}` sottolinea che i due
   personaggi sono "del quartiere" allo stesso modo.
 :::
@@ -317,7 +317,7 @@ romaji: debyuu sen
 meaning_it: match di debutto / prima sfida ufficiale
 notes_it: >-
   Combina il prestito `デビュー` con `{{戦|せん}}` per marcare la prima vera prova di
-  un Pokémon o di un allenatore. Nemi lo usa per caricare il primo match di
+  un Pokémon o di un allenatore. Nemo lo usa per caricare il primo match di
   valore inaugurale.
 :::
 :::card
@@ -341,7 +341,7 @@ romaji: soshitsu ari
 meaning_it: ha stoffa / ha talento
 notes_it: >-
   Formula breve e colloquiale per dire che qualcuno mostra predisposizione
-  naturale. In Scarlet / Violet Nemi la usa per valutare il protagonista dopo
+  naturale. In Scarlet / Violet Nemo la usa per valutare il protagonista dopo
   il primo match.
 :::
 :::card
@@ -412,7 +412,7 @@ title: Finire per / fare per errore
 meaning_it: completare del tutto; oppure fare senza volerlo / per errore
 aliases: [～ちゃう, ～じゃう]
 notes_it: >-
-  Nel parlato di Nemi compare spesso nella forma contratta `～ちゃう`. Nel primo
+  Nel parlato di Nemo compare spesso nella forma contratta `～ちゃう`. Nel primo
   match segnala un'abitudine che stava quasi partendo da sola:
   `{{繰|く}}り{{出|だ}}しちゃう` vuol dire che per poco non mandava in campo il team
   sbagliato.
@@ -438,7 +438,7 @@ meaning_it: aver appena fatto qualcosa
 aliases: [～たばっかり]
 notes_it: >-
   Nel prologo segnala che il protagonista è all'inizio assoluto del percorso.
-  Quando Nemi dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene calibrato su un
+  Quando Nemo dice `ポケモンを {{始|はじ}}めたばっかり`, il tutorial viene calibrato su un
   profilo principiante.
 :::
 :::card
@@ -461,7 +461,7 @@ reading: ようチェック
 romaji: you chekku
 meaning_it: da controllare assolutamente / da non perdere
 notes_it: >-
-  È un'etichetta colloquiale da tutorial o commento pratico. Quando Nemi dice
+  È un'etichetta colloquiale da tutorial o commento pratico. Quando Nemo dice
   `ポケモントレーナーなら {{要|よう}}チェック`, sta segnalando che quell'app o funzione merita
   attenzione immediata.
 :::
@@ -485,7 +485,7 @@ reading: てがき
 romaji: tegaki
 meaning_it: scritto a mano / compilato a mano
 notes_it: >-
-  In questo prologo serve a far percepire il contrasto tra il vecchio Pokédex
+  In questo prologo serve a far percepire il contrasto tra il vecchio Pokémon Zukan
   compilato a mano e l'app automatica dello [スマホロトム](term:term-smartphone-
   rotom).
 :::
@@ -500,7 +500,7 @@ back: scritto a mano / compilato a mano
 example_jp: >-
   {{昔|むかし}}の {{図鑑|ずかん}}は ノートに {{手書|てが}}き だったらしい。
 example_it: >-
-  Pare che una volta il Pokédex venisse compilato a mano su un quaderno.
+  Pare che una volta il Pokémon Zukan venisse compilato a mano su un quaderno.
 :::
 :::term
 id: term-obentou
@@ -556,12 +556,12 @@ entry_type: term
 entry_id: term-pokemon-zukan
 card_type: recognition
 front: "ポケモン{{図鑑|ずかん}}"
-back: Pokédex
+back: Pokémon Zukan
 example_jp: >-
   ポケモン{{図鑑|ずかん}}には {{捕|つか}}まえた ポケモンが {{自動|じどう}}で
   {{登録|とうろく}}される。
 example_it: >-
-  Nel Pokédex i Pokémon catturati vengono registrati automaticamente.
+  Nel Pokémon Zukan i Pokémon catturati vengono registrati automaticamente.
 notes_it: >-
   Nel prologo non è solo una collezione: è un'app attiva dello
   [スマホロトム](term:term-smartphone-rotom) che aggiorna automaticamente le
@@ -578,7 +578,7 @@ back: se / quando
 example_jp: >-
   {{道|みち}}に {{迷|まよ}}ったら スマホロトムで マップを {{見|み}}よう。
 example_it: >-
-  Se ti perdi, guarda la mappa sul Rotom Phone.
+  Se ti perdi, guarda la mappa sul Sumaho Rotomu.
 notes_it: >-
   Nel prologo collega subito il problema dell'orientamento alla soluzione
   pratica di aprire la mappa.

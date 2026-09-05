@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-362-4-but-however
 entry_type: grammar
 entry_id: grammar-362-4-but-however
 card_type: concept
-front: "が"
+front: "が（tra due proposizioni）"
 back: >-
   Proposizione + が collega un contrasto oppure introduce con cautela una richiesta o un argomento.
 example_jp: >-

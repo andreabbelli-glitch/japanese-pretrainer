@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-18
 media_id: media-pokemon-scarlet-violet
 slug: 123-sv-vocabulary-distance-18
-title: 'Parole per leggere Paldea — diciotto'
+title: 'Parole per leggere Parudea — diciotto'
 order: 168
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — diciotto
+# Parole per leggere Parudea — diciotto
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -57,7 +57,7 @@ translation_it: >-
 jp: >-
   {{次回|じかい}}からはけっこうむずかしいふぶきコースに{{挑戦|ちょうせん}}できるよ！
 translation_it: >-
-  Dalla prossima volta potrai cimentarti nel percorso «Bora», che è piuttosto difficile!
+  Dalla prossima volta potrai cimentarti nel percorso «Fubuki», che è piuttosto difficile!
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «tempesta di neve; bufera di neve».
@@ -123,7 +123,7 @@ translation_it: >-
 jp: >-
   {{大穴|おおあな}}の{{奥底|おくそこ}}にはこの{{世|よ}}のすべての{{物|もの}}より{{価値|かち}}がある{{財宝|ざいほう}}が{{眠|ねむ}}ると{{信|しん}}じられていたのだ！
 translation_it: >-
-  Si credeva che nelle profondità del Grande Voragine giacesse un tesoro più prezioso di qualsiasi altra cosa al mondo!
+  Si credeva che nelle profondità del Parudea no Ōana giacesse un tesoro più prezioso di qualsiasi altra cosa al mondo!
 :::
 
 **Uso:** Nel contesto indica «profondità; luogo profondo; fondo (del proprio cuore)».
@@ -167,7 +167,7 @@ translation_it: >-
 jp: >-
   カラフシティに{{戻|もど}}るのはさすがにそらとぶタクシー{{使|つか}}っちゃおうかな{{競|せ}}りで{{大金|たいきん}}はたいちまった{{潮風|しおかぜ}}が{{目|め}}にしみるぜ！
 translation_it: >-
-  Per tornare a Cascarrafa, forse userò il Taxi Volante. Ho speso un patrimonio all'asta e la brezza marina mi brucia gli occhi!
+  Per tornare a Karafu Shiti, forse userò il Taxi Volante. Ho speso un patrimonio all'asta e la brezza marina mi brucia gli occhi!
 :::
 
 **Uso:** Nel contesto indica «brezza marina; vento salato; aria salmastra».
@@ -189,7 +189,7 @@ translation_it: >-
 jp: >-
   そっからだったら{{岩壁|がんぺき}}のヌシがいるっていう{{岩場|いわば}}が{{近|ちか}}いぜソイツは{{岩|いわ}}みてえに{{壁|かべ}}に{{張|は}}りついて{{獲物|えもの}}を{{狙|ねら}}ってんだと！
 translation_it: >-
-  Da lì non è lontana la zona rocciosa dove si trova il Dominante della Parete Rocciosa. Pare che stia appeso alla parete come una roccia, in agguato per la preda!
+  Da lì non è lontana la zona rocciosa dove si trova il Nushi della Parete Rocciosa. Pare che stia appeso alla parete come una roccia, in agguato per la preda!
 :::
 
 **Uso:** Nel contesto indica «parete rocciosa; scogliera».

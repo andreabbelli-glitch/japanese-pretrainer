@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-01
 media_id: media-pokemon-scarlet-violet
 slug: 106-sv-vocabulary-distance-01
-title: 'Parole per leggere Paldea — uno'
+title: 'Parole per leggere Parudea — uno'
 order: 151
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — uno
+# Parole per leggere Parudea — uno
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -91,7 +91,7 @@ translation_it: >-
 jp: >-
   だからボクが{{掟|おきて}}とか{{向|む}}いてるはずがないんだよでもさ{{団員|だんいん}}の{{面倒|めんどう}}{{見|み}}てるのってだいたいピーニャじゃん？
 translation_it: >-
-  Ecco perché non potrei mai essere adatto alle regole. Ma, dai, chi si prende cura dei membri del gruppo di solito è Pinya, no?
+  Ecco perché non potrei mai essere adatto alle regole. Ma, dai, chi si prende cura dei membri del gruppo di solito è Pīnya, no?
 :::
 
 **Uso:** Nel contesto indica «cura o assistenza; fastidio; problema».
@@ -124,7 +124,7 @@ translation_it: >-
 jp: >-
   いずれビッグになる{{前|まえ}}にリップが{{囲|かこ}}っちゃおっかな？
 translation_it: >-
-  Quasi quasi Tulipa ti prende sotto la sua ala prima che, un giorno, tu diventi una celebrità?
+  Quasi quasi Rippu ti prende sotto la sua ala prima che, un giorno, tu diventi una celebrità?
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «prima o poi; un giorno; in futuro».

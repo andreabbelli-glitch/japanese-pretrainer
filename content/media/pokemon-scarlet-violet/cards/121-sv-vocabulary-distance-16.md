@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-16
 media_id: media-pokemon-scarlet-violet
 slug: 121-sv-vocabulary-distance-16
-title: 'Parole per leggere Paldea — sedici'
+title: 'Parole per leggere Parudea — sedici'
 order: 166
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -128,7 +128,7 @@ back: >-
 example_jp: >-
   {{見|み}}ての{{通|とお}}りまだまだ{{先|さき}}は{{長|なが}}いんだひとまず{{途中|とちゅう}}のプラトタウンを{{目指|めざ}}しましょー！
 example_it: >-
-  Come vedi, la strada è ancora lunga. Per ora puntiamo a Los Platos, lungo il percorso!
+  Come vedi, la strada è ancora lunga. Per ora puntiamo a Purato Taun, lungo il percorso!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -312,7 +312,7 @@ id: term-sv-vocabulary-352-rijichou
 lemma: '理事長'
 reading: 'りじちょう'
 romaji: 'rijichou'
-meaning_it: 'presidente del consiglio di amministrazione; amministratore delegato; direttore generale'
+meaning_it: "presidente del consiglio di amministrazione di un ente"
 level_hint: custom
 :::
 
@@ -323,13 +323,11 @@ entry_type: term
 entry_id: term-sv-vocabulary-352-rijichou
 card_type: recognition
 front: '{{理事長|りじちょう}}'
-back: >-
-  りじちょう — presidente del consiglio di amministrazione; amministratore delegato; direttore generale.
-example_jp: >-
-  いやいやこの{{人|ひと}}たしか{{学校|がっこう}}の{{理事長|りじちょう}}でもあるしマジ？
-example_it: >-
-  No, no, questa persona è anche il presidente del consiglio scolastico, sul serio?
+back: "りじちょう — presidente del consiglio di amministrazione di un ente"
+example_jp: "あの{{人|ひと}}は{{学校|がっこう}}の{{理事長|りじちょう}}です。"
+example_it: "Quella persona è il presidente del consiglio di amministrazione della scuola."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "Esempio didattico."
 :::
 
 :::term

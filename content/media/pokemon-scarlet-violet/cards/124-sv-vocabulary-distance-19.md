@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-19
 media_id: media-pokemon-scarlet-violet
 slug: 124-sv-vocabulary-distance-19
-title: 'Parole per leggere Paldea — diciannove'
+title: 'Parole per leggere Parudea — diciannove'
 order: 169
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -128,7 +128,7 @@ back: >-
 example_jp: >-
   ヤミカラスって{{夜行|やこう}}{{性|せい}}なのに{{昼|ひる}}でも{{生物|せいぶつ}}{{室|しつ}}にいるらしいどっかに{{隠|かく}}れてるのかな？
 example_it: >-
-  Murkrow è notturno, eppure pare che resti nell'aula di biologia anche di giorno. Forse si nasconde da qualche parte?
+  Yamikarasu è notturno, eppure pare che resti nell'aula di biologia anche di giorno. Forse si nasconde da qualche parte?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -153,7 +153,7 @@ back: >-
 example_jp: >-
   こまったときはポケモンセンター！
 example_it: >-
-  Quando sei nei guai, vai al Centro Pokémon!
+  Quando sei nei guai, vai al Pokémon Sentā!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -178,7 +178,7 @@ back: >-
 example_jp: >-
   テラスタルの{{結晶|けっしょう}}は{{六角形|ろっかっけい}}に{{見|み}}える。
 example_it: >-
-  Il cristallo Teracristal sembra avere forma esagonale.
+  Il cristallo Terasutaru sembra avere forma esagonale.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   オレのスターモービル{{壊|こわ}}すとか！
 example_it: >-
-  Come osi rompere la mia Starmobile!
+  Come osi rompere la mia Sutāmobīru!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

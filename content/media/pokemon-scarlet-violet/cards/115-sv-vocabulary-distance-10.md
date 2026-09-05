@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-10
 media_id: media-pokemon-scarlet-violet
 slug: 115-sv-vocabulary-distance-10
-title: 'Parole per leggere Paldea — dieci'
+title: 'Parole per leggere Parudea — dieci'
 order: 160
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -28,7 +28,7 @@ back: >-
 example_jp: >-
   エリアゼロの{{一部|いちぶ}}には{{入|い}}れない。
 example_it: >-
-  Non si può entrare in alcune zone dell'Area Zero.
+  Non si può entrare in alcune zone dell'Eria Zero.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -50,13 +50,10 @@ card_type: recognition
 front: '{{襲|おそ}}いかかる'
 back: >-
   おそいかかる — attaccare; avventarsi su; piombare su.
-example_jp: >-
-  {{一見|いっけん}}ドンファンに{{似|に}}たその{{生物|せいぶつ}}は{{突如|とつじょ}}{{球体|きゅうたい}}に{{変化|へんか}}すると{{高速|こうそく}}で{{回転|かいてん}}し{{襲|おそ}}いかかってきたという。
-example_it: >-
-  A prima vista, quella creatura simile a Donphan si trasformò all'improvviso in una sfera, ruotò ad alta velocità e si lanciò all'attacco.
+example_jp: "{{一見|いっけん}}ドンファンに{{似|に}}たその{{生物|せいぶつ}}は{{突如|とつじょ}}{{球体|きゅうたい}}に{{変化|へんか}}すると{{高速|こうそく}}で{{回転|かいてん}}し{{襲|おそ}}いかかってきたという。"
+example_it: "Si racconta che quella creatura, a prima vista simile a Donfan, si sia trasformata all’improvviso in una sfera, abbia iniziato a ruotare ad alta velocità e si sia lanciata all’attacco."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-207-taitou
 lemma: '対等'
@@ -128,7 +125,7 @@ back: >-
 example_jp: >-
   ...あそうなんよう{{噂|うわさ}}でスター{{団|だん}}が{{美術|びじゅつ}}{{室|しつ}}にカチこむとか{{聞|き}}いてちょっと{{不安|ふあん}}になって{{来|き}}た。
 example_it: >-
-  …Ah, proprio così. Ho sentito dire che la “Team Star” sta per fare irruzione nell’aula di arte e mi sto un po’ preoccupando.
+  …Ah, proprio così. Ho sentito dire che la “Sutā-dan” sta per fare irruzione nell’aula di arte e mi sto un po’ preoccupando.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -278,7 +275,7 @@ back: >-
 example_jp: >-
   パルデア{{未|み}}{{確認|かくにん}}ファイルゼロよん{{博士|はかせ}}の{{異常|いじょう}}な{{発明|はつめい}}！？
 example_it: >-
-  File non confermati di Paldea 04: l’invenzione bizzarra del dottore!?
+  File non confermati di Parudea 04: l’invenzione bizzarra del dottore!?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -300,13 +297,10 @@ card_type: recognition
 front: 'あなたたち'
 back: >-
   あなたたち — voi.
-example_jp: >-
-  {{課外|かがい}}{{授業|じゅぎょう}}を{{通|とお}}して{{大|おお}}きく{{成長|せいちょう}}したあなたたちに{{再|ふたた}}びご{{挨拶|あいさつ}}できることを{{楽|たの}}しみにしておりますよそれでは{{宝探|たからさが}}し{{開始|かいし}}！
-example_it: >-
-  Non vedo l’ora di salutarvi di nuovo, voi che siete cresciuti così tanto grazie alle lezioni extracurricolari. Allora, che la caccia al tesoro abbia inizio!
+example_jp: "{{課外授業|かがいじゅぎょう}}を{{通|とお}}して{{大|おお}}きく{{成長|せいちょう}}したあなたたちに、{{再|ふたた}}びご{{挨拶|あいさつ}}できることを{{楽|たの}}しみにしておりますよ。それでは、{{宝探|たからさが}}し{{開始|かいし}}！"
+example_it: "Non vedo l’ora di ritrovarvi dopo che sarete cresciuti grazie alle attività extracurricolari. Allora, che la caccia al tesoro abbia inizio!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-271-ura
 lemma: '裏'
@@ -328,7 +322,7 @@ back: >-
 example_jp: >-
   ネモちゃんの{{家|いえ}}すごいよね{{裏|うら}}はプライベートビーチらしいよ！
 example_it: >-
-  La casa di Nemi è fantastica, vero? Pare che sul retro ci sia una spiaggia privata!
+  La casa di Nemo è fantastica, vero? Pare che sul retro ci sia una spiaggia privata!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

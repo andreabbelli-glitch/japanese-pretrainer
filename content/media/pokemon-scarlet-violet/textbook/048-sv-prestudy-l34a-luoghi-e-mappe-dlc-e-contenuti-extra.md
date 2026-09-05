@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
 media_id: media-pokemon-scarlet-violet
 slug: 048-sv-prestudy-l34a-luoghi-e-mappe-dlc-e-contenuti-extra
-title: "Mappe, basi e contenuti extra: leggere Paldea e i DLC"
+title: "Mappe, basi e contenuti extra: leggere Parudea e i DLC"
 order: 78
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,9 +18,9 @@ summary: >-
   Orientarsi tra mappa, basi, consegne, personalizzazioni e stati visivi usando
   i segnali giapponesi della schermata.
 ---
-# Mappe, basi e contenuti extra: leggere Paldea e i DLC
+# Mappe, basi e contenuti extra: leggere Parudea e i DLC
 
-Quando apri la mappa di Paldea, entri a Nordivia o passi alle schermate extra del DLC, il giapponese spesso non racconta una scena completa: mette etichette su luoghi, attività e stati visivi. Un nome di città ti aggancia a una destinazione, una parola come [{{拠点|きょてん}}](term:term-v704-kyoten) ti dice che quel punto funziona da base, mentre [サークルミッション](term:term-v699-saakurumisshon) sposta subito la lettura verso un obiettivo condiviso.
+Quando apri la mappa di Parudea, entri a Kitakami o passi alle schermate extra del DLC, il giapponese spesso non racconta una scena completa: mette etichette su luoghi, attività e stati visivi. Un nome di città ti aggancia a una destinazione, una parola come [{{拠点|きょてん}}](term:term-v704-kyoten) ti dice che quel punto funziona da base, mentre [サークルミッション](term:term-v699-saakurumisshon) sposta subito la lettura verso un obiettivo condiviso.
 
 La lettura diventa più semplice quando separi tre livelli: coordinate della mappa, azioni da compiere e resa visiva. Se riconosci quale livello sta parlando, una lista di nomi smette di sembrare rumore e diventa una sequenza pratica: raggiungere un punto, controllare una consegna, avviare una missione di gruppo, cambiare un effetto o tornare a una forma standard.
 
@@ -51,24 +51,24 @@ La lettura diventa più semplice quando separi tre livelli: coordinate della map
 
 ## Etichette da riconoscere
 
-- [ボウルタウン](term:term-v684-bourutaun) — Artazon
-- [ナッペ{{山|やま}}](term:term-v685-nappeyama) — Glaseado Mountain
+- [ボウルタウン](term:term-v684-bourutaun) — Bōru Taun
+- [ナッペ{{山|やま}}](term:term-v685-nappeyama) — Nappe-yama
 - [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) — gruppo delle maschere dell'orco
-- [チャンプルタウン](term:term-v687-chanpurutaun) — Medali
-- [スイリョクタウン](term:term-v688-suiryokutaun) — Verdegiada
-- [ハッコウシティ](term:term-v689-hakkoushiti) — Levincia
-- [ベイクタウン](term:term-v690-beikutaun) — Alfornada
-- [カラフシティ](term:term-v691-karafushiti) — Cascarrafa
-- [セルクルタウン](term:term-v694-serukurutaun) — Cortondo
-- [フリッジタウン](term:term-v695-furijjitaun) — Montenevera
-- [コサジタウン](term:term-v696-kosajitaun) — Cabo Poco
-- [オージャの{{湖|みずうみ}}](term:term-v698-oojanomizuumi) — Casseroya Lake
-- [プラトタウン](term:term-v702-puratotaun) — Los Platos
+- [チャンプルタウン](term:term-v687-chanpurutaun) — Chanpuru Taun
+- [スイリョクタウン](term:term-v688-suiryokutaun) — Suiryoku Taun
+- [ハッコウシティ](term:term-v689-hakkoushiti) — Hakkō Shiti
+- [ベイクタウン](term:term-v690-beikutaun) — Beiku Taun
+- [カラフシティ](term:term-v691-karafushiti) — Karafu Shiti
+- [セルクルタウン](term:term-v694-serukurutaun) — Serukuru Taun
+- [フリッジタウン](term:term-v695-furijjitaun) — Furijji Taun
+- [コサジタウン](term:term-v696-kosajitaun) — Kosaji Taun
+- [オージャの{{湖|みずうみ}}](term:term-v698-oojanomizuumi) — Ōja no Mizuumi
+- [プラトタウン](term:term-v702-puratotaun) — Purato Taun
 - [あとのせエフェクト](term:term-v705-atonoseefekuto) — effetto aggiunto dopo lo scatto
 - [デコフレーム](term:term-v706-dekofureemu) — cornice decorativa
-- [センタースクエア](term:term-v707-sentaasukuea) — Piazza Centrale
+- [センタースクエア](term:term-v707-sentaasukuea) — Sentā Sukuea
 - [きのみ{{台|だい}}](term:term-v709-kinomidai) — supporto per bacche
-- [ピケタウン](term:term-v710-piketaun) — Zapapico
+- [ピケタウン](term:term-v710-piketaun) — Pike Taun
 
 ---
 
@@ -79,13 +79,13 @@ I nomi di città e aree funzionano come coordinate testuali. Quando leggi [ハ�
 - [ナッペ{{山|やま}}](term:term-v685-nappeyama) contiene {{山|やま}}, "montagna": anche se il nome proprio resta da riconoscere come blocco, quel kanji ti prepara a una zona in quota, neve, pendii o spostamenti montani. Quando una destinazione o un dialogo cita questo nome, aspettati indicazioni su salita, visibilità sulla mappa o accesso a un'area fredda.
 - [オージャの{{湖|みずうみ}}](term:term-v698-oojanomizuumi) usa の per legare il nome proprio オージャ a {{湖|みずうみ}}, "lago". Se la frase parla di Pokémon selvatici, percorso o obiettivo, il riferimento è a una zona d'acqua, non a una città: la particella non aggiunge movimento, ma appartenenza nominale.
 - [スイリョクタウン](term:term-v688-suiryokutaun), [センタースクエア](term:term-v707-sentaasukuea) e [コサジタウン](term:term-v696-kosajitaun) sono etichette da leggere come luoghi interi. Non devi tradurre ogni katakana: devi riconoscere che il testo sta fissando dove torna la camera, dove si apre una funzione o dove si concentra l'azione successiva.
-- [ボウルタウン](term:term-v684-bourutaun), [チャンプルタウン](term:term-v687-chanpurutaun), [ベイクタウン](term:term-v690-beikutaun), [フリッジタウン](term:term-v695-furijjitaun), [プラトタウン](term:term-v702-puratotaun) e [ピケタウン](term:term-v710-piketaun) funzionano come segnaposti: in una lista, in un prompt di viaggio o in un dialogo, il loro valore pratico è dirti quale punto di Paldea va selezionato o raggiunto.
+- [ボウルタウン](term:term-v684-bourutaun), [チャンプルタウン](term:term-v687-chanpurutaun), [ベイクタウン](term:term-v690-beikutaun), [フリッジタウン](term:term-v695-furijjitaun), [プラトタウン](term:term-v702-puratotaun) e [ピケタウン](term:term-v710-piketaun) funzionano come segnaposti: in una lista, in un prompt di viaggio o in un dialogo, il loro valore pratico è dirti quale punto di Parudea va selezionato o raggiunto.
 
 :::example_sentence
 jp: >-
   マップで ナッペ{{山|やま}}の {{近|ちか}}くを {{見|み}}ます。
 translation_it: >-
-  Sulla mappa guardo vicino a Glaseado Mountain.
+  Sulla mappa guardo vicino a Nappe-yama.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -102,7 +102,7 @@ I nomi in katakana come [ボウルタウン](term:term-v684-bourutaun) o [ピケ
 
 Dopo il nome del luogo, spesso arriva la funzione. [{{拠点|きょてん}}](term:term-v704-kyoten), [{{配達|はいたつ}}](term:term-v700-haitatsu) e [サークルミッション](term:term-v699-saakurumisshon) non sono coordinate neutre: ti dicono che cosa sta aspettando lì o quale attività si apre.
 
-- [{{拠点|きょてん}}](term:term-v704-kyoten) indica un punto d'appoggio operativo. Nei testi legati al Team Star o agli hub del DLC, non leggerlo come "posto qualsiasi": è un luogo controllato da qualcuno, usato per partire, tornare, sfidare o organizzare un'attività.
+- [{{拠点|きょてん}}](term:term-v704-kyoten) indica un punto d'appoggio operativo. Nei testi legati al Sutā-dan o agli hub del DLC, non leggerlo come "posto qualsiasi": è un luogo controllato da qualcuno, usato per partire, tornare, sfidare o organizzare un'attività.
 - [{{配達|はいたつ}}](term:term-v700-haitatsu) è una consegna: qualcosa deve arrivare da qualche parte. Per questo si combina naturalmente con {{場所|ばしょ}}, destinazioni e controlli sulla mappa; quando leggi [{{配達|はいたつ}}の{{場所|ばしょ}}](term:term-v700-haitatsu), il nome dopo の `配達の場所` indica il punto da trovare per la consegna.
 - [サークルミッション](term:term-v699-saakurumisshon) unisce サークル, il gruppo/sessione, e ミッション, l'obiettivo. La parola ti prepara a un'attività condivisa, non a una missione solitaria della storia principale: in UI, il valore operativo è "questa cosa si fa dentro il gruppo".
 - [{{鬼面衆|きめんしゅう}}](term:term-v686-kimenshuu) è un nome contestuale del DLC: {{鬼|き}} richiama l'orco, {{面|めん}} la maschera e {{衆|しゅう}} un gruppo di persone. Nella frase porta verso personaggi, prove o sfide legati all'evento delle maschere.
@@ -111,12 +111,12 @@ Dopo il nome del luogo, spesso arriva la funzione. [{{拠点|きょてん}}](ter
 jp: >-
   スター{{団|だん}}の {{拠点|きょてん}}が マップに {{出|で}}ます。
 translation_it: >-
-  La base del Team Star appare sulla mappa.
+  La base del Sutā-dan appare sulla mappa.
 :::
 
 #### 🗺️ Anatomia della frase
 
-- `スター{{団|だん}}の` ➔ **Possessore/funzione** (`の` collega il gruppo alla base: è proprio la base del Team Star).
+- `スター{{団|だん}}の` ➔ **Possessore/funzione** (`の` collega il gruppo alla base: è proprio la base del Sutā-dan).
 - `{{拠点|きょてん}}が` ➔ **Elemento che appare** (`が` marca ciò che diventa rilevante nella schermata).
 - `マップに {{出|で}}ます` ➔ **Punto di comparsa** (`に` indica dove l'informazione diventa visibile: sulla mappa).
 
@@ -164,7 +164,7 @@ translation_it: >-
 
 ### B. `{{通常|つうじょう}}` e `{{変身|へんしん}}`: forma base e cambio di forma
 
-[{{通常|つうじょう}}](term:term-v701-tsuujou) contrasta con varianti, effetti speciali o stati alterati: in [{{通常|つうじょう}}の{{姿|すがた}}](term:term-v701-tsuujou), の lega "standard" a "aspetto". [{{変身|へんしん}}](term:term-v703-henshin), invece, nomina il passaggio a un'altra forma. Nei testi con Ditto, eventi o effetti visivi, questa parola ti dice che l'identità visibile cambia.
+[{{通常|つうじょう}}](term:term-v701-tsuujou) contrasta con varianti, effetti speciali o stati alterati: in [{{通常|つうじょう}}の{{姿|すがた}}](term:term-v701-tsuujou), の lega "standard" a "aspetto". [{{変身|へんしん}}](term:term-v703-henshin), invece, nomina il passaggio a un'altra forma. Nei testi con Metamon, eventi o effetti visivi, questa parola ti dice che l'identità visibile cambia.
 
 :::example_sentence
 jp: >-
@@ -185,10 +185,10 @@ translation_it: >-
 
 ## 4. Aspetto e personalizzazione: leggere ciò che si vede
 
-Le schermate di foto, Rotom Phone e stanze personalizzabili usano parole più visive. Qui il giapponese non ti manda in un luogo: ti fa distinguere superficie, cornice, effetto o atmosfera.
+Le schermate di foto, Sumaho Rotomu e stanze personalizzabili usano parole più visive. Qui il giapponese non ti manda in un luogo: ti fa distinguere superficie, cornice, effetto o atmosfera.
 
 - [{{模様|もよう}}](term:term-v692-moyou) indica un motivo visibile su Pokémon, abiti, icone o decorazioni. Non è "disegno" come azione di disegnare: è il pattern già presente su una superficie, quindi ti fa guardare ciò che cambia nell'aspetto, non un comando da eseguire.
-- [スマホカバー](term:term-v697-sumahokabaa) è katakana trasparente ma funzionale: in gioco è l'accessorio del Rotom Phone. Quando compare in una schermata, il testo si muove nel registro della personalizzazione, quindi ti aspetti scelta, equipaggiamento o anteprima estetica.
+- [スマホカバー](term:term-v697-sumahokabaa) è katakana trasparente ma funzionale: in gioco è l'accessorio del Sumaho Rotomu. Quando compare in una schermata, il testo si muove nel registro della personalizzazione, quindi ti aspetti scelta, equipaggiamento o anteprima estetica.
 - [あとのせエフェクト](term:term-v705-atonoseefekuto) contiene あと e のせ: come etichetta, suggerisce un effetto applicato dopo lo scatto o dopo la base visiva. Il valore operativo è "effetto aggiunto", non luogo né oggetto equipaggiabile.
 - [デコフレーム](term:term-v706-dekofureemu) è una cornice decorativa; [{{雰囲気|ふんいき}}](term:term-v708-funiki) invece parla del mood complessivo di una stanza o scena. Uno modifica il bordo o l'inquadratura, l'altro il tono percepito: luce, arredi, stile e impressione generale.
 - [きのみ{{台|だい}}](term:term-v709-kinomidai) unisce きのみ, bacca, e {{台|だい}}, supporto o banco. In un evento o minigioco segnala il punto fisico dove la risorsa viene raccolta, posata o usata; il kanji {{台|だい}} ti fa cercare un supporto concreto, non una bacca generica.
@@ -222,14 +222,14 @@ Le stesse etichette diventano più leggibili quando separi luogo, funzione e sta
 jp: >-
   マップで ナッペ{{山|やま}}の {{近|ちか}}くを {{見|み}}ます。
 translation_it: >-
-  Sulla mappa guardo vicino a Glaseado Mountain.
+  Sulla mappa guardo vicino a Nappe-yama.
 :::
 
 :::example_sentence
 jp: >-
   スター{{団|だん}}の {{拠点|きょてん}}が マップに {{出|で}}ます。
 translation_it: >-
-  La base del Team Star appare sulla mappa.
+  La base del Sutā-dan appare sulla mappa.
 :::
 
 :::example_sentence

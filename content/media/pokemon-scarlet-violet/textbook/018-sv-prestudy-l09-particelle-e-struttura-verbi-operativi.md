@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-018-sv-prestudy-l09-particelle-e-struttura-verbi-operativi
 media_id: media-pokemon-scarlet-violet
 slug: 018-sv-prestudy-l09-particelle-e-struttura-verbi-operativi
-title: "Percorsi, stato e scelte nei dialoghi di Paldea"
+title: "Percorsi, stato e scelte nei dialoghi di Parudea"
 order: 48
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -16,12 +16,12 @@ tags:
 prerequisites: []
 summary: >-
   Leggere direzione, presenza, luogo dell'azione e tono operativo in mappe,
-  negozi, scuola e Raid Teracristal.
+  negozi, scuola e Tera Reido Batoru.
 ---
 
-# Percorsi, stato e scelte nei dialoghi di Paldea
+# Percorsi, stato e scelte nei dialoghi di Parudea
 
-Quando Paldea ti sposta dall'Accademia alla strada, dal negozio al Raid Teracristal, il giapponese non descrive solo "cose": ti dice da dove parti, fino a dove arrivi, dove avviene l'azione e quale elemento della scena conta davvero.
+Quando Parudea ti sposta dall'Accademia alla strada, dal negozio al Tera Reido Batoru, il giapponese non descrive solo "cose": ti dice da dove parti, fino a dove arrivi, dove avviene l'azione e quale elemento della scena conta davvero.
 
 Le particelle piccole fanno molto lavoro. から e まで disegnano un intervallo, が mette qualcosa sotto i riflettori, で colloca l'azione o il mezzo. Intorno a queste particelle compaiono verbi operativi come [{{来|く}}る](term:term-v112-kuru), [{{負|ま}}ける](term:term-v108-make-ru) e formule di registro che ti fanno capire se la battuta accoglie, controlla lo stato di qualcuno o chiede una scelta.
 
@@ -49,8 +49,8 @@ Le particelle piccole fanno molto lavoro. から e まで disegnano un intervall
 
 ## Etichette da riconoscere
 
-- [オレンジアカデミー](term:term-v107-orenjiakademii) — Accademia Orange, riferimento scolastico e narrativo
-- [テラレイドバトル](term:term-v110-terareidobatoru) — Raid Teracristal, modalità di battaglia cooperativa
+- [オレンジアカデミー](term:term-v107-orenjiakademii) — Orenji Akademī, riferimento scolastico e narrativo
+- [テラレイドバトル](term:term-v110-terareidobatoru) — Tera Reido Batoru, modalità di battaglia cooperativa
 
 ---
 
@@ -64,7 +64,7 @@ Nei dialoghi di movimento il gioco costruisce spesso una piccola mappa dentro la
 jp: >-
   オレンジアカデミーから {{山|やま}}の {{道|みち}}まで {{行|い}}きます。
 translation_it: >-
-  Vado dall'Accademia Orange fino alla strada di montagna.
+  Vado dall'Orenji Akademī fino alla strada di montagna.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -168,7 +168,7 @@ Questo aiuta anche con [{{負|ま}}ける](term:term-v108-make-ru). Il verbo "pe
 jp: >-
   テラレイドバトルで {{強|つよ}}い ポケモンに {{負|ま}}けました。
 translation_it: >-
-  Ho perso contro un Pokémon forte in un Raid Teracristal.
+  Ho perso contro un Pokémon forte in un Tera Reido Batoru.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -189,7 +189,7 @@ Pensa a `で` come al tavolo su cui appoggi l'azione: scuola, menu, modalità, s
 jp: >-
   オレンジアカデミーで {{勉強|べんきょう}}します。
 translation_it: >-
-  Studio all'Accademia Orange.
+  Studio all'Orenji Akademī.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -258,7 +258,7 @@ Queste frasi combinano mappa, stato, luogo dell'azione e registro operativo: le 
 jp: >-
   オレンジアカデミーから {{外|そと}}へ {{出|で}}て、この {{道|みち}}を {{行|い}}きます。
 translation_it: >-
-  Esco dall'Accademia Orange e prendo questa strada.
+  Esco dall'Orenji Akademī e prendo questa strada.
 :::
 
 :::example_sentence
@@ -272,7 +272,7 @@ translation_it: >-
 jp: >-
   テラレイドバトルで {{体力|たいりょく}}が {{少|すこ}}ないです。{{大丈夫|だいじょうぶ}}？
 translation_it: >-
-  Nel Raid Teracristal gli HP sono bassi. Tutto bene?
+  Nel Tera Reido Batoru gli HP sono bassi. Tutto bene?
 :::
 
 :::example_sentence

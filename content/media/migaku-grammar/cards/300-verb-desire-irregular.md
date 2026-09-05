@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-300-verb-desire-irregular
 entry_type: grammar
 entry_id: grammar-300-verb-desire-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（desiderativo）"
 back: >-
   Desiderativi fondamentali: したい, 来たい e 行きたい
 example_jp: >-

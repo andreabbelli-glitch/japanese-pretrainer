@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-110-naide-do-b-without-doing-a
 entry_type: grammar
 entry_id: grammar-110-naide-do-b-without-doing-a
 card_type: concept
-front: "ないで"
+front: "ないで（subordinata: ～ないでB）"
 back: >-
   Fare B senza fare A
 example_jp: >-

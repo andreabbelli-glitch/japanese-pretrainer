@@ -163,14 +163,14 @@ back: professore / ricercatore
 example_jp: >-
   {{博士|はかせ}}に {{図鑑|ずかん}}を {{見|み}}せる。
 example_it: >-
-  Mostro il Pokédex al professore.
+  Mostro il Pokémon Zukan al professore.
 :::
 :::term
 id: term-v054-zukan
 lemma: 図鑑
 reading: ずかん
 romaji: zukan
-meaning_it: Pokédex / enciclopedia
+meaning_it: Pokémon Zukan / enciclopedia
 notes_it: >-
   È il registro dei Pokémon visti o catturati. Con {{登録|とうろく}}する indica che
   una voce viene aggiunta, non solo guardata.
@@ -182,11 +182,11 @@ entry_type: term
 entry_id: term-v054-zukan
 card_type: recognition
 front: '{{図鑑|ずかん}}'
-back: Pokédex / enciclopedia
+back: Pokémon Zukan / enciclopedia
 example_jp: >-
   {{新|あたら}}しい ポケモンを {{図鑑|ずかん}}に {{登録|とうろく}}する。
 example_it: >-
-  Registro un nuovo Pokémon nel Pokédex.
+  Registro un nuovo Pokémon nel Pokémon Zukan.
 :::
 :::term
 id: term-v055-donna
@@ -346,5 +346,5 @@ back: sicuramente / di certo
 example_jp: >-
   きっと ネモも {{来|く}}ると {{思|おも}}う。
 example_it: >-
-  Penso che sicuramente verrà anche Nemi.
+  Penso che sicuramente verrà anche Nemo.
 :::

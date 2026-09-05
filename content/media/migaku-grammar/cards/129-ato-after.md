@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-129-ato-after
 entry_type: grammar
 entry_id: grammar-129-ato-after
 card_type: concept
-front: "あと"
+front: "あと（dopo un nome o un verbo passato）"
 back: >-
   あと è un nome: Nome + のあと indica ciò che viene dopo o dietro; Verbo al passato piano + あと significa «dopo aver fatto…».
 example_jp: >-

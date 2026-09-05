@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-03
 media_id: media-pokemon-scarlet-violet
 slug: 108-sv-vocabulary-distance-03
-title: 'Parole per leggere Paldea — tre'
+title: 'Parole per leggere Parudea — tre'
 order: 153
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — tre
+# Parole per leggere Parudea — tre
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -29,7 +29,7 @@ conserva un valore preciso nella frase.
 - [{{理科系|りかけい}}](term:term-sv-vocabulary-323-rikakei) — indirizzo scientifico; materie scientifiche
 - [オシャレ](term:term-sv-vocabulary-217-oshare) — elegante; alla moda; di tendenza
 - [{{豊|ゆた}}か](term:term-sv-vocabulary-257-yutaka) — abbondante; copioso; ricco
-- [そらとぶ](term:term-sv-vocabulary-043-soratobu) — volare nel cielo; nel gioco anche la mossa Volo
+- [そらとぶ](term:term-sv-vocabulary-043-soratobu) — volare nel cielo; in そらとぶタクシー, «taxi volante»
 - [{{匂|にお}}い](term:term-sv-vocabulary-031-nioi) — odore; profumo; sentore
 - [{{新|あら}}た](term:term-sv-vocabulary-268-arata) — nuovo; fresco; originale
 - [ころがす](term:term-sv-vocabulary-014-korogasu) — far rotolare; rovesciare; far girare
@@ -44,23 +44,17 @@ conserva un valore preciso nella frase.
 ### [{{一応|いちおう}}](term:term-sv-vocabulary-385-ichiou) — per sicurezza; comunque; per il momento
 
 :::example_sentence
-jp: >-
-  ...ああ{{一応|いちおう}}{{言|い}}っておくがパルデアの{{大穴|おおあな}}およびエリアゼロは{{関係|かんけい}}{{者|しゃ}}{{以外|いがい}}{{立|た}}ち{{入|い}}り{{禁止|きんし}}だ{{宝探|たからさが}}しだウッヒョー！
-translation_it: >-
-  …Ah, te lo dico per sicurezza: il Grande Voragine di Paldea e l’Area Zero sono vietati a chi non è autorizzato. Caccia al tesoro, evviva!
+jp: "……ああ、{{一応|いちおう}}{{言|い}}っておくが、パルデアの{{大穴|おおあな}}およびエリアゼロは{{関係者|かんけいしゃ}}{{以外|いがい}}{{立|た}}ち{{入|い}}り{{禁止|きんし}}だ。"
+translation_it: "…Ah, lo dico per sicurezza: l’accesso a Parudea no Ōana e a Eria Zero è riservato agli autorizzati."
 :::
-
 **Uso:** Nel contesto indica «per sicurezza; comunque; per il momento».
 
 ### [うちら](term:term-sv-vocabulary-221-uchira) — noi, in registro colloquiale
 
 :::example_sentence
-jp: >-
-  すまんなうちらの{{大将|たいしょう}}たまにこうなってしまうんやだだっでぇ！
-translation_it: >-
-  Scusa, il nostro capo ogni tanto fa così, è proprio così!
+jp: "すまんな。うちらの{{大将|たいしょう}}、たまにこうなってしまうんや。"
+translation_it: "Scusa, il nostro capo ogni tanto si riduce così."
 :::
-
 **Uso:** Nel dialogo aggiunge il valore di «noi, in registro colloquiale».
 
 ### [そろえる](term:term-sv-vocabulary-393-soroeru) — raccogliere; riunire; mettere insieme
@@ -129,7 +123,7 @@ translation_it: >-
 
 **Uso:** Nel contesto indica «abbondante; copioso; ricco».
 
-### [そらとぶ](term:term-sv-vocabulary-043-soratobu) — volare nel cielo; nel gioco anche la mossa Volo
+### [そらとぶ](term:term-sv-vocabulary-043-soratobu) — volare nel cielo; in そらとぶタクシー, «taxi volante»
 
 :::example_sentence
 jp: >-
@@ -138,7 +132,7 @@ translation_it: >-
   Ho supplicato il Taxi Volante di venirmi a prendere. Se il professore è qui sotto, potevi chiedere aiuto a lui, no?
 :::
 
-**Uso:** L'azione espressa nel contesto è «volare nel cielo; nel gioco anche la mossa Volo».
+**Uso:** L'azione espressa nel contesto è «volare nel cielo; in そらとぶタクシー, «taxi volante»».
 
 ### [{{匂|にお}}い](term:term-sv-vocabulary-031-nioi) — odore; profumo; sentore
 
@@ -165,12 +159,9 @@ translation_it: >-
 ### [ころがす](term:term-sv-vocabulary-014-korogasu) — far rotolare; rovesciare; far girare
 
 :::example_sentence
-jp: >-
-  オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！
-translation_it: >-
-  Attenti a non scambiare Smoliv per Olive e a non farlo rotolare via!
+jp: "オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！"
+translation_it: "Non fate rotolare Minību scambiandolo per un’oliva!"
 :::
-
 **Uso:** L'azione espressa nel contesto è «far rotolare; rovesciare; far girare».
 
 ### [{{基本|きほん}}](term:term-sv-vocabulary-389-kihon) — base; fondamenti; in linea di massima

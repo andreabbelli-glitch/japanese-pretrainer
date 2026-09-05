@@ -22,10 +22,10 @@ ma cariche di conseguenze. Qualcuno richiama l'attenzione con
 [{{嫌|いや}}](term:term-ch-iya), un corpo torna cosciente e la lotta passa
 da colpi visibili a controllo, orecchie, cappelli e blocchi magici.
 
-La lettura utile non e' "che parola nuova vedo?", ma "che ruolo ha nella
-scena?". [{{事|こと}}](term:term-ch-b10-koto) non e' un oggetto che puoi
-toccare, [{{耳|みみ}}](term:term-ch-b10-mimi) e'
-corpo fisico, [{{意識|いしき}}](term:term-ch-b10-ishiki) e' coscienza, e
+La lettura utile non è "che parola nuova vedo?", ma "che ruolo ha nella
+scena?". [{{事|こと}}](term:term-ch-b10-koto) non è un oggetto che puoi
+toccare, [{{耳|みみ}}](term:term-ch-b10-mimi) è
+corpo fisico, [{{意識|いしき}}](term:term-ch-b10-ishiki) è coscienza, e
 [{{停止|ていし}}](term:term-ch-b10-teishi) dice che il movimento viene bloccato.
 
 ## Termini chiave
@@ -41,9 +41,9 @@ corpo fisico, [{{意識|いしき}}](term:term-ch-b10-ishiki) e' coscienza, e
 - [{{怒|おこ}}らせる](term:term-ch-b10-okoraseru) - far arrabbiare
 - [{{停止|ていし}}](term:term-ch-b10-teishi) - arresto, stop
 
-## Parole gia' familiari nella scena
+## Parole già familiari nella scena
 
-Il libro usa anche forme gia' familiari come {{嫌|いや}}, {{起|お}}きる,
+Il libro usa anche forme già familiari come {{嫌|いや}}, {{起|お}}きる,
 {{帽子|ぼうし}}, {{効|き}}く, {{壊|こわ}}す, {{怒|おこ}}る, {{降|お}}りる e
 {{終|お}}わる. Queste parole entrano in una scena di corpo, controllo e
 conseguenze invece di restare gloss isolate.
@@ -52,7 +52,7 @@ conseguenze invece di restare gloss isolate.
 
 ## 1. Richiamare o rifiutare: ほら e 嫌
 
-[ほら](term:term-ch-b10-hora) e' un colpo di gomito linguistico. Il parlante
+[ほら](term:term-ch-b10-hora) è un colpo di gomito linguistico. Il parlante
 porta l'attenzione dell'altro su qualcosa che dovrebbe vedere, capire o
 prendere in mano.
 
@@ -68,7 +68,7 @@ translation_it: >-
 *   `ほら` -> **richiamo**: il parlante spinge l'altro a guardare o a rendersi conto.
 *   `{{見|み}}て` -> **richiesta breve**: forma in て usata come "guarda".
 
-[{{嫌|いや}}](term:term-ch-iya) e' diverso da un semplice no neutro. Puo'
+[{{嫌|いや}}](term:term-ch-iya) è diverso da un semplice no neutro. Può
 essere rifiuto, fastidio, "non voglio" o "mi dispiace / mi fa schifo" secondo
 la scena.
 
@@ -81,13 +81,13 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`いいえ` risponde in modo piu' neutro. [{{嫌|いや}}](term:term-ch-iya)
-porta gia' dentro una reazione emotiva: rifiuto, repulsione o disagio.
+`いいえ` risponde in modo più neutro. [{{嫌|いや}}](term:term-ch-iya)
+porta già dentro una reazione emotiva: rifiuto, repulsione o disagio.
 
 ## 2. こと: una cosa che non si afferra
 
-[{{事|こと}}](term:term-ch-b10-koto) serve per "cosa" quando la cosa e' un
-fatto, una situazione o un'azione pensata. Non e' una spada, un cappello o un
+[{{事|こと}}](term:term-ch-b10-koto) serve per "cosa" quando la cosa è un
+fatto, una situazione o un'azione pensata. Non è una spada, un cappello o un
 cristallo.
 
 :::example_sentence
@@ -124,7 +124,7 @@ translation_it: >-
 *   `{{耳|みみ}}と{{尻尾|しっぽ}}が` -> **parti che entrano in primo piano**.
 *   `{{見|み}}える` -> **visibilita'**: non "guardo", ma "si vedono".
 
-[{{起|お}}きる](term:term-ch-b6-okiru) puo' essere alzarsi o svegliarsi. Con
+[{{起|お}}きる](term:term-ch-b6-okiru) può essere alzarsi o svegliarsi. Con
 [{{意識|いしき}}](term:term-ch-b10-ishiki), la scena non parla solo di postura:
 parla di tornare lucidi.
 
@@ -137,8 +137,8 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-{{起|お}}きる e' il verbo semplice. Quando il corpo era a terra e torna su,
-[{{起|お}}き{{上|あ}}がる](term:term-ch-b10-okiagaru) rende piu' chiaro il
+{{起|お}}きる è il verbo semplice. Quando il corpo era a terra e torna su,
+[{{起|お}}き{{上|あ}}がる](term:term-ch-b10-okiagaru) rende più chiaro il
 movimento di rialzarsi.
 
 :::example_sentence
@@ -150,8 +150,8 @@ translation_it: >-
 
 ## 4. Violenza, stop ed effetto
 
-[{{叩|たた}}きのめす](term:term-ch-b10-tatakinomesu) non e' solo
-"colpire". Il risultato e' mettere l'altro in condizioni di non reggere piu'.
+[{{叩|たた}}きのめす](term:term-ch-b10-tatakinomesu) non è solo
+"colpire". Il risultato è mettere l'altro in condizioni di non reggere più.
 
 :::example_sentence
 jp: >-
@@ -184,7 +184,7 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `この{{魔法|まほう}}は` -> **tema**: si parla della magia.
-*   `{{効|き}}く` -> **efficacia**: `効く` misura l'efficacia: la domanda e' se qualcosa produce effetto.
+*   `{{効|き}}く` -> **efficacia**: `効く` misura l'efficacia: la domanda è se qualcosa produce effetto.
 
 ## Esempi guidati di riepilogo
 
@@ -196,12 +196,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  {{嫌|いや}}だ。{{意識|いしき}}を{{取|と}}り{{戻|もど}}したい。
-translation_it: >-
-  No. Voglio riprendere conoscenza.
+jp: "{{早|はや}}く{{意識|いしき}}を{{取|と}}り{{戻|もど}}してほしい。"
+translation_it: "Vorrei che riprendesse presto conoscenza."
 :::
-
 :::example_sentence
 jp: >-
   {{帽子|ぼうし}}の{{魔法|まほう}}が{{効|き}}いて、{{奴隷|どれい}}たちが{{停止|ていし}}した。

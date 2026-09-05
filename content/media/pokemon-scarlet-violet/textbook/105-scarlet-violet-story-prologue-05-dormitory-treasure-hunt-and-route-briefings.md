@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-scarlet-violet-story-105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
 media_id: media-pokemon-scarlet-violet
 slug: 105-scarlet-violet-story-prologue-05-dormitory-treasure-hunt-and-route-briefings
-title: "Dal dormitorio al Treasure Hunt: la scuola apre Paldea"
+title: "Dal dormitorio al Treasure Hunt: la scuola apre Parudea"
 order: 150
 segment_ref: scarlet-violet-story
 difficulty: custom
@@ -14,19 +14,19 @@ summary: >-
   campus, Champion Rank, route e destinazione sulla mappa.
 ---
 
-# Dal dormitorio al Treasure Hunt: la scuola apre Paldea
+# Dal dormitorio al Treasure Hunt: la scuola apre Parudea
 
 Dopo la prima notte in accademia, *Pokémon Scarlet & Violet* cambia passo. Il
 [{{学生|がくせい}}{{寮|りょう}}](term:term-gakusei-ryou) chiude la parte protetta
 del campus; il raduno del giorno dopo trasforma la scuola in una porta aperta
-su Paldea. Il giapponese della scena non si limita a dire "vai dove vuoi":
+su Parudea. Il giapponese della scena non si limita a dire "vai dove vuoi":
 costruisce la libertà con parole scolastiche, definizioni parlate e istruzioni
 di mappa.
 
 Il filo è molto concreto: la
 [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) autorizza l'uscita, il
 [{{宝|たから}}{{探|さが}}し](term:term-takara-sagashi) allarga l'idea di tesoro,
-Nemi presenta il [チャンピオンランク](term:term-champion-rank) come una route
+Nemo presenta il [チャンピオンランク](term:term-champion-rank) come una route
 riconoscibile e lo [スマホロトム](term:term-smartphone-rotom) traduce il primo
 passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fissare.
 
@@ -58,7 +58,7 @@ passo in una [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) da fiss
 - [{{学生|がくせい}}{{寮|りょう}}](term:term-gakusei-ryou) — dormitorio studentesco, base di riposo del campus
 - [チャンピオンランク](term:term-champion-rank) — rango Campione riconosciuto dalla Lega
 - [ジムバッジ](term:term-gym-badge) — Medaglia Palestra, prova di avanzamento nella route palestre
-- [スマホロトム](term:term-smartphone-rotom) — Rotom Phone, interfaccia di mappa e navigazione
+- [スマホロトム](term:term-smartphone-rotom) — Sumaho Rotomu, interfaccia di mappa e navigazione
 
 ---
 
@@ -72,7 +72,7 @@ il gioco ti fa dormire lì, chiude il primo blocco di orientamento e prepara il
 momento in cui l'accademia smette di essere solo un edificio.
 
 - [{{学生|がくせい}}{{寮|りょう}}](term:term-gakusei-ryou) funziona come base narrativa: è il luogo sicuro in cui il protagonista entra davvero nella vita dell'accademia. Se lo leggi come semplice "camera", perdi il valore di passaggio: da qui il gioco può far partire un giorno nuovo, con regole nuove e scala più ampia.
-- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) è la parola che spiega perché l'uscita in Paldea resta una cosa scolastica. {{課外|かがい}} porta l'idea di "fuori dal corso o dal perimetro ordinario"; {{授業|じゅぎょう}} resta attività didattica. Insieme indicano un'attività svolta fuori dal campus: l'avventura viene autorizzata dalla scuola, non separata dalla scuola.
+- [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) è la parola che spiega perché l'uscita in Parudea resta una cosa scolastica. {{課外|かがい}} porta l'idea di "fuori dal corso o dal perimetro ordinario"; {{授業|じゅぎょう}} resta attività didattica. Insieme indicano un'attività svolta fuori dal campus: l'avventura viene autorizzata dalla scuola, non separata dalla scuola.
 
 :::example_sentence
 jp: >-
@@ -92,7 +92,7 @@ translation_it: >-
 
 [{{課外|かがい}}{{授業|じゅぎょう}}](term:term-kagai-jugyou) non va letto come un club
 opzionale o una commissione secondaria. Nel prologo è il nome istituzionale
-dell'uscita nel mondo: resta attività scolastica, ma il luogo diventa Paldea.
+dell'uscita nel mondo: resta attività scolastica, ma il luogo diventa Parudea.
 
 #### 🧠 Gancio cognitivo
 
@@ -155,16 +155,16 @@ spuntare in ordine. Se lo leggi come "prima palestre, poi aiuti, fine", perdi
 il senso open world della frase. Qui il giapponese sta dicendo che il Treasure
 Hunt contiene azioni di quel tipo, non soltanto quelle due.
 
-## 3. Champion Rank: Nemi trasforma la libertà in una route
+## 3. Champion Rank: Nemo trasforma la libertà in una route
 
-Nel briefing di Nemi, [チャンピオンランク](term:term-champion-rank) non è solo un
+Nel briefing di Nemo, [チャンピオンランク](term:term-champion-rank) non è solo un
 titolo vistoso in katakana. È una categoria del mondo di gioco che va spiegata
 al protagonista. La forma [～ってのは](grammar:grammar-tte-no-wa) segnala proprio
 questa spiegazione parlata: `チャンピオンランクってのは...` suona come "il
 Champion Rank sarebbe...".
 
 - [チャンピオンランク](term:term-champion-rank) unisce una parola inglese riconoscibile a ランク, ma nel dialogo non basta tradurlo come "rango". La cosa decisiva è il riconoscimento: è uno status conferito dalla Lega a Trainer forti, quindi una meta istituzionale, non un soprannome.
-- [ジムバッジ](term:term-gym-badge) dà corpo a quella meta. Il badge non è solo un oggetto da collezione: nella route palestre è la prova visibile che hai superato un passaggio e che ti stai avvicinando al rango spiegato da Nemi.
+- [ジムバッジ](term:term-gym-badge) dà corpo a quella meta. Il badge non è solo un oggetto da collezione: nella route palestre è la prova visibile che hai superato un passaggio e che ti stai avvicinando al rango spiegato da Nemo.
 - [{{目指|めざ}}す](term:term-mezasu) è il verbo che orienta tutto. {{目|め}} richiama l'occhio, {{指|さ}}す il puntare o indicare: come gancio visivo, puoi pensarlo come "puntare lo sguardo verso un obiettivo". Nel dialogo serve a trasformare il Champion Rank in qualcosa verso cui dirigere il viaggio.
 
 :::example_sentence
@@ -173,13 +173,13 @@ jp: >-
   {{強|つよ}}い トレーナーの ことだよ。
 translation_it: >-
   Il Champion Rank sarebbe il rango degli Allenatori forti riconosciuti dalla
-  Lega Pokémon.
+  Pokémon Rīgu.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `チャンピオンランクってのは` ➔ **Definizione colloquiale** (`ってのは` mette il termine a tema e apre una spiegazione a voce).
-*   `ポケモンリーグに {{認|みと}}められた` ➔ **Riconoscimento passivo** (`に` indica l'ente che riconosce: la Lega Pokémon).
+*   `ポケモンリーグに {{認|みと}}められた` ➔ **Riconoscimento passivo** (`に` indica l'ente che riconosce: la Pokémon Rīgu).
 *   `{{強|つよ}}い トレーナーの ことだよ` ➔ **Categoria definita** (`のこと` incornicia la spiegazione: non una persona specifica, ma il tipo di Allenatore riconosciuto).
 
 :::example_sentence
@@ -206,18 +206,18 @@ route.
 #### 🧠 Gancio cognitivo
 
 Per [{{目指|めざ}}す](term:term-mezasu), usa l'immagine dello sguardo che punta
-un bersaglio. È solo un aiuto di memoria, ma funziona bene nella scena: Nemi
+un bersaglio. È solo un aiuto di memoria, ma funziona bene nella scena: Nemo
 non sta nominando una meta astratta, sta indicando una direzione possibile per
 il tuo viaggio.
 
 :::image
 src: assets/story/nemona-champion-rank-briefing.webp
-alt: "Nemi spiega al protagonista il Champion Rank e la raccolta dei Gym Badge."
+alt: "Nemo spiega al protagonista il Champion Rank e la raccolta dei Gym Badge."
 caption: >-
-  Il ってのは di Nemi segnala una definizione parlata: [チャンピオンランク](term:term-champion-rank) diventa un obiettivo spiegabile, mentre i [ジムバッジ](term:term-gym-badge) mostrano quale prova concreta sostiene quella route.
+  Il ってのは di Nemo segnala una definizione parlata: [チャンピオンランク](term:term-champion-rank) diventa un obiettivo spiegabile, mentre i [ジムバッジ](term:term-gym-badge) mostrano quale prova concreta sostiene quella route.
 :::
 
-## 4. Smart Rotom: dalla libertà alla destinazione
+## 4. Sumaho Rotomu: dalla libertà alla destinazione
 
 Quando la scena passa allo [スマホロトム](term:term-smartphone-rotom), la libertà
 annunciata dal Treasure Hunt diventa gesto operativo. Non basta sapere che puoi
@@ -232,12 +232,12 @@ partire con una direzione leggibile.
 jp: >-
   スマホロトムの マップで {{目的|もくてき}}{{地|ち}}を {{登録|とうろく}}してみよう。
 translation_it: >-
-  Proviamo a registrare una destinazione sulla mappa del Rotom Phone.
+  Proviamo a registrare una destinazione sulla mappa del Sumaho Rotomu.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `スマホロトムの マップで` ➔ **Strumento e contesto** (`で` marca il luogo operativo: la mappa dentro lo Smart Rotom).
+*   `スマホロトムの マップで` ➔ **Strumento e contesto** (`で` marca il luogo operativo: la mappa dentro lo Sumaho Rotomu).
 *   `{{目的|もくてき}}{{地|ち}}を` ➔ **Oggetto dell'azione** (la destinazione è ciò che viene registrato).
 *   {{登録|とうろく}}してみよう ➔ **Tentativo guidato** ([～てみる](grammar:grammar-te-miru) in forma volitiva: "proviamo a registrare").
 
@@ -263,7 +263,7 @@ l'azione resta fatta e alleggerisce il passo successivo.
 
 :::image
 src: assets/ui/smart-rotom-map-destination.webp
-alt: "Mappa dello Smart Rotom con destinazione registrata prima dell'uscita nel mondo aperto."
+alt: "Mappa dello Sumaho Rotomu con destinazione registrata prima dell'uscita nel mondo aperto."
 caption: >-
   Sulla mappa dello [スマホロトム](term:term-smartphone-rotom), [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) non è una parola astratta: è il punto che rende praticabile la libertà appena annunciata dal briefing.
 :::
@@ -271,7 +271,7 @@ caption: >-
 ## Esempi guidati di riepilogo
 
 Le parole del briefing lavorano insieme: la scuola apre il percorso, il nome
-del Treasure Hunt lo allarga, Nemi propone una route e la mappa ti chiede di
+del Treasure Hunt lo allarga, Nemo propone una route e la mappa ti chiede di
 rendere concreta la prima scelta.
 
 :::example_sentence
@@ -321,4 +321,4 @@ e [ジムバッジ](term:term-gym-badge) danno una route concreta, mentre
 [{{目的|もくてき}}{{地|ち}}](term:term-mokutekichi) rende quella libertà una scelta
 sulla mappa. Quando riconosci definizione, correzione, elenco aperto e
 preparazione, il briefing smette di essere una cerimonia e diventa il primo
-manuale linguistico per iniziare Paldea.
+manuale linguistico per iniziare Parudea.

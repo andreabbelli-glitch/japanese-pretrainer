@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
-title: Legami, training e vita quotidiana a Paldea
+title: Legami, training e vita quotidiana a Parudea
 order: 102
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -11,10 +11,10 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-20]
 prerequisites: []
 summary: >-
   Leggere rapporti, training, urgenza, salute e vita quotidiana quando dialoghi
-  e menu collegano persone, scelte e routine a Paldea.
+  e menu collegano persone, scelte e routine a Parudea.
 ---
 
-# Legami, training e vita quotidiana a Paldea
+# Legami, training e vita quotidiana a Parudea
 
 In *Pokémon Scarlet & Violet* molte frasi non parlano solo di lotta. Parlano di
 gruppi che si proteggono, allenamenti prima di una prova, dubbi davanti a una
@@ -92,7 +92,7 @@ come parte del proprio cerchio oppure se le guarda da una certa distanza.
 jp: >-
   スター{{団|だん}}の {{同|どう}}{{胞|ほう}}たちを {{見|み}}{{捨|す}}てる わけには いかない！
 translation_it: >-
-  Non possiamo certo abbandonare i nostri compagni del Team Star!
+  Non possiamo certo abbandonare i nostri compagni del Sutā-dan!
 :::
 
 #### 🗺️ Anatomia della frase
@@ -146,7 +146,7 @@ sostituire la storia reale delle parole.
 
 ## 2. Allenamento, scelta e soglie in battaglia
 
-Dopo il legame viene la preparazione. Nei dialoghi di Paldea un allenatore può
+Dopo il legame viene la preparazione. Nei dialoghi di Parudea un allenatore può
 allenarsi in vista di una prova, bloccarsi davanti a una scelta di squadra,
 oppure leggere una soglia di PS come punto in cui la battaglia cambia ritmo.
 
@@ -258,7 +258,7 @@ perché ogni istante può cambiare l'esito.
 jp: >-
   ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
 translation_it: >-
-  Per aiutare il Pokémon di Pepe, abbiamo cercato le Spezie Segrete senza perdere un istante.
+  Per aiutare il Pokémon di Pepā, abbiamo cercato le Hiden Supaisu senza perdere un istante.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -280,7 +280,7 @@ ristretto.
 
 ## 4. Salute, scuola e giornate vissute con i Pokémon
 
-La vita scolastica di Paldea usa parole più tranquille, ma non meno precise.
+La vita scolastica di Parudea usa parole più tranquille, ma non meno precise.
 [{{保健|ほけん}}](term:term-anki-l20-hoken) può indicare salute pubblica,
 igiene o educazione sanitaria. Nell'Accademia entra sia come materia sia come
 luogo concreto: [{{保健|ほけん}}](term:term-anki-l20-hoken){{室|しつ}} è
@@ -314,7 +314,7 @@ luogo in cui questa vita quotidiana si svolge si marca normalmente con `で`.
 jp: >-
   パルデア{{地方|ちほう}}で ポケモンと {{暮|く}}らす まいにちは、{{新|あたら}}しい {{発見|はっけん}}で いっぱいだ。
 translation_it: >-
-  Ogni giorno vissuto con i Pokémon nella regione di Paldea è pieno di nuove scoperte.
+  Ogni giorno vissuto con i Pokémon nella regione di Parudea è pieno di nuove scoperte.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -332,7 +332,7 @@ translation_it: >-
 [{{保健|ほけん}}](term:term-anki-l20-hoken) organizza la cura e la salute;
 [{{暮|く}}らす](term:term-anki-l20-kurasu) organizza il modo in cui si vive nel
 tempo. Se traduci entrambi in modo troppo generico, perdi la differenza tra una
-scena di scuola o infermeria e una frase sulle giornate condivise a Paldea.
+scena di scuola o infermeria e una frase sulle giornate condivise a Parudea.
 
 ## Esempi guidati di riepilogo
 
@@ -352,7 +352,7 @@ translation_it: >-
 jp: >-
   {{特|とっ}}{{訓|くん}}を するか {{悩|なや}}んでいたら、{{突|とつ}}{{然|ぜん}} ネモが {{勝負|しょうぶ}}を {{申|もう}}し{{込|こ}}んできた。
 translation_it: >-
-  Mentre ero indeciso se fare un allenamento speciale, Nemi mi ha sfidato all'improvviso.
+  Mentre ero indeciso se fare un allenamento speciale, Nemo mi ha sfidato all'improvviso.
 :::
 
 :::example_sentence
@@ -366,7 +366,7 @@ translation_it: >-
 jp: >-
   パルデア{{地方|ちほう}}で ポケモンと {{暮|く}}らしていると、アカデミーの {{保健|ほけん}}{{室|しつ}}の {{世話|せわ}}に なることも ある。
 translation_it: >-
-  Vivendo con i Pokémon nella regione di Paldea, capita anche di finire sotto le cure dell'infermeria dell'Accademia.
+  Vivendo con i Pokémon nella regione di Parudea, capita anche di finire sotto le cure dell'infermeria dell'Accademia.
 :::
 
 ## Nota finale
@@ -380,5 +380,5 @@ decisione e soglia; [{{突|とつ}}{{然|ぜん}}](term:term-anki-l20-totsuzen) 
 [{{分|ふん}}{{秒|びょう}}](term:term-anki-l20-funbyou) cambiano il ritmo della
 scena; [{{保健|ほけん}}](term:term-anki-l20-hoken) e
 [{{暮|く}}らす](term:term-anki-l20-kurasu) riportano tutto nella vita quotidiana
-di Paldea. Quando riconosci questi blocchi, il testo non è più una lista di
+di Parudea. Quando riconosci questi blocchi, il testo non è più una lista di
 parole: diventa una mappa di relazioni, scelte e tempo in movimento.

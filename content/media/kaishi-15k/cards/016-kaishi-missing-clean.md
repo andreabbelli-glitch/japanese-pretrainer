@@ -58,15 +58,14 @@ entry_id: term-kaishi-1708637440662
 card_type: recognition
 front: '{{熱|ねつ}}'
 back: 'fever'
-example_jp: '{{昨日|きのう}}から{{熱|ねつ}}があります。'
-example_it: 'I have a fever since yesterday.'
+example_jp: "{{昨日|きのう}}から{{熱|ねつ}}があります。"
+example_it: "I’ve had a fever since yesterday."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440662-recognition/JLPT_Tango_N5_0946.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637440585
 lemma: '痛み'
@@ -208,7 +207,7 @@ entry_id: term-kaishi-1708637440646
 card_type: recognition
 front: '{{石|いし}}'
 back: 'stone, small rock'
-example_jp: '{{私|わたし}}は{{石|いし}}につまづいた。'
+example_jp: "{{私|わたし}}は{{石|いし}}につまずいた。"
 example_it: 'I tripped on a stone.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440646-recognition/d1c93a1df2faef00c0e668a9f7561138-e4ba20a3104e89f6d19e1ceb899231194f0eef5e.mp3'
 example_audio_source: kaishi

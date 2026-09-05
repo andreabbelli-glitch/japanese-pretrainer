@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-288-tte-quote-someone-colloquially
 entry_type: grammar
 entry_id: grammar-288-tte-quote-someone-colloquially
 card_type: concept
-front: "って"
+front: "って（citazione colloquiale）"
 back: >-
   Marcatore colloquiale di citazione
 example_jp: >-

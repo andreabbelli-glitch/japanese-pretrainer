@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-097-kotogaaru-2-reminisce-about-past
 entry_type: grammar
 entry_id: grammar-097-kotogaaru-2-reminisce-about-past
 card_type: concept
-front: "ことがある"
+front: "ことがある（V passato + ことがある）"
 back: >-
   Esprime un'esperienza avuta almeno una volta: «aver mai fatto»
 example_jp: >-

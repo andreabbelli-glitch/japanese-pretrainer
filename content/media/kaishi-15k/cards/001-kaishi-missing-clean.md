@@ -209,7 +209,7 @@ entry_id: term-kaishi-1708637441046
 card_type: recognition
 front: '{{最|もっと}}も'
 back: 'the most'
-example_jp: '{{彼|かれ}}は{{世|せ}}{{界|かい}}で{{最|もっと}}も{{早|はや}}い{{男|おとこ}}です。'
+example_jp: "{{彼|かれ}}は{{世界|せかい}}で{{最|もっと}}も{{速|はや}}い{{男|おとこ}}です。"
 example_it: 'He''s the fastest man in the world.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441046-recognition/1b7fa8f8d2c2c8e29232ffaca0651248.mp3'
 example_audio_source: kaishi
@@ -463,7 +463,7 @@ id: term-kaishi-1708637441227
 lemma: '言い訳'
 reading: 'いいわけ'
 romaji: 'iiwake'
-meaning_it: 'apology, excuse'
+meaning_it: "excuse; justification"
 aliases: ['いいわけ', '言い訳']
 audio_src: 'assets/audio/term/term-kaishi-1708637441227/53a2d6db86cb92f9443f4a6ef910b724.mp3'
 audio_source: kaishi
@@ -478,7 +478,7 @@ entry_type: term
 entry_id: term-kaishi-1708637441227
 card_type: recognition
 front: '{{言|い}}い{{訳|わけ}}'
-back: 'apology, excuse'
+back: "excuse; justification"
 example_jp: 'あなたは{{言|い}}い{{訳|わけ}}が{{多|おお}}すぎます。'
 example_it: 'You give too many excuses.'
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441227-recognition/a3c15ed7669dff34e3b6e2cebf3e46cb.mp3'

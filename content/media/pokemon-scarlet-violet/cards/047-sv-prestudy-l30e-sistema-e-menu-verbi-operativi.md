@@ -207,7 +207,7 @@ back: attività extrascolastica
 example_jp: >-
   {{課外活動|か.がい.かつ.どう}}で パルデアを {{旅|たび}}します。
 example_it: >-
-  Viaggio per Paldea durante l'attività extrascolastica.
+  Viaggio per Parudea durante l'attività extrascolastica.
 :::
 :::term
 id: term-v664-matomeuri

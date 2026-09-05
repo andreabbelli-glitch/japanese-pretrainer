@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-27
 media_id: media-pokemon-scarlet-violet
 slug: 132-sv-vocabulary-distance-27
-title: 'Parole per leggere Paldea — ventisette'
+title: 'Parole per leggere Parudea — ventisette'
 order: 177
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — ventisette
+# Parole per leggere Parudea — ventisette
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -32,7 +32,7 @@ conserva un valore preciso nella frase.
 - [{{解決|かいけつ}}](term:term-sv-vocabulary-372-kaiketsu) — soluzione; risoluzione
 - [ロマン](term:term-sv-vocabulary-378-roman) — fascino avventuroso; sogno romantico; grande impresa
 - [{{栄養|えいよう}}](term:term-sv-vocabulary-089-eiyou) — nutrizione; sostentamento
-- [ヤダ](term:term-sv-vocabulary-285-yada) — nemmeno per sogno; improbabile; assolutamente no
+- [ヤダ](term:term-sv-vocabulary-285-yada) — no!; non voglio!; nemmeno per sogno!
 - [{{木簡|もっかん}}](term:term-sv-vocabulary-022-mokkan) — tavoletta di legno usata per scrivere
 - [ピカピカ](term:term-sv-vocabulary-345-pikapika) — con un luccichio; con uno scintillio; nuovo di zecca
 - [{{文字|もじ}}](term:term-sv-vocabulary-131-moji) — lettera (dell’alfabeto); carattere; scrittura
@@ -162,7 +162,7 @@ translation_it: >-
 
 **Uso:** Nel contesto indica «nutrizione; sostentamento».
 
-### [ヤダ](term:term-sv-vocabulary-285-yada) — nemmeno per sogno; improbabile; assolutamente no
+### [ヤダ](term:term-sv-vocabulary-285-yada) — no!; non voglio!; nemmeno per sogno!
 
 :::example_sentence
 jp: >-
@@ -171,7 +171,7 @@ translation_it: >-
   No! Non voglio andare in un posto così pericoloso.
 :::
 
-**Uso:** Nel dialogo aggiunge il valore di «nemmeno per sogno; improbabile; assolutamente no».
+**Uso:** Nel dialogo aggiunge il valore di «no!; non voglio!; nemmeno per sogno!».
 
 ### [{{木簡|もっかん}}](term:term-sv-vocabulary-022-mokkan) — tavoletta di legno usata per scrivere
 

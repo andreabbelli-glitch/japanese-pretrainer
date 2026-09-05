@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-287-to-quote-someone
 entry_type: grammar
 entry_id: grammar-287-to-quote-someone
 card_type: concept
-front: "と"
+front: "と（citazione）"
 back: >-
   Marca parole, pensieri, testi o modi riprodotti come citazione
 example_jp: >-

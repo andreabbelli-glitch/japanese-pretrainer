@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-013-sv-prestudy-l04-reazioni-e-parlato-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 013-sv-prestudy-l04-reazioni-e-parlato-scarlet-violet
-title: "Conferme e slancio nel parlato di Paldea"
+title: "Conferme e slancio nel parlato di Parudea"
 order: 43
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,9 +19,9 @@ summary: >-
   decide se fermarsi, procedere o andare avanti.
 ---
 
-# Conferme e slancio nel parlato di Paldea
+# Conferme e slancio nel parlato di Parudea
 
-Nelle prime ore di *Pokémon Scarlet & Violet*, una battuta breve può decidere se la scena resta in pausa o si rimette in movimento. Un personaggio controlla che vada tutto bene, Nemi spinge verso il prossimo incontro, Arven porta il dialogo sul percorso dei Pokémon dominanti, e il gioco usa formule compatte per trasformare una reazione in azione.
+Nelle prime ore di *Pokémon Scarlet & Violet*, una battuta breve può decidere se la scena resta in pausa o si rimette in movimento. Un personaggio controlla che vada tutto bene, Nemo spinge verso il prossimo incontro, Pepā porta il dialogo sul percorso dei Pokémon dominanti, e il gioco usa formule compatte per trasformare una reazione in azione.
 
 Il giapponese di questi scambi non è fatto solo di grandi istruzioni. Spesso bastano [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu), [じゃあ](term:term-e008-jaa), [{{行|い}}こう](term:term-e009-iko-u), [～{{前|まえ}}に](grammar:grammar-g010-prima-di) e [～たい](grammar:grammar-g011-voler-fare) per capire chi sta rassicurando, chi sta proponendo di partire, quale azione deve venire prima e quale desiderio sta guidando il personaggio.
 
@@ -49,8 +49,8 @@ Il giapponese di questi scambi non è fatto solo di grandi istruzioni. Spesso ba
 ## Etichette da riconoscere
 
 - [ジムテスト](term:term-v038-jimutesuto) — prova preliminare della palestra
-- [ネモ](term:term-v044-nemo) — Nemi
-- [ペパー](term:term-v048-pepaa) — Arven
+- [ネモ](term:term-v044-nemo) — Nemo
+- [ペパー](term:term-v048-pepaa) — Pepā
 
 ---
 
@@ -83,13 +83,13 @@ translation_it: >-
 
 #### 🧠 Gancio cognitivo
 
-Pensa a [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) come a un semaforo verde del dialogo: `大丈夫` funziona come semaforo verde del dialogo: la situazione e' a posto. È un'immagine mnemonica, non un'etimologia.
+Pensa a [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) come a un semaforo verde del dialogo: `大丈夫` funziona come semaforo verde del dialogo: la situazione è a posto. È un'immagine mnemonica, non un'etimologia.
 
 ## 2. Dal controllo al movimento: allora, andiamo
 
 Dopo una conferma, il parlato di *Scarlet & Violet* passa spesso all'azione con [じゃあ](term:term-e008-jaa). È il ponte tra "ho capito la situazione" e "facciamo la prossima cosa": in italiano può diventare "allora", "in tal caso", "bene, quindi". Non porta da solo il contenuto dell'azione; prepara il terreno per il verbo che segue.
 
-[{{行|い}}こう](term:term-e009-iko-u) è quel verbo in forma volitiva: viene da {{行|い}}く, "andare", e la forma ～こう lo trasforma in un invito condiviso, "andiamo". Non è un ordine secco; è una spinta a muoversi insieme, molto naturale nelle battute di Nemi quando il dialogo vuole riprendere ritmo.
+[{{行|い}}こう](term:term-e009-iko-u) è quel verbo in forma volitiva: viene da {{行|い}}く, "andare", e la forma ～こう lo trasforma in un invito condiviso, "andiamo". Non è un ordine secco; è una spinta a muoversi insieme, molto naturale nelle battute di Nemo quando il dialogo vuole riprendere ritmo.
 
 :::example_sentence
 jp: >-
@@ -101,21 +101,21 @@ translation_it: >-
 #### 🗺️ Anatomia della frase
 
 *   `じゃあ` ➔ **Cerniera discorsiva**: prende ciò che è appena stato deciso o confermato e apre il passo successivo.
-*   `{{行|い}}こう` ➔ **Volitivo inclusivo**: `行こう` e' un volitivo inclusivo: il parlante propone di muoversi insieme.
+*   `{{行|い}}こう` ➔ **Volitivo inclusivo**: `行こう` è un volitivo inclusivo: il parlante propone di muoversi insieme.
 
-La stessa forma diventa più calda quando entra una relazione personale. [{{友達|ともだち}}](term:term-v046-tomodachi) è l'amico o il compagno, Nelle battaglie amichevoli, il focus e' il tono vivace con cui il personaggio vive la scena.
+La stessa forma diventa più calda quando entra una relazione personale. [{{友達|ともだち}}](term:term-v046-tomodachi) è l'amico o il compagno, Nelle battaglie amichevoli, il focus è il tono vivace con cui il personaggio vive la scena.
 
 :::example_sentence
 jp: >-
   ネモとの バトルは {{楽|たの}}しいです。
 translation_it: >-
-  La lotta con Nemi è divertente.
+  La lotta con Nemo è divertente.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `ネモとの` ➔ **Relazione con un nome proprio**: `と` indica "con", `の` aggancia quel rapporto al nome successivo.
-*   `バトルは` ➔ **Tema della frase**: `は` dice che la frase sta parlando della lotta, non di Nemi in generale.
+*   `バトルは` ➔ **Tema della frase**: `は` dice che la frase sta parlando della lotta, non di Nemo in generale.
 *   `{{楽|たの}}しいです` ➔ **Giudizio positivo cortese**: aggettivo in `い` più `です`, naturale per descrivere un'esperienza in modo semplice.
 
 #### ⚖️ Contrasto operativo
@@ -133,21 +133,22 @@ Il pattern cambia leggermente in base a ciò che viene prima:
 Con un verbo, usi la forma del dizionario: {{行|い}}く {{前|まえ}}に significa "prima di andare". Il verbo non è ancora avvenuto; [～{{前|まえ}}に](grammar:grammar-g010-prima-di) lo mette come punto futuro e apre lo spazio per un'azione preparatoria.
 
 :::example_sentence
-jp: >-
-  {{行|い}}く {{前|まえ}}に、 {{大丈夫|だいじょうぶ}}ですか。
-translation_it: >-
-  Prima di andare, va bene?
+jp: "{{行|い}}く{{前|まえ}}に、{{道具|どうぐ}}を{{確認|かくにん}}しよう。"
+translation_it: "Prima di andare, controlliamo gli strumenti."
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `{{行|い}}く` ➔ **Verbo in forma del dizionario**: l'azione "andare" è nominata prima di essere compiuta.
-*   `{{前|まえ}}に` ➔ **Cornice temporale**: marca il momento precedente all'azione principale.
-*   `{{大丈夫|だいじょうぶ}}ですか` ➔ **Controllo cortese**: `か` trasforma la rassicurazione in domanda, quindi la scena si ferma un istante prima di procedere.
+- `{{行|い}}く` è in forma del dizionario: nomina l'azione di andare.
+- `{{行|い}}く{{前|まえ}}に` colloca il controllo prima di quella partenza.
+- `{{道具|どうぐ}}を{{確認|かくにん}}しよう` propone di controllare gli strumenti:
+  `を` marca l'oggetto e `しよう` è il volitivo di `する`.
 
-### B. Nome + `の {{前|まえ}}に`
+### B. Nome + `の{{前|まえ}}に`
 
-Con un nome, entra の: ジムテストの {{前|まえ}}に è "prima del Gym Test". Questo dettaglio è importante perché la prova diventa un evento nominale, non un verbo. Lo stesso schema può agganciare [{{写真|しゃしん}}](term:term-v043-shashin) se la scena prepara uno scatto prima di un incontro o di una partenza.
+Con un nome serve `の`: ジムテストの{{前|まえ}}に è «prima del Jimu Tesuto».
+La prova è un evento espresso da un nome. Lo stesso schema può agganciare
+[{{写真|しゃしん}}](term:term-v043-shashin) quando la scena prepara qualcosa
+prima di una fotografia.
 
 :::example_sentence
 jp: >-
@@ -187,7 +188,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{行|い}}こう](term:term-e009-iko-u) spinge il gruppo: "andiamo". {{行|い}}きたい espone una volontà: "voglio andare". Se Nemi dice una forma volitiva, senti l'invito all'azione; se un personaggio usa [～たい](grammar:grammar-g011-voler-fare), leggi prima il desiderio o l'intenzione che muove la frase.
+[{{行|い}}こう](term:term-e009-iko-u) spinge il gruppo: "andiamo". {{行|い}}きたい espone una volontà: "voglio andare". Se Nemo dice una forma volitiva, senti l'invito all'azione; se un personaggio usa [～たい](grammar:grammar-g011-voler-fare), leggi prima il desiderio o l'intenzione che muove la frase.
 
 #### 🧠 Gancio cognitivo
 
@@ -224,11 +225,11 @@ translation_it: >-
 jp: >-
   ネモとの バトルは {{楽|たの}}しいから、 もっと {{先|さき}}へ {{行|い}}きたい。
 translation_it: >-
-  La lotta con Nemi è divertente, quindi voglio andare ancora più avanti.
+  La lotta con Nemo è divertente, quindi voglio andare ancora più avanti.
 :::
 
 ---
 
 ## Nota finale
 
-Nel parlato di Paldea, le parole brevi fanno avanzare la scena. [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) controlla se si può procedere, [じゃあ](term:term-e008-jaa) apre il passo successivo, [{{行|い}}こう](term:term-e009-iko-u) invita a muoversi insieme, [～{{前|まえ}}に](grammar:grammar-g010-prima-di) mette ordine tra gli eventi e [～たい](grammar:grammar-g011-voler-fare) mostra la volontà che tira il personaggio verso [{{先|さき}}](term:term-v049-saki). Quando li incontri vicino a [ネモ](term:term-v044-nemo), [ペパー](term:term-v048-pepaa) o [ジムテスト](term:term-v038-jimutesuto), leggi prima che funzione stanno svolgendo nella scena: rassicurare, proporre, preparare o desiderare.
+Nel parlato di Parudea, le parole brevi fanno avanzare la scena. [{{大丈夫|だいじょうぶ}}](term:term-v039-daijoubu) controlla se si può procedere, [じゃあ](term:term-e008-jaa) apre il passo successivo, [{{行|い}}こう](term:term-e009-iko-u) invita a muoversi insieme, [～{{前|まえ}}に](grammar:grammar-g010-prima-di) mette ordine tra gli eventi e [～たい](grammar:grammar-g011-voler-fare) mostra la volontà che tira il personaggio verso [{{先|さき}}](term:term-v049-saki). Quando li incontri vicino a [ネモ](term:term-v044-nemo), [ペパー](term:term-v048-pepaa) o [ジムテスト](term:term-v038-jimutesuto), leggi prima che funzione stanno svolgendo nella scena: rassicurare, proporre, preparare o desiderare.

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-19
 media_id: media-pokemon-scarlet-violet
 slug: 124-sv-vocabulary-distance-19
-title: 'Parole per leggere Paldea — diciannove'
+title: 'Parole per leggere Parudea — diciannove'
 order: 169
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — diciannove
+# Parole per leggere Parudea — diciannove
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -91,7 +91,7 @@ translation_it: >-
 jp: >-
   ヤミカラスって{{夜行|やこう}}{{性|せい}}なのに{{昼|ひる}}でも{{生物|せいぶつ}}{{室|しつ}}にいるらしいどっかに{{隠|かく}}れてるのかな？
 translation_it: >-
-  Murkrow è notturno, eppure pare che resti nell'aula di biologia anche di giorno. Forse si nasconde da qualche parte?
+  Yamikarasu è notturno, eppure pare che resti nell'aula di biologia anche di giorno. Forse si nasconde da qualche parte?
 :::
 
 **Uso:** L'azione espressa nel contesto è «nascondersi; celarsi; mettersi al riparo».
@@ -102,7 +102,7 @@ translation_it: >-
 jp: >-
   こまったときはポケモンセンター！
 translation_it: >-
-  Quando sei nei guai, vai al Centro Pokémon!
+  Quando sei nei guai, vai al Pokémon Sentā!
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «essere nei guai; trovarsi in difficoltà; che problema».
@@ -113,7 +113,7 @@ translation_it: >-
 jp: >-
   テラスタルの{{結晶|けっしょう}}は{{六角形|ろっかっけい}}に{{見|み}}える。
 translation_it: >-
-  Il cristallo Teracristal sembra avere forma esagonale.
+  Il cristallo Terasutaru sembra avere forma esagonale.
 :::
 
 **Uso:** Nel contesto indica «esagono».
@@ -124,7 +124,7 @@ translation_it: >-
 jp: >-
   オレのスターモービル{{壊|こわ}}すとか！
 translation_it: >-
-  Come osi rompere la mia Starmobile!
+  Come osi rompere la mia Sutāmobīru!
 :::
 
 **Uso:** L'azione espressa nel contesto è «rompere; distruggere; demolire».

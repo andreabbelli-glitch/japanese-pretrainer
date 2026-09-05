@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-042-suru-turn-nouns-into-verbs
 entry_type: grammar
 entry_id: grammar-042-suru-turn-nouns-into-verbs
 card_type: concept
-front: "する"
+front: "する（nome verbale + する）"
 back: >-
   Nome verbale + (を)する esprime «fare quell'attività».
 example_jp: >-

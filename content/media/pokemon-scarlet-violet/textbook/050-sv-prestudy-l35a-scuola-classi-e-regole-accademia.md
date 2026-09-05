@@ -160,7 +160,7 @@ registro scolastico cambia la distanza.
 jp: >-
   バトル{{学|がく}}{{担当|たんとう}}は キハダ{{先生|せんせい}}だ。
 translation_it: >-
-  La docente responsabile della classe di lotta è la professoressa Dendra.
+  La docente responsabile della classe di lotta è la professoressa Kihada.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -170,7 +170,7 @@ translation_it: >-
 *   `{{担当|たんとう}}は` ➔ **Ruolo come tema** (`は` mette al centro la persona
     responsabile di quell'ambito).
 *   `キハダ{{先生|せんせい}}だ` ➔ **Identificazione** (il `だ` chiude la frase
-    collegando il ruolo alla professoressa Dendra).
+    collegando il ruolo alla professoressa Kihada).
 
 :::example_sentence
 jp: >-
@@ -314,7 +314,7 @@ jp: >-
   パルデアの {{大穴|おおあな}}への {{立|た}}ち{{入|い}}りは
   {{危|あぶ}}ないので {{校則|こうそく}}{{違反|いはん}}です。
 translation_it: >-
-  Entrare nel Grande Cratere di Paldea è pericoloso, quindi viola il
+  Entrare nel Parudea no Ōana di Parudea è pericoloso, quindi viola il
   regolamento scolastico.
 :::
 
@@ -367,15 +367,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  {{学籍|がくせき}}{{番号|ばんごう}}で {{呼|よ}}ばれると、
-  {{授業中|じゅぎょうちゅう}}の {{敬語|けいご}}っぽい {{空気|くうき}}に
-  なる。
-translation_it: >-
-  Quando vieni chiamato con il numero di matricola, l'atmosfera diventa quella
-  del linguaggio cortese da aula.
+jp: "{{授業中|じゅぎょうちゅう}}、{{先生|せんせい}}に{{名前|なまえ}}を{{呼|よ}}ばれたので、{{敬語|けいご}}で{{返事|へんじ}}をした。"
+translation_it: "Durante la lezione il professore mi ha chiamato per nome e ho risposto in modo cortese."
 :::
-
 :::example_sentence
 jp: >-
   {{始業|しぎょう}}{{時間|じかん}}が {{近|ちか}}いので、

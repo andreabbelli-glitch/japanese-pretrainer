@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-019-direct-object-particle-wo
 entry_type: grammar
 entry_id: grammar-019-direct-object-particle-wo
 card_type: concept
-front: "を"
+front: "を（oggetto diretto）"
 back: >-
   Nome + を marca l'oggetto diretto del verbo.
 example_jp: >-

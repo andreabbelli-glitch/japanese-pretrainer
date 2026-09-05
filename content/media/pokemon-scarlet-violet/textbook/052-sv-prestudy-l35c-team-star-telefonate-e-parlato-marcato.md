@@ -15,14 +15,14 @@ tags:
 - lesson-35
 prerequisites: []
 summary: >-
-  Capire Team Star, telefonate e parlato marcato: riconoscere intrusione,
+  Capire Sutā-dan, telefonate e parlato marcato: riconoscere intrusione,
   controllo, tono brusco e richieste operative nelle scene di contatto.
 ---
 
 # Telefonate, identità nascoste e parlato marcato
 
-Nel filone Team Star, *Pokémon Scarlet & Violet* cambia il modo in cui una
-conversazione comincia. Il Rotom Phone passa da telefono comodo a canale
+Nel filone Sutā-dan, *Pokémon Scarlet & Violet* cambia il modo in cui una
+conversazione comincia. Il Sumaho Rotomu passa da telefono comodo a canale
 forzato, controllato da una voce che sa già dove ti trovi e che cosa stai
 facendo.
 
@@ -55,7 +55,7 @@ e [オマエ](term:term-v765-omae) ha una distanza molto diversa da キミ o あ
 
 ## Etichette da riconoscere
 
-- [カシオペア](term:term-v764-kashiopea) — Cassiopeia, identità usata nella chiamata
+- [カシオペア](term:term-v764-kashiopea) — Kashiopea, identità usata nella chiamata
 
 ---
 
@@ -144,7 +144,7 @@ presentarsi, quanto rivelare e quanto tenere l'interlocutore a distanza.
 jp: >-
   わたしの {{名|な}}は カシオペア。
 translation_it: >-
-  Il mio nome è Cassiopeia.
+  Il mio nome è Kashiopea.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -191,7 +191,7 @@ translation_it: >-
 
 ## 3. Responsabilità e continuità della cura
 
-Le telefonate del filone Team Star non servono solo a creare mistero. Spesso
+Le telefonate del filone Sutā-dan non servono solo a creare mistero. Spesso
 spostano un incarico su di te: gestire una situazione, continuare a proteggere
 un Pokémon, accettare che una responsabilità resti aperta dopo la scena.
 
@@ -261,7 +261,7 @@ Molte battute non dicono la verità in modo frontale. Propongono un'impressione,
 formulano un'ipotesi o negano un'intenzione prima di arrivare alla richiesta.
 Queste forme sono piccole, ma cambiano quanto il parlante si sta esponendo.
 
-`っぽい` comunica somiglianza o impressione: ha l'aria di Cyclizar. È perfetto per somiglianze visive, atteggiamenti o atmosfere che
+`っぽい` comunica somiglianza o impressione: ha l'aria di Mototokage. È perfetto per somiglianze visive, atteggiamenti o atmosfere che
     il personaggio percepisce senza dichiarare una certezza.
 *   [～んじゃない？](grammar:grammar-g113-non-e-che-non-sara-che) trasforma una
     lettura della situazione in ipotesi condivisibile. Il `ん` porta dentro una
@@ -277,7 +277,7 @@ jp: >-
   モトトカゲっぽい {{姿|すがた}}だけど、 {{正体|しょうたい}}は
   {{別|べつ}}なんじゃない？
 translation_it: >-
-  Ha un aspetto da Cyclizar, ma non sarà che la sua vera identità è un'altra?
+  Ha un aspetto da Mototokage, ma non sarà che la sua vera identità è un'altra?
 :::
 
 #### 🗺️ Anatomia della frase
@@ -377,7 +377,7 @@ jp: >-
   カシオペアと {{名乗|なの}}る {{人物|じんぶつ}}が スマホを ハッキングして
   {{通話|つうわ}}している。
 translation_it: >-
-  Una persona che si presenta come Cassiopeia sta chiamando dopo aver hackerato lo smartphone.
+  Una persona che si presenta come Kashiopea sta chiamando dopo aver hackerato lo smartphone.
 :::
 
 :::example_sentence
@@ -406,7 +406,7 @@ translation_it: >-
 
 ## Nota finale
 
-Nel filone Team Star, le telefonate non sono mai solo dialoghi a distanza.
+Nel filone Sutā-dan, le telefonate non sono mai solo dialoghi a distanza.
 [ハッキング](term:term-v762-hakkingu) e
 [{{監視|かんし}}カメラ](term:term-v763-kanshikamera) costruiscono il controllo,
 [カシオペア](term:term-v764-kashiopea) e

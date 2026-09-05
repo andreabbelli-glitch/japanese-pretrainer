@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-269-2-dont-do-x
 entry_type: grammar
 entry_id: grammar-269-2-dont-do-x
 card_type: concept
-front: "ないで"
+front: "ないで（richiesta: ～ないで）"
 back: >-
   Richiesta negativa: «non fare…»
 example_jp: >-

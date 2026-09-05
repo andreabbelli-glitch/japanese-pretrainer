@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
 media_id: media-pokemon-scarlet-violet
 slug: 070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
-title: "Motivazione, Area Zero e comprensione: parlato formale, prove e leggende"
+title: "Motivazione, Eria Zero e comprensione: parlato formale, prove e leggende"
 order: 100
 segment_ref: scarlet-violet-prestudy
 ---
@@ -23,7 +23,7 @@ reading: やるき
 romaji: yaruki
 meaning_it: motivazione; voglia di fare
 notes_it: >-
-  Rispetto a un generico 'interesse', やる{{気|き}} indica una disposizione immediata ed energica all'azione. È una parola comunemente usata dagli allenatori, dal Capopalestra o da Nemi prima e dopo una sfida intensa.
+  Rispetto a un generico 'interesse', やる{{気|き}} indica una disposizione immediata ed energica all'azione. È una parola comunemente usata dagli allenatori, dal Capopalestra o da Nemo prima e dopo una sfida intensa.
 level_hint: custom
 :::
 :::term
@@ -33,7 +33,7 @@ reading: こわれる
 romaji: kowareru
 meaning_it: rompersi
 notes_it: >-
-  Come verbo intransitivo ({{自|じ}}{{動|どう}}{{詞|し}}), pone l'attenzione sul risultato e sullo stato della rottura, ignorando chi ne sia la causa attiva. Si usa per descrivere scenari ambientali bloccati, dispositivi malfunzionanti o barriere fisiche danneggiate a Paldea.
+  Come verbo intransitivo ({{自|じ}}{{動|どう}}{{詞|し}}), pone l'attenzione sul risultato e sullo stato della rottura, ignorando chi ne sia la causa attiva. Si usa per descrivere scenari ambientali bloccati, dispositivi malfunzionanti o barriere fisiche danneggiate a Parudea.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: らくえん
 romaji: rakuen
 meaning_it: paradiso
 notes_it: >-
-  Nel contesto dell'Area Zero, il termine ha un peso narrativo e malinconico:
+  Nel contesto dell'Eria Zero, il termine ha un peso narrativo e malinconico:
   indica un luogo ideale, incorrotto e promesso alle creature che lo abitano.
 level_hint: custom
 :::
@@ -64,7 +64,7 @@ reading: きょうみぶかい
 romaji: kyoumibukai
 meaning_it: molto interessante
 notes_it: >-
-  A differenza del generico {{面|おも}}{{白|しろ}}い (divertente, interessante), {{興|きょう}}{{味|み}}{{深|ぶか}}い esprime un interesse accademico, investigativo e maturo. È il termine ideale per storici, professori (come Raifort) che studiano le leggende, le rovine e l'ecosistema della regione.
+  A differenza del generico {{面|おも}}{{白|しろ}}い (divertente, interessante), {{興|きょう}}{{味|み}}{{深|ぶか}}い esprime un interesse accademico, investigativo e maturo. È il termine ideale per storici, professori (come Rehōru) che studiano le leggende, le rovine e l'ecosistema della regione.
 level_hint: custom
 :::
 :::term
@@ -84,7 +84,7 @@ reading: ひかる
 romaji: hikaru
 meaning_it: brillare
 notes_it: >-
-  Segnala l'emissione istantanea o continua di un bagliore. È essenziale nella meccanica del fenomeno Teracristal o di strumenti speciali, dove la luce manifestata da {{光|ひか}}る precede o accompagna un mutamento di stato energetico.
+  Segnala l'emissione istantanea o continua di un bagliore. È essenziale nella meccanica del fenomeno Terasutaru o di strumenti speciali, dove la luce manifestata da {{光|ひか}}る precede o accompagna un mutamento di stato energetico.
 level_hint: custom
 :::
 :::term
@@ -94,7 +94,7 @@ reading: ごうかくしゃ
 romaji: goukakusha
 meaning_it: persona promossa/ammessa
 notes_it: >-
-  Il suffisso {{者|もの}} (sha) eleva il termine da un semplice risultato personale a uno status istituzionale. Identifica un gruppo riconosciuto (promossi, ammessi a un'area) ed è usato dallo staff della Lega Pokémon per concedere l'accesso agli step successivi.
+  Il suffisso {{者|もの}} (sha) eleva il termine da un semplice risultato personale a uno status istituzionale. Identifica un gruppo riconosciuto (promossi, ammessi a un'area) ed è usato dallo staff della Pokémon Rīgu per concedere l'accesso agli step successivi.
 level_hint: custom
 :::
 :::term
@@ -129,7 +129,7 @@ back: >-
 example_jp: >-
   エリアゼロの ことを ご{{存|ぞん}}{{知|じ}}ですか。
 example_it: >-
-  Conosce l'Area Zero?
+  Conosce l'Eria Zero?
 notes_it: >-
   Non si usa MAI per parlare di se stessi, ma solo per innalzare il soggetto della frase. L'espressione ご{{存|ぞん}}{{知|じ}}ですか eleva il livello di cortesia, tipico delle interazioni formali con i professori e il preside dell'Accademia.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
@@ -148,7 +148,7 @@ example_jp: >-
 example_it: >-
   Mi è venuta voglia di impegnarmi per il test della palestra!
 notes_it: >-
-  Rispetto a un generico 'interesse', やる{{気|き}} indica una disposizione immediata ed energica all'azione. È una parola comunemente usata dagli allenatori, dal Capopalestra o da Nemi prima e dopo una sfida intensa.
+  Rispetto a un generico 'interesse', やる{{気|き}} indica una disposizione immediata ed energica all'azione. È una parola comunemente usata dagli allenatori, dal Capopalestra o da Nemo prima e dopo una sfida intensa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -165,7 +165,7 @@ example_jp: >-
 example_it: >-
   Questa recinzione potrebbe rompersi da un momento all'altro.
 notes_it: >-
-  Come verbo intransitivo ({{自|じ}}{{動|どう}}{{詞|し}}), pone l'attenzione sul risultato e sullo stato della rottura, ignorando chi ne sia la causa attiva. Si usa per descrivere scenari ambientali bloccati, dispositivi malfunzionanti o barriere fisiche danneggiate a Paldea.
+  Come verbo intransitivo ({{自|じ}}{{動|どう}}{{詞|し}}), pone l'attenzione sul risultato e sullo stato della rottura, ignorando chi ne sia la causa attiva. Si usa per descrivere scenari ambientali bloccati, dispositivi malfunzionanti o barriere fisiche danneggiate a Parudea.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -182,7 +182,7 @@ example_jp: >-
 example_it: >-
   Questo posto è un paradiso per i Pokémon.
 notes_it: >-
-  Nel contesto dell'Area Zero, il termine ha un peso narrativo e malinconico. `楽園` porta un peso narrativo: luogo ideale, promesso e incorrotto.
+  Nel contesto dell'Eria Zero, il termine ha un peso narrativo e malinconico. `楽園` porta un peso narrativo: luogo ideale, promesso e incorrotto.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -214,9 +214,9 @@ back: >-
 example_jp: >-
   パルデアの {{伝|でん}}{{承|しょう}}は とても {{興|きょう}}{{味|み}}{{深|ぶか}}い ね。
 example_it: >-
-  Il folklore di Paldea è davvero affascinante, vero?
+  Il folklore di Parudea è davvero affascinante, vero?
 notes_it: >-
-  A differenza del generico {{面|おも}}{{白|しろ}}い (divertente, interessante), {{興|きょう}}{{味|み}}{{深|ぶか}}い esprime un interesse accademico, investigativo e maturo. È il termine ideale per storici, professori (come Raifort) che studiano le leggende, le rovine e l'ecosistema della regione.
+  A differenza del generico {{面|おも}}{{白|しろ}}い (divertente, interessante), {{興|きょう}}{{味|み}}{{深|ぶか}}い esprime un interesse accademico, investigativo e maturo. È il termine ideale per storici, professori (come Rehōru) che studiano le leggende, le rovine e l'ecosistema della regione.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -250,7 +250,7 @@ example_jp: >-
 example_it: >-
   Quando teracristallizzi, la sfera brilla.
 notes_it: >-
-  Segnala l'emissione istantanea o continua di un bagliore. È essenziale nella meccanica del fenomeno Teracristal o di strumenti speciali, dove la luce manifestata da {{光|ひか}}る precede o accompagna un mutamento di stato energetico.
+  Segnala l'emissione istantanea o continua di un bagliore. È essenziale nella meccanica del fenomeno Terasutaru o di strumenti speciali, dove la luce manifestata da {{光|ひか}}る precede o accompagna un mutamento di stato energetico.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card
@@ -267,7 +267,7 @@ example_jp: >-
 example_it: >-
   Chi ha superato il test della palestra può entrare.
 notes_it: >-
-  Il suffisso {{者|もの}} (sha) eleva il termine da un semplice risultato personale a uno status istituzionale. Identifica un gruppo riconosciuto (promossi, ammessi a un'area) ed è usato dallo staff della Lega Pokémon per concedere l'accesso agli step successivi.
+  Il suffisso {{者|もの}} (sha) eleva il termine da un semplice risultato personale a uno status istituzionale. Identifica un gruppo riconosciuto (promossi, ammessi a un'area) ed è usato dallo staff della Pokémon Rīgu per concedere l'accesso agli step successivi.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-18]
 :::
 :::card

@@ -204,12 +204,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  {{今日|きょう}}は{{俺|おれ}}の{{奢|おご}}りだ。お{{言葉|ことば}}に{{甘|あま}}えて。
-translation_it: >-
-  Oggi offro io. Accetto volentieri l'offerta.
+jp: "A：{{今日|きょう}}は{{俺|おれ}}の{{奢|おご}}りだ。 B：では、お{{言葉|ことば}}に{{甘|あま}}えて。"
+translation_it: "A: Oggi offro io. B: Allora accetto volentieri."
 :::
-
 :::example_sentence
 jp: >-
   {{船|ふね}}から{{飛|と}}び{{降|お}}りて、{{何|なん}}とか{{逃|に}}げる。

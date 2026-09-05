@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-053-ga-express-preferences
 entry_type: grammar
 entry_id: grammar-053-ga-express-preferences
 card_type: concept
-front: "が"
+front: "が（preferenze: Xが{{好|す}}き）"
 back: >-
   X が好き significa letteralmente che X è gradito e naturalmente «mi/ti piace X».
 example_jp: >-

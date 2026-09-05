@@ -187,9 +187,9 @@ id: term-v355-terasutaruenerugii
 lemma: テラスタルエネルギー
 reading: てらすたるえねるぎー
 romaji: terasutaruenerugii
-meaning_it: energia teracristal
+meaning_it: energia Terasutaru
 notes_it: >-
-  テラスタルエネルギー nomina la risorsa legata alla teracristallizzazione. In
+  テラスタルエネルギー nomina la risorsa legata alla Terasutaru. In
   messaggi di sistema indica carica o disponibilità, non energia generica.
 :::
 :::term

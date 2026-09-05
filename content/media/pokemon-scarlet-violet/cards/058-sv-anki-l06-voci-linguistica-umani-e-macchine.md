@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-linguistica-umani-e-macchine
 media_id: media-pokemon-scarlet-violet
 slug: 058-sv-anki-l06-voci-linguistica-umani-e-macchine
-title: "Voci, persone e macchine tra Accademia e Area Zero"
+title: "Voci, persone e macchine tra Accademia e Eria Zero"
 order: 88
 segment_ref: scarlet-violet-prestudy
 ---
@@ -23,7 +23,7 @@ reading: げんごがく
 romaji: gengogaku
 meaning_it: linguistica
 notes_it: >-
-  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Zim).
+  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Seiji).
 level_hint: custom
 :::
 :::term
@@ -135,9 +135,9 @@ back: >-
 example_jp: >-
   セイジ{{先|せん}}{{生|せい}}の {{言|げん}}{{語|ご}}{{学|がく}}の {{授|じゅ}}{{業|ぎょう}}は おもしろい ですよ。
 example_it: >-
-  I corsi di linguistica del professor Zim sono interessanti.
+  I corsi di linguistica del professor Seiji sono interessanti.
 notes_it: >-
-  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Zim).
+  Composto da {{言|げん}}{{語|ご}} (lingua/linguaggio) e il suffisso {{学|まな}} (studio/scienza). Nel contesto dell'Accademia, richiama la materia di linguistica insegnata da professori come セイジ (Seiji).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]
 :::
 :::card
@@ -152,7 +152,7 @@ back: >-
 example_jp: >-
   クラベル{{氏|し}}から {{連|れん}}{{絡|らく}}が ありました。
 example_it: >-
-  È arrivata una comunicazione dal signor Clavel.
+  È arrivata una comunicazione dal signor Kuraberu.
 notes_it: >-
   Il suffisso {{氏|し}} crea distanza formale: è più rigido di さん e suona adatto a comunicazioni ufficiali, resoconti o riferimenti a persone con un ruolo pubblico.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-06]

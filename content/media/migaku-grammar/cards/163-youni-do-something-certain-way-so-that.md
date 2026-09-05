@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-163-youni-do-something-certain-way-so-that
 entry_type: grammar
 entry_id: grammar-163-youni-do-something-certain-way-so-that
 card_type: concept
-front: "ように"
+front: "ように（scopo）"
 back: >-
   Obiettivo + ように + azione indica che si agisce in modo da rendere possibile o evitare quel risultato.
 example_jp: >-

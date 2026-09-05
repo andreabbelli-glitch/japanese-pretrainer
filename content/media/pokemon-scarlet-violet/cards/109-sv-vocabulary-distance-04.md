@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-04
 media_id: media-pokemon-scarlet-violet
 slug: 109-sv-vocabulary-distance-04
-title: 'Parole per leggere Paldea — quattro'
+title: 'Parole per leggere Parudea — quattro'
 order: 154
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -153,7 +153,7 @@ back: >-
 example_jp: >-
   {{謎|なぞ}}の{{物体|ぶったい}}テツノワダチパルデア{{某所|ぼうしょ}}にある{{乾燥|かんそう}}{{地帯|ちたい}}において{{謎|なぞ}}の{{生物|せいぶつ}}の{{目撃|もくげき}}が{{報告|ほうこく}}されている。
 example_it: >-
-  Creatura misteriosa: Solcoferreo. In una zona arida di Paldea sono stati segnalati avvistamenti di questa creatura.
+  Creatura misteriosa: Tetsu no Wadachi. In una zona arida di Parudea sono stati segnalati avvistamenti di questa creatura.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -275,11 +275,10 @@ card_type: recognition
 front: 'さらなる'
 back: >-
   さらなる — ancora di più; ulteriormente.
-example_jp: >-
-  ではさんに{{問|と}}おうさらなる{{食事|しょくじ}}パワーを{{得|え}}るためにはきみは{{何|なに}}に{{気|き}}をつけるのだ？
-example_it: >-
-  Allora, ti chiedo: per ottenere ancora più potere dal cibo, a cosa devi prestare attenzione?
+example_jp: "さらなる{{成長|せいちょう}}のために、{{毎日|まいにち}}{{練習|れんしゅう}}しよう。"
+example_it: "Per migliorare ancora, alleniamoci ogni giorno."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "Esempio didattico."
 :::
 
 :::term
@@ -353,7 +352,7 @@ back: >-
 example_jp: >-
   {{大空|おおぞら}}のヌシと{{呼|よ}}ばれるポケモンを{{探|さが}}してみるのはいかがでしょう？
 example_it: >-
-  Che ne dici di cercare il Pokémon chiamato Dominante dei Cieli?
+  Che ne dici di cercare il Pokémon chiamato Nushi dei Cieli?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

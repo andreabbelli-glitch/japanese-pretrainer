@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
-title: "Menu, scuola e scelte: leggere azioni e tono in Paldea"
+title: "Menu, scuola e scelte: leggere azioni e tono in Parudea"
 order: 75
 segment_ref: scarlet-violet-prestudy
 ---
@@ -80,7 +80,7 @@ back: pare che / tipico di
 example_jp: >-
   ネモは もう {{来|き}}たらしい。
 example_it: >-
-  Pare che Nemi sia già arrivata.
+  Pare che Nemo sia già arrivata.
 :::
 :::grammar
 id: grammar-g103-mentre-finche
@@ -314,7 +314,7 @@ back: coordinazione
 example_jp: >-
   ネモと {{連携|れんけい}}して バトルします。
 example_it: >-
-  Combatto coordinandomi con Nemi.
+  Combatto coordinandomi con Nemo.
 :::
 :::term
 id: term-v622-kuuchuu
@@ -486,7 +486,7 @@ back: vastissimo
 example_jp: >-
   {{広大|こうだい}}な パルデアを {{旅|たび}}します。
 example_it: >-
-  Viaggio nella vastissima Paldea.
+  Viaggio nella vastissima Parudea.
 :::
 :::term
 id: term-v630-risetto
@@ -529,10 +529,8 @@ entry_id: term-v631-juni
 card_type: recognition
 front: "{{順位|じゅんい}}"
 back: posizione in classifica
-example_jp: >-
-  {{順位|じゅんい}}は {{三|さん}} です。
-example_it: >-
-  La posizione in classifica è 3.
+example_jp: "{{順位|じゅんい}}は{{3位|さんい}}です。"
+example_it: "Sono al terzo posto in classifica."
 :::
 :::term
 id: term-v632-shougaibutsu
@@ -631,10 +629,8 @@ id: term-v636-honkou
 lemma: 本校
 reading: ほんこう
 romaji: honkou
-meaning_it: sede principale
-notes_it: >-
-  Indica la sede principale della scuola. Quando compare, distingue il campus
-  centrale da sedi, luoghi o attività esterne.
+meaning_it: "questa / la nostra scuola; sede principale (rispetto a una succursale)"
+notes_it: "本校 è il modo istituzionale di dire «questa / la nostra scuola». Se il contesto contrappone 本校 a una succursale, indica invece la sede principale."
 :::
 :::card
 id: card-v636-honkou-recognition
@@ -643,11 +639,10 @@ entry_type: term
 entry_id: term-v636-honkou
 card_type: recognition
 front: "{{本校|ほんこう}}"
-back: sede principale
-example_jp: >-
-  {{本校|ほんこう}}へ {{行|い}}きます。
-example_it: >-
-  Vado alla sede principale.
+back: "questa / la nostra scuola; sede principale (rispetto a una succursale)"
+example_jp: "{{本校|ほんこう}}には、いろいろな{{授業|じゅぎょう}}があります。"
+example_it: "Nella nostra scuola ci sono diversi corsi."
+notes_it: "本校 è il modo istituzionale di dire «questa / la nostra scuola». Se il contesto contrappone 本校 a una succursale, indica invece la sede principale."
 :::
 :::term
 id: term-v637-taikinaka

@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-264-verb-imperatives-level-2-u
 entry_type: grammar
 entry_id: grammar-264-verb-imperatives-level-2-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（imperativo）"
 back: >-
   Imperativo forte dei verbi godan
 example_jp: >-

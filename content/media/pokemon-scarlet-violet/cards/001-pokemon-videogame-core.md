@@ -155,7 +155,7 @@ id: term-pokemon-zukan
 lemma: ポケモン図鑑
 reading: ポケモンずかん
 romaji: pokemon zukan
-meaning_it: Pokedex
+meaning_it: Pokémon Zukan
 notes_it: >-
   Nomina il catalogo che registra i Pokemon visti o catturati. Quando compare,
   indica il sistema che registra specie viste o catturate e aggiorna il
@@ -168,11 +168,11 @@ entry_type: term
 entry_id: term-pokemon-zukan
 card_type: recognition
 front: 'ポケモン{{図鑑|ずかん}}'
-back: Pokedex
+back: Pokémon Zukan
 example_jp: >-
   {{新|あたら}}しい ポケモンを {{捕|つか}}まえると ポケモン{{図鑑|ずかん}}に {{登録|とうろく}}される。
 example_it: >-
-  Quando catturi un Pokemon nuovo, viene registrato nel Pokedex.
+  Quando catturi un Pokemon nuovo, viene registrato nel Pokémon Zukan.
 :::
 :::term
 id: term-mokutekichi
@@ -437,7 +437,7 @@ back: recupero / cura
 example_jp: >-
   ポケモンセンターで HPと {{状態異常|じょう.たい.い.じょう}}を {{回復|かいふく}}してもらおう。
 example_it: >-
-  Al Centro Pokemon fatti curare sia gli HP sia gli stati alterati.
+  Al Pokémon Sentā fatti curare sia gli HP sia gli stati alterati.
 :::
 :::term
 id: term-hinshi
@@ -506,10 +506,8 @@ entry_id: term-tsukamaeru
 card_type: recognition
 front: '{{捕|つか}}まえる'
 back: catturare
-example_jp: >-
-  HPを {{減|へ}}らしてから {{捕|つか}}まえると {{成功|せいこう}}しやすい。
-example_it: >-
-  Se lo catturi dopo avergli abbassato gli HP, riesci più facilmente.
+example_jp: "HPを{{減|へ}}らすと、ポケモンを{{捕|つか}}まえやすくなる。"
+example_it: "Se gli riduci gli HP, il Pokémon diventa più facile da catturare."
 :::
 :::term
 id: term-keikenchi
@@ -728,7 +726,7 @@ back: fare qualcosa per te
 example_jp: >-
   ポケモンセンターの {{人|ひと}}が {{手|て}}{{持|も}}ちを {{回復|かいふく}}してくれる。
 example_it: >-
-  Il personale del Centro Pokémon ti cura la squadra.
+  Il personale del Pokémon Sentā ti cura la squadra.
 :::
 :::grammar
 id: grammar-te-ne

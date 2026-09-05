@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-23
 media_id: media-pokemon-scarlet-violet
 slug: 128-sv-vocabulary-distance-23
-title: 'Parole per leggere Paldea — ventitré'
+title: 'Parole per leggere Parudea — ventitré'
 order: 173
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -178,7 +178,7 @@ back: >-
 example_jp: >-
   {{宝|たから}}{{食堂|しょくどう}}で{{注文|ちゅうもん}}{{間違|まちが}}いすぎてお{{腹|なか}}パンパン。
 example_it: >-
-  Al Treasure Eatery ho sbagliato così tante ordinazioni che ho la pancia a scoppiare.
+  Al Takara Shokudō ho sbagliato così tante ordinazioni che ho la pancia a scoppiare.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -250,13 +250,10 @@ card_type: recognition
 front: 'すみか'
 back: >-
   すみか — tana; habitat; dimora.
-example_jp: >-
-  ドラゴンタイプのヌシのすみか！
-example_it: >-
-  La tana del signore dei draghi!
+example_jp: "ドラゴンタイプのヌシのすみか！"
+example_it: "La tana del Nushi di tipo Drago!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-198-yurai
 lemma: '由来'

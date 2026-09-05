@@ -28,15 +28,10 @@ id: term-eternal-omega
 lemma: エターナル・Ω
 reading: えたーなる おめが
 romaji: etaanaru omega
-meaning_it: Eternal Omega / keyword che fa tornare la creatura in mano invece di farla lasciare il campo
+meaning_it: "Eternal Omega: ritorno in mano al posto della destinazione prevista"
 pos: keyword
 aliases: [エターナル・Ω, Eternal Omega, eternal omega]
-notes_it: >-
-  In giapponese generale `エターナル` richiama qualcosa di eterno o continuo, ma
-  nel rules text di Duel Masters il punto utile è tecnico: una creatura che
-  possiede questa keyword, quando dovrebbe lasciare il campo, torna in mano al
-  suo proprietario invece di uscire normalmente. Su questa carta viene
-  distribuita a tutti i Draghi e i Command.
+notes_it: "エターナル・Ω sostituisce la destinazione prevista con la mano del proprietario. La creatura lascia comunque la zona di battaglia: il ritorno in mano è un movimento tra zone."
 level_hint: custom
 :::
 
@@ -97,20 +92,12 @@ entry_type: term
 entry_id: term-eternal-omega
 card_type: recognition
 front: エターナル・Ω
-back: ritorna in mano invece di lasciare il campo
-example_jp: >-
-  「エターナル・Ω」を{{持|も}}つクリーチャーが{{離|はな}}れる{{時|とき}}、
-  かわりに{{手札|てふだ}}に{{戻|もど}}す。
-example_it: >-
-  Quando una creatura con Eternal Omega dovrebbe lasciare il campo, torna in
-  mano invece.
-notes_it: >-
-  `エターナル` in giapponese generale richiama qualcosa di eterno, ma qui il
-  valore utile è la sostituzione tecnica dell'uscita. Il testo della carta
-  chiarisce che non si lascia il campo normalmente: si ritorna in mano.
+back: "torna in mano al posto della destinazione prevista"
+example_jp: "「エターナル・Ω」を{{持|も}}つクリーチャーが{{離|はな}}れる{{時|とき}}、   かわりに{{手札|てふだ}}に{{戻|もど}}す。"
+example_it: "Quando una creatura con Eternal Omega sta per lasciare il campo, la rimetti in mano al posto di mandarla nella destinazione prevista."
+notes_it: "エターナル・Ω sostituisce la destinazione prevista con la mano del proprietario. La creatura lascia comunque la zona di battaglia: il ritorno in mano è un movimento tra zone."
 tags: [live-duel, keyword, replacement-effect]
 :::
-
 :::card
 id: card-colorless-spell-recognition
 lesson_id: lesson-duel-masters-dm25-live-duel-encounters-beethoven-zenith-of-horror

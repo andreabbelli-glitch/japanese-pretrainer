@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-015-i-adjective-negation
 entry_type: grammar
 entry_id: grammar-015-i-adjective-negation
 card_type: concept
-front: "い{{形容詞|けいようし}}"
+front: "い{{形容詞|けいようし}}（negativo）"
 back: >-
   Radice dell'aggettivo in い + くない significa «non è…».
 example_jp: >-

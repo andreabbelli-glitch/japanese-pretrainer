@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-13]
 prerequisites: []
 summary: >-
   Leggere talento, somiglianza, risposte, routine quotidiane, risorse di lotta
-  e conferme d'asta nei dialoghi e nelle schermate di Paldea.
+  e conferme d'asta nei dialoghi e nelle schermate di Parudea.
 ---
 
 # Talento, risposte e routine tra Accademia, lotte e aste
 
-Tra l'Accademia, le lotte e le aste di Paldea, il gioco passa spesso da frasi
+Tra l'Accademia, le lotte e le aste di Parudea, il gioco passa spesso da frasi
 che valutano una persona a messaggi che decidono se puoi usare qualcosa. Una
 battuta può parlare di talento, una schermata può dire che una risorsa non
 basta, e un mercato può chiudere una gara di offerte con una conferma secca.
@@ -69,7 +69,7 @@ routine e conseguenze.
 
 - [アカデミー](term:term-v020-akademii) — cornice scolastica di corsi, quiz e docenti
 - パルデア — regione in cui esplorazione, santuario e routine si intrecciano
-- Porto Marinada — area delle aste, dove l'offerta diventa risultato
+- Marinādo Taun — area delle aste, dove l'offerta diventa risultato
 
 ---
 
@@ -294,7 +294,7 @@ translation_it: >-
 jp: >-
   パルデアの どこかに あやしい {{祠|ほこら}}が あるらしい。
 translation_it: >-
-  Sembra che da qualche parte a Paldea ci sia un santuario misterioso.
+  Sembra che da qualche parte a Parudea ci sia un santuario misterioso.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -322,7 +322,7 @@ Quando la vedi prima dell'azione, aspettati un'abitudine o una routine.
 
 ## 4. Asta e conferma: quando l'offerta diventa risultato
 
-A Porto Marinada il lessico cambia registro: non sei davanti a una normale
+A Marinādo Taun il lessico cambia registro: non sei davanti a una normale
 schermata di negozio, ma a una gara di offerte. La parola
 [{{落札|らくさつ}}](term:term-anki-l13-rakusatsu) è il punto in cui la competizione
 si chiude e l'oggetto diventa tuo.
@@ -411,5 +411,5 @@ dipendono dal bersaglio marcato da に, [{{毎日|まいにち}}](term:term-anki
 stabilizza una routine, [{{Ｐ|ピー}}{{Ｐ|ピー}}](term:term-anki-l13-piipii)
 decide se una mossa è ancora disponibile, e
 [{{落札|らくさつ}}](term:term-anki-l13-rakusatsu) chiude l'asta come risultato.
-Una volta riconosciuti questi segnali, Paldea diventa più leggibile sia nei
+Una volta riconosciuti questi segnali, Parudea diventa più leggibile sia nei
 dialoghi sia nelle schermate operative.

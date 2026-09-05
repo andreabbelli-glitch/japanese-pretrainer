@@ -14,9 +14,9 @@ summary: >-
   dialoghi narrativi e scoperte sul campo.
 ---
 
-# Continuità, suono, famiglia e scoperta nelle scene di Paldea
+# Continuità, suono, famiglia e scoperta nelle scene di Parudea
 
-A Paldea il testo non accompagna solo lotte e obiettivi principali. Nelle transizioni dice che l'avventura prosegue, nei percorsi fa arrivare un verso da lontano, nei saloni trasforma il look in una scelta, all'Accademia sposta la conversazione su infermeria, sogni e rapporti familiari.
+A Parudea il testo non accompagna solo lotte e obiettivi principali. Nelle transizioni dice che l'avventura prosegue, nei percorsi fa arrivare un verso da lontano, nei saloni trasforma il look in una scelta, all'Accademia sposta la conversazione su infermeria, sogni e rapporti familiari.
 
 Il filo comune è il soggetto visibile della frase. Con [{{続|つづ}}く](term:term-anki-l12-tsuzuku), [{{聞|き}}こえる](term:term-anki-l12-kikoeru) e [{{見|み}}つかる](term:term-anki-l12-mitsukaru), il giapponese mette spesso davanti ciò che continua, ciò che si sente o ciò che viene trovato. Non devi cercare subito "chi fa l'azione": molte scene partono da ciò che appare, dura o diventa percepibile.
 
@@ -103,8 +103,8 @@ Con [{{続|つづ}}く](term:term-anki-l12-tsuzuku), immagina una linea che non 
 
 Quando il testo lascia la narrazione e passa ai menu, la grammatica diventa più operativa. Il salone parla di risultato scelto; il negozio mette insieme oggetto, quantità e azione completata.
 
-*   [{{髪型|かみがた}}](term:term-anki-l12-kamigata) unisce {{髪|かみ}}, capelli, e {{型|かた}}, forma o modello; nella parola composta il secondo elemento si legge がた. Nei saloni di Paldea, {{髪型|かみがた}}にする non vuol dire "fare capelli" in astratto: に marca il risultato e する realizza la scelta. Il testo ti sta dicendo che l'aspetto viene portato a quel modello.
-*   [{{3|みっ}}つ](term:term-anki-l12-mittsu) appartiene al conteggio generico giapponese. Quando una frase parla di strumenti, Poké Ball o opzioni non specializzate, la quantità può comparire dopo l'oggetto marcato da を: モンスターボールを{{3|みっ}}つ{{買|か}}う. In italiano diciamo "comprare tre Poké Ball"; in giapponese la quantità può stare più vicina al verbo, come misura dell'azione.
+*   [{{髪型|かみがた}}](term:term-anki-l12-kamigata) unisce {{髪|かみ}}, capelli, e {{型|かた}}, forma o modello; nella parola composta il secondo elemento si legge がた. Nei saloni di Parudea, {{髪型|かみがた}}にする non vuol dire "fare capelli" in astratto: に marca il risultato e する realizza la scelta. Il testo ti sta dicendo che l'aspetto viene portato a quel modello.
+*   [{{3|みっ}}つ](term:term-anki-l12-mittsu) appartiene al conteggio generico giapponese. Quando una frase parla di strumenti, Monsutā Bōru o opzioni non specializzate, la quantità può comparire dopo l'oggetto marcato da を: モンスターボールを{{3|みっ}}つ{{買|か}}う. In italiano diciamo "comprare tre Monsutā Bōru"; in giapponese la quantità può stare più vicina al verbo, come misura dell'azione.
 
 :::example_sentence
 jp: >-
@@ -123,7 +123,7 @@ translation_it: >-
 jp: >-
   フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 translation_it: >-
-  Ho comprato tre Poké Ball al banco del negozio del Centro Pokémon.
+  Ho comprato tre Monsutā Bōru al banco del negozio del Pokémon Sentā.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -146,7 +146,7 @@ In `Nにする`, pensa a `に` come a una freccia verso il risultato: `に` punt
 All'Accademia, le stesse particelle che nei menu indicano luogo o risultato entrano nei dialoghi personali. Una stanza diventa il punto in cui si trova qualcuno; una famiglia diventa un argomento delicato; un sogno diventa il futuro che un personaggio mette davanti a sé.
 
 *   [{{医務室|いむしつ}}](term:term-anki-l12-imushitsu) è un luogo istituzionale: {{医務|いむ}} richiama il servizio medico e {{室|しつ}} la stanza. In {{医務室|いむしつ}}にいる, に `医務室にいる` localizza qualcuno dentro la stanza medica. La frase localizza una persona o un Pokémon: prima trovi il posto, poi capisci chi ci si trova.
-*   [{{家族|かぞく}}](term:term-anki-l12-kazoku) porta il discorso sulle relazioni personali. In {{家族|かぞく}}のこと, こと allarga il nome da "la famiglia" a "le questioni che riguardano la famiglia": ricordi, problemi, silenzi, decisioni. Nei dialoghi di Pepe o degli adulti, questa formula può segnalare un tema emotivo più ampio del semplice elenco dei parenti.
+*   [{{家族|かぞく}}](term:term-anki-l12-kazoku) porta il discorso sulle relazioni personali. In {{家族|かぞく}}のこと, こと allarga il nome da "la famiglia" a "le questioni che riguardano la famiglia": ricordi, problemi, silenzi, decisioni. Nei dialoghi di Pepā o degli adulti, questa formula può segnalare un tema emotivo più ampio del semplice elenco dei parenti.
 *   [{{夢|ゆめ}}](term:term-anki-l12-yume) oscilla tra sogno notturno e aspirazione. In チャンピオンになるのが{{夢|ゆめ}}だ, il contenuto del sogno viene prima: チャンピオンになるの nominalizza "diventare Campione" e lo rende il soggetto. Il giapponese `夢` mette in primo piano l'azione o futuro che costituisce il sogno.
 *   [お{{礼|れい}}](term:term-anki-l12-orei) parte da {{礼|れい}}, gratitudine o cortesia, con il prefisso onorifico お. Il chunk お{{礼|れい}}に significa "come ringraziamento" e spesso introduce ciò che un personaggio offre dopo un aiuto, una lotta o una richiesta completata. Non fermarti a "grazie": guarda cosa arriva dopo に, perché lì compare il gesto concreto di riconoscenza.
 
@@ -154,12 +154,12 @@ All'Accademia, le stesse particelle che nei menu indicano luogo o risultato entr
 jp: >-
   ミモザ{{先生|せんせい}}は {{医務室|いむしつ}}に いるはずだ。
 translation_it: >-
-  La professoressa Mimosa dovrebbe essere in infermeria.
+  La professoressa Mimoza dovrebbe essere in infermeria.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `ミモザ{{先生|せんせい}}は` ➔ **Tema personale** (si parla della professoressa Mimosa).
+*   `ミモザ{{先生|せんせい}}は` ➔ **Tema personale** (si parla della professoressa Mimoza).
 *   `{{医務室|いむしつ}}に` ➔ **Luogo di presenza** (`に` marca dove si trova la persona).
 *   `いる` ➔ **Esistenza animata** (adatta a persone e Pokémon).
 *   `はずだ` ➔ **Aspettativa ragionevole** (il parlante ha una base per dire "dovrebbe").
@@ -168,12 +168,12 @@ translation_it: >-
 jp: >-
   ペパーは {{家族|かぞく}}の ことを あまり {{話|はな}}さない。
 translation_it: >-
-  Pepe non parla molto della sua famiglia.
+  Pepā non parla molto della sua famiglia.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `ペパーは` ➔ **Tema personale del dialogo** (il testo guarda il comportamento di Pepe).
+*   `ペパーは` ➔ **Tema personale del dialogo** (il testo guarda il comportamento di Pepā).
 *   `{{家族|かぞく}}の ことを` ➔ **Oggetto tematico** (`こと` trasforma "famiglia" in "ciò che riguarda la famiglia").
 *   `あまり {{話|はな}}さない` ➔ **Negazione attenuata** (`あまり` con negativo significa "non molto", non "mai").
 
@@ -181,7 +181,7 @@ translation_it: >-
 jp: >-
   お{{礼|れい}}に モンスターボールを {{3|みっ}}つ あげよう。
 translation_it: >-
-  Come ringraziamento, ti darò tre Poké Ball.
+  Come ringraziamento, ti darò tre Monsutā Bōru.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -210,12 +210,12 @@ Nelle zone di ricerca e nelle informazioni su Pokémon insoliti, il registro pas
 jp: >-
   エリアゼロで {{未確認|みかくにん}}の ポケモンが {{発見|はっけん}}された。
 translation_it: >-
-  È stato scoperto un Pokémon non identificato nell'Area Zero.
+  È stato scoperto un Pokémon non identificato nell'Eria Zero.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `エリアゼロで` ➔ **Luogo dell'evento** (la scoperta avviene nell'Area Zero).
+*   `エリアゼロで` ➔ **Luogo dell'evento** (la scoperta avviene nell'Eria Zero).
 *   `{{未確認|みかくにん}}の ポケモンが` ➔ **Entità descritta** (`の` lega "non confermato" al Pokémon).
 *   `{{発見|はっけん}}された` ➔ **Passivo di scoperta** (il focus resta sull'entità scoperta, non su chi l'ha scoperta).
 
@@ -256,7 +256,7 @@ translation_it: >-
 jp: >-
   サロンで {{髪型|かみがた}}を {{変|か}}えてから、フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 translation_it: >-
-  Dopo aver cambiato acconciatura al salone, ho comprato tre Poké Ball al banco del negozio del Centro Pokémon.
+  Dopo aver cambiato acconciatura al salone, ho comprato tre Monsutā Bōru al banco del negozio del Pokémon Sentā.
 :::
 
 :::example_sentence
@@ -270,7 +270,7 @@ translation_it: >-
 jp: >-
   エリアゼロで {{未確認|みかくにん}}の ポケモンが {{見|み}}つかるかもしれない。
 translation_it: >-
-  Nell'Area Zero potrebbe saltare fuori un Pokémon non identificato.
+  Nell'Eria Zero potrebbe saltare fuori un Pokémon non identificato.
 :::
 
 ## Nota finale

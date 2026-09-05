@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-303-ni-express-action-on-surface
 entry_type: grammar
 entry_id: grammar-303-ni-express-action-on-surface
 card_type: concept
-front: "に"
+front: "に（punto di contatto）"
 back: >-
   Marca la superficie o il punto su cui termina un'azione
 example_jp: >-

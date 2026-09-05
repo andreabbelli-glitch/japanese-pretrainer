@@ -70,24 +70,18 @@ translation_it: >-
 attaccato, indossato o fissato al suo posto.
 
 :::example_sentence
-jp: >-
-  {{帽子|ぼうし}}を{{外|はず}}す。
-translation_it: >-
-  Tolgo il cappello.
+jp: "{{眼鏡|めがね}}を{{外|はず}}す。"
+translation_it: "Mi tolgo gli occhiali."
 :::
-
 ## 2. Seconda volta, correttezza e limite
 
 [{{二度|にど}}](term:term-ch-b10-nido) serve quando la scena insiste su "non di
 nuovo".
 
 :::example_sentence
-jp: >-
-  {{二度|にど}}とそんな{{事|こと}}はしない。
-translation_it: >-
-  Non farò mai più una cosa del genere.
+jp: "この{{町|まち}}には{{二度|にど}}{{来|き}}たことがある。"
+translation_it: "Sono stato in questa città due volte."
 :::
-
 [{{正|ただ}}しい](term:term-ch-b10-tadashii) è "corretto" o "giusto": può
 parlare di una risposta, di una scelta o di una posizione morale.
 

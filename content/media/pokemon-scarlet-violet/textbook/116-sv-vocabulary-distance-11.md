@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-11
 media_id: media-pokemon-scarlet-violet
 slug: 116-sv-vocabulary-distance-11
-title: 'Parole per leggere Paldea — undici'
+title: 'Parole per leggere Parudea — undici'
 order: 161
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — undici
+# Parole per leggere Parudea — undici
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -30,7 +30,7 @@ conserva un valore preciso nella frase.
 - [{{声|こえ}}がけ](term:term-sv-vocabulary-075-koegake) — dire qualcosa (a qualcuno); saluto; avvicinarsi (a qualcuno)
 - [ひんやり](term:term-sv-vocabulary-219-hinyari) — fresco; freddo; che dà una piacevole sensazione di freddo
 - [{{点数|てんすう}}](term:term-sv-vocabulary-355-tensuu) — punti; punteggio; voto
-- [ぜったいれいど](term:term-sv-vocabulary-205-zettaireido) — zero assoluto; Purogelo, mossa Pokémon
+- [ぜったいれいど](term:term-sv-vocabulary-205-zettaireido) — zero assoluto; Zettai Reido, mossa Pokémon
 - [{{普段|ふだん}}](term:term-sv-vocabulary-130-fudan) — usuale; normale; quotidiano
 - [{{温|あたた}}まる](term:term-sv-vocabulary-229-atatamaru) — scaldarsi; riscaldarsi
 - [{{某所|ぼうしょ}}](term:term-sv-vocabulary-353-bousho) — un determinato luogo
@@ -123,7 +123,7 @@ translation_it: >-
 jp: >-
   コオリッポと{{一緒|いっしょ}}だと{{室内|しつない}}でもヒンヤリじゃホッホッホ{{大丈夫|だいじょうぶ}}？
 translation_it: >-
-  Con Eiscue accanto, fa fresco persino al chiuso. Oh-oh-oh! Tutto bene?
+  Con Kōrippo accanto, fa fresco persino al chiuso. Oh-oh-oh! Tutto bene?
 :::
 
 **Uso:** Nel dialogo aggiunge il valore di «fresco; freddo; che dà una piacevole sensazione di freddo».
@@ -139,16 +139,16 @@ translation_it: >-
 
 **Uso:** Nel contesto indica «punti; punteggio; voto».
 
-### [ぜったいれいど](term:term-sv-vocabulary-205-zettaireido) — zero assoluto; Purogelo, mossa Pokémon
+### [ぜったいれいど](term:term-sv-vocabulary-205-zettaireido) — zero assoluto; Zettai Reido, mossa Pokémon
 
 :::example_sentence
 jp: >-
   {{次回|じかい}}からは{{最|さい}}{{難関|なんかん}}のぜったいれいどコースに{{挑戦|ちょうせん}}できるよ！
 translation_it: >-
-  Dalla prossima volta potrai affrontare il percorso Purogelo, il più difficile!
+  Dalla prossima volta potrai affrontare il percorso Zettai Reido, il più difficile!
 :::
 
-**Uso:** Nel dialogo aggiunge il valore di «zero assoluto; Purogelo, mossa Pokémon».
+**Uso:** Nel dialogo aggiunge il valore di «zero assoluto; Zettai Reido, mossa Pokémon».
 
 ### [{{普段|ふだん}}](term:term-sv-vocabulary-130-fudan) — usuale; normale; quotidiano
 
@@ -178,7 +178,7 @@ translation_it: >-
 jp: >-
   {{謎|なぞ}}の{{生物|せいぶつ}}イダイナキバパルデア{{某所|ぼうしょ}}にある{{乾燥|かんそう}}{{地帯|ちたい}}において{{謎|なぞ}}の{{生物|せいぶつ}}の{{目撃|もくげき}}が{{報告|ほうこく}}されている。
 translation_it: >-
-  Creatura misteriosa: Grandizanne. In una zona arida di un luogo non precisato di Paldea sono stati segnalati avvistamenti di questa creatura.
+  Creatura misteriosa: Idaina Kiba. In una zona arida di un luogo non precisato di Parudea sono stati segnalati avvistamenti di questa creatura.
 :::
 
 **Uso:** Nel contesto indica «un determinato luogo».
@@ -189,7 +189,7 @@ translation_it: >-
 jp: >-
   {{大穴|おおあな}}の{{活躍|かつやく}}をおおやけに{{祝|いわ}}えないぶんこちらはアカデミーみんなでお{{祝|いわ}}いをしたいですねハイ！
 translation_it: >-
-  Poiché non possiamo celebrare pubblicamente le imprese nella Grande Voragine, vorremmo festeggiarle qui con tutta l'Accademia!
+  Poiché non possiamo celebrare pubblicamente le imprese nella Parudea no Ōana, vorremmo festeggiarle qui con tutta l'Accademia!
 :::
 
 **Uso:** Nel contesto indica «congratulazioni; festeggiamenti; celebrazione».

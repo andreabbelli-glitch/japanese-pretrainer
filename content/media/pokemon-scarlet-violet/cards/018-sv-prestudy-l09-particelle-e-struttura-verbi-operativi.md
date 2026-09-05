@@ -219,9 +219,9 @@ id: term-v107-orenjiakademii
 lemma: オレンジアカデミー
 reading: おれんじあかでみー
 romaji: orenjiakademii
-meaning_it: Accademia Orange
+meaning_it: Orenji Akademī
 notes_it: >-
-  Nome dell'Accademia Orange, riferimento di luogo e trama.
+  Nome dell'Orenji Akademī, riferimento di luogo e trama.
 :::
 :::term
 id: term-v108-make-ru
@@ -274,9 +274,9 @@ id: term-v110-terareidobatoru
 lemma: テラレイドバトル
 reading: てられいどばとる
 romaji: terareidobatoru
-meaning_it: Raid Teracristal
+meaning_it: Tera Reido Batoru
 notes_it: >-
-  Nome della modalità Raid Teracristal, da riconoscere come etichetta di
+  Nome della modalità Tera Reido Batoru, da riconoscere come etichetta di
   sistema.
 :::
 :::term

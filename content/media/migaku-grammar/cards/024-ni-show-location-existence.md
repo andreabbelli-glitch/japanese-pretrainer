@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-024-ni-show-location-existence
 entry_type: grammar
 entry_id: grammar-024-ni-show-location-existence
 card_type: concept
-front: "に"
+front: "に（luogo di esistenza）"
 back: >-
   に indica il luogo di esistenza, non il luogo dove si svolge un'azione.
 example_jp: >-

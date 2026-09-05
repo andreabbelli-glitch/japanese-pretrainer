@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-070-hodo-2-indicate-degree-action-state
 entry_type: grammar
 entry_id: grammar-070-hodo-2-indicate-degree-action-state
 card_type: concept
-front: "ほど"
+front: "ほど（correlazione con ば）"
 back: >-
   Esprime una correlazione: «più A, più (o meno) B»
 example_jp: >-

@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-251-to-express-if
 entry_type: grammar
 entry_id: grammar-251-to-express-if
 card_type: concept
-front: "と"
+front: "と（condizione）"
 back: >-
   A と B significa «quando/se A, allora B» con conseguenza regolare.
 example_jp: >-

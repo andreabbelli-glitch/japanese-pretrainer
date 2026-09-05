@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-066-sv-anki-l14-esami-paesi-gruppi-e-invii
 media_id: media-pokemon-scarlet-violet
 slug: 066-sv-anki-l14-esami-paesi-gruppi-e-invii
-title: Esami, gruppi e trasferimenti nelle scene di Paldea
+title: Esami, gruppi e trasferimenti nelle scene di Parudea
 order: 96
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -11,10 +11,10 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-14]
 prerequisites: []
 summary: >-
   Riconoscere limiti, prove ufficiali, gruppi di persone e trasferimenti nei
-  dialoghi scolastici, nei menu e nelle sfide di Paldea.
+  dialoghi scolastici, nei menu e nelle sfide di Parudea.
 ---
 
-# Esami, gruppi e trasferimenti nelle scene di Paldea
+# Esami, gruppi e trasferimenti nelle scene di Parudea
 
 In *Pokémon Scarlet & Violet*, molte frasi non raccontano solo che cosa vedi:
 fissano un limite, aprono una prova ufficiale, radunano persone in un luogo o
@@ -130,7 +130,7 @@ descrizione o una procedura ufficiale.
 - [{{国|くに}}](term:term-anki-l14-kuni) allarga la scena oltre il luogo
   immediato. Con `{{遠|とお}}い{{国|くに}}から`, la frase segnala provenienza da un
   paese lontano: utile quando il gioco parla di scambi, personaggi stranieri o
-  racconti che collegano Paldea a un mondo più grande.
+  racconti che collegano Parudea a un mondo più grande.
 
 :::example_sentence
 jp: >-
@@ -293,7 +293,7 @@ translation_it: >-
 jp: >-
   オモダカさんは、ジムの {{視|し}}{{察|さつ}}で {{忙|いそが}}しいみたい。
 translation_it: >-
-  Sembra che Alisma sia impegnata con l'ispezione delle Palestre.
+  Sembra che Omodaka sia impegnata con l'ispezione delle Palestre.
 :::
 
 :::example_sentence

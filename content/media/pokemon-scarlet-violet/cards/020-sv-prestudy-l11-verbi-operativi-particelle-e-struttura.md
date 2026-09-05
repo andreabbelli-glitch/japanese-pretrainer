@@ -214,9 +214,9 @@ id: term-v130-nushipokemon
 lemma: ヌシポケモン
 reading: ぬしぽけもん
 romaji: nushipokemon
-meaning_it: Pokémon dominante (Titan)
+meaning_it: "Nushi Pokémon (Pokémon al centro delle sfide del Rejendo Rūto)"
 notes_it: >-
-  ヌシポケモン è la label dei Pokémon dominanti legati al percorso dei Titan. ヌシ
+  ヌシポケモン è la label dei Pokémon dominanti legati al percorso dei Nushi. ヌシ
   dà l'idea del "padrone" di un luogo; qui diventa nome di boss del gioco.
 :::
 :::term

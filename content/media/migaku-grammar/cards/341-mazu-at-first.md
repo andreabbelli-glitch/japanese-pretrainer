@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-341-mazu-at-first
 entry_type: grammar
 entry_id: grammar-341-mazu-at-first
 card_type: concept
-front: "まず"
+front: "まず（ordine o priorità）"
 back: >-
   まず ordina la prima priorità oppure presenta una conclusione provvisoria valida per il momento.
 example_jp: >-

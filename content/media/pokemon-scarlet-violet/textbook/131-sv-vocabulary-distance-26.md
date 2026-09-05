@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-26
 media_id: media-pokemon-scarlet-violet
 slug: 131-sv-vocabulary-distance-26
-title: 'Parole per leggere Paldea — ventisei'
+title: 'Parole per leggere Parudea — ventisei'
 order: 176
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — ventisei
+# Parole per leggere Parudea — ventisei
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -88,12 +88,9 @@ translation_it: >-
 ### [{{実|みの}}りある](term:term-sv-vocabulary-281-minoriaru) — gratificante; fruttuoso; fertile
 
 :::example_sentence
-jp: >-
-  それじゃあよろしく{{実|みの}}りある{{勝負|しょうぶ}}にしよっ！
-translation_it: >-
-  Allora, ci vediamo! Facciamo in modo che sia una sfida fruttuosa!
+jp: "それじゃあ、よろしく！{{実|みの}}りある{{勝負|しょうぶ}}にしよっ！"
+translation_it: "Allora, diamoci da fare! Facciamo una sfida da cui imparare qualcosa!"
 :::
-
 **Uso:** Nel contesto indica «gratificante; fruttuoso; fertile».
 
 ### [よそ](term:term-sv-vocabulary-231-yoso) — un altro luogo; altrove; luoghi sconosciuti
@@ -179,7 +176,7 @@ translation_it: >-
 jp: >-
   ジムバッジをやっつ{{集|あつ}}めたらぜひポケモンリーグの{{扉|とびら}}を{{叩|たた}}いてください。
 translation_it: >-
-  Quando avrai raccolto otto distintivi di Palestra, bussa pure alla porta della Lega Pokémon.
+  Quando avrai raccolto otto distintivi di Palestra, bussa pure alla porta della Pokémon Rīgu.
 :::
 
 **Uso:** Nel contesto indica «porta; cancello; apertura».
@@ -190,7 +187,7 @@ translation_it: >-
 jp: >-
   お{{疲|つか}}れさまちゃんリップと{{究極|きゅうきょく}}の{{美|び}}を{{追求|ついきゅう}}する？
 translation_it: >-
-  Ottimo lavoro! Vuoi perseguire la bellezza suprema insieme a Tulipa?
+  Ottimo lavoro! Vuoi perseguire la bellezza suprema insieme a Rippu?
 :::
 
 **Uso:** Nel contesto indica «definitivo; finale; ultimo».

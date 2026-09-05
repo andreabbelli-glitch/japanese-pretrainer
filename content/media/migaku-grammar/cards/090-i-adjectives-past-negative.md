@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-090-i-adjectives-past-negative
 entry_type: grammar
 entry_id: grammar-090-i-adjectives-past-negative
 card_type: concept
-front: "い{{形容詞|けいようし}}"
+front: "い{{形容詞|けいようし}}（passato negativo）"
 back: >-
   Passato negativo degli い-aggettivi: «non era / non è stato…»
 example_jp: >-

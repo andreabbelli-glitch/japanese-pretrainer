@@ -66,14 +66,11 @@ level_hint: custom
 :::grammar
 id: grammar-hitotsu-zutsu
 pattern: 1つずつ
-title: Uno a uno
+title: "Uno per ciascuno"
 reading: ひとつずつ
-meaning_it: uno a uno / uno per volta
+meaning_it: "uno per ciascuno; uno alla volta (secondo il contesto)"
 aliases: [1つずつ]
-notes_it: >-
-  `1つ` fissa l'unità minima e `ずつ` la distribuzione ripetuta. Qui non sta
-  dicendo soltanto `uno`: sta dicendo `uno per ciascuno`, nel flusso che rompe
-  gli scudi degli altri avversari.
+notes_it: "{{1|ひと}}つずつ distribuisce un’unità a ciascun elemento del gruppo. Con {{各相手|かくあいて}} significa uno scudo per ciascun avversario. In altri contesti può indicare una successione, «uno alla volta»."
 level_hint: custom
 :::
 
@@ -138,7 +135,7 @@ example_it: >-
   Ogni turno, la prima volta che rompe uno scudo di un avversario, rompe anche uno scudo
   di ciascun altro avversario.
 notes_it: >-
-  La finestra di trigger e' vincolata: l'effetto scatta solo nel momento definito. Questa è una forma molto utile da
+  La finestra di trigger è vincolata: l'effetto scatta solo nel momento definito. Questa è una forma molto utile da
   riconoscere quando un testo vuole limitare un trigger alla prima volta.
 tags: [live-duel, grammar, trigger]
 :::
@@ -173,14 +170,12 @@ entry_type: grammar
 entry_id: grammar-hitotsu-zutsu
 card_type: concept
 front: '{{1|ひと}}つずつ'
-back: uno a uno / uno per volta
+back: "uno per ciascuno; qui, uno scudo per ogni altro avversario"
 example_jp: >-
   {{他|ほか}}の{{各|かく}}[{{相手|あいて}}](term:term-opponent)のシールドも
   {{1|ひと}}つずつブレイクする。
 example_it: >-
   Rompe anche uno scudo di ciascun altro avversario.
-notes_it: >-
-  Qui `1つ` non è un semplice conteggio: è il modo in cui il testo serializza
-  il risultato, un pezzo alla volta per ciascun avversario restante.
+notes_it: "{{1|ひと}}つずつ distribuisce un’unità a ciascun elemento del gruppo. Con {{各相手|かくあいて}} significa uno scudo per ciascun avversario. In altri contesti può indicare una successione, «uno alla volta»."
 tags: [live-duel, grammar, distribution]
 :::

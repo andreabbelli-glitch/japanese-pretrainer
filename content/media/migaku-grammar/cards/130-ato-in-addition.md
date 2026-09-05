@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-130-ato-in-addition
 entry_type: grammar
 entry_id: grammar-130-ato-in-addition
 card_type: concept
-front: "あと"
+front: "あと（a inizio battuta）"
 back: >-
   A inizio enunciato, あと introduce un'informazione aggiuntiva o qualcosa ricordato all'ultimo momento: «inoltre», «ah, e poi…».
 example_jp: >-

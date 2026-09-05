@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-157-wo-4-mark-cause-emotion
 entry_type: grammar
 entry_id: grammar-157-wo-4-mark-cause-emotion
 card_type: concept
-front: "を"
+front: "を（con verbi di emozione）"
 back: >-
   Con determinati verbi emotivi, を marca ciò che suscita o riceve l'emozione: 死を悲しむ, 危険を恐れる.
 example_jp: >-

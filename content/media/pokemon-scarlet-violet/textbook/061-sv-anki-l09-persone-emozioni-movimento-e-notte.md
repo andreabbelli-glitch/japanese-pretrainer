@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-09]
 prerequisites: []
 summary: >-
   Leggere volti, messaggi, presenze, movimento e notte nei dialoghi e nelle
-  schermate di Paldea.
+  schermate di Parudea.
 ---
 
 # Volti, messaggi e movimento tra scuola, città e notte
 
-Nei dialoghi di *Pokémon Scarlet & Violet* una battuta può passare da una faccia preoccupata a un messaggio da riferire, da un oggetto misterioso nell'Area Zero a una città che cambia atmosfera quando arriva la notte. Il lessico non resta mai fermo: ti dice chi è presente, che cosa prova, che cosa si muove e quale momento della giornata sta guidando la scena.
+Nei dialoghi di *Pokémon Scarlet & Violet* una battuta può passare da una faccia preoccupata a un messaggio da riferire, da un oggetto misterioso nell'Eria Zero a una città che cambia atmosfera quando arriva la notte. Il lessico non resta mai fermo: ti dice chi è presente, che cosa prova, che cosa si muove e quale momento della giornata sta guidando la scena.
 
 Molte parole sembrano trasparenti se le traduci da sole, ma diventano più precise quando le guardi insieme alla particella o alla forma verbale accanto. [{{誰|だれ}}か](term:term-anki-l09-dareka) lascia aperta una presenza, [{{伝|つた}}える](term:term-anki-l09-tsutaeru) fa arrivare un contenuto a qualcuno, [{{動|うご}}く](term:term-anki-l09-ugoku) mette il soggetto al centro del movimento, e [{{夜|よる}}](term:term-anki-l09-yoru) può trasformare un fondale in una condizione temporale.
 
@@ -79,12 +79,12 @@ translation_it: >-
 jp: >-
   エリアゼロに{{誰|だれ}}かいるのか？
 translation_it: >-
-  C'è qualcuno nell'Area Zero?
+  C'è qualcuno nell'Eria Zero?
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `エリアゼロに` ➔ **Luogo della presenza**: `に` colloca qualcuno dentro l'Area Zero.
+*   `エリアゼロに` ➔ **Luogo della presenza**: `に` colloca qualcuno dentro l'Eria Zero.
 *   `{{誰|だれ}}か` ➔ **Presenza indefinita**: non "chi?", ma "qualcuno"; il `か` lascia l'identità aperta.
 *   `いる` ➔ **Esistenza animata**: segnala persone, Pokémon o presenze vive, non semplice possesso.
 *   `のか？` ➔ **Domanda che cerca spiegazione**: il parlante non vuole solo sì/no, sta cercando di capire che cosa c'è lì.
@@ -95,7 +95,7 @@ translation_it: >-
 
 ## 2. Comunicare, rimandare e leggere lo stato emotivo
 
-Nei dialoghi scolastici e nelle scene con Clavel, Nemi o gli altri compagni, il giapponese distingue bene tra parlare, riferire, rimandare al passo successivo e mostrare un'emozione. La relazione tra contenuto, destinatario e tempo è quasi sempre affidata a blocchi piccoli.
+Nei dialoghi scolastici e nelle scene con Kuraberu, Nemo o gli altri compagni, il giapponese distingue bene tra parlare, riferire, rimandare al passo successivo e mostrare un'emozione. La relazione tra contenuto, destinatario e tempo è quasi sempre affidata a blocchi piccoli.
 
 *   [{{伝|つた}}える](term:term-anki-l09-tsutaeru) è transitivo: il messaggio o il contenuto prende [を](grammar:grammar-g033-marca-l-oggetto-diretto), mentre il destinatario prende に. In クラベル{{校長|こうちょう}}に{{伝|つた}}えることがある, c'è qualcosa da far arrivare al preside come informazione. Il verbo ha quindi una direzione comunicativa, non solo un suono prodotto.
 *   [{{次|じ}}{{回|かい}}](term:term-anki-l09-jikai) combina {{次|じ}}, "prossimo", e {{回|かい}}, "volta/episodio". Quando modifica un nome, passa naturalmente per [の](grammar:grammar-g030-possesso-collegamento-tra-nomi): {{次|じ}}{{回|かい}}の{{授業|じゅぎょう}} è "l'incontro della prossima volta". All'Accademia questa formula sposta lo sguardo dalla spiegazione attuale al prossimo appuntamento.
@@ -105,7 +105,7 @@ Nei dialoghi scolastici e nelle scene con Clavel, Nemi o gli altri compagni, il 
 jp: >-
   クラベル{{校長|こうちょう}}に{{伝|つた}}えることがある。
 translation_it: >-
-  Ho qualcosa da riferire al preside Clavel.
+  Ho qualcosa da riferire al preside Kuraberu.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -118,7 +118,7 @@ translation_it: >-
 jp: >-
   では、{{次|じ}}{{回|かい}}の{{授業|じゅぎょう}}でテラスタルを{{見|み}}ましょう。
 translation_it: >-
-  Allora, al prossimo incontro in aula osserviamo la teracristallizzazione.
+  Allora, al prossimo incontro in aula osserviamo la Terasutaru.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -141,7 +141,7 @@ Per [{{伝|つた}}える](term:term-anki-l09-tsutaeru), immagina una freccia: c
 Quando la scena passa dall'aula all'esplorazione, il giapponese diventa più operativo: dice se qualcosa si muove, se un corpo sconosciuto può essere osservato, o se la notte cambia ciò che appare nel mondo. Qui le parole non servono solo a descrivere: ti fanno prevedere stato, possibilità e conseguenza.
 
 *   [{{動|うご}}く](term:term-anki-l09-ugoku) mette in primo piano il soggetto che riesce o non riesce a muoversi. Essendo intransitivo, lavora naturalmente con が: ポケモンが{{動|うご}}く, "il Pokémon si muove". In {{動|うご}}くことができない, こと trasforma l'azione in "il fatto di muoversi", e できない nega la possibilità. Il punto non è una scelta del Pokémon: la schermata segnala impossibilità.
-*   [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) è più tecnico di もの. `物体` tratta qualcosa come corpo fisico osservabile. Per questo suona naturale in contesti di ricerca, Area Zero e descrizioni con tono scientifico.
+*   [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai) è più tecnico di もの. `物体` tratta qualcosa come corpo fisico osservabile. Per questo suona naturale in contesti di ricerca, Eria Zero e descrizioni con tono scientifico.
 *   [{{夜|よる}}](term:term-anki-l09-yoru) può indicare il momento della giornata, ma diventa davvero operativo quando entra in frasi temporali. {{夜|よる}}に vuol dire "di notte"; {{夜|よる}}になると significa "quando si fa notte". Con [～と](grammar:grammar-g085-quando-se-risultato-naturale), il cambio di stato non è un dettaglio atmosferico: prepara una conseguenza regolare.
 
 :::example_sentence
@@ -161,12 +161,12 @@ translation_it: >-
 jp: >-
   エリアゼロで{{未知|みち}}の{{物|ぶっ}}{{体|たい}}を{{発見|はっけん}}した。
 translation_it: >-
-  Abbiamo scoperto un oggetto sconosciuto nell'Area Zero.
+  Abbiamo scoperto un oggetto sconosciuto nell'Eria Zero.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `エリアゼロで` ➔ **Luogo dell'azione**: `で` colloca la scoperta dentro l'Area Zero.
+*   `エリアゼロで` ➔ **Luogo dell'azione**: `で` colloca la scoperta dentro l'Eria Zero.
 *   {{未知|みち}}の{{物|ぶっ}}{{体|たい}}を ➔ **Oggetto non identificato**: {{未知|みち}} qualifica il referente come sconosciuto, [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lo collega a [{{物|ぶっ}}{{体|たい}}](term:term-anki-l09-buttai), e [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene scoperto.
 *   `{{発見|はっけん}}した` ➔ **Scoperta completata**: tono più da indagine che da semplice ritrovamento casuale.
 
@@ -189,7 +189,7 @@ translation_it: >-
 
 ## 4. Bellezza e negozi nella vita quotidiana
 
-La vita quotidiana di Paldea cambia registro: dal mistero dell'Area Zero si passa a città, negozi, panini, giudizi estetici e battute più leggere. Le parole restano semplici in superficie, ma il tono decide molto.
+La vita quotidiana di Parudea cambia registro: dal mistero dell'Eria Zero si passa a città, negozi, panini, giudizi estetici e battute più leggere. Le parole restano semplici in superficie, ma il tono decide molto.
 
 *   [{{美|うつく}}しい](term:term-anki-l09-utsukushii) usa un registro più alto del "bello" quotidiano, adatto a lodare una scena, un Pokémon, un gesto o una composizione con tono quasi artistico. Nei dialoghi di personaggi legati all'arte o all'insegnamento, questa parola valorizza forma, eleganza o splendore.
 *   [お{{店|みせ}}](term:term-anki-l09-omise) parte da {{店|みせ}}, "negozio", con il prefisso cortese お. Non cambia il luogo in sé: cambia il tono della parola, rendendola più naturale nel parlato quotidiano. In città può indicare un negozio, un ristorante o una bancarella; il contesto ti dice se stai comprando ingredienti, guardando un menu o scegliendo dove entrare.

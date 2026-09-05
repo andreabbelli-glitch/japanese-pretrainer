@@ -14,7 +14,7 @@ romaji: oyaoya
 meaning_it: oh? ma guarda...
 notes_it: >-
   Espressione ricorrente di sorpresa composta e un po' ironica. Nel tono di
-  Clavell o di altri adulti suona come osservazione calma ma marcata.
+  Kuraberu o di altri adulti suona come osservazione calma ma marcata.
 :::
 :::card
 id: card-e113-oyaoya-recognition
@@ -105,7 +105,7 @@ id: term-v764-kashiopea
 lemma: カシオペア
 reading: カシオペア
 romaji: kashiopea
-meaning_it: Cassiopeia
+meaning_it: Kashiopea
 notes_it: >-
   Nome scelto e usato come identità di scena. Va riconosciuto subito perché non
   è un NPC qualsiasi: è il segnale di un filone narrativo specifico.
@@ -117,11 +117,11 @@ entry_type: term
 entry_id: term-v764-kashiopea
 card_type: recognition
 front: "カシオペア"
-back: Cassiopeia
+back: Kashiopea
 example_jp: >-
   わたしの {{名|な}}は カシオペア。
 example_it: >-
-  Il mio nome è Cassiopeia.
+  Il mio nome è Kashiopea.
 :::
 :::term
 id: term-v765-omae
@@ -260,7 +260,7 @@ back: sembra / ha l'aria di / da...
 example_jp: >-
   やっぱり モトトカゲっぽい……！
 example_it: >-
-  In effetti ha proprio l'aria di un Cyclizar...!
+  In effetti ha proprio l'aria di un Mototokage...!
 :::
 :::grammar
 id: grammar-g113-non-e-che-non-sara-che

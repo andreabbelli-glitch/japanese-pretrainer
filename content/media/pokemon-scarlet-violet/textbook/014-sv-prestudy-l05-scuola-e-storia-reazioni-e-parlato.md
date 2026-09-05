@@ -21,7 +21,7 @@ summary: >-
 
 # Scuola, picnic e reazioni: leggere effetto, permesso e sequenza
 
-Nei primi giri a Paldea, *Pokémon Scarlet & Violet* passa senza pausa dai banchi dell'Accademia ai menu di sistema, dal picnic alle battute dei personaggi. Il giapponese che incontri qui non serve solo a nominare oggetti: dice se una mossa ha effetto, se una voce entra nel Pokédex, se puoi riposare, se devi fare attenzione o se qualcuno sta reagendo con entusiasmo.
+Nei primi giri a Parudea, *Pokémon Scarlet & Violet* passa senza pausa dai banchi dell'Accademia ai menu di sistema, dal picnic alle battute dei personaggi. Il giapponese che incontri qui non serve solo a nominare oggetti: dice se una mossa ha effetto, se una voce entra nel Pokémon Zukan, se puoi riposare, se devi fare attenzione o se qualcuno sta reagendo con entusiasmo.
 
 La chiave è leggere insieme parola, particella e scena. `{{効果|こうか}}がある` non funziona come `{{食材|しょくざい}}を{{使|つか}}う`: il primo dice che un effetto esiste, il secondo ti mette in mano qualcosa da usare. Allo stesso modo, `～てもいい` concede spazio d'azione, mentre `～{{後|あと}}で` ordina gli eventi prima e dopo.
 
@@ -30,7 +30,7 @@ La chiave è leggere insieme parola, particella e scena. `{{効果|こうか}}�
 - [{{効果|こうか}}](term:term-v051-kouka) — effetto / risultato prodotto
 - [{{食材|しょくざい}}](term:term-v052-shokuzai) — ingrediente
 - [{{博士|はかせ}}](term:term-v053-hakase) — professore / ricercatore
-- [{{図鑑|ずかん}}](term:term-v054-zukan) — Pokédex / enciclopedia
+- [{{図鑑|ずかん}}](term:term-v054-zukan) — Pokémon Zukan / enciclopedia
 - [どんな](term:term-v055-donna) — che tipo di
 - [ちゃんと](term:term-v056-chanto) — come si deve / per bene
 - [{{中|なか}}](term:term-v057-naka) — dentro / interno / in mezzo
@@ -59,7 +59,7 @@ La chiave è leggere insieme parola, particella e scena. `{{効果|こうか}}�
 
 Quando una schermata di battaglia o un dialogo scolastico usa [{{効果|こうか}}](term:term-v051-kouka), il focus è il risultato prodotto da qualcosa: una mossa, un oggetto, un bonus, una spiegazione del professore. `効果` mette al centro il risultato prodotto da una mossa, oggetto, bonus o spiegazione. Per questo compare spesso in frasi con がある: il gioco ti sta dicendo che "c'è effetto", cioè che quella scelta produce un risultato riconoscibile.
 
-[{{博士|はかせ}}](term:term-v053-hakase) porta invece la scena verso spiegazioni e ricerca. In un gioco Pokémon, il professore non è solo un titolo scolastico: è la voce che collega il mondo dei Pokémon a strumenti come il [{{図鑑|ずかん}}](term:term-v054-zukan). Quando leggi {{図鑑|ずかん}}に{{登録|とうろく}}する, la particella に è decisiva: non stai semplicemente "guardando" il Pokédex, stai mandando un'informazione dentro quel registro.
+[{{博士|はかせ}}](term:term-v053-hakase) porta invece la scena verso spiegazioni e ricerca. In un gioco Pokémon, il professore non è solo un titolo scolastico: è la voce che collega il mondo dei Pokémon a strumenti come il [{{図鑑|ずかん}}](term:term-v054-zukan). Quando leggi {{図鑑|ずかん}}に{{登録|とうろく}}する, la particella に è decisiva: non stai semplicemente "guardando" il Pokémon Zukan, stai mandando un'informazione dentro quel registro.
 
 [どんな](term:term-v055-donna) apre domande sul tipo o sulla natura di qualcosa. In どんな ポケモン il focus è il genere di Pokémon: caratteristiche, natura e che cosa bisogna aspettarsi.
 
@@ -88,7 +88,7 @@ Come trucco mnemonico, pensa a [{{効果|こうか}}](term:term-v051-kouka) come
 jp: >-
   {{博士|はかせ}}が {{図鑑|ずかん}}に ポケモンを {{登録|とうろく}}する。
 translation_it: >-
-  Il professore registra il Pokémon nel Pokédex.
+  Il professore registra il Pokémon nel Pokémon Zukan.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -100,7 +100,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-`{{図鑑|ずかん}}を{{見|み}}る` e `{{図鑑|ずかん}}に{{登録|とうろく}}する` non descrivono la stessa cosa. Con `を{{見|み}}る`, il Pokédex è ciò che guardi; con `に{{登録|とうろく}}する`, il Pokédex è il luogo astratto in cui entra un dato.
+`{{図鑑|ずかん}}を{{見|み}}る` e `{{図鑑|ずかん}}に{{登録|とうろく}}する` non descrivono la stessa cosa. Con `を{{見|み}}る`, il Pokémon Zukan è ciò che guardi; con `に{{登録|とうろく}}する`, il Pokémon Zukan è il luogo astratto in cui entra un dato.
 
 ## 2. Picnic, ingredienti e accuratezza: oggetti che diventano azioni
 
@@ -250,7 +250,7 @@ Le stesse forme diventano più facili da riconoscere quando le ricombini nelle s
 jp: >-
   {{博士|はかせ}}が どんな ポケモンか {{図鑑|ずかん}}で {{調|しら}}べる。
 translation_it: >-
-  Il professore controlla nel Pokédex che tipo di Pokémon sia.
+  Il professore controlla nel Pokémon Zukan che tipo di Pokémon sia.
 :::
 
 :::example_sentence
@@ -276,4 +276,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando Paldea alterna scuola, battaglie, picnic e dialoghi, guarda prima le particelle: がある fa esistere un effetto, を marca ciò che usi o prepari, に porta l'informazione dentro un registro, で colloca l'azione e の{{後|あと}}で mette ordine nel tempo. A quel punto parole come [ちゃんと](term:term-v056-chanto), [きっと](term:term-v061-kitto), [{{気|き}}をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) non restano reazioni sparse: diventano segnali di tono, fiducia e attenzione nella scena.
+Quando Parudea alterna scuola, battaglie, picnic e dialoghi, guarda prima le particelle: がある fa esistere un effetto, を marca ciò che usi o prepari, に porta l'informazione dentro un registro, で colloca l'azione e の{{後|あと}}で mette ordine nel tempo. A quel punto parole come [ちゃんと](term:term-v056-chanto), [きっと](term:term-v061-kitto), [{{気|き}}をつけて](term:term-e012-kiwo-tsukete) e [すごい！](term:term-e013-sugoi) non restano reazioni sparse: diventano segnali di tono, fiducia e attenzione nella scena.

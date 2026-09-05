@@ -83,7 +83,7 @@ reading: らくさつ
 romaji: rakusatsu
 meaning_it: aggiudicazione; asta vinta
 notes_it: >-
-  {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Porto Marinada è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
+  {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Marinādo Taun è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: ほこら
 romaji: hokora
 meaning_it: piccolo santuario
 notes_it: >-
-  {{祠|ほこら}} indica i piccoli santuari che si trovano isolati nella natura rispetto ai grandi Jinja ({{神|じん}}{{社|じゃ}}). Nel contesto di Paldea, è la parola specifica usata per descrivere i sigilli dei Pokémon nefasti.
+  {{祠|ほこら}} indica i piccoli santuari che si trovano isolati nella natura rispetto ai grandi Jinja ({{神|じん}}{{社|じゃ}}). Nel contesto di Parudea, è la parola specifica usata per descrivere i sigilli dei Pokémon nefasti.
 level_hint: custom
 :::
 :::term
@@ -239,7 +239,7 @@ example_jp: >-
 example_it: >-
   Mi sono aggiudicato lo strumento!
 notes_it: >-
-  {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Porto Marinada è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
+  {{落|らく}}{{札|さつ}} è il termine commerciale per indicare l'accettazione e la vittoria di un'offerta a un'asta ({{競|せ}}り). A Marinādo Taun è il verbo chiave per confermare che hai ottenuto l'oggetto in palio.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card
@@ -254,9 +254,9 @@ back: >-
 example_jp: >-
   パルデアの どこかに あやしい {{祠|ほこら}}が あるらしい。
 example_it: >-
-  Sembra che da qualche parte a Paldea ci sia un santuario misterioso.
+  Sembra che da qualche parte a Parudea ci sia un santuario misterioso.
 notes_it: >-
-  {{祠|ほこら}} indica i piccoli santuari che si trovano isolati nella natura rispetto ai grandi Jinja ({{神|じん}}{{社|じゃ}}). Nel contesto di Paldea, è la parola specifica usata per descrivere i sigilli dei Pokémon nefasti.
+  {{祠|ほこら}} indica i piccoli santuari che si trovano isolati nella natura rispetto ai grandi Jinja ({{神|じん}}{{社|じゃ}}). Nel contesto di Parudea, è la parola specifica usata per descrivere i sigilli dei Pokémon nefasti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-13]
 :::
 :::card

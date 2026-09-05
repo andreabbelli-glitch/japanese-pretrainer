@@ -280,24 +280,21 @@ translation_it: >-
 Se la cosa vista sparisce, resta una frase più generale.
 
 :::example_sentence
-jp: >-
-  {{私|わたし}}は{{見|み}}える。
-translation_it: >-
-  Riesco a vedere.
+jp: "{{私|わたし}}にはクリスタルが{{見|み}}える。"
+translation_it: "Riesco a vedere il cristallo."
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `{{私|わたし}}は` ➔ **Punto di vista lasciato in primo piano**: la frase parla della capacità percettiva del parlante.
-*   `{{見|み}}える` ➔ **Visibilità senza oggetto esplicito**: ciò che si vede va recuperato dalla scena.
+- `{{私|わたし}}には` indica chi percepisce: `に` marca il percettore e `は` lo mette a tema.
+- `クリスタルが` indica ciò che è visibile, cioè il cristallo.
+- `{{見|み}}える` descrive la percezione: «riesco a vedere / è visibile».
 
 #### ⚖️ Contrasto operativo
 
-`{{私|わたし}}は{{見|み}}える` può funzionare come "riesco a vedere" dal mio punto
-di vista. `{{私|わたし}}が{{見|み}}える`, invece, mette `{{私|わたし}}` come cosa
-visibile: "io sono visibile" o "si vede me". Con
-[{{見|み}}える](term:term-mieru), il blocco con が è spesso ciò che appare,
-non chi guarda attivamente.
+Con [{{見|み}}える](term:term-mieru), ciò che appare si costruisce con `が`.
+Qui il cristallo è visibile al parlante. In `{{私|わたし}}が{{見|み}}える`, invece,
+il parlante diventa ciò che si vede: «si vede me». Esplicitare sia il percettore
+sia la cosa visibile rende la differenza immediata.
 
 ## 3. Pronomi e persone: chi parla, a chi, con che tono
 

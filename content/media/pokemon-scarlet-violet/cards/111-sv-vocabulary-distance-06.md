@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-06
 media_id: media-pokemon-scarlet-violet
 slug: 111-sv-vocabulary-distance-06
-title: 'Parole per leggere Paldea — sei'
+title: 'Parole per leggere Parudea — sei'
 order: 156
 segment_ref: scarlet-violet-vocabulary
 ---

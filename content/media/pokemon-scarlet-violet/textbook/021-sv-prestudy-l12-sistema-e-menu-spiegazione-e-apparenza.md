@@ -21,7 +21,7 @@ summary: >-
 
 # Menu e spiegazioni: sblocchi, destinazioni e risposte
 
-Nel viaggio a Paldea il gioco ti parla spesso prima ancora dei personaggi: una schermata annuncia che ora puoi cavalcare, il Pokédex apre l'habitat di un Pokémon, la mappa ti chiede una destinazione, un menu passa da scegliere a vendere. Il giapponese di sistema è compatto, ma molto regolare: verbo, particella e label dicono che cosa è appena cambiato e quale azione è disponibile.
+Nel viaggio a Parudea il gioco ti parla spesso prima ancora dei personaggi: una schermata annuncia che ora puoi cavalcare, il Pokémon Zukan apre l'habitat di un Pokémon, la mappa ti chiede una destinazione, un menu passa da scegliere a vendere. Il giapponese di sistema è compatto, ma molto regolare: verbo, particella e label dicono che cosa è appena cambiato e quale azione è disponibile.
 
 Accanto ai menu compaiono anche formule da dialogo breve: una causa con `から` o `ので`, un contrasto con `けど`, una risposta affidabile come `{{任|まか}}せて`. Sono forme piccole, ma in scena decidono se il gioco sta spiegando una regola, attenuando una frase o consegnandoti una scelta pratica.
 
@@ -51,9 +51,9 @@ Accanto ai menu compaiono anche formule da dialogo breve: una causa con `から`
 
 ## Etichette da riconoscere
 
-- [スターダスト★ストリート](term:term-v147-sutaadasutosutoriito) — Starfall Street
-- [チャンピオンロード](term:term-v148-chanpionroodo) — Champion Road
-- [レジェンドルート](term:term-v149-rejiendoruuto) — Path of Legends
+- [スターダスト★ストリート](term:term-v147-sutaadasutosutoriito) — Sutādasuto Sutorīto
+- [チャンピオンロード](term:term-v148-chanpionroodo) — Chanpion Rōdo
+- [レジェンドルート](term:term-v149-rejiendoruuto) — Rejendo Rūto
 
 ---
 
@@ -138,7 +138,7 @@ translation_it: >-
 
 ## 3. Mappa, habitat e destinazioni
 
-Le parole di luogo in questa parte non sono semplici nomi geografici. [{{生息|せいそく}}{{地|ち}}](term:term-v138-seisokuchi) appartiene alla logica del Pokédex: indica l'area in cui una specie vive o può comparire. [{{行先|いきさき}}](term:term-v146-ikisaki), invece, appartiene alla logica del movimento: è il punto verso cui stai andando o che il menu considera come destinazione.
+Le parole di luogo in questa parte non sono semplici nomi geografici. [{{生息|せいそく}}{{地|ち}}](term:term-v138-seisokuchi) appartiene alla logica del Pokémon Zukan: indica l'area in cui una specie vive o può comparire. [{{行先|いきさき}}](term:term-v146-ikisaki), invece, appartiene alla logica del movimento: è il punto verso cui stai andando o che il menu considera come destinazione.
 
 [{{川|かわ}}](term:term-v142-kawa) e [{{街|まち}}](term:term-v143-machi) sono landmark concreti. Un [{{川|かわ}}](term:term-v142-kawa) blocca o guida il movimento sul terreno; una [{{街|まち}}](term:term-v143-machi) orienta servizi, incontri e progressione. Quando questi termini compaiono accanto a una route come [チャンピオンロード](term:term-v148-chanpionroodo), [レジェンドルート](term:term-v149-rejiendoruuto) o [スターダスト★ストリート](term:term-v147-sutaadasutosutoriito), la schermata sta mescolando luogo e linea narrativa.
 

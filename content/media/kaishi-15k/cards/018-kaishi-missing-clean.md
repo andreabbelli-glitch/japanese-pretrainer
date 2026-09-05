@@ -421,15 +421,15 @@ entry_id: term-kaishi-1708637440979
 card_type: recognition
 front: '{{問|と}}う'
 back: 'to ask, to inquire'
-example_jp: '{{応|おう}}{{募|ぼ}}{{者|しゃ}}の{{年|ねん}}{{齢|れい}}は{{問|と}}いません。'
-example_it: 'We will not inquire about the age of the applicants.'
+example_jp: "{{応|おう}}{{募|ぼ}}{{者|しゃ}}の{{年|ねん}}{{齢|れい}}は{{問|と}}いません。"
+example_it: "There is no age requirement for applicants."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440979-recognition/fb6a85e0ab7fc7c342e68179279b6840.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
+notes_it: "In 年齢は問わない, 問う means to make something a condition or requirement: age does not matter for eligibility."
 :::
-
 :::term
 id: term-kaishi-1708637441048
 lemma: '爆発'

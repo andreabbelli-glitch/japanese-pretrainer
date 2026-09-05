@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-283-verb-receptive-irregular
 entry_type: grammar
 entry_id: grammar-283-verb-receptive-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（passivo）"
 back: >-
   Passivi fondamentali: される, 来られる e 行かれる
 example_jp: >-

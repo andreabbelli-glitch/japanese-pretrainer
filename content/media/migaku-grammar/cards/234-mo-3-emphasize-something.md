@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-234-mo-3-emphasize-something
 entry_type: grammar
 entry_id: grammar-234-mo-3-emphasize-something
 card_type: concept
-front: "も"
+front: "も（quantità enfatica）"
 back: >-
   X も presenta X come quantità o caso notevole: «addirittura / perfino / neanche».
 example_jp: >-

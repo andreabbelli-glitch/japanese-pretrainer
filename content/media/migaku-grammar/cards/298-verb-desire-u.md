@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-298-verb-desire-u
 entry_type: grammar
 entry_id: grammar-298-verb-desire-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（desiderativo）"
 back: >-
   Desiderio di compiere un'azione con un verbo godan
 example_jp: >-

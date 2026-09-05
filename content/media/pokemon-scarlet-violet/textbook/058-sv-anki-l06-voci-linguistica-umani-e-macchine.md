@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-058-sv-anki-l06-voci-linguistica-umani-e-macchine
 media_id: media-pokemon-scarlet-violet
 slug: 058-sv-anki-l06-voci-linguistica-umani-e-macchine
-title: Voci, persone e macchine tra Accademia e Area Zero
+title: Voci, persone e macchine tra Accademia e Eria Zero
 order: 88
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-06]
 prerequisites: []
 summary: >-
   Leggere voci, corsi, registro sociale e parole di fiducia quando dialoghi,
-  scuola e Area Zero spostano il focus su persone e macchine.
+  scuola e Eria Zero spostano il focus su persone e macchine.
 ---
 
-# Voci, persone e macchine tra Accademia e Area Zero
+# Voci, persone e macchine tra Accademia e Eria Zero
 
-In *Pokémon Scarlet & Violet* la lingua cambia volto appena ti sposti dai corridoi dell'Accademia ai racconti su Area Zero. Una [{{噂|うわさ}}](term:term-anki-l06-uwasa) resta una voce da confermare, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta dentro una materia scolastica, e un nome seguito da [{{氏|し}}](term:term-anki-l06-shi) mette subito più distanza di un semplice さん.
+In *Pokémon Scarlet & Violet* la lingua cambia volto appena ti sposti dai corridoi dell'Accademia ai racconti su Eria Zero. Una [{{噂|うわさ}}](term:term-anki-l06-uwasa) resta una voce da confermare, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta dentro una materia scolastica, e un nome seguito da [{{氏|し}}](term:term-anki-l06-shi) mette subito più distanza di un semplice さん.
 
 Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|あ}}がる](term:term-anki-l06-agaru), un personaggio che [{{食|く}}う](term:term-anki-l06-kuu), qualcuno che [{{信|しん}}じる](term:term-anki-l06-shinjiru), oppure una [{{機械|きかい}}](term:term-anki-l06-kikai) legata alla trama. Queste forme ti dicono chi parla, quanto è ruvido o formale il tono, e se la frase sta guardando persone, gruppi o apparati troppo complessi per essere semplici strumenti.
 
@@ -50,20 +50,20 @@ Lo stesso vale per le scene più emotive o tecnologiche: un valore che [{{上|�
 ## Etichette da riconoscere
 
 - `セイジ{{先生|せんせい}}` — il professore associato ai corsi di lingua
-- [クラベル](term:term-v069-kuraberu){{氏|し}} — Clavel citato con registro formale e distanziato
-- `タイムマシン` — la macchina del tempo legata alla tecnologia di Area Zero
+- [クラベル](term:term-v069-kuraberu){{氏|し}} — Kuraberu citato con registro formale e distanziato
+- `タイムマシン` — la macchina del tempo legata alla tecnologia di Eria Zero
 
 ---
 
-[クラベル](term:term-v069-kuraberu){{氏|し}} mostra come un nome proprio cambi tono con il suffisso: Clavel non viene avvicinato, viene citato in modo più formale.
+[クラベル](term:term-v069-kuraberu){{氏|し}} mostra come un nome proprio cambi tono con il suffisso: Kuraberu non viene avvicinato, viene citato in modo più formale.
 
 ## 1. Voci, corsi e nomi: da dove arriva l'informazione
 
-All'Accademia e nelle città di Paldea molte battute ruotano intorno a informazioni ricevute da altri: qualcuno ha sentito parlare di un Pokémon, un professore introduce una materia, una comunicazione nomina una figura in modo ufficiale. Qui la grammatica indica insieme solidità dell'informazione e rapporto sociale messo in scena.
+All'Accademia e nelle città di Parudea molte battute ruotano intorno a informazioni ricevute da altri: qualcuno ha sentito parlare di un Pokémon, un professore introduce una materia, una comunicazione nomina una figura in modo ufficiale. Qui la grammatica indica insieme solidità dell'informazione e rapporto sociale messo in scena.
 
 *   [{{噂|うわさ}}](term:term-anki-l06-uwasa) indica ciò che circola come voce prima di diventare certezza.
 *   [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) porta la lettura dentro la scuola. Il composto si apre bene in due pezzi: {{言語|げんご}} è "lingua / linguaggio", mentre {{学|がく}} funziona come suffisso di disciplina, cioè "studio di". In un dialogo dell'Accademia, quindi, [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) non nomina semplicemente delle parole: identifica una materia, un'aula, un insegnante e un tipo di spiegazione.
-*   [{{氏|し}}](term:term-anki-l06-shi) dopo un nome proprio cambia il registro. さん resta quotidiano e relazionale; [{{氏|し}}](term:term-anki-l06-shi) suona più rigido, da comunicazione, rapporto o riferimento istituzionale. Se leggi クラベル{{氏|し}}, il testo non sta rendendo Clavel più vicino: lo sta nominando con una distanza formale.
+*   [{{氏|し}}](term:term-anki-l06-shi) dopo un nome proprio cambia il registro. さん resta quotidiano e relazionale; [{{氏|し}}](term:term-anki-l06-shi) suona più rigido, da comunicazione, rapporto o riferimento istituzionale. Se leggi クラベル{{氏|し}}, il testo non sta rendendo Kuraberu più vicino: lo sta nominando con una distanza formale.
 
 :::example_sentence
 jp: >-
@@ -82,7 +82,7 @@ translation_it: >-
 jp: >-
   セイジ{{先生|せんせい}}の {{言語|げんご}}{{学|がく}}の {{授業|じゅぎょう}}は おもしろい ですよ。
 translation_it: >-
-  I corsi di linguistica del professor Zim sono interessanti.
+  I corsi di linguistica del professor Seiji sono interessanti.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -95,7 +95,7 @@ translation_it: >-
 jp: >-
   クラベル{{氏|し}}から {{連絡|れんらく}}が ありました。
 translation_it: >-
-  È arrivata una comunicazione dal signor Clavel.
+  È arrivata una comunicazione dal signor Kuraberu.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -222,12 +222,12 @@ translation_it: >-
 
 Per ricordare [{{解散|かいさん}}](term:term-anki-l06-kaisan), immagina il momento in cui una classe smette di essere una classe riunita: le persone erano un gruppo, poi la parola le lascia disperdere. `解散` descrive il gruppo che si scioglie e le persone che si disperdono.
 
-## 4. Macchine e Area Zero: quando l'oggetto diventa trama
+## 4. Macchine e Eria Zero: quando l'oggetto diventa trama
 
-Area Zero porta nel gioco un lessico diverso da quello dei corridoi scolastici. Qui non basta riconoscere un "oggetto": spesso la frase vuole dirti che c'è un apparato, un meccanismo, qualcosa con una struttura interna. [{{機械|きかい}}](term:term-anki-l06-kikai) è la parola che sposta la lettura in quella direzione.
+Eria Zero porta nel gioco un lessico diverso da quello dei corridoi scolastici. Qui non basta riconoscere un "oggetto": spesso la frase vuole dirti che c'è un apparato, un meccanismo, qualcosa con una struttura interna. [{{機械|きかい}}](term:term-anki-l06-kikai) è la parola che sposta la lettura in quella direzione.
 
 *   [{{機械|きかい}}](term:term-anki-l06-kikai) indica una macchina o apparecchiatura con meccanismi interni. È diverso da {{道具|どうぐ}}, che può essere uno strumento più generico, anche semplice. In *Scarlet & Violet* questa differenza si sente quando la tecnologia smette di essere un oggetto da usare e diventa parte della trama: タイムマシン nomina l'apparato specifico, mentre [{{機械|きかい}}](term:term-anki-l06-kikai) lo classifica come macchina complessa.
-*   Quando [{{機械|きかい}}](term:term-anki-l06-kikai) compare insieme ad aggettivi come {{複雑|ふくざつ}}な, la frase non sta descrivendo solo l'aspetto esterno. Sta dicendo che l'oggetto ha un funzionamento difficile da capire, quindi appartiene a un registro più tecnico: laboratorio, dati, dispositivi, tecnologia di Area Zero.
+*   Quando [{{機械|きかい}}](term:term-anki-l06-kikai) compare insieme ad aggettivi come {{複雑|ふくざつ}}な, la frase non sta descrivendo solo l'aspetto esterno. Sta dicendo che l'oggetto ha un funzionamento difficile da capire, quindi appartiene a un registro più tecnico: laboratorio, dati, dispositivi, tecnologia di Eria Zero.
 
 :::example_sentence
 jp: >-
@@ -243,21 +243,19 @@ translation_it: >-
 *   `{{機械|きかい}} です` ➔ **Categoria dell'oggetto** (la frase lo definisce come macchina, non come semplice utensile o item).
 
 :::example_sentence
-jp: >-
-  この {{機械|きかい}}を {{使|つか}}うと、 データの {{数|かず}}が {{上|あ}}がる。
+jp: "この{{機械|きかい}}を{{使|つか}}うと、データの{{量|りょう}}が{{増|ふ}}える。"
 translation_it: >-
   Se usi questa macchina, la quantità di dati aumenta.
 :::
-
 #### 🗺️ Anatomia della frase
 
 *   `この {{機械|きかい}}を {{使|つか}}うと` ➔ **Condizione d'uso** (`を` marca la macchina usata; `と` prepara l'effetto regolare).
-*   `データの {{数|かず}}が` ➔ **Valore misurabile** (`の` collega i dati al loro numero; `が` marca ciò che cambia).
-*   `{{上|あ}}がる` ➔ **Risultato automatico** (il numero sale come conseguenza dell'uso, senza bisogno di un agente espresso).
+*   `データの{{量|りょう}}が` ➔ **Quantità di dati**: `が` marca ciò che aumenta.
+*   `{{増|ふ}}える` ➔ **Aumento**: la quantità di dati cresce come conseguenza dell'uso.
 
 #### ⚖️ Contrasto operativo
 
-{{道具|どうぐ}} può essere lo strumento che prendi, usi e rimetti via; [{{機械|きかい}}](term:term-anki-l06-kikai) fa pensare a parti interne, funzionamento e tecnologia. Se una frase parla di Area Zero, dati o apparati, leggere [{{機械|きかい}}](term:term-anki-l06-kikai) come "semplice oggetto" rischia di togliere peso alla scena.
+{{道具|どうぐ}} può essere lo strumento che prendi, usi e rimetti via; [{{機械|きかい}}](term:term-anki-l06-kikai) fa pensare a parti interne, funzionamento e tecnologia. Se una frase parla di Eria Zero, dati o apparati, leggere [{{機械|きかい}}](term:term-anki-l06-kikai) come "semplice oggetto" rischia di togliere peso alla scena.
 
 #### 🧠 Gancio cognitivo
 
@@ -271,7 +269,7 @@ Le stesse forme diventano più facili da leggere quando si combinano: una voce p
 jp: >-
   クラベル{{氏|し}}から {{聞|き}}いた {{噂|うわさ}}は、 まだ {{信|しん}}じられない。
 translation_it: >-
-  Non riesco ancora a credere alla voce che ho sentito dal signor Clavel.
+  Non riesco ancora a credere alla voce che ho sentito dal signor Kuraberu.
 :::
 
 :::example_sentence
@@ -289,12 +287,10 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  この {{機械|きかい}}を {{使|つか}}うと、 データの {{数|かず}}が {{上|あ}}がる。
+jp: "この{{機械|きかい}}を{{使|つか}}うと、データの{{量|りょう}}が{{増|ふ}}える。"
 translation_it: >-
   Se usi questa macchina, la quantità di dati aumenta.
 :::
-
 ## Nota finale
 
 Quando incontri queste forme nel gioco, guarda prima il tipo di scena. [{{噂|うわさ}}](term:term-anki-l06-uwasa), [{{言語|げんご}}{{学|がく}}](term:term-anki-l06-gengogaku) e [{{氏|し}}](term:term-anki-l06-shi) orientano fonte e registro; [{{上|あ}}がる](term:term-anki-l06-agaru), [{{食|く}}う](term:term-anki-l06-kuu) e [{{信|しん}}じる](term:term-anki-l06-shinjiru) mostrano cambiamento, tono e fiducia; [{{人間|にんげん}}](term:term-anki-l06-ningen), [{{解散|かいさん}}](term:term-anki-l06-kaisan), [{{楽|たの}}しみ](term:term-anki-l06-tanoshimi) e [{{機械|きかい}}](term:term-anki-l06-kikai) danno alla frase il suo peso umano o tecnologico.

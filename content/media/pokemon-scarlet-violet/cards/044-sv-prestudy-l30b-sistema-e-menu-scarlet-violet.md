@@ -370,7 +370,7 @@ id: term-v600-chibichibipawaa
 lemma: ちびちびパワー
 reading: ちびちびパワー
 romaji: chibichibipawaa
-meaning_it: Teensy Power
+meaning_it: "Chibichibi Pawā (bonus agli incontri con Pokémon piccoli)"
 notes_it: >-
   Etichetta un bonus che riduce la taglia dei Pokemon incontrati o cercati.
   `ちびちび` porta una sfumatura di "piccolino", quindi va letto come effetto di
@@ -381,7 +381,7 @@ id: term-v601-dekadekapawaa
 lemma: でかでかパワー
 reading: でかでかパワー
 romaji: dekadekapawaa
-meaning_it: Humungo Power
+meaning_it: "Dekadeka Pawā (bonus agli incontri con Pokémon grandi)"
 notes_it: >-
   Etichetta un bonus che aumenta la taglia dei Pokemon incontrati o cercati.
   `でかでか` ha valore colloquiale di "molto grande", non di forza o rarità.
@@ -389,13 +389,10 @@ notes_it: >-
 :::term
 id: term-v602-nitsunapawaa
 lemma: 二つ名パワー
-reading: につなパワー
-romaji: nitsunapawaa
-meaning_it: Title Power
-notes_it: >-
-  Etichetta un bonus legato ai Pokemon con titolo o marchio speciale. `二つ名`
-  indica un soprannome onorifico, quindi il power riguarda quel tipo di
-  riconoscimento.
+reading: "ふたつなパワー"
+romaji: "futatsuna pawā"
+meaning_it: "Futatsuna Pawā (potere che favorisce gli incontri con Pokémon con un marchio)"
+notes_it: "二つ名 si legge ふたつな e indica un appellativo o epiteto. 二つ名パワー (Futatsuna Pawā) aumenta la probabilità di incontrare Pokémon con un marchio."
 :::
 :::term
 id: term-v603-hyoujou
@@ -517,7 +514,7 @@ id: term-v608-dougupurintaa
 lemma: どうぐプリンター
 reading: どうぐプリンター
 romaji: dougupurintaa
-meaning_it: Item Printer
+meaning_it: Dōgu Purintā
 notes_it: >-
   Nome di una funzione DLC: `どうぐ` indica gli oggetti prodotti o convertiti,
   mentre `プリンター` presenta la funzione come macchina che genera risultati.
@@ -573,7 +570,7 @@ id: term-v611-pokepootaru
 lemma: ポケポータル
 reading: ポケポータル
 romaji: pokepootaru
-meaning_it: Poké Portal
+meaning_it: Pokepōtaru
 notes_it: >-
   Nomina il portale delle funzioni online e di comunicazione. Se compare in una
   istruzione, la prossima azione passa da quel menu.

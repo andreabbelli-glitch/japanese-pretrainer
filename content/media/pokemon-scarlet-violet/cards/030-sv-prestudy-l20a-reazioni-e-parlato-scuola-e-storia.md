@@ -285,7 +285,7 @@ id: term-v279-hiden
 lemma: 秘伝
 reading: ひでん
 romaji: hiden
-meaning_it: segreto / Herba Mystica (come nome breve)
+meaning_it: "segreto tramandato; abbreviazione di Hiden Supaisu nel gioco"
 notes_it: >-
   秘伝 richiama qualcosa di segreto o tramandato; qui può funzionare come nome
   breve di un oggetto speciale legato alla ricerca.
@@ -541,7 +541,7 @@ back: contatto / chiamata / messaggio
 example_jp: >-
   ネモに {{連絡|れんらく}}を します。
 example_it: >-
-  Contatto Nemi.
+  Contatto Nemo.
 :::
 :::term
 id: term-v291-nigate

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 045-sv-prestudy-l30c-sistema-e-menu-scarlet-violet
-title: "Menu, scuola e scelte: leggere azioni e tono in Paldea"
+title: "Menu, scuola e scelte: leggere azioni e tono in Parudea"
 order: 75
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,7 +19,7 @@ summary: >-
   una scelta, un movimento o una conferma.
 ---
 
-# Menu, scuola e scelte: leggere azioni e tono in Paldea
+# Menu, scuola e scelte: leggere azioni e tono in Parudea
 
 In *Pokémon Scarlet & Violet*, molte schermate sembrano semplici menu, ma il giapponese ti sta già dicendo che tipo di azione è possibile: dirigersi verso un'aula, salvare dati, ritirarsi, aspettare una connessione o scegliere un team. La forma della frase cambia poco, ma cambia molto ciò che il gioco si aspetta da te.
 
@@ -47,7 +47,7 @@ Anche i dialoghi dell'Accademia e delle funzioni competitive lavorano nello stes
 - [{{固定|こてい}}](term:term-v633-kotei) — fissare / bloccare
 - [ヘルプ](term:term-v634-herupu) — aiuto
 - [{{頭文字|かしらもじ}}](term:term-v635-atamamoji) — prima lettera di una parola
-- [{{本校|ほんこう}}](term:term-v636-honkou) — sede principale della scuola
+- [{{本校|ほんこう}}](term:term-v636-honkou) — questa / la nostra scuola
 - [{{待機中|たいきちゅう}}](term:term-v637-taikinaka) — in attesa
 
 ## Espressioni ricorrenti
@@ -76,7 +76,7 @@ Nelle scene scolastiche, il testo non ti dà solo nomi di persone: ti dice quale
 *   [{{同級生|どうきゅうせい}}](term:term-v615-doukyuusei) (**Compagno di classe**) combina {{同|どう}} (*stesso*) con {{級|きゅう}}{{生|せい}}, cioè qualcuno legato alla stessa classe o allo stesso livello scolastico. Quando lo incontri nei dialoghi dell'Accademia, prepara una relazione laterale: non autorità, non sconosciuto, ma qualcuno che condivide il tuo ambiente.
 *   [{{面接官|めんせつかん}}](term:term-v625-mensetsukan) (**Intervistatore**) sposta subito il registro verso una prova orale o un colloquio. {{面接|めんせつ}} è l'intervista, {{官|かん}} marca la persona incaricata: chi parla non sta solo chiacchierando, sta conducendo domande e valutando risposte.
 *   [{{不在|ふざい}}](term:term-v624-fuzai) (**Assenza / non presente**) non nega l'esistenza di una persona. {{不|ふ}} nega, {{在|ざい}} riguarda l'essere presente in un luogo: la persona o funzione esiste, ma non si trova lì adesso. In una schermata, questo spesso blocca l'interazione o ti costringe a cercare altrove.
-*   [{{本校|ほんこう}}](term:term-v636-honkou) (**Sede principale**) distingue l'edificio principale della scuola da altre sedi o luoghi collegati. {{本|ほん}} qui porta il valore di "principale", {{校|こう}} quello di scuola: `本校` distingue la sede centrale dell'Accademia.
+*   [{{本校|ほんこう}}](term:term-v636-honkou) (**La nostra scuola**) è una forma istituzionale con cui chi parla si riferisce alla propria scuola. Può significare anche «sede principale» quando è esplicitamente contrapposta a una succursale; senza quel contrasto, non presupporre più sedi.
 
 La formula amministrativa più pulita di questo blocco è [{{指定|してい}}の{{教室|きょうしつ}}へ {{向|む}}かってください](term:term-e101-shitei-no-kyoushitsu-e-mukatte-kudasai): il gioco restringe la destinazione e poi ti dà un comando cortese di movimento.
 
@@ -131,7 +131,7 @@ translation_it: >-
 Sul campo, i sostantivi spaziali fanno più che descrivere il paesaggio. Preparano il modo in cui devi muoverti: attraversare una zona aperta, aggirare un ostacolo, guardare alle spalle o cambiare postura.
 
 *   [{{岩山|いわやま}}](term:term-v620-iwayama) (**Montagna rocciosa**) non è una montagna qualsiasi. {{岩|いわ}} porta la roccia, {{山|やま}} la massa montuosa: in esplorazione segnala pendii, pareti, passaggi stretti o zone dove il movimento può essere limitato.
-*   [{{広大|こうだい}}](term:term-v629-koudai) (**Vastissimo / ampio**) descrive una scala grande e aperta. In Paldea, questa parola inquadra distanze ampie, orientamento e spostamenti lunghi.
+*   [{{広大|こうだい}}](term:term-v629-koudai) (**Vastissimo / ampio**) descrive una scala grande e aperta. In Parudea, questa parola inquadra distanze ampie, orientamento e spostamenti lunghi.
 *   [{{障害物|しょうがいぶつ}}](term:term-v632-shougaibutsu) (**Ostacolo**) trasforma un impedimento in oggetto concreto. {{障害|しょうがい}} è l'ostacolo o impedimento, {{物|ぶつ}} lo rende una cosa fisica: qualcosa che può bloccare vista, movimento o traiettoria.
 *   [{{背後|はいご}}](term:term-v626-haigo) (**Retro / alle spalle**) punta al lato dietro una persona o un oggetto. Non è un generico "là": è la parte non direttamente visibile se guardi avanti.
 *   [しゃがむ](term:term-v617-shagamu) (**Accovacciarsi**) cambia la postura del corpo. Il personaggio non è semplicemente fermo: si abbassa, spesso per nascondersi, avvicinarsi o passare in spazi bassi.
@@ -244,7 +244,7 @@ translation_it: >-
 jp: >-
   ネモは もう {{来|き}}たらしい。
 translation_it: >-
-  Pare che Nemi sia già arrivata.
+  Pare che Nemo sia già arrivata.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -296,7 +296,7 @@ Quando menu, scuola e parlato si incrociano, cerca prima la funzione della frase
 jp: >-
   {{同級生|どうきゅうせい}}と {{本校|ほんこう}}の {{教室|きょうしつ}}へ {{向|む}}かう。
 translation_it: >-
-  Mi dirigo verso l'aula della sede principale con un compagno di classe.
+  Mi dirigo verso l'aula della nostra scuola con un compagno di classe.
 :::
 
 :::example_sentence

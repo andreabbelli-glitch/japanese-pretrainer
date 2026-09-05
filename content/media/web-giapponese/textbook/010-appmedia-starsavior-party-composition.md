@@ -142,7 +142,7 @@ La parte più pratica della guida usa [{{編成|へんせい}}](term:term-hensei
 
 [{{前衛|ぜんえい}}](term:term-frontline) combina {{前|ぜん}} "davanti" e {{衛|えい}} "guardia / difesa". In una guida di party composition, diventa la prima linea: il posto dove ha senso mettere chi regge pressione e contatto. [{{後衛|こうえい}}](term:term-backline) usa {{後|こう}} "dietro" con lo stesso {{衛|えい}}: è la retroguardia, cioè la zona più protetta. Non sono decorazioni grafiche della tabella; cambiano il modo in cui leggi il ruolo del personaggio.
 
-[{{代用|だいよう}}](term:term-substitute) completa questa logica. `代用` indica il personaggio che puo' coprire la funzione dell'opzione ideale. Quando la pagina elenca alternative, [{{代用|だいよう}}](term:term-substitute) ti dice di non cercare il "migliore assoluto", ma un equivalente funzionale.
+[{{代用|だいよう}}](term:term-substitute) completa questa logica. `代用` indica il personaggio che può coprire la funzione dell'opzione ideale. Quando la pagina elenca alternative, [{{代用|だいよう}}](term:term-substitute) ti dice di non cercare il "migliore assoluto", ma un equivalente funzionale.
 
 :::image
 src: assets/starsavior-79520369-front-back.png

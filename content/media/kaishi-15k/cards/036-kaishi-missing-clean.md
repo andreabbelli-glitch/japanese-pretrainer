@@ -271,15 +271,14 @@ entry_id: term-kaishi-1708637441175
 card_type: recognition
 front: '{{満|み}}ちる'
 back: 'to fill, to become full'
-example_jp: '{{月|つき}}が{{満|み}}ちてきましたね。'
-example_it: 'The moon has become full, hasn''t it?'
+example_jp: "{{月|つき}}が{{満|み}}ちてきましたね。"
+example_it: "The moon is getting fuller, isn’t it?"
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441175-recognition/f48f08ab859bd8a3fed1ee305b8569b9.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637440434
 lemma: '逆'

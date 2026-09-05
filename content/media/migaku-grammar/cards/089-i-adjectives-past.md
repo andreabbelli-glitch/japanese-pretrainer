@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-089-i-adjectives-past
 entry_type: grammar
 entry_id: grammar-089-i-adjectives-past
 card_type: concept
-front: "い{{形容詞|けいようし}}"
+front: "い{{形容詞|けいようし}}（passato）"
 back: >-
   Passato affermativo degli い-aggettivi: «era / è stato…»
 example_jp: >-

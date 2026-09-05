@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-086-verb-past-negative-u
 entry_type: grammar
 entry_id: grammar-086-verb-past-negative-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（passato negativo）"
 back: >-
   Passato negativo piano dei verbi godan: «non fece»
 example_jp: >-

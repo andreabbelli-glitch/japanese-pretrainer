@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-085-verb-past-irregular
 entry_type: grammar
 entry_id: grammar-085-verb-past-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（passato）"
 back: >-
   Passati fondamentali da memorizzare: した, 来た, 行った e あった
 example_jp: >-

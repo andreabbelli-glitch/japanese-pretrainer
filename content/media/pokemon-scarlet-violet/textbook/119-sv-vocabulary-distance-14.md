@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-14
 media_id: media-pokemon-scarlet-violet
 slug: 119-sv-vocabulary-distance-14
-title: 'Parole per leggere Paldea — quattordici'
+title: 'Parole per leggere Parudea — quattordici'
 order: 164
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — quattordici
+# Parole per leggere Parudea — quattordici
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -32,7 +32,7 @@ conserva un valore preciso nella frase.
 - [{{草|くさ}}むら](term:term-sv-vocabulary-234-kusamura) — l’erba; luogo erboso (soprattutto con erba alta e fitta)
 - [ワクワク](term:term-sv-vocabulary-362-wakuwaku) — essere elettrizzato; fremere dall'emozione
 - [{{学|まな}}び](term:term-sv-vocabulary-137-manabi) — apprendimento; studio
-- [こなゆき](term:term-sv-vocabulary-319-konayuki) — neve farinosa; Polneve, mossa Pokémon
+- [こなゆき](term:term-sv-vocabulary-319-konayuki) — neve farinosa; Konayuki, mossa Pokémon
 - [{{態度|たいど}}](term:term-sv-vocabulary-128-taido) — atteggiamento; modo di fare; comportamento
 - [{{天才|てんさい}}](term:term-sv-vocabulary-147-tensai) — genio; prodigio; dote naturale
 - [{{品|しな}}](term:term-sv-vocabulary-245-shina) — articolo; oggetto; cosa
@@ -55,12 +55,9 @@ translation_it: >-
 ### [{{間違|まちが}}える](term:term-sv-vocabulary-192-machigaeru) — commettere un errore (in); sbagliare; fare in modo errato
 
 :::example_sentence
-jp: >-
-  オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！
-translation_it: >-
-  Fai attenzione a non far rotolare Smoliv per sbaglio, scambiandolo per un’Oliva!
+jp: "オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！"
+translation_it: "Non fate rotolare Minību scambiandolo per un’oliva!"
 :::
-
 **Uso:** L'azione espressa nel contesto è «commettere un errore (in); sbagliare; fare in modo errato».
 
 ### [{{時代|じだい}}](term:term-sv-vocabulary-045-jidai) — periodo; epoca; era
@@ -113,7 +110,7 @@ translation_it: >-
 jp: >-
   この{{先|さき}}ボクたちスター{{団|だん}}あく{{組|ぐみ}}{{通称|つうしょう}}チーム・セギンのアジトですそそ{{不法|ふほう}}{{侵入|しんにゅう}}とかさ{{勘弁|かんべん}}してほしいわけ！
 translation_it: >-
-  Da qui in avanti c'è la base della squadra Buio del Team Star, conosciuta come Team Segin. Niente intrusioni illegali, per favore!
+  Da qui in avanti c'è la base della squadra Buio del Sutā-dan, conosciuta come Team Segin. Niente intrusioni illegali, per favore!
 :::
 
 **Uso:** Nel contesto indica «risparmiami; per favore basta; perdono».
@@ -146,7 +143,7 @@ translation_it: >-
 jp: >-
   えーネモあれでワクワクしたん？
 translation_it: >-
-  Ehm, Nemi, ti ha davvero emozionato tutto questo?
+  Ehm, Nemo, ti ha davvero emozionato tutto questo?
 :::
 
 **Uso:** L'azione espressa nel contesto è «essere elettrizzato; fremere dall'emozione».
@@ -162,16 +159,16 @@ translation_it: >-
 
 **Uso:** Nel contesto indica «apprendimento; studio».
 
-### [こなゆき](term:term-sv-vocabulary-319-konayuki) — neve farinosa; Polneve, mossa Pokémon
+### [こなゆき](term:term-sv-vocabulary-319-konayuki) — neve farinosa; Konayuki, mossa Pokémon
 
 :::example_sentence
 jp: >-
   こなゆきコースだね！
 translation_it: >-
-  È il percorso «Polneve»!
+  È il percorso «Konayuki»!
 :::
 
-**Uso:** Nel dialogo aggiunge il valore di «neve farinosa; Polneve, mossa Pokémon».
+**Uso:** Nel dialogo aggiunge il valore di «neve farinosa; Konayuki, mossa Pokémon».
 
 ### [{{態度|たいど}}](term:term-sv-vocabulary-128-taido) — atteggiamento; modo di fare; comportamento
 
@@ -190,7 +187,7 @@ translation_it: >-
 jp: >-
   {{落|お}}ちこむことはござらぬかような{{傑作|けっさく}}をハンドメイドとはオルティガ{{殿|どの}}は{{誠|まこと}}に{{天才|てんさい}}。
 translation_it: >-
-  Non c’è motivo di abbattersi: un capolavoro del genere fatto a mano… Ortiga è davvero un genio.
+  Non c’è motivo di abbattersi: un capolavoro del genere fatto a mano… Orutiga è davvero un genio.
 :::
 
 **Uso:** Nel contesto indica «genio; prodigio; dote naturale».

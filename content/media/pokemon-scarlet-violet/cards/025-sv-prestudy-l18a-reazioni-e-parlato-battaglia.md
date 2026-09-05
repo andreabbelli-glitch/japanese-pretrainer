@@ -35,7 +35,7 @@ reading: おつかれさまでスター
 romaji: otsukaresamadesutaa
 meaning_it: ottimo lavoro, Star!
 notes_it: >-
-  Formula di Team Star costruita su お疲れさま, "grazie per il lavoro / ottimo
+  Formula di Sutā-dan costruita su お疲れさま, "grazie per il lavoro / ottimo
   lavoro", con il gioco di parole finale スター.
 :::
 :::grammar
@@ -59,7 +59,7 @@ back: '"..." / quanto a... / a proposito di...'
 example_jp: >-
   ネモって {{一番|いちばん}}だよね。
 example_it: >-
-  Nemi, dici? È la numero uno, vero?
+  Nemo, dici? È la numero uno, vero?
 :::
 :::term
 id: term-e038-masaka
@@ -248,10 +248,9 @@ id: term-v201-terapiisu
 lemma: テラピース
 reading: テラピース
 romaji: terapiisu
-meaning_it: >-
-  Teraliti
+meaning_it: "Tera Pīsu (frammenti per cambiare il Tera Taipu)"
 notes_it: >-
-  テラピース è il nome dei frammenti legati alla Teracristal. La label indica una
+  テラピース è il nome dei frammenti legati alla Terasutaru. La label indica una
   risorsa da ottenere, consumare o controllare nel menu.
 :::
 :::term

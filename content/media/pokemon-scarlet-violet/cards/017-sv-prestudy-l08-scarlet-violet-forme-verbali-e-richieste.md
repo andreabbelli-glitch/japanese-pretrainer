@@ -227,7 +227,7 @@ id: term-v094-shokujipawaa
 lemma: 食事パワー
 reading: しょくじパワー
 romaji: shokujipawaa
-meaning_it: Meal Power
+meaning_it: "Shokuji Pawā (potere ottenuto dai pasti)"
 notes_it: >-
   食事パワー è la label dei bonus ottenuti mangiando. 食事 indica il pasto; パワー
   nomina l'effetto che il gioco applica dopo il cibo.
@@ -327,9 +327,9 @@ id: term-v100-hiden-supaisu
 lemma: 秘伝スパイス
 reading: ひでんすぱいす
 romaji: hiden supaisu
-meaning_it: Herba Mystica / spezia segreta
+meaning_it: "Hiden Supaisu (spezie rare)"
 notes_it: >-
   Qui 秘伝 (hiden) non è solo "segreto" in senso generico: richiama qualcosa di
   custodito o tramandato come una ricetta speciale. Per questo la label si può
-  leggere anche come "spezia segreta", oltre al nome localizzato Herba Mystica.
+  leggere anche come "spezia segreta", oltre al nome localizzato Hiden Supaisu.
 :::

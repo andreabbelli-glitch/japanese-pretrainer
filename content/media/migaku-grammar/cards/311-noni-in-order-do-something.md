@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-311-noni-in-order-do-something
 entry_type: grammar
 entry_id: grammar-311-noni-in-order-do-something
 card_type: concept
-front: "のに"
+front: "のに（scopo: ～のに{{使|つか}}う）"
 back: >-
   «Per fare / allo scopo di», davanti a necessità, utilità o costo
 example_jp: >-

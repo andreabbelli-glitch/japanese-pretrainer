@@ -315,13 +315,12 @@ entry_id: term-ch-b6-osu-24
 card_type: recognition
 front: '{{手|て}}を{{出|だ}}す'
 back: 'てをだす — mettere le mani addosso; fare una mossa contro'
-example_jp: '{{家族|かぞく}}に{{手|て}}を{{出|だ}}すな。'
-example_it: 'Non mettere mano sulla mia famiglia.'
+example_jp: "{{家族|かぞく}}に{{手|て}}を{{出|だ}}すな。"
+example_it: "Non mettere le mani addosso ai miei familiari."
 notes_it: >-
   Qui "mano" diventa azione ostile. Non tradurlo sempre letteralmente.
 tags: [crystal-hunters, book-6, lesson-02]
 :::
-
 :::card
 id: card-crystal-hunters-book-6-l02-te-o-kasu-recognition
 lesson_id: lesson-crystal-hunters-book-6-l02-vita-chiavi-e-aiuto

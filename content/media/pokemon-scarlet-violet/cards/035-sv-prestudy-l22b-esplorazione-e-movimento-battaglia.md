@@ -166,7 +166,7 @@ id: term-v374-hokakupawaa
 lemma: ほかくパワー
 reading: ほかくパワー
 romaji: hokakupawaa
-meaning_it: Catching Power
+meaning_it: "Hokaku Pawā (bonus alla cattura)"
 notes_it: >-
   ほかくパワー è un bonus alla cattura: ほかく specifica il risultato, パワー indica
   l'effetto attivo.
@@ -189,8 +189,7 @@ entry_id: term-v376-nazo
 card_type: recognition
 front: "{{謎|なぞ}}"
 back: mistero
-example_jp: >-
-  {{学校|がっこう}}で {{謎|なぞ}}が あります。
+example_jp: "{{学校|がっこう}}には{{謎|なぞ}}があります。"
 example_it: >-
   A scuola c'è un mistero.
 :::
@@ -314,10 +313,10 @@ id: term-v382-zerogeeto
 lemma: ゼロゲート
 reading: ゼロゲート
 romaji: zerogeeto
-meaning_it: Zero Gate
+meaning_it: Zero Gēto
 notes_it: >-
   ゼロゲート è un nome proprio di luogo; nei dialoghi indica una destinazione
-  precisa legata all'Area Zero, non un cancello generico.
+  precisa legata all'Eria Zero, non un cancello generico.
 :::
 :::term
 id: term-v383-hiroi
@@ -455,7 +454,7 @@ back: arrivare
 example_jp: >-
   ゼロゲートに {{着|つ}}く。
 example_it: >-
-  Arrivo allo Zero Gate.
+  Arrivo allo Zero Gēto.
 :::
 :::term
 id: term-v389-abunai
@@ -488,7 +487,7 @@ romaji: kesshouka
 meaning_it: cristallizzazione
 notes_it: >-
   結晶化 è il diventare cristallino: in Scarlet/Violet richiama la trasformazione
-  visiva e meccanica della teracristallizzazione.
+  visiva e meccanica della Terasutaru.
 :::
 :::card
 id: card-v390-kesshouka-recognition
@@ -531,8 +530,8 @@ id: term-v392-danrasshu
 lemma: 団ラッシュ
 reading: だんラッシュ
 romaji: danrasshu
-meaning_it: Team Star Barrage
+meaning_it: Dan Rasshu
 notes_it: >-
-  団ラッシュ nomina una sfida del Team Star: 団 richiama il gruppo, ラッシュ
+  団ラッシュ nomina una sfida del Sutā-dan: 団 richiama il gruppo, ラッシュ
   l'assalto in serie.
 :::

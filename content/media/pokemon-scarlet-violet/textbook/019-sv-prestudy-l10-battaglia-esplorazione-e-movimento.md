@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-019-sv-prestudy-l10-battaglia-esplorazione-e-movimento
 media_id: media-pokemon-scarlet-violet
 slug: 019-sv-prestudy-l10-battaglia-esplorazione-e-movimento
-title: "Battaglia, mappa e richieste: muoversi a Paldea"
+title: "Battaglia, mappa e richieste: muoversi a Parudea"
 order: 49
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,9 +19,9 @@ summary: >-
   bersagli, risultati e piccole proposte nei dialoghi.
 ---
 
-# Battaglia, mappa e richieste: muoversi a Paldea
+# Battaglia, mappa e richieste: muoversi a Parudea
 
-A Paldea il testo passa continuamente da una schermata di movimento a una lotta, poi a un dialogo che ti chiede un favore o ti propone il passo successivo. Il giapponese cambia registro insieme alla scena: i menu comprimono l'informazione in label brevi, i messaggi di battaglia nominano bersagli e risultati, i personaggi ammorbidiscono richieste e consigli con forme colloquiali.
+A Parudea il testo passa continuamente da una schermata di movimento a una lotta, poi a un dialogo che ti chiede un favore o ti propone il passo successivo. Il giapponese cambia registro insieme alla scena: i menu comprimono l'informazione in label brevi, i messaggi di battaglia nominano bersagli e risultati, i personaggi ammorbidiscono richieste e consigli con forme colloquiali.
 
 Questa lezione punta a riconoscere ruoli e relazioni: chi agisce, con quale mezzo, verso quale luogo e per chi.
 

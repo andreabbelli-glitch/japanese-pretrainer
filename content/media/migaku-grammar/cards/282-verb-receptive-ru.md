@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-282-verb-receptive-ru
 entry_type: grammar
 entry_id: grammar-282-verb-receptive-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（passivo）"
 back: >-
   Passivo dei verbi ichidan e sua possibile lettura avversativa
 example_jp: >-

@@ -162,8 +162,7 @@ entry_id: term-v638-rakka
 card_type: recognition
 front: "{{落下|らっか}}"
 back: caduta
-example_jp: >-
-  この{{先|さき}}に {{落下|らっか}}が あります。
+example_jp: "この{{先|さき}}は{{落下|らっか}}の{{危険|きけん}}があります。"
 example_it: >-
   Più avanti c'è rischio di caduta.
 :::
@@ -336,7 +335,7 @@ romaji: kanyuu
 meaning_it: reclutamento
 notes_it: >-
   Indica invitare o reclutare qualcuno in un gruppo. Nelle scene scolastiche o
-  Team Star chiarisce che la pressione è sociale, non solo informativa.
+  Sutā-dan chiarisce che la pressione è sociale, non solo informativa.
 :::
 :::card
 id: card-v646-kanyuu-recognition
@@ -349,7 +348,7 @@ back: reclutamento
 example_jp: >-
   スター{{団|だん}}が {{新|あたら}}しい {{仲間|なかま}}を {{勧誘|かんゆう}}しています。
 example_it: >-
-  Il Team Star sta reclutando nuovi compagni.
+  Il Sutā-dan sta reclutando nuovi compagni.
 :::
 :::term
 id: term-v647-kyouin
@@ -418,7 +417,7 @@ back: partner di scambio
 example_jp: >-
   ネモが {{交換相手|こう.かん.あい.て}}です。
 example_it: >-
-  Nemi è il partner di scambio.
+  Nemo è il partner di scambio.
 :::
 :::term
 id: term-v650-kakou
@@ -671,7 +670,7 @@ back: ammirazione / aspirazione
 example_jp: >-
   ネモは みんなの {{憧|あこが}}れです。
 example_it: >-
-  Nemi è un modello per tutti.
+  Nemo è un modello per tutti.
 :::
 :::term
 id: term-v770-koutai

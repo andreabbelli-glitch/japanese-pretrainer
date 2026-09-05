@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-034-irregular-verbs-negation
 entry_type: grammar
 entry_id: grammar-034-irregular-verbs-negation
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（negativo）"
 back: >-
   Le negative frequenti sono しない, こない, いかない e ない.
 example_jp: >-

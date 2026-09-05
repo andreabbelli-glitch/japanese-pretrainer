@@ -129,7 +129,7 @@ reading: ぼす
 romaji: bosu
 meaning_it: capo
 notes_it: >-
-  ボス è il capo di un gruppo avversario. Nei dialoghi di Team Star identifica la
+  ボス è il capo di un gruppo avversario. Nei dialoghi di Sutā-dan identifica la
   persona da raggiungere o affrontare.
 :::
 :::card
@@ -223,7 +223,7 @@ reading: スパイス
 romaji: supaisu
 meaning_it: spezia
 notes_it: >-
-  スパイス indica la spezia. In Scarlet/Violet si lega alle Herba Mystica e ai
+  スパイス indica la spezia. In Scarlet/Violet si lega alle Hiden Supaisu e ai
   pasti che producono effetti.
 :::
 :::card
@@ -246,7 +246,7 @@ reading: あじと
 romaji: ajito
 meaning_it: base / nascondiglio
 notes_it: >-
-  アジト è una base o nascondiglio. In una scena di Team Star indica il luogo da
+  アジト è una base o nascondiglio. In una scena di Sutā-dan indica il luogo da
   trovare, raggiungere o assaltare.
 :::
 :::card
@@ -290,9 +290,9 @@ id: term-v167-nushi
 lemma: ヌシ
 reading: ヌシ
 romaji: nushi
-meaning_it: Titan / boss dominante
+meaning_it: Nushi / boss dominante
 notes_it: >-
-  ヌシ è il "dominante" associato ai Titan. In gioco non indica un padrone
+  ヌシ è il "dominante" associato ai Nushi. In gioco non indica un padrone
   qualunque, ma il boss che controlla una zona o una risorsa.
 :::
 :::term
@@ -464,10 +464,8 @@ id: term-v175-ijou
 lemma: 以上
 reading: いじょう
 romaji: ijou
-meaning_it: più di / oltre
-notes_it: >-
-  {{以上|いじょう}} marca il limite superiore già superato o raggiunto: これ以上 è
-  "più di così / oltre questo".
+meaning_it: "almeno (N以上); oltre questo (これ以上)"
+notes_it: "Dopo un numero, 以上 include il valore indicato: 10以上 significa «almeno 10», cioè 10 o più. これ以上 significa «oltre questo / più di così»."
 :::
 :::card
 id: card-v175-ijou-recognition
@@ -476,11 +474,12 @@ entry_type: term
 entry_id: term-v175-ijou
 card_type: recognition
 front: '{{以上|いじょう}}'
-back: più di / oltre
+back: "N以上: almeno N; これ以上: oltre questo / più di così"
 example_jp: >-
   これ{{以上|いじょう}}は むりです。
 example_it: >-
   Più di così è impossibile.
+notes_it: "Dopo un numero, 以上 include il valore indicato: 10以上 significa «almeno 10», cioè 10 o più. これ以上 significa «oltre questo / più di così»."
 :::
 :::term
 id: term-v176-chikara

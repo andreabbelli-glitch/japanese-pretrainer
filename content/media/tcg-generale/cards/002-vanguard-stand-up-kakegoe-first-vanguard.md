@@ -198,7 +198,7 @@ romaji: taikyaku
 meaning_it: ritirata / rimozione dal campo
 pos: suru-noun
 notes_it: >-
-  {{退却|たいきゃく}} indica che una unità viene tolta dal campo. Nel prompt
+  {{退却|たいきゃく}} indica che un’unità viene tolta dal campo. Nel prompt
   `そのリアガードは{{退却|たいきゃく}}`, il rear-guard appena colpito è la carta da
   ritirare.
 level_hint: n3
@@ -237,7 +237,7 @@ id: term-hakki-vanguard-effect
 lemma: 発揮
 reading: はっき
 romaji: hakki
-meaning_it: manifestazione / efficacia espressa
+meaning_it: "espressione di una capacità; produzione di un effetto"
 pos: suru-noun
 notes_it: >-
   {{発揮|はっき}} indica che una capacità o un effetto viene espresso davvero.
@@ -422,7 +422,7 @@ example_it: >-
   Per i rear-guard, puoi chiamare unità di grado uguale o inferiore al Vanguard.
 notes_it: >-
   Con `グレード`, {{低|ひく}}い si legge come "inferiore nella scala dei gradi".
-  La frase confronta il grado della unità con quello del Vanguard.
+  La frase confronta il grado dell’unità con quello del Vanguard.
 tags: [vanguard, tutorial, grade]
 :::
 
@@ -440,7 +440,7 @@ example_it: >-
   Se hai un'unità di grado 1, prova a chiamarla dietro al Vanguard.
 notes_it: >-
   もし segnala che la frase parte da una possibilità. Qui lavora con
-  `{{持|も}}っていたら`: prima controlli se hai la unità richiesta, poi provi a
+  `{{持|も}}っていたら`: prima controlli se hai l’unità richiesta, poi provi a
   chiamarla.
 tags: [vanguard, tutorial, condition]
 :::
@@ -478,7 +478,7 @@ example_it: >-
   Attacchi l'unità proprio davanti a te.
 notes_it: >-
   {{目|め}}の{{前|まえ}} parte dal punto di vista di chi guarda o gioca. Qui
-  indica una unità vicina e direttamente davanti al giocatore.
+  indica un’unità vicina e direttamente davanti al giocatore.
 tags: [vanguard, tutorial, position]
 :::
 
@@ -514,7 +514,7 @@ example_it: >-
   Chiami un'unità nella fila posteriore.
 notes_it: >-
   {{後列|こうれつ}} è una posizione del campo. Con `に`, diventa la destinazione
-  dove mettere una unità.
+  dove mettere un’unità.
 tags: [vanguard, tutorial, position]
 :::
 
@@ -618,7 +618,7 @@ entry_type: term
 entry_id: term-hakki-vanguard-effect
 card_type: recognition
 front: '{{発揮|はっき}}'
-back: 'manifestazione; dispiegamento; entrata in funzione di un effetto'
+back: 'produrre un effetto; esprimere una capacità'
 example_jp: >-
   オーバートリガーはここで{{効果|こうか}}を{{発揮|はっき}}する。
 example_it: >-

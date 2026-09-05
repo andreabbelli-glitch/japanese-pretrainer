@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
 media_id: media-pokemon-scarlet-violet
 slug: 070-sv-anki-l18-motivazione-area-zero-paradiso-e-comprensione
-title: "Motivazione, Area Zero e comprensione: parlato formale, prove e leggende"
+title: "Motivazione, Eria Zero e comprensione: parlato formale, prove e leggende"
 order: 100
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -11,12 +11,12 @@ tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-18]
 prerequisites: []
 summary: >-
   Leggere cortesia, motivazione, rottura, apparizioni e termini narrativi tra
-  Accademia, Area Zero, test palestra e leggende.
+  Accademia, Eria Zero, test palestra e leggende.
 ---
 
-# Motivazione, Area Zero e comprensione: parlato formale, prove e leggende
+# Motivazione, Eria Zero e comprensione: parlato formale, prove e leggende
 
-Nei momenti più narrativi di *Pokémon Scarlet & Violet*, il giapponese cambia registro: i professori chiedono ciò che conosci con forme cortesi, i personaggi misurano la tua voglia di agire, e l'Area Zero viene descritta con parole da racconto quasi mitico. Non basta tradurre i singoli termini: bisogna capire chi sta parlando, quale stato della scena viene mostrato e quale ruolo ti viene attribuito.
+Nei momenti più narrativi di *Pokémon Scarlet & Violet*, il giapponese cambia registro: i professori chiedono ciò che conosci con forme cortesi, i personaggi misurano la tua voglia di agire, e l'Eria Zero viene descritta con parole da racconto quasi mitico. Non basta tradurre i singoli termini: bisogna capire chi sta parlando, quale stato della scena viene mostrato e quale ruolo ti viene attribuito.
 
 Il passaggio dall'Accademia alle prove, dai guasti fisici alle apparizioni improvvise, fino ai termini che danno peso a paradiso, tesori e comprensione, si legge seguendo questi segnali insieme. La frase ti dice se sei davanti a una domanda rispettosa, a un incoraggiamento, a una soglia superata o a una scoperta dentro la trama.
 
@@ -66,12 +66,12 @@ Quando la scena passa all'Accademia, ai professori o alle spiegazioni su [エリ
 jp: >-
   エリアゼロの ことを ご{{存知|ぞんじ}}ですか。
 translation_it: >-
-  Conosce l'Area Zero?
+  Conosce l'Eria Zero?
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `エリアゼロの ことを` ➔ **Oggetto della conoscenza** (`こと` trasforma il luogo in "la questione riguardante Area Zero"; `を` marca ciò che viene conosciuto).
+*   `エリアゼロの ことを` ➔ **Oggetto della conoscenza** (`こと` trasforma il luogo in "la questione riguardante Eria Zero"; `を` marca ciò che viene conosciuto).
 *   `ご{{存知|ぞんじ}}ですか` ➔ **Domanda cortese** (il parlante eleva la conoscenza dell'interlocutore, non la propria).
 
 #### ⚖️ Contrasto operativo
@@ -93,19 +93,19 @@ translation_it: >-
 *   `{{理解|りかい}} できた` ➔ **Comprensione riuscita** (`できた` valuta il risultato: la comprensione è riuscita o no).
 *   `かな` ➔ **Chiusura morbida** (la domanda controlla lo stato del destinatario senza suonare come interrogatorio secco).
 
-[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `興味深い` segnala qualcosa che merita indagine. È naturale nei corsi di storia, nelle leggende di Paldea e nei commenti di chi osserva un fenomeno da studioso.
+[{{興味|きょうみ}}{{深|ぶか}}い](term:term-anki-l18-kyoumibukai) appartiene allo stesso registro riflessivo. `興味深い` segnala qualcosa che merita indagine. È naturale nei corsi di storia, nelle leggende di Parudea e nei commenti di chi osserva un fenomeno da studioso.
 
 :::example_sentence
 jp: >-
   パルデアの {{伝|でん}}{{承|しょう}}は とても {{興味|きょうみ}}{{深|ぶか}}い ね。
 translation_it: >-
-  Il folklore di Paldea è davvero affascinante, vero?
+  Il folklore di Parudea è davvero affascinante, vero?
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `パルデアの {{伝|でん}}{{承|しょう}}は` ➔ **Tema di studio** (`の` collega
-    Paldea alla tradizione raccontata, poi `は` la mette come argomento della
+    Parudea alla tradizione raccontata, poi `は` la mette come argomento della
     valutazione).
 *   `とても` ➔ **Intensità** (rafforza la qualità senza cambiare il tipo di
     giudizio).
@@ -172,7 +172,7 @@ translation_it: >-
 
 {{合格|ごうかく}} è il risultato "superamento"; [{{合格者|ごうかくしゃ}}](term:term-anki-l18-goukakusha) è la persona che possiede quello status. Se la frase deve dire chi può entrare, il nome completo è il pezzo decisivo.
 
-## 3. Area Zero: rotture, apparizioni e luce
+## 3. Eria Zero: rotture, apparizioni e luce
 
 Nelle zone di esplorazione e nelle scene più misteriose, il testo spesso descrive ciò che accade agli oggetti o ciò che entra nel campo visivo. [{{壊|こわ}}れる](term:term-anki-l18-kowareru) è intransitivo: il soggetto è la cosa che si rompe, non chi la rompe. Per questo una recinzione, un macchinario o una barriera prende が o は, e la frase si concentra sul guasto come stato risultante.
 
@@ -219,7 +219,7 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `テラスタルの {{時|とき}}` ➔ **Cornice temporale** (il bagliore appartiene al momento della teracristallizzazione).
+*   `テラスタルの {{時|とき}}` ➔ **Cornice temporale** (il bagliore appartiene al momento della Terasutaru).
 *   `ボールが` ➔ **Soggetto visivo** (la sfera è ciò che fa partire la percezione).
 *   `{{光|ひか}}る` ➔ **Azione luminosa concreta** (la frase parla di ciò che si vede sullo schermo).
 
@@ -229,7 +229,7 @@ In questo cluster cerca sempre il soggetto prima del verbo: che cosa si rompe, c
 
 ## 4. Paradiso, tesori e lessico da leggenda
 
-L'Area Zero non viene descritta solo come un punto sulla mappa. [{{楽園|らくえん}}](term:term-anki-l18-rakuen) si legge come "paradiso", un luogo piacevole, protetto, quasi ideale. Nel contesto narrativo, però, non è soltanto "bel posto"; suona come un paradiso promesso o immaginato per i Pokémon, con una sfumatura più malinconica e assoluta di una semplice area panoramica.
+L'Eria Zero non viene descritta solo come un punto sulla mappa. [{{楽園|らくえん}}](term:term-anki-l18-rakuen) si legge come "paradiso", un luogo piacevole, protetto, quasi ideale. Nel contesto narrativo, però, non è soltanto "bel posto"; suona come un paradiso promesso o immaginato per i Pokémon, con una sfumatura più malinconica e assoluta di una semplice area panoramica.
 
 :::example_sentence
 jp: >-
@@ -275,7 +275,7 @@ Le stesse forme diventano più riconoscibili quando le leggi come piccoli sistem
 jp: >-
   {{先生|せんせい}}は エリアゼロの ことを ご{{存知|ぞんじ}}で、その {{説明|せつめい}}も {{理解|りかい}} できた。
 translation_it: >-
-  Il professore conosceva l'Area Zero, e sono riuscito a comprendere anche quella spiegazione.
+  Il professore conosceva l'Eria Zero, e sono riuscito a comprendere anche quella spiegazione.
 :::
 
 :::example_sentence
@@ -289,7 +289,7 @@ translation_it: >-
 jp: >-
   くさむらに めずらしい ポケモンが {{現|あらわ}}れて、テラスタルの {{光|ひか}}る ボールが {{見|み}}えた。
 translation_it: >-
-  Nell'erba alta è apparso un Pokémon raro e si è vista la sfera brillante del Teracristal.
+  Nell'erba alta è apparso un Pokémon raro e si è vista la sfera brillante del Terasutaru.
 :::
 
 :::example_sentence

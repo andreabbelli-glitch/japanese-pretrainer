@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-23
 media_id: media-pokemon-scarlet-violet
 slug: 128-sv-vocabulary-distance-23
-title: 'Parole per leggere Paldea — ventitré'
+title: 'Parole per leggere Parudea — ventitré'
 order: 173
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — ventitré
+# Parole per leggere Parudea — ventitré
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -112,7 +112,7 @@ translation_it: >-
 jp: >-
   {{宝|たから}}{{食堂|しょくどう}}で{{注文|ちゅうもん}}{{間違|まちが}}いすぎてお{{腹|なか}}パンパン。
 translation_it: >-
-  Al Treasure Eatery ho sbagliato così tante ordinazioni che ho la pancia a scoppiare.
+  Al Takara Shokudō ho sbagliato così tante ordinazioni che ho la pancia a scoppiare.
 :::
 
 **Uso:** Nel contesto indica «errore; sbaglio; gaffe».
@@ -142,12 +142,9 @@ translation_it: >-
 ### [すみか](term:term-sv-vocabulary-262-sumika) — tana; habitat; dimora
 
 :::example_sentence
-jp: >-
-  ドラゴンタイプのヌシのすみか！
-translation_it: >-
-  La tana del signore dei draghi!
+jp: "ドラゴンタイプのヌシのすみか！"
+translation_it: "La tana del Nushi di tipo Drago!"
 :::
-
 **Uso:** Nel dialogo aggiunge il valore di «tana; habitat; dimora».
 
 ### [{{由来|ゆらい}}](term:term-sv-vocabulary-198-yurai) — origine; fonte; storia

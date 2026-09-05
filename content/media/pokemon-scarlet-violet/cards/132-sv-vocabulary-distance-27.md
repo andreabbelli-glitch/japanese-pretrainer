@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-27
 media_id: media-pokemon-scarlet-violet
 slug: 132-sv-vocabulary-distance-27
-title: 'Parole per leggere Paldea — ventisette'
+title: 'Parole per leggere Parudea — ventisette'
 order: 177
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -287,7 +287,7 @@ id: term-sv-vocabulary-285-yada
 lemma: 'ヤダ'
 reading: 'ヤダ'
 romaji: 'yada'
-meaning_it: 'nemmeno per sogno; improbabile; assolutamente no'
+meaning_it: "no!; non voglio!; nemmeno per sogno!"
 level_hint: custom
 :::
 
@@ -298,8 +298,7 @@ entry_type: term
 entry_id: term-sv-vocabulary-285-yada
 card_type: recognition
 front: 'ヤダ'
-back: >-
-  ヤダ — nemmeno per sogno; improbabile; assolutamente no.
+back: "ヤダ — no!; non voglio!; nemmeno per sogno!"
 example_jp: >-
   ヤダ！そんな{{危|あぶ}}ない{{場所|ばしょ}}には{{行|い}}きたくない。
 example_it: >-

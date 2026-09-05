@@ -598,14 +598,14 @@ caption: >-
 `クリーチャーであるかのように` è la frase da non saltare. `である` dà lo stato
 "essere creatura", `かのように` lo trasforma in "come se fosse". La carta non
 diventa creatura in ogni senso possibile: il testo crea una lettura controllata
-per l'effetto che sta risolvendo.
+quando ci fai evolvere sopra una creatura.
 
 #### ⚖️ Contrasto operativo: categoria reale e categoria trattata
 
 - `クリーチャーである` sarebbe una classificazione diretta: "è una creatura".
 - `クリーチャーであるかのように` è più stretto: "come se fosse una creatura".
 - [シンカライズ](term:term-shinkarize) usa questa differenza per far funzionare
-  un'interazione senza cancellare tutte le altre regole della carta.
+  l'evoluzione sopra il Tamaseed, che conserva il proprio tipo di carta.
 
 ### 4.3 {{冒険|ぼうけん}}{{妖精|ようせい}}ポレコ
 

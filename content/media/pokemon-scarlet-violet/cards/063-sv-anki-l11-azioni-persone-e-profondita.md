@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-persone-e-profondita
 media_id: media-pokemon-scarlet-violet
 slug: 063-sv-anki-l11-azioni-persone-e-profondita
-title: "Azioni, persone e profondità nei dialoghi di Paldea"
+title: "Azioni, persone e profondità nei dialoghi di Parudea"
 order: 93
 segment_ref: scarlet-violet-prestudy
 ---
@@ -103,7 +103,7 @@ reading: しごと
 romaji: shigoto
 meaning_it: lavoro
 notes_it: >-
-  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi come il Capopalestra Ubaldo, che concepiscono la lotta come un semplice impiego.
+  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi come il Capopalestra Aoki, che concepiscono la lotta come un semplice impiego.
 level_hint: custom
 :::
 :::card
@@ -118,7 +118,7 @@ back: >-
 example_jp: >-
   このモンスターボールを {{校|こう}}{{長|ちょう}}に {{渡|わた}}す ように たのまれた。
 example_it: >-
-  Mi hanno chiesto di consegnare questa Poké Ball al preside.
+  Mi hanno chiesto di consegnare questa Monsutā Bōru al preside.
 notes_it: >-
   {{渡|わた}}す si concentra sul trasferimento fisico (passare di mano in mano). Il destinatario prende に e l'oggetto を. Spesso appare in forma {{渡|わた}}してくれる per chiedere un favore di consegna all'interlocutore.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
@@ -169,7 +169,7 @@ back: >-
 example_jp: >-
   エリアゼロの {{最|さい}}{{深|しん}}{{部|ぶ}}には {{怖|こわ}}い ポケモンが いる らしい。
 example_it: >-
-  Sembra che ci siano Pokémon spaventosi nella parte più profonda dell'Area Zero.
+  Sembra che ci siano Pokémon spaventosi nella parte più profonda dell'Eria Zero.
 notes_it: >-
   {{怖|こわ}}い (kowai) descrive il senso di timore verso qualcosa di minaccioso. Da non confondere con {{恐|おそ}}ろしい (osoroshii), che ha un tono più formale e profondo, mentre {{怖|こわ}}い è l'emozione immediata di fronte al pericolo.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
@@ -220,7 +220,7 @@ back: >-
 example_jp: >-
   ペパーが {{持|も}}って いる のは、エリアゼロに ついて {{書|か}}かれた {{奇|き}}{{書|しょ}}だ。
 example_it: >-
-  Quello che ha Pepe è un libro insolito che parla dell'Area Zero.
+  Quello che ha Pepā è un libro insolito che parla dell'Eria Zero.
 notes_it: >-
   Il kanji {{奇|き}} indica qualcosa di anomalo o fuori dall'ordinario (come in {{奇|き}}{{妙|みょう}}). Nel gioco, il Libro Scarlatto o Violetto vengono chiamati {{奇|き}}{{書|しょ}} (kisho) dagli scienziati per il loro contenuto fantastico e poco credibile scientificamente.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
@@ -237,7 +237,7 @@ back: >-
 example_jp: >-
   ここは パルデアの {{大|おお}}{{穴|あな}}と {{呼|よ}}ばれる {{場|ば}}{{所|しょ}}だ。
 example_it: >-
-  Questo è il luogo chiamato Voragine di Paldea.
+  Questo è il luogo chiamato Voragine di Parudea.
 notes_it: >-
   La struttura sintattica fissa è 「Xと {{呼|よ}}ばれる Y」 (un Y chiamato X). Usare il verbo passivo (-れる) nasconde volutamente l'agente (non importa 'chi' lo chiami così), concentrandosi sul fatto che quel nome è stabilito.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
@@ -273,6 +273,6 @@ example_jp: >-
 example_it: >-
   Il lavoro di un Capopalestra è mettere alla prova le capacità degli sfidanti.
 notes_it: >-
-  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi come il Capopalestra Ubaldo, che concepiscono la lotta come un semplice impiego.
+  Composto da {{仕|し}} (servire, fare) e {{事|ごと}} (faccenda, cosa). In giapponese le mansioni lavorative si 'fanno' usando il verbo する ({{仕|し}}{{事|ごと}}をする). Viene usato spessissimo da personaggi come il Capopalestra Aoki, che concepiscono la lotta come un semplice impiego.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-11]
 :::

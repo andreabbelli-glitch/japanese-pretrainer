@@ -21,7 +21,8 @@ summary: >-
 
 ## Formazione e restrizioni
 
-- Forma piana + ものだ: 早いものだ, よく遊んだものだ.
+- Forma piana di un verbo o aggettivo in い + ものだ: 早いものだ, よく遊んだものだ.
+- Aggettivo in な + なものだ: 静かなものだ. Al passato: 静かだったものだ.
 - V non-passato + ものだ può formulare una regola o un comportamento atteso: 人には挨拶するものだ.
 - V passato + ものだ richiama spesso un'abitudine del passato: 昔よく歩いたものだ.
 
@@ -36,12 +37,13 @@ translation_it: >-
 
 #### Analisi
 
-早いものだ non classifica la crescita come un «oggetto»: trasforma l'osservazione in un'esclamazione sentita.
+早いものだ trasforma l'osservazione sulla crescita in un'esclamazione sentita.
 
 ## Sfumature d'uso
 
 - In esclamazioni rende «davvero», «quanto…!» senza descrivere un oggetto concreto.
-- もんだ／もん è colloquiale e più emotivo; non va usato indiscriminatamente in contesti formali.
+- もんだ è una variante colloquiale di ものだ.
+- だもの／だもん può giustificare ciò che si è appena detto: è una costruzione distinta, da riconoscere nel contesto.
 
 ## Controllo attivo
 

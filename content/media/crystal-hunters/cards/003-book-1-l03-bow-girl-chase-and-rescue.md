@@ -334,10 +334,8 @@ entry_id: term-ki-ni-iru
 card_type: recognition
 front: '{{気|き}}に{{入|い}}る'
 back: 'きにいる — piacere; andare a genio'
-example_jp: >-
-  {{弓|ゆみ}}が{{気|き}}に{{入|い}}る。
-example_it: >-
-  L'arco mi piace.
+example_jp: "この{{弓|ゆみ}}が{{気|き}}に{{入|い}}っている。"
+example_it: "Questo arco mi piace."
 notes_it: >-
   {{気|き}}に{{入|い}}る indica che qualcosa entra nel proprio gusto o nella
   propria approvazione.

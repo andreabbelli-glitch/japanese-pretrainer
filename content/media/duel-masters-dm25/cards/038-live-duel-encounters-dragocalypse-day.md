@@ -47,7 +47,7 @@ id: grammar-hajimatte-ite
 pattern: 始まっていて
 title: Essere iniziato così e restare valido come premessa
 reading: はじまっていて
-meaning_it: essendo iniziato così / se era iniziato in quella condizione
+meaning_it: "è iniziato… e… (collegamento alla condizione seguente)"
 aliases: [始まっていて]
 notes_it: >-
   Il verbo base è `{{始|はじ}}まる`. Qui la carta usa la catena
@@ -129,18 +129,10 @@ lesson_id: lesson-duel-masters-dm25-live-duel-encounters-dragocalypse-day
 entry_type: grammar
 entry_id: grammar-hajimatte-ite
 card_type: concept
-front: >-
-  このゲームが{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる
-  {{状態|じょうたい}}で{{始|はじ}}まっていて
-back: se la partita è iniziata con due o più avversari presenti
-example_jp: >-
-  このゲームが{{2人以上|ふたり.い.じょう}}の{{相手|あいて}}がいる
-  {{状態|じょうたい}}で{{始|はじ}}まっていて、S・トリガーを{{使|つか}}える。
-example_it: >-
-  La partita è iniziata con due o più avversari, quindi puoi usare S-Trigger.
-notes_it: >-
-  Il chunk va letto come blocco unico. `{{状態|じょうたい}}` nominalizza la
-  situazione, `で` la collega a `{{始|はじ}}まる`, e `{{始|はじ}}まっていて`
-  tiene vivo quel dato iniziale fino al controllo successivo sullo shield zone.
+front: "{{始|はじ}}まっていて"
+back: "è iniziato… e…; collega il fatto iniziale alla condizione seguente"
+example_jp: "このゲームが{{2人以上|ふたりいじょう}}の{{相手|あいて}}がいる{{状態|じょうたい}}で{{始|はじ}}まっていて、この{{呪文|じゅもん}}がシールドゾーンにあれば、この{{呪文|じゅもん}}に「S・トリガー」を{{与|あた}}える。"
+example_it: "Se la partita è iniziata con almeno due avversari e questa magia si trova nella zona scudi, conferiscile S-Trigger."
+notes_it: "{{始|はじ}}まっていて collega il fatto che la partita è iniziata in quella configurazione alla seconda condizione. Il valore condizionale della frase completa si chiude con あれば; ていて da solo significa «è iniziato… e…»."
 tags: [live-duel, concept, multiplayer, condition]
 :::

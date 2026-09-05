@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-050-ni-mark-indirect-object
 entry_type: grammar
 entry_id: grammar-050-ni-mark-indirect-object
 card_type: concept
-front: "に"
+front: "に（destinatario）"
 back: >-
   に segue il ricevente o bersaglio indiretto dell'azione: «a / per».
 example_jp: >-

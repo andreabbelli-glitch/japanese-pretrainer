@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-277-verb-volitional-irregular
 entry_type: grammar
 entry_id: grammar-277-verb-volitional-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（volitivo）"
 back: >-
   Volitivi fondamentali: しよう, 来よう e 行こう
 example_jp: >-

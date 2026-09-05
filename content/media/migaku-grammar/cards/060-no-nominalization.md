@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-060-no-nominalization
 entry_type: grammar
 entry_id: grammar-060-no-nominalization
 card_type: concept
-front: "の"
+front: "の（dopo una proposizione）"
 back: >-
   の trasforma una clausola in «il fatto di… / il fare…», spesso con tono concreto o immediato.
 example_jp: >-

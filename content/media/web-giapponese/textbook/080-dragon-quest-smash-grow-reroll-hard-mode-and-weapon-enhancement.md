@@ -32,7 +32,7 @@ ottenimento di un oggetto nuovo.
 - [ぶき](term:term-buki) — arma
 - [{{好|す}}きな](term:term-sukina) — che piace / preferito
 - [{{何度|なんど}}でも](term:term-nando-demo) — quante volte vuoi
-- [{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) — puoi ritirare / rifare l'estrazione
+- [{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) — puoi ripetere l'estrazione
 - [{{強力|きょうりょく}}](term:term-kyouryoku) — potente, più minaccioso o efficace
 - [{{出現|しゅつげん}}](term:term-shutsugen) — comparsa / apparizione
 - [ぶき{{強化|きょうか}}](term:term-buki-kyouka) — rafforzamento armi
@@ -63,7 +63,7 @@ ottenimento di un oggetto nuovo.
 
 ---
 
-[{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) è potenziale: `引き直せる` e' potenziale: il gioco ti permette di rifare l'estrazione.
+[{{引|ひ}}き{{直|なお}}せる](term:term-hikinaoseru) è potenziale: `引き直せる` è potenziale: il gioco ti permette di rifare l'estrazione.
 
 :::image
 src: assets/dragon-quest-smash-grow-star3-reroll-fukubiki.jpg
@@ -272,10 +272,8 @@ sblocco e crescita:
 :::example_sentence
 jp: >-
   {{何度|なんど}}でも{{引|ひ}}き{{直|なお}}せるから、{{好|す}}きなぶきが{{出|で}}るまで{{待|ま}}てる。
-translation_it: >-
-  Poiché puoi ritirare quante volte vuoi, puoi aspettare finché non esce l'arma che ti piace.
+translation_it: "Puoi ripetere l’estrazione quante volte vuoi e aspettare che esca l’arma che ti piace."
 :::
-
 :::example_sentence
 jp: >-
   ハードモードが{{解放|かいほう}}されると、さらに{{強力|きょうりょく}}なモンスターが{{出現|しゅつげん}}する。

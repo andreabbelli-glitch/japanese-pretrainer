@@ -15,7 +15,7 @@ tags:
 - lesson-22
 prerequisites: []
 summary: >-
-  Leggere movimento, rischio, stato di battaglia e conferme quando Paldea ti
+  Leggere movimento, rischio, stato di battaglia e conferme quando Parudea ti
   chiede dove andare, che cosa fare e se procedere davvero.
 ---
 # Esplorazione e sfide: muoversi, decidere e confermare
@@ -57,9 +57,9 @@ La stessa lingua collega il campo aperto, il tutorial della cavalcatura, la batt
 
 ## Etichette da riconoscere
 
-- [ほかくパワー](term:term-v374-hokakupawaa) — Catching Power
-- [ゼロゲート](term:term-v382-zerogeeto) — Zero Gate
-- [{{団|だん}}ラッシュ](term:term-v392-danrasshu) — Team Star Barrage
+- [ほかくパワー](term:term-v374-hokakupawaa) — Hokaku Pawā
+- [ゼロゲート](term:term-v382-zerogeeto) — Zero Gēto
+- [{{団|だん}}ラッシュ](term:term-v392-danrasshu) — Dan Rasshu
 
 ---
 
@@ -75,7 +75,7 @@ Quando il gioco ti orienta sul campo, [{{周|まわ}}り](term:term-v379-mawari)
 jp: >-
   {{周|まわ}}りを {{見|み}}てから、ゼロゲートに {{近|ちか}}づく。
 translation_it: >-
-  Dopo essermi guardato intorno, mi avvicino allo Zero Gate.
+  Dopo essermi guardato intorno, mi avvicino allo Zero Gēto.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -87,7 +87,7 @@ translation_it: >-
 
 #### ⚖️ Contrasto operativo
 
-[{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) non sono intercambiabili. ゼロゲートに{{近|ちか}}づく lascia il personaggio in movimento verso lo Zero Gate; ゼロゲートに{{着|つ}}く dice che l'arrivo è compiuto. In un tutorial questa differenza cambia l'azione attesa: muoversi ancora o riconoscere che la meta è stata raggiunta.
+[{{近|ちか}}づく](term:term-v380-chikazu-ku) e [{{着|つ}}く](term:term-v388-tsuku) non sono intercambiabili. ゼロゲートに{{近|ちか}}づく lascia il personaggio in movimento verso lo Zero Gēto; ゼロゲートに{{着|つ}}く dice che l'arrivo è compiuto. In un tutorial questa differenza cambia l'azione attesa: muoversi ancora o riconoscere che la meta è stata raggiunta.
 
 #### 🧠 Gancio cognitivo
 
@@ -98,10 +98,10 @@ interfaccia: Il termine indica un bonus di interfaccia che modifica la lotta. Qu
 leggilo come etichetta di effetto temporaneo.
 
 [ゼロゲート](term:term-v382-zerogeeto) è un landmark: nei dialoghi e negli
-obiettivi funziona come punto fisso legato all'Area Zero, cioè il luogo verso
+obiettivi funziona come punto fisso legato all'Eria Zero, cioè il luogo verso
 cui il testo orienta il movimento.
 
-## 2. Attraversare Paldea: spazio aperto, acqua e slancio
+## 2. Attraversare Parudea: spazio aperto, acqua e slancio
 
 Le parole di movimento diventano ancora più concrete quando il terreno cambia. Zone ampie, superfici d'acqua e salti potenziati richiedono una lettura diversa da quella di un dialogo fermo: il testo ti sta dicendo quale tipo di attraversamento è possibile o rischioso.
 
@@ -150,7 +150,7 @@ In battaglia la stessa precisione serve per leggere lo stato dei Pokémon e il v
 
 *   [ねむり](term:term-v378-nemuri) è lo stato di sonno. In una scena narrativa può sembrare solo "dormire", ma nel linguaggio di battaglia è una condizione tecnica: il Pokémon addormentato non agisce normalmente, e il testo spesso la tratta come stato da riconoscere prima di scegliere la mossa.
 *   [{{強力|きょうりょく}}](term:term-v386-kyouryoku) è potenza concentrata. {{強|きょう}} porta l'idea di forza, {{力|りょく}} quella di capacità o potere; con な davanti a un nome diventa "potente", come in {{強力|きょうりょく}}なわざ.
-*   [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) non è solo "cristallo" come oggetto. Il suffisso {{化|か}} indica trasformazione in uno stato: qualcosa diventa cristallino. Nel contesto di *Scarlet & Violet*, il richiamo alla Teracristallizzazione è immediato.
+*   [{{結晶|けっしょう}}{{化|か}}](term:term-v390-kesshouka) non è solo "cristallo" come oggetto. Il suffisso {{化|か}} indica trasformazione in uno stato: qualcosa diventa cristallino. Nel contesto di *Scarlet & Violet*, il richiamo alla Terasutaru è immediato.
 *   [{{育|そだ}}てる](term:term-v391-sodate-ru) è un verbo transitivo: il giocatore alleva o fa crescere un Pokémon. La forma ti fa cercare un oggetto marcato da を, perché qualcuno sta facendo crescere qualcosa.
 
 :::example_sentence
@@ -241,7 +241,7 @@ I pattern con `こと` e `よう` separano tre tipi di decisione che in gioco co
 jp: >-
   ゼロゲートに {{行|い}}くことになった。
 translation_it: >-
-  È stato deciso che si andrà allo Zero Gate.
+  È stato deciso che si andrà allo Zero Gēto.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -294,13 +294,13 @@ translation_it: >-
 
 [{{団|だん}}ラッシュ](term:term-v392-danrasshu) va letto come nome di modalità:
 non serve isolare il singolo 団, perché la UI sta per avviare una procedura
-specifica del Team Star.
+specifica del Sutā-dan.
 
 :::example_sentence
 jp: >-
   {{団|だん}}ラッシュを {{始|はじ}}めます。{{本当|ほんとう}}に よろしいですか？
 translation_it: >-
-  Avvio il Team Star Barrage. Sei davvero sicuro?
+  Avvio il Dan Rasshu. Sei davvero sicuro?
 :::
 
 #### 🗺️ Anatomia della frase

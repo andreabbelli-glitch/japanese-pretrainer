@@ -63,10 +63,8 @@ Quando uniamo un verbo a kuru, quest'ultimo perde il suo significato letterale d
 :::example_sentence
 jp: >-
   {{男|おとこ}}がナイツに{{向|む}}かってくる！
-translation_it: >-
-  L'uomo si avventa contro Naitsu!
+translation_it: "L’uomo si avventa contro Knites!"
 :::
-
 Qui [〜てくる](grammar:grammar-ch-b5-v-v-11) vale: l'azione arriva verso il punto di vista della scena.
 
 ## La Chicca del Docente

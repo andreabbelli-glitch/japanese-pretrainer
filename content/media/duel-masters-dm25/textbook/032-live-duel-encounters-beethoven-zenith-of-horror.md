@@ -192,7 +192,7 @@ reveal_mode: sentence
 se l'azione è possibile, allora quella è la direzione obbligata. La libertà
 rimane solo quando l'attacco a Beethoven non è un'opzione legale.
 
-## 4. Eternal Omega: dare una keyword e sostituire l'uscita
+## 4. Eternal Omega: conferire una keyword che cambia la destinazione
 
 L'ultima riga usa un verbo molto generale, `{{与|あた}}える`, in un contesto
 tecnico. Non significa "regalare una carta": significa conferire una keyword a
@@ -208,8 +208,8 @@ jp: >-
   {{戻|もど}}す）
 translation_it: >-
   Conferisce "Eternal Omega" a tutti i tuoi Draghi e Command. (Quando una
-  creatura con "Eternal Omega" dovrebbe lasciare il campo, torna in mano
-  invece.)
+  creatura con "Eternal Omega" sta per lasciare il campo, torna nella mano
+  del proprietario al posto della destinazione prevista.)
 reveal_mode: sentence
 :::
 
@@ -218,12 +218,12 @@ reveal_mode: sentence
 *   `{{自分|じぶん}}のドラゴンとコマンドすべてに`: `に` marca i destinatari della
     keyword; `すべて` impedisce di leggere il gruppo come una selezione parziale.
 *   「[エターナル・Ω](term:term-eternal-omega)」を{{与|あた}}える: を marca la
-    cosa conferita. La cosa conferita e' una capacita', non un oggetto fisico.
+    cosa conferita. La cosa conferita è una capacita', non un oggetto fisico.
 *   {{持|も}}つクリーチャーが{{離|はな}}れる[{{時|とき}}](grammar:grammar-toki):
     la parentesi definisce quando la keyword si applica, cioè nel momento in
     cui una creatura con quella capacità sta lasciando il campo.
-*   `かわりに{{手札|てふだ}}に{{戻|もど}}す`: `かわりに` sostituisce l'uscita normale
-    con un ritorno in mano; `に` indica la destinazione finale.
+*   `かわりに{{手札|てふだ}}に{{戻|もど}}す`: `かわりに` sostituisce la destinazione prevista
+    con la mano del proprietario; `に` indica la destinazione finale. La creatura lascia comunque il campo.
 
 #### ⚖️ Contrasto operativo
 

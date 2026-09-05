@@ -21,7 +21,7 @@ summary: >-
 
 # Reazioni e parlato iniziale: scuola, richieste e tono colloquiale
 
-Le prime ore a Paldea alternano presentazioni scolastiche, partenze improvvise e piccoli blocchi di UI. Una battuta può spingerti a muoverti subito, un popup può dirti che non puoi portare altro, una formula come `よろしく` può stabilire il rapporto con un personaggio prima che la trama lo spieghi apertamente.
+Le prime ore a Parudea alternano presentazioni scolastiche, partenze improvvise e piccoli blocchi di UI. Una battuta può spingerti a muoverti subito, un popup può dirti che non puoi portare altro, una formula come `よろしく` può stabilire il rapporto con un personaggio prima che la trama lo spieghi apertamente.
 
 Il giapponese qui non è difficile perché usa parole rare: è denso perché molte forme brevi portano tono, ruolo e direzione della scena. `もう` cambia la pressione temporale, `～ないで` trasforma una negazione in richiesta, `～てる` fa suonare il dialogo vivo, e parole come `{{生徒|せいと}}` o `{{四天王|してんのう}}` ti dicono subito in quale cornice del gioco ti trovi.
 
@@ -36,7 +36,7 @@ Il giapponese qui non è difficile perché usa parole rare: è denso perché mol
 - [{{強|つよ}}い](term:term-v021-tsuyoi) — forte
 - [サンドウィッチ](term:term-v023-sandowicchi) — sandwich
 - [{{生徒|せいと}}](term:term-v024-seito) — studente
-- [{{四天王|してんのう}}](term:term-v025-shitenou) — Superquattro
+- [{{四天王|してんのう}}](term:term-v025-shitenou) — Shitennō
 
 ## Espressioni ricorrenti
 
@@ -51,9 +51,9 @@ Il giapponese qui non è difficile perché usa parole rare: è denso perché mol
 
 ## Etichette da riconoscere
 
-- [スター{{団|だん}}](term:term-v017-sutaa-dan) — Team Star
-- [ボタン](term:term-v018-botan) — Penny
-- [エリアゼロ](term:term-v022-eriazero) — Area Zero
+- [スター{{団|だん}}](term:term-v017-sutaa-dan) — Sutā-dan
+- [ボタン](term:term-v018-botan) — Botan
+- [エリアゼロ](term:term-v022-eriazero) — Eria Zero
 
 ---
 
@@ -69,14 +69,14 @@ All'inizio di *Scarlet & Violet* i personaggi parlano spesso mentre ti stanno gi
 jp: >-
   もう {{行|い}}こう、 ネモが {{待|ま}}ってる。
 translation_it: >-
-  Andiamo ormai: Nemi sta aspettando.
+  Andiamo ormai: Nemo sta aspettando.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `もう` ➔ **soglia temporale**: qui vale "ormai / su, adesso", non un semplice "già" da calendario.
 *   `{{行|い}}こう` ➔ **volitivo inclusivo**: la forma in `-ou` di `{{行|い}}く` invita l'interlocutore a muoversi insieme al parlante.
-*   `ネモが` ➔ **soggetto marcato da `が`**: mette Nemi come informazione nuova o rilevante.
+*   `ネモが` ➔ **soggetto marcato da `が`**: mette Nemo come informazione nuova o rilevante.
 *   {{待|ま}}ってる ➔ **stato in corso colloquiale**: è {{待|ま}}っている contratto in [～てる](grammar:grammar-g006-contrazione-colloquiale-di), quindi "sta aspettando" con tono naturale da parlato.
 
 #### ⚖️ Contrasto operativo
@@ -127,7 +127,7 @@ translation_it: >-
 
 Quando il gioco passa da dialogo a istruzione, la lingua diventa più funzionale. Le particelle indicano mezzo, luogo e limite; le forme negative smettono di essere teoria grammaticale e diventano comandi leggeri o messaggi di blocco.
 
-### A. `ライドで`: il mezzo che ti fa attraversare Paldea
+### A. `ライドで`: il mezzo che ti fa attraversare Parudea
 
 [ライド](term:term-v014-raido) è katakana da *ride*, ma nel gioco non indica una corsa generica: richiama la cavalcata sul Pokémon leggendario usata per spostarsi. Quando compare con で, la particella non marca un luogo: marca il mezzo con cui compi l'azione.
 
@@ -188,7 +188,7 @@ translation_it: >-
 
 ## 3. Scuola e personaggi: ruoli, luoghi e filoni narrativi
 
-Paldea è costruita intorno all'Accademia, quindi molte parole non descrivono solo luoghi: assegnano ruoli. Quando leggi {{学校|がっこう}}, アカデミー o {{生徒|せいと}}, il gioco sta collocando il personaggio dentro una cornice sociale precisa. Quando compaiono [スター{{団|だん}}](term:term-v017-sutaa-dan), [ボタン](term:term-v018-botan) o [エリアゼロ](term:term-v022-eriazero), la battuta richiama invece un filone narrativo specifico.
+Parudea è costruita intorno all'Accademia, quindi molte parole non descrivono solo luoghi: assegnano ruoli. Quando leggi {{学校|がっこう}}, アカデミー o {{生徒|せいと}}, il gioco sta collocando il personaggio dentro una cornice sociale precisa. Quando compaiono [スター{{団|だん}}](term:term-v017-sutaa-dan), [ボタン](term:term-v018-botan) o [エリアゼロ](term:term-v022-eriazero), la battuta richiama invece un filone narrativo specifico.
 
 *   [{{学校|がっこう}}](term:term-v019-gakkou) indica la scuola come luogo e istituzione. Vicino a {{先生|せんせい}}, {{授業|じゅぎょう}} o アカデミー, porta la scena in un registro più scolastico.
 *   [アカデミー](term:term-v020-akademii) è il nome funzionale dell'istituzione: suona come etichetta ufficiale di ambienti, dialoghi e routine del campus.
@@ -211,15 +211,15 @@ translation_it: >-
 
 Per [{{生徒|せいと}}](term:term-v024-seito), immagina una targhetta di ruolo. Non ti dice com'è la persona; ti dice da quale lato della scuola sta parlando.
 
-Le etichette narrative funzionano in modo simile, ma non richiedono sempre scomposizione grammaticale. [スター{{団|だん}}](term:term-v017-sutaa-dan) segnala il filone Team Star e le basi; [ボタン](term:term-v018-botan) è Penny nei dialoghi, non un generico "pulsante"; [エリアゼロ](term:term-v022-eriazero) richiama la grande zona centrale della trama, non una qualunque area della mappa.
+Le etichette narrative funzionano in modo simile, ma non richiedono sempre scomposizione grammaticale. [スター{{団|だん}}](term:term-v017-sutaa-dan) segnala il filone Sutā-dan e le basi; [ボタン](term:term-v018-botan) è Botan nei dialoghi, non un generico "pulsante"; [エリアゼロ](term:term-v022-eriazero) richiama la grande zona centrale della trama, non una qualunque area della mappa.
 
 #### ⚖️ Contrasto operativo
 
-`ボタン` può voler dire "bottone" in altri contesti, ma come nome proprio in *Scarlet & Violet* punta a Penny. Se la frase parla di una persona, una battuta o un filone narrativo, non leggerlo come UI.
+`ボタン` può voler dire "bottone" in altri contesti, ma come nome proprio in *Scarlet & Violet* punta a Botan. Se la frase parla di una persona, una battuta o un filone narrativo, non leggerlo come UI.
 
 ---
 
-## 4. Forza, reazioni e rango: da `すごい` ai Superquattro
+## 4. Forza, reazioni e rango: da `すごい` ai Shitennō
 
 Il parlato di battaglia alterna giudizi rapidi e titoli ufficiali. [{{強|つよ}}い](term:term-v021-tsuyoi) descrive forza concreta: un Pokémon, una mossa, un avversario. [すごい](term:term-v016-sugoi) è più largo: può reagire a una vittoria, a un gesto, a un oggetto o a una scena. [{{四天王|してんのう}}](term:term-v025-shitenou), invece, non è una valutazione: è un titolo della Lega, quindi sposta subito la frase verso una sfida di alto rango.
 
@@ -240,13 +240,13 @@ translation_it: >-
 
 `{{強|つよ}}い` risponde alla domanda "quanto è forte?". `すごい` risponde più spesso a "che impressione fa?". Per questo `すごい` può tradursi "incredibile" anche quando non stai parlando di forza fisica o potenza in battaglia.
 
-Quando il dialogo passa alla Lega, la lingua smette di essere soltanto reattiva e diventa istituzionale. [{{四天王|してんのう}}](term:term-v025-shitenou) è un composto fisso: {{四|し}} "quattro", {{天王|てんのう}} "re celesti", ma nel contesto Pokémon va letto come nome ufficiale dei Superquattro.
+Quando il dialogo passa alla Lega, la lingua smette di essere soltanto reattiva e diventa istituzionale. [{{四天王|してんのう}}](term:term-v025-shitenou) è un composto fisso: {{四|し}} "quattro", {{天王|てんのう}} "re celesti", ma nel contesto Pokémon va letto come nome ufficiale dei Shitennō.
 
 :::example_sentence
 jp: >-
   {{四天王|してんのう}}に {{挑戦|ちょうせん}}する {{前|まえ}}に {{準備|じゅんび}}する。
 translation_it: >-
-  Mi preparo prima di sfidare i Superquattro.
+  Mi preparo prima di sfidare i Shitennō.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -317,18 +317,18 @@ translation_it: >-
 jp: >-
   スター{{団|だん}}の {{話|はなし}}だから、 ボタン、 これから よろしく。
 translation_it: >-
-  Dato che riguarda il Team Star, Penny, da adesso conto su di te.
+  Dato che riguarda il Sutā-dan, Botan, da adesso conto su di te.
 :::
 
 :::example_sentence
 jp: >-
   {{四天王|してんのう}}に {{挑戦|ちょうせん}}するなら、 {{自分|じぶん}}で {{準備|じゅんび}}して、 がんばって！
 translation_it: >-
-  Se sfidi i Superquattro, preparati da solo e forza!
+  Se sfidi i Shitennō, preparati da solo e forza!
 :::
 
 ---
 
 ## Nota finale
 
-Nei dialoghi iniziali di Paldea, le parole brevi decidono la lettura della scena: [もう](term:term-v013-mou) segnala che il momento è cambiato, [よろしく](term:term-e005-yoroshiku) costruisce un rapporto, [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) ferma un'azione e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) fa parlare i personaggi in modo naturale. Le etichette come [{{生徒|せいと}}](term:term-v024-seito), [スター{{団|だん}}](term:term-v017-sutaa-dan) e [{{四天王|してんのう}}](term:term-v025-shitenou) aggiungono la cornice: scuola, filone narrativo o Lega.
+Nei dialoghi iniziali di Parudea, le parole brevi decidono la lettura della scena: [もう](term:term-v013-mou) segnala che il momento è cambiato, [よろしく](term:term-e005-yoroshiku) costruisce un rapporto, [～ないで](grammar:grammar-g005-senza-fare-non-fare-e) ferma un'azione e [～てる](grammar:grammar-g006-contrazione-colloquiale-di) fa parlare i personaggi in modo naturale. Le etichette come [{{生徒|せいと}}](term:term-v024-seito), [スター{{団|だん}}](term:term-v017-sutaa-dan) e [{{四天王|してんのう}}](term:term-v025-shitenou) aggiungono la cornice: scuola, filone narrativo o Lega.

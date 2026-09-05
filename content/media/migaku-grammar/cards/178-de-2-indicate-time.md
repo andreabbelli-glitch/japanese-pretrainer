@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-178-de-2-indicate-time
 entry_type: grammar
 entry_id: grammar-178-de-2-indicate-time
 card_type: concept
-front: "で"
+front: "で（tempo o durata）"
 back: >-
   Tempo + で può segnare il confine in cui una situazione termina o la durata impiegata per completare un'azione.
 example_jp: >-

@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-281-verb-receptive-u
 entry_type: grammar
 entry_id: grammar-281-verb-receptive-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（passivo）"
 back: >-
   Passivo e passivo avversativo dei verbi godan
 example_jp: >-

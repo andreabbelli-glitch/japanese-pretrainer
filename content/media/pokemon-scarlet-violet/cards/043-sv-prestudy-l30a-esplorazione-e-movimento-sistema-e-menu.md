@@ -288,11 +288,11 @@ id: term-v573-deribaadopoochi
 lemma: デリバードポーチ
 reading: デリバードポーチ
 romaji: deribaadopoochi
-meaning_it: Delibird Presents
+meaning_it: Deribādo Pōchi
 notes_it: >-
-  Nomina il negozio Delibird Presents. In mappa o nei dialoghi funziona come
+  Nomina il negozio Deribādo Pōchi. In mappa o nei dialoghi funziona come
   destinazione concreta: se compare con `行く` o `買う`, la scena riguarda il
-  negozio e non il Pokemon Delibird in battaglia.
+  negozio e non il Pokemon Deribādo in battaglia.
 :::
 :::term
 id: term-v574-purofiiru
@@ -600,7 +600,7 @@ romaji: shuui
 meaning_it: dintorni / area intorno
 notes_it: >-
   Indica l'area intorno al personaggio o al punto corrente. In mappe e avvisi
-  restringe la ricerca ai dintorni, non a tutta Paldea.
+  restringe la ricerca ai dintorni, non a tutta Parudea.
 :::
 :::card
 id: card-v587-shuui-recognition
@@ -643,7 +643,7 @@ id: term-v589-shinkuromashin
 lemma: シンクロマシン
 reading: シンクロマシン
 romaji: shinkuromashin
-meaning_it: Synchro Machine
+meaning_it: Shinkuro Mashin
 notes_it: >-
   Nome di una funzione DLC: `シンクロ` richiama la sincronizzazione tra giocatore
   e Pokémon, mentre `マシン` lo presenta come dispositivo o modalità da avviare.

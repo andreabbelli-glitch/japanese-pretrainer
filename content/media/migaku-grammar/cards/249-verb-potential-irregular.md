@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-249-verb-potential-irregular
 entry_type: grammar
 entry_id: grammar-249-verb-potential-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（potenziale）"
 back: >-
   Le principali forme potenziali speciali esprimono «poter fare/venire/andare».
 example_jp: >-

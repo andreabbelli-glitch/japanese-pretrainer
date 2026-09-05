@@ -70,7 +70,7 @@ back: c’è / ci sono …
 example_jp: >-
   ここに ポケモンセンターが あります。
 example_it: >-
-  Qui c’è un Centro Pokémon.
+  Qui c’è un Pokémon Sentā.
 :::
 :::term
 id: term-v177-kenkyuu
@@ -151,7 +151,7 @@ romaji: kesshou
 meaning_it: cristallo
 notes_it: >-
   {{結晶|けっしょう}} è un cristallo. In Scarlet/Violet richiama i cristalli della
-  Teracristal e i punti visibili in mappa o in raid.
+  Terasutaru e i punti visibili in mappa o in raid.
 :::
 :::card
 id: card-v181-kesshou-recognition
@@ -288,9 +288,9 @@ id: term-v187-pokemonriigu
 lemma: ポケモンリーグ
 reading: ぽけもんりーぐ
 romaji: pokemonriigu
-meaning_it: Lega Pokémon
+meaning_it: Pokémon Rīgu
 notes_it: >-
-  Nome proprio della Lega Pokémon, da riconoscere come riferimento del gioco
+  Nome proprio della Pokémon Rīgu, da riconoscere come riferimento del gioco
   quando la scena parla della Lega.
 :::
 :::term
@@ -360,7 +360,7 @@ back: forse per caso
 example_jp: >-
   もしかして、 あれは ヌシですか。
 example_it: >-
-  Per caso quello è il Dominante?
+  Per caso quello è il Nushi?
 :::
 :::term
 id: term-v192-konkai

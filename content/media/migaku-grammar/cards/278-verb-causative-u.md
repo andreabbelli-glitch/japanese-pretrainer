@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-278-verb-causative-u
 entry_type: grammar
 entry_id: grammar-278-verb-causative-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（causativo）"
 back: >-
   Far fare o lasciare fare con un verbo godan
 example_jp: >-

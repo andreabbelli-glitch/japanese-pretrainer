@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-02
 media_id: media-pokemon-scarlet-violet
 slug: 107-sv-vocabulary-distance-02
-title: 'Parole per leggere Paldea — due'
+title: 'Parole per leggere Parudea — due'
 order: 152
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -100,10 +100,8 @@ card_type: recognition
 front: '{{楽|たの}}しみにする'
 back: >-
   たのしみにする — attendere con ansia.
-example_jp: >-
-  {{課外|かがい}}{{授業|じゅぎょう}}を{{通|とお}}して{{大|おお}}きく{{成長|せいちょう}}したあなたたちに{{再|ふたた}}びご{{挨拶|あいさつ}}できることを{{楽|たの}}しみにしておりますよそれでは{{宝探|たからさが}}し{{開始|かいし}}！
-example_it: >-
-  Non vedo l’ora di salutarvi di nuovo, voi che siete cresciuti tantissimo grazie alle lezioni extra. Allora, che la caccia al tesoro abbia inizio!
+example_jp: "{{課外授業|かがいじゅぎょう}}を{{通|とお}}して{{大|おお}}きく{{成長|せいちょう}}したあなたたちに、{{再|ふたた}}びご{{挨拶|あいさつ}}できることを{{楽|たの}}しみにしておりますよ。それでは、{{宝探|たからさが}}し{{開始|かいし}}！"
+example_it: "Non vedo l’ora di ritrovarvi dopo che sarete cresciuti grazie alle attività extracurricolari. Allora, che la caccia al tesoro abbia inizio!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -178,7 +176,7 @@ back: >-
 example_jp: >-
   {{命中|めいちゅう}}で{{話題|わだい}}にあがるのはなみのりとハイドロポンプかしら？
 example_it: >-
-  Quando si parla di precisione, vengono in mente Surf e Idropompa, no?
+  Quando si parla di precisione, vengono in mente Naminori e Haidoro Ponpu, no?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -303,7 +301,7 @@ back: >-
 example_jp: >-
   これがいわゆるテラスタルだ。
 example_it: >-
-  Questo è il cosiddetto fenomeno Teracristal.
+  Questo è il cosiddetto fenomeno Terasutaru.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

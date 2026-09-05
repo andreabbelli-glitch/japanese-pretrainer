@@ -418,15 +418,14 @@ entry_id: term-kaishi-1708637441286
 card_type: recognition
 front: 'ぶつける'
 back: 'to bump'
-example_jp: '{{車|くるま}}を{{壁|かべ}}にぶつけてしまいました。'
-example_it: 'I hit my car into the wall.'
+example_jp: "{{車|くるま}}を{{壁|かべ}}にぶつけてしまいました。"
+example_it: "I hit the wall with my car."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441286-recognition/816276b9ce5648746ba3a061244db022.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637440329
 lemma: '用'

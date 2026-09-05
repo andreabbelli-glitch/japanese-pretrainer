@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-017-ru-verbs
 entry_type: grammar
 entry_id: grammar-017-ru-verbs
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（forma dizionario）"
 back: >-
   La forma dizionario di un verbo in る può esprimere azione abituale o futura.
 example_jp: >-

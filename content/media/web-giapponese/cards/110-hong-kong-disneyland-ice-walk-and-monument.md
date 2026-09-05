@@ -181,10 +181,8 @@ entry_id: term-chokuzen
 card_type: recognition
 front: '{{直前|ちょくぜん}}'
 back: 'appena prima; immediatamente prima'
-example_jp: >-
-  ゲートの{{直前|ちょくぜん}}で、すこしとまった。
-example_it: >-
-  Ci siamo fermati un attimo proprio prima del gate.
+example_jp: "ゲートを{{通|とお}}る{{直前|ちょくぜん}}に、{{少|すこ}}し{{止|と}}まった。"
+example_it: "Mi sono fermato un attimo prima di attraversare il cancello."
 notes_it: >-
   [{{直前|ちょくぜん}}](term:term-chokuzen) aggancia la frase a un evento
   imminente. `直前` indica il momento subito precedente all'evento.

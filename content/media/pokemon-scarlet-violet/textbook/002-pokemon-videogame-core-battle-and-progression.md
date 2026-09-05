@@ -23,7 +23,7 @@ stato, cattura, esperienza o evoluzione. Se riconosci quei segnali, ogni turno
 diventa una catena leggibile invece di una serie di messaggi isolati.
 
 Scarlet / Violet mantiene il vocabolario classico della serie, ma lo fa entrare
-in schermate più dense: battaglie Teracristal, tutorial di cattura, messaggi
+in schermate più dense: battaglie Terasutaru, tutorial di cattura, messaggi
 post-lotta e servizi di cura usano gli stessi pezzi grammaticali. Le particelle
 ti dicono chi subisce l'azione, i pattern condizionali ti dicono quando reagire
 e le formule fisse ti confermano se una scelta ha funzionato davvero.
@@ -71,7 +71,7 @@ e le formule fisse ti confermano se una scelta ha funzionato davvero.
 
 Il turno di lotta comincia quasi sempre da una scelta esplicita. [わざ](term:term-waza)
 è quella scelta: la mossa che selezioni, con tipo, potenza, precisione e
-possibili effetti secondari. Il testo punta al comando operativo che il giocatore puo' usare in battaglia.
+possibili effetti secondari. Il testo punta al comando operativo che il giocatore può usare in battaglia.
 
 [{{特性|とくせい}}](term:term-tokusei), invece, appartiene al Pokémon prima
 ancora che tu prema il comando del turno. `{{特|とく}}` porta l'idea di
@@ -388,7 +388,7 @@ separare il problema dalla soluzione anche quando il testo è lungo.
 jp: >-
   HPが {{少|すく}}なくなったら きずぐすりで {{回復|かいふく}}しよう。
 translation_it: >-
-  Se gli HP si abbassano, curiamoci con una Pozione.
+  Se gli HP si abbassano, curiamoci con una Kizugusuri.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -408,7 +408,7 @@ a favore tuo o della tua squadra.
 jp: >-
   ポケモンセンターの {{人|ひと}}が ポケモンを {{回復|かいふく}}してくれる。
 translation_it: >-
-  La persona del Centro Pokémon cura i tuoi Pokémon per te.
+  La persona del Pokémon Sentā cura i tuoi Pokémon per te.
 :::
 
 #### 🗺️ Anatomia della frase

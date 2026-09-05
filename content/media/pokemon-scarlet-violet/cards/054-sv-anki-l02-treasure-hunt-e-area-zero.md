@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-054-sv-anki-l02-treasure-hunt-e-area-zero
 media_id: media-pokemon-scarlet-violet
 slug: 054-sv-anki-l02-treasure-hunt-e-area-zero
-title: SV Anki L02 - Treasure Hunt e Area Zero
+title: SV Anki L02 - Treasure Hunt e Eria Zero
 order: 84
 segment_ref: scarlet-violet-prestudy
 ---
@@ -132,9 +132,9 @@ back: >-
 example_jp: >-
   パルデアの {{大|おお}}{{穴|あな}}の {{中|なか}}には {{何|なに}}が あるのかな？
 example_it: >-
-  Chissà cosa c'è all'interno della Grande Voragine di Paldea?
+  Chissà cosa c'è all'interno della Parudea no Ōana di Parudea?
 notes_it: >-
-  Composto da {{大|おお}} (grande) e {{穴|あな}} (buco/voragine). In Scarlatto e Violetto, パルデアの{{大|おお}}{{穴|あな}} (La Grande Voragine di Paldea) è il nome proprio del cratere centrale. L'unione di kanji base per creare nomi di luoghi è un pattern geografico molto comune.
+  Composto da {{大|おお}} (grande) e {{穴|あな}} (buco/voragine). In Scarlatto e Violetto, パルデアの{{大|おお}}{{穴|あな}} (La Parudea no Ōana di Parudea) è il nome proprio del cratere centrale. L'unione di kanji base per creare nomi di luoghi è un pattern geografico molto comune.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-02]
 :::
 :::card
@@ -166,7 +166,7 @@ back: >-
 example_jp: >-
   みんなは わたしの ことを ネモと {{呼|よ}}ぶの！
 example_it: >-
-  Tutti mi chiamano Nemi!
+  Tutti mi chiamano Nemo!
 notes_it: >-
   Oltre al significato fisico di 'chiamare ad alta voce', {{呼|よ}}ぶ (よぶ) è fondamentale per esprimere denominazioni. La struttura [A]を[B]と{{呼|よ}}ぶ (Chiamare A con il nome B) è usata continuamente per introdurre personaggi, luoghi o fenomeni rari al giocatore.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-02]
@@ -183,7 +183,7 @@ back: >-
 example_jp: >-
   エントランスの {{本|ほん}}{{棚|だな}}で、パルデアの {{歴|れき}}{{史|し}}についての {{本|ほん}}を {{読|よ}}む。
 example_it: >-
-  Leggo un libro sulla storia di Paldea alla libreria dell'ingresso.
+  Leggo un libro sulla storia di Parudea alla libreria dell'ingresso.
 notes_it: >-
   Il verbo {{読|よ}}む (よむ) descrive il processo attivo della lettura di testi. L'oggetto letto prende sempre la particella を ({{本|ほん}}を{{読|よ}}む). Nel gioco, si incontra interagendo con cartelli, lavagne scolastiche e libri della biblioteca.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-02]
@@ -234,7 +234,7 @@ back: >-
 example_jp: >-
   ネモは ポケモンの ことを {{話|はな}}すのが {{大好|だいす}}きです。
 example_it: >-
-  A Nemi piace moltissimo parlare di Pokémon.
+  A Nemo piace moltissimo parlare di Pokémon.
 notes_it: >-
   Il verbo {{話|はな}}す (はなす) enfatizza l'atto verbale e bidirezionale. A differenza di {{言|い}}う (dire, affermare un concetto), {{話|はな}}す richiede un interlocutore che può essere marcato con と (per conversazioni alla pari) o に (per rivolgersi a qualcuno).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-02]

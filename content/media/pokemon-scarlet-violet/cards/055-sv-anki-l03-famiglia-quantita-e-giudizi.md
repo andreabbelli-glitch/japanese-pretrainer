@@ -83,7 +83,7 @@ reading: いっぴき
 romaji: ippiki
 meaning_it: una creatura/animale
 notes_it: >-
-  Il kanji {{匹|ひき}} funge da classificatore standard nel mondo Pokémon: si usa per contare qualunque creatura tascabile, da un minuscolo Joltik a un gigantesco Wailord. La numerazione presenta variazioni fonetiche dovute all'assimilazione: per dire uno si usa {{1匹|いっぴき}}, ma due diventa {{2匹|にひき}} e tre {{3匹|さんびき}}.
+  Il kanji {{匹|ひき}} funge da classificatore standard nel mondo Pokémon: si usa per contare qualunque creatura tascabile, da un minuscolo Bachuru a un gigantesco Hoeruō. La numerazione presenta variazioni fonetiche dovute all'assimilazione: per dire uno si usa {{1匹|いっぴき}}, ma due diventa {{2匹|にひき}} e tre {{3匹|さんびき}}.
 level_hint: custom
 :::
 :::term
@@ -118,7 +118,7 @@ back: >-
 example_jp: >-
   モンスターボールの {{数|かず}}は これで {{足|た}}りるかな？
 example_it: >-
-  Chissà se questo numero di Poké Ball basterà.
+  Chissà se questo numero di Monsutā Bōru basterà.
 notes_it: >-
   {{足|た}}りる guarda alla sufficienza: ボールが{{足|た}}りる = le Ball bastano. Nelle scene di acquisti o lotte è comune anche la negativa {{足|た}}りない, quando mancano soldi, oggetti, PP o PS.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
@@ -135,7 +135,7 @@ back: >-
 example_jp: >-
   パルデア{{地方|ちほう}}は めずらしい ポケモンが {{多|おお}}いですね。
 example_it: >-
-  La regione di Paldea ha molti Pokémon rari, vero?
+  La regione di Parudea ha molti Pokémon rari, vero?
 notes_it: >-
   L'aggettivo {{多|おお}}い descrive la numerosità. Una particolarità fondamentale per chi impara è che non si pone prima di un sostantivo (non si dice {{多|おお}}いポケモン per 'molti Pokémon'). Si costruisce invece una frase dove il nome è il soggetto marcato da が: ポケモンが{{多|おお}}い (i Pokémon sono numerosi).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   この エリアゼロには {{昔|むかし}}から ふしぎな ポケモンが いるらしい。
 example_it: >-
-  Sembra che in quest'Area Zero vivano da tempo immemore Pokémon misteriosi.
+  Sembra che in quest'Eria Zero vivano da tempo immemore Pokémon misteriosi.
 notes_it: >-
   La parola {{昔|むかし}} evoca un passato indeterminato, che può andare dai ricordi d'infanzia fino alle leggende antiche. Si usa come un nome, collegandosi ad altri sostantivi tramite の ({{昔|むかし}}のポケモン = Pokémon del passato) o funzionando come riferimento temporale se accompagnato da particelle come から ({{昔|むかし}}から = fin dai vecchi tempi).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
@@ -239,7 +239,7 @@ example_jp: >-
 example_it: >-
   Proviamo a catturare quel Pokémon che sta camminando laggiù!
 notes_it: >-
-  Il kanji {{匹|ひき}} funge da classificatore standard nel mondo Pokémon: si usa per contare qualunque creatura tascabile, da un minuscolo Joltik a un gigantesco Wailord. La numerazione presenta variazioni fonetiche dovute all'assimilazione: per dire uno si usa {{1匹|いっぴき}}, ma due diventa {{2匹|にひき}} e tre {{3匹|さんびき}}.
+  Il kanji {{匹|ひき}} funge da classificatore standard nel mondo Pokémon: si usa per contare qualunque creatura tascabile, da un minuscolo Bachuru a un gigantesco Hoeruō. La numerazione presenta variazioni fonetiche dovute all'assimilazione: per dire uno si usa {{1匹|いっぴき}}, ma due diventa {{2匹|にひき}} e tre {{3匹|さんびき}}.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]
 :::
 :::card
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   ポケモン{{図鑑|ずかん}}に {{新|あたら}}しい データを {{書|か}}くんだ。
 example_it: >-
-  Scrivo i nuovi dati nel Pokédex.
+  Scrivo i nuovi dati nel Pokémon Zukan.
 notes_it: >-
   Il verbo {{書|か}}く usa la particella を per indicare il testo prodotto o i dati trascritti, mentre si appoggia a に per indicare la superficie, il libro o il mezzo su cui l'informazione viene fissata (ノートに{{書|か}}く). Negli RPG è storicamente associato al salvataggio della partita (レポートを{{書|か}}く = scrivere il rapporto).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-03]

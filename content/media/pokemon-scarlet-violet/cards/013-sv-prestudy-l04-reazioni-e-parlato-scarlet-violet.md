@@ -67,10 +67,8 @@ entry_id: grammar-g010-prima-di
 card_type: concept
 front: '～{{前|まえ}}に'
 back: prima di fare... / prima di...
-example_jp: >-
-  {{行|い}}く {{前|まえ}}に、 {{大丈夫|だいじょうぶ}}ですか。
-example_it: >-
-  Prima di andare, va bene?
+example_jp: "{{行|い}}く{{前|まえ}}に、{{道具|どうぐ}}を{{確認|かくにん}}しよう。"
+example_it: "Prima di andare, controlliamo gli strumenti."
 :::
 :::grammar
 id: grammar-g011-voler-fare
@@ -192,16 +190,16 @@ back: foto
 example_jp: >-
   ネモと {{一緒|いっしょ}}に {{写真|しゃしん}}を {{撮|と}}ろう。
 example_it: >-
-  Scattiamo una foto insieme a Nemi.
+  Scattiamo una foto insieme a Nemo.
 :::
 :::term
 id: term-v044-nemo
 lemma: ネモ
 reading: ねも
 romaji: nemo
-meaning_it: Nemi
+meaning_it: "Nemo (rivale e amica del protagonista)"
 notes_it: >-
-  Nome giapponese di Nemi. Quando compare, la scena di solito riguarda
+  Nome giapponese di Nemo. Quando compare, la scena di solito riguarda
   rivalità amichevole, lotte, consigli o spinta ad andare avanti.
 :::
 :::term
@@ -254,9 +252,9 @@ id: term-v048-pepaa
 lemma: ペパー
 reading: ぺぱー
 romaji: pepaa
-meaning_it: Arven
+meaning_it: "Pepā (compagno di viaggio)"
 notes_it: >-
-  Nome giapponese di Arven. Quando compare, la scena tende a spostarsi su
+  Nome giapponese di Pepā. Quando compare, la scena tende a spostarsi su
   esplorazione, spezie segrete, picnic o Pokémon dominanti.
 :::
 :::term
@@ -301,5 +299,5 @@ back: divertente
 example_jp: >-
   ネモとの バトルは {{楽|たの}}しいです。
 example_it: >-
-  La lotta con Nemi è divertente.
+  La lotta con Nemo è divertente.
 :::

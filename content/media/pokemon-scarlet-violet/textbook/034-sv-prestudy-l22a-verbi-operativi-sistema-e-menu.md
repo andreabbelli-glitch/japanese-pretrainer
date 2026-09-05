@@ -59,7 +59,7 @@ Questi verbi non sono intercambiabili. [{{確認|かくにん}}する](term:term
 
 ## Etichette da riconoscere
 
-- [テラスタルエネルギー](term:term-v355-terasutaruenerugii) — energia teracristal
+- [テラスタルエネルギー](term:term-v355-terasutaruenerugii) — energia Terasutaru
 - [{{伝説|でんせつ}}のポケモン](term:term-v363-densetsunopokemon) — Pokémon leggendario
 
 ---
@@ -285,12 +285,12 @@ Per leggere un'istruzione di percorso, separa mentalmente quattro caselle: **dov
 
 Alcuni blocchi non sono comandi immediati, ma cambiano il tipo di informazione che stai leggendo. Nei dialoghi e nei messaggi di sistema, una stessa riga può nominare una risorsa, classificare un Pokémon, proporre un'opzione o collocare un'azione nel programma.
 
-*   [テラスタルエネルギー](term:term-v355-terasutaruenerugii) è energia dentro la meccanica della teracristallizzazione. Quando compare, la domanda pratica è se la risorsa è disponibile, carica, consumata o necessaria per una trasformazione: non è "energia" in senso generico.
+*   [テラスタルエネルギー](term:term-v355-terasutaruenerugii) è energia dentro la meccanica della Terasutaru. Quando compare, la domanda pratica è se la risorsa è disponibile, carica, consumata o necessaria per una trasformazione: non è "energia" in senso generico.
 *   [{{伝説|でんせつ}}のポケモン](term:term-v363-densetsunopokemon) usa {{伝説|でんせつ}}, "leggenda", per classificare un Pokémon come speciale sul piano narrativo e di sistema. La particella の lega la qualità "leggendaria" al nome ポケモン.
 *   [〜は どうだ？](term:term-e069-ha-douda) mette un tema davanti all'interlocutore e chiede una valutazione. このポケモンはどうだ？ non domanda dove sia il Pokémon: lo propone e aspetta una reazione, come "che ne dici di questo?".
 *   [やってみよう](term:term-e070-yattemiyou) combina やる "fare", 〜てみる "provare a fare" e 〜よう volitivo. Il risultato è un invito a provare, spesso con tono condiviso: "proviamo a farlo".
-*   [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) riprende un tema già sul tavolo e lo usa come condizione discorsiva. ジムなら あっちだ significa "se parli della palestra, è di là": `なら` riprende un tema gia' nominato e lo usa come condizione discorsiva.
-*   [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) colloca un'azione nel programma. L'evento `予定だ` colloca l'azione in un piano gia' previsto.
+*   [～なら](grammar:grammar-g072-se-e-cosi-se-parli-di) riprende un tema già sul tavolo e lo usa come condizione discorsiva. ジムなら あっちだ significa "se parli della palestra, è di là": `なら` riprende un tema già nominato e lo usa come condizione discorsiva.
+*   [～{{予定|よてい}}だ](grammar:grammar-g073-essere-previsto) colloca un'azione nel programma. L'evento `予定だ` colloca l'azione in un piano già previsto.
 
 :::example_sentence
 jp: >-
@@ -357,7 +357,7 @@ Le forme diventano più solide quando si ricombinano in comandi, percorsi e dial
 jp: >-
   テラスタルエネルギーを {{確認|かくにん}}する。
 translation_it: >-
-  Controllo l'energia teracristal.
+  Controllo l'energia Terasutaru.
 :::
 
 :::example_sentence

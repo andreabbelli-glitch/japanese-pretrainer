@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-246-de-4-express-reason
 entry_type: grammar
 entry_id: grammar-246-de-4-express-reason
 card_type: concept
-front: "で"
+front: "で（causa）"
 back: >-
   Causa + で + risultato significa «a causa di / per quella causa».
 example_jp: >-

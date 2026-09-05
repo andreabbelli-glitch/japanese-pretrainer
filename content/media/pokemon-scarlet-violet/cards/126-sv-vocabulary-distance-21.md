@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-21
 media_id: media-pokemon-scarlet-violet
 slug: 126-sv-vocabulary-distance-21
-title: 'Parole per leggere Paldea — ventuno'
+title: 'Parole per leggere Parudea — ventuno'
 order: 171
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -75,11 +75,10 @@ card_type: recognition
 front: '{{再会|さいかい}}'
 back: >-
   さいかい — ritrovo; ricongiungimento.
-example_jp: >-
-  {{宝探|たからさが}}し{{中|ちゅう}}{{再会|さいかい}}したらとも{{戦|たたか}}わせてよね！
-example_it: >-
-  Se ci ritroviamo durante la caccia al tesoro, fammi combattere anche contro di te!
+example_jp: "{{宝探|たからさが}}しの{{途中|とちゅう}}で{{再会|さいかい}}したら、また{{勝負|しょうぶ}}しようね！"
+example_it: "Se ci ritroviamo durante la caccia al tesoro, sfidiamoci di nuovo!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "Esempio didattico."
 :::
 
 :::term
@@ -300,13 +299,10 @@ card_type: recognition
 front: '{{寮|りょう}}'
 back: >-
   りょう — dormitorio; collegio.
-example_jp: >-
-  ジニア{{先生|せんせい}}から{{寮|りょう}}の{{部屋|へや}}を{{案内|あんない}}するように{{言|い}}われたの！
-example_it: >-
-  Il professor Zinia mi ha chiesto di farti vedere la mia stanza nel dormitorio!
+example_jp: "ジニア{{先生|せんせい}}から{{寮|りょう}}の{{部屋|へや}}を{{案内|あんない}}するように{{言|い}}われたの！"
+example_it: "Il professor Jinia mi ha detto di accompagnarti a vedere la tua stanza nel dormitorio!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-226-sekinin
 lemma: '責任'

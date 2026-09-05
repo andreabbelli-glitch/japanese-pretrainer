@@ -258,7 +258,7 @@ translation_it: >-
 *   `デッキコードを{{入力|にゅうりょく}}してから` ➔ **sequenza temporale**:
     `〜してから` dice che prima inserisci il codice e solo dopo fai l'azione
     successiva.
-*   `{{決定|けってい}}を` ➔ **oggetto del clic**: `決定を` marca il pulsante da confermare, cioe' il target del clic.
+*   `{{決定|けってい}}を` ➔ **oggetto del clic**: `決定を` marca il pulsante da confermare, cioè il target del clic.
 *   `{{押|お}}す` ➔ **azione fisica sulla UI**: premere/cliccare il pulsante.
 
 #### ⚖️ Contrasto operativo

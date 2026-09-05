@@ -10,7 +10,7 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-04]
 prerequisites: []
 summary: >-
-  Leggere aula, riposo, stanze, onorifici e battaglie quando Paldea passa da
+  Leggere aula, riposo, stanze, onorifici e battaglie quando Parudea passa da
   lezioni e dialoghi a missioni e scontri.
 ---
 
@@ -18,7 +18,7 @@ summary: >-
 
 In *Pokémon Scarlet & Violet*, l'Accademia non è solo un edificio di sfondo: lezioni, stanze, incarichi e battute formali continuano a rientrare nel viaggio. Il giapponese cambia registro quando passi da una materia scolastica a una richiesta, da una stanza a una risorsa rara, da un commento educato a una battaglia.
 
-Le parole di questo blocco ti fanno riconoscere chi sta mostrando qualcosa, chi si assenta, quale luogo viene nominato e con che tono il gioco valuta una scena. Sono termini semplici in apparenza, ma dentro Paldea decidono se stai leggendo un messaggio operativo, una battuta cerimoniosa o un giudizio sullo scontro appena visto.
+Le parole di questo blocco ti fanno riconoscere chi sta mostrando qualcosa, chi si assenta, quale luogo viene nominato e con che tono il gioco valuta una scena. Sono termini semplici in apparenza, ma dentro Parudea decidono se stai leggendo un messaggio operativo, una battuta cerimoniosa o un giudizio sullo scontro appena visto.
 
 ## Termini chiave
 
@@ -49,7 +49,7 @@ Le parole di questo blocco ti fanno riconoscere chi sta mostrando qualcosa, chi 
 ## Etichette da riconoscere
 
 - [{{美|び}}{{術|じゅつ}}](term:term-anki-l04-bijutsu) — materia, area scolastica o tema artistico
-- [{{秘|ひ}}{{伝|でん}}](term:term-v279-hiden)スパイス — risorsa rara legata alle Spezie Segrete
+- [{{秘|ひ}}{{伝|でん}}](term:term-v279-hiden)スパイス — risorsa rara legata alle Hiden Supaisu
 - [{{戦|たたか}}い](term:term-anki-l04-tatakai) — scontro, lotta o conflitto narrativo
 
 ---
@@ -115,7 +115,7 @@ Aggancia [{{見|み}}せる](term:term-anki-l04-miseru) a {{見|み}}る: il nuc
 
 ## 3. Segreti, risorse rare e tono cerimonioso
 
-Quando la storia nomina ricette speciali, Spezie Segrete o formule rivolte a una persona con grande rispetto, il registro si alza. [{{秘|ひ}}{{伝|でん}}](term:term-v279-hiden) e [{{殿|どの}}](term:term-anki-l04-dono) non funzionano come parole neutre: una suggerisce qualcosa tramandato o custodito, l'altra mette distanza formale tra chi parla e chi viene nominato.
+Quando la storia nomina ricette speciali, Hiden Supaisu o formule rivolte a una persona con grande rispetto, il registro si alza. [{{秘|ひ}}{{伝|でん}}](term:term-v279-hiden) e [{{殿|どの}}](term:term-anki-l04-dono) non funzionano come parole neutre: una suggerisce qualcosa tramandato o custodito, l'altra mette distanza formale tra chi parla e chi viene nominato.
 
 *   [{{秘|ひ}}{{伝|でん}}](term:term-v279-hiden) combina {{秘|ひ}} (*segreto*) e {{伝|でん}} (*trasmissione, tramandare*). In {{秘|ひ}}{{伝|でん}}スパイス, l'idea non è solo "informazione nascosta": è una risorsa speciale, quasi leggendaria, legata a una tradizione o a una ricetta non comune. Per questo suona più marcata di una semplice parola per "segreto".
 *   [{{殿|どの}}](term:term-anki-l04-dono) dopo un nome è un suffisso onorifico. Nei media può suonare solenne, burocratico, antico o scherzosamente rispettoso, a seconda della voce del personaggio. Non tradurlo ogni volta con un titolo rigido: prima chiediti che effetto di tono produce nella scena.
@@ -124,7 +124,7 @@ Quando la storia nomina ricette speciali, Spezie Segrete o formule rivolte a una
 jp: >-
   ペパー{{殿|どの}}、{{秘|ひ}}{{伝|でん}}スパイスを {{見|み}}せてください。
 translation_it: >-
-  Pepper-dono, per favore mi mostri le Spezie Segrete.
+  Pepā-dono, per favore mi mostri le Hiden Supaisu.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -188,7 +188,7 @@ translation_it: >-
 jp: >-
   {{秘|ひ}}{{伝|でん}}スパイスを {{見|み}}せてくれた。
 translation_it: >-
-  Mi ha mostrato le Spezie Segrete.
+  Mi ha mostrato le Hiden Supaisu.
 :::
 
 :::example_sentence
@@ -200,4 +200,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando Paldea alterna aula, stanza privata, risorsa rara e scontro, guarda prima il ruolo della parola nella frase: の restringe il referente, を mostra l'oggetto dell'azione, [{{本|ほん}}{{日|じつ}}](term:term-anki-l04-honjitsu) alza il registro, [{{殿|どの}}](term:term-anki-l04-dono) colora il rapporto, e [{{素|す}}{{晴|ば}}らしい](term:term-anki-l04-subarashii) trasforma un evento in qualcosa che il testo sta apertamente lodando.
+Quando Parudea alterna aula, stanza privata, risorsa rara e scontro, guarda prima il ruolo della parola nella frase: の restringe il referente, を mostra l'oggetto dell'azione, [{{本|ほん}}{{日|じつ}}](term:term-anki-l04-honjitsu) alza il registro, [{{殿|どの}}](term:term-anki-l04-dono) colora il rapporto, e [{{素|す}}{{晴|ば}}らしい](term:term-anki-l04-subarashii) trasforma un evento in qualcosa che il testo sta apertamente lodando.

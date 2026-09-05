@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-170-suru-4-express-perception
 entry_type: grammar
 entry_id: grammar-170-suru-4-express-perception
 card_type: concept
-front: "する"
+front: "する（percezione: ～がする）"
 back: >-
   Nome di suono, odore, sapore o sensazione + がする esprime ciò che viene percepito.
 example_jp: >-

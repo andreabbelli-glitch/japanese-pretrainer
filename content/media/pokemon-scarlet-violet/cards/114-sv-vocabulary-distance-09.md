@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-09
 media_id: media-pokemon-scarlet-violet
 slug: 114-sv-vocabulary-distance-09
-title: 'Parole per leggere Paldea — nove'
+title: 'Parole per leggere Parudea — nove'
 order: 159
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -53,7 +53,7 @@ back: >-
 example_jp: >-
   {{道|みち}}に{{落|お}}ちていたボールを{{拾|ひろ}}う。
 example_it: >-
-  Raccolgo la Poké Ball caduta sulla strada.
+  Raccolgo la Monsutā Bōru caduta sulla strada.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -100,13 +100,10 @@ card_type: recognition
 front: 'しまう'
 back: >-
   しまう — mettere via; finire; completare anche con sfumatura involontaria.
-example_jp: >-
-  {{大事|だいじ}}な{{道具|どうぐ}}をバッグにしまう。
-example_it: >-
-  Ripongo nella Borsa lo strumento appena ottenuto.
+example_jp: "{{大事|だいじ}}な{{道具|どうぐ}}をバッグにしまう。"
+example_it: "Ripongo nella borsa uno strumento importante."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-366-mokuteki
 lemma: '目的'
@@ -278,7 +275,7 @@ back: >-
 example_jp: >-
   ところがダイオウドウが{{暴|あば}}れてしまいなんと{{壁画|へきが}}が{{壊|こわ}}れてしまったんです！
 example_it: >-
-  Ma poi Copperajah si è scatenato e, incredibilmente, ha distrutto l'affresco!
+  Ma poi Daiōdō si è scatenato e, incredibilmente, ha distrutto l'affresco!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-028-sv-prestudy-l19a-reazioni-e-parlato-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 028-sv-prestudy-l19a-reazioni-e-parlato-scarlet-violet
-title: "Reazioni, conferme e cambiamenti nei dialoghi di Paldea"
+title: "Reazioni, conferme e cambiamenti nei dialoghi di Parudea"
 order: 58
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,7 +19,7 @@ summary: >-
   deduzione, luogo e funzione diventano più chiari.
 ---
 
-# Reazioni, conferme e cambiamenti nei dialoghi di Paldea
+# Reazioni, conferme e cambiamenti nei dialoghi di Parudea
 
 Nei dialoghi di *Pokémon Scarlet & Violet*, una battuta breve può far partire
 subito l'azione, confermare che il personaggio ha capito, cambiare rotta dopo un
@@ -64,7 +64,7 @@ emerso.
 
 ## Etichette da riconoscere
 
-- [ゼロラボ](term:term-v236-zerorabo) — Zero Lab
+- [ゼロラボ](term:term-v236-zerorabo) — Zero Rabo
 - [ライドポケモン](term:term-v239-raidopokemon) — Pokémon cavalcatura
 
 ---
@@ -86,7 +86,7 @@ decidono il ritmo della scena.
 *   [ぜひ](term:term-v238-zehi) (**assolutamente / ti prego**) rafforza un invito.
     Non è un ordine secco come un comando di menu: è il parlante che spinge
     perché l'altra persona accetti, partecipi o provi qualcosa. In una battuta
-    di Nemi, Pepper o un insegnante, [ぜひ](term:term-v238-zehi) rende l'invito
+    di Nemo, Pepā o un insegnante, [ぜひ](term:term-v238-zehi) rende l'invito
     più caloroso e personale.
 *   [とにかく](term:term-e044-tonikaku) (**comunque / in ogni caso**) riporta il
     discorso su una linea d'azione dopo una deviazione. Se una scena si è
@@ -97,7 +97,7 @@ decidono il ritmo della scena.
 jp: >-
   さっそく ゼロラボへ {{行|い}}こう。
 translation_it: >-
-  Andiamo subito allo Zero Lab.
+  Andiamo subito allo Zero Rabo.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -199,7 +199,7 @@ Alcune parole non descrivono il tono della battuta, ma fissano coordinate molto
 concrete: dove si va, come ci si muove, che categoria di battaglia è in gioco o
 quale valore numerico sta cambiando.
 
-*   [ゼロラボ](term:term-v236-zerorabo) (**Zero Lab**) è un nome proprio di
+*   [ゼロラボ](term:term-v236-zerorabo) (**Zero Rabo**) è un nome proprio di
     luogo. Quando compare con particelle come `へ`, `に` o `で`, non cercare un
     significato simbolico complesso: chiediti se il testo sta indicando una
     meta, un luogo in cui succede qualcosa o il punto da cui arriva
@@ -378,14 +378,14 @@ translation_it: >-
 jp: >-
   しまった！ とにかく ゼロラボへ {{行|い}}こう。
 translation_it: >-
-  Accidenti! Comunque, andiamo allo Zero Lab.
+  Accidenti! Comunque, andiamo allo Zero Rabo.
 :::
 
 ---
 
 ## Nota finale
 
-Quando una riga breve compare nei dialoghi di Paldea, guarda prima che funzione
+Quando una riga breve compare nei dialoghi di Parudea, guarda prima che funzione
 sta svolgendo: [さっそく](term:term-v235-sassoku) accelera l'azione,
 [ぜひ](term:term-v238-zehi) scalda l'invito, [～よね](grammar:grammar-g047-vero-no)
 cerca accordo e [すでに](term:term-v252-sudeni) ti dice che uno stato è già vero.

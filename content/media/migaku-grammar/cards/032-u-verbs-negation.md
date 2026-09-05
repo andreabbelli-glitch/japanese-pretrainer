@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-032-u-verbs-negation
 entry_type: grammar
 entry_id: grammar-032-u-verbs-negation
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（negativo）"
 back: >-
   Base in a del verbo in う + ない esprime «non fare / non farà».
 example_jp: >-

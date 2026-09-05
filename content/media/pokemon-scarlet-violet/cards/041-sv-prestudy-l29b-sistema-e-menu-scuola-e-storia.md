@@ -34,7 +34,7 @@ id: term-v509-takarashokudou
 lemma: 宝食堂
 reading: たからしょくどう
 romaji: takarashokudou
-meaning_it: Treasure Eatery
+meaning_it: Takara Shokudō
 notes_it: >-
   Nome proprio di un ristorante: quando appare con 注文 o メニュー indica il
   luogo della scena, non un oggetto da usare.
@@ -100,7 +100,7 @@ id: term-v513-gureepuakademii
 lemma: グレープアカデミー
 reading: ぐれーぷあかでみー
 romaji: gureepuakademii
-meaning_it: Accademia Grape
+meaning_it: Gurēpu Akademī
 notes_it: >-
   Nome dell'Accademia: si lega a 入学する, 教室へ向かう e ai dialoghi di vita
   scolastica.
@@ -126,7 +126,7 @@ back: natura
 example_jp: >-
   {{校外学習|こうがい.がくしゅう}}で パルデアの {{自然|しぜん}}を {{観察|かんさつ}}します。
 example_it: >-
-  Durante l'uscita didattica osservo la natura di Paldea.
+  Durante l'uscita didattica osservo la natura di Parudea.
 :::
 :::term
 id: term-v515-batoruchiimu
@@ -205,7 +205,7 @@ back: assistente
 example_jp: >-
   {{研究所|けんきゅうじょ}}の {{助手|じょしゅ}}が {{図鑑|ずかん}}の {{使|つか}}い{{方|かた}}を {{説明|せつめい}}します。
 example_it: >-
-  L'assistente del laboratorio spiega come usare il Pokédex.
+  L'assistente del laboratorio spiega come usare il Pokémon Zukan.
 :::
 :::term
 id: term-v519-seitokaichou
@@ -273,7 +273,7 @@ back: aula
 example_jp: >-
   ネモは {{教室|きょうしつ}}で {{待|ま}}っています。
 example_it: >-
-  Nemi mi aspetta in aula.
+  Nemo mi aspetta in aula.
 :::
 :::term
 id: term-v522-suteki
@@ -432,7 +432,7 @@ back: iscrizione / ingresso a scuola
 example_jp: >-
   グレープアカデミーに {{入学|にゅうがく}}します。
 example_it: >-
-  Entro all'Accademia Grape.
+  Entro all'Gurēpu Akademī.
 :::
 :::term
 id: term-v529-chuumon
@@ -455,7 +455,7 @@ back: ordine
 example_jp: >-
   {{宝食堂|たからしょくどう}}で いつもの メニューを {{注文|ちゅうもん}}します。
 example_it: >-
-  Alla Treasure Eatery ordino il solito menu.
+  Alla Takara Shokudō ordino il solito menu.
 :::
 :::term
 id: term-v530-shitappa
@@ -464,7 +464,7 @@ reading: したっぱ
 romaji: shitappa
 meaning_it: recluta / sottoposto
 notes_it: >-
-  Membro di basso rango in un gruppo, come una recluta del Team Star; tono
+  Membro di basso rango in un gruppo, come una recluta del Sutā-dan; tono
   colloquiale e gerarchico.
 :::
 :::card
@@ -478,7 +478,7 @@ back: recluta / sottoposto
 example_jp: >-
   スター{{団|だん}}の したっぱが {{勝負|しょうぶ}}を しかけてきます。
 example_it: >-
-  Una recluta del Team Star viene a sfidarmi.
+  Una recluta del Sutā-dan viene a sfidarmi.
 :::
 :::term
 id: term-v531-senpai

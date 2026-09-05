@@ -11,7 +11,7 @@ id: term-e039-itterasshai
 lemma: いってらっしゃい
 reading: いってらっしゃい
 romaji: itterasshai
-meaning_it: buon viaggio / vai e torna
+meaning_it: "a dopo!; buona giornata!; buon viaggio! (a chi esce)"
 notes_it: >-
   Risposta tipica a {{行|い}}ってきます.
 :::
@@ -22,11 +22,9 @@ entry_type: term
 entry_id: term-e039-itterasshai
 card_type: recognition
 front: 'いってらっしゃい'
-back: buon viaggio / vai e torna
-example_jp: >-
-  いってらっしゃい。
-example_it: >-
-  Vai e torna.
+back: "a dopo!; buona giornata!; buon viaggio! (a chi esce)"
+example_jp: "いってらっしゃい。"
+example_it: "A dopo!"
 :::
 :::term
 id: term-e040-tokorode
@@ -404,9 +402,9 @@ id: term-v221-kizu-gusuri
 lemma: キズぐすり
 reading: きずぐすり
 romaji: kizu gusuri
-meaning_it: pozione
+meaning_it: Kizugusuri
 notes_it: >-
-  キズぐすり è la pozione base: キズ richiama la ferita e ぐすり è "medicina".
+  キズぐすり è la Kizugusuri base: キズ richiama la ferita e ぐすり è "medicina".
   Serve a recuperare HP.
 :::
 :::card
@@ -416,11 +414,11 @@ entry_type: term
 entry_id: term-v221-kizu-gusuri
 card_type: recognition
 front: 'キズぐすり'
-back: pozione
+back: Kizugusuri
 example_jp: >-
   キズぐすりで ＨＰを {{回復|かいふく}}します。
 example_it: >-
-  Recupero i PS con una Pozione.
+  Recupero i PS con una Kizugusuri.
 :::
 :::term
 id: term-v223-bougyo

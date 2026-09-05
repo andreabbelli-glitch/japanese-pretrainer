@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 072-sv-anki-l20-legami-training-salute-e-vita-quotidiana
-title: Legami, training e vita quotidiana a Paldea
+title: Legami, training e vita quotidiana a Parudea
 order: 102
 segment_ref: scarlet-violet-prestudy
 ---
@@ -118,7 +118,7 @@ back: >-
 example_jp: >-
   スター{{団|だん}}の {{同|どう}}{{胞|ほう}}たちを {{見|み}}{{捨|す}}てる わけには いかない！
 example_it: >-
-  Non possiamo certo abbandonare i nostri compagni del Team Star!
+  Non possiamo certo abbandonare i nostri compagni del Sutā-dan!
 notes_it: >-
   La parola {{同|どう}}{{胞|ほう}} unisce {{同|おな}} (stesso) e {{胞|ほう}} (grembo/sacco). Indica una profonda connessione identitaria e ideologica. Viene usata per innalzare il registro, richiamando un senso epico di fedeltà, spesso nei monologhi dei capi squadra o nelle dichiarazioni dei leader.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   {{彼|かれ}}らは スター{{団|だん}}と して、アカデミーの ルールに {{反|はん}}している。
 example_it: >-
-  Loro, in quanto membri del Team Star, stanno infrangendo le regole dell'Accademia.
+  Loro, in quanto membri del Sutā-dan, stanno infrangendo le regole dell'Accademia.
 notes_it: >-
   Il suffisso ら pluralizza il pronome {{彼|かれ}}, “egli”. In giapponese si preferisce spesso usare nomi o ruoli per riferirsi agli altri; {{彼|かれ}}ら crea invece una distanza formale tra chi parla e il gruppo nominato.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
@@ -237,7 +237,7 @@ back: >-
 example_jp: >-
   ペパーの ポケモンを {{助|たす}}けるため、{{分|ふん}}{{秒|びょう}}を {{争|あらそ}}って {{秘|ひ}}{{伝|でん}}スパイスを {{探|さが}}した。
 example_it: >-
-  Per aiutare il Pokémon di Pepe, abbiamo cercato le Spezie Segrete senza perdere un istante.
+  Per aiutare il Pokémon di Pepā, abbiamo cercato le Hiden Supaisu senza perdere un istante.
 notes_it: >-
   {{分|ふん}}{{秒|びょう}} unisce le unità di tempo minuto e secondo. L'espressione {{分|ふん}}{{秒|びょう}}を{{争|あらそ}}う significa agire con estrema urgenza, quando anche poco tempo può fare la differenza.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   パルデア{{地|ち}}{{方|ほう}}で ポケモンと {{暮|く}}らす まいにちは、{{新|あたら}}しい {{発|はっ}}{{見|けん}}で いっぱいだ。
 example_it: >-
-  Ogni giorno vissuto con i Pokémon nella regione di Paldea è pieno di nuove scoperte.
+  Ogni giorno vissuto con i Pokémon nella regione di Parudea è pieno di nuove scoperte.
 notes_it: >-
   Mentre {{住|す}}む (sumu) indica staticamente il luogo di residenza e {{生|い}}きる (ikiru) indica il fatto biologico di essere vivi, {{暮|く}}らす (kurasu) abbraccia il trascorrere armonico delle proprie giornate e delle proprie abitudini. Il luogo in cui si svolge questo stile di vita si marca con で.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-20]

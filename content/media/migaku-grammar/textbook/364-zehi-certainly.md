@@ -23,7 +23,7 @@ summary: >-
 
 - ぜひ + richiesta: ぜひ来てください.
 - ぜひ + desiderio/invito: ぜひ会いたい, ぜひ参加しませんか.
-- Risposta positiva: ぜひ！ («molto volentieri»).
+- Risposta positiva a un invito: ぜひ！ («molto volentieri») oppure ぜひ行きます («Verrò molto volentieri»).
 
 ## Esempio
 

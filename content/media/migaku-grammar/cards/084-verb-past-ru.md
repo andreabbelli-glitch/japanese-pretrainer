@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-084-verb-past-ru
 entry_type: grammar
 entry_id: grammar-084-verb-past-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（passato）"
 back: >-
   Forma piana passata dei verbi ichidan (verbi in -ru)
 example_jp: >-

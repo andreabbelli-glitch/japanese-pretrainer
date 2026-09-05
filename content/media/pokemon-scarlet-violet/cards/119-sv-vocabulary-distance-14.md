@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-14
 media_id: media-pokemon-scarlet-violet
 slug: 119-sv-vocabulary-distance-14
-title: 'Parole per leggere Paldea — quattordici'
+title: 'Parole per leggere Parudea — quattordici'
 order: 164
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -50,13 +50,10 @@ card_type: recognition
 front: '{{間違|まちが}}える'
 back: >-
   まちがえる — commettere un errore (in); sbagliare; fare in modo errato.
-example_jp: >-
-  オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！
-example_it: >-
-  Fai attenzione a non far rotolare Smoliv per sbaglio, scambiandolo per un’Oliva!
+example_jp: "オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！"
+example_it: "Non fate rotolare Minību scambiandolo per un’oliva!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-045-jidai
 lemma: '時代'
@@ -178,7 +175,7 @@ back: >-
 example_jp: >-
   この{{先|さき}}ボクたちスター{{団|だん}}あく{{組|ぐみ}}{{通称|つうしょう}}チーム・セギンのアジトですそそ{{不法|ふほう}}{{侵入|しんにゅう}}とかさ{{勘弁|かんべん}}してほしいわけ！
 example_it: >-
-  Da qui in avanti c'è la base della squadra Buio del Team Star, conosciuta come Team Segin. Niente intrusioni illegali, per favore!
+  Da qui in avanti c'è la base della squadra Buio del Sutā-dan, conosciuta come Team Segin. Niente intrusioni illegali, per favore!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -253,7 +250,7 @@ back: >-
 example_jp: >-
   えーネモあれでワクワクしたん？
 example_it: >-
-  Ehm, Nemi, ti ha davvero emozionato tutto questo?
+  Ehm, Nemo, ti ha davvero emozionato tutto questo?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -287,7 +284,7 @@ id: term-sv-vocabulary-319-konayuki
 lemma: 'こなゆき'
 reading: 'こなゆき'
 romaji: 'konayuki'
-meaning_it: 'neve farinosa; Polneve, mossa Pokémon'
+meaning_it: 'neve farinosa; Konayuki, mossa Pokémon'
 level_hint: custom
 :::
 
@@ -299,11 +296,11 @@ entry_id: term-sv-vocabulary-319-konayuki
 card_type: recognition
 front: 'こなゆき'
 back: >-
-  こなゆき — neve farinosa; Polneve, mossa Pokémon.
+  こなゆき — neve farinosa; Konayuki, mossa Pokémon.
 example_jp: >-
   こなゆきコースだね！
 example_it: >-
-  È il percorso «Polneve»!
+  È il percorso «Konayuki»!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -353,7 +350,7 @@ back: >-
 example_jp: >-
   {{落|お}}ちこむことはござらぬかような{{傑作|けっさく}}をハンドメイドとはオルティガ{{殿|どの}}は{{誠|まこと}}に{{天才|てんさい}}。
 example_it: >-
-  Non c’è motivo di abbattersi: un capolavoro del genere fatto a mano… Ortiga è davvero un genio.
+  Non c’è motivo di abbattersi: un capolavoro del genere fatto a mano… Orutiga è davvero un genio.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

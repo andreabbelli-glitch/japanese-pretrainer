@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-276-verb-volitional-ru
 entry_type: grammar
 entry_id: grammar-276-verb-volitional-ru
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（volitivo）"
 back: >-
   Volitivo dei verbi ichidan: «facciamo / ho intenzione di»
 example_jp: >-

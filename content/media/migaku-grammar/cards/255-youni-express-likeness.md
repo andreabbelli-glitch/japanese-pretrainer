@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-255-youni-express-likeness
 entry_type: grammar
 entry_id: grammar-255-youni-express-likeness
 card_type: concept
-front: "ように"
+front: "ように（somiglianza）"
 back: >-
   ように descrive modo o grado simile; ような introduce un nome simile a qualcosa.
 example_jp: >-

@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-043-i-adjectives-as-adverbs
 entry_type: grammar
 entry_id: grammar-043-i-adjectives-as-adverbs
 card_type: concept
-front: "い{{形容詞|けいようし}}"
+front: "い{{形容詞|けいようし}}（uso avverbiale）"
 back: >-
   Radice dell'aggettivo in い + く modifica un verbo: «in modo…».
 example_jp: >-

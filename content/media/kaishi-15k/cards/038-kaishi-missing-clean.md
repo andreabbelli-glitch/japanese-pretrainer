@@ -510,15 +510,14 @@ entry_id: term-kaishi-1708637440390
 card_type: recognition
 front: '{{首|くび}}'
 back: 'neck'
-example_jp: 'きりんの{{首|くび}}は{{長|なが}}い。'
-example_it: 'The neck of giraffes are long.'
+example_jp: "きりんの{{首|くび}}は{{長|なが}}い。"
+example_it: "Giraffes have long necks."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440390-recognition/9efc0e033a36696da99c0dc490ce7951-7cc78979bf41ff3ccb20e93f23957eb92b2d0796.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637440105
 lemma: '頭'

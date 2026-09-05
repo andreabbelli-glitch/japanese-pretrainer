@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-064-sv-anki-l12-continuita-suono-famiglia-e-scoperta
 media_id: media-pokemon-scarlet-violet
 slug: 064-sv-anki-l12-continuita-suono-famiglia-e-scoperta
-title: "Continuità, suono, famiglia e scoperta nelle scene di Paldea"
+title: "Continuità, suono, famiglia e scoperta nelle scene di Parudea"
 order: 94
 segment_ref: scarlet-violet-prestudy
 ---
@@ -23,7 +23,7 @@ reading: かみがた
 romaji: kamigata
 meaning_it: acconciatura
 notes_it: >-
-  Il sostantivo {{髪|かみ}}{{型|がた}} combina {{髪|かみ}} (capelli) e {{型|かた}} (forma, modello) con rendaku. Nei saloni di Paldea, si usa regolarmente con il verbo する per indicare la decisione o la realizzazione di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
+  Il sostantivo {{髪|かみ}}{{型|がた}} combina {{髪|かみ}} (capelli) e {{型|かた}} (forma, modello) con rendaku. Nei saloni di Parudea, si usa regolarmente con il verbo する per indicare la decisione o la realizzazione di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
 level_hint: custom
 :::
 :::term
@@ -63,7 +63,7 @@ reading: みっつ
 romaji: mittsu
 meaning_it: tre cose
 notes_it: >-
-  {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Poké Ball o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
+  {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Monsutā Bōru o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
 level_hint: custom
 :::
 :::term
@@ -137,7 +137,7 @@ example_jp: >-
 example_it: >-
   Ho fatto una nuova acconciatura al salone.
 notes_it: >-
-  Il sostantivo {{髪|かみ}}{{型|がた}} combina {{髪|かみ}} (capelli) e {{型|かた}} (forma, modello) con rendaku. Nei saloni di Paldea, si usa regolarmente con il verbo する per indicare la decisione o la realizzazione di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
+  Il sostantivo {{髪|かみ}}{{型|がた}} combina {{髪|かみ}} (capelli) e {{型|かた}} (forma, modello) con rendaku. Nei saloni di Parudea, si usa regolarmente con il verbo する per indicare la decisione o la realizzazione di un taglio: {{髪|かみ}}{{型|がた}}にする (farsi un'acconciatura).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -169,7 +169,7 @@ back: >-
 example_jp: >-
   エリアゼロで {{未|み}}{{確|かく}}{{認|にん}}の ポケモンが {{発|はっ}}{{見|けん}}された。
 example_it: >-
-  È stato scoperto un Pokémon non identificato nell'Area Zero.
+  È stato scoperto un Pokémon non identificato nell'Eria Zero.
 notes_it: >-
   Il prefisso {{未|み}} (non ancora) si unisce a {{確|かく}}{{認|にん}} (conferma) per descrivere qualcosa di non ancora verificato o sconosciuto. Spesso usato come aggettivo tramite la particella の: {{未|み}}{{確|かく}}{{認|にん}}のポケモン.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
@@ -203,9 +203,9 @@ back: >-
 example_jp: >-
   フレンドリィショップで モンスターボールを {{3|みっ}}つ {{買|か}}った。
 example_it: >-
-  Ho comprato tre Poké Ball al banco del negozio del Centro Pokémon.
+  Ho comprato tre Monsutā Bōru al banco del negozio del Pokémon Sentā.
 notes_it: >-
-  {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Poké Ball o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
+  {{3|みっ}}つ fa parte del sistema di conteggio tradizionale giapponese. Si usa per contare oggetti generici (come le Monsutā Bōru o gli strumenti) fino a dieci. Quando modifica un verbo (es. {{買|か}}う), di solito segue la particella dell'oggetto agendo da avverbio di quantità: ボールを{{3|みっ}}つ{{買|か}}う.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
 :::
 :::card
@@ -237,7 +237,7 @@ back: >-
 example_jp: >-
   ミモザ{{先|せん}}{{生|せい}}は {{医|い}}{{務|む}}{{室|しつ}}に いるはずだ。
 example_it: >-
-  La professoressa Mimosa dovrebbe essere in infermeria.
+  La professoressa Mimoza dovrebbe essere in infermeria.
 notes_it: >-
   Il termine {{医|い}}{{務|む}}{{室|しつ}} indica l'infermeria scolastica o aziendale. All'Accademia, è il luogo designato per il riposo e le cure. La particella に indica l'ubicazione spaziale: {{医|い}}{{務|む}}{{室|しつ}}にいる (essere in infermeria).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]
@@ -254,7 +254,7 @@ back: >-
 example_jp: >-
   ペパーは {{家|か}}{{族|ぞく}}の ことを あまり {{話|はな}}さない。
 example_it: >-
-  Pepe non parla molto della sua famiglia.
+  Pepā non parla molto della sua famiglia.
 notes_it: >-
   {{家|か}}{{族|ぞく}} indica il nucleo familiare. Quando si parla della famiglia come argomento o concetto generale, è molto comune espanderlo con のこと (riguardo a / le questioni di): {{家|か}}{{族|ぞく}}のことを{{話|はな}}す (parlare della propria famiglia).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-12]

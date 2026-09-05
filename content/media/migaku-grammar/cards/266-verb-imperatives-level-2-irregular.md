@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-266-verb-imperatives-level-2-irregular
 entry_type: grammar
 entry_id: grammar-266-verb-imperatives-level-2-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（imperativo）"
 back: >-
   Imperativi fondamentali: しろ, 来い e 行け
 example_jp: >-

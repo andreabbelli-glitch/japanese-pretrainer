@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-280-verb-causative-irregular
 entry_type: grammar
 entry_id: grammar-280-verb-causative-irregular
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（causativo）"
 back: >-
   Causativi fondamentali: させる, 来させる e 行かせる
 example_jp: >-

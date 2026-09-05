@@ -202,14 +202,14 @@ translation_it: >-
 jp: >-
   {{長|なが}}い {{冒|ぼう}}{{険|けん}}の {{末|すえ}}に、ついに エリアゼロへ たどり{{着|つ}}いた。
 translation_it: >-
-  Al termine di una lunga avventura, siamo finalmente arrivati nell'Area Zero.
+  Al termine di una lunga avventura, siamo finalmente arrivati nell'Eria Zero.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{長|なが}}い {{冒|ぼう}}{{険|けん}}` ➔ **Aggettivo prima del nome**: la durata del viaggio pesa sulla frase prima ancora dell'arrivo.
 *   `の {{末|すえ}}に` ➔ **Punto d'arrivo dopo un percorso**: "alla fine di, dopo".
-*   `エリアゼロへ` ➔ **Direzione**: `へ` orienta il movimento verso Area Zero.
+*   `エリアゼロへ` ➔ **Direzione**: `へ` orienta il movimento verso Eria Zero.
 *   `たどり{{着|つ}}いた` ➔ **Arrivo dopo sforzo**: `たどり着く` indica raggiungere un luogo dopo un percorso o sforzo.
 
 #### ⚖️ Contrasto operativo
@@ -250,4 +250,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando incontri questi segnali a Paldea, leggi prima la funzione: [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) aggancia un luogo a un evento, [{{先|さき}}ほど](term:term-anki-l10-sakihodo) mette un fatto nel passato immediato, [{{欲|ほ}}しい](term:term-anki-l10-hoshii) fa passare il desiderio da が, mentre [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) separano cambiamento osservato e cambiamento provocato.
+Quando incontri questi segnali a Parudea, leggi prima la funzione: [{{会|かい}}{{場|じょう}}](term:term-anki-l10-kaijou) aggancia un luogo a un evento, [{{先|さき}}ほど](term:term-anki-l10-sakihodo) mette un fatto nel passato immediato, [{{欲|ほ}}しい](term:term-anki-l10-hoshii) fa passare il desiderio da が, mentre [{{落|お}}ちる](term:term-anki-l10-ochiru) e [{{高|たか}}める](term:term-anki-l10-takameru) separano cambiamento osservato e cambiamento provocato.

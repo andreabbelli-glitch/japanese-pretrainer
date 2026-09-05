@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-004-ga-subject-marker
 entry_type: grammar
 entry_id: grammar-004-ga-subject-marker
 card_type: concept
-front: "が"
+front: "が（soggetto）"
 back: >-
   Nome + が marca il soggetto grammaticale e può metterlo a fuoco come informazione nuova o risposta a una domanda.
 example_jp: >-

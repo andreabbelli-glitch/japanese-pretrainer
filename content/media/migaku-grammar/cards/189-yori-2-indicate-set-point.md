@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-189-yori-2-indicate-set-point
 entry_type: grammar
 entry_id: grammar-189-yori-2-indicate-set-point
 card_type: concept
-front: "より"
+front: "より（confine spaziale o temporale）"
 back: >-
   Punto + より stabilisce un confine spaziale o temporale rispetto al quale vale ciò che segue.
 example_jp: >-

@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-022-location-marker-de
 entry_type: grammar
 entry_id: grammar-022-location-marker-de
 card_type: concept
-front: "で"
+front: "で（luogo di un’azione）"
 back: >-
   で segue il luogo in cui qualcuno compie un'azione: «a, in, su».
 example_jp: >-

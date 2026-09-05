@@ -67,7 +67,7 @@ Le parole più astratte diventano molto concrete quando le guardi nel loro frame
 
 ## Etichette da riconoscere
 
-- [ロトりぼう](term:term-v711-rotoribou) — asta / selfie stick Rotom
+- [ロトりぼう](term:term-v711-rotoribou) — asta / selfie stick Rotomuu
 - [おことわりリスト](term:term-v720-okotowaririsuto) — lista di blocco
 - [ボーナスミッション](term:term-v722-boonasumisshon) — missione bonus
 - [チームＩＤ](term:term-v729-chiimuid) — ID squadra
@@ -77,7 +77,7 @@ Le parole più astratte diventano molto concrete quando le guardi nel loro frame
 
 ## 1. Ricerca, danni e spiegazioni dell'Accademia
 
-Quando il gioco parla di professori, libri scolastici o fenomeni di Paldea, il testo smette di essere un semplice dialogo e comincia a organizzare cause, prove e conseguenze. Qui conviene leggere il verbo insieme al nome: è quella combinazione a dirti se una cosa viene scoperta, se un danno appare nella scena o se un'immagine accompagna una spiegazione.
+Quando il gioco parla di professori, libri scolastici o fenomeni di Parudea, il testo smette di essere un semplice dialogo e comincia a organizzare cause, prove e conseguenze. Qui conviene leggere il verbo insieme al nome: è quella combinazione a dirti se una cosa viene scoperta, se un danno appare nella scena o se un'immagine accompagna una spiegazione.
 
 *   [{{解明|かいめい}}](term:term-v712-kaimei) è più forte di "spiegare". In ナゾを{{解明|かいめい}}する, ナゾを marca il mistero come oggetto dell'azione e {{解明|かいめい}}する dice che la causa viene portata alla luce. In un contesto con professori, ricerche sui Pokémon Paradosso o documenti dell'Accademia, questa parola segnala il passaggio da domanda aperta a chiarimento.
 *   [{{被害|ひがい}}](term:term-v718-higai) nomina il danno subito da una situazione, non il ダメージ numerico di una mossa. In {{被害|ひがい}}が{{出|で}}る, が presenta il danno come qualcosa che "viene fuori" nella scena: persone colpite, zone rovinate, problemi causati da un evento.
@@ -87,13 +87,13 @@ Quando il gioco parla di professori, libri scolastici o fenomeni di Paldea, il t
 jp: >-
   {{博士|はかせ}}は パルデアの ナゾを {{解明|かいめい}}しようとしている。
 translation_it: >-
-  Il professore sta cercando di risolvere il mistero di Paldea.
+  Il professore sta cercando di risolvere il mistero di Parudea.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{博士|はかせ}}は` ➔ **Tema della frase** (il professore è il soggetto di cui si parla).
-*   `パルデアのナゾを` ➔ **Oggetto della ricerca** (`の` collega il mistero a Paldea, `を` lo rende ciò che viene indagato).
+*   `パルデアのナゾを` ➔ **Oggetto della ricerca** (`の` collega il mistero a Parudea, `を` lo rende ciò che viene indagato).
 *   `{{解明|かいめい}}しようとしている` ➔ **Tentativo in corso** (`しようとする` indica il provare a fare qualcosa; la soluzione non è ancora completa).
 
 #### ⚖️ Contrasto operativo
@@ -130,7 +130,7 @@ In [{{交換完了|こうかんかんりょう}}](term:term-v733-koukankanryou),
 
 ## 3. Accademia, quantità fissate e progressione
 
-La parte scolastica di Paldea usa parole amministrative, ma dentro il gioco hanno effetti molto pratici: dicono chi appartiene a un elenco, quanti elementi devi selezionare e quando un'attività smette di essere preparazione e diventa fase vera.
+La parte scolastica di Parudea usa parole amministrative, ma dentro il gioco hanno effetti molto pratici: dicono chi appartiene a un elenco, quanti elementi devi selezionare e quando un'attività smette di essere preparazione e diventa fase vera.
 
 *   [{{在籍|ざいせき}}](term:term-v721-zaiseki) indica appartenenza registrata. アカデミーに{{在籍|ざいせき}}している non vuol dire solo "trovarsi a scuola" in quel momento: significa risultare iscritti, essere parte ufficiale dell'Accademia.
 *   [{{単位|たんい}}](term:term-v717-tani) sono i crediti scolastici. In {{授業|じゅぎょう}}を{{受|う}}けて{{単位|たんい}}を{{取|と}}る, {{取|と}}る `単位を取る` significa ottenere crediti dopo corsi, test o attività.
@@ -161,14 +161,14 @@ Quando la storia passa a basi, zone e gruppi rivali, i nomi indicano estensione,
 
 *   [{{一帯|いったい}}](term:term-v734-ittai) ha quasi sempre bisogno di un punto di riferimento: この{{一帯|いったい}}, あたり{{一帯|いったい}}, {{湖|みずうみ}}の{{一帯|いったい}}. `一帯` indica la zona attorno a un luogo riconoscibile.
 *   [{{占拠|せんきょ}}](term:term-v735-senkyo) è più forte di "stare lì". {{拠点|きょてん}}を{{占拠|せんきょ}}する dice che un gruppo prende una base e la tiene sotto controllo; con {{占拠|せんきょ}}される, invece, il luogo è ciò che subisce l'occupazione.
-*   [{{不良|ふりょう}}](term:term-v713-furyou) nella cornice scolastica indica studenti problematici, teppisti o ragazzi fuori dalle regole, come quando il testo sfiora l'immaginario del Team Star. Fuori contesto può anche significare "difettoso", ma qui il referente naturale sono persone e comportamento.
+*   [{{不良|ふりょう}}](term:term-v713-furyou) nella cornice scolastica indica studenti problematici, teppisti o ragazzi fuori dalle regole, come quando il testo sfiora l'immaginario del Sutā-dan. Fuori contesto può anche significare "difettoso", ma qui il referente naturale sono persone e comportamento.
 *   [{{競|きそ}}い{{合|あ}}う](term:term-v732-seiau) è reciproco: {{競|きそ}}う è competere, {{合|あ}}う aggiunge l'idea di azione tra più parti. La scena `競い合う` presenta un confronto reciproco tra partecipanti.
 
 :::example_sentence
 jp: >-
   スター{{団|だん}}が {{古|ふる}}い {{基地|きち}}を {{占拠|せんきょ}}した。
 translation_it: >-
-  Il Team Star ha occupato una vecchia base.
+  Il Sutā-dan ha occupato una vecchia base.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -213,7 +213,7 @@ Per [{{動|うご}}き{{方|かた}}](term:term-v725-ugokikata), pensa a V-stem 
 
 Accanto ai menu e alle statistiche, il gioco conserva parole legate agli oggetti e alle reazioni dei Pokémon. Qui il rischio è tradurre troppo genericamente: devi capire se stai leggendo il nome di uno strumento o una forma in cui qualcuno causa una reazione a qualcun altro.
 
-*   [ロトりぼう](term:term-v711-rotoribou) è una label d'oggetto legata al Rotom Phone: indica un accessorio fisico, tipo asta o selfie stick. Non è una mossa e non è un Pokémon; quando appare in schermata, leggilo come nome di strumento.
+*   [ロトりぼう](term:term-v711-rotoribou) è una label d'oggetto legata al Sumaho Rotomu: indica un accessorio fisico, tipo asta o selfie stick. Non è una mossa e non è un Pokémon; quando appare in schermata, leggilo come nome di strumento.
 *   [{{驚|おどろ}}かせる](term:term-v736-odorokaseru) è transitivo nel valore: qualcuno fa sorprendere o spaventa qualcun altro. In ポケモンを{{驚|おどろ}}かせる, を marca il Pokémon colpito; con {{驚|おどろ}}く, invece, il soggetto è chi si sorprende.
 
 :::example_sentence

@@ -672,7 +672,7 @@ lesson_id: lesson-duel-masters-dm25-dm25-sd2-overview
 entry_type: grammar
 entry_id: grammar-sukina-junjo-de
 card_type: concept
-front: '{{好|す}}きな{{順序|しゅんじょ}}で'
+front: "{{好|す}}きな{{順序|じゅんじょ}}で"
 back: nell'ordine che preferisci
 example_jp: >-
   {{残|のこ}}りを{{好|す}}きな{{順序|じゅんじょ}}で{{山札|やまふだ}}の{{下|した}}に{{置|お}}く。

@@ -16,7 +16,7 @@ tags:
 prerequisites: []
 summary: >-
   Riconoscere passaggi, pagamenti, profili, dispositivi e reazioni brevi mentre
-  Paldea alterna esplorazione, menu e dialoghi.
+  Parudea alterna esplorazione, menu e dialoghi.
 ---
 # Muoversi tra percorsi, menu e risposte di sistema
 
@@ -62,8 +62,8 @@ Il filo comune è operativo: alcune parole ti dicono che tipo di movimento o fun
 
 ## Etichette da riconoscere
 
-- [デリバードポーチ](term:term-v573-deribaadopoochi) — Delibird Presents
-- [シンクロマシン](term:term-v589-shinkuromashin) — Synchro Machine
+- [デリバードポーチ](term:term-v573-deribaadopoochi) — Deribādo Pōchi
+- [シンクロマシン](term:term-v589-shinkuromashin) — Shinkuro Mashin
 
 ---
 
@@ -80,7 +80,7 @@ Quando il testo parla di strade, il verbo precisa il tipo di spazio che stai leg
 jp: >-
   この {{道|みち}}を {{抜|ぬ}}けると、 デリバードポーチに {{到着|とうちゃく}}します。
 translation_it: >-
-  Se attraversi questa strada, arrivi a Delibird Presents.
+  Se attraversi questa strada, arrivi a Deribādo Pōchi.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -260,12 +260,9 @@ translation_it: >-
 *   `{{勝|か}}つ` ➔ **Volontà diretta** (la frase chiude senza attenuatori: "vinco").
 
 :::example_sentence
-jp: >-
-  おかえり。 ただいま。
-translation_it: >-
-  Bentornato. Sono tornato.
+jp: "A：ただいま。 B：おかえり。"
+translation_it: "A: Sono tornato. B: Bentornato."
 :::
-
 #### 🗺️ Anatomia della frase
 
 *   `おかえり` ➔ **Accoglienza** (la dice chi riceve il ritorno dell'altra persona).
@@ -303,7 +300,7 @@ translation_it: >-
 jp: >-
   シンクロマシンを {{使用|しよう}}するために、 {{対応|たいおう}}している {{装置|そうち}}を {{選|えら}}びます。
 translation_it: >-
-  Per usare la Synchro Machine, scelgo un dispositivo compatibile.
+  Per usare la Shinkuro Mashin, scelgo un dispositivo compatibile.
 :::
 
 :::example_sentence

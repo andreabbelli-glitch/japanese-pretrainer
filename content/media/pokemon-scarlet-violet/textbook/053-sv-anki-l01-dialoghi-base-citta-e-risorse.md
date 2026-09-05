@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-053-sv-anki-l01-dialoghi-base-citta-e-risorse
 media_id: media-pokemon-scarlet-violet
 slug: 053-sv-anki-l01-dialoghi-base-citta-e-risorse
-title: "Dialoghi base, città e risorse: primi segnali in Paldea"
+title: "Dialoghi base, città e risorse: primi segnali in Parudea"
 order: 83
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -10,15 +10,15 @@ status: active
 tags: [pokemon, scarlet-violet, prestudy, anki-sequence, lesson-01]
 prerequisites: []
 summary: >-
-  Leggere i primi dialoghi di Paldea: ascoltare, aspettare, entrare,
+  Leggere i primi dialoghi di Parudea: ascoltare, aspettare, entrare,
   distinguere risorse, tempi e voce dei personaggi.
 ---
 
-# Dialoghi base, città e risorse: primi segnali in Paldea
+# Dialoghi base, città e risorse: primi segnali in Parudea
 
-All'inizio di *Pokémon Scarlet & Violet*, Paldea si presenta con frasi brevi:
+All'inizio di *Pokémon Scarlet & Violet*, Parudea si presenta con frasi brevi:
 personaggi che parlano, città da raggiungere, servizi da usare, prezzi da
-leggere. Gia' nelle frasi brevi, il giapponese decide cosa mettere in primo piano.
+leggere. Già nelle frasi brevi, il giapponese decide cosa mettere in primo piano.
 succedendo: chi parla, dove devi entrare, che cosa stai aspettando, quale
 risorsa viene spesa.
 
@@ -60,7 +60,7 @@ istruzioni di scena.
 
 ## Etichette da riconoscere
 
-- [テーブルシティ](term:term-v272-teeburushitei) — città centrale di Paldea e sede dell'Accademia
+- [テーブルシティ](term:term-v272-teeburushitei) — città centrale di Parudea e sede dell'Accademia
 - [ポケモンセンター](term:term-pokemon-center) — hub di cura e servizi
 - [LP（リーグペイ）](term:term-lp) — valuta alternativa agli yen
 
@@ -70,7 +70,7 @@ istruzioni di scena.
 
 ## 1. Parlare con qualcuno: ascoltare, chiedere, aspettare
 
-Nei primi incontri con Nemi, con il personale dell'Accademia o con i servizi
+Nei primi incontri con Nemo, con il personale dell'Accademia o con i servizi
 della città, molti dialoghi ruotano intorno a una domanda semplice: chi sta
 fornendo l'informazione, e che cosa devi fare dopo averla ricevuta?
 
@@ -78,7 +78,7 @@ fornendo l'informazione, e che cosa devi fare dopo averla ricevuta?
   italiano. Quando il focus è un suono o una spiegazione, vale "ascoltare" o
   "sentire"; quando la frase contiene una persona marcata da `に`, diventa
   "chiedere a". In un dialogo con un personaggio, `ネモに{{聞|き}}く` non ti dice
-  solo che Nemi parla: ti dice che lei è la fonte da cui arriva
+  solo che Nemo parla: ti dice che lei è la fonte da cui arriva
   l'informazione. Se invece compare `{{話|はなし}}を{{聞|き}}く`, il centro è il
   contenuto ascoltato.
 - [{{待|ま}}つ](term:term-anki-l01-matsu) blocca la scena su un'attesa concreta.
@@ -95,7 +95,7 @@ fornendo l'informazione, e che cosa devi fare dopo averla ricevuta?
 jp: >-
   ネモに {{話|はなし}}を {{聞|き}}く。
 translation_it: >-
-  Ascolto quello che Nemi ha da dire.
+  Ascolto quello che Nemo ha da dire.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -119,7 +119,7 @@ identifica la fonte e `を` identifica ciò che viene ascoltato o chiesto.
 jp: >-
   {{私|わたし}}は テーブルシティで ネモを {{待|ま}}っています。
 translation_it: >-
-  Io sto aspettando Nemi a Mesapoli.
+  Io sto aspettando Nemo a Tēburu Shiti.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -181,7 +181,7 @@ translation_it: >-
 
 [{{入|はい}}る](term:term-v300-iru) è intransitivo: il soggetto entra. {{入|い}}れる
 è transitivo: qualcuno inserisce qualcosa. `ポケモンセンターに{{入|はい}}る` significa
-"entrare nel Pokémon Center"; `バッグに{{入|い}}れる` significherebbe "mettere nella
+"entrare nel Pokémon Sentā"; `バッグに{{入|い}}れる` significherebbe "mettere nella
 borsa". Se confondi i due verbi, scambi chi si muove con chi manipola un oggetto.
 
 #### 🧠 Gancio cognitivo
@@ -192,7 +192,7 @@ che viene superato.
 
 ## 3. Risorse e consumi: yen, LP e cibo
 
-I primi negozi e i primi servizi di Paldea introducono un'altra lettura molto
+I primi negozi e i primi servizi di Parudea introducono un'altra lettura molto
 pratica: capire se il testo parla di denaro, valuta di sistema o oggetti
 consumati. Qui una singola unità dopo un numero può cambiare il tipo di scelta
 che la schermata ti sta chiedendo.
@@ -204,7 +204,7 @@ che la schermata ti sta chiedendo.
   una UI di acquisto o ricompensa va letto come yen.
 - [LP（リーグペイ）](term:term-lp) è una valuta alternativa. Le lettere latine
   compaiono nella UI, ma la lettura giapponese è `エルピー`; il testo la tratta
-  come una risorsa spendibile, soprattutto per acquisti e creazione di MT. Se
+  come una risorsa spendibile, soprattutto per acquisti e creazione di Waza Mashin. Se
   una schermata mette [LP（リーグペイ）](term:term-lp) accanto a un costo, non sta
   nominando un oggetto: sta mostrando quale conto viene usato.
 - [{{食|た}}べる](term:term-anki-l01-taberu) marca il consumo di cibo o strumenti
@@ -216,7 +216,7 @@ che la schermata ti sta chiedendo.
 jp: >-
   モンスターボールは {{200円|にひゃくえん}} です。
 translation_it: >-
-  Le Poké Ball costano duecento yen.
+  Le Monsutā Bōru costano duecento yen.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -232,7 +232,7 @@ translation_it: >-
 jp: >-
   オボンのみを {{食|た}}べると HPが {{回復|かいふく}}する。
 translation_it: >-
-  Quando mangia una Baccacedro, recupera PS.
+  Quando mangia una Obon no Mi, recupera PS.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -322,7 +322,7 @@ translation_it: >-
 jp: >-
   ポケモンセンターに {{入|はい}}って、スタッフに {{話|はなし}}を {{聞|き}}く。
 translation_it: >-
-  Entro nel Pokémon Center e ascolto la spiegazione dello staff.
+  Entro nel Pokémon Sentā e ascolto la spiegazione dello staff.
 :::
 
 :::example_sentence
@@ -330,7 +330,7 @@ jp: >-
   {{町|まち}}で ネモを {{待|ま}}っている あいだに、{{200円|にひゃくえん}}の
   ボールを {{買|か}}う。
 translation_it: >-
-  Mentre aspetto Nemi in città, compro una Ball da duecento yen.
+  Mentre aspetto Nemo in città, compro una Ball da duecento yen.
 :::
 
 :::example_sentence
@@ -342,7 +342,7 @@ translation_it: >-
 
 ## Nota finale
 
-Le prime frasi di Paldea sono leggibili quando guardi sempre tre cose insieme:
+Le prime frasi di Parudea sono leggibili quando guardi sempre tre cose insieme:
 la particella che collega il verbo, il luogo o la risorsa che la schermata mette
 in primo piano, e il registro della persona che parla. [{{聞|き}}く](term:term-anki-l01-kiku),
 [{{待|ま}}つ](term:term-anki-l01-matsu), [{{入|はい}}る](term:term-v300-iru),

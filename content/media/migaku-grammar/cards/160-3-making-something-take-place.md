@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-160-3-making-something-take-place
 entry_type: grammar
 entry_id: grammar-160-3-making-something-take-place
 card_type: concept
-front: "する"
+front: "する（cambiamento: ～にする）"
 back: >-
   する può causare uno stato: Aい→くする, Aな／Nome→にする; in collocazioni come 学生をする o ネクタイをする assume valori lessicali.
 example_jp: >-

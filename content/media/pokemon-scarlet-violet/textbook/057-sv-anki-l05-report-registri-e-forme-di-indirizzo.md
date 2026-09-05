@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-057-sv-anki-l05-report-registri-e-forme-di-indirizzo
 media_id: media-pokemon-scarlet-violet
 slug: 057-sv-anki-l05-report-registri-e-forme-di-indirizzo
-title: Rapporti, registri e forme di indirizzo a Paldea
+title: Rapporti, registri e forme di indirizzo a Parudea
 order: 87
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -14,11 +14,11 @@ summary: >-
   a chi si rivolge e quale tono sociale costruisce.
 ---
 
-# Rapporti, registri e forme di indirizzo a Paldea
+# Rapporti, registri e forme di indirizzo a Parudea
 
 All'Accademia di *Pokémon Scarlet & Violet*, il giapponese cambia tono a seconda di chi sta parlando: un annuncio del preside si apre al gruppo, una relazione formale punta a un destinatario preciso, una recluta arrabbiata rompe la cortesia con un pronome aggressivo. La scena non comunica solo informazioni; comunica anche distanza sociale.
 
-Tra scuola, Area Zero e Team Star, parole come [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku), [{{気|き}}になる](term:term-anki-l05-kininaru) e [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) ti dicono che tipo di frase hai davanti: resoconto, curiosità, minaccia, valutazione o presentazione formale di sé.
+Tra scuola, Eria Zero e Sutā-dan, parole come [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku), [{{気|き}}になる](term:term-anki-l05-kininaru) e [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) ti dicono che tipo di frase hai davanti: resoconto, curiosità, minaccia, valutazione o presentazione formale di sé.
 
 ## Termini chiave
 
@@ -27,10 +27,10 @@ Tra scuola, Area Zero e Team Star, parole come [{{報|ほう}}{{告|こく}}](te
 - [{{皆|みな}}さん](term:term-anki-l05-minasan) — tutti voi / signori
 - [{{学|まな}}ぶ](term:term-anki-l05-manabu) — imparare / apprendere
 - [{{気|き}}になる](term:term-anki-l05-kininaru) — incuriosire / restare in testa
-- [{{貴方|あなた}}](term:term-anki-l05-anata) — tu, in forma distaccata o formale
+- [{{貴方|あなた}}](term:term-anki-l05-anata) — tu / Lei; registro dipendente dal contesto
 - [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) — tu, in forma offensiva
 - [{{災|わざわ}}い](term:term-anki-l05-wazawai) — calamità / disgrazia
-- [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) — io, umile e letterario
+- [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) — io; tradizionalmente maschile, soprattutto epistolare
 - [{{正|ただ}}しい](term:term-anki-l05-tadashii) — corretto / giusto
 
 ## Espressioni ricorrenti
@@ -66,7 +66,7 @@ Nel registro scolastico il giapponese tende a ordinare bene i ruoli: chi ascolta
 
 *   [{{皆|みな}}さん](term:term-anki-l05-minasan) non è un semplice "tutti" neutro. {{皆|みな}} indica il gruppo, mentre さん aggiunge rispetto e distanza; per questo suona naturale in un annuncio a studenti, insegnanti o partecipanti a una lezione. Rispetto a みんな, che può sembrare più familiare, [{{皆|みな}}さん](term:term-anki-l05-minasan) mette subito la frase in una cornice pubblica o cortese.
 *   [{{学|まな}}ぶ](term:term-anki-l05-manabu) prende spesso con [を](grammar:grammar-g033-marca-l-oggetto-diretto) il contenuto appreso: una materia, una regola, un fenomeno dei Pokémon. Non indica solo "studiare sui libri"; può voler dire assimilare qualcosa attraverso l'esperienza, una lezione o una spiegazione.
-*   [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) è un resoconto che deve arrivare a qualcuno. Quando diventa [{{報|ほう}}{{告|こく}}する](term:term-anki-l05-houkoku), il destinatario tende a comparire con [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) o con una forma come クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}, dove へ più [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) crea "il rapporto verso / per Clavel".
+*   [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku) è un resoconto che deve arrivare a qualcuno. Quando diventa [{{報|ほう}}{{告|こく}}する](term:term-anki-l05-houkoku), il destinatario tende a comparire con [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) o con una forma come クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}, dove へ più [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) crea "il rapporto verso / per Kuraberu".
 *   [{{正|ただ}}しい](term:term-anki-l05-tadashii) è un aggettivo in い: può stare direttamente davanti al nome. {{正|ただ}}しい{{答|こた}}え è "la risposta corretta", senza bisogno di [の](grammar:grammar-g030-possesso-collegamento-tra-nomi). Nei test dell'Accademia e nelle spiegazioni dei professori, questa parola segnala conformità a una regola, non solo un'impressione positiva.
 
 :::example_sentence
@@ -87,7 +87,7 @@ translation_it: >-
 jp: >-
   クラベル{{校長|こうちょう}}への{{報|ほう}}{{告|こく}}は、{{正|ただ}}しい{{答|こた}}えを{{選|えら}}んでからです。
 translation_it: >-
-  Il rapporto al preside Clavel viene dopo aver scelto la risposta corretta.
+  Il rapporto al preside Kuraberu viene dopo aver scelto la risposta corretta.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -109,19 +109,19 @@ Per ricordare [{{報|ほう}}{{告|こく}}](term:term-anki-l05-houkoku), immagi
 Fuori dall'aula, *Scarlet & Violet* usa spesso parole che non descrivono soltanto un fatto esterno. [{{疲|つか}}れる](term:term-anki-l05-tsukareru) mette in scena uno stato del soggetto, [{{気|き}}になる](term:term-anki-l05-kininaru) mostra un pensiero che non si stacca, e [{{災|わざわ}}い](term:term-anki-l05-wazawai) porta il tono verso mito, rovina o pericolo antico.
 
 *   [{{疲|つか}}れる](term:term-anki-l05-tsukareru) è intransitivo: il soggetto che si stanca prende [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo). In italiano dici spesso "mi sono stancato", ma in giapponese la frase tende a mostrare lo stato che nasce nel soggetto. La forma passata {{疲|つか}}れた funziona molto bene come "sono stanco", cioè stanchezza già arrivata e ora visibile.
-*   [{{気|き}}になる](term:term-anki-l05-kininaru) non è un semplice "interessare" freddo. La cosa che cattura l'attenzione prende [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo), mentre la persona che prova curiosità o apprensione può restare implicita. In Area Zero è perfetto per qualcosa che il personaggio non riesce a ignorare.
-*   [{{災|わざわ}}い](term:term-anki-l05-wazawai) suona più solenne di un normale problema. Non è "piccolo guaio quotidiano": richiama calamità, maledizioni, disastri storici o leggende. Quando il testo lo collega a Paldea antica o ai Pokémon Rovina, il registro diventa narrativo e pesante.
+*   [{{気|き}}になる](term:term-anki-l05-kininaru) non è un semplice "interessare" freddo. La cosa che cattura l'attenzione prende [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo), mentre la persona che prova curiosità o apprensione può restare implicita. In Eria Zero è perfetto per qualcosa che il personaggio non riesce a ignorare.
+*   [{{災|わざわ}}い](term:term-anki-l05-wazawai) suona più solenne di un normale problema. Non è "piccolo guaio quotidiano": richiama calamità, maledizioni, disastri storici o leggende. Quando il testo lo collega a Parudea antica o ai Pokémon Rovina, il registro diventa narrativo e pesante.
 
 :::example_sentence
 jp: >-
   エリアゼロの{{底|そこ}}にあるものが、どうしても{{気|き}}になる。
 translation_it: >-
-  Non riesco proprio a togliermi dalla testa ciò che c'è sul fondo dell'Area Zero.
+  Non riesco proprio a togliermi dalla testa ciò che c'è sul fondo dell'Eria Zero.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   エリアゼロの{{底|そこ}}にあるもの ➔ **Cosa localizzata e misteriosa**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lega Area Zero al "fondo", [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) colloca ciò che si trova lì.
+*   エリアゼロの{{底|そこ}}にあるもの ➔ **Cosa localizzata e misteriosa**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) lega Eria Zero al "fondo", [に](grammar:grammar-g029-destinazione-tempo-bersaglio-esistenza) colloca ciò che si trova lì.
 *   `が` ➔ **Ciò che emerge nella mente**: marca la cosa che attira l'attenzione.
 *   `どうしても{{気|き}}になる` ➔ **Curiosità insistente**: `どうしても` aggiunge "in ogni caso / proprio", quindi il pensiero resta anche se il personaggio prova a lasciarlo stare.
 
@@ -136,7 +136,7 @@ translation_it: >-
 
 *   `バトルが{{長|なが}}くなると` ➔ **Condizione naturale**: quando la battaglia diventa lunga, si apre la conseguenza.
 *   ポケモンが ➔ **Soggetto dello stato**: [が](grammar:grammar-g026-marca-il-soggetto-evidenzia-cio-che-impo) marca chi entra nella stanchezza.
-*   `{{疲|つか}}れることがある` ➔ **Possibilità ricorrente**: `Vることがある` indica possibilita' ricorrente: puo' capitare.
+*   `{{疲|つか}}れることがある` ➔ **Possibilità ricorrente**: `Vることがある` indica possibilita' ricorrente: può capitare.
 
 #### ⚖️ Contrasto operativo
 
@@ -148,11 +148,11 @@ Per [{{気|き}}になる](term:term-anki-l05-kininaru), pensa a una cosa che "d
 
 ## 3. Tu, io e la distanza sociale nel parlato
 
-I pronomi giapponesi non sono caselle neutre da riempire con "io" e "tu". In una scena di Paldea, la scelta di [{{貴方|あなた}}](term:term-anki-l05-anata), [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) o [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) ti dice come il parlante sta mettendo in scena la relazione.
+I pronomi giapponesi non sono caselle neutre da riempire con "io" e "tu". In una scena di Parudea, la scelta di [{{貴方|あなた}}](term:term-anki-l05-anata), [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) o [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) ti dice come il parlante sta mettendo in scena la relazione.
 
 ### A. [{{貴方|あなた}}](term:term-anki-l05-anata): un "tu" più distante di quanto sembri
 
-[{{貴方|あなた}}](term:term-anki-l05-anata) può essere tradotto con "tu", ma nel parlato giapponese spesso non è la scelta più naturale tra persone che si conoscono. Nomi, titoli o omissione del soggetto sono più comuni. Quando [{{貴方|あなた}}](term:term-anki-l05-anata) compare in una frase cortese, può dare un tono scritto, formale o leggermente distante.
+[{{貴方|あなた}}](term:term-anki-l05-anata) può essere tradotto con "tu", ma nel parlato giapponese spesso non è la scelta più naturale tra persone che si conoscono. Nomi, titoli o omissione del soggetto sono più comuni. Il registro dipende dalla relazione: può essere distante, affettuoso o anche brusco. Non è un modo universalmente cortese di rivolgersi a un superiore; nome e titolo sono spesso più adatti.
 
 :::example_sentence
 jp: >-
@@ -169,24 +169,24 @@ translation_it: >-
 
 ### B. [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama): la cortesia rovesciata in insulto
 
-[{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) contiene kanji che possono sembrare nobili, ma nel giapponese moderno è un pronome duramente offensivo. Se lo dice una recluta del Team Star o un personaggio furioso, non leggere i kanji come cortesia reale: il valore operativo è aggressione, sfida, rottura del rispetto.
+[{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) contiene kanji che possono sembrare nobili, ma nel giapponese moderno è un pronome duramente offensivo. Se lo dice una recluta del Sutā-dan o un personaggio furioso, non leggere i kanji come cortesia reale: il valore operativo è aggressione, sfida, rottura del rispetto.
 
 :::example_sentence
 jp: >-
   {{貴|き}}{{様|さま}}、スター{{団|だん}}のジャマをする{{気|き}}か！
 translation_it: >-
-  Tu, maledetto, hai intenzione di intralciare il Team Star?!
+  Tu, maledetto, hai intenzione di intralciare il Sutā-dan?!
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{貴|き}}{{様|さま}}` ➔ **Interlocutore attaccato**: il pronome non identifica soltanto chi ascolta, ma lo colpisce verbalmente.
-*   スター{{団|だん}}のジャマを ➔ **Oggetto dell'intralcio**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega Team Star a ジャマ, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene fatto.
+*   スター{{団|だん}}のジャマを ➔ **Oggetto dell'intralcio**: [の](grammar:grammar-g030-possesso-collegamento-tra-nomi) collega Sutā-dan a ジャマ, [を](grammar:grammar-g033-marca-l-oggetto-diretto) marca ciò che viene fatto.
 *   `する{{気|き}}か` ➔ **Intenzione sfidata**: `{{気|き}}` qui vale "intenzione / disposizione", e `か` chiude come domanda ruvida.
 
-### C. [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei): un "io" umile e teatrale
+### C. [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei): un "io" dal sapore epistolare
 
-[{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) è un pronome di prima persona formale, antiquato e maschile. Non è l'"io" quotidiano di uno studente: suona come un parlante colto che si abbassa con eleganza davanti all'interlocutore. Per questo si adatta a una voce professorale e artistica come quella di Hassaku.
+[{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) è un pronome di prima persona tradizionalmente maschile e soprattutto epistolare. La forma esprime modestia, ma si usa tipicamente verso pari o inferiori: non è la scelta deferente da proporre per un superiore. Nel parlato caratterizza una voce antiquata o ricercata, come quella di Hassaku.
 
 :::example_sentence
 jp: >-
@@ -197,17 +197,17 @@ translation_it: >-
 
 #### 🗺️ Anatomia della frase
 
-*   `{{小|しょう}}{{生|せい}}は` ➔ **Prima persona umile come tema**: il parlante presenta se stesso abbassando il registro personale.
+*   `{{小|しょう}}{{生|せい}}は` ➔ **Prima persona come tema**: la scelta del pronome caratterizza la voce del parlante.
 *   `アカデミーで` ➔ **Luogo dell'azione**: `で` indica dove avviene l'insegnamento.
 *   `{{美術|びじゅつ}}を{{教|おし}}えております` ➔ **Azione cortese e continuativa**: `おります` è più umile e formale di `います`, quindi la frase suona compassata.
 
 #### ⚖️ Contrasto operativo
 
-[{{貴方|あなた}}](term:term-anki-l05-anata) mantiene distanza, [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) aggredisce, [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) abbassa il parlante. Non tradurli tutti meccanicamente come "tu" o "io": prima chiediti quale relazione sta costruendo la battuta.
+[{{貴方|あなた}}](term:term-anki-l05-anata) cambia tono secondo la relazione; [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) è aggressivo; [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) evoca una voce tradizionale ed epistolare. Non tradurli tutti meccanicamente come "tu" o "io": prima chiediti quale relazione sta costruendo la battuta.
 
 #### 🧠 Gancio cognitivo
 
-Immagina i pronomi come la posizione della camera. [{{貴方|あなた}}](term:term-anki-l05-anata) tiene l'interlocutore a distanza controllata, [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) gli punta addosso la rabbia, [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) abbassa la camera sul parlante stesso per renderlo umile.
+Come promemoria, associa [{{貴|き}}{{様|さま}}](term:term-anki-l05-kisama) a una lite e [{{小|しょう}}{{生|せい}}](term:term-anki-l05-shousei) a una lettera di tono tradizionale. Per [{{貴方|あなた}}](term:term-anki-l05-anata), osserva la relazione tra i personaggi prima di decidere il tono italiano.
 
 ## Esempi guidati di riepilogo
 
@@ -224,14 +224,14 @@ translation_it: >-
 jp: >-
   クラベル{{校長|こうちょう}}に{{報|ほう}}{{告|こく}}することがある。
 translation_it: >-
-  C'è qualcosa da riferire al preside Clavel.
+  C'è qualcosa da riferire al preside Kuraberu.
 :::
 
 :::example_sentence
 jp: >-
   {{災|わざわ}}いの{{伝説|でんせつ}}について{{学|まな}}ぶと、エリアゼロが{{気|き}}になる。
 translation_it: >-
-  Quando impari le leggende sulla calamità, Area Zero ti resta in testa.
+  Quando impari le leggende sulla calamità, Eria Zero ti resta in testa.
 :::
 
 :::example_sentence

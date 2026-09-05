@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-067-sv-anki-l15-media-acquisti-errori-e-memoria
 media_id: media-pokemon-scarlet-violet
 slug: 067-sv-anki-l15-media-acquisti-errori-e-memoria
-title: Video, acquisti e memoria nelle scene di Paldea
+title: Video, acquisti e memoria nelle scene di Parudea
 order: 97
 segment_ref: scarlet-violet-prestudy
 ---
@@ -33,7 +33,7 @@ reading: かいもの
 romaji: kaimono
 meaning_it: shopping; acquisti
 notes_it: >-
-  {{買|か}}いもの (かいもの) si forma unendo la radice del verbo {{買|か}}う (comprare) alla parola もの (cosa). Unito al verbo fare diventa {{買|か}}いものをする, la tipica espressione per "fare compere". Si riferisce agli acquisti in qualsiasi negozio, dalle boutique alle Delibird Consegne.
+  {{買|か}}いもの (かいもの) si forma unendo la radice del verbo {{買|か}}う (comprare) alla parola もの (cosa). Unito al verbo fare diventa {{買|か}}いものをする, la tipica espressione per "fare compere". Si riferisce agli acquisti in qualsiasi negozio, dalle boutique da Deribādo Pōchi.
 level_hint: custom
 :::
 :::term
@@ -118,7 +118,7 @@ back: >-
 example_jp: >-
   スマホロトムで {{動|どう}}{{画|が}}を {{見|み}}る。
 example_it: >-
-  Guardo un video sullo Smart Rotom.
+  Guardo un video sullo Sumaho Rotomu.
 notes_it: >-
   {{動|どう}}{{画|が}} (どうが) è composto dai kanji {{動|どう}} (movimento) e {{画|が}} (immagine), descrivendo letteralmente le "immagini in movimento". Viene usato per riferirsi ai video in streaming o ai filmati che puoi visualizzare sui vari dispositivi.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
@@ -152,9 +152,9 @@ back: >-
 example_jp: >-
   テーブルシティで {{買|か}}いものを する。
 example_it: >-
-  Faccio acquisti a Mesapoli.
+  Faccio acquisti a Tēburu Shiti.
 notes_it: >-
-  {{買|か}}いもの (かいもの) si forma unendo la radice del verbo {{買|か}}う (comprare) alla parola もの (cosa). Unito al verbo fare diventa {{買|か}}いものをする, la tipica espressione per "fare compere". Si riferisce agli acquisti in qualsiasi negozio, dalle boutique alle Delibird Consegne.
+  {{買|か}}いもの (かいもの) si forma unendo la radice del verbo {{買|か}}う (comprare) alla parola もの (cosa). Unito al verbo fare diventa {{買|か}}いものをする, la tipica espressione per "fare compere". Si riferisce agli acquisti in qualsiasi negozio, dalle boutique da Deribādo Pōchi.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]
 :::
 :::card
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   ペパーには むかしの {{記|き}}{{憶|おく}}が ある。
 example_it: >-
-  Pepe ha ricordi del passato.
+  Pepā ha ricordi del passato.
 notes_it: >-
   {{記|き}}{{憶|おく}} sottolinea la capacità e l'atto di conservare o richiamare informazioni, distinguendosi dal più generico {{思|おも}}い{{出|で}}, che richiama i ricordi affettivi. Può fungere da sostantivo o combinarsi con する per formare il verbo “memorizzare”.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-15]

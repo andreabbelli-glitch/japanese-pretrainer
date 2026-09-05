@@ -58,7 +58,7 @@ Il verbo, però, non lavora mai da solo. In messaggi come `メニューを{{開|
   rende possibile lo scambio
 - [{{戦略|せんりゃく}}](term:term-v401-senryaku) — strategia
 - [{{手加減|てかげん}}](term:term-v406-tekagen) — trattenersi / non andare al massimo
-- [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) — completamento del Pokédex
+- [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) — completamento del Pokémon Zukan
 - [かがやきパワー](term:term-v395-kagayakipawaa) — Potere cromatico
 - [パラドックスポケモン](term:term-v398-paradokkusupokemon) — Pokémon Paradosso
 - [そうぐうパワー](term:term-v399-souguupawaa) — Potere incontro
@@ -69,7 +69,7 @@ Il verbo, però, non lavora mai da solo. In messaggi come `メニューを{{開|
 
 ## 1. Muoversi nella mappa: percorso, destinazione e ritorno
 
-La mappa di Paldea alterna due tipi di frase: quelle che ti fanno continuare lungo un percorso e quelle che ti spostano verso un punto preciso. La differenza si vede spesso prima del verbo, nella particella.
+La mappa di Parudea alterna due tipi di frase: quelle che ti fanno continuare lungo un percorso e quelle che ti spostano verso un punto preciso. La differenza si vede spesso prima del verbo, nella particella.
 
 *   [{{進|すす}}む](term:term-v394-susumu) descrive l'avanzare: il personaggio, la camera o il percorso vanno avanti. Nei comandi di esplorazione può comparire con を quando il nome è il tragitto attraversato, come この{{道|みち}}を{{進|すす}}む, oppure con へ quando il testo guarda alla direzione successiva, come {{先|さき}}へ{{進|すす}}む. Non è un verbo di scelta da menu: ti dice che la linea davanti a te continua.
 *   [{{飛|と}}ぶ](term:term-v396-tobu) significa "volare", ma nel viaggio rapido non descrive sempre un volo fisico mostrato in scena. Con una destinazione marcata da へ, come ポケモンセンターへ{{飛|と}}ぶ, diventa la formula compatta per trasferirti subito verso un luogo registrato.
@@ -80,12 +80,12 @@ La mappa di Paldea alterna due tipi di frase: quelle che ti fanno continuare lun
 jp: >-
   ポケモンセンターへ {{飛|と}}びます。
 translation_it: >-
-  Mi sposto rapidamente al Centro Pokémon.
+  Mi sposto rapidamente al Pokémon Sentā.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `ポケモンセンターへ` ➔ **Destinazione** (`へ` orienta il movimento verso il Centro Pokémon, cioè il punto d'arrivo del viaggio rapido).
+*   `ポケモンセンターへ` ➔ **Destinazione** (`へ` orienta il movimento verso il Pokémon Sentā, cioè il punto d'arrivo del viaggio rapido).
 *   {{飛|と}}びます ➔ **Spostamento rapido** (forma cortese di [{{飛|と}}ぶ](term:term-v396-tobu): qui il senso pratico è "volare / trasferirsi", non semplicemente sbattere le ali).
 
 :::example_sentence
@@ -154,7 +154,7 @@ Molte funzioni dell'interfaccia non partono da un verbo puro. Partono da un nome
 *   [{{整理|せいり}}](term:term-v393-seiri) è un nome: ordine, sistemazione, riordino. Nei menu diventa azione con する, come ボックスのポケモンを{{整理|せいり}}する. Non stai "pulendo" la box: stai organizzando i Pokémon, spesso per renderli più facili da trovare o confrontare.
 *   [{{通信|つうしん}}{{交換|こうかん}}](term:term-v400-tsuushinkoukan) unisce collegamento e scambio. [{{通信|つうしん}}](term:term-v267-tsuushin) porta l'idea di comunicazione o connessione, mentre [{{交換|こうかん}}](term:term-v400-tsuushinkoukan) porta l'idea di scambio. Con {{友|とも}}だちと{{通信|つうしん}}{{交換|こうかん}}する, と segnala la persona con cui fai l'azione.
 *   [{{先頭|せんとう}}](term:term-v411-sentou) è la posizione di testa, il primo posto della fila. In un menu squadra, ポケモンを{{先頭|せんとう}}にする significa mettere quel Pokémon davanti a tutti, quindi renderlo quello che entra per primo quando l'ordine della squadra conta.
-*   [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) compatta un obiettivo di progresso: [{{図鑑|ずかん}}](term:term-v412-zukan-kansei) è il Pokédex come catalogo, [{{完成|かんせい}}](term:term-v412-zukan-kansei) è il completamento. Quando il gioco li accosta, non sta descrivendo una singola cattura: sta misurando il percorso verso un catalogo completo.
+*   [{{図鑑|ずかん}}{{完成|かんせい}}](term:term-v412-zukan-kansei) compatta un obiettivo di progresso: [{{図鑑|ずかん}}](term:term-v412-zukan-kansei) è il Pokémon Zukan come catalogo, [{{完成|かんせい}}](term:term-v412-zukan-kansei) è il completamento. Quando il gioco li accosta, non sta descrivendo una singola cattura: sta misurando il percorso verso un catalogo completo.
 
 [{{戦略|せんりゃく}}](term:term-v401-senryaku) e [{{手加減|てかげん}}](term:term-v406-tekagen) entrano più facilmente nei dialoghi che commentano una lotta. [{{戦略|せんりゃく}}](term:term-v401-senryaku) parla del piano, non della singola mossa; [{{手加減|てかげん}}](term:term-v406-tekagen) indica il dosare la forza, quindi trattenersi. Se un rivale dice di non fare [{{手加減|てかげん}}](term:term-v406-tekagen), il tono non è tecnico da menu: sta chiedendo una sfida vera.
 

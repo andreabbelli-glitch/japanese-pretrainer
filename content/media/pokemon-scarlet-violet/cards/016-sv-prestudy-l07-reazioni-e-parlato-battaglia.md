@@ -65,14 +65,7 @@ id: grammar-g020-poter-fare
 pattern: 可能形
 title: Forma potenziale
 meaning_it: potere fare... / essere in grado di fare...
-notes_it: >-
-  La forma potenziale dice che un'azione è possibile o che qualcuno è capace di
-  farla: “posso andare”, “riesco a mangiare”, “si può entrare”. Con molti verbi
-  in -u la vocale cambia in -eる: {{行|い}}く → {{行|い}}ける, {{戦|たたか}}う →
-  {{戦|たたか}}える. Con i verbi in -る: {{食|た}}べる → {{食|た}}べられる. Eccezioni
-  importanti: する → できる, {{来|く}}る → {{来|こ}}られる. Nei testi di gioco questa forma
-  segnala molto spesso cosa puoi fare adesso e cosa invece non è ancora
-  disponibile.
+notes_it: "La forma potenziale esprime possibilità o capacità. Nei verbi godan (gruppo 1), la sillaba finale passa alla serie in え e si aggiunge る: 行く → 行ける, 戦う → 戦える, 帰る → 帰れる. Nei verbi ichidan (gruppo 2), si sostituisce る con られる: 食べる → 食べられる. La sola terminazione る non basta a riconoscere il gruppo. Forme irregolari: する → できる, 来る → 来られる. Nei testi di gioco segnala spesso azioni disponibili o capacità acquisite."
 :::
 :::card
 id: card-g020-poter-fare-concept
@@ -152,7 +145,7 @@ romaji: tatakau
 meaning_it: combattere / lottare
 notes_it: >-
   È il verbo “combattere, lottare”. In Pokémon ricorre continuamente perché una
-  grande parte dei dialoghi riguarda sfide, lotte, Palestre, Team Star o raid.
+  grande parte dei dialoghi riguarda sfide, lotte, Palestre, Sutā-dan o raid.
   Molto spesso si usa con と per indicare contro chi si combatte:
   {{相手|あいて}}と{{戦|たたか}}う = “combattere contro l'avversario”. Nei messaggi
   compaiono anche forme come {{戦|たたか}}います, {{戦|たたか}}った,

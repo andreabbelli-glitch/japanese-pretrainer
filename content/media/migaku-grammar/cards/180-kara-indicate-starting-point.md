@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-180-kara-indicate-starting-point
 entry_type: grammar
 entry_id: grammar-180-kara-indicate-starting-point
 card_type: concept
-front: "から"
+front: "から（punto di partenza）"
 back: >-
   Luogo o tempo + から indica il punto iniziale di un movimento, intervallo o attività.
 example_jp: >-

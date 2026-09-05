@@ -151,12 +151,9 @@ Il lato opposto è [{{手|て}}を{{出|だ}}す](term:term-ch-b6-osu-24), dove 
 non aiuta: invade o minaccia.
 
 :::example_sentence
-jp: >-
-  {{家族|かぞく}}に{{手|て}}を{{出|だ}}すな。
-translation_it: >-
-  Non mettere mano sulla mia famiglia.
+jp: "{{家族|かぞく}}に{{手|て}}を{{出|だ}}すな。"
+translation_it: "Non mettere le mani addosso ai miei familiari."
 :::
-
 #### 🗺️ Anatomia della frase
 
 *   `{{家族|かぞく}}に` -> **Bersaglio da non toccare**.

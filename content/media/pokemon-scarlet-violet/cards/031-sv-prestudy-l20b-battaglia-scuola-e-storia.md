@@ -442,9 +442,9 @@ id: term-v306-waza-mashinmashin
 lemma: わざマシンマシン
 reading: わざましんましん
 romaji: waza mashinmashin
-meaning_it: macchina per creare MT
+meaning_it: macchina per creare Waza Mashin
 notes_it: >-
-  わざマシンマシン è il dispositivo per creare MT. La ripetizione di マシン distingue
+  わざマシンマシン è il dispositivo per creare Waza Mashin. La ripetizione di マシン distingue
   la macchina dalle わざマシン prodotte.
 :::
 :::term

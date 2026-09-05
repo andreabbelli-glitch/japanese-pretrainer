@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-068-sv-anki-l16-corpo-tensione-fiducia-e-vita
 media_id: media-pokemon-scarlet-violet
 slug: 068-sv-anki-l16-corpo-tensione-fiducia-e-vita
-title: Corpo, tensione e fiducia nei discorsi di Paldea
+title: Corpo, tensione e fiducia nei discorsi di Parudea
 order: 98
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -14,9 +14,9 @@ summary: >-
   Accademia, sfide e crescita personale.
 ---
 
-# Corpo, tensione e fiducia nei discorsi di Paldea
+# Corpo, tensione e fiducia nei discorsi di Parudea
 
-Nei dialoghi di *Pokémon Scarlet & Violet*, Paldea non cresce solo attraverso
+Nei dialoghi di *Pokémon Scarlet & Violet*, Parudea non cresce solo attraverso
 lotte e menu. Il gioco fa parlare insegnanti, rivali e personaggi guida con un
 lessico che passa dal corpo alla tensione, dall'annuncio ufficiale alla fiducia
 personale, fino alle esperienze che restano nel percorso dello studente.
@@ -183,7 +183,7 @@ nel tempo della scena.
 
 ## 3. Fiducia, profondità e vita: parole grandi con un bersaglio preciso
 
-Paldea usa spesso parole ampie per parlare di crescita: fiducia, legami
+Parudea usa spesso parole ampie per parlare di crescita: fiducia, legami
 profondi, vita come percorso. Sembrano concetti astratti, ma nelle frasi hanno
 bersagli grammaticali molto leggibili. Le particelle e i nomi che li circondano
 ti dicono dove va appoggiato il significato.
@@ -224,7 +224,7 @@ translation_it: >-
 jp: >-
   パルデアの {{深|ふか}}い {{森|もり}}で、{{新|あたら}}しい {{体験|たいけん}}を した。
 translation_it: >-
-  Nelle foreste profonde di Paldea ho vissuto una nuova esperienza.
+  Nelle foreste profonde di Parudea ho vissuto una nuova esperienza.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -295,13 +295,13 @@ translation_it: >-
 jp: >-
   パルデア{{地方|ちほう}}には、{{多|おお}}くの ポケモンが いるんだ。
 translation_it: >-
-  Nella regione di Paldea ci sono tanti Pokémon.
+  Nella regione di Parudea ci sono tanti Pokémon.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `パルデア{{地方|ちほう}}には` ➔ **Ambito dell'esistenza**: la regione di
-    Paldea è il luogo in cui vale ciò che viene detto.
+    Parudea è il luogo in cui vale ciò che viene detto.
 *   `{{多|おお}}くの ポケモンが` ➔ **Gruppo ampio**: la quantità viene preparata
     prima del nome.
 *   `いるんだ` ➔ **Esistenza animata con spiegazione**: `いる` descrive esseri
@@ -362,7 +362,7 @@ translation_it: >-
 jp: >-
   パルデアの {{深|ふか}}い {{森|もり}}には、めずらしい ポケモンが すんでいる。
 translation_it: >-
-  Nelle foreste profonde di Paldea abitano Pokémon rari.
+  Nelle foreste profonde di Parudea abitano Pokémon rari.
 :::
 
 :::example_sentence
@@ -375,7 +375,7 @@ translation_it: >-
 
 ## Nota finale
 
-Quando un discorso di Paldea passa dall'azione fisica alla crescita personale,
+Quando un discorso di Parudea passa dall'azione fisica alla crescita personale,
 leggi prima il frame della scena: [{{今|いま}}から](term:term-anki-l16-imakara)
 apre un evento, [{{諸君|しょくん}}](term:term-anki-l16-shokun) stabilisce la
 platea, [{{信頼|しんらい}}](term:term-anki-l16-shinrai) individua chi riceve

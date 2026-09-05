@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-044-na-adjectives-as-toverbs
 entry_type: grammar
 entry_id: grammar-044-na-adjectives-as-toverbs
 card_type: concept
-front: "な{{形容詞|けいようし}}"
+front: "な{{形容詞|けいようし}}（uso avverbiale）"
 back: >-
   Aggettivo in な + に modifica un verbo: «in modo…».
 example_jp: >-

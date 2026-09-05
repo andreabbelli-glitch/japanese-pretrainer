@@ -1091,11 +1091,8 @@ front: >-
   ランクマッチ
 back: >-
   modalità classificata online
-example_jp: >-
-  ランクマッチでは{{勝敗|しょうはい}}だけでなく、{{次|つぎ}}のランクポイントまで{{意識|いしき}}して{{潜|もぐ}}ります。
-example_it: >-
-  In Rank Match tengo d'occhio non solo il risultato, ma anche i punti necessari
-  per il grado successivo.
+example_jp: "ランクマッチでは、{{勝敗|しょうはい}}だけでなく、{{次|つぎ}}のランクに{{必要|ひつよう}}なポイントも{{意識|いしき}}しています。"
+example_it: "In modalità classificata tengo d’occhio sia l’esito delle partite sia i punti necessari per il grado successivo."
 notes_it: >-
   Qui le vittorie e le sconfitte cambiano il rank e i punti stagione. È la ladder principale del gioco.
 tags: [term, progression]

@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-207-verb-hajimeru-irregulars
 entry_type: grammar
 entry_id: grammar-207-verb-hajimeru-irregulars
 card_type: concept
-front: "{{不規則|ふきそく}}{{動詞|どうし}}"
+front: "{{不規則|ふきそく}}{{動詞|どうし}}（con はじめる）"
 back: >-
   Verbo irregolare alla base + 始める significa «cominciare a…».
 example_jp: >-

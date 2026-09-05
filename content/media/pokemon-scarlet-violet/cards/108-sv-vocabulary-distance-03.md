@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-03
 media_id: media-pokemon-scarlet-violet
 slug: 108-sv-vocabulary-distance-03
-title: 'Parole per leggere Paldea — tre'
+title: 'Parole per leggere Parudea — tre'
 order: 153
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -25,10 +25,8 @@ card_type: recognition
 front: '{{一応|いちおう}}'
 back: >-
   いちおう — per sicurezza; comunque; per il momento.
-example_jp: >-
-  ...ああ{{一応|いちおう}}{{言|い}}っておくがパルデアの{{大穴|おおあな}}およびエリアゼロは{{関係|かんけい}}{{者|しゃ}}{{以外|いがい}}{{立|た}}ち{{入|い}}り{{禁止|きんし}}だ{{宝探|たからさが}}しだウッヒョー！
-example_it: >-
-  …Ah, te lo dico per sicurezza: il Grande Voragine di Paldea e l’Area Zero sono vietati a chi non è autorizzato. Caccia al tesoro, evviva!
+example_jp: "……ああ、{{一応|いちおう}}{{言|い}}っておくが、パルデアの{{大穴|おおあな}}およびエリアゼロは{{関係者|かんけいしゃ}}{{以外|いがい}}{{立|た}}ち{{入|い}}り{{禁止|きんし}}だ。"
+example_it: "…Ah, lo dico per sicurezza: l’accesso a Parudea no Ōana e a Eria Zero è riservato agli autorizzati."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -50,10 +48,8 @@ card_type: recognition
 front: 'うちら'
 back: >-
   うちら — noi, in registro colloquiale.
-example_jp: >-
-  すまんなうちらの{{大将|たいしょう}}たまにこうなってしまうんやだだっでぇ！
-example_it: >-
-  Scusa, il nostro capo ogni tanto fa così, è proprio così!
+example_jp: "すまんな。うちらの{{大将|たいしょう}}、たまにこうなってしまうんや。"
+example_it: "Scusa, il nostro capo ogni tanto si riduce così."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -212,10 +208,9 @@ id: term-sv-vocabulary-043-soratobu
 lemma: 'そらとぶ'
 reading: 'そらとぶ'
 romaji: 'soratobu'
-meaning_it: 'volare nel cielo; nel gioco anche la mossa Volo'
+meaning_it: "volare nel cielo; in そらとぶタクシー, «taxi volante»"
 level_hint: custom
 :::
-
 :::card
 id: card-sv-vocabulary-043-soratobu-recognition
 lesson_id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-03
@@ -223,15 +218,13 @@ entry_type: term
 entry_id: term-sv-vocabulary-043-soratobu
 card_type: recognition
 front: 'そらとぶ'
-back: >-
-  そらとぶ — volare nel cielo; nel gioco anche la mossa Volo.
+back: "volare nel cielo; in そらとぶタクシー, «taxi volante»"
 example_jp: >-
   そらとぶタクシーに{{泣|な}}き{{入|い}}れて{{来|き}}てもらった{{下|した}}に{{博士|はかせ}}いるならたよればよかったじゃん？
 example_it: >-
   Ho supplicato il Taxi Volante di venirmi a prendere. Se il professore è qui sotto, potevi chiedere aiuto a lui, no?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-031-nioi
 lemma: '匂い'
@@ -300,13 +293,10 @@ card_type: recognition
 front: 'ころがす'
 back: >-
   ころがす — far rotolare; rovesciare; far girare.
-example_jp: >-
-  オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！
-example_it: >-
-  Attenti a non scambiare Smoliv per Olive e a non farlo rotolare via!
+example_jp: "オリーブと{{間違|まちが}}えてミニーブをころがさないようにね！"
+example_it: "Non fate rotolare Minību scambiandolo per un’oliva!"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-389-kihon
 lemma: '基本'

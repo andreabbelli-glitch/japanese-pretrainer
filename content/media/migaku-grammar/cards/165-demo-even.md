@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-165-demo-even
 entry_type: grammar
 entry_id: grammar-165-demo-even
 card_type: concept
-front: "でも"
+front: "でも（caso estremo）"
 back: >-
   Nome／Aな + でも include persino un caso considerato estremo o inatteso.
 example_jp: >-

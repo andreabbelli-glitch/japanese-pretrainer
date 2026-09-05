@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-060-sv-anki-l08-tecnologia-denaro-asta-e-routine
 media_id: media-pokemon-scarlet-violet
 slug: 060-sv-anki-l08-tecnologia-denaro-asta-e-routine
-title: "Tecnologia, denaro e routine nelle scene di Paldea"
+title: "Tecnologia, denaro e routine nelle scene di Parudea"
 order: 90
 segment_ref: scarlet-violet-prestudy
 ---
@@ -13,7 +13,7 @@ reading: エーアイ
 romaji: eeai
 meaning_it: IA; intelligenza artificiale
 notes_it: >-
-  In Pokémon Scarlatto e Violetto la sigla inglese AI è traslitterata foneticamente come エーアイ invece di usare kanji come {{人|じん}}{{工|こう}}{{知|ち}}{{能|のう}} (jin'kōchinō). È centrale nel filone narrativo dell'Area Zero per indicare entità sintetiche contrapposte all'intelletto umano.
+  In Pokémon Scarlatto e Violetto la sigla inglese AI è traslitterata foneticamente come エーアイ invece di usare kanji come {{人|じん}}{{工|こう}}{{知|ち}}{{能|のう}} (jin'kōchinō). È centrale nel filone narrativo dell'Eria Zero per indicare entità sintetiche contrapposte all'intelletto umano.
 level_hint: custom
 :::
 :::term
@@ -118,9 +118,9 @@ back: >-
 example_jp: >-
   {{Ａ|エー}}{{Ｉ|アイ}}が エリアゼロを {{管理|かんり}}している。
 example_it: >-
-  L'IA gestisce l'Area Zero.
+  L'IA gestisce l'Eria Zero.
 notes_it: >-
-  In Pokémon Scarlatto e Violetto la sigla inglese AI è traslitterata foneticamente come エーアイ invece di usare kanji come {{人|じん}}{{工|こう}}{{知|ち}}{{能|のう}} (jin'kōchinō). È centrale nel filone narrativo dell'Area Zero per indicare entità sintetiche contrapposte all'intelletto umano.
+  In Pokémon Scarlatto e Violetto la sigla inglese AI è traslitterata foneticamente come エーアイ invece di usare kanji come {{人|じん}}{{工|こう}}{{知|ち}}{{能|のう}} (jin'kōchinō). È centrale nel filone narrativo dell'Eria Zero per indicare entità sintetiche contrapposte all'intelletto umano.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]
 :::
 :::card
@@ -135,7 +135,7 @@ back: >-
 example_jp: >-
   お{{金|かね}}で モンスターボールを {{買|か}}う。
 example_it: >-
-  Compro delle Poké Ball con i soldi.
+  Compro delle Monsutā Bōru con i soldi.
 notes_it: >-
   Il sostantivo お{{金|かね}} indica i soldi o il denaro disponibile del giocatore. Nei negozi (フレンドリィショップ), il metodo di pagamento prende la particella で: お{{金|かね}}で{{払|はら}}う (pagare con i soldi) si contrappone all'uso dei LP (Lega Points). Il prefisso onorifico お- è quasi obbligatorio nell'uso comune.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]
@@ -152,7 +152,7 @@ back: >-
 example_jp: >-
   この{{前|まえ}}、ネモと ポケモンバトルを した。
 example_it: >-
-  L'altro giorno ho fatto una lotta Pokémon con Nemi.
+  L'altro giorno ho fatto una lotta Pokémon con Nemo.
 notes_it: >-
   L'espressione temporale この{{前|まえ}} ("prima di questo momento") si usa come avverbio di tempo per riferirsi a un evento accaduto "l'altro giorno" o "recentemente". A differenza di {{昔|むかし}} (molto tempo fa), indica un passato ancora vivido e vicino. Non richiede particelle specifiche per essere inserita nella frase.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]
@@ -220,7 +220,7 @@ back: >-
 example_jp: >-
   ハッサク{{先生|せんせい}}の {{芸|げい}}{{術|じゅつ}}の {{授業|じゅぎょう}}を {{受|う}}ける。
 example_it: >-
-  Seguo il corso di arte del professor Hassel.
+  Seguo il corso di arte del professor Hassaku.
 notes_it: >-
   {{芸|げい}}{{術|じゅつ}} indica l'arte come disciplina o campo espressivo. All'Accademia è una materia scolastica insegnata da ハッサク{{先生|せんせい}}; nelle Palestre richiama invece figure artistiche come コルサ, senza confondere il ruolo di docente con quello di Capopalestra.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]
@@ -271,7 +271,7 @@ back: >-
 example_jp: >-
   スマホロトムの カバーを {{変|か}}える。
 example_it: >-
-  Cambio la cover dello Smart Rotom.
+  Cambio la cover dello Sumaho Rotomu.
 notes_it: >-
   Il verbo {{変|か}}える è transitivo (ichidan) e descrive il cambiamento provocato da un'azione volontaria del soggetto su un oggetto, marcato con を (es. {{設|せっ}}{{定|てい}}を{{変|か}}える, "cambiare le impostazioni"). Si distingue dall'intransitivo {{変|か}}わる, che descrive invece un cambiamento spontaneo o fuori dal controllo di chi parla.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-08]

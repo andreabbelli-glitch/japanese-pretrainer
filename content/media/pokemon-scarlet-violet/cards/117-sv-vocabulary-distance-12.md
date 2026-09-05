@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-12
 media_id: media-pokemon-scarlet-violet
 slug: 117-sv-vocabulary-distance-12
-title: 'Parole per leggere Paldea — dodici'
+title: 'Parole per leggere Parudea — dodici'
 order: 162
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -103,7 +103,7 @@ back: >-
 example_jp: >-
   ふたつのヨロイからひとつをえらんでへんしんしてゲンガーをやっつけて！
 example_it: >-
-  Scegli una delle due armature, trasformati e sconfiggi Gengar!
+  Scegli una delle due armature, trasformati e sconfiggi Gengā!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

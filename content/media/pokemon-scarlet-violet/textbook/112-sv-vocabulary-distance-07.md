@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-07
 media_id: media-pokemon-scarlet-violet
 slug: 112-sv-vocabulary-distance-07
-title: 'Parole per leggere Paldea — sette'
+title: 'Parole per leggere Parudea — sette'
 order: 157
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — sette
+# Parole per leggere Parudea — sette
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -55,12 +55,9 @@ translation_it: >-
 ### [いたす](term:term-sv-vocabulary-009-itasu) — fare, forma umile di する
 
 :::example_sentence
-jp: >-
-  {{大変|たいへん}}{{失礼|しつれい}}いたしましたこのおかたはどちらさまなのでしょう？
-translation_it: >-
-  Chiedo mille scuse, chi sei tu?
+jp: "{{大変|たいへん}}{{失礼|しつれい}}いたしました。このおかたはどちらさまなのでしょう？"
+translation_it: "Le chiedo davvero scusa: chi è questa persona?"
 :::
-
 **Uso:** L'azione espressa nel contesto è «fare, forma umile di する».
 
 ### [{{成功|せいこう}}](term:term-sv-vocabulary-161-seikou) — successo; risultato; riuscire (nella vita)
@@ -201,7 +198,7 @@ translation_it: >-
 jp: >-
   {{偽|にせ}}{{竜|りゅう}}のヌシと{{呼|よ}}ばれるポケモンを{{探|さが}}してみるのはいかがでしょう？
 translation_it: >-
-  Che ne dici di cercare il Pokémon chiamato Dominante del Falso Drago?
+  Che ne dici di cercare il Pokémon chiamato Nushi del Falso Drago?
 :::
 
 **Uso:** Nel contesto indica «falso; imitazione; contraffatto».

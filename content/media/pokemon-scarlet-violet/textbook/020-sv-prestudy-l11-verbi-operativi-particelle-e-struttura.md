@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-020-sv-prestudy-l11-verbi-operativi-particelle-e-struttura
 media_id: media-pokemon-scarlet-violet
 slug: 020-sv-prestudy-l11-verbi-operativi-particelle-e-struttura
-title: Azioni, bersagli e direzione nei menu di Paldea
+title: Azioni, bersagli e direzione nei menu di Parudea
 order: 50
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -18,7 +18,7 @@ summary: >-
   Menu e dialoghi indicano chi agisce, cosa viene scelto, dove si va e perché:
   verbi operativi e particelle rendono leggibile la scena.
 ---
-# Azioni, bersagli e direzione nei menu di Paldea
+# Azioni, bersagli e direzione nei menu di Parudea
 
 Quando *Pokémon Scarlet & Violet* passa da un dialogo a un menu, il testo giapponese diventa molto operativo: qualcuno ti ferma, il sistema ti chiede su quale Pokémon agire, la mappa indica una direzione o un personaggio ti spinge verso una sfida.
 
@@ -51,7 +51,7 @@ In queste frasi non basta tradurre il verbo. Devi vedere chi è il tema, che cos
 
 ## Etichette da riconoscere
 
-- [ヌシポケモン](term:term-v130-nushipokemon) — Pokémon dominante (Titan)
+- [ヌシポケモン](term:term-v130-nushipokemon) — Pokémon dominante (Nushi)
 
 ---
 
@@ -59,7 +59,7 @@ In queste frasi non basta tradurre il verbo. Devi vedere chi è il tema, che cos
 
 Nei menu e nei dialoghi brevi, il gioco non costruisce frasi lunghe: usa formule compatte che cambiano subito lo stato della scena. [ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) blocca l'azione per un momento; [どの ポケモンに {{使|つか}}いますか？](term:term-e024-dono-pokemoni-tsukaimasuka) sposta invece il controllo su di te e ti chiede di scegliere un bersaglio.
 
-[ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) è parlato informale. ちょっと ammorbidisce la richiesta, mentre {{待|ま}}って è la forma in -te di {{待|ま}}つ, usata qui come invito diretto: `ちょっと待って` e' un invito informale a fermarsi un momento.
+[ちょっと {{待|ま}}って](term:term-e023-chotto-matsu-te) è parlato informale. ちょっと ammorbidisce la richiesta, mentre {{待|ま}}って è la forma in -te di {{待|ま}}つ, usata qui come invito diretto: `ちょっと待って` è un invito informale a fermarsi un momento.
 
 :::example_sentence
 jp: >-
@@ -146,7 +146,7 @@ translation_it: >-
 
 ## 3. Cercare, trovare e decidere il prossimo passo
 
-Il viaggio a Paldea alterna ricerca, scoperta e scelta. [{{探|さが}}す](term:term-v129-sagasu) descrive la ricerca mentre è in corso; [{{見|み}}つける](term:term-v135-mitsu-keru) descrive il momento in cui il bersaglio emerge; [{{決|き}}める](term:term-v127-kime-ru) chiude l'incertezza e trasforma le opzioni in una decisione.
+Il viaggio a Parudea alterna ricerca, scoperta e scelta. [{{探|さが}}す](term:term-v129-sagasu) descrive la ricerca mentre è in corso; [{{見|み}}つける](term:term-v135-mitsu-keru) descrive il momento in cui il bersaglio emerge; [{{決|き}}める](term:term-v127-kime-ru) chiude l'incertezza e trasforma le opzioni in una decisione.
 
 Questi verbi lavorano spesso con [を](grammar:grammar-g033-marca-l-oggetto-diretto), perché il gioco deve dirti che cosa stai cercando, trovando o scegliendo. Se il bersaglio non è marcato bene, la frase resta vaga; con を, invece, il testo aggancia l'azione a un oggetto preciso.
 
@@ -240,7 +240,7 @@ translation_it: >-
 
 [どうやって](term:term-v133-douyatte) porta verso una risposta procedurale: "apri la mappa", "segui questa strada", "usa questo comando". [なぜ](term:term-v136-naze) porta verso una risposta causale: "perché vuoi crescere", "perché la storia lo richiede", "perché c'è una prova da affrontare".
 
-Il confine tra incontro e sfida passa anche dal verbo. [{{会|あ}}う](term:term-v126-au) è neutro: incontri una persona, un Pokémon o un personaggio. [{{挑|いど}}む](term:term-v132-idomu) è più forte: il bersaglio viene trattato come prova da affrontare. Per questo [ヌシポケモン](term:term-v130-nushipokemon) si combina bene con [{{挑|いど}}む](term:term-v132-idomu): il Titan non è solo qualcuno che appare, è un ostacolo narrativo e di battaglia.
+Il confine tra incontro e sfida passa anche dal verbo. [{{会|あ}}う](term:term-v126-au) è neutro: incontri una persona, un Pokémon o un personaggio. [{{挑|いど}}む](term:term-v132-idomu) è più forte: il bersaglio viene trattato come prova da affrontare. Per questo [ヌシポケモン](term:term-v130-nushipokemon) si combina bene con [{{挑|いど}}む](term:term-v132-idomu): il Nushi non è solo qualcuno che appare, è un ostacolo narrativo e di battaglia.
 
 :::example_sentence
 jp: >-
@@ -264,7 +264,7 @@ Per [{{挑|いど}}む](term:term-v132-idomu), immagina il personaggio che si av
 
 ## Esempi guidati di riepilogo
 
-Le stesse particelle cambiano funzione a seconda del verbo che le segue: una selezione di menu, una route sulla mappa e una sfida contro un Titan non si leggono allo stesso modo.
+Le stesse particelle cambiano funzione a seconda del verbo che le segue: una selezione di menu, una route sulla mappa e una sfida contro un Nushi non si leggono allo stesso modo.
 
 :::example_sentence
 jp: >-

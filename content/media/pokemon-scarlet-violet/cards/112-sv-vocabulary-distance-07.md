@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-07
 media_id: media-pokemon-scarlet-violet
 slug: 112-sv-vocabulary-distance-07
-title: 'Parole per leggere Paldea — sette'
+title: 'Parole per leggere Parudea — sette'
 order: 157
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -50,10 +50,8 @@ card_type: recognition
 front: 'いたす'
 back: >-
   いたす — fare, forma umile di する.
-example_jp: >-
-  {{大変|たいへん}}{{失礼|しつれい}}いたしましたこのおかたはどちらさまなのでしょう？
-example_it: >-
-  Chiedo mille scuse, chi sei tu?
+example_jp: "{{大変|たいへん}}{{失礼|しつれい}}いたしました。このおかたはどちらさまなのでしょう？"
+example_it: "Le chiedo davvero scusa: chi è questa persona?"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -378,6 +376,6 @@ back: >-
 example_jp: >-
   {{偽|にせ}}{{竜|りゅう}}のヌシと{{呼|よ}}ばれるポケモンを{{探|さが}}してみるのはいかがでしょう？
 example_it: >-
-  Che ne dici di cercare il Pokémon chiamato Dominante del Falso Drago?
+  Che ne dici di cercare il Pokémon chiamato Nushi del Falso Drago?
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::

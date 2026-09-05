@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-069-sv-anki-l17-asta-successo-azioni-e-fantasia
 media_id: media-pokemon-scarlet-violet
 slug: 069-sv-anki-l17-asta-successo-azioni-e-fantasia
-title: "Aste, scoperte e inviti: azioni che fanno avanzare Paldea"
+title: "Aste, scoperte e inviti: azioni che fanno avanzare Parudea"
 order: 99
 segment_ref: scarlet-violet-prestudy
 ---
@@ -33,7 +33,7 @@ reading: ほきゅう
 romaji: hokyuu
 meaning_it: rifornimento
 notes_it: >-
-  {{補|ほ}}{{給|きゅう}} si usa per il rifornimento strategico di beni di consumo (come pozioni o Poké Ball). La risorsa che viene ripristinata prende tipicamente la particella の seguita da {{補|ほ}}{{給|きゅう}}, oppure を se usato come verbo (アイテムを{{補|ほ}}{{給|きゅう}}する). È perfetto per descrivere la preparazione prima di una lunga esplorazione.
+  {{補|ほ}}{{給|きゅう}} si usa per il rifornimento strategico di beni di consumo (come Kizugusuri o Monsutā Bōru). La risorsa che viene ripristinata prende tipicamente la particella の seguita da {{補|ほ}}{{給|きゅう}}, oppure を se usato come verbo (アイテムを{{補|ほ}}{{給|きゅう}}する). È perfetto per descrivere la preparazione prima di una lunga esplorazione.
 level_hint: custom
 :::
 :::term
@@ -43,7 +43,7 @@ reading: ゆうしゅう
 romaji: yuushuu
 meaning_it: eccellente
 notes_it: >-
-  {{優|ゆう}}{{秀|しゅう}} è un Aggettivo-na ({{優|ゆう}}{{秀|しゅう}}な{{人|ひと}}) usato dai superiori (come i professori o il Preside Clavell) per lodare le capacità o l'intelligenza di qualcuno. Indica una superiorità oggettiva e riconosciuta in un determinato campo, come lo studio o la lotta.
+  {{優|ゆう}}{{秀|しゅう}} è un Aggettivo-na ({{優|ゆう}}{{秀|しゅう}}な{{人|ひと}}) usato dai superiori (come i professori o il Preside Kuraberu) per lodare le capacità o l'intelligenza di qualcuno. Indica una superiorità oggettiva e riconosciuta in un determinato campo, come lo studio o la lotta.
 level_hint: custom
 :::
 :::term
@@ -135,7 +135,7 @@ back: >-
 example_jp: >-
   エリアゼロで {{新|あたら}}しい ポケモンを {{発|はっ}}{{見|けん}}した。
 example_it: >-
-  Ho scoperto un nuovo Pokémon nell'Area Zero.
+  Ho scoperto un nuovo Pokémon nell'Eria Zero.
 notes_it: >-
   Il verbo {{発|はっ}}{{見|けん}}する implica l'atto di portare alla luce ({{発|はっ}}) qualcosa tramite l'osservazione ({{見|み}}). L'oggetto della scoperta (es. un Pokémon, una rovina antica) prende regolarmente la particella を. Si differenzia da {{発|はつ}}{{明|めい}} (invenzione) perché ciò che viene trovato preesisteva in natura.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-17]
@@ -152,9 +152,9 @@ back: >-
 example_jp: >-
   ポケモンセンターで どうぐの {{補|ほ}}{{給|きゅう}}を します。
 example_it: >-
-  Faccio rifornimento di strumenti al Centro Pokémon.
+  Faccio rifornimento di strumenti al Pokémon Sentā.
 notes_it: >-
-  {{補|ほ}}{{給|きゅう}} si usa per il rifornimento strategico di beni di consumo (come pozioni o Poké Ball). La risorsa che viene ripristinata prende tipicamente la particella の seguita da {{補|ほ}}{{給|きゅう}}, oppure を se usato come verbo (アイテムを{{補|ほ}}{{給|きゅう}}する). È perfetto per descrivere la preparazione prima di una lunga esplorazione.
+  {{補|ほ}}{{給|きゅう}} si usa per il rifornimento strategico di beni di consumo (come Kizugusuri o Monsutā Bōru). La risorsa che viene ripristinata prende tipicamente la particella の seguita da {{補|ほ}}{{給|きゅう}}, oppure を se usato come verbo (アイテムを{{補|ほ}}{{給|きゅう}}する). È perfetto per descrivere la preparazione prima di una lunga esplorazione.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-17]
 :::
 :::card
@@ -171,7 +171,7 @@ example_jp: >-
 example_it: >-
   Sei uno studente davvero eccellente all'Accademia.
 notes_it: >-
-  {{優|ゆう}}{{秀|しゅう}} è un Aggettivo-na ({{優|ゆう}}{{秀|しゅう}}な{{人|ひと}}) usato dai superiori (come i professori o il Preside Clavell) per lodare le capacità o l'intelligenza di qualcuno. Indica una superiorità oggettiva e riconosciuta in un determinato campo, come lo studio o la lotta.
+  {{優|ゆう}}{{秀|しゅう}} è un Aggettivo-na ({{優|ゆう}}{{秀|しゅう}}な{{人|ひと}}) usato dai superiori (come i professori o il Preside Kuraberu) per lodare le capacità o l'intelligenza di qualcuno. Indica una superiorità oggettiva e riconosciuta in un determinato campo, come lo studio o la lotta.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-17]
 :::
 :::card
@@ -186,7 +186,7 @@ back: >-
 example_jp: >-
   ポケモンリーグで {{優|ゆう}}{{勝|しょう}}して、チャンピオンになる。
 example_it: >-
-  Vincerò la Lega Pokémon e diventerò Campione.
+  Vincerò la Pokémon Rīgu e diventerò Campione.
 notes_it: >-
   A differenza del semplice verbo {{勝|か}}つ, “vincere una singola lotta”, {{優|ゆう}}{{勝|しょう}} descrive la vittoria assoluta di un'intera competizione. Il luogo o l'evento in cui si trionfa si marca con で.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-17]
@@ -203,7 +203,7 @@ back: >-
 example_jp: >-
   ネモを ポケモンしょうぶに {{誘|さそ}}う。
 example_it: >-
-  Invito Nemi a una lotta Pokémon.
+  Invito Nemo a una lotta Pokémon.
 notes_it: >-
   Il verbo {{誘|さそ}}う regge la particella を per la persona invitata ({{友|とも}}{{達|だち}}を{{誘|さそ}}う), ma nella narrazione si incontra spessissimo nella forma passiva {{誘|さそ}}われる (essere invitati). La persona che ti invita prende に. Implica sempre un coinvolgimento attivo in un'esperienza condivisa.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-17]

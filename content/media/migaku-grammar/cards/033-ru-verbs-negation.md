@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-033-ru-verbs-negation
 entry_type: grammar
 entry_id: grammar-033-ru-verbs-negation
 card_type: concept
-front: "る{{動詞|どうし}}"
+front: "る{{動詞|どうし}}（negativo）"
 back: >-
   Radice del verbo in る + ない esprime il negativo piano.
 example_jp: >-

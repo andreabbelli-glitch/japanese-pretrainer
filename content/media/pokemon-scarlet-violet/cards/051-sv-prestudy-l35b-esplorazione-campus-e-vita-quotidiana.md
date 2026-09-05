@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
 media_id: media-pokemon-scarlet-violet
 slug: 051-sv-prestudy-l35b-esplorazione-campus-e-vita-quotidiana
-title: "Esplorazione, campus e vita quotidiana a Paldea"
+title: "Esplorazione, campus e vita quotidiana a Parudea"
 order: 81
 segment_ref: scarlet-violet-prestudy
 ---
@@ -29,7 +29,7 @@ example_jp: >-
   とりあえず ヌシが いそうな {{場所|ばしょ}}だけ マップアプリに
   {{登録|とうろく}}しておくな。
 example_it: >-
-  Intanto segno sulla mappa solo i luoghi dove potrebbe esserci un Dominante.
+  Intanto segno sulla mappa solo i luoghi dove potrebbe esserci un Nushi.
 :::
 :::term
 id: term-e110-osusume
@@ -53,7 +53,7 @@ example_jp: >-
   わたしの オススメは ポケモンに {{持|も}}たせて {{便利|べんり}}な
   どうぐを {{売|う}}ってる デリバードポーチかなー！
 example_it: >-
-  Il mio consiglio è Sacchi Delibird: vende strumenti utili da far tenere ai Pokémon.
+  Il mio consiglio è Deribādo Pōchi: vende strumenti utili da far tenere ai Pokémon.
 :::
 :::term
 id: term-e111-oide
@@ -145,7 +145,7 @@ back: regalo / premio dato
 example_jp: >-
   {{勝負|しょうぶ}}の お{{礼|れい}}！ に げんきのかけらを プレゼント！
 example_it: >-
-  Per ringraziarti della sfida, ti regalo un Revitalizzante!
+  Per ringraziarti della sfida, ti regalo un Genki no Kakera!
 :::
 :::term
 id: term-v745-kateru
@@ -192,7 +192,7 @@ example_jp: >-
   いちど {{行|い}}った ポケモンセンターには そらとぶタクシーで すぐに
   {{戻|もど}}れるわよ。
 example_it: >-
-  Puoi tornare subito in un Centro Pokémon già visitato con il Taxi Volante.
+  Puoi tornare subito in un Pokémon Sentā già visitato con il Taxi Volante.
 :::
 :::term
 id: term-v747-omoitsuku

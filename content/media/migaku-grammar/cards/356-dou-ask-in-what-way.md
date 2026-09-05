@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-356-dou-ask-in-what-way
 entry_type: grammar
 entry_id: grammar-356-dou-ask-in-what-way
 card_type: concept
-front: "どう"
+front: "どう（どう + verbo）"
 back: >-
   どう modifica un predicato o introduce una domanda sul modo in cui qualcosa si fa o si presenta.
 example_jp: >-

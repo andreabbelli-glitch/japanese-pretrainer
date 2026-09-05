@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-016-introduction-to-verbs
 entry_type: grammar
 entry_id: grammar-016-introduction-to-verbs
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（forma dizionario）"
 back: >-
   Un verbo in う usa la forma dizionario per presente abituale o futuro; il soggetto si ricava dal contesto.
 example_jp: >-

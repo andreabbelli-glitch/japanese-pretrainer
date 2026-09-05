@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-187-teiku-2-an-action-state-keeps-changing
 entry_type: grammar
 entry_id: grammar-187-teiku-2-an-action-state-keeps-changing
 card_type: concept
-front: "ていく"
+front: "ていく（evoluzione verso il futuro）"
 back: >-
   Vて + いく presenta un processo che procede dal punto di riferimento verso il futuro o si allontana nel tempo.
 example_jp: >-

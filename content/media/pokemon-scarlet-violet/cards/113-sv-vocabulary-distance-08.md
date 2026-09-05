@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-08
 media_id: media-pokemon-scarlet-violet
 slug: 113-sv-vocabulary-distance-08
-title: 'Parole per leggere Paldea — otto'
+title: 'Parole per leggere Parudea — otto'
 order: 158
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -28,7 +28,7 @@ back: >-
 example_jp: >-
   くわしいルールは{{当|とう}}ジムを{{出|で}}て{{左手|ひだりて}}の{{坂|さか}}をのぼった{{先|さき}}{{雪山|ゆきやま}}{{滑|すべ}}り{{開始|かいし}}{{地点|ちてん}}で{{説明|せつめい}}しますねようこそナッペ{{山|さん}}ジムへ！
 example_it: >-
-  Ti spiegherò le regole dettagliate una volta uscito da questa Palestra, in cima alla salita sulla sinistra, al punto di partenza della pista da sci. Benvenuto alla Palestra del Monte Nappe!
+  Ti spiegherò le regole dettagliate una volta uscito da questa Palestra, in cima alla salita sulla sinistra, al punto di partenza della pista da sci. Benvenuto alla Palestra del Nappe-yama!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -212,8 +212,9 @@ id: term-sv-vocabulary-254-kizutsuku
 lemma: '傷つく'
 reading: 'きずつく'
 romaji: 'kizutsuku'
-meaning_it: 'essere ferito; subire un infortunio; ferire i sentimenti di qualcuno'
+meaning_it: "essere ferito; rimanere ferito nei sentimenti"
 level_hint: custom
+notes_it: "傷つく è intransitivo: qualcuno rimane ferito, fisicamente o emotivamente. 傷つける è transitivo: ferire qualcuno o danneggiare qualcosa."
 :::
 
 :::card
@@ -223,12 +224,9 @@ entry_type: term
 entry_id: term-sv-vocabulary-254-kizutsuku
 card_type: recognition
 front: '{{傷|きず}}つく'
-back: >-
-  きずつく — essere ferito; subire un infortunio; ferire i sentimenti di qualcuno.
-example_jp: >-
-  ...{{黙|だま}}りなさいわたしはわたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ{{優|やさ}}しいボスさん{{勝負|しょうぶ}}{{再開|さいかい}}といこうか！
-example_it: >-
-  …Stai zitto, voglio solo che nessuno, a parte me, si faccia male. Capo gentile, riprendiamo la sfida!
+back: "きずつく — essere ferito; rimanere ferito nei sentimenti"
+example_jp: "……{{黙|だま}}りなさい。わたしは、わたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ。"
+example_it: "…Sta’ zitto. Voglio solo che nessuno, a parte me, si faccia male."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

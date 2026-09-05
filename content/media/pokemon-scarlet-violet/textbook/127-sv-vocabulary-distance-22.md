@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-22
 media_id: media-pokemon-scarlet-violet
 slug: 127-sv-vocabulary-distance-22
-title: 'Parole per leggere Paldea — ventidue'
+title: 'Parole per leggere Parudea — ventidue'
 order: 172
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quattordici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — ventidue
+# Parole per leggere Parudea — ventidue
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -123,7 +123,7 @@ translation_it: >-
 jp: >-
   ボウルタウンへの{{抜|ぬ}}け{{道|みち}}はこちら{{迷子|まいご}}になったらはしごをのぼろう！
 translation_it: >-
-  La scorciatoia per Bowl Town è da questa parte: se ti perdi, sali sulla scala!
+  La scorciatoia per Bōru Taun è da questa parte: se ti perdi, sali sulla scala!
 :::
 
 **Uso:** L'azione espressa nel contesto è «perdersi; smarrirsi; andare fuori strada».
@@ -142,12 +142,11 @@ translation_it: >-
 ### [それでも](term:term-sv-vocabulary-295-soredemo) — ma (comunque); eppure; ciononostante
 
 :::example_sentence
-jp: >-
-  それでもダメならおうえんだ！
-translation_it: >-
-  Se proprio non ce la fai, ti faccio il tifo!
+jp: "{{技|わざ}}を{{変|か}}えてみよう。それでもダメなら、おうえんで{{仲間|なかま}}を{{助|たす}}けよう！"
+translation_it: "Proviamo a cambiare mossa. Se neanche così funziona, aiutiamo i compagni con l’incoraggiamento!"
 :::
 
+*Esempio didattico.*
 **Uso:** Nel dialogo aggiunge il valore di «ma (comunque); eppure; ciononostante».
 
 ### [{{内部|ないぶ}}](term:term-sv-vocabulary-382-naibu) — interno; dentro

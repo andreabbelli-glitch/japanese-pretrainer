@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-027-ga-assign-qualities
 entry_type: grammar
 entry_id: grammar-027-ga-assign-qualities
 card_type: concept
-front: "が"
+front: "が（qualità: Xが{{大|おお}}きい）"
 back: >-
   A が + aggettivo presenta A come portatore della qualità espressa.
 example_jp: >-

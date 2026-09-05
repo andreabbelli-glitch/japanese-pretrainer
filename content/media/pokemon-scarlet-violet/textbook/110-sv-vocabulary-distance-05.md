@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-vocabulary-distance-05
 media_id: media-pokemon-scarlet-violet
 slug: 110-sv-vocabulary-distance-05
-title: 'Parole per leggere Paldea — cinque'
+title: 'Parole per leggere Parudea — cinque'
 order: 155
 segment_ref: scarlet-violet-vocabulary
 difficulty: custom
@@ -10,12 +10,12 @@ status: active
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 prerequisites: []
 summary: >-
-  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Paldea.
+  Quindici parole tra dialoghi, azioni, persone e situazioni diverse di Parudea.
 ---
 
-# Parole per leggere Paldea — cinque
+# Parole per leggere Parudea — cinque
 
-A Paldea una conversazione può passare dalla scuola alla lotta, da un ricordo a
+A Parudea una conversazione può passare dalla scuola alla lotta, da un ricordo a
 un'azione concreta. Le parole compaiono in situazioni diverse, ma ciascuna
 conserva un valore preciso nella frase.
 
@@ -77,12 +77,11 @@ translation_it: >-
 ### [まいる](term:term-sv-vocabulary-181-mairu) — andare o venire, in registro umile; essere sopraffatto
 
 :::example_sentence
-jp: >-
-  じゃあ{{即刻|そっこく}}{{消|き}}えなさいわたしここを{{離|はな}}れないからまいります！
-translation_it: >-
-  Allora sparisci subito. Io non lascerò questo posto: mi faccio avanti!
+jp: "では、{{校長室|こうちょうしつ}}にまいります。"
+translation_it: "Allora mi recherò nell’ufficio del preside."
 :::
 
+*Esempio didattico.*
 **Uso:** L'azione espressa nel contesto è «andare o venire, in registro umile; essere sopraffatto».
 
 ### [{{景|けい}}](term:term-sv-vocabulary-008-kei) — veduta; panorama; scena
@@ -91,7 +90,7 @@ translation_it: >-
 jp: >-
   ここはパルデア{{十景|じっけい}}の{{一|ひと}}つだ。
 translation_it: >-
-  Questo è uno dei dieci panorami di Paldea.
+  Questo è uno dei dieci panorami di Parudea.
 :::
 
 **Uso:** Nel contesto indica «veduta; panorama; scena».
@@ -135,7 +134,7 @@ translation_it: >-
 jp: >-
   リップちゃんとのコラボ{{配信|はいしん}}よかった！
 translation_it: >-
-  La diretta in collaborazione con Tulipa è stata fantastica!
+  La diretta in collaborazione con Rippu è stata fantastica!
 :::
 
 **Uso:** Nel contesto indica «diffusione (di informazioni, notizie, ecc.); trasmissione; distribuzione».

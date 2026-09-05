@@ -88,15 +88,14 @@ entry_id: term-kaishi-1708637441210
 card_type: recognition
 front: '{{情|なさ}}けない'
 back: 'pathetic, shameful'
-example_jp: 'こんなことも{{知|し}}らないとは{{情|なさ}}けない。'
-example_it: 'It''s pathetic that you don''t also know this.'
+example_jp: "こんなことも{{知|し}}らないとは{{情|なさ}}けない。"
+example_it: "It’s pathetic that you don’t even know this."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637441210-recognition/6ee0a605d645ed2b0b40afe8ed491d5b.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637440674
 lemma: '満足'

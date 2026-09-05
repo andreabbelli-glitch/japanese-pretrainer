@@ -1,5 +1,11 @@
 # Audit del giapponese — 5 settembre 2026
 
+> **Aggiornamento dell’implementazione:** le 131 proposte sono state applicate,
+> oltre alle cinque correzioni iniziali. Sono stati disambiguati i fronti Migaku
+> e adottati i nomi giapponesi in Pokémon. L’importazione integrale del corso
+> Migaku resta distinta dalle correzioni del bundle locale e richiede un export
+> fornito dall’utente. [Esito e verifiche](2026-09-05-japanese-editorial-implementation.md).
+
 Il materiale contiene problemi reali di significato, grammatica e naturalezza. La priorità maggiore è Migaku: il bundle locale è una rielaborazione didattica, mentre la richiesta era importare fedelmente le lezioni e le flashcard non ancora fatte. Seguono alcune definizioni errate di Duel Masters e le trascrizioni e traduzioni di Pokémon.
 
 Il registro contiene **136 voci operative: 5 corrette in Migaku e 131 proposte**. Sono 54 voci P1 e 82 P2; non sono 136 flashcard necessariamente distinte, perché uno stesso problema può ricomparire nel textbook o nel glossario. P1 significa che la voce può insegnare un significato o una regola sbagliati, oppure contiene testo danneggiato. P2 riguarda chiarezza, naturalezza o utilità. Nei dialoghi in cui manca la scena, la proposta è esplicitamente subordinata alla ricostruzione del contesto.
@@ -132,7 +138,7 @@ Non proporrei una riscrittura indiscriminata di tutto il corpus: le varianti amm
 3. Ricostruire i dialoghi Pokémon danneggiati e verificare le traduzioni con i parlanti visibili.
 4. Riscrivere gli esempi artificiali, rendere univoci i fronti e rifinire l’italiano o l’inglese.
 
-Al di fuori delle cinque correzioni Migaku autorizzate, il contenuto del sito è rimasto nella fase di proposta.
+Alla conclusione della fase iniziale erano state applicate soltanto le cinque correzioni Migaku. La successiva implementazione autorizzata è documentata nel rapporto collegato in apertura.
 
 ## Verifica delle modifiche
 

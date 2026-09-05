@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-205-verb-hajimeru-u
 entry_type: grammar
 entry_id: grammar-205-verb-hajimeru-u
 card_type: concept
-front: "う{{動詞|どうし}}"
+front: "う{{動詞|どうし}}（con はじめる）"
 back: >-
   Base in i del verbo in う + はじめる significa «cominciare a fare».
 example_jp: >-

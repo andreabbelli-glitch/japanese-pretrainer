@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-prestudy-059-sv-anki-l07-luoghi-negozi-numeri-e-regole
 media_id: media-pokemon-scarlet-violet
 slug: 059-sv-anki-l07-luoghi-negozi-numeri-e-regole
-title: "Luoghi, regole e quantità tra Paldea e l'Accademia"
+title: "Luoghi, regole e quantità tra Parudea e l'Accademia"
 order: 89
 segment_ref: scarlet-violet-prestudy
 ---
@@ -23,7 +23,7 @@ reading: ゆきやま
 romaji: yukiyama
 meaning_it: montagna innevata
 notes_it: >-
-  {{雪|ゆき}}{{山|やま}} è composto da {{雪|ゆき}} (neve) e {{山|やま}} (montagna). Si usa per indicare le aree montuose fredde, come il Monte Glaseado (ナッペ{{山|やま}}) a Paldea, habitat tipico dei Pokémon di tipo Ghiaccio. Spesso è accompagnato dalla particella di luogo に: {{雪|ゆき}}{{山|やま}}に.
+  {{雪|ゆき}}{{山|やま}} è composto da {{雪|ゆき}} (neve) e {{山|やま}} (montagna). Si usa per indicare le aree montuose fredde, come il Nappe-yama (ナッペ{{山|やま}}) a Parudea, habitat tipico dei Pokémon di tipo Ghiaccio. Spesso è accompagnato dalla particella di luogo に: {{雪|ゆき}}{{山|やま}}に.
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: きょうし
 romaji: kyoushi
 meaning_it: insegnante
 notes_it: >-
-  {{教|きょう}}{{師|し}} è il termine formale per indicare la professione dell'insegnante. All'Accademia di Paldea, ci si rivolge ai professori chiamandoli {{先生|せんせい}} (せんせい) come titolo onorifico, ma la loro categoria professionale o il loro ruolo istituzionale è descritto come {{教|きょう}}{{師|し}}.
+  {{教|きょう}}{{師|し}} è il termine formale per indicare la professione dell'insegnante. All'Accademia di Parudea, ci si rivolge ai professori chiamandoli {{先生|せんせい}} (せんせい) come titolo onorifico, ma la loro categoria professionale o il loro ruolo istituzionale è descritto come {{教|きょう}}{{師|し}}.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: ひろば
 romaji: hiroba
 meaning_it: piazza
 notes_it: >-
-  Composto da {{広|ひろ}} (ampio) e {{場|ば}} (luogo), {{広|ひろ}}{{場|ば}} indica una piazza o uno spiazzo pubblico. È una parola fondamentale per orientarsi nelle grandi città di Paldea, dove le piazze (come il {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}) fungono da snodi principali o punti di ritrovo per gli allenatori.
+  Composto da {{広|ひろ}} (ampio) e {{場|ば}} (luogo), {{広|ひろ}}{{場|ば}} indica una piazza o uno spiazzo pubblico. È una parola fondamentale per orientarsi nelle grandi città di Parudea, dove le piazze (come il {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}) fungono da snodi principali o punti di ritrovo per gli allenatori.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: おきて
 romaji: okite
 meaning_it: regola; codice
 notes_it: >-
-  La parola {{掟|おきて}} indica un codice di condotta, una legge non scritta o una regola rigida interna a un gruppo, come le norme del Team Star. Ha una sfumatura più tribale e solenne rispetto al più comune e generico ルール (regola).
+  La parola {{掟|おきて}} indica un codice di condotta, una legge non scritta o una regola rigida interna a un gruppo, come le norme del Sutā-dan. Ha una sfumatura più tribale e solenne rispetto al più comune e generico ルール (regola).
 level_hint: custom
 :::
 :::term
@@ -137,7 +137,7 @@ example_jp: >-
 example_it: >-
   Su questa montagna innevata ci sono molti Pokémon di tipo Ghiaccio.
 notes_it: >-
-  {{雪|ゆき}}{{山|やま}} è composto da {{雪|ゆき}} (neve) e {{山|やま}} (montagna). Si usa per indicare le aree montuose fredde, come il Monte Glaseado (ナッペ{{山|やま}}) a Paldea, habitat tipico dei Pokémon di tipo Ghiaccio. Spesso è accompagnato dalla particella di luogo に: {{雪|ゆき}}{{山|やま}}に.
+  {{雪|ゆき}}{{山|やま}} è composto da {{雪|ゆき}} (neve) e {{山|やま}} (montagna). Si usa per indicare le aree montuose fredde, come il Nappe-yama (ナッペ{{山|やま}}) a Parudea, habitat tipico dei Pokémon di tipo Ghiaccio. Spesso è accompagnato dalla particella di luogo に: {{雪|ゆき}}{{山|やま}}に.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -152,7 +152,7 @@ back: >-
 example_jp: >-
   テーブルシティの {{店|みせ}}で サンドウィッチの {{材|ざい}}{{料|りょう}}を {{買|か}}った。
 example_it: >-
-  Ho comprato gli ingredienti per i panini in un negozio di Mesapoli.
+  Ho comprato gli ingredienti per i panini in un negozio di Tēburu Shiti.
 notes_it: >-
   Il sostantivo {{店|みせ}} indica qualsiasi attività commerciale, dalle panetterie alle farmacie. Spesso prende la particella で per indicare il luogo dove si svolge l'azione ({{店|みせ}}で{{買|か}}う: comprare al negozio) o に per la destinazione ({{店|みせ}}に{{行|い}}く: andare al negozio).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
@@ -186,7 +186,7 @@ back: >-
 example_jp: >-
   ペパーは ぶっきらぼうに {{見|み}}えるけど、 {{本|ほん}}{{当|とう}}は とても {{優|やさ}}しい。
 example_it: >-
-  Pepe sembra burbero, ma in realtà è molto gentile.
+  Pepā sembra burbero, ma in realtà è molto gentile.
 notes_it: >-
   L'aggettivo in -i {{優|やさ}}しい descrive un carattere premuroso, dolce o affettuoso. Si usa spesso in contrasto con un'apparenza dura, per descrivere personaggi o Pokémon con una natura docile. Non va confuso con {{易|やさ}}しい (stessa pronuncia), che significa "facile".
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
@@ -222,7 +222,7 @@ example_jp: >-
 example_it: >-
   Gli insegnanti dell'Accademia hanno tutti una forte personalità.
 notes_it: >-
-  {{教|きょう}}{{師|し}} è il termine formale per indicare la professione dell'insegnante. All'Accademia di Paldea, ci si rivolge ai professori chiamandoli {{先生|せんせい}} (せんせい) come titolo onorifico, ma la loro categoria professionale o il loro ruolo istituzionale è descritto come {{教|きょう}}{{師|し}}.
+  {{教|きょう}}{{師|し}} è il termine formale per indicare la professione dell'insegnante. All'Accademia di Parudea, ci si rivolge ai professori chiamandoli {{先生|せんせい}} (せんせい) come titolo onorifico, ma la loro categoria professionale o il loro ruolo istituzionale è descritto come {{教|きょう}}{{師|し}}.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -237,9 +237,9 @@ back: >-
 example_jp: >-
   テーブルシティの {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}で {{友|とも}}だちと {{待|ま}}ち{{合|あ}}わせを した。
 example_it: >-
-  Mi sono incontrato con un amico nella piazza centrale di Mesapoli.
+  Mi sono incontrato con un amico nella piazza centrale di Tēburu Shiti.
 notes_it: >-
-  Composto da {{広|ひろ}} (ampio) e {{場|ば}} (luogo), {{広|ひろ}}{{場|ば}} indica una piazza o uno spiazzo pubblico. È una parola fondamentale per orientarsi nelle grandi città di Paldea, dove le piazze (come il {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}) fungono da snodi principali o punti di ritrovo per gli allenatori.
+  Composto da {{広|ひろ}} (ampio) e {{場|ば}} (luogo), {{広|ひろ}}{{場|ば}} indica una piazza o uno spiazzo pubblico. È una parola fondamentale per orientarsi nelle grandi città di Parudea, dove le piazze (come il {{中|ちゅう}}{{央|おう}}{{広|ひろ}}{{場|ば}}) fungono da snodi principali o punti di ritrovo per gli allenatori.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card
@@ -254,9 +254,9 @@ back: >-
 example_jp: >-
   スター{{団|だん}}には、 {{誰|だれ}}もが {{守|まも}}らなければならない {{掟|おきて}}が ある。
 example_it: >-
-  Il Team Star ha un codice che tutti devono rispettare.
+  Il Sutā-dan ha un codice che tutti devono rispettare.
 notes_it: >-
-  La parola {{掟|おきて}} indica un codice di condotta, una legge non scritta o una regola rigida interna a un gruppo, come le norme del Team Star. Ha una sfumatura più tribale e solenne rispetto al più comune e generico ルール (regola).
+  La parola {{掟|おきて}} indica un codice di condotta, una legge non scritta o una regola rigida interna a un gruppo, come le norme del Sutā-dan. Ha una sfumatura più tribale e solenne rispetto al più comune e generico ルール (regola).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-07]
 :::
 :::card

@@ -274,11 +274,8 @@ entry_id: term-mighty-strike-freedom-gundam
 card_type: recognition
 front: マイティーストライクフリーダムガンダム
 back: Mighty Strike Freedom Gundam
-example_jp: >-
-  {{高|たか}}コストなので、マイティーストライクフリーダムガンダムは{{終盤|しゅうばん}}の{{押|お}}し{{込|こ}}みまで{{温存|おんぞん}}しやすいです。
-example_it: >-
-  Siccome costa molto, è facile tenere in serbo il Mighty Strike Freedom Gundam
-  fino alla spinta finale della partita.
+example_jp: "マイティーストライクフリーダムガンダムはコストが{{高|たか}}いので、{{終盤|しゅうばん}}まで{{温存|おんぞん}}します。"
+example_it: "Dato il suo costo elevato, tengo in serbo il Mighty Strike Freedom Gundam fino alla fase finale."
 notes_it: >-
   Nome lungo + [コスト](term:term-cost) `7` segnano subito un top-end.
   In partita questo indica una carta da finestra finale: entra quando la corsia

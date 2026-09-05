@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-012-sv-prestudy-l03-reazioni-e-parlato-scarlet-violet
 media_id: media-pokemon-scarlet-violet
 slug: 012-sv-prestudy-l03-reazioni-e-parlato-scarlet-violet
-title: "Tempo, luogo e obbligo nei dialoghi di Paldea"
+title: "Tempo, luogo e obbligo nei dialoghi di Parudea"
 order: 42
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,7 +19,7 @@ summary: >-
   propone compagnia o segnala requisiti e doveri.
 ---
 
-# Tempo, luogo e obbligo nei dialoghi di Paldea
+# Tempo, luogo e obbligo nei dialoghi di Parudea
 
 In *Pokémon Scarlet & Violet*, molte battute decisive sono brevi: un personaggio ti ferma, chiede dove vuoi andare, propone di muoversi insieme o spiega che per proseguire serve una condizione precisa. La difficoltà non sta nella lunghezza della frase, ma nel riconoscere quale funzione sta aprendo.
 
@@ -54,7 +54,7 @@ Parole come [まだ](term:term-v026-mada), [どこ](term:term-v027-doko), [{{一
 - [ジムリーダー](term:term-v028-jimuriidaa) — figura-obiettivo della sfida in palestra
 - [バッジ](term:term-v031-bajji) — requisito o prova già ottenuta nel percorso
 - [{{場所|ばしょ}}](term:term-v034-basho) — punto concreto sulla mappa o nella scena
-- [{{地方|ちほう}}](term:term-v036-chihou) — cornice regionale più ampia, come Paldea
+- [{{地方|ちほう}}](term:term-v036-chihou) — cornice regionale più ampia, come Parudea
 - [{{状態|じょうたい}}](term:term-v035-joutai) — condizione attuale che può bloccare o permettere l'azione
 
 ---
@@ -102,7 +102,7 @@ translation_it: >-
 
 ## 2. Orientarsi sulla mappa: `どこ`, `{{場所|ばしょ}}`, `{{地方|ちほう}}`
 
-Quando il gioco chiede o spiega una destinazione, bisogna distinguere domanda, punto concreto e cornice geografica. [どこ](term:term-v027-doko) è la domanda "dove?"; [{{場所|ばしょ}}](term:term-v034-basho) è il luogo che può rispondere a quella domanda; [{{地方|ちほう}}](term:term-v036-chihou) allarga lo sguardo a una regione intera, come Paldea.
+Quando il gioco chiede o spiega una destinazione, bisogna distinguere domanda, punto concreto e cornice geografica. [どこ](term:term-v027-doko) è la domanda "dove?"; [{{場所|ばしょ}}](term:term-v034-basho) è il luogo che può rispondere a quella domanda; [{{地方|ちほう}}](term:term-v036-chihou) allarga lo sguardo a una regione intera, come Parudea.
 
 Il dettaglio più utile è la particella: `へ` dopo un luogo o una domanda di luogo indica direzione, non semplice esistenza. In `どこへ {{行|い}}く？`, il centro è "verso dove vai?", quindi il dialogo sta già immaginando un movimento.
 
@@ -110,30 +110,30 @@ Il dettaglio più utile è la particella: `へ` dopo un luogo o una domanda di l
 jp: >-
   ネモが {{待|ま}}ってる {{場所|ばしょ}}は どこですか。
 translation_it: >-
-  Dov'è il posto in cui Nemi sta aspettando?
+  Dov'è il posto in cui Nemo sta aspettando?
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `ネモが {{待|ま}}ってる` ➔ **Relativa descrittiva** (`が` marca Nemi come soggetto dell'azione dentro la frase che modifica `{{場所|ばしょ}}`).
+*   `ネモが {{待|ま}}ってる` ➔ **Relativa descrittiva** (`が` marca Nemo come soggetto dell'azione dentro la frase che modifica `{{場所|ばしょ}}`).
 *   `{{場所|ばしょ}}は` ➔ **Tema della domanda** (il luogo è ciò su cui la frase chiede informazione).
 *   `どこですか` ➔ **Domanda di posizione** (`どこ` non indica una destinazione da solo: qui chiede quale luogo corrisponde alla descrizione precedente).
 
 #### ⚖️ Contrasto operativo
 
-[どこ](term:term-v027-doko) è interrogativo; [{{場所|ばしょ}}](term:term-v034-basho) è un nome. どこへ chiede la direzione del movimento, mentre {{場所|ばしょ}}は どこ chiede di identificare il posto. [{{地方|ちほう}}](term:term-v036-chihou), invece, `地方` indica una regione ampia; in `パルデア地方`, Paldea viene letta come regione.
+[どこ](term:term-v027-doko) è interrogativo; [{{場所|ばしょ}}](term:term-v034-basho) è un nome. どこへ chiede la direzione del movimento, mentre {{場所|ばしょ}}は どこ chiede di identificare il posto. [{{地方|ちほう}}](term:term-v036-chihou), invece, `地方` indica una regione ampia; in `パルデア地方`, Parudea viene letta come regione.
 
 ## 3. Muoversi con qualcuno: `{{一緒|いっしょ}}`, `{{一緒|いっしょ}}に`, `{{元気|げんき}}`
 
-Le proposte dei compagni in Paldea spesso uniscono movimento e relazione. [{{一緒|いっしょ}}](term:term-v033-issho) nomina lo stare insieme; con に diventa [{{一緒|いっしょ}}に](term:term-v029-isshoni), cioè il modo in cui si compie l'azione: andare insieme, lottare insieme, preparare qualcosa insieme.
+Le proposte dei compagni in Parudea spesso uniscono movimento e relazione. [{{一緒|いっしょ}}](term:term-v033-issho) nomina lo stare insieme; con に diventa [{{一緒|いっしょ}}に](term:term-v029-isshoni), cioè il modo in cui si compie l'azione: andare insieme, lottare insieme, preparare qualcosa insieme.
 
-La persona con cui fai l'azione di solito entra con と. In una frase come ネモと {{一緒|いっしょ}}に, と aggancia Nemi come compagna, mentre [{{一緒|いっしょ}}に](term:term-v029-isshoni) dice che l'azione successiva sarà condivisa. Se compare [{{元気|げんき}}](term:term-v037-genki), invece, il dialogo sta valutando se una persona o un Pokémon è in condizione di muoversi, combattere o continuare.
+La persona con cui fai l'azione di solito entra con と. In una frase come ネモと {{一緒|いっしょ}}に, と aggancia Nemo come compagna, mentre [{{一緒|いっしょ}}に](term:term-v029-isshoni) dice che l'azione successiva sarà condivisa. Se compare [{{元気|げんき}}](term:term-v037-genki), invece, il dialogo sta valutando se una persona o un Pokémon è in condizione di muoversi, combattere o continuare.
 
 :::example_sentence
 jp: >-
   ネモと {{一緒|いっしょ}}に ジムへ {{行|い}}く。
 translation_it: >-
-  Vado alla palestra insieme a Nemi.
+  Vado alla palestra insieme a Nemo.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -275,4 +275,4 @@ translation_it: >-
 
 ## Nota finale
 
-Quando una battuta breve contiene [まだ](term:term-v026-mada), [どこ](term:term-v027-doko), [{{一緒|いっしょ}}に](term:term-v029-isshoni), [{{必要|ひつよう}}](term:term-v030-hitsuyou) o [～なきゃ / ～なくちゃ](grammar:grammar-g009-contrazione-di-dovere), non fermarti alla traduzione della parola singola. Guarda la funzione che apre nella scena: tempo sospeso, luogo da trovare, azione condivisa, requisito o dovere immediato. È lì che il parlato di Paldea diventa leggibile mentre giochi.
+Quando una battuta breve contiene [まだ](term:term-v026-mada), [どこ](term:term-v027-doko), [{{一緒|いっしょ}}に](term:term-v029-isshoni), [{{必要|ひつよう}}](term:term-v030-hitsuyou) o [～なきゃ / ～なくちゃ](grammar:grammar-g009-contrazione-di-dovere), non fermarti alla traduzione della parola singola. Guarda la funzione che apre nella scena: tempo sospeso, luogo da trovare, azione condivisa, requisito o dovere immediato. È lì che il parlato di Parudea diventa leggibile mentre giochi.

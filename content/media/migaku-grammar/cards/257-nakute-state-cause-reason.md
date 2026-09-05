@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-257-nakute-state-cause-reason
 entry_type: grammar
 entry_id: grammar-257-nakute-state-cause-reason
 card_type: concept
-front: "なくて"
+front: "なくて（causa negativa）"
 back: >-
   Collega una condizione negativa alla sua conseguenza o ragione
 example_jp: >-

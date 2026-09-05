@@ -63,7 +63,7 @@ reading: どの
 romaji: dono
 meaning_it: signore; onorifico -dono
 notes_it: >-
-  Il suffisso {{殿|どの}} (dono) è un onorifico antiquato, tipico del linguaggio samurai o ninja. In Scarlet/Violet è caratteristico del Team Star, dove viene usato per rivolgersi ai capi base (come Shumei, capo della divisione Veleno) con rispetto formale ma dal sapore "ruolistico".
+  Il suffisso {{殿|どの}} (dono) è un onorifico antiquato, tipico del linguaggio samurai o ninja. In Scarlet/Violet è caratteristico del Sutā-dan, dove viene usato per rivolgersi ai capi base (come Shūmei, capo della divisione Veleno) con rispetto formale ma dal sapore "ruolistico".
 level_hint: custom
 :::
 :::term
@@ -73,7 +73,7 @@ reading: すばらしい
 romaji: subarashii
 meaning_it: splendido; magnifico
 notes_it: >-
-  {{素|す}}{{晴|ば}}らしい esprime un alto grado di ammirazione e lode. Viene usato spesso da professori, Capipalestra o personaggi come Nemi per complimentarsi dopo una bella lotta o quando il giocatore mostra grande abilità e talento.
+  {{素|す}}{{晴|ば}}らしい esprime un alto grado di ammirazione e lode. Viene usato spesso da professori, Capipalestra o personaggi come Nemo per complimentarsi dopo una bella lotta o quando il giocatore mostra grande abilità e talento.
 level_hint: custom
 :::
 :::term
@@ -83,7 +83,7 @@ reading: ほんじつ
 romaji: honjitsu
 meaning_it: oggi, formale
 notes_it: >-
-  {{本日|ほんじつ}} è la lettura formale di “oggi”. Lo sentirai usato dai professori dell'Accademia negli annunci formali, dagli impiegati della Lega Pokémon o dagli speaker nei negozi. Indica un distacco professionale e un grado di cortesia superiore rispetto al più quotidiano {{今日|きょう}}.
+  {{本日|ほんじつ}} è la lettura formale di “oggi”. Lo sentirai usato dai professori dell'Accademia negli annunci formali, dagli impiegati della Pokémon Rīgu o dagli speaker nei negozi. Indica un distacco professionale e un grado di cortesia superiore rispetto al più quotidiano {{今日|きょう}}.
 level_hint: custom
 :::
 :::term
@@ -93,7 +93,7 @@ reading: たたかい
 romaji: tatakai
 meaning_it: battaglia; lotta
 notes_it: >-
-  {{戦|たたか}}い (battaglia/lotta) è il sostantivo derivato dal verbo {{戦|たたか}}う (lottare). A differenza di {{勝|しょう}}{{負|ぶ}} (sfida/match) che ha una forte sfumatura di competizione sportiva e codificata, {{戦|たたか}}い può avere un tono più serio, drammatico o assoluto, come le lotte finali o gli scontri nell'Area Zero.
+  {{戦|たたか}}い (battaglia/lotta) è il sostantivo derivato dal verbo {{戦|たたか}}う (lottare). A differenza di {{勝|しょう}}{{負|ぶ}} (sfida/match) che ha una forte sfumatura di competizione sportiva e codificata, {{戦|たたか}}い può avere un tono più serio, drammatico o assoluto, come le lotte finali o gli scontri nell'Eria Zero.
 level_hint: custom
 :::
 :::card
@@ -125,7 +125,7 @@ back: >-
 example_jp: >-
   ポケモンセンターで ポケモンも トレーナーも {{少|すこ}}し {{休|やす}}む。
 example_it: >-
-  Al Centro Pokémon, Pokémon e Allenatore si riposano un po'.
+  Al Pokémon Sentā, Pokémon e Allenatore si riposano un po'.
 notes_it: >-
   {{休|やす}}む è intransitivo e indica l'azione di riposare o prendersi una pausa. Per dire "far riposare" (come fa l'infermiera con i Pokémon), si usa la forma causativa {{休|やす}}ませる. Se si salta una lezione, l'oggetto prende la particella を: {{授|じゅ}}{{業|ぎょう}}を{{休|やす}}む (assentarsi dalla lezione).
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
@@ -142,7 +142,7 @@ back: >-
 example_jp: >-
   ネモに {{新|あたら}}しい ポケモンを {{見|み}}せる。
 example_it: >-
-  Mostro a Nemi il nuovo Pokémon.
+  Mostro a Nemo il nuovo Pokémon.
 notes_it: >-
   {{見|み}}せる (mostrare) è la controparte transitiva di {{見|み}}る (vedere). La persona a cui si mostra qualcosa prende に ({{人|ひと}}に), mentre l'oggetto mostrato prende を (マップを). È molto comune nei tutorial o quando un NPC chiede di vedere un Pokémon specifico.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
@@ -154,14 +154,13 @@ entry_type: term
 entry_id: term-v279-hiden
 card_type: recognition
 front: '{{秘|ひ}}{{伝|でん}}'
-back: >-
-  ひでん — segreto; ricetta segreta.
+back: "segreto tramandato; abbreviazione di Hiden Supaisu nel gioco"
 example_jp: >-
   ペパーと いっしょに {{秘|ひ}}{{伝|でん}}スパイスを さがしに いこう。
 example_it: >-
-  Andiamo a cercare le spezie segrete insieme a Pepe.
+  Andiamo a cercare le spezie segrete insieme a Pepā.
 notes_it: >-
-  {{秘|ひ}}{{伝|でん}} indica una conoscenza segreta o tramandata, qualcosa che non è di dominio comune. In {{秘|ひ}}{{伝|でん}}スパイス, la parola dà alle spezie un tono speciale: non sono ingredienti normali, ma una risorsa rara legata alla trama di Pepe.
+  {{秘|ひ}}{{伝|でん}} indica una conoscenza segreta o tramandata, qualcosa che non è di dominio comune. In {{秘|ひ}}{{伝|でん}}スパイス, la parola dà alle spezie un tono speciale: non sono ingredienti normali, ma una risorsa rara legata alla trama di Pepā.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
 :::
 :::card
@@ -176,7 +175,7 @@ back: >-
 example_jp: >-
   テーブルシティの {{大|おお}}きな ゲートを くぐった。
 example_it: >-
-  Ho varcato il grande cancello di Mesapoli.
+  Ho varcato il grande cancello di Tēburu Shiti.
 notes_it: >-
   {{大|おお}}きな è una forma speciale che può essere usata solo direttamente prima di un sostantivo (forma prenominale). A differenza di {{大|おお}}きい (che è un aggettivo in -i regolare), {{大|おお}}きな trasmette spesso una sfumatura leggermente più soggettiva, ma si usa comunemente anche per oggetti fisici imponenti.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
@@ -210,9 +209,9 @@ back: >-
 example_jp: >-
   シュウメイ{{殿|どの}}の どくポケモンは とても てごわい。
 example_it: >-
-  I Pokémon di tipo veleno di messere Shumei sono molto ostici.
+  I Pokémon di tipo veleno di messere Shūmei sono molto ostici.
 notes_it: >-
-  Il suffisso {{殿|どの}} (dono) è un onorifico antiquato, tipico del linguaggio samurai o ninja. In Scarlet/Violet è caratteristico del Team Star, dove viene usato per rivolgersi ai capi base (come Shumei, capo della divisione Veleno) con rispetto formale ma dal sapore "ruolistico".
+  Il suffisso {{殿|どの}} (dono) è un onorifico antiquato, tipico del linguaggio samurai o ninja. In Scarlet/Violet è caratteristico del Sutā-dan, dove viene usato per rivolgersi ai capi base (come Shūmei, capo della divisione Veleno) con rispetto formale ma dal sapore "ruolistico".
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
 :::
 :::card
@@ -229,7 +228,7 @@ example_jp: >-
 example_it: >-
   Il legame tra te e i tuoi Pokémon è davvero magnifico.
 notes_it: >-
-  {{素|す}}{{晴|ば}}らしい esprime un alto grado di ammirazione e lode. Viene usato spesso da professori, Capipalestra o personaggi come Nemi per complimentarsi dopo una bella lotta o quando il giocatore mostra grande abilità e talento.
+  {{素|す}}{{晴|ば}}らしい esprime un alto grado di ammirazione e lode. Viene usato spesso da professori, Capipalestra o personaggi come Nemo per complimentarsi dopo una bella lotta o quando il giocatore mostra grande abilità e talento.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
 :::
 :::card
@@ -246,7 +245,7 @@ example_jp: >-
 example_it: >-
   La lotta di oggi finisce qui.
 notes_it: >-
-  {{本日|ほんじつ}} è la lettura formale di “oggi”. Lo sentirai usato dai professori dell'Accademia negli annunci formali, dagli impiegati della Lega Pokémon o dagli speaker nei negozi. Indica un distacco professionale e un grado di cortesia superiore rispetto al più quotidiano {{今日|きょう}}.
+  {{本日|ほんじつ}} è la lettura formale di “oggi”. Lo sentirai usato dai professori dell'Accademia negli annunci formali, dagli impiegati della Pokémon Rīgu o dagli speaker nei negozi. Indica un distacco professionale e un grado di cortesia superiore rispetto al più quotidiano {{今日|きょう}}.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
 :::
 :::card
@@ -261,8 +260,8 @@ back: >-
 example_jp: >-
   ネモとの さいごの {{戦|たたか}}いに むけて じゅんびを しよう。
 example_it: >-
-  Prepariamoci per l'ultima battaglia contro Nemi.
+  Prepariamoci per l'ultima battaglia contro Nemo.
 notes_it: >-
-  {{戦|たたか}}い (battaglia/lotta) è il sostantivo derivato dal verbo {{戦|たたか}}う (lottare). A differenza di {{勝|しょう}}{{負|ぶ}} (sfida/match) che ha una forte sfumatura di competizione sportiva e codificata, {{戦|たたか}}い può avere un tono più serio, drammatico o assoluto, come le lotte finali o gli scontri nell'Area Zero.
+  {{戦|たたか}}い (battaglia/lotta) è il sostantivo derivato dal verbo {{戦|たたか}}う (lottare). A differenza di {{勝|しょう}}{{負|ぶ}} (sfida/match) che ha una forte sfumatura di competizione sportiva e codificata, {{戦|たたか}}い può avere un tono più serio, drammatico o assoluto, come le lotte finali o gli scontri nell'Eria Zero.
 tags: [pokemon, scarlet-violet, anki-sequence, lesson-04]
 :::

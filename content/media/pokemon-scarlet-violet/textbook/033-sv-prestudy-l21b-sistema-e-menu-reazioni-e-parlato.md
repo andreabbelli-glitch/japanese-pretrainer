@@ -16,7 +16,7 @@ tags:
 prerequisites: []
 summary: >-
   Distinguere blocchi, condizioni, inviti online e reazioni brevi nei menu e
-  nei dialoghi rapidi di Paldea.
+  nei dialoghi rapidi di Parudea.
 ---
 
 # Menu, condizioni e reazioni: leggere blocchi, inviti e stati
@@ -45,7 +45,7 @@ parete di testo: diventa una serie di istruzioni leggibili.
 - [{{回避|かいひ}}{{率|りつ}}](term:term-v338-kaihiritsu) — tasso di evasione
 - [{{材料|ざいりょう}}](term:term-v339-zairyou) — ingredienti / materiali
 - [カメラアプリ](term:term-v340-kameraapuri) — app fotocamera
-- [{{自分|じぶん}}だけ](term:term-v344-jibun-dake) — solo io / solo per sé
+- [{{自分|じぶん}}だけ](term:term-v344-jibun-dake) — soltanto io/tu/lui, secondo il referente
 - [{{協力|きょうりょく}}](term:term-v345-kyouryoku) — cooperazione
 - [{{効果|こうか}}バツグン](term:term-v346-koukabatsugun) — super efficace
 - [{{遠|とお}}く](term:term-v347-tooku) — lontano
@@ -71,7 +71,7 @@ parete di testo: diventa una serie di istruzioni leggibili.
 ## Etichette da riconoscere
 
 - [チャンピオンテスト](term:term-v341-chanpiontesuto) — prova del percorso Campione
-- [ユニオンサークル](term:term-v352-yunionsaakuru) — Union Circle, spazio multiplayer condiviso
+- [ユニオンサークル](term:term-v352-yunionsaakuru) — Yunion Sākuru, spazio multiplayer condiviso
 
 ---
 
@@ -132,7 +132,7 @@ segue resta dentro quel caso. Pensa a [{{条件|じょうけん}}](term:term-v35
 come a una checklist invisibile: il gioco non ti sta solo dicendo "no", ti sta
 dicendo che una casella non è ancora spuntata.
 
-## 2. Union Circle e online: inviti, codici e cooperazione
+## 2. Yunion Sākuru e online: inviti, codici e cooperazione
 
 Le funzioni multiplayer di *Scarlet & Violet* mescolano katakana trasparente e
 parole giapponesi molto concrete. Il risultato è una UI che sembra semplice,
@@ -254,8 +254,7 @@ succede.
 *   [ライバル](term:term-v334-raibaru) è trasparente e in un'avventura Pokémon
     porta il ruolo del rivale: qualcuno che ti misura, ti provoca, ti accompagna
     nella crescita e dà peso ai progressi.
-*   [{{自分|じぶん}}だけ](term:term-v344-jibun-dake) restringe il campo a "solo io"
-    o "solo per me". `だけ` chiude fuori gli altri: in un dialogo può far sentire
+*   [{{自分|じぶん}}だけ](term:term-v344-jibun-dake) restringe il campo alla sola persona indicata da {{自分|じぶん}}: «soltanto io/tu/lui». `だけ` chiude fuori gli altri: in un dialogo può far sentire
     isolamento, responsabilità personale o una scelta che riguarda soltanto il
     parlante.
 *   [いきなり](term:term-v337-ikinari) dà il colpo di scena: qualcosa arriva
@@ -324,7 +323,7 @@ lontano.
     Sono parole da menu e da preparazione, non da reazione emotiva.
 *   [{{遠|とお}}く](term:term-v347-tooku) e [{{空|そら}}](term:term-v335-sora)
     aprono la scena nello spazio. `{{遠|とお}}く` indica lontananza o direzione
-    verso un punto distante; `{{空|そら}}` è il cielo sopra Paldea, ma anche il
+    verso un punto distante; `{{空|そら}}` è il cielo sopra Parudea, ma anche il
     modo in cui una battuta può far sentire ampiezza, viaggio o orizzonte.
 *   [きっと{{大丈夫|だいじょうぶ}}](term:term-e068-kitto-daijoubu) è una rassicurazione,
     non una conferma tecnica. `きっと` alza la fiducia, `{{大丈夫|だいじょうぶ}}`
@@ -332,25 +331,15 @@ lontano.
     un messaggio di sistema che certifica un successo.
 
 :::example_sentence
-jp: >-
-  しばらく お{{待|ま}}ちください。サンドウィッチの {{材料|ざいりょう}}は
-  カメラアプリに {{登録|とうろく}}してあります。
-translation_it: >-
-  Attendi un momento. Gli ingredienti del panino sono già registrati
-  nell'app fotocamera.
+jp: "サンドウィッチの{{材料|ざいりょう}}はメモしてあります。"
+translation_it: "Ho annotato gli ingredienti del sandwich."
 :::
-
 #### 🗺️ Anatomia della frase
 
-*   `しばらく お{{待|ま}}ちください` ➔ **Pausa cortese di sistema**: la schermata
-    chiede di aspettare mentre una procedura si completa.
-*   `サンドウィッチの {{材料|ざいりょう}}は` ➔ **Tema concreto**: gli ingredienti del
-    panino diventano ciò di cui il messaggio parla.
-*   `カメラアプリに` ➔ **Luogo funzionale**: il `に` indica dove il risultato è
-    stato registrato o dove resta disponibile.
-*   `{{登録|とうろく}}してあります` ➔ **Risultato predisposto**: la forma
-    [～てある](grammar:grammar-g070-qualcosa-e-stato-fatto-intenzionalmente)
-    presenta la registrazione come già fatta intenzionalmente.
+- `サンドウィッチの{{材料|ざいりょう}}は` mette a tema gli ingredienti del panino.
+- `メモしてあります` presenta gli appunti come già presi intenzionalmente:
+  [～てある](grammar:grammar-g070-qualcosa-e-stato-fatto-intenzionalmente)
+  sottolinea il risultato che resta disponibile.
 
 :::example_sentence
 jp: >-
@@ -365,7 +354,7 @@ translation_it: >-
 *   `きっと{{大丈夫|だいじょうぶ}}` ➔ **Rassicurazione**: il parlante comunica fiducia,
     non un dato tecnico verificato dal sistema.
 *   `{{空|そら}}の {{下|した}}を` ➔ **Scenario aperto**: il cielo dà alla frase un
-    respiro da viaggio attraverso Paldea.
+    respiro da viaggio attraverso Parudea.
 *   `{{遠|とお}}くまで` ➔ **Limite distante**: `まで` spinge la lettura fino a un
     punto lontano.
 *   {{進|すす}}んでいきましょう ➔ **Avanzamento condiviso**: [～ていく](grammar:grammar-g069-andare-avanti-facendo-cambiare-nel-tempo)
@@ -404,7 +393,7 @@ jp: >-
   ユニオンサークルで あいことばを {{使|つか}}って
   {{協力|きょうりょく}}しませんか。
 translation_it: >-
-  Ti va di usare un codice link nell'Union Circle e cooperare?
+  Ti va di usare un codice link nell'Yunion Sākuru e cooperare?
 :::
 
 :::example_sentence

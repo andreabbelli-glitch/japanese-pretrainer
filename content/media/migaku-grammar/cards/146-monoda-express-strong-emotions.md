@@ -14,8 +14,7 @@ title: "「ものだ」Express strong emotions"
 reading: "ものだ"
 meaning_it: >-
   Davvero…; si deve…; una volta si era soliti…
-notes_it: >-
-  Si aggiunge a una forma piana; con Nome／Aな al presente compare だ prima di もの: 静かなものだ è attributivo, 静かだものだ appartiene ad altri usi e va valutato nel contesto. V passato + ものだ richiama spesso abitudini nostalgiche; V non-passato + ものだ può enunciare una norma. Nel parlato emotivo もの si contrae in もん.
+notes_it: "Si collega alla forma piana di verbi e aggettivi in い. Con gli aggettivi in な si usa なものだ al presente, come 静かなものだ, e だったものだ al passato. V passato + ものだ richiama spesso abitudini nostalgiche; V non-passato + ものだ può enunciare una norma. Nel parlato ものだ può diventare もんだ. La giustificazione con だもの／だもん è una costruzione distinta."
 level_hint: jlpt-n3
 :::
 
@@ -32,7 +31,6 @@ example_jp: >-
   {{子供|こども}}の{{成長|せいちょう}}は{{早|はや}}いものだ。
 example_it: >-
   Quanto crescono in fretta i bambini!
-notes_it: >-
-  Si aggiunge a una forma piana; con Nome／Aな al presente compare だ prima di もの: 静かなものだ è attributivo, 静かだものだ appartiene ad altri usi e va valutato nel contesto. V passato + ものだ richiama spesso abitudini nostalgiche; V non-passato + ものだ può enunciare una norma. Nel parlato emotivo もの si contrae in もん.
+notes_it: "Si collega alla forma piana di verbi e aggettivi in い. Con gli aggettivi in な si usa なものだ al presente, come 静かなものだ, e だったものだ al passato. V passato + ものだ richiama spesso abitudini nostalgiche; V non-passato + ものだ può enunciare una norma. Nel parlato ものだ può diventare もんだ. La giustificazione con だもの／だもん è una costruzione distinta."
 tags: [migaku, grammar, jlpt-n3, academy-level-1, series]
 :::

@@ -16,7 +16,7 @@ tags:
 prerequisites: []
 summary: >-
   Leggere i verbi dei menu e dei tutorial per capire scelta, modifica,
-  progressione, orientamento e partecipazione nelle schermate di Paldea.
+  progressione, orientamento e partecipazione nelle schermate di Parudea.
 ---
 
 # Menu e verbi operativi: scegliere, tornare, cambiare, partecipare
@@ -31,7 +31,7 @@ Gli stessi segnali si allargano poi ai tutorial e ai dialoghi. Un personaggio pu
 - [{{戻|もど}}る](term:term-v315-modoru) — tornare indietro
 - [まひ](term:term-v316-mahi) — paralisi
 - [{{得意|とくい}}](term:term-v317-tokui) — essere bravo in / punto forte
-- [がけのぼり](term:term-v318-gakenobori) — arrampicata sulla parete
+- [がけのぼり](term:term-v318-gakenobori) — Gakenobori (abilità per scalare le pareti)
 - [チャージ](term:term-v319-chaaji) — ricarica
 - [{{案内|あんない}}](term:term-v320-annai) — guida / accompagnamento
 - [{{見|み}}た{{目|め}}](term:term-v321-mitame) — aspetto esteriore
@@ -109,8 +109,8 @@ translation_it: >-
 
 Quando la UI parla di nuove funzioni, ricette, crafting o risorse, il soggetto della frase spesso non sei tu. Il giapponese mette al centro lo stato del sistema: una voce aumenta, una creazione diventa possibile, una risorsa si ricarica.
 
-*   [{{増|ふ}}える](term:term-v314-fue-ru) è intransitivo: `増える` e' intransitivo: il menu stesso aumenta o compare. In メニューが{{増|ふ}}える, メニュー è marcato da が perché è il menu stesso a espandersi. Il focus è il nuovo stato della schermata, non un gesto manuale del giocatore.
-*   [{{作|つく}}れる](term:term-e049-tsukureru) è la forma potenziale di {{作|つく}}る: `作れる` presenta una possibilita' concreta di creazione sbloccata da materiali o funzione. In *Scarlet & Violet* questo valore diventa concreto quando hai materiali, ricette o una funzione sbloccata per MT e oggetti.
+*   [{{増|ふ}}える](term:term-v314-fue-ru) è intransitivo: `増える` è intransitivo: il menu stesso aumenta o compare. In メニューが{{増|ふ}}える, メニュー è marcato da が perché è il menu stesso a espandersi. Il focus è il nuovo stato della schermata, non un gesto manuale del giocatore.
+*   [{{作|つく}}れる](term:term-e049-tsukureru) è la forma potenziale di {{作|つく}}る: `作れる` presenta una possibilita' concreta di creazione sbloccata da materiali o funzione. In *Scarlet & Violet* questo valore diventa concreto quando hai materiali, ricette o una funzione sbloccata per Waza Mashin e oggetti.
 *   [まとめて](term:term-e048-matomete) comprime più elementi in un'unica azione. In acquisti, selezioni o conferme multiple, non vuol dire solo "molto": dice che gli elementi vengono trattati insieme, in blocco.
 *   [チャージ](term:term-v319-chaaji) porta nella UI il lessico della ricarica. Può riguardare energia, uso di una funzione o disponibilità di una risorsa: quando lo vedi, chiediti che cosa deve tornare pronto prima del prossimo utilizzo.
 *   [ちなみに](term:term-e060-chinamini) introduce un'informazione laterale, spesso utile ma non centrale. Se dopo compare [～かも](grammar:grammar-g064-contrazione-di), il tono resta ipotetico: il parlante aggiunge una possibilità, non una garanzia.
@@ -137,7 +137,7 @@ Per [{{増|ふ}}える](term:term-v314-fue-ru), immagina il menu che si allarga 
 jp: >-
   ここで わざマシンが {{作|つく}}れる。
 translation_it: >-
-  Qui puoi creare una MT.
+  Qui puoi creare una Waza Mashin.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -154,7 +154,7 @@ translation_it: >-
 
 ---
 
-## 3. Orientarsi a Paldea: meta, metodo, indizio
+## 3. Orientarsi a Parudea: meta, metodo, indizio
 
 Fuori dai menu stretti, il gioco usa parole diverse per guidarti verso una destinazione, spiegarti una procedura o lasciarti solo un suggerimento. Separarle è importante perché una riga può dirti "dove arrivare", "come farlo" o "che indizio usare" senza usare la stessa parola italiana.
 
@@ -291,12 +291,9 @@ translation_it: >-
 :::
 
 :::example_sentence
-jp: >-
-  まとめて {{買|か}}うと、 チャージが {{早|はや}}くなるかも。
-translation_it: >-
-  Se compri tutto insieme, forse la ricarica diventerà più veloce.
+jp: "どうぐをまとめて{{買|か}}うと、{{買|か}}い{{物|もの}}の{{時間|じかん}}を{{短縮|たんしゅく}}できる。"
+translation_it: "Comprando gli strumenti tutti insieme, si risparmia tempo."
 :::
-
 :::example_sentence
 jp: >-
   {{目標|もくひょう}}への {{行|い}}き{{方|かた}}は、 ヒントで {{確認|かくにん}}できます。
@@ -313,4 +310,4 @@ translation_it: >-
 
 ## Nota finale
 
-Nei menu di Paldea, il primo segnale da cercare è il verbo operativo: [{{選|えら}}ぶ](term:term-v322-erabu) seleziona, [{{戻|もど}}る](term:term-v315-modoru) torna indietro, [{{変更|へんこう}}](term:term-v331-henkou) sostituisce uno stato, [{{増|ふ}}える](term:term-v314-fue-ru) segnala un'aggiunta e [{{作|つく}}れる](term:term-e049-tsukureru) apre una possibilità. Nei dialoghi, quegli stessi meccanismi si allargano a guida, intenzione e partecipazione: capisci non solo quale pulsante premere, ma anche che tipo di decisione il testo ti sta chiedendo di prendere.
+Nei menu di Parudea, il primo segnale da cercare è il verbo operativo: [{{選|えら}}ぶ](term:term-v322-erabu) seleziona, [{{戻|もど}}る](term:term-v315-modoru) torna indietro, [{{変更|へんこう}}](term:term-v331-henkou) sostituisce uno stato, [{{増|ふ}}える](term:term-v314-fue-ru) segnala un'aggiunta e [{{作|つく}}れる](term:term-e049-tsukureru) apre una possibilità. Nei dialoghi, quegli stessi meccanismi si allargano a guida, intenzione e partecipazione: capisci non solo quale pulsante premere, ma anche che tipo di decisione il testo ti sta chiedendo di prendere.

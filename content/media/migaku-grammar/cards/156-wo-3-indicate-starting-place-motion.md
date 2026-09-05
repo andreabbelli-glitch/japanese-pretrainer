@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-156-wo-3-indicate-starting-place-motion
 entry_type: grammar
 entry_id: grammar-156-wo-3-indicate-starting-place-motion
 card_type: concept
-front: "を"
+front: "を（partenza: {{家|いえ}}を{{出|で}}る）"
 back: >-
   Con verbi di uscita o distacco, を marca il punto di partenza: 家を出る, 電車を降りる.
 example_jp: >-

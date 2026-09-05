@@ -127,7 +127,7 @@ describe("katakana speed catalog", () => {
     expect(sentenceItems).toHaveLength(60);
     expect(sentenceItems.map((item) => item.sentenceId)).toContain("P60");
     expect(getKatakanaSpeedItemById("sentence-P60")?.surface).toBe(
-      "珍しい表記は、正解速度よりも一瞬で固まらないことを重視します。"
+      "珍しい表記でも戸惑わずに読めるよう、少しずつ練習します。"
     );
   });
 

@@ -24,7 +24,7 @@ lesson_id: lesson-migaku-grammar-193-ka-3-making-question-words-unspecific
 entry_type: grammar
 entry_id: grammar-193-ka-3-making-question-words-unspecific
 card_type: concept
-front: "か"
+front: "か（dopo un interrogativo）"
 back: >-
   Parola interrogativa + か significa «qualcosa/qualcuno/qualche luogo o momento».
 example_jp: >-

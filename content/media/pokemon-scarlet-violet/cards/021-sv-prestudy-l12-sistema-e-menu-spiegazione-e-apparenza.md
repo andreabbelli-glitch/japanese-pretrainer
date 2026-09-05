@@ -326,9 +326,9 @@ id: term-v147-sutaadasutosutoriito
 lemma: スターダスト★ストリート
 reading: すたーだすと★すとりーと
 romaji: sutaadasuto★sutoriito
-meaning_it: Starfall Street
+meaning_it: Sutādasuto Sutorīto
 notes_it: >-
-  スターダスト★ストリート è il nome della trama legata a Team Star. Va letto come
+  スターダスト★ストリート è il nome della trama legata a Sutā-dan. Va letto come
   titolo di percorso, non come frase giapponese da analizzare parola per parola.
 :::
 :::term
@@ -336,7 +336,7 @@ id: term-v148-chanpionroodo
 lemma: チャンピオンロード
 reading: ちゃんぴおんろーど
 romaji: chanpionroodo
-meaning_it: Champion Road
+meaning_it: Chanpion Rōdo
 notes_it: >-
   チャンピオンロード è il nome del percorso delle Palestre e della Lega. ロード
   funziona come "route/percorso" nel titolo.
@@ -346,9 +346,9 @@ id: term-v149-rejiendoruuto
 lemma: レジェンドルート
 reading: れじぇんどるーと
 romaji: rejiendoruuto
-meaning_it: Path of Legends
+meaning_it: Rejendo Rūto
 notes_it: >-
-  レジェンドルート è il nome del percorso dei Titan e delle Herba Mystica. ルート
+  レジェンドルート è il nome del percorso dei Nushi e delle Hiden Supaisu. ルート
   lo presenta come itinerario narrativo del gioco.
 :::
 :::term

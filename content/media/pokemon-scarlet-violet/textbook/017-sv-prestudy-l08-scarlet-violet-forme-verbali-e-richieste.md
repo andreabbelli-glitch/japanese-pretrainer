@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-017-sv-prestudy-l08-scarlet-violet-forme-verbali-e-richieste
 media_id: media-pokemon-scarlet-violet
 slug: 017-sv-prestudy-l08-scarlet-violet-forme-verbali-e-richieste
-title: "Scelte, richieste e prime risposte a Paldea"
+title: "Scelte, richieste e prime risposte a Parudea"
 order: 47
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -19,7 +19,7 @@ summary: >-
   scegliere, quale azione avviare e quali bonus o compagni vengono nominati.
 ---
 
-# Scelte, richieste e prime risposte a Paldea
+# Scelte, richieste e prime risposte a Parudea
 
 All'inizio di *Pokémon Scarlet & Violet* il gioco passa spesso da una battuta di personaggio a una schermata che aspetta una scelta: quale opzione usare, da dove partire, se rispondere a una domanda, quale compagno o bonus è appena entrato in scena.
 
@@ -48,10 +48,10 @@ Il giapponese di queste schermate è breve, ma molto funzionale. Una particella 
 
 ## Etichette da riconoscere
 
-- [{{食事|しょくじ}}パワー](term:term-v094-shokujipawaa) — Meal Power, bonus ottenuto dal cibo
+- [{{食事|しょくじ}}パワー](term:term-v094-shokujipawaa) — Shokuji Pawā, bonus ottenuto dal cibo
 - [コライドン](term:term-v096-koraidon) — Koraidon, leggendario di *Scarlet*
 - [ミライドン](term:term-v097-miraidon) — Miraidon, leggendario di *Violet*
-- [{{秘伝|ひでん}}スパイス](term:term-v100-hiden-supaisu) — Herba Mystica / spezia segreta
+- [{{秘伝|ひでん}}スパイス](term:term-v100-hiden-supaisu) — Hiden Supaisu / spezia segreta
 
 ---
 
@@ -196,13 +196,13 @@ translation_it: >-
 jp: >-
   {{秘伝|ひでん}}スパイスで {{食事|しょくじ}}パワーが {{上|あ}}がります。
 translation_it: >-
-  Con Herba Mystica aumenta il Meal Power.
+  Con Hiden Supaisu aumenta il Shokuji Pawā.
 :::
 
 #### 🗺️ Anatomia della frase
 
 *   `{{秘伝|ひでん}}スパイスで` ➔ **mezzo o causa**: `で` presenta la risorsa usata per ottenere l'effetto.
-*   `{{食事|しょくじ}}パワーが` ➔ **bonus che cambia stato**: la UI mette a fuoco il Meal Power.
+*   `{{食事|しょくじ}}パワーが` ➔ **bonus che cambia stato**: la UI mette a fuoco il Shokuji Pawā.
 *   `{{上|あ}}がります` ➔ **aumento cortese**: il verbo indica che il valore o l'effetto sale.
 
 #### ⚖️ Contrasto operativo
@@ -287,4 +287,4 @@ translation_it: >-
 
 ## Nota finale
 
-Nelle prime ore a Paldea, le frasi brevi fanno molto lavoro. [どれ](term:term-v091-dore) orienta la scelta, [{{始|はじ}}める](term:term-v095-hajime-ru) decide se un'azione parte, [{{自由|じゆう}}に](term:term-v092-jiyuu-ni) e [{{近|ちか}}く](term:term-v098-chikaku) leggono lo spazio, mentre [どうしよう](term:term-e017-doushiyou) e [どうしたの？](term:term-e018-doushitano) aprono il tono emotivo del dialogo. Quando riconosci particelle, forma verbale e registro, capisci non solo le parole, ma la funzione della frase nella scena.
+Nelle prime ore a Parudea, le frasi brevi fanno molto lavoro. [どれ](term:term-v091-dore) orienta la scelta, [{{始|はじ}}める](term:term-v095-hajime-ru) decide se un'azione parte, [{{自由|じゆう}}に](term:term-v092-jiyuu-ni) e [{{近|ちか}}く](term:term-v098-chikaku) leggono lo spazio, mentre [どうしよう](term:term-e017-doushiyou) e [どうしたの？](term:term-e018-doushitano) aprono il tono emotivo del dialogo. Quando riconosci particelle, forma verbale e registro, capisci non solo le parole, ma la funzione della frase nella scena.

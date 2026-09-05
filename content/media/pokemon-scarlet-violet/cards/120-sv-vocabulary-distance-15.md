@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-15
 media_id: media-pokemon-scarlet-violet
 slug: 120-sv-vocabulary-distance-15
-title: 'Parole per leggere Paldea — quindici'
+title: 'Parole per leggere Parudea — quindici'
 order: 165
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -78,7 +78,7 @@ back: >-
 example_jp: >-
   どうしてもあんたに{{会|あ}}って{{直接|ちょくせつ}}{{話|ばなし}}がしたいそうだシュウメイ{{殿|どの}}{{聞|き}}いて！
 example_it: >-
-  A quanto pare vuole assolutamente incontrarti per parlarti di persona, Shumei-sama, ascolta!
+  A quanto pare vuole assolutamente incontrarti per parlarti di persona, Shūmei-sama, ascolta!
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 
@@ -225,13 +225,10 @@ card_type: recognition
 front: '{{黙|だま}}る'
 back: >-
   だまる — tacere; non dire nulla.
-example_jp: >-
-  ...{{黙|だま}}りなさいわたしはわたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ{{優|やさ}}しいボスさん{{勝負|しょうぶ}}{{再開|さいかい}}といこうか！
-example_it: >-
-  …Stai zitto, voglio solo che nessuno si faccia male, tranne me. Capo gentile, ricominciamo la sfida!
+example_jp: "……{{黙|だま}}りなさい。わたしは、わたし{{以外|いがい}}{{誰|だれ}}も{{傷|きず}}ついてほしくないだけよ。"
+example_it: "…Sta’ zitto. Voglio solo che nessuno, a parte me, si faccia male."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-199-mokugeki
 lemma: '目撃'
@@ -253,7 +250,7 @@ back: >-
 example_jp: >-
   {{謎|なぞ}}の{{生物|せいぶつ}}イダイナキバパルデア{{某所|ぼうしょ}}にある{{乾燥|かんそう}}{{地帯|ちたい}}において{{謎|なぞ}}の{{生物|せいぶつ}}の{{目撃|もくげき}}が{{報告|ほうこく}}されている。
 example_it: >-
-  Creatura misteriosa: Grandizanne. In una zona arida di un luogo non precisato di Paldea sono stati segnalati avvistamenti di questa creatura.
+  Creatura misteriosa: Idaina Kiba. In una zona arida di un luogo non precisato di Parudea sono stati segnalati avvistamenti di questa creatura.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
 

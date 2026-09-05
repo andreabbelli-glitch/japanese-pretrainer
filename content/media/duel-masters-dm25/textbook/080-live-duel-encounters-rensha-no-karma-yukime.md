@@ -73,18 +73,10 @@ fluida è "Yukime, Karma della raffica": non serve trasformare 連射 in un verb
 perché qui è un nome che colora il titolo della creatura.
 
 :::example_sentence
-jp: >-
-  [{{連射|れんしゃ}}](term:term-rensha)のカルマ ユキメは、
-  [{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で](grammar:grammar-igai-no-houhou-de)
-  [{{出|で}}た{{時|とき}}](grammar:grammar-toki)、
-  {{相手|あいて}}の[クリーチャー](term:term-creature)を
-  [{{破壊|はかい}}する](term:term-destroy)。
-translation_it: >-
-  Yukime, Karma della raffica, distrugge una creatura dell'avversario quando
-  quella creatura entra con un metodo diverso dall'evocazione.
+jp: "{{相手|あいて}}のクリーチャーが{{召喚|しょうかん}}{{以外|いがい}}の{{方法|ほうほう}}で{{出|で}}た{{時|とき}}、{{連射|れんしゃ}}のカルマ ユキメの{{能力|のうりょく}}で、そのクリーチャーを{{破壊|はかい}}する。"
+translation_it: "Quando una creatura avversaria entra con un metodo diverso dall’evocazione, la distruggo con l’abilità di Yukime, Karma della raffica."
 reveal_mode: sentence
 :::
-
 #### 🗺️ Anatomia del nome e del trigger
 
 *   [{{連射|れんしゃ}}](term:term-rensha)のカルマ ユキメ ➔ **Nome qualificato**:

@@ -28,7 +28,7 @@ romaji: negaisage
 meaning_it: rifiuto netto; non volerci avere a che fare
 pos: noun
 notes_it: >-
-  {{願|ねが}}い{{下|さ}}げ e' rifiutare qualcosa ancora prima di accettare la
+  {{願|ねが}}い{{下|さ}}げ è rifiutare qualcosa ancora prima di accettare la
   proposta: "ne faccio volentieri a meno".
 level_hint: n1
 :::
@@ -41,7 +41,7 @@ romaji: ochitsuku
 meaning_it: calmarsi; stabilizzarsi
 pos: verb
 notes_it: >-
-  {{落|お}}ち{{着|つ}}く e' calmarsi o stabilizzarsi. L'imperativo
+  {{落|お}}ち{{着|つ}}く è calmarsi o stabilizzarsi. L'imperativo
   {{落|お}}ち{{着|つ}}け significa "calmati".
 level_hint: n3
 :::
@@ -54,7 +54,7 @@ romaji: yatsu
 meaning_it: tipo; tizio; cosa
 pos: noun
 notes_it: >-
-  {{奴|やつ}} e' informale e spesso ruvido. Puo' riferirsi a una persona o a
+  {{奴|やつ}} è informale e spesso ruvido. Può riferirsi a una persona o a
   una cosa con distanza o fastidio.
 level_hint: n3
 :::
@@ -67,7 +67,7 @@ romaji: rippa
 meaning_it: splendido; ammirevole; degno
 pos: na-adjective
 notes_it: >-
-  {{立派|りっぱ}} elogia qualcosa come valido, rispettabile o ben fatto. Puo'
+  {{立派|りっぱ}} elogia qualcosa come valido, rispettabile o ben fatto. Può
   riferirsi a persone, azioni o risultati.
 level_hint: n4
 :::
@@ -90,7 +90,7 @@ id: term-ch-b8-hanashi-ni-naranai
 lemma: 話にならない
 reading: はなしにならない
 romaji: hanashi ni naranai
-meaning_it: non se ne parla; e' fuori discussione
+meaning_it: non se ne parla; è fuori discussione
 pos: expression
 notes_it: >-
   {{話|はなし}}にならない significa che la proposta o situazione non arriva nemmeno
@@ -106,7 +106,7 @@ romaji: sansei
 meaning_it: accordo; essere d'accordo
 pos: suru-noun
 notes_it: >-
-  {{賛成|さんせい}} e' accordo con un piano o opinione. {{賛成|さんせい}}する =
+  {{賛成|さんせい}} è accordo con un piano o opinione. {{賛成|さんせい}}する =
   essere d'accordo.
 level_hint: n4
 :::
@@ -119,7 +119,7 @@ romaji: tedasuke
 meaning_it: aiuto; assistenza
 pos: noun
 notes_it: >-
-  {{手助|てだす}}け e' aiuto pratico, letteralmente una mano data a qualcuno.
+  {{手助|てだす}}け è aiuto pratico, letteralmente una mano data a qualcuno.
 level_hint: n3
 :::
 
@@ -131,7 +131,7 @@ romaji: genkai
 meaning_it: limite
 pos: noun
 notes_it: >-
-  {{限界|げんかい}} e' il punto oltre cui non si riesce piu' a continuare:
+  {{限界|げんかい}} è il punto oltre cui non si riesce più a continuare:
   forza, tempo, spazio o pazienza.
 level_hint: n3
 :::
@@ -144,7 +144,7 @@ romaji: saki o kosu
 meaning_it: precedere; arrivare prima di qualcuno
 pos: expression
 notes_it: >-
-  {{先|さき}}を{{越|こ}}す e' superare qualcuno arrivando prima o facendo prima
+  {{先|さき}}を{{越|こ}}す è superare qualcuno arrivando prima o facendo prima
   cio' che l'altro voleva fare.
 level_hint: n2
 :::
@@ -157,7 +157,7 @@ romaji: denaosu
 meaning_it: ripartire da capo; tornare un'altra volta
 pos: verb
 notes_it: >-
-  {{出直|でなお}}す e' uscire di nuovo o ricominciare dopo che il tentativo
+  {{出直|でなお}}す è uscire di nuovo o ricominciare dopo che il tentativo
   precedente non va bene.
 level_hint: n2
 :::
@@ -170,7 +170,7 @@ romaji: ojama suru
 meaning_it: disturbare; permesso entrando
 pos: expression
 notes_it: >-
-  お{{邪魔|じゃま}}する e' una formula detta entrando nello spazio di qualcuno:
+  お{{邪魔|じゃま}}する è una formula detta entrando nello spazio di qualcuno:
   letteralmente "disturbo".
 level_hint: n4
 :::
@@ -196,7 +196,7 @@ romaji: osoikakaru
 meaning_it: assalire; avventarsi su
 pos: verb
 notes_it: >-
-  {{襲|おそ}}い{{掛|か}}かる e' attaccare piombando addosso al bersaglio. Porta
+  {{襲|おそ}}い{{掛|か}}かる è attaccare piombando addosso al bersaglio. Porta
   movimento improvviso e minaccia.
 level_hint: n2
 :::
@@ -209,7 +209,7 @@ romaji: gekitai
 meaning_it: respingimento; ricacciare indietro
 pos: suru-noun
 notes_it: >-
-  {{撃退|げきたい}} e' respingere un nemico o attacco con la forza.
+  {{撃退|げきたい}} è respingere un nemico o attacco con la forza.
 level_hint: n2
 :::
 
@@ -239,7 +239,7 @@ back: 'ねがいさげ — rifiuto netto'
 example_jp: 'そんな{{手助|てだす}}けは{{願|ねが}}い{{下|さ}}げだ。'
 example_it: Di un aiuto così faccio volentieri a meno.
 notes_it: >-
-  E' un rifiuto con fastidio: non voglio nemmeno che me lo offrano.
+  È un rifiuto con fastidio: non voglio nemmeno che me lo offrano.
 tags: [crystal-hunters, book-8, lesson-04]
 :::
 
@@ -254,7 +254,7 @@ back: 'おちつく — calmarsi; stabilizzarsi'
 example_jp: '{{落|お}}ち{{着|つ}}け。'
 example_it: Calmati.
 notes_it: >-
-  {{落|お}}ち{{着|つ}}け e' l'imperativo diretto di {{落|お}}ち{{着|つ}}く.
+  {{落|お}}ち{{着|つ}}け è l'imperativo diretto di {{落|お}}ち{{着|つ}}く.
 tags: [crystal-hunters, book-8, lesson-04]
 :::
 
@@ -266,10 +266,10 @@ entry_id: term-ch-b8-yatsu
 card_type: recognition
 front: '{{奴|やつ}}'
 back: 'やつ — tipo; tizio; cosa'
-example_jp: 'あの{{奴|やつ}}は{{強|つよ}}い。'
+example_jp: "あいつは{{強|つよ}}い{{奴|やつ}}だ。"
 example_it: Quel tipo è forte.
 notes_it: >-
-  E' informale e puo' essere sprezzante: non usarlo come "persona" neutra.
+  È informale e può essere sprezzante: non usarlo come "persona" neutra.
 tags: [crystal-hunters, book-8, lesson-04]
 :::
 
@@ -344,7 +344,7 @@ back: 'てだすけ — aiuto; assistenza'
 example_jp: '{{手助|てだす}}けが{{必要|ひつよう}}だ。'
 example_it: Serve aiuto.
 notes_it: >-
-  E' aiuto pratico, una "mano" data alla situazione.
+  È aiuto pratico, una "mano" data alla situazione.
 tags: [crystal-hunters, book-8, lesson-04]
 :::
 
@@ -389,7 +389,7 @@ back: 'でなおす — ripartire da capo; tornare un''altra volta'
 example_jp: '{{明日|あした}}{{出直|でなお}}す。'
 example_it: Tornerò domani.
 notes_it: >-
-  Il tentativo attuale si chiude; si riprova piu' tardi o da capo.
+  Il tentativo attuale si chiude; si riprova più tardi o da capo.
 tags: [crystal-hunters, book-8, lesson-04]
 :::
 
@@ -449,6 +449,6 @@ back: 'げきたい — respingimento; ricacciare indietro'
 example_jp: '{{怪物|かいぶつ}}を{{撃退|げきたい}}する。'
 example_it: Respingiamo il mostro.
 notes_it: >-
-  E' una vittoria difensiva: il nemico viene ricacciato indietro.
+  È una vittoria difensiva: il nemico viene ricacciato indietro.
 tags: [crystal-hunters, book-8, lesson-04]
 :::

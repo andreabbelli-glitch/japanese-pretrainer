@@ -2,7 +2,7 @@
 id: cards-pokemon-scarlet-violet-sv-vocabulary-distance-20
 media_id: media-pokemon-scarlet-violet
 slug: 125-sv-vocabulary-distance-20
-title: 'Parole per leggere Paldea — venti'
+title: 'Parole per leggere Parudea — venti'
 order: 170
 segment_ref: scarlet-violet-vocabulary
 ---
@@ -125,13 +125,10 @@ card_type: recognition
 front: '{{大将|たいしょう}}'
 back: >-
   たいしょう — generale; ammiraglio; capo.
-example_jp: >-
-  すまんなうちらの{{大将|たいしょう}}たまにこうなってしまうんやだだっでぇ！
-example_it: >-
-  Scusa, il nostro capo ogni tanto fa così, è proprio così!
+example_jp: "すまんな。うちらの{{大将|たいしょう}}、たまにこうなってしまうんや。"
+example_it: "Scusa, il nostro capo ogni tanto si riduce così."
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::
-
 :::term
 id: term-sv-vocabulary-117-tsurai
 lemma: 'つらい'
@@ -300,13 +297,11 @@ card_type: recognition
 front: 'ってか'
 back: >-
   ってか — o piuttosto (dire); o meglio (dire); o forse dovrei dire.
-example_jp: >-
-  えーでもエリアゼロ{{来|き}}てからライドするんも{{嫌|いや}}がってるしってかバトルフォルムになれんのでしょ？
-example_it: >-
-  Ehm, ma da quando sei arrivato nell’Area Zero non vuoi più fare i Ride, e poi non riesci a trasformarti in Battle Form, giusto?
+example_jp: "このポケモン、{{人|ひと}}を{{乗|の}}せるのも{{嫌|いや}}がってるし、ってかバトルフォルムになれないんでしょ？"
+example_it: "Questo Pokémon non vuole nemmeno farsi cavalcare e, poi, non riesce a passare alla Batoru Forumu, giusto?"
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
+notes_it: "Esempio didattico."
 :::
-
 :::term
 id: term-sv-vocabulary-023-kawari
 lemma: '代わり'
@@ -378,6 +373,6 @@ back: >-
 example_jp: >-
   これはパルデア{{地方|ちほう}}で{{初|はつ}}の{{記録|きろく}}だ。
 example_it: >-
-  Questo è il primo record del genere nella regione di Paldea.
+  Questo è il primo record del genere nella regione di Parudea.
 tags: [pokemon, scarlet-violet, vocabulary, mixed]
 :::

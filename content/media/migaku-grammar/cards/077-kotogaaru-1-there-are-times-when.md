@@ -25,7 +25,7 @@ lesson_id: lesson-migaku-grammar-077-kotogaaru-1-there-are-times-when
 entry_type: grammar
 entry_id: grammar-077-kotogaaru-1-there-are-times-when
 card_type: concept
-front: "ことがある"
+front: "ことがある（V dizionario + ことがある）"
 back: >-
   Indica che qualcosa accade talvolta: «capita di…»
 example_jp: >-

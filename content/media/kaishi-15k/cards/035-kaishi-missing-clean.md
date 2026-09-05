@@ -568,15 +568,14 @@ entry_id: term-kaishi-1708637440816
 card_type: recognition
 front: '{{月|つき}}'
 back: 'moon'
-example_jp: '{{今|こん}}{{晩|ばん}}は{{月|つき}}が{{明|あか}}るく{{見|み}}えます。'
-example_it: 'You can see the moon brightly tonight.'
+example_jp: "{{今|こん}}{{晩|ばん}}は{{月|つき}}が{{明|あか}}るく{{見|み}}えます。"
+example_it: "The moon looks bright tonight."
 example_audio_src: 'assets/audio/sentence/card-kaishi-1708637440816-recognition/JLPT_Tango_N4_0440.mp3'
 example_audio_source: kaishi
 example_audio_attribution: Kaishi 1.5k v2.4.1 sentence audio
 example_audio_page_url: https://github.com/donkuri/kaishi/releases/tag/v2.4.1
 tags: [kaishi, vocabulary, recognition]
 :::
-
 :::term
 id: term-kaishi-1708637441333
 lemma: '収まる'

@@ -2,7 +2,7 @@
 id: lesson-pokemon-scarlet-violet-sv-prestudy-063-sv-anki-l11-azioni-persone-e-profondita
 media_id: media-pokemon-scarlet-violet
 slug: 063-sv-anki-l11-azioni-persone-e-profondita
-title: Azioni, persone e profondità nei dialoghi di Paldea
+title: Azioni, persone e profondità nei dialoghi di Parudea
 order: 93
 segment_ref: scarlet-violet-prestudy
 difficulty: custom
@@ -14,9 +14,9 @@ summary: >-
   chi viene nominato e quale scena diventa minacciosa o professionale.
 ---
 
-# Azioni, persone e profondità nei dialoghi di Paldea
+# Azioni, persone e profondità nei dialoghi di Parudea
 
-Tra Accademia, Palestre e Area Zero, *Pokémon Scarlet & Violet* usa frasi brevi per fare avanzare scene molto diverse: qualcuno consegna un oggetto, una mossa centra il bersaglio, un personaggio parla di una ragazza senza nominarla, un luogo viene presentato come il fondo della mappa e della trama.
+Tra Accademia, Palestre e Eria Zero, *Pokémon Scarlet & Violet* usa frasi brevi per fare avanzare scene molto diverse: qualcuno consegna un oggetto, una mossa centra il bersaglio, un personaggio parla di una ragazza senza nominarla, un luogo viene presentato come il fondo della mappa e della trama.
 
 Il filo da seguire è il movimento della frase. [{{渡|わた}}す](term:term-anki-l11-watasu) sposta qualcosa verso una persona, [{{当|あ}}たる](term:term-anki-l11-ataru) registra il risultato di un colpo o di una risposta, [{{呼|よ}}ばれる](term:term-anki-l11-yobareru) stabilisce come un posto viene chiamato. Quando riconosci questi verbi insieme a persone, luoghi e reazioni emotive, capisci se il dialogo sta chiedendo un'azione, fissando una relazione o preparando una scena più minacciosa.
 
@@ -50,8 +50,8 @@ Il filo da seguire è il movimento della frase. [{{渡|わた}}す](term:term-an
 ## Etichette da riconoscere
 
 - [{{校長|こうちょう}}](term:term-v168-kouchou) — preside dell'Accademia
-- [エリアゼロ](term:term-v022-eriazero) — Area Zero
-- [{{大穴|おおあな}}](term:term-v068-ooana) — grande voragine di Paldea
+- [エリアゼロ](term:term-v022-eriazero) — Eria Zero
+- [{{大穴|おおあな}}](term:term-v068-ooana) — grande voragine di Parudea
 - [ジムリーダー](term:term-v028-jimuriidaa) — Capopalestra
 
 ---
@@ -69,12 +69,12 @@ Le richieste dell'Accademia e le schermate di battaglia separano due movimenti m
 jp: >-
   この モンスターボールを {{校長|こうちょう}}に {{渡|わた}}す ように たのまれた。
 translation_it: >-
-  Mi hanno chiesto di consegnare questa Poké Ball al preside.
+  Mi hanno chiesto di consegnare questa Monsutā Bōru al preside.
 :::
 
 #### 🗺️ Anatomia della frase
 
-*   `この モンスターボールを` ➔ **Oggetto trasferito** (`を` lega la Poké Ball al verbo di consegna).
+*   `この モンスターボールを` ➔ **Oggetto trasferito** (`を` lega la Monsutā Bōru al verbo di consegna).
 *   `{{校長|こうちょう}}に` ➔ **Destinatario** (`に` indica la persona verso cui passa l'oggetto).
 *   `{{渡|わた}}す ように` ➔ **Contenuto della richiesta** (`ように` incornicia l'azione che il parlante deve compiere).
 *   `たのまれた` ➔ **Incarico ricevuto**: qualcuno ha chiesto al parlante di fare quella consegna.
@@ -140,7 +140,7 @@ translation_it: >-
 
 ## 3. Ripetizione, libri strani e nomi stabiliti
 
-Quando la trama si avvicina ai misteri di Paldea, il giapponese cambia ritmo: alcune frasi chiedono di ripetere un'azione, altre trattano un libro come fonte insolita, altre ancora fissano il nome con cui un luogo è conosciuto.
+Quando la trama si avvicina ai misteri di Parudea, il giapponese cambia ritmo: alcune frasi chiedono di ripetere un'azione, altre trattano un libro come fonte insolita, altre ancora fissano il nome con cui un luogo è conosciuto.
 
 *   [もう{{一度|いちど}}](term:term-anki-l11-mouichido) combina もう, "ancora / di nuovo", con {{一度|いちど}}, "una volta". Nei prompt e nei dialoghi prepara un secondo tentativo, un nuovo ascolto, un ritorno a un'interazione appena disponibile.
 *   [{{奇書|きしょ}}](term:term-anki-l11-kisho) porta un tono narrativo più marcato. {{奇|き}} richiama anomalia o stranezza, {{書|しょ}} è "scritto / libro"; insieme indicano un testo insolito, difficile da trattare come fonte ordinaria. Quando la trama parla del Libro Scarlatto o Violetto come [{{奇書|きしょ}}](term:term-anki-l11-kisho), il giapponese suggerisce che quel contenuto è affascinante, sospetto o fuori scala rispetto alla conoscenza normale.
@@ -163,7 +163,7 @@ translation_it: >-
 jp: >-
   ここは パルデアの {{大穴|おおあな}}と {{呼|よ}}ばれる {{場所|ばしょ}}だ。
 translation_it: >-
-  Questo è il luogo chiamato Voragine di Paldea.
+  Questo è il luogo chiamato Voragine di Parudea.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -182,7 +182,7 @@ Per [{{呼|よ}}ばれる](term:term-anki-l11-yobareru), immagina il nome come u
 
 ## 4. Paura, profondità e lavoro
 
-Area Zero e il percorso palestra usano parole molto concrete per cambiare atmosfera. Da una parte c'è la paura immediata davanti a Pokémon e luoghi minacciosi; dall'altra c'è il linguaggio del ruolo, del compito, della responsabilità quotidiana.
+Eria Zero e il percorso palestra usano parole molto concrete per cambiare atmosfera. Da una parte c'è la paura immediata davanti a Pokémon e luoghi minacciosi; dall'altra c'è il linguaggio del ruolo, del compito, della responsabilità quotidiana.
 
 *   [{{怖|こわ}}い](term:term-anki-l11-kowai) è l'aggettivo della paura diretta. Può descrivere un Pokémon, un luogo o una situazione, ma il punto è sempre la reazione davanti a qualcosa percepito come minaccioso. Non ha il tono solenne di {{恐|おそ}}ろしい: nei dialoghi, [{{怖|こわ}}い](term:term-anki-l11-kowai) suona più vicino alla voce di chi parla.
 *   [{{最深部|さいしんぶ}}](term:term-anki-l11-saishinbu) costruisce una geografia precisa. {{最|さい}} crea il superlativo, {{深|しん}} porta la profondità, {{部|ぶ}} la trasforma in "sezione / parte". In [エリアゼロ](term:term-v022-eriazero) non è solo "un posto profondo": è la zona finale, il fondo verso cui la trama fa scendere il giocatore.
@@ -192,7 +192,7 @@ Area Zero e il percorso palestra usano parole molto concrete per cambiare atmosf
 jp: >-
   エリアゼロの {{最深部|さいしんぶ}}には {{怖|こわ}}い ポケモンが いる らしい。
 translation_it: >-
-  Sembra che nella parte più profonda dell'Area Zero ci siano Pokémon spaventosi.
+  Sembra che nella parte più profonda dell'Eria Zero ci siano Pokémon spaventosi.
 :::
 
 #### 🗺️ Anatomia della frase
@@ -241,7 +241,7 @@ translation_it: >-
 jp: >-
   エリアゼロの {{最深部|さいしんぶ}}は、{{奇書|きしょ}}に {{書|か}}かれた {{場所|ばしょ}}と {{呼|よ}}ばれている。
 translation_it: >-
-  La parte più profonda dell'Area Zero è nota come il luogo descritto in quello strano libro.
+  La parte più profonda dell'Eria Zero è nota come il luogo descritto in quello strano libro.
 :::
 
 :::example_sentence
