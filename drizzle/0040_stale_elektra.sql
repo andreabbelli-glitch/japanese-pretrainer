@@ -1,0 +1,2 @@
+CREATE INDEX `review_subject_log_recent_rating_idx` ON `review_subject_log` (`event_kind`,`rating`,`answered_at`);--> statement-breakpoint
+CREATE INDEX `review_subject_log_preset_count_idx` ON `review_subject_log` (`event_kind`,`card_type_snapshot`) WHERE "review_subject_log"."rating" is not null;

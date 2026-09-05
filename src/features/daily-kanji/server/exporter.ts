@@ -1,7 +1,6 @@
 import type { DatabaseQueryClient } from "../../../db/create-client.ts";
 import {
   buildEffectiveReviewEventMemoryKeySql,
-  buildReviewSubjectIdentityCteSql,
   quoteSqlString
 } from "../../../db/queries/review-query-helpers.ts";
 import type {
@@ -57,6 +56,11 @@ type DailyKanjiExportRow = {
 };
 
 type DailyKanjiExportMode = "daily" | "prestudy" | "lastLessonsHardAgain";
+type RecentMistakeRow = {
+  memoryKey: string;
+  recentHardAgainCount: number;
+  lastHardAgainAt: string;
+};
 
 export async function buildDailyKanjiDataset(input: {
   database: DatabaseQueryClient;
@@ -91,28 +95,40 @@ export async function buildDailyKanjiCardDataset(input: {
     dailyKanjiDefaultRecentMistakeLookbackDays;
   const limit = input.limit ?? dailyKanjiDefaultExportLimit;
   const cutoffIso = subtractDaysIso(nowIso, recentMistakeLookbackDays);
-  const rows = await listDailyKanjiExportRows({
-    database: input.database,
-    cutoffIso,
-    nowIso
-  });
+  const [rows, recentMistakes, prestudyRows, lastLessonsHardAgainRows] =
+    await Promise.all([
+      listDailyKanjiExportRows({ database: input.database }),
+      listDailyKanjiRecentMistakes({
+        database: input.database,
+        cutoffIso,
+        nowIso
+      }),
+      listDailyKanjiPrestudyRows({ database: input.database, nowIso }),
+      listDailyKanjiLastLessonsHardAgainRows({
+        database: input.database,
+        cutoffIso,
+        nowIso
+      })
+    ]);
+  // A hash lookup guarantees linear work even when the remote SQLite planner
+  // chooses not to build an automatic index on the recent-mistake aggregate.
+  const mistakesByMemoryKey = new Map(
+    recentMistakes.map((row) => [row.memoryKey, row])
+  );
   const dailyCards = rows
-    .flatMap((row) => mapDailyKanjiExportRow(row, nowIso, "daily"))
+    .flatMap((row) =>
+      mapDailyKanjiExportRow(
+        { ...row, ...mistakesByMemoryKey.get(row.memoryKey) },
+        nowIso,
+        "daily"
+      )
+    )
     .sort(compareDailyKanjiExportCards)
     .slice(0, limit);
-  const prestudyCards = (
-    await listDailyKanjiPrestudyRows({
-      database: input.database,
-      nowIso
-    })
-  ).flatMap((row) => mapDailyKanjiExportRow(row, nowIso, "prestudy"));
-  const lastLessonsHardAgainCards = (
-    await listDailyKanjiLastLessonsHardAgainRows({
-      database: input.database,
-      cutoffIso,
-      nowIso
-    })
-  ).flatMap((row) =>
+  const prestudyCards = prestudyRows.flatMap((row) =>
+    mapDailyKanjiExportRow(row, nowIso, "prestudy")
+  );
+  const lastLessonsHardAgainCards = lastLessonsHardAgainRows.flatMap((row) =>
     mapDailyKanjiExportRow(row, nowIso, "lastLessonsHardAgain")
   );
   const cards = mergeDailyKanjiExportCards([
@@ -129,7 +145,7 @@ export async function buildDailyKanjiCardDataset(input: {
   };
 }
 
-async function listDailyKanjiExportRows(input: {
+async function listDailyKanjiRecentMistakes(input: {
   database: Pick<DatabaseQueryClient, "all">;
   cutoffIso: string;
   nowIso: string;
@@ -137,9 +153,7 @@ async function listDailyKanjiExportRows(input: {
   const eventMemoryKey = buildDailyKanjiEventMemoryKeySql();
   const currentEventMemoryKey = `COALESCE(rma.current_memory_key, ${eventMemoryKey})`;
 
-  return input.database.all<DailyKanjiExportRow>(`
-    WITH ${buildReviewSubjectIdentityCteSql()},
-    recent_hard_again AS (
+  return input.database.all<RecentMistakeRow>(`
       SELECT
         ${currentEventMemoryKey} AS memoryKey,
         COUNT(*) AS recentHardAgainCount,
@@ -152,10 +166,17 @@ async function listDailyKanjiExportRows(input: {
         AND rsl.answered_at >= ${quoteSqlString(input.cutoffIso)}
         AND rsl.answered_at <= ${quoteSqlString(input.nowIso)}
       GROUP BY ${currentEventMemoryKey}
-    ),
-    eligible_cards AS (
+  `);
+}
+
+async function listDailyKanjiExportRows(input: {
+  database: Pick<DatabaseQueryClient, "all">;
+}) {
+  return input.database.all<DailyKanjiExportRow & { memoryKey: string }>(`
+    WITH eligible_cards AS (
       SELECT
         si.card_id AS cardId,
+        si.memory_key AS memoryKey,
         si.canonical_subject_key AS subjectKey,
         si.entry_type AS entryKind,
         si.entry_id AS entryId,
@@ -181,8 +202,8 @@ async function listDailyKanjiExportRows(input: {
         rss.learning_steps AS learningSteps,
         rss.lapses AS lapses,
         rss.reps AS reps,
-        COALESCE(rha.recentHardAgainCount, 0) AS recentHardAgainCount,
-        rha.lastHardAgainAt AS lastHardAgainAt,
+        0 AS recentHardAgainCount,
+        NULL AS lastHardAgainAt,
         CASE
           WHEN si.entry_type = 'term' THEN t.lemma
           WHEN si.entry_type = 'grammar' THEN gp.pattern
@@ -214,14 +235,14 @@ async function listDailyKanjiExportRows(input: {
           ELSE NULL
         END AS pitchAccentSource,
         ROW_NUMBER() OVER (
-          PARTITION BY si.subject_key
+          PARTITION BY si.memory_key
           ORDER BY
             CASE WHEN rss.card_id = c.id THEN 0 ELSE 1 END ASC,
             COALESCE(c.order_index, 2147483647) ASC,
             c.created_at ASC,
             c.id ASC
         ) AS subjectRowNumber
-      FROM subject_identity si
+      FROM review_card_identity si
       INNER JOIN card c
         ON c.id = si.card_id
       INNER JOIN media m
@@ -231,7 +252,7 @@ async function listDailyKanjiExportRows(input: {
       INNER JOIN lesson_progress lp
         ON lp.lesson_id = l.id
       INNER JOIN review_subject_state rss
-        ON rss.subject_key = si.subject_key
+        ON rss.subject_key = si.memory_key
       LEFT JOIN segment s
         ON s.id = c.segment_id
       LEFT JOIN term t
@@ -240,8 +261,6 @@ async function listDailyKanjiExportRows(input: {
       LEFT JOIN grammar_pattern gp
         ON si.entry_type = 'grammar'
        AND gp.id = si.entry_id
-      LEFT JOIN recent_hard_again rha
-        ON rha.memoryKey = si.memory_key
       WHERE c.status = 'active'
         AND m.status = 'active'
         AND l.status = 'active'
@@ -262,8 +281,7 @@ async function listDailyKanjiPrestudyRows(input: {
   nowIso: string;
 }) {
   return input.database.all<DailyKanjiExportRow>(`
-    WITH ${buildReviewSubjectIdentityCteSql()},
-    next_lessons AS (
+    WITH next_lessons AS (
       SELECT
         l.id AS lessonId,
         l.media_id AS mediaId,
@@ -344,13 +362,13 @@ async function listDailyKanjiPrestudyRows(input: {
           ELSE NULL
         END AS pitchAccentSource,
         ROW_NUMBER() OVER (
-          PARTITION BY si.subject_key
+          PARTITION BY si.memory_key
           ORDER BY
             COALESCE(c.order_index, 2147483647) ASC,
             c.created_at ASC,
             c.id ASC
         ) AS subjectRowNumber
-      FROM subject_identity si
+      FROM review_card_identity si
       INNER JOIN card c
         ON c.id = si.card_id
       INNER JOIN media m
@@ -391,11 +409,12 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
   const eventMemoryKey = buildDailyKanjiEventMemoryKeySql();
   const currentEventMemoryKey = `COALESCE(rma.current_memory_key, ${eventMemoryKey})`;
 
+  // Give the derived key TEXT affinity so SQLite can index the materialized
+  // aggregate instead of scanning every recent mistake for every card.
   return input.database.all<DailyKanjiExportRow>(`
-    WITH ${buildReviewSubjectIdentityCteSql()},
-    recent_hard_again AS (
+    WITH recent_hard_again AS (
       SELECT
-        ${currentEventMemoryKey} AS memoryKey,
+        CAST(${currentEventMemoryKey} AS TEXT) AS memoryKey,
         COUNT(*) AS recentHardAgainCount,
         MAX(rsl.answered_at) AS lastHardAgainAt
       FROM review_subject_log rsl
@@ -413,22 +432,18 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
       FROM lesson l
       INNER JOIN card c
         ON c.lesson_id = l.id
-      INNER JOIN subject_identity si
+      INNER JOIN review_card_identity si
         ON si.card_id = c.id
       INNER JOIN recent_hard_again rha
         ON rha.memoryKey = si.memory_key
       WHERE l.status = 'active'
         AND c.status = 'active'
     ),
-    recent_lessons AS (
+    -- This shortlist is shared by all candidate cards. A coroutine can rerun
+    -- the entire lesson/mistake join for every candidate on SQLite/libSQL.
+    recent_lessons AS MATERIALIZED (
       SELECT
-        l.id AS lessonId,
-        ROW_NUMBER() OVER (
-          ORDER BY
-            COALESCE(lp.completed_at, lp.last_opened_at, l.updated_at) DESC,
-            COALESCE(l.order_index, -2147483648) DESC,
-            l.id DESC
-        ) AS lessonRank
+        l.id AS lessonId
       FROM lesson l
       INNER JOIN media m
         ON m.id = l.media_id
@@ -439,6 +454,11 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
       WHERE l.status = 'active'
         AND m.status = 'active'
         AND lp.status = 'completed'
+      ORDER BY
+        COALESCE(lp.completed_at, lp.last_opened_at, l.updated_at) DESC,
+        COALESCE(l.order_index, -2147483648) DESC,
+        l.id DESC
+      LIMIT 3
     ),
     candidate_cards AS (
       SELECT
@@ -501,14 +521,14 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
           ELSE NULL
         END AS pitchAccentSource,
         ROW_NUMBER() OVER (
-          PARTITION BY si.subject_key
+          PARTITION BY si.memory_key
           ORDER BY
             CASE WHEN rss.card_id = c.id THEN 0 ELSE 1 END ASC,
             COALESCE(c.order_index, 2147483647) ASC,
             c.created_at ASC,
             c.id ASC
         ) AS subjectRowNumber
-      FROM subject_identity si
+      FROM review_card_identity si
       INNER JOIN card c
         ON c.id = si.card_id
       INNER JOIN media m
@@ -517,9 +537,8 @@ async function listDailyKanjiLastLessonsHardAgainRows(input: {
         ON l.id = c.lesson_id
       INNER JOIN recent_lessons rl
         ON rl.lessonId = l.id
-       AND rl.lessonRank <= 3
       INNER JOIN review_subject_state rss
-        ON rss.subject_key = si.subject_key
+        ON rss.subject_key = si.memory_key
       INNER JOIN recent_hard_again rha
         ON rha.memoryKey = si.memory_key
       LEFT JOIN segment s

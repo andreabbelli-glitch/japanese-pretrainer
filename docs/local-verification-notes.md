@@ -378,6 +378,15 @@ specifico, ma non conta come matrice ufficiale di verifica.
 
 ## Limiti Residui
 
+- Durante l'audit Turso del 2026-09-05, l'E2E `navigates the core study spine`
+  ha mostrato due timeout intermittenti su textbook/glossario, con `<main>`
+  vuoto dopo una navigazione client. Nel caso glossario la risposta RSC era
+  HTTP 200 in circa 166 ms; la causa della mancata visualizzazione non e'
+  accertata. La ripetizione mirata ha avuto due successi e un timeout, poi
+  `pnpm release:check` completo e' passato con tutti i 33 E2E, senza modificare
+  test o timeout. Le query ottimizzate non sono invocate da quelle due pagine.
+  In caso di ricorrenza, conservare trace e screenshot prima di ripetere il
+  gate: questa intermittenza non e' stata risolta dall'ottimizzazione SQL.
 - La suite E2E è intenzionalmente piccola: copre i flussi ad alto valore, non ogni variante di filtro o ogni card.
 - La suite E2E Pitch Accent copre il flow principale e uno smoke filtri, non
   ogni combinazione di pattern o modifier audio.

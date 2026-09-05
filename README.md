@@ -557,6 +557,12 @@ ricalcolata soltanto alla prima migrazione, quando cambia la sua versione o per
 i media modificati da un import contenuti, con controllo di copertura
 obbligatorio e upsert delle sole righe cambiate.
 
+Le query degli snapshot usano indici sullo storico recente e una shortlist
+delle ultime tre lesson calcolata una volta per query. Il conteggio optimizer
+legge il preset salvato nell'evento, con lookup della card limitato agli eventi
+legacy. I risultati e l'ordine di studio restano invariati; misure e budget
+sono documentati in [`docs/infrastructure-budget.md`](docs/infrastructure-budget.md).
+
 Il database Turso di produzione risiede in `eu-west-1`; `vercel.json` fissa
 quindi l'unica regione Functions Hobby a `dub1` (Dublino). Mantieni compute e
 database co-localizzati: rimuovere questa impostazione riporterebbe le Functions

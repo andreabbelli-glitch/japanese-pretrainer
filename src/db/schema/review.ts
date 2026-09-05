@@ -242,6 +242,14 @@ export const reviewSubjectLog = sqliteTable(
       table.answeredAt
     ),
     index("review_subject_log_memory_idx").on(table.memoryKey),
+    index("review_subject_log_recent_rating_idx").on(
+      table.eventKind,
+      table.rating,
+      table.answeredAt
+    ),
+    index("review_subject_log_preset_count_idx")
+      .on(table.eventKind, table.cardTypeSnapshot)
+      .where(sql`${table.rating} is not null`),
     index("review_subject_log_introduced_day_idx").on(
       table.previousState,
       table.answeredAt,

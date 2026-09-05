@@ -1,4 +1,4 @@
-import { and, eq, inArray, isNotNull, sql } from "drizzle-orm";
+import { and, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 
 import { db, type DatabaseClient } from "../../../db/index.ts";
 import { buildEffectiveReviewEventMemoryKeySql } from "../../../db/queries/review-query-helpers.ts";
@@ -166,22 +166,40 @@ export function buildFsrsTrainingDataset(
 export async function countEligibleFsrsOptimizerReviewsByPreset(
   database: FsrsTrainingDataCounter = db
 ): Promise<FsrsEligibleReviewCounts> {
-  const cardTypeExpression = sql<string>`coalesce(${reviewSubjectLog.cardTypeSnapshot}, ${card.cardType})`;
+  // Most events carry their immutable preset already. Only legacy events
+  // without a snapshot need the live card lookup; keep both in one statement.
   const result = await database
     .select({
-      cardType: cardTypeExpression,
+      cardType: sql<string>`${reviewSubjectLog.cardTypeSnapshot}`,
       count: sql<number>`cast(count(*) as integer)`
     })
     .from(reviewSubjectLog)
-    .leftJoin(card, eq(card.id, reviewSubjectLog.cardId))
     .where(
       and(
         eq(reviewSubjectLog.eventKind, "grade"),
         isNotNull(reviewSubjectLog.rating),
-        inArray(cardTypeExpression, ["recognition", "concept"])
+        inArray(reviewSubjectLog.cardTypeSnapshot, ["recognition", "concept"])
       )
     )
-    .groupBy(cardTypeExpression);
+    .groupBy(reviewSubjectLog.cardTypeSnapshot)
+    .unionAll(
+      database
+        .select({
+          cardType: sql<string>`${card.cardType}`,
+          count: sql<number>`cast(count(*) as integer)`
+        })
+        .from(reviewSubjectLog)
+        .innerJoin(card, eq(card.id, reviewSubjectLog.cardId))
+        .where(
+          and(
+            eq(reviewSubjectLog.eventKind, "grade"),
+            isNotNull(reviewSubjectLog.rating),
+            isNull(reviewSubjectLog.cardTypeSnapshot),
+            inArray(card.cardType, ["recognition", "concept"])
+          )
+        )
+        .groupBy(card.cardType)
+    );
   const counts: FsrsEligibleReviewCounts = {
     concept: 0,
     recognition: 0
@@ -191,7 +209,7 @@ export async function countEligibleFsrsOptimizerReviewsByPreset(
     const presetKey = resolveFsrsPresetKey(row.cardType);
 
     if (presetKey) {
-      counts[presetKey] = Number(row.count ?? 0);
+      counts[presetKey] += Number(row.count ?? 0);
     }
   }
 

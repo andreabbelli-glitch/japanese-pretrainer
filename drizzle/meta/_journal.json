@@ -281,6 +281,13 @@
       "when": 1787498232722,
       "tag": "0039_medical_crusher_hogan",
       "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "6",
+      "when": 1788598584657,
+      "tag": "0040_stale_elektra",
+      "breakpoints": true
     }
   ]
 }

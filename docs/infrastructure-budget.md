@@ -1,6 +1,6 @@
 # Budget infrastrutturale Turso / Vercel
 
-Ultimo aggiornamento: 2026-08-23.
+Ultimo aggiornamento: 2026-09-05.
 
 Questa applicazione e' privata e monoutente. Il budget viene quindi progettato
 come un limite strutturale del traffico generato dall'app, non come una speranza
@@ -185,11 +185,9 @@ confrontare le due architetture.
 | Reload sessione dopo `good/easy` mobile | ogni voto | ogni 9 voti al massimo con buffer pieno |
 
 La riduzione modellata e' circa 96% sul lavoro mensile degli snapshot e 89% sul
-payload ordinario. Anche ipotizzando una doppia esecuzione accidentale di ogni
-build, il proxy snapshot resta circa 34,2 milioni, meno del 7% del limite Turso
-Free di 500 milioni di righe lette. Il confronto resta un proxy: VM step e righe
-lette fatturate non sono la stessa unita, e il dato Turso va verificato dopo il
-deploy sulla query materializzata.
+payload ordinario. Queste misure descrivono il lavoro SQLite sul campione di
+allora: non vanno confrontate numericamente con il limite Turso Free, espresso
+in righe lette. Per il budget fatturato usare le misure remote dell'audit sotto.
 
 Il contratto iOS modella inoltre 15.000 voti review al mese (500 al giorno),
 1.875 reload di sessione grazie al buffer, 70 tentativi automatici di sync card
@@ -201,6 +199,98 @@ va trattato come incidente di sicurezza, non come traffico applicativo.
 Il bootstrap remoto del 2026-08-23 ha confermato i margini reali: snapshot
 card da 415.098 byte costruito in 4,16 secondi e snapshot glossario da 3.474.306
 byte costruito in 1,71 secondi.
+
+## Audit top queries del 2026-09-05
+
+Nella finestra 04:42-10:42 Europe/Rome, le due query con `recent_hard_again`
+riportavano in media circa 287.000 rows read, mentre il conteggio dei voti FSRS
+ne riportava 47.100. Erano i job mattutini, non richieste interattive della
+review. La finestra settimanale mostrava anche lo skeleton review e lo stato
+FSRS live: questi restano necessari alla correttezza della coda globale.
+
+Il confronto usa una copia locale delle tabelle coinvolte, letta da Turso:
+4.939 card, 3.742 stati, 15.721 eventi. L'orologio del benchmark e' fissato a
+`2026-09-05T08:42:26.000Z`; non vengono eseguiti voti o modifiche allo studio
+in produzione. Dataset card (428.871 byte), glossario (3.478.774 byte) e
+conteggi optimizer coincidono byte per byte prima/dopo, incluso l'ordine.
+
+Le correzioni sono:
+
+- indice `(event_kind, rating, answered_at)` per restringere gli errori alla
+  finestra temporale, evitando la scansione di tutti i voti storici;
+- lettura separata degli errori recenti e associazione alle card quotidiane
+  tramite una `Map` per memory key, con lavoro lineare. Sul campione bastano
+  68 righe aggregate: la query piu grande non dipende piu dalla decisione del
+  planner di creare un indice automatico su una CTE;
+- affinita `TEXT` esplicita sulla memory key aggregata della query delle ultime
+  lesson, che consente al planner di indicizzare il risultato temporaneo;
+- selezione delle ultime tre lesson con `ORDER BY ... LIMIT 3`, materializzata
+  una sola volta nella query; una coroutine poteva ricostruirla per ogni card;
+- join diretto con `review_card_identity`, evitando una seconda lettura della
+  stessa card; le quattro query indipendenti partono insieme, senza aggiungere
+  un roundtrip sequenziale;
+- conteggio optimizer da `card_type_snapshot`, con indice parziale per gli
+  eventi con rating. Un secondo ramo `UNION ALL` nella stessa istruzione
+  consulta le card soltanto per eventi legacy privi di snapshot. Eventi senza
+  rating, reset e preset estranei restano esclusi; snapshot di card cancellate
+  restano conteggiati.
+
+Con SQLite CLI 3.51, sullo stesso campione:
+
+| Query | VM step prima | VM step dopo | Fullscan step prima/dopo |
+| --- | ---: | ---: | ---: |
+| Card Daily Kanji + errori | 1.173.439 | 581.121 | 105.927 / 0 |
+| Prestudio | 176.812 | 146.353 | 703 / 703 |
+| Errori ultime tre lesson | 1.821.116 | 81.214 | 362.805 / 2 |
+| Conteggio optimizer | 457.062 | 157.192 | 0 / 0 |
+
+I 703 step del prestudio corrispondono alla scansione delle 704 lesson per
+scegliere la prossima di ogni media; i due step della shortlist corrispondono
+alle tre lesson gia selezionate. I test `turso-query-plans` controllano il range
+indicizzato, l'assenza di scansioni ripetute degli errori e la materializzazione
+della shortlist, oltre a alias, limiti temporali e fallback legacy.
+
+Il confronto sul Turso reale (SQLite 3.47.0) usa le metriche `rows_read` del
+protocollo [SQL over HTTP](https://docs.turso.tech/sdk/http/reference), prima
+e dopo la migrazione `0040`, con lo stesso orologio e gli stessi risultati:
+
+| Query | Righe lette prima | Righe lette dopo | Riduzione |
+| --- | ---: | ---: | ---: |
+| Card Daily Kanji + errori | 155.682 | 28.755 | 81,5% |
+| Prestudio | 3.854 | 3.779 | 1,9% |
+| Errori ultime tre lesson | 418.726 | 37.378 | 91,1% |
+| **Totale build card** | **578.262** | **69.912** | **87,9%** |
+| Conteggio optimizer | 47.131 | 15.714 | 66,7% |
+
+Tutte le query misurate hanno zero righe scritte. Gli hash dei risultati
+remoti coincidono, dopo aver riassociato gli errori alle righe quotidiane.
+Questa verifica remota e' necessaria: SQLite locale 3.45/3.51 creava un indice
+automatico sulla CTE quotidiana che Turso 3.47 non sceglieva. Il join tramite
+`Map` elimina quel moltiplicatore indipendentemente dalla scelta del planner.
+
+Sul campione, 34 build card e 31 conteggi optimizer in un mese passano da
+21.121.969 a 2.864.142 righe lette, circa lo 0,57% dei 500 milioni gratuiti.
+E' la proiezione di questi due job sui dati misurati, non un limite per l'intera
+app: review, glossario, import e crescita dello storico vanno conteggiati a
+parte. Il glossario settimanale resta invariato e limitato a sei build/mese.
+
+Il gate di release comprende anche un E2E che trattiene il POST del grading:
+la card successiva deve essere gia visibile prima di rilasciare la risposta.
+Questo controlla la reattivita del flusso, mentre i tempi di esecuzione SQL del
+singolo audit non sono una misura della latenza p95 nel browser.
+
+La soluzione mantiene Turso/libSQL e Vercel Hobby in Irlanda, senza nuovi
+servizi, repliche effimere, polling o cron aggiuntivi. I due indici aggiungono
+al massimo due scritture di indice per evento: a 500 voti/giorno sono al massimo
+31.000 scritture di indice aggiuntive in 31 giorni, da includere nel budget di
+10 milioni. Sul campione i due indici occupano complessivamente 1.081.344 byte
+(circa 1 MiB). Non aggiunge cache allo stato FSRS e non cambia il buffer o
+l'avanzamento ottimistico della review.
+
+I limiti gratuiti sono stati ricontrollati sulle pagine ufficiali il
+2026-09-05: Turso 500 milioni di rows read, 10 milioni di rows written e 5 GB;
+Vercel Hobby 1 milione di invocazioni, 4 CPU-ore e 360 GB-ore. La compatibilita
+con i piani non richiede di modificare l'abbonamento attualmente selezionato.
 
 ## Runbook
 
