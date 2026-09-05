@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 
 import { eq } from "drizzle-orm";
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   closeDatabaseClient,
@@ -31,7 +31,10 @@ import {
   getReviewPageData
 } from "@/features/review/server";
 import { importContentWorkspace } from "@/features/content/importer";
-import { backfillReviewSubjectState } from "@/features/review/server/subject-state-backfill";
+import {
+  backfillReviewSubjectState,
+  syncReviewSubjectState
+} from "@/features/review/server/subject-state-backfill";
 import { buildReviewMemoryKey } from "@/features/review/model/recall-task";
 import {
   crossMediaFixture,
@@ -528,7 +531,7 @@ describe("review subject state recovery backfill", () => {
     expect(oldConsolidation).toBeUndefined();
   });
 
-  it("backfills large subject sets without exceeding SQLite variable limits", async () => {
+  it("backfills large subject and consolidation sets with bounded writes", async () => {
     const now = "2026-03-11T09:00:00.000Z";
     const rows = Array.from({ length: 1_600 }, (_, index) => index);
 
@@ -541,6 +544,20 @@ describe("review subject state recovery backfill", () => {
       language: "ja",
       baseExplanationLanguage: "it",
       status: "active",
+      createdAt: now,
+      updatedAt: now
+    });
+
+    await database.insert(lesson).values({
+      id: "lesson-large-review-backfill",
+      mediaId: "media-large-review-backfill",
+      slug: "large-review-backfill-lesson",
+      title: "Large Review Backfill Lesson",
+      orderIndex: 1,
+      difficulty: "beginner",
+      summary: "Large consolidation state migration fixture.",
+      status: "active",
+      sourceFile: "large-review-backfill.md",
       createdAt: now,
       updatedAt: now
     });
@@ -589,6 +606,23 @@ describe("review subject state recovery backfill", () => {
         }))
       );
 
+      await database.insert(preReviewConsolidationState).values(
+        batch.map((index) => ({
+          subjectKey: `card:card-large-review-backfill-${index}`,
+          subjectType: "card" as const,
+          representativeCardId: `card-large-review-backfill-${index}`,
+          lessonId: "lesson-large-review-backfill",
+          mediaId: "media-large-review-backfill",
+          status: "passed" as const,
+          attemptCount: (index % 4) + 1,
+          lastAttemptAt: now,
+          readingPassedAt: now,
+          completedAt: now,
+          createdAt: now,
+          updatedAt: now
+        }))
+      );
+
       await database.insert(reviewSubjectState).values(
         batch
           .filter((index) => index % 10 === 0)
@@ -618,9 +652,47 @@ describe("review subject state recovery backfill", () => {
       );
     }
 
-    const result = await backfillReviewSubjectState(database, {
+    const insertSpy = vi.spyOn(database, "insert");
+    const result = await syncReviewSubjectState(database, {
       now: new Date(now)
     });
+
+    expect(
+      insertSpy.mock.calls.filter(
+        ([table]) => table === preReviewConsolidationState
+      ).length
+    ).toBeLessThanOrEqual(50);
+    insertSpy.mockRestore();
+
+    const consolidationStates =
+      await database.query.preReviewConsolidationState.findMany();
+
+    expect(consolidationStates).toHaveLength(1_600);
+    for (const state of consolidationStates) {
+      const index = Number(state.representativeCardId.split("-").at(-1));
+      const canonicalSubjectKey = `entry:term:term-large-review-backfill-${index}`;
+
+      expect(state).toMatchObject({
+        subjectKey: buildReviewMemoryKey({
+          canonicalSubjectKey,
+          cardId: state.representativeCardId,
+          recallTask: "recognition"
+        }),
+        canonicalSubjectKey,
+        recallTask: "recognition",
+        subjectType: "entry",
+        entryId: `term-large-review-backfill-${index}`,
+        lessonId: "lesson-large-review-backfill",
+        mediaId: "media-large-review-backfill",
+        status: "passed",
+        attemptCount: (index % 4) + 1,
+        lastAttemptAt: now,
+        readingPassedAt: now,
+        completedAt: now,
+        createdAt: now,
+        updatedAt: now
+      });
+    }
 
     expect(result.subjectCount).toBe(1_600);
     expect(await database.query.reviewSubjectState.findMany()).toHaveLength(

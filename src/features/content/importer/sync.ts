@@ -47,7 +47,7 @@ import type {
   MediaImportPlan
 } from "./types.ts";
 
-const LESSON_CONTENT_UPSERT_CHUNK_SIZE = 10;
+const LESSON_CONTENT_CHUNK_SIZE = 5;
 const CONTENT_ROW_WRITE_CHUNK_SIZE = 500;
 
 type DatabaseTransaction = Parameters<
@@ -128,7 +128,8 @@ export async function buildContentWorkspaceSyncPlan(
     const plan = scopedPlan?.plan ?? fullPlan;
     const existingState = await loadExistingMediaState(
       transaction,
-      fullPlan.media.row.id
+      fullPlan.media.row.id,
+      plan.lessonContents.map((entry) => entry.row.lessonId)
     );
 
     mediaPlans.push({
@@ -245,7 +246,8 @@ export async function executeContentWorkspaceSyncPlan(
 
 async function loadExistingMediaState(
   transaction: DatabaseTransaction,
-  mediaId: string
+  mediaId: string,
+  contentLessonIds: string[]
 ): Promise<ExistingMediaState> {
   const mediaRow = await transaction.query.media.findFirst({
     where: eq(media.id, mediaId)
@@ -254,11 +256,20 @@ async function loadExistingMediaState(
     where: eq(segment.mediaId, mediaId)
   });
   const lessonRows = await transaction.query.lesson.findMany({
-    where: eq(lesson.mediaId, mediaId),
-    with: {
-      content: true
-    }
+    where: eq(lesson.mediaId, mediaId)
   });
+  const lessonContentRows: Array<typeof lessonContent.$inferSelect> = [];
+
+  for (const lessonIds of chunkRows(
+    contentLessonIds,
+    LESSON_CONTENT_CHUNK_SIZE
+  )) {
+    lessonContentRows.push(
+      ...(await transaction.query.lessonContent.findMany({
+        where: inArray(lessonContent.lessonId, lessonIds)
+      }))
+    );
+  }
   const termRows = await transaction.query.term.findMany({
     where: eq(term.mediaId, mediaId),
     with: {
@@ -292,17 +303,8 @@ async function loadExistingMediaState(
     cards: cardRows,
     entryLinks: entryLinksRows,
     grammarPatterns: grammarRows,
-    lessonContents: lessonRows
-      .map((row) => row.content)
-      .filter(
-        (row): row is NonNullable<(typeof lessonRows)[number]["content"]> =>
-          row !== null
-      ),
-    lessons: lessonRows.map((row) => {
-      const { content, ...lessonRow } = row;
-      void content;
-      return lessonRow;
-    }),
+    lessonContents: lessonContentRows,
+    lessons: lessonRows,
     media: mediaRow ?? null,
     segments: segmentRows,
     terms: termRows
@@ -599,7 +601,7 @@ async function applyMediaImportPlan(
 
     for (const chunk of chunkRows(
       lessonContentRows,
-      LESSON_CONTENT_UPSERT_CHUNK_SIZE
+      LESSON_CONTENT_CHUNK_SIZE
     )) {
       await transaction.insert(lessonContent).values(chunk).onConflictDoUpdate({
         target: lessonContent.lessonId,

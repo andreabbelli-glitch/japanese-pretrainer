@@ -72,6 +72,15 @@ non sostituisce un audit completo e aggiornato del codice.
   kana circostanti e non cambiano la lettura del blocco stesso, come
   `ランク戦` vs `ストラテジー戦` o `行く` vs `行こう`.
 - Messaggio di errore comprensibile in `content:import` quando il DB target non è migrato.
+- La sincronizzazione della memoria durante l'import aggiorna gli stati di
+  consolidamento in gruppi di 40, evitando una richiesta remota per ogni stato.
+  Il test di migrazione con 1.600 stati verifica il numero limitato di scritture
+  e la conservazione di tentativi, esiti, date e riferimenti alla lezione.
+- L'import legge Markdown, HTML e AST soltanto per le lezioni del piano, in
+  gruppi di cinque, e usa lo stesso limite per scriverli. Conserva i metadati di
+  tutte le lezioni del media per le decisioni di archiviazione. Questo limita
+  i trasferimenti che possono far scadere per inattività una transazione
+  remota; i test coprono sia lo scope di una lezione sia l'import completo.
 
 ## Comportamenti Da Verificare
 

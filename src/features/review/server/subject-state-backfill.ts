@@ -641,6 +641,9 @@ async function migratePreReviewConsolidationStates(
     sourceTargetPairs.push({ row, targetKey });
   }
 
+  const migratedRows: Array<typeof preReviewConsolidationState.$inferInsert> =
+    [];
+
   for (const [targetKey, targetRows] of rowsByTarget) {
     const group = index.groupByTargetKey.get(targetKey);
     const rowToKeep = selectBestPreReviewConsolidationState(targetRows);
@@ -655,27 +658,34 @@ async function migratePreReviewConsolidationStates(
       ? rowToKeep.representativeCardId
       : group.representativeCard.id;
 
+    migratedRows.push({
+      attemptCount: rowToKeep.attemptCount,
+      canonicalSubjectKey: group.identity.canonicalSubjectKey,
+      completedAt: rowToKeep.completedAt,
+      createdAt: rowToKeep.createdAt,
+      crossMediaGroupId: group.identity.crossMediaGroupId,
+      entryId: group.identity.entryId,
+      entryType: group.identity.entryType,
+      lastAttemptAt: rowToKeep.lastAttemptAt,
+      lessonId: rowToKeep.lessonId,
+      mediaId: rowToKeep.mediaId,
+      readingPassedAt: rowToKeep.readingPassedAt,
+      recallTask: group.identity.recallTask,
+      representativeCardId,
+      status: rowToKeep.status,
+      subjectKey: targetKey,
+      subjectType: group.identity.subjectKind,
+      updatedAt: rowToKeep.updatedAt
+    });
+  }
+
+  for (const stateBatch of chunkArray(
+    migratedRows,
+    REVIEW_SUBJECT_STATE_UPSERT_BATCH_SIZE
+  )) {
     await database
       .insert(preReviewConsolidationState)
-      .values({
-        attemptCount: rowToKeep.attemptCount,
-        canonicalSubjectKey: group.identity.canonicalSubjectKey,
-        completedAt: rowToKeep.completedAt,
-        createdAt: rowToKeep.createdAt,
-        crossMediaGroupId: group.identity.crossMediaGroupId,
-        entryId: group.identity.entryId,
-        entryType: group.identity.entryType,
-        lastAttemptAt: rowToKeep.lastAttemptAt,
-        lessonId: rowToKeep.lessonId,
-        mediaId: rowToKeep.mediaId,
-        readingPassedAt: rowToKeep.readingPassedAt,
-        recallTask: group.identity.recallTask,
-        representativeCardId,
-        status: rowToKeep.status,
-        subjectKey: targetKey,
-        subjectType: group.identity.subjectKind,
-        updatedAt: rowToKeep.updatedAt
-      })
+      .values(stateBatch)
       .onConflictDoUpdate({
         target: preReviewConsolidationState.subjectKey,
         set: {
